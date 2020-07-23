@@ -1,0 +1,32 @@
+mixin caja(imagen, category, title, summary)
+	.caja
+		a(href="#",class="caja__imagen"): img(src="../images/"+imagen)
+		.caja__contenido
+			span.caja__categoria=category
+			h3=title
+			p=summary
+		+estadistica
+
+mixin estadistica
+	.estadistica--articulos: ul
+		li
+			i.fas.fa-share
+			span 275
+		li
+			i.fas.fa-eye
+			span 275
+		li
+			i.fas.fa-comment-alt
+			span 12
+
+doctype html
+html
+	head
+		title PlatziGames
+		meta(charset='utf-8')
+		meta(http-equiv='X-UA-Compatible', content='IE=edge')
+		meta(name='viewport', content='width=device-width, maximum-scale=1.0, user-scalable=no')
+		link(rel="stylesheet",href="https://fonts.googleapis.com/css?family=Lato:400,400i,700,700i|Oswald:400,500,600,700&display=swap" )
+		link(rel='stylesheet', href='../css/ejercicio-stylus.css')
+		script(src='https://kit.fontawesome.com/552ebddad2.js')
+	body

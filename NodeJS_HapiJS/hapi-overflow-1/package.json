@@ -1,0 +1,22 @@
+{
+  "name": "platzi-overflow",
+  "version": "1.0.0",
+  "description": "Un sitio como StackOverflow",
+  "main": "index.js",
+  "scripts": {
+    "lint": "standard",
+    "lint-fix": "standard --fix",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "standard": "^12.0.1"
+  },
+  "dependencies": {
+    "@hapi/hapi": "^19.1.1",
+    "@hapi/inert": "^6.0.1",
+    "@hapi/vision": "^6.0.0",
+    "handlebars": "^4.7.6"
+  }
+}

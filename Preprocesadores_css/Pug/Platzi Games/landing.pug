@@ -1,0 +1,24 @@
+extend componentes/plantilla.pug
+block contenidos
+        section.intro
+            //- INTERPOLACION SOLO TIENE UN HIJO
+            .intro__imagen: img(src="images/imagen.png")
+            //- INTERPOLACION MÁS DE IM HIJO
+            .intro__contenido
+                //- h2 #{titulo}
+                //- h2 #{titulos[0]}
+                h2 #{titulos[0]}
+                p
+                    | Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+                    | Amet voluptate nemo a quidem nostrum incidunt saepe nobis 
+                    | vero eaque. Quam repellat maiores, hic quidem quasi veniam 
+                    | animi soluta magni voluptates.
+                    span Proin sit amet tellus nec nisl bibendum ornare nec at augue. Integer semper feugiat varius.
+                a.boton Leer mas
+        //- ul
+        //-     each titulo in titulos
+        //-         li=titulo
+        main.contenido
+            +caja('imagen.png',titulos[1],' Lorem ipsum dolor sit amet.')
+            +caja('imagen.png',titulos[2],' Lorem ipsum dolor sit amet.')
+            +caja('imagen.png',titulos[3],' Lorem ipsum dolor sit amet.')

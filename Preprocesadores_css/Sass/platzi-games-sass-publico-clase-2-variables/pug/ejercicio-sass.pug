@@ -1,0 +1,31 @@
+include head.pug
+main
+	section.perfil
+		img(class="perfil__avatar" src="../images/avatar.jpg")
+		h2.perfil__nombre John Wick
+		h3.perfil__titulo Asesino Legendario
+		a(href="#" class="perfil__boton") Seguir
+		.estadistica--perfil
+			+stats("12k", "Seguidores")
+			+stats("1.7k", "Siguiendo")
+			+stats("48", "Articulos")
+		.perfil__minibio
+			h2 Acerca de Mi
+			h3 Asesino a sueldo retirado y amante de perros
+		.ubicacion--perfil
+			i.fas.fa-map-marker-alt
+			h2 Estados Unidos
+			h3 227km Cerca
+		.galeria
+			h2 Mis Fotos
+			.galeria__foto-principal: img(src="../images/galeria1.jpg")
+			.galeria__fotos-adicionales
+				img(src="../images/galeria2.jpg" width="160")
+				img(src="../images/galeria3.jpg")
+				img(src="../images/galeria4.jpg")
+	aside.articulos
+		+article("Playstation", "GTA VI: Filtraciones que son bastante dudosas","Recientemente se filtró en Internet una importante cantidad de supuesta información sobre Grand Theft Auto VI (GTA VI) que nos ofrece una muy buena idea de lo que podemos esperar.")
+		+article("Switch", "Secuela de The Legend of Zelda: Breath of the Wild anunciada en el E3 2019","Nintendo anunció la secuela de The Legend of Zelda: Breath of the Wild en el E3 2019 y todos estamos más que emocionados con esto.")
+		+article("Xbox", "Red Dead Online recibe actualización masiva y sale de Beta","Rockstar lanzó el día de hoy la actualización más grande de Red Dead Online desde que el componente online de Red Dead Redemption 2 se lanzó en noviembre.")
+
+		

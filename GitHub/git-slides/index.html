@@ -1,0 +1,2931 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Curso Profesional de Git y GitHub - #platzigit</title>
+
+		<meta name="description" content="Curso Profesional de Git y GitHub. Por Platzi.">
+		<meta name="author" content="Miguel Nieva">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/sky.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+
+<!-- Favicons
+  ================================================== -->
+
+ <link rel="shortcut icon" href="https://raw.githubusercontent.com/platzi/git/master/favicon.ico">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://git.miguelnieva.com" />
+    <meta property="og:image" content="http://l4c.me/fullsize/curso-git-mike-1416266619.png" />
+    <meta property="og:title" content="Curso Profesional de Git y GitHub - #platzigit" />
+    <meta property="og:site_name" content="platzigit" />
+    <meta property="og:description" content="Formamos profesionales Web de clase mundial. Entra ya: Platzi/git"/>
+    <meta property="fb:profile_id" content="mikenieva" />
+    <meta property="fb:admins" content="mikenieva" />
+
+
+	</head>
+
+	<body>
+		<div class="hola" style="height: 5.2em;background: rgb(0, 0, 0);color: white;">
+  			<div class="titulos" style="display: inline-block;vertical-align: top;width: 48%;">
+
+  				<img src="img/git-icon.png" style="border-radius: 15px; width: 44px; padding: 8px; background-color: white; border: 3px solid #ccc; display: inline-block; margin: 10px 0 0 15px;">
+				<h1 style="margin: 0;font-family: 'Open sans';font-size: 22px;text-align: left;vertical-align: top;font-weight: 300;display: inline-block;padding: 31px 0 0 16px;"><a style="color: white; text-underline: none;" href="#/0">Curso Profesional de Git & Github</a></h1>
+  			</div>
+			<div class="mejorandola" style="display: inline-block;width: 48%;text-align: right;">
+				<h2 style="margin: 0; font-family: 'Open sans'; font-size: 22px;  vertical-align: top; font-weight: 300; display: inline-block; padding: 31px 0 0 16px;">@mikenieva - #platzigit
+				</h2>
+				<img src="https://avatars0.githubusercontent.com/u/1768149?v=2&amp;s=200" style="border-radius: 15px; width: 44px; padding: 8px; border: 1px solid #ccc; display: inline-block; margin: 10px 0 0 15px;">
+			</div>
+		</div>
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+			<section style="width: 1000px; text-align: left;">
+				<br>
+
+				<ol style="text-align: left;font-size: 22px;display: inline-block;width: 500px;list-style: none;">
+  					<h1 style="text-align: left;font-size: 32px;">Git 2014</h1>
+					<li>
+						1. <a href="#/1">Instalación</a>
+					</li>
+					<li>
+						2. <a href="#/26">Ramas y fusiones</a>
+					</li>
+					<li>
+						3. <a href="#/59">Workflows y colaboración remota</a>
+					</li>
+					<li>
+						4. <a href="#/108">Manual Deployment + Project Management</a>
+					</li>
+					<li>
+						5. <a href="#/130">Automatic Deployment + Git Hooks</a>
+					</li>
+					<br>
+					<h1 style="font-size: 32px;display: inline-block;">Desafíos</h1>
+					<li>
+						1. <a href="#/0">Crear un Blog en GitHub Pages</a>
+					</li>
+					<li>
+						2. <a href="#/0">Blog universitario. Diseño.</a>
+					</li>
+					<li>
+						3. <a href="#/0">Blog universitario. Deployment Automático.</a>
+					</li>
+				</ol>
+
+				<ol style="display: inline-block;font-size: 22px;width: 400px;vertical-align: top;list-style: dotted;">
+  					<h1 style="font-size: 32px;display: inline-block;">GIT 2016</h1>
+					<li>
+						<a href="#/159">Instalación y conceptos básicos</a>
+					</li>
+					<li>
+						<a href="#/200">Navegación entre commits</a>
+					</li>
+					<li>
+						<a href="">Workflows y repositorios remotos</a>
+					</li>
+					<li>
+						<a href="">Project Management con GitHub</a>
+					</li>
+					<li>
+						<a href="">Push To Deploy</a>
+					</li>
+					<li>
+						<a href="">Workflows dinámicos con equipos</a>
+					</li>
+					<li>
+						<a href="">Conceptos Avanzados</a>
+					</li>
+					<li>
+						<a href="">Herramientas Útiles</a>
+					</li>
+					<li>
+						<a href="">GUI's</a>
+					</li>
+					<li>
+						<a href="">GitLab</a>
+					</li>
+				</ol>
+
+			</section>
+
+<!-- Clase 1 #mejorandogit -->
+
+			<section>
+					<img src="https://octodex.github.com/images/plumber.jpg" style="width: 310px;margin-top: 105px;box-shadow: none;border: none;">
+					<br>
+					<br>
+					<h1 style="font-size:31px">1. Instalación</h1><br>
+					<p>Git 2014</p>
+			</section>
+
+			<section>
+					<blockquote>"Fear isn't the enemy. Paralysis is the enemy."</blockquote>
+					<br>
+					<p><span class="glyphicon glyphicon-star"></span>Seth Godin</p>
+					<br>
+					<blockquote>"Somos una revolución, un movimiento, una nueva generación tecnológica que abre, unida, el futuro de la Web"</blockquote>
+					<br>
+					<p><span class="glyphicon glyphicon-star"></span>Comunidad Platzi</p>
+
+			</section>
+
+			<section>
+				<br>
+					<h3>Roadmap</h3>
+					<img src="img/git-temario.png" />
+			</section>
+
+
+			<section>
+					<h3>Objetivo principal</h3>
+					<br>
+					<p>Generes un proyecto, vayas salvando sus cambios y puedas viajar en el tiempo con él.</p>
+			</section>
+
+			<section>
+					<h3>Empecemos con el contexto</h3>
+					<br>
+					<p>1.1 Instalación y conceptos básicos</p>
+					<p>1.2 Sistemas de Control de Versiones.</p>
+					<p>1.3 ¿Qué es Git?</p>
+					<p>1.4 Arquitectura de Árbol.</p>
+					<p>1.5 Configurando GIT.</p>
+
+			</section>
+
+
+			<section>
+					<h3>1.1 Instalación </h3>
+					<br>
+					<p>a) Entren a <a href="http://git-scm.com" target="_blank">http://git-scm.com</a></p>
+					<p>b) Escoja dependiendo de Windows, Mac, Linux</p>
+
+			</section>
+
+
+			<section>
+
+					<h3>1.2 Sistemas de Control de Versiones </h3>
+					<br>
+					<img src="http://l4c.me/fullsize/maestros-del-web-evolucion-1414362396.png">
+
+			</section>
+
+			<section>
+					<br>
+					<h3>1.2 Sistemas de Control de Versiones </h3>
+					<br>
+					<img src="img/versiones1.png" style="width:500px;">
+					<p>1) Registran y guardan cada modificación del proyecto en un registro. Todo lo que modificas, lo vigilan.</p>
+			</section>
+
+			<section>
+					<br>
+					<h3>1.2 Sistemas de Control de Versiones </h3>
+					<br>
+					<img src="img/versiones2.png" style="width:500px;">
+					<p>2) Te dan acceso a este registro. Con esto, puedes gestionarlo, compartirlo, colaborarlo, administrarlo, editarlo, etc.</p>
+			</section>
+
+			<section>
+					<br>
+					<h3>1.2 Sistemas de Control de Versiones </h3>
+					<br>
+					<img src="img/versiones3.png" style="width:500px;">
+					<p>3) Podrás moverte hacia atrás o hacia adelante en diferentes momentos del proyecto.</p>
+			</section>
+
+			<section>
+
+					<h3>1.3 ¿Qué es GIT? </h3>
+					<br>
+					<img src="http://l4c.me/fullsize/git-github-1414373606.png">
+
+			</section>
+
+			<section>
+					<br>
+					<h3>1.3 ¿Qué es GIT? </h3>
+					<br>
+					<img src="img/mundos.png">
+
+			</section>
+
+			<section>
+					<br>
+					<br>
+					<h3>1.3 ¿Qué es GIT? </h3>
+					<br>
+					<img src="http://l4c.me/fullsize/cambios1-1414373635.png">
+
+			</section>
+
+			<section>
+					<br>
+					<h3>1.3 ¿Qué es GIT? </h3>
+					<img src="http://l4c.me/fullsize/workflow1-1414373575.png">
+
+			</section>
+
+
+			<section>
+					<br>
+					<h3>1.4 Arquitectura de árbol </h3>
+					<img src="http://l4c.me/fullsize/git-puzzlebubble2-1414528547.png">
+			</section>
+
+
+			<section>
+				<br>
+					<h3>1.4 Arquitectura de árbol </h3>
+					<br>
+					<img src="http://l4c.me/fullsize/workingarea-1414895970.png" style="width: 400px;">
+			</section>
+
+			<section>
+				<br>
+					<h3>1.4 Arquitectura de árbol </h3>
+					<br>
+					<img src="http://l4c.me/fullsize/stagingarea-1414895989.png" style="width: 500px;">
+			</section>
+
+			<section>
+				<br>
+					<h3>1.4 Arquitectura de árbol </h3>
+					<br>
+					<img src="http://l4c.me/fullsize/repositorio-1414897510.png" style="width: 500px;">
+			</section>
+
+			<section>
+					<br>
+					<h3>1.4 Arquitectura de árbol </h3>
+					<img src="img/arbol.png" style="width: 700px;"></section>
+
+			<section>
+				<br>
+					<h3>1.5 Configuración </h3>
+					<br>
+					<p>Abrir terminal, consola, bash</p>
+					 <pre><code data-trim>
+						$ git --version
+					</code></pre>
+					<pre><code data-trim>
+					$ git config --global user.name "TU NOMBRE"
+					</code></pre>
+					<pre><code data-trim>
+					$ git config --global user.email "TU CORREO DE GITHUB"
+					</code></pre>
+					<pre><code data-trim>
+					$ git config --global color.ui true
+					</code></pre>
+					<pre><code data-trim>
+					$ git config --global --list
+					</code></pre>
+			</section>
+
+			<section>
+				<br>
+					<h3>Ejercicio (70% de git)</h3>
+					<br>
+					<img src="img/iteracionbasica.png">
+
+			</section>
+
+			<section>
+				<br>
+					<h3>Ejercicio (70% de git)</h3>
+					<br>
+					<img src="img/gitcheckout.png">
+
+			</section>
+
+			<section>
+				<br>
+					<h3>Ejercicio (70% de git)</h3>
+					<br>
+					<img src="img/gitreset.png">
+
+			</section>
+
+
+
+<!-- Clase 2 #mejorandogit -->
+
+
+				<section>
+					<img src="https://octodex.github.com/images/ironcat.jpg" style="width: 310px;margin-top: 105px;box-shadow: none;border: none;">
+					<br>
+					<br>
+					<h1 style="font-size:31px">2. Ramas y Fusiones</h1><br>
+					<p>Git 2014</p>
+				</section>
+
+				<section>
+					<br>
+					<h3>Roadmap</h3>
+					<img src="img/git-temario.png" />
+				</section>
+
+			<section>
+					<h3>Objetivo principal</h3>
+					<br>
+					<p>Con nuestro proyecto portafolio, generaremos 3 versiones. Una estable, una experimental y una que fusionemos.</p>
+			</section>
+
+			<section>
+
+					<h3>Consejo:</h3>
+					<br>
+					<p>¡Practica! ¡Falla! ¡Experimenta!</p>
+
+			</section>
+
+			<section>
+					<h3>Empecemos con el contexto</h3>
+					<br>
+					<p>2.1 Propuestas de proyectos</p>
+					<p>2.2 Ramas (Branches)</p>
+					<p>2.3 Fusiones (Merge)</p>
+			</section>
+
+
+			<section>
+
+					<h3>2.1 Propuestas de Proyectos </h3>
+					<br>
+					<p>¿Cómo puedo intervenir positivamente en el proyecto sin afectarlo?</p>
+
+			</section>
+
+			<section>
+
+					<h3>2.1 Propuestas de Proyectos </h3>
+					<br>
+					<p>¿Cómo puedo enfocarme en resolver un bug, un problema, sin afectar el avance de mi equipo?</p>
+
+			</section>
+
+			<section>
+
+					<h3>2.1 Propuestas de Proyectos </h3>
+					<br>
+					<p>Como profesionales, <b>proponer</b> es una de las habilidades más importantes para crecer dentro de una empresa.</p>
+
+			</section>
+
+			<section>
+
+					<h3>2.1 Propuestas de Proyectos </h3>
+					<br>
+					<p>Por ello, en GIT, existen las ramas, también conocidos como "branches".</p>
+
+			</section>
+
+
+			<section>
+					<h3>2.2 Ramas</h3>
+					<br>
+					<p>Una rama es una línea alterna del tiempo, en la historia de nuestro repositorio.</p>
+					<br>
+					<p>Funciona para crear features, arreglar bugs, experimentar, sin afectar la versión estable, la línea principal, del proyecto.</p>
+			</section>
+
+			<section>
+					<h3>2.2 Ramas</h3>
+					<br>
+					<img src="http://l4c.me/fullsize/fusion1-1416763203.png">
+			</section>
+
+			<section>
+					<h3>2.2 Ramas</h3>
+					<br>
+					<img src="http://l4c.me/fullsize/fusion2-1416763223.png">
+			</section>
+
+			<section>
+					<h3>2.2 Ramas</h3>
+					<br>
+					<img src="http://l4c.me/fullsize/fusion3-1416763242.png">
+			</section>
+
+			<section>
+					<h3>2.2 Ramas</h3>
+					<br>
+					<img src="http://l4c.me/fullsize/fusion4-1416763358.png">
+			</section>
+
+			<section>
+					<h3>2.2 Ramas</h3>
+					<br>
+					<img src="http://l4c.me/fullsize/fusion5-1416763372.png">
+			</section>
+
+			<section>
+					<h3>2.2 Ramas</h3>
+					<br>
+					<img src="http://l4c.me/fullsize/fusion6-1416763385.png">
+			</section>
+
+
+			<section>
+					<br>
+					<br>
+					<br>
+					<h3>2.2 Ramas</h3>
+					<br>
+					<p>El concepto HEAD</p>
+					<p>¿En qué punto de la historia de nuestro proyecto nos encontramos?</p>
+					<img src="http://l4c.me/fullsize/head-1416765375.png">
+			</section>
+
+			<section>
+					<br>
+					<h3>2.2 Ramas</h3>
+					<br>
+					<p>Practiquemos ramas</p>
+					<p>git branch [nombre]</p>
+			</section>
+
+
+			<section>
+					<br>
+					<h3>2.2 Ramas</h3>
+					<br>
+					<p>git log --oneline --graph --all</p>
+					<p>git config --global alias.log 'log --oneline --graph --all'</p>
+			</section>
+
+			<section>
+					<br>
+					<h3>2.3 Fusiones</h3>
+					<br>
+					<p>Repitamos el proceso de la fusión</p>
+					<img src="http://l4c.me/fullsize/fusion4-1416763358.png">
+			</section>
+
+			<section>
+					<br>
+					<h3>2.3 Fusiones</h3>
+					<br>
+					<p>git checkout [branch]</p>
+					<img src="http://l4c.me/fullsize/branch-fusion0-1416767226.png">
+			</section>
+
+			<section>
+					<br>
+					<h3>2.3 Fusiones</h3>
+					<br>
+					<p>git checkout [branch]</p>
+					<img src="http://l4c.me/fullsize/branch-fusion1-1416766450.png">
+			</section>
+
+
+			<section>
+					<br>
+					<h3>2.3 Fusiones</h3>
+					<br>
+					<p>git checkout [branch]</p>
+					<img src="http://l4c.me/fullsize/branch-fusion2-1416766468.png">
+			</section>
+
+			<section>
+					<br>
+					<h3>2.3 Fusiones</h3>
+					<br>
+					<p>Hagamos la fusión</p>
+					<img src="http://l4c.me/fullsize/branch-fusion2-1416766468.png">
+			</section>
+
+			<section>
+					<br>
+					<h3>2.3 Fusiones</h3>
+					<br>
+					<p>Fu...</p>
+					<img src="http://l4c.me/fullsize/branch-fusion3-1416766492.png">
+			</section>
+
+			<section>
+					<br>
+					<h3>2.3 Fusiones</h3>
+					<br>
+					<p>...sión!</p>
+					<img src="http://l4c.me/fullsize/branch-fusion4-1416766512.png">
+			</section>
+
+			<section>
+					<br>
+					<h3>2.3 Fusiones</h3>
+					<br>
+					<p>La fusión tiene la mezcla de los cambios de ambas ramas</p>
+					<img src="http://l4c.me/fullsize/branch-fusion4-1416766512.png">
+			</section>
+
+			<section>
+					<br>
+					<h3>2.3 Fusiones</h3>
+					<br>
+					<p>Lo mejor de ambas, establecidas por el gestor del proyecto</p>
+					<img src="http://l4c.me/fullsize/branch-fusion4-1416766512.png">
+			</section>
+
+			<section>
+					<br>
+					<h3>2.3 Fusiones</h3>
+					<br>
+					<p>Solución de conflictos</p>
+					<br>
+					<p>a) Fast-Forward</p>
+					<p>b) Manual Merge</p>
+			</section>
+
+			<section>
+					<br>
+					<h3>2.3 Fusiones</h3>
+					<br>
+					<p>Solución de conflictos</p>
+					<br>
+					<p>Fast-Forward</p>
+					<p>Los gestores trabajaron archivos diferentes al repositorio</p>
+			</section>
+
+ 			<section>
+					<br>
+					<h3>2.3 Fusiones</h3>
+					<br>
+					<p>Solución de conflictos</p>
+					<br>
+					<p>Manual Merge</p>
+					<p>¿Qué pasa cuando 2 desarrolladores trabajan el mismo archivo en la fusión?</p>
+			</section>
+
+
+
+<!-- Clase 3 #mejorandogit -->
+
+	<section>
+					<img src="https://octodex.github.com/images/daftpunktocat-thomas.gif" style="width: 310px;margin-top: 105px;box-shadow: none;border: none;">
+					<br>
+					<br>
+					<h1 style="font-size:31px">3. Workflows y colaboración remota</h1><br>
+					<p>Git 2014</p>
+			</section>
+
+				<section>
+					The Web connects people. That’s what it does.
+					<br>
+					<br>
+					And movements take connected people and make change.
+				</section>
+
+				<section>
+					<br>
+					<h3>Roadmap</h3>
+					<img src="img/git-temario.png" />
+				</section>
+
+
+			<section>
+				<h3>Objetivo Principal</h3>
+				<br>
+				<p>1) Crear un repositorio en GitHub y vincularlo en local.</p>
+				<p>2) Subir nuestro portafolio a nuestro repositorio "forked" en GitHub.</p>
+
+			</section>
+
+			<section>
+				<br>
+				<h3>Empecemos con el contexto</h3>
+				<br>
+				<p>1) GitHub & Workflows</p>
+				<p>2) Repositorios propios</p>
+				<p>3) Repositorios "forked"</p>
+
+
+			</section>
+
+			<section>
+				<br>
+				<h3>GitHub</h3>
+				<br>
+				<p>Es una plataforma social para construir <u>proyectos web</u>.</p>
+			</section>
+
+			<section>
+				<br>
+				<img src="http://l4c.me/fullsize/github1-1417396186.png">
+			</section>
+
+			<section>
+				<br>
+				<h3>Workflows</h3>
+				<br>
+				<p>Flujos de trabajo colaborativos.</p>
+			</section>
+
+			<section>
+				<br>
+				<h3>Workflows</h3>
+				<br>
+				<p>¿Cómo logro que varios profesionales web trabajen sobre un mismo proyecto, sin morir en el intento?</p>
+			</section>
+
+			<section>
+				<br>
+				<br>
+				<h3>Workflows</h3>
+				<img src="http://l4c.me/fullsize/github2-1417397149.png" style="width: 600px;">
+			</section>
+
+			<section>
+				<br>
+				<img src="http://l4c.me/fullsize/roadmapworkflow2-1417473808.png" style="max-width: 107%;">
+			</section>
+
+			<section>
+				<br>
+				<p><b>Exploración: Git Clone</b></p>
+				<br>
+				<p>$ git clone [https or SSH]</p>
+				<p>$ git log (comprobar commits)</p>
+			</section>
+
+
+
+			<section>
+				<br>
+				<p>Git Clone</p>
+				<img src="http://l4c.me/fullsize/clone1-1417412762.png">
+			</section>
+
+
+			<section>
+				<br>
+				<p>Git Clone</p>
+				<img src="http://l4c.me/fullsize/clone2-1417412777.png">
+			</section>
+
+			<section>
+				<br>
+				<p>Git Clone</p>
+				<img src="http://l4c.me/fullsize/clone3-1417412868.png">
+			</section>
+
+
+			<section>
+				<br>
+				<h3>GitHub Workflows</h3>
+				<br>
+				<p><b>1) Repositorios propios (Sólo YO)</b></p>
+				<br>
+				<p>- Ustedes son los dueños de su proyecto</p>
+				<p>- Si alguien decide participar, ustedes deciden si aceptan sus propuestas</p>
+				<p>- Sirve para guardar proyectos, regularmente personales.</p>
+				<BR>
+				<p>1) Crear un repositorio</p>
+				<p>2) Vincularlo con nuestra PC</p>
+				<p>3) Generar cambios y subirlos a GitHub</p>
+			</section>
+
+			<section>
+				<br>
+				<p>Subir cambios a GitHub</p>
+				<img src="http://l4c.me/fullsize/repospropios1-1417410698.png">
+			</section>
+
+			<section>
+				<br>
+				<p>Subir cambios a GitHub</p>
+				<img src="http://l4c.me/fullsize/repospropios2-1417410717.png">
+			</section>
+
+			<section>
+				<br>
+				<p>Subir cambios a GitHub</p>
+				<img src="http://l4c.me/fullsize/repospropios3-1417410732.png">
+			</section>
+
+			<section>
+				<br>
+				<p>Subir cambios a GitHub</p>
+				<img src="http://l4c.me/fullsize/repospropios4-1417410756.png">
+			</section>
+
+			<section>
+				<br>
+				<p>Subir cambios a GitHub</p>
+				<img src="http://l4c.me/fullsize/repospropios5-1417410777.png">
+			</section>
+
+			<section>
+				<br>
+				<p>Subir cambios a GitHub</p>
+				<img src="http://l4c.me/fullsize/repospropios6-1417410793.png">
+			</section>
+
+			<section>
+				<br>
+				<h3>Subir cambios a GitHub</h3>
+				<p>$ git init</p>
+				<p>$ git remote add origin [HTTPS or SSH]</p>
+				<p>$ git remote -v</p>
+				<p>Generamos cambios</p>
+				<p>$ git commit -am "[Mensaje]"</p>
+				<p>$ git push origin master</p>
+			</section>
+
+
+			<section>
+				<br>
+				<h3>2) Repositorios propios (Yo + mi equipo)</h3>
+				<br>
+				<p>- Es lo mismo que el proceso anterior.</p>
+				<p>- Todos los cambios que hagan nuestros colaboradores lo subirán al repositorio</p>
+				<p>- Es nuestra obligación, descargar los nuevos cambios antes y después de codificar.</p>
+			</section>
+
+
+			<section>
+				<br>
+				<p><b>Git Fetch & Git Merge</b></p>
+				<img SRC="http://l4c.me/fullsize/propios1-1417471255.png">
+			</section>
+
+			<section>
+				<br>
+				<p><b>Git Fetch & Git Merge</b></p>
+				<img SRC="http://l4c.me/fullsize/propios2-1417471273.png">
+			</section>
+
+			<section>
+				<br>
+				<p><b>Git Fetch & Git Merge</b></p>
+				<img SRC="http://l4c.me/fullsize/propios3-1417471286.png">
+			</section>
+
+			<section>
+				<br>
+				<p><b>Git Fetch & Git Merge</b></p>
+				<img SRC="http://l4c.me/fullsize/propios4-1417471304.png">
+			</section>
+
+			<section>
+				<br>
+				<p><b>Git Fetch & Git Merge</b></p>
+				<img SRC="http://l4c.me/fullsize/propios5-1417471320.png">
+			</section>
+
+			<section>
+				<br>
+				<p><b>Git Fetch & Git Merge</b></p>
+				<img SRC="http://l4c.me/fullsize/propios6-1417471356.png">
+			</section>
+
+			<section>
+				<br>
+				<p><b>Git Fetch & Git Merge</b></p>
+				<img SRC="http://l4c.me/fullsize/propios7-1417471379.png">
+			</section>
+
+			<section>
+				<br>
+				<p><b>Git Fetch & Git Merge</b></p>
+				<img SRC="http://l4c.me/fullsize/propios8-1417471393.png">
+			</section>
+
+			<section>
+				<br>
+				<p><b>Git Fetch & Git Merge</b></p>
+				<img SRC="http://l4c.me/fullsize/propios9-1417471413.png">
+			</section>
+
+			<section>
+				<br>
+				<p><b>Git Fetch & Git Merge</b></p>
+				<img SRC="http://l4c.me/fullsize/propios10-1417471425.png">
+			</section>
+
+			<section>
+				<br>
+				<p><b>Git Fetch & Git Merge</b></p>
+				<br>
+				<p>Creamos ó entramos a la carpeta de nuestro proyecto</p>
+				<p>$ git init (si apenas vamos a iniciar)</p>
+				<p>$ git remote add origin [HTTS or SSH]</p>
+				<p>$ git fetch origin</p>
+				<p>$ git merge origin/master</p>
+				<p>Hacen cambios</p>
+				<p>$ git fetch origin</p>
+				<p>$ git merge origin/master</p>
+				<p>$ git push origin master</p>
+			</section>
+
+
+			<section>
+				<br>
+				<h3>GitHub Workflows</h3>
+				<br>
+				<p><b>3) Repositorios "forked" (De 3º's, hay gestores)</b></p>
+				<br>
+				<p>- Ustedes no son los dueños pero quieren participar en el desarrollo.</p>
+				<p>- Los dueños del proyecto le dan la visión (que commits sí y que commits no)</p>
+				<p>- Todo esto a través del concepto de Pull Request (PR)</p>
+			</section>
+
+			<section>
+				<br>
+				<p><b>Repositorios "forked"</b></p>
+				<br>
+				<p>Necesitamos conectar 2 repositorios.</p>
+				<p>1) Su repositorio forked (el que se colocó en su cuenta de GitHub y son dueños)</p>
+				<p>2) El repositorio principal (no son dueños)</p>
+			</section>
+
+			<section>
+				<br>
+				<p><b>Repositorios "forked"</b></p>
+				<img src="http://l4c.me/fullsize/final1-1417476172.png">
+			</section>
+
+			<section>
+				<br>
+				<p><b>Repositorios "forked"</b></p>
+				<img src="http://l4c.me/fullsize/final2-1417476190.png">
+			</section>
+
+			<section>
+				<br>
+				<p><b>Repositorios "forked"</b></p>
+				<img src="http://l4c.me/fullsize/final3-1417476208.png">
+			</section>
+
+			<section>
+				<br>
+				<p><b>Repositorios "forked"</b></p>
+				<img src="http://l4c.me/fullsize/final4-1417476231.png">
+			</section>
+
+			<section>
+				<br>
+				<p><b>Repositorios "forked"</b></p>
+				<img src="http://l4c.me/fullsize/final6-1417476260.png">
+			</section>
+
+			<section>
+				<br>
+				<p><b>Repositorios "forked"</b></p>
+				<img src="http://l4c.me/fullsize/final7-1417476276.png">
+			</section>
+
+			<section>
+				<br>
+				<p><b>Ciclo final - Repositorios "forked"</b></p>
+				<img src="http://l4c.me/fullsize/final8-1417476301.png">
+			</section>
+
+
+
+
+			<section>
+				<p><b>Repositorios "forked"</b></p>
+				<br>
+				<p>La idea es:</p>
+				<p>- Siempre que vayamos a iniciar cambios, actualizarnos con el proyecto principal.</p>
+				<p>- Hacer nuestros cambios, experimentos, etc.</p>
+				<p>- Revisar nuevamente si no hubo cambios con el proyecto principal.</p>
+				<p>- Subir a nuestro forked repository todo lo que hemos hecho.</p>
+				<p>- Si queremos, crear un pull request para colaboración.</p>
+			</section>
+
+
+			<section>
+				<br>
+				<p><b>Repositorios "forked"</b></p>
+				<p>Crear ó entrar a la carpeta del proyecto</p>
+				<p>$ git remote add origin [HTTPS ó SSH del proyecto forked]</p>
+				<p>$ git remote add upstream [HTTPS ó SSH del proyecto "main"]</p>
+				<p>$ git fetch upstream</p>
+				<p>$ git merge origin/upstream</p>
+				<p>$ git fetch origin</p>
+				<p>$ git merge origin/master</p>
+				<p>Hacer cambios en local</p>
+				<p>$ git fetch upstream</p>
+				<p>$ git merge origin/upstream</p>
+				<p>$ git push origin master</p>
+			</section>
+
+			<section>
+				<br>
+				<p><b>Repositorios "forked"</b></p>
+				<br>
+				<p>Si queremos, realizamos un Pull Request al proyecto principal ("main")</p>
+			</section>
+
+<!-- Clase 4 #mejorandogit -->
+
+	<section>
+					<img src="https://octodex.github.com/images/spidertocat.png" style="width: 310px;margin-top: 105px;box-shadow: none;border: none;">
+					<br>
+					<br>
+					<h1 style="font-size:31px">Manual Deployment + Project Management</h1><br>
+					<p>Git 2014</p>
+			</section>
+
+				<section>
+					Hidden ideas don't ship, have no influence, no intersection with the market. They die, <b>alone</b>.
+					<br>
+					<br>
+					Ideas don't need a passport, and often cross borders (of all kinds) with impunity.
+					<br>
+					<br>
+					<u>Show your ideas</u>
+				</section>
+
+				<section>
+					<br>
+					<h3>Roadmap</h3>
+					<img src="img/git-temario.png" />
+				</section>
+
+
+			<section>
+				<h3>Objetivo Principal</h3>
+				<br>
+				<p>- Subir nuestro portafolio a través de un GitHub Pages.</p>
+				<p>- Conocer el despliegue básico, utilizando GitHub, un servidor y SSH.</p>
+				<p>- Hacer un Flow de Issues para trabajo en equipo.</p>
+			</section>
+
+			<section>
+				<h3>Empecemos con el contexto</h3>
+				<br>
+				<p>1) Deployment.</p>
+				<p>2) Ambientes</p>
+				<p>3) GitHub Pages.</p>
+				<p>4) Manual Deployment</p>
+			</section>
+
+			<section>
+				<br>
+				<h3>1) Deployment</h3>
+					<br>
+					<br>
+					<p>Es la manera de llevar tus proyectos al mundo</p>
+			</section>
+
+			<section>
+				<h3>1) Deployment</h3>
+				<br>
+				<br>
+				<p>Todas las actividades que hacen a un proyecto de software disponible para su uso</p>
+			</section>
+
+			<section>
+				<br>
+				<h3>1) Deployment</h3>
+				<br>
+				<img src="http://l4c.me/fullsize/ambiente1-1418048752.png">
+			</section>
+
+			<section>
+				<br>
+				<h3>2) Ambientes</h3>
+				<br>
+				<img src="http://l4c.me/fullsize/ambiente2-1418048765.png">
+			</section>
+
+			<section>
+				<br>
+				<h3>2) Ambientes Óptimos</h3>
+				<br>
+				<img src="http://l4c.me/fullsize/ambiente6-1418048822.png">
+			</section>
+
+
+			<section>
+				<br>
+				<br>
+				<h3>2) Ambientes FTP</h3>
+				<img src="http://l4c.me/fullsize/ambiente3-1418048777.png" style="max-width: 70%;">
+				<br>
+				<p style="font-size: 22px;">- Se pierde el código, se pierde todo</p>
+				<p style="font-size: 22px;">- Como no hay un SCV, el equipo puede encimar sus avances</p>
+				<p style="font-size: 22px;">- Si el código falla en producción, regresar al momento anterior es un caos.</p>
+			</section>
+			<section>
+				<br>
+				<h3>3) GitHub Pages</h3>
+				<br>
+				<img src="http://l4c.me/fullsize/githubpages1-1418046581.png" style="max-width: 50%;">
+			</section>
+			<section>
+				<br>
+				<h3>3) GitHub Pages</h3>
+				<br>
+				<img src="http://l4c.me/fullsize/githubpages2-1418046607.png" style="max-width: 50%;">
+			</section>
+
+			<section>
+				<br>
+				<h3>3) GitHub Pages</h3>
+				<br>
+				<img src="http://l4c.me/fullsize/githubpages5-1418047519.png" style="max-width: 50%;">
+			</section>
+
+			<section>
+				<br>
+				<h3>4) Manual Deployment</h3>
+				<br>
+				<img src="http://l4c.me/fullsize/manualdeploy1-1418046641.png" style="max-width: 50%;">
+			</section>
+
+
+			<section>
+				<br>
+				<h3>4) Manual Deployment</h3>
+				<br>
+				<img src="http://l4c.me/fullsize/manualdeploy2-1418046659.png" style="max-width: 50%;">
+			</section>
+
+
+			<section>
+				<br>
+				<h3>4) Manual Deployment</h3>
+				<br>
+				<img src="http://l4c.me/fullsize/manualdeploy3-1418046748.png" style="max-width: 50%;">
+			</section>
+
+
+			<section>
+				<br>
+				<h3>4) Manual Deployment</h3>
+				<br>
+				<img src="http://l4c.me/fullsize/manualdeploy4-1418046773.png" style="max-width: 75%;">
+			</section>
+
+			<section>
+				<br>
+				<h3>4) Manual Deployment</h3>
+				<br>
+				<img src="http://l4c.me/fullsize/manualdeploy5-1418046787.png" style="max-width: 75%;">
+			</section>
+
+			<section>
+				<br>
+				<h3>4) Manual Deployment</h3>
+				<br>
+				<p><u>SSH</u></p>
+				<br>
+				<p>Secure Shell</p>
+				<p>Autenticación - "Are you the owner?"</p>
+				<img src="http://l4c.me/fullsize/llave-1418051227.png">
+			</section>
+
+
+<!-- Clase 5 #mejorandogit -->
+
+			<section>
+					<img src="https://octodex.github.com/images/linktocat.jpg" style="width: 310px;margin-top: 105px;box-shadow: none;border: none;">
+					<br>
+					<br>
+					<h1 style="font-size:31px">Curso Profesional de Git y GitHub</h1><br>
+					<p>Clase 5 - #platzigit</p>
+			</section>
+
+				<section>
+					<p>El tiempo es el activo más valioso, no el dinero.</p>
+					<br>
+					<p>Automaticen y enfóquense en lo importante.</p>
+				</section>
+
+				<section>
+					<br>
+					<h3>Roadmap</h3>
+					<img src="img/git-temario.png" />
+				</section>
+
+
+			<section>
+					<h3>Temario</h3>
+					<br>
+					<p>- Shell Scripts (.sh)</p>
+					<p>- Git Hooks</p>
+					<p>- Automatic Deployment</p>
+					<p>- Deploy Total en Server</p>
+					<br>
+			</section>
+
+			<section>
+					<h3>Shell Scripts</h3>
+					<br>
+					<p>Serie de comandos encapsulados dentro de un archivo .sh</p>
+			</section>
+
+			<section>
+					<br>
+					<br>
+					<h3>Shell Scripts</h3>
+					<img src="http://l4c.me/fullsize/sh1-1418584398.png" style="width: 700px;">
+			</section>
+
+			<section>
+					<br>
+					<h3>Shell Scripts</h3>
+					<br>
+					<img src="http://l4c.me/fullsize/sh2-1418585348.png" style="width: 700px;">
+			</section>
+
+
+			<section>
+					<br>
+					<h3>Git Hooks</h3>
+					<br>
+					<p>Son scripts que se ejecutan antes, durante ó después de realizar un movimiento con GIT.</p>
+					<br>
+					<p>Estos scripts son archivos ".sh".</p>
+			</section>
+
+			<section>
+					<br>
+					<h3>Git Hooks</h3>
+					<br>
+					<p>Git consta de 17 hooks</p>
+					<img src="http://l4c.me/fullsize/hook1good-1418610971.png" style="width: 700px;">
+			</section>
+
+			<section>
+				<br>
+				<h3>Git Hooks</h3>
+				<br>
+				<p>Documentación Completa y Actualizada</p>
+				<p>https://github.com/git/git/blob/master/Documentation/githooks.txt</p>
+			</section>
+
+			<section>
+					<br>
+					<h3>Git Hooks</h3>
+					<br>
+					<p>Git consta de 17 hooks</p>
+					<img src="http://l4c.me/fullsize/hook2-1418610994.png" style="width: 700px;">
+			</section>
+
+
+			<section>
+					<br>
+					<h3>Git Hooks</h3>
+					<br>
+					<p><u>post-commit</u></p>
+					<br>
+					<p>Después de generar un commit, genera estos comandos.</p>
+			</section>
+
+			<section>
+				<br>
+				<h3>Git Hooks - post-commit</h3>
+				<br>
+				<img src="http://l4c.me/fullsize/hooks4-1418683856.png" style="width: 620px;">
+			</section>
+
+			<section>
+					<br>
+					<h3>Git Hooks (ejemplo)</h3>
+					<br>
+					<p><u>post-commit</u></p>
+					<br>
+					<p>Creamos una carpeta.</p>
+					<p>Buscamos el .git/hooks</p>
+					<p>Activamos el post-commit (.sh) con nuestro código</p>
+					<p>Le damos permisos ($ chmod +x post-commit)</p>
+					<p>Subimos un commit a GitHub</p>
+			</section>
+
+
+
+			<section>
+					<br>
+					<h3>Automatic Deployment</h3>
+					<br>
+					<p>El manual deployment, automatizado.</p>
+			</section>
+
+
+			<section>
+					<br>
+					<img src="http://l4c.me/fullsize/automaticdeployment-1418685606.png"style="width: 750px;">
+			</section>
+
+
+			<section>
+					<br>
+					<h3>Automatic Deployment</h3>
+					<br>
+					<p style="font-size:30px">- Creamos una carpeta</p>
+					<p style="font-size:30px">- Jalamos un repositorio de GitHub</p>
+					<p style="font-size:30px">- Creamos un archivo .gitignore y deploy.sh</p>
+					<p style="font-size:30px">- Generamos cambios</p>
+					<p style="font-size:30px">- Creamos el Git Hook y lo llenamos</p>
+					<p style="font-size:30px">- Autorizamos el Git Hook</p>
+					<p style="font-size:30px">- Con .gitignore, pedimos ignorar archivos .sh</p>
+					<p style="font-size:30px">- En deploy.sh, escribimos los comandos que correran en servidor</p>
+					<p style="font-size:30px">- Revisamos que el servidor tenga SSH pero no password verification</p>
+					<p style="font-size:30px">- Creamos nuestra carpeta donde correrá la aplicación</p>
+					<p style="font-size:30px">Generamos un commit en local y que corra todo.</p>
+			</section>
+
+
+
+			<section>
+				<br>
+				<h3>Deploy total en Server</h3>
+				<br>
+				<p>Si por una circunstancia extrema, no puedes usar GitHub.</p>
+				<p>Para este caso, existen los "bare repositories"</p>
+			</section>
+
+			<section>
+				<br>
+				<h3>Deploy total en Server</h3>
+				<br>
+				<p>Un "bare repository" únicamente guarda el historial de cambios, con todos sus archivos, pero no pueden editarlos como tal.</p>
+			</section>
+
+
+			<section>
+				<br>
+				<h3>Deploy total en Server</h3>
+				<br>
+				<img src="http://l4c.me/fullsize/barerepositories-1418688294.png" style="400px">
+			</section>
+
+			<section>
+				<br>
+				<h3>Deploy total en Server</h3>
+				<br>
+				<p>Crearemos un "GitHub" dentro del servidor, una carpeta que será nuestra central de repositorios ó proyectos.</p>
+				<br>
+				<p>Posteriormente, desplegamos en servidor, dentro de la carpeta de la app.</p>
+			</section>
+
+
+			<section>
+				<br>
+				<h3>Deploy total en Server</h3>
+				<br>
+				<img src="http://l4c.me/fullsize/bare1-1418624891.png" style="
+    width: 500px;
+">
+			</section>
+
+			<section>
+				<br>
+				<h3>Deploy total en Server</h3>
+				<br>
+				<img src="http://l4c.me/fullsize/bare2-1418624918.png" style="
+    width: 500px;
+">
+			</section>
+
+
+			<section>
+				<br>
+				<h3>Deploy total en Server</h3>
+				<br>
+				<img src="http://l4c.me/fullsize/bare3-1418624929.png" style="
+    width: 500px;
+">
+			</section>
+
+
+
+<!-- Clase 1 #platzigit -->
+
+			<section>
+					<img src="https://octodex.github.com/images/femalecodertocat.png" style="width: 310px;margin-top: 105px;box-shadow: none;border: none;">
+					<br>
+					<br>
+					<h1 style="font-size:31px">1. Instalación y conceptos básicos</h1><br>
+					<p>Git 2016</p>
+			</section>
+
+				<section>
+					<br>
+					<h3>Roadmap</h3>
+					<img src="http://i.imgur.com/H7RtRKJ.png">
+				</section>
+
+
+
+			<section>
+					<br>
+					<h3>Temario</h3>
+					<br>
+					<p>1.1 Sistemas de Control de Versiones</p>
+					<p>1.2 Introducción a GIT</p>
+					<p>1.3 Arquitectura de árbol</p>
+					<p>1.4 Instalación</p>
+					<p>1.5 Configuración</p>
+					<p>1.6 "Git Workflow" - Base</p>
+					<p>1.7 Navegación</p>
+					<p>1.8 Reset</p>
+					<br>
+			</section>
+
+				<section>
+					<p>¿Por qué GIT?</p>
+				</section>
+
+				<section>
+					<i>"Alone we are smart. <b>Together</b> we are brilliant."</i>
+					<br>
+					<br>
+					- Steven Anderson. Learning Evangelist.
+					<br>
+				</section>
+
+				<section>
+					Aprender a colaborar.
+				</section>
+
+				<section>
+					¿Cómo se colabora y se gestionan proyectos HOY?
+			</section>
+
+			<section>
+					<br>
+					Con sistemas de control de versiones.
+					<br>
+					<br>
+					<br>
+					<img src="http://i.imgur.com/0BYW9He.png">
+			</section>
+
+			<section>
+				<br>
+				<B>Todos</B> hemos hecho SCV.
+				<br>
+				<br>
+				<br>
+				<p>Presupuesto_1.xls</p>
+				<p>Presupuesto_2.xls</p>
+				<p>Presupuesto_final.xls</p>
+				<p>Presupuesto_final_final.xls</p>
+			</section>
+
+			<section>
+				<br>
+				<br>
+				<img src="http://i.imgur.com/sY4gspT.png">
+			</section>
+
+			<section>
+				<br>
+				<p>Photoshop</p>
+				<br>
+				<img src="http://i0.wp.com/blog.digitaltutors.com/wp-content/uploads/2014/07/history-panel.jpg?resize=800%2C450">
+			</section>
+
+			<section>
+				<br>
+				Incluso en Microsoft Word
+				<br>
+				<br>
+				<img src="https://cdn.papercheck.com/wp-content/uploads/2015/10/06162349/001_Papercheck-track-changes-locate-review.png">
+			</section>
+
+			<section>
+					<p>Los amamos. En videojuegos los usamos.</p>
+					<br>
+					<br>
+					<img src="http://i.imgur.com/WqafrZ3.png">
+			</section>
+
+			<section>
+
+					<p>¿Cómo aplica en proyectos?</p>
+					<br>
+					<br>
+					<img src="http://i.imgur.com/RqrDShV.png">
+			</section>
+
+			<section>
+					<h3>1.1 Sistemas de Control de Versiones</h3>
+					<br>
+					<ol>
+						<li>Registro de <b>todo</b> el proyecto.</li>
+						<li>Acceso a <b>ese</b> registro.</li>
+						<li>Situarte en <b>versiones</b> del proyecto.</li>
+					</ol>
+			</section>
+
+
+			<section>
+				<h3>1.2 Introducción a GIT</h3>
+				<br>
+				<img src="http://l4c.me/fullsize/git-github-1414373606.png">
+			</section>
+
+
+			<section>
+				GIT en el 2016
+				<br>
+				<br>
+				<br>
+				<img src="http://i.imgur.com/A0WVXuC.png">
+			</section>
+
+			<section>
+				<h3>¿Qué es GIT?</h3>
+				<br>
+				<br>
+				1. Es un Sistema de Control de Versiones
+				<br>
+				2. <b>Es Distribuido</b>
+			</section>
+
+			<section>
+				<br>
+				<img src="http://l4c.me/fullsize/cambios1-1414373635.png">
+			</section>
+
+			<section>
+				<b>Distribuido</b>
+				<br>
+				<br>
+				<img src="http://i.imgur.com/zSZYOfL.png">
+			</section>
+
+			<section>
+				<b>Distribuido = Independiente </b>
+				<br>
+				<br>
+				<img src="http://i.imgur.com/63kxvBv.png">
+			</section>
+
+
+			<section>
+				<b>1.3 Arquitectura de Árbol</b>
+				<br>
+				<br>
+				<p>Estructura para armar la historia del proyecto.</p>
+			</section>
+
+
+			<section>
+				<br>
+				<br>
+				<br>
+				<img src="http://i.imgur.com/qpZIhO7.png">
+			</section>
+
+			<section>
+				<br>
+				<br>
+				<br>
+				<img src="http://i.imgur.com/U6Ijmq6.png">
+			</section>
+
+
+			<section>
+				<br>
+				<img src="http://i.imgur.com/EAvmYZf.png">
+			</section>
+
+			<section>
+				<br>
+				<img style="width:50%" src="http://l4c.me/fullsize/workingarea-1414895970.png">
+			</section>
+
+
+			<section>
+				<br>
+				<br>
+				<img style="width:50%" src="http://l4c.me/fullsize/stagingarea-1414895989.png">
+			</section>
+
+			<section>
+				<br>
+				<img style="width:70%" src="http://l4c.me/fullsize/repositorio-1414897510.png">
+			</section>
+
+			<section>
+				1.4 Instalación
+			</section>
+
+			<section>
+					<br>
+					1.5 Configuración
+					<br>
+					<br>
+					<p>Abrir terminal, consola, bash</p>
+					 <pre><code data-trim>
+						$ git --version
+					</code></pre>
+					<pre><code data-trim>
+					$ git config --global user.name "TU NOMBRE"
+					</code></pre>
+					<pre><code data-trim>
+					$ git config --global user.email "TU CORREO DE GITHUB"
+					</code></pre>
+					<pre><code data-trim>
+					$ git config --global --list
+					</code></pre>
+					<pre><code data-trim>
+					$ git help [comando a buscar]
+					</code></pre>
+			</section>
+
+			<section>
+				<br>
+				1.6 Git Workflow - Iteración Básica
+				<br>
+				<br>
+				<img style="width: 37%;" src="http://i.imgur.com/GtWs7xv.png">
+			</section>
+
+			<section>
+				<br>
+				Iteración básica
+				<br>
+				<br>
+				<pre><code data-trim>
+				$ git add [file or directory]
+				</code></pre>
+				<pre><code data-trim>
+				$ git commit -m "[Mensaje]""
+				</code></pre>
+				<pre><code data-trim>
+				$ git status
+				</code></pre>
+			</section>
+
+			<section>
+				<br>
+				Analizando un commit
+				<img src="http://i.imgur.com/vR4pTeQ.png">
+			</section>
+
+			<section>
+				<br>
+				Analizando un commit
+				<img src="http://i.imgur.com/EXbbFSt.png">
+			</section>
+
+			<section>
+				<br>
+				Analizando un commit
+				<img src="http://i.imgur.com/UEaeJH5.png">
+			</section>
+
+			<section>
+				<br>
+				Analizando un commit
+				<img src="http://i.imgur.com/lxsgl2l.png">
+			</section>
+
+			<section>
+				1.7 Navegación
+				<br>
+				<br>
+				Para conocer todo el historial de un proyecto, utilizamos:
+				<br>
+				<br>
+				<pre><code data-trim>
+				$ git log
+				</code></pre>
+				<pre><code data-trime>
+				$ git config --global alias.[su palabra] "[comando]"
+				</code></pre>
+				<pre><code data-trime>
+				git log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+				</code></pre>
+			</section>
+
+			<section>
+				<br>
+				1.8 Reset
+				<br>
+				<br>
+				Hard: Working Directory = Staging Area = Repository
+				<br>
+				<br>
+				<pre><code data-trim>
+				$ git reset --hard [SHA commit]
+				</code></pre>
+			</section>
+
+			<section>
+				<br>
+				1.8 Reset
+				<br>
+				<br>
+				Mixed: Staging Area = Repository. Nada con Working Directory. Iteración básica.
+				<br>
+				<br>
+				<pre><code data-trim>
+				$ git reset --mixed [SHA commit]
+				</code></pre>
+			</section>
+
+			<section>
+				<br>
+				1.8 Reset
+				<br>
+				<br>
+				Soft: Cambios sólo en el "Repository". Staging = Working
+				<br>
+				<br>
+				<pre><code data-trim>
+				$ git reset --soft [SHA commit]
+				</code></pre>
+			</section>
+
+<!-- Clase 2 #platzigit -->
+
+<section>
+					<img src="https://octodex.github.com/images/defunktocat.png" style="width: 310px;margin-top: 105px;box-shadow: none;border: none;">
+					<br>
+					<br>
+					<h1 style="font-size:31px">2. Navegación entre commits</h1><br>
+					<p>Git 2016</p>
+			</section>
+
+				<section>
+					<br>
+					<h3>Roadmap</h3>
+					<img src="http://i.imgur.com/H7RtRKJ.png">
+				</section>
+
+
+			<section>
+					<h3>Temario</h3>
+					<br>
+					<p>1. La importancia de proponer</p>
+					<p>2. Ramas</p>
+					<p>3. Fusiones</p>
+					<p>4. Proyecto de Marca Personal</p>
+					<br>
+			</section>
+
+
+			<section>
+				Learning and innovation go hand in hand.
+				<br>
+				<br>
+				The arrogance of success is to <b>think</b> that what you did yesterday will be sufficient for tomorrow.
+			</section>
+
+			<section>
+				<b>1. La importancia de proponer</b>
+				<br>
+				<br>
+				En todos los proyectos, siempre existirán diferentes formas para resolver un problema.
+			</section>
+
+			<section>
+				<b>1. La importancia de proponer</b>
+				<br>
+				<br>
+				Sin embargo, el miedo a errar suele ser muy alto.
+			</section>
+
+			<section>
+				<b>1. La importancia de proponer</b>
+				<br>
+				<br>
+				¿De qué manera podemos ejecutar y reducir el riesgo de fallar el trabajo de muchas personas?
+			</section>
+
+			<section>
+				<b>1. La importancia de proponer</b>
+				<br>
+				<br>
+				Como profesionales, proponer es una de las habilidades más importantes para crecer dentro de una empresa.
+			</section>
+
+
+			<section>
+				<b>2. Ramas</b>
+				<br>
+				<br>
+				Una rama es una línea alterna del tiempo, en la historia de nuestro repositorio.
+				<br>
+			</section>
+
+
+			<section>
+				<b>2. Ramas</b>
+				<br>
+				<br>
+				Ideas - Features - Bug Fixes
+				<br>
+			</section>
+
+<section>
+Iniciamos con un commit. El primer commit.
+<img src="http://i.imgur.com/whcRm2G.png">
+</section>
+
+<section>
+Realizamos un segundo commit. Nota la flecha.
+<img src="http://i.imgur.com/TCyZp7b.png">
+</section>
+
+
+<section>
+	<br>
+Tercer commit. La flecha se llama HEAD.
+<br>
+<br>
+Un puntero que localiza el commit en el que estamos ubicados.
+<br>
+<br>
+<img src="http://i.imgur.com/MX4D1CH.png">
+</section>
+
+
+<section>
+Notemos también la rama. Por defecto, <b>SIEMPRE</b> será master.
+<br>
+<br>
+<img src="http://i.imgur.com/uEVE4Y9.png">
+</section>
+
+
+<section>
+	<br>
+En este momento, crearemos una rama. Y la flecha se mantendrá en el mismo commit.
+<br>
+<br>
+<img src="http://i.imgur.com/sLihMxj.png">
+</section>
+
+
+<section>
+	<br>
+	Esto sucede porque, aunque <b>estamos</b> situados en la nueva rama, <b>no</b> hemos creado ningún commit.
+	<br>
+	<br>
+<img src="http://i.imgur.com/kjYiMQN.png">
+</section>
+
+
+<section>
+	<br>
+	Vamos a crearlo...
+	<br>
+	<br>
+<img src="http://i.imgur.com/3kII6rg.png">
+</section>
+
+<section>
+	<br>
+	Acaba de separarse la nueva rama y con él, <b>el primer commit.</b>
+	<br>
+	<br>
+	<img src="http://i.imgur.com/RMJZ8p5.png">
+</section>
+
+<section>
+	<br>
+	Y podemos avanzar, con la rama experimental, con cambios separados.
+	<br>
+	<br>
+<img src="http://i.imgur.com/N795LSz.png">
+</section>
+
+<section>
+	<br>
+Si necesitamos regresar a la rama principal, utilizamos:
+<br>
+<br>
+<img src="http://i.imgur.com/Je7fth9.png">
+</section>
+
+
+<section>
+	<br>
+	Y avanzamos. Sin problema, continuamos con el proyecto formal.
+	<br>
+	<br>
+<img src="http://i.imgur.com/v09jJR5.png">
+</section>
+
+<section>
+	<br>
+	Al final, si queremos <b>absorber</b> los cambios, utilizamos:
+	<br>
+	<br>
+<img src="http://i.imgur.com/7s8ccjx.png">
+</section>
+
+<section>
+		<br>
+		<h3>2.2 Ramas</h3>
+		<br>
+		<p>git log --oneline --graph --all</p>
+		<p>git config --global alias.nicelog 'log --oneline --graph --all'</p>
+</section>
+
+<section>
+		<br>
+		<h3>2.3 Fusiones</h3>
+		<br>
+		<img src="http://l4c.me/fullsize/fusion4-1416763358.png">
+</section>
+
+<section>
+		<br>
+		<h3>2.3 Fusiones</h3>
+		<br>
+		<p>git checkout [branch]</p>
+		<img src="http://l4c.me/fullsize/branch-fusion0-1416767226.png">
+</section>
+
+<section>
+		<br>
+		<h3>2.3 Fusiones</h3>
+		<br>
+		<p>git checkout [branch]</p>
+		<img src="http://l4c.me/fullsize/branch-fusion1-1416766450.png">
+</section>
+
+<section>
+		<br>
+		<h3>2.3 Fusiones</h3>
+		<br>
+		<p>git checkout [branch]</p>
+		<img src="http://l4c.me/fullsize/branch-fusion2-1416766468.png">
+</section>
+
+<section>
+		<br>
+		<h3>2.3 Fusiones</h3>
+		<br>
+		<img src="http://l4c.me/fullsize/branch-fusion2-1416766468.png">
+</section>
+
+<section>
+		<br>
+		<h3>2.3 Fusiones</h3>
+		<br>
+		<img src="http://l4c.me/fullsize/branch-fusion3-1416766492.png">
+</section>
+
+<section>
+		<br>
+		<h3>2.3 Fusiones</h3>
+		<br>
+		<img src="http://l4c.me/fullsize/branch-fusion4-1416766512.png">
+</section>
+
+<section>
+		<br>
+		<h3>2.3 Fusiones</h3>
+		<br>
+		<p>La fusión tiene la mezcla de los cambios de ambas ramas</p>
+		<img src="http://l4c.me/fullsize/branch-fusion4-1416766512.png">
+</section>
+
+<section>
+		<br>
+		<h3>2.3 Fusiones</h3>
+		<br>
+		<p>Lo mejor de ambas, establecidas por el gestor del proyecto</p>
+		<img src="http://l4c.me/fullsize/branch-fusion4-1416766512.png">
+</section>
+
+<section>
+		<br>
+		<h3>2.3 Fusiones</h3>
+		<br>
+		<p>Solución de conflictos</p>
+		<br>
+		<p>a) Fast-Forward</p>
+		<p>b) Manual Merge</p>
+</section>
+
+<section>
+		<br>
+		<h3>2.3 Fusiones</h3>
+		<br>
+		<p>Solución de conflictos</p>
+		<br>
+		<p>Fast-Forward</p>
+		<p>Los gestores trabajaron archivos diferentes al repositorio</p>
+</section>
+
+<section>
+		<br>
+		<h3>2.3 Fusiones</h3>
+		<br>
+		<p>Solución de conflictos</p>
+		<br>
+		<p>Manual Merge</p>
+		<p>¿Qué pasa cuando 2 desarrolladores trabajan el mismo archivo en la fusión?</p>
+</section>
+
+
+
+<section>
+		<br>
+		<h3>Rebase</h3>
+		<br>
+		<img src="http://i.imgur.com/5oHmQ20.png" alt="" />
+</section>
+
+<section>
+		<br>
+		<h3>Rebase</h3>
+		<br>
+		<img src="http://i.imgur.com/a3jdLAa.png" alt="" />
+</section>
+
+<section>
+		<br>
+		<h3>Rebase</h3>
+		<br>
+		<img src="http://i.imgur.com/NeqppPY.png" alt="" />
+</section>
+
+<section>
+		<br>
+		<h3>Rebase</h3>
+		<br>
+		<img src="http://i.imgur.com/JdwZNPZ.png" alt="" />
+</section>
+
+
+<!-- Clase 3 #platzigit -->
+
+
+			<section>
+					<img src="https://octodex.github.com/images/goretocat.png" style="width: 310px;margin-top: 105px;box-shadow: none;border: none;">
+					<br>
+					<br>
+					<h1 style="font-size:31px">3. Workflows y repositorios remotos</h1><br>
+					<p>Git 2016</p>
+			</section>
+
+				<section>
+					<br>
+					<h3>Roadmap</h3>
+					<img src="http://i.imgur.com/H7RtRKJ.png">
+				</section>
+
+			<section>
+					<br>
+					<br>
+					<h3>Temario</h3>
+					<br>
+					<p>Wokflows</p>
+					<p>Repositorios personales</p>
+					<p>Repositorios "Forked"</p>
+					<p>GitHub Pages</p>
+			</section>
+
+	<section>
+		<br>
+		<h3>Workflows</h3>
+		<br>
+		<p>Flujos de trabajo colaborativos.</p>
+
+
+	</section>
+
+	<section>
+		<br>
+		<h3>Workflows</h3>
+		<br>
+		<p>¿Cómo logramos que varios profesionales trabajen sobre un proyecto de código sin matarse?</p>
+	</section>
+
+	<section>
+		<br>
+		Workflows
+		<br>
+		<br>
+		<img style="width:50%" src="http://l4c.me/fullsize/github2-1417397149.png">
+	</section>
+
+	<section>
+		<br>
+		<h3>¿Qué es GitHub?</h3>
+		<br>
+		<p>Plataforma en la cual desarrolladores suben sus proyectos de código, con el objetivo de mejorarlos a través de la colaboración y gestión.</p>
+	</section>
+
+	<section>
+		<br>
+		<h3>¿Qué es GitHub?</h3>
+		<br>
+		<p>Es un servicio de “hosting" de repositorios, a través de una interfaz web gráfica.</p>
+	</section>
+
+	<section>
+		<br>
+		<br>
+		GitHub funciona en 2 bases:
+		<br>
+		<br>
+		- Exploración (Clone)
+		<br>
+		- Colaboración
+	</section>
+
+	<section>
+		<br>
+		GitHub - Exploración (Clone)
+		<br>
+		<br>
+		<p>Descargar un proyecto con el objetivo de utilizarlo sin pensar en colaborar.</p>
+	</section>
+
+	<section>
+		<br>
+		GitHub - Exploración (Clone)
+		<br>
+		<br>
+		<pre>
+			<code>
+				git clone [repositorio vía SSH ó HTTPS]
+			</code>
+		</pre>
+	</section>
+
+	<section>
+		<br>
+		GitHub - Exploración (Clone)
+		<br>
+		<br>
+		<img src="http://l4c.me/fullsize/clone1-1417412762.png" alt="" />
+	</section>
+
+	<section>
+		<br>
+		GitHub - Exploración (Clone)
+		<br>
+		<br>
+		<img src="http://l4c.me/fullsize/clone2-1417412777.png" alt="" />
+	</section>
+
+	<section>
+		<br>
+		GitHub - Exploración (Clone)
+		<br>
+		<br>
+		<img src="http://l4c.me/fullsize/clone3-1417412868.png" alt="" />
+	</section>
+
+<section>
+	<br>
+	<br>
+	Ejercicio 1
+</section>
+
+	<section>
+		<br>
+		GitHub - Colaboración (Workflows)
+		<br>
+		<br>
+		<p><b>a) Proyectos creados por ti - Repositorios personales.</b></p>
+		<br>
+		<br>
+		- Eres propietario del proyecto.
+		<br>
+		- Personas alrededor proponen y tú decides si aceptar ó no.
+		<br>
+		- Proyectos personales, generalmente.
+	</section>
+
+
+	<section>
+		<br>
+		<b>Conectarnos con GitHub</b>
+		<br>
+		<br>
+		1. Crear usuario.
+		<br>
+		2. Crear repositorio.
+		<br>
+		3. Conectar con llave SSH a GitHub, desde tu área local.
+		<br>
+		<br>
+		<pre>
+			<code>
+				$ ssh-keygen -t rsa -b 4096 -C "[email de GitHub]"
+
+				Dar enter. Aceptar la localización por defecto.
+
+				Contraseña.
+
+				$ cd  ~/.ssh
+
+				$ cat id_rsa.pub
+
+				Copiamos la llave y la pegamos en Settings > SSH, dentro de GitHub.
+			</code>
+		</pre>
+
+	</section>
+
+	<section>
+		<br>
+		<b>Conectarnos con GitHub</b>
+		<br>
+		<br>
+		4. Iteración básica en tu área local y subir a GitHub:
+		<br>
+		<br>
+		<pre>
+			<code>
+				$ git init
+
+				$ git remote add origin [SSH]
+
+				$ git remote -v
+
+
+				$ git commit -am "[Mensaje]"
+
+				$ git push origin master
+			</code>
+		</pre>
+	</section>
+
+<section>
+<img src="http://l4c.me/fullsize/repospropios1-1417410698.png" alt="" />
+</section>
+<section>
+<img src="http://l4c.me/fullsize/repospropios2-1417410717.png" alt="" />
+</section>
+<section>
+<img src="http://l4c.me/fullsize/repospropios3-1417410732.png" alt="" />
+</section>
+<section>
+<img src="http://l4c.me/fullsize/repospropios4-1417410756.png" alt="" />
+</section>
+<section>
+<img src="http://l4c.me/fullsize/repospropios5-1417410777.png" alt="" />
+</section>
+<section>
+<img src="http://l4c.me/fullsize/repospropios6-1417410793.png" alt="" />
+</section>
+
+<section>
+	<br>
+	<br>
+	Ejercicio 2
+</section>
+
+<section>
+<br><br>
+	GitHub - Colaboración (Workflows)
+<br><br>
+	<b>b) Proyectos creados por tu organización ó equipos.</b>
+<br>
+<br>
+	- Son propietarios del proyecto.
+	<br>
+	- Todos suben cambios, sin pedir permisos.
+	<br>
+	- Siempre verificar cambios nuevos antes de subir propios.
+
+</section>
+
+<section>
+	<br>
+	Git Fetch + Git Merge
+	<img src="http://l4c.me/fullsize/propios1-1417471255.png" alt="" />
+</section>
+
+<section>
+	<br>
+	Git Fetch + Git Merge
+	<img src="http://l4c.me/fullsize/propios2-1417471273.png" alt="" />
+</section>
+
+
+<section>
+	<br>
+	Git Fetch + Git Merge
+	<img src="http://l4c.me/fullsize/propios3-1417471286.png" alt="" />
+</section>
+
+
+<section>
+	<br>
+	Git Fetch + Git Merge
+	<img src="http://l4c.me/fullsize/propios4-1417471304.png" alt="" />
+</section>
+
+<section>
+	<br>
+	Git Fetch + Git Merge
+	<img src="http://l4c.me/fullsize/propios5-1417471320.png" alt="" />
+</section>
+
+<section>
+	<br>
+	Git Fetch + Git Merge
+	<img src="http://l4c.me/fullsize/propios6-1417471356.png" alt="" />
+</section>
+
+
+<section>
+	<br>
+	Git Fetch + Git Merge
+	<img src="http://l4c.me/fullsize/propios7-1417471379.png" alt="" />
+</section>
+
+
+<section>
+	<br>
+	Git Fetch + Git Merge
+	<img src="http://l4c.me/fullsize/propios8-1417471393.png" alt="" />
+</section>
+
+<section>
+	<br>
+	Git Fetch + Git Merge
+	<img src="http://l4c.me/fullsize/propios9-1417471413.png" alt="" />
+</section>
+
+<section>
+	<br>
+	Git Fetch + Git Merge
+	<img src="http://l4c.me/fullsize/propios10-1417471425.png" alt="" />
+</section>
+
+<section>
+<br>
+<br>
+	<b>Git Fetch + Git Merge</b>
+<br>
+<br>
+	<pre>
+		<code>
+	$ git remote add origin [SSH]
+	$ git fetch origin
+	$ git merge origin/master
+
+	** Desarrollamos **
+
+	$ git fetch origin
+	$ git merge origin/master
+
+	$ git push origin master
+
+</code>
+</pre>
+
+</section>
+
+<section>
+	Ejercicio 3
+</section>
+
+<section>
+	<br>
+	<br>
+	GitHub - Colaboración (Workflows)
+<br>
+<br>
+	<b>c) Proyectos de terceros. (Repositorios “forked”)</b>
+<br>
+<br>
+<br>
+	- No son dueños, pero quieren colaborar en el desarrollo.
+	<br>
+	- Los propietarios aceptan y rechazan propuestas a través de “Pull Request”.
+
+
+</section>
+
+
+<section>
+	<br>
+	<br>
+	GitHub - Colaboración (Workflows)
+<br>
+<br>
+	<b>c) Proyectos de terceros. (Repositorios “forked”)</b>
+<br>
+<br>
+<br>
+	Existirán 2 repositorios:
+	<br>
+	<br>
+	a) El repositorio original.
+	<br>
+	b) El repositorio forked (La réplica del original, en tu cuenta de GitHub).
+
+
+
+</section>
+
+<section>
+	<br>
+	<br>
+	c) Proyectos de terceros. (Repositorios “forked”)
+	<br>
+	<br>
+	<img src="http://l4c.me/fullsize/final1-1417476172.png" alt="" />
+</section>
+
+<section>
+	<br>
+	<br>
+	c) Proyectos de terceros. (Repositorios “forked”)
+	<br>
+	<br>
+	<img src="http://l4c.me/fullsize/final2-1417476190.png" alt="" />
+</section>
+
+<section>
+	<br>
+	<br>
+	c) Proyectos de terceros. (Repositorios “forked”)
+	<br>
+	<br>
+	<img src="http://l4c.me/fullsize/final3-1417476208.png" alt="" />
+</section>
+
+<section>
+	<br>
+	<br>
+	c) Proyectos de terceros. (Repositorios “forked”)
+	<img src="http://l4c.me/fullsize/final4-1417476231.png" alt="" />
+</section>
+
+<section>
+	<br>
+	<br>
+	c) Proyectos de terceros. (Repositorios “forked”)
+	<br>
+	<br>
+	<img src="http://l4c.me/fullsize/final6-1417476260.png" alt="" />
+</section>
+
+<section>
+	<br>
+	<br>
+	c) Proyectos de terceros. (Repositorios “forked”)
+	<br>
+	<br>
+	<img src="http://l4c.me/fullsize/final7-1417476276.png" alt="" />
+</section>
+
+<section>
+	<br>
+	<br>
+	c) Proyectos de terceros. (Repositorios “forked”)
+	<br>
+	<br>
+	<img src="http://l4c.me/fullsize/final8-1417476301.png" alt="" />
+</section>
+
+<section>
+<br>
+<br>
+<b>Proceso de repositorios “Forked"</b>
+<br>
+<br>
+	- Actualizarnos siempre con el repositorio principal, antes de comenzar.
+	<br>
+- Desarrollar y, antes de subir a nuestro repositorio “forked”, revisar nuevamente cambios.
+<br>
+- Subir a nuestro repositorio “forked” todo lo que hemos hecho.
+<br>
+- Ejecutar un “Pull Request"
+</section>
+
+<section>
+<br>
+<br>
+<b>Proceso de repositorios “Forked"</b>
+<br>
+<br>
+<pre>
+	<code>
+	Crear ó entrar a la carpeta del proyecto
+	$ git remote add origin [HTTPS ó SSH del proyecto forked]
+	$ git remote add upstream [HTTPS ó SSH del proyecto principal]
+	$ git fetch upstream
+	$ git merge origin/upstream
+	$ git fetch origin
+	$ git merge origin/master
+	Hacer cambios en local
+	$ git fetch upstream
+	$ git merge origin/upstream
+	$ git push origin master
+	</code>
+</pre>
+</section>
+
+<section>
+	<br>
+	<br>
+	Ejercicio Final
+</section>
+
+<!-- Clase 4 #platzigit -->
+
+	<section>
+					<img src="https://octodex.github.com/images/steroidtocat.png" style="width: 310px;margin-top: 105px;box-shadow: none;border: none;">
+					<br>
+					<br>
+					<h1 style="font-size:31px">4. Project Management con GitHub</h1><br>
+					<p>Git 2016</p>
+			</section>
+
+				<section>
+					<br>
+					<h3>Roadmap</h3>
+					<img src="http://i.imgur.com/H7RtRKJ.png">
+				</section>
+
+
+			<section>
+					<br>
+					<br>
+					<h3>Temario</h3>
+					<br>
+					<br>
+					Project Management
+					<br>
+					Issues
+					<br>
+					Milestones
+					<br>
+					Tags
+					<br>
+					Usuarios
+					<br>
+					Pull Request en equipos
+			</section>
+
+			<section>
+				<br>
+				<h3>Ambientes</h3>
+				<br>
+				<img src="http://l4c.me/fullsize/ambiente1-1418048752.png">
+			</section>
+
+			<section>
+				<br>
+				<h3>Ambientes</h3>
+				<br>
+				<img src="http://l4c.me/fullsize/ambiente2-1418048765.png">
+			</section>
+
+			<section>
+				<img src="http://i.imgur.com/jIRIfOy.png">
+			</section>
+
+			<section>
+				<br>
+				Project Management
+				<br>
+				<br>
+				GitHub cuenta con un gestor para proyectos.
+			</section>
+
+<!-- Clase 5 #platzigit -->
+
+			<section>
+					<img src="https://octodex.github.com/images/steroidtocat.png" style="width: 310px;margin-top: 105px;box-shadow: none;border: none;">
+					<br>
+					<br>
+					<h1 style="font-size:31px">5. Push To Deploy</h1><br>
+					<p>Git 2016</p>
+			</section>
+
+			<section>
+				<h3>Empecemos con el contexto</h3>
+				<br>
+				<p>1) Deployment.</p>
+				<p>2) Ambientes</p>
+				<p>3) GitHub Pages.</p>
+				<p>4) Manual Deployment</p>
+			</section>
+
+			<section>
+				<img src="http://i.imgur.com/jIRIfOy.png">
+			</section>
+
+			<section>
+				<br>
+				<h3>Manual Deployment</h3>
+				<br>
+				<img src="http://l4c.me/fullsize/manualdeploy1-1418046641.png" style="max-width: 50%;">
+			</section>
+
+
+			<section>
+				<br>
+				<h3>Manual Deployment</h3>
+				<br>
+				<img src="http://l4c.me/fullsize/manualdeploy2-1418046659.png" style="max-width: 50%;">
+			</section>
+
+
+			<section>
+				<br>
+				<h3>Manual Deployment</h3>
+				<br>
+				<img src="http://l4c.me/fullsize/manualdeploy3-1418046748.png" style="max-width: 50%;">
+			</section>
+
+
+			<section>
+				<br>
+				<h3>Manual Deployment</h3>
+				<br>
+				<img src="http://l4c.me/fullsize/manualdeploy4-1418046773.png" style="max-width: 75%;">
+			</section>
+
+			<section>
+				<br>
+				<h3>Manual Deployment</h3>
+				<br>
+				<img src="http://l4c.me/fullsize/manualdeploy5-1418046787.png" style="max-width: 75%;">
+			</section>
+
+			<section>
+				<br>
+				<h3>Manual Deployment</h3>
+				<br>
+				<p><u>SSH</u></p>
+				<br>
+				<p>Secure Shell</p>
+				<p>Autenticación - "Are you the owner?"</p>
+				<img src="http://l4c.me/fullsize/llave-1418051227.png">
+			</section>
+
+
+<!-- Clase 6 #platzigit -->
+
+
+			<section>
+					<img src="https://octodex.github.com/images/steroidtocat.png" style="width: 310px;margin-top: 105px;box-shadow: none;border: none;">
+					<br>
+					<br>
+					<h1 style="font-size:31px">6. Workflows dinámicos con equipos</h1><br>
+					<p>Git 2016</p>
+			</section>
+
+				<section>
+					<br>
+					<h3>Roadmap</h3>
+					<img src="http://i.imgur.com/H7RtRKJ.png">
+				</section>
+
+			<section>
+					<br>
+					<br>
+					<h3>Ejercicio</h3>
+					<br>
+					<br>
+					Creación de multiusuarios en local
+					<br>
+					Repositorios propios con Push
+					<br>
+					Repositorios forked con Pull Requests
+					<br>
+					Deploy en Amazon Web Services
+			</section>
+
+
+			<section>
+			<br>
+			<h3>Creación de multiusuarios en local</h3>
+			<br>
+			<p>Llaves</p>
+			<br>
+			<pre>
+				<code>
+			$ cd ~/.ssh
+			$ ssh-keygen -t rsa -C "cuenta1@hola.com"
+			# Este será id_rsa
+			$ ssh-keygen -t rsa -C "cuenta2@hola.com"
+			# Este será mikecolombiano
+				</code>
+			</pre>
+			<br>
+
+			</section>
+
+			<section>
+					<br>
+					<br>
+					<h3>Creación de multiusuarios en local</h3>
+					<br>
+					<p>
+						Agregar llaves a la cuenta de GitHub
+					</p>
+					<br>
+					<pre>
+						<code>
+$ cd ~/.ssh
+$ cat id_rsa
+# Insertamos en cuenta 1
+
+$ cat mikecolombiano
+# Insertamos en cuenta 2
+						</code>
+					</pre>
+					<br>
+				</section>
+
+				<section>
+						<br>
+						<br>
+						<h3>Creación de multiusuarios en local</h3>
+						<br>
+						<p>
+							Archivo config en local
+						</p>
+						<br>
+						<pre><code>$ cd ~/.ssh
+$ touch config
+$ vim config
+
+# githubCuenta1
+Host cuenta1
+   HostName github.com
+   User git
+   IdentityFile ~/.ssh/id_rsa
+
+# githubCuenta2
+Host cuenta2
+   HostName github.com
+   User git
+   IdentityFile ~/.ssh/mikecolombiano
+							</code>
+						</pre>
+						<br>
+					</section>
+
+
+					<section>
+							<br>
+							<br>
+							<h3>Creación de multiusuarios en local</h3>
+							<br>
+							<p>
+								Probamos las llaves
+							</p>
+							<br>
+							<pre>
+								<code>
+									Borramos llaves de caché
+									$ ssh-add -D
+
+									Agregamos nuevas llaves
+									$ ssh-add id_rsa
+									$ ssh-add mikecolombiano
+
+									Hacemos test de que funcionen las llaves
+									$ ssh -T cuenta1
+									$ ssh -T cuenta2
+								</code>
+							</pre>
+							<br>
+						</section>
+
+						<section>
+								<br>
+								<br>
+								<h3>Creación de multiusuarios en local</h3>
+								<br>
+								<p>
+									Verificamos las cuentas
+								</p>
+								<pre>
+									<code>
+									Creamos carpeta mikenieva
+									Creamos carpeta mikecolombiano
+									Los conectamos remotamente
+
+									Cuenta 1
+									$ git remote add origin git@cuenta1:universidadplatzi/blog-universidad.git
+
+									Cuenta 2
+									$ git remote add origin git@cuenta2:universidadplatzi/blog-universidad.git
+
+									En cuenta 2, configuramos
+									git config user.name "Mike Colombiano"
+									git config user.email "m@platzi.com"
+
+									En ambos, ejecutamos.
+									$ git pull origin master
+									</code>
+								</pre>
+								<br>
+							</section>
+
+
+							<section>
+									<br>
+									<br>
+									<h3>Push de ambos owners</h3>
+									<br>
+									<p>
+										Verificamos las cuentas
+									</p>
+									<pre>
+										<code>
+										Creamos carpeta mikenieva
+										Creamos carpeta mikecolombiano
+										Los conectamos remotamente
+
+										Cuenta 1
+										$ git remote add origin git@cuenta1:universidadplatzi/blog-universidad.git
+
+										Cuenta 2
+										$ git remote add origin git@cuenta2:universidadplatzi/blog-universidad.git
+
+										En ambos, ejecutamos.
+										$ git pull origin master
+										</code>
+									</pre>
+									<br>
+								</section>
+
+								<section>
+										<br>
+										<br>
+										<h3>Push de ambos owners</h3>
+										<br>
+									</section>
+
+								<section>
+											<br>
+											<br>
+											<h3>Pull Request</h3>
+											<br>
+								</section>
+
+								<section>
+												<br>
+												<br>
+												<h3>Deployment</h3>
+												<br>
+								</section>
+
+<!-- Clase 7 #platzigit -->
+			
+			<section>
+					<img src="https://octodex.github.com/images/plumber.jpg" style="width: 310px;margin-top: 105px;box-shadow: none;border: none;">
+					<br>
+					<br>
+					<h1 style="font-size:31px">7. Conceptos Avanzados</h1><br>
+					<p>Git 2016</p>
+			</section>
+
+<!-- Clase 8 #platzigit -->
+
+			<section>
+					<img src="https://octodex.github.com/images/plumber.jpg" style="width: 310px;margin-top: 105px;box-shadow: none;border: none;">
+					<br>
+					<br>
+					<h1 style="font-size:31px">8. Herramientas Útiles</h1><br>
+					<p>#platzigit</p>
+			</section>
+
+<!-- Clase 9 #platzigit -->
+
+			<section>
+					<img src="https://octodex.github.com/images/plumber.jpg" style="width: 310px;margin-top: 105px;box-shadow: none;border: none;">
+					<br>
+					<br>
+					<h1 style="font-size:31px">9.GUI's</h1><br>
+					<p>#platzigit</p>
+			</section>
+
+			<section>
+					<br>
+					<br>
+					<h1 style=>¿Qué es un Graphical User Interface (GUI)?</h1><br>
+					<br>
+			</section>
+
+			<section>
+					<br>
+					<br>
+					<h1 style=>GitHub for Windows</h1><br>
+					<br>
+			</section>
+
+
+			<section>
+					<br>
+					<br>
+					<h1 style=>GitHub for Mac</h1><br>
+					<br>
+			</section>
+
+
+<!-- Clase 10 #platzigit -->
+
+			<section>
+					<img src="https://gitlab.com/uploads/project/avatar/13083/gitlab-logo-square.png" style="width: 310px;margin-top: 105px;box-shadow: none;border: none;">
+					<br>
+					<br>
+					<h1 style="font-size:31px">10. GitLab</h1><br>
+					<p>#platzigit</p>
+			</section>
+
+			<section>
+					<br>
+					<br>
+					<h1 style=>¿Qué es GitLab?</h1><br>
+					<br>
+					<p>"GitHub" privado, en tu servidor.</p>
+			</section>
+
+			<section>
+					<br>
+					<br>
+					<h1 style=>¿Qué es GitLab?</h1><br>
+					<br>
+					<p>"GitHub" privado, en tu servidor.</p>
+			</section>
+
+		
+
+
+
+
+
+
+
+
+
+</div>
+</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'fade',
+				 // default/cube/page/concave/zoom/linear/fade/none
+				 previewLinks: false,
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

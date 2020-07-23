@@ -1,0 +1,1202 @@
+{
+	"info": {
+		"_postman_id": "28897653-0845-46e6-b1ef-015bf7256ef9",
+		"name": "Postman Course",
+		"description": "# Welcome to Postman\n\nHere is an example of how a docomentation should be.\n\n## Never stop Learning",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Courses",
+			"item": [
+				{
+					"name": "Private Requests",
+					"item": [
+						{
+							"name": "Retrieve Courses",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "c81db717-c543-4dd5-aac9-76e4591384ed",
+										"exec": [
+											"pm.environment.set(\"today\", new Date().toISOString());"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "0067f2f1-dbb5-4551-852a-e841cbc0919c",
+										"exec": [
+											"console.log(new Date().toLocaleDateString(\"en-US\"))"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{api_url}}/private/courses/4/",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"private",
+										"courses",
+										"4",
+										""
+									]
+								},
+								"description": "Retrieve the info for a single Material instance.\n\n# Important\n\nIn this endpoint is *MANDATORY* the `Authentication` header with the `Token` for authenticate the User."
+							},
+							"response": []
+						},
+						{
+							"name": "List Courses",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "c81db717-c543-4dd5-aac9-76e4591384ed",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "0067f2f1-dbb5-4551-852a-e841cbc0919c",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "{{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{api_url}}/courses/?end_date=2019-11-24&ordering=-ranking&page_size=1&page=1",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"courses",
+										""
+									],
+									"query": [
+										{
+											"key": "end_date",
+											"value": "2019-11-24"
+										},
+										{
+											"key": "ordering",
+											"value": "-ranking"
+										},
+										{
+											"key": "page_size",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										}
+									]
+								},
+								"description": "Get a paginated response of all Courses\n\n# Important\n\nIn this endpoint is *MANDATORY* the `Authentication` header with the `Token` for authenticate the User.\n\n## Params:\n\nThis endpoint recieve some params for filtering and ordering the request:\n\n- `end_date`: `Date` for filter courses wich creation is lower than the value sent.\n- `begin_date`: `Date` for filter courses wich creation is greater than the value sent.\n- `ordering`: `String` accepts 'ranking', '-ranking', 'created_at', '-created_at'.\n- `page_size`: `Int` is the number of items by page.\n- `page`: `Int` is the page number."
+							},
+							"response": [
+								{
+									"name": "List Courses",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"type": "text",
+												"value": "Token 956d1a8c0ceb7fb8ce1025ca353028b3fcdd025c"
+											}
+										],
+										"url": {
+											"raw": "localhost:8000/api/courses/?end_date=2019-11-24&ordering=-ranking&page_size=1&page=1",
+											"host": [
+												"localhost"
+											],
+											"port": "8000",
+											"path": [
+												"api",
+												"courses",
+												""
+											],
+											"query": [
+												{
+													"key": "end_date",
+													"value": "2019-11-24"
+												},
+												{
+													"key": "ordering",
+													"value": "-ranking"
+												},
+												{
+													"key": "page_size",
+													"value": "1"
+												},
+												{
+													"key": "page",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Sun, 24 Nov 2019 19:40:49 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.6.7"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept, Cookie"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, POST, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "Content-Length",
+											"value": "444"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"count\": 6,\n    \"next\": \"http://localhost:8000/api/courses/?end_date=2019-11-24&ordering=-ranking&page=2&page_size=1\",\n    \"previous\": null,\n    \"results\": [\n        {\n            \"id\": 3,\n            \"name\": \"Economy again will feeling deep find pretty.\",\n            \"description\": \"Fact agreement find work per father magazine. Skin turn although catch radio. Knowledge lead watch general.\",\n            \"teachers\": [],\n            \"ranking\": \"3.00\",\n            \"created_at\": \"2019-11-23T17:01:42.535915Z\",\n            \"updated_at\": \"2019-11-24T17:19:37.066455Z\"\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Upload Badge",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "badge",
+											"type": "file",
+											"src": "/Users/eduardoalvarez/Desktop/Screen Shot 2019-10-03 at 14.02.51.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{api_url}}/courses/3/upload_badge/",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"courses",
+										"3",
+										"upload_badge",
+										""
+									]
+								},
+								"description": "Upload a badge for a Course using `form-data`\n\n# Important:\n\nThis endpoint _ONLY_ accepts files with extension `.jpg` or any image extension."
+							},
+							"response": []
+						}
+					],
+					"description": "# Courses Private Requests\n\nHere is where a list of protected endpoints are.\n\n",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "41727142-0ab0-4f45-9bf6-f836a9955e3b",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "3c8d6c52-164f-4954-b04a-25bc45b1310b",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "List Courses",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "c81db717-c543-4dd5-aac9-76e4591384ed",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "0067f2f1-dbb5-4551-852a-e841cbc0919c",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_url}}/courses/?end_date=2019-11-24&ordering=-ranking&page_size=1&page=1",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"courses",
+								""
+							],
+							"query": [
+								{
+									"key": "end_date",
+									"value": "2019-11-24"
+								},
+								{
+									"key": "ordering",
+									"value": "-ranking"
+								},
+								{
+									"key": "page_size",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						},
+						"description": "Get a paginated response of all Courses\n\n## Params:\n\nThis endpoint recieve some params for filtering and ordering the request:\n\n- `end_date`: `Date` for filter courses wich creation is lower than the value sent.\n- `begin_date`: `Date` for filter courses wich creation is greater than the value sent.\n- `ordering`: `String` accepts 'ranking', '-ranking', 'created_at', '-created_at'.\n- `page_size`: `Int` is the number of items by page.\n- `page`: `Int` is the page number."
+					},
+					"response": [
+						{
+							"name": "List Courses",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8000/api/courses/?end_date=2019-11-24&ordering=-ranking&page_size=1&page=1",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"courses",
+										""
+									],
+									"query": [
+										{
+											"key": "end_date",
+											"value": "2019-11-24"
+										},
+										{
+											"key": "ordering",
+											"value": "-ranking"
+										},
+										{
+											"key": "page_size",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 24 Nov 2019 19:41:12 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.6.7"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Content-Length",
+									"value": "444"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"count\": 6,\n    \"next\": \"http://localhost:8000/api/courses/?end_date=2019-11-24&ordering=-ranking&page=2&page_size=1\",\n    \"previous\": null,\n    \"results\": [\n        {\n            \"id\": 3,\n            \"name\": \"Economy again will feeling deep find pretty.\",\n            \"description\": \"Fact agreement find work per father magazine. Skin turn although catch radio. Knowledge lead watch general.\",\n            \"teachers\": [],\n            \"ranking\": \"3.00\",\n            \"created_at\": \"2019-11-23T17:01:42.535915Z\",\n            \"updated_at\": \"2019-11-24T17:19:37.066455Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Retrieve Courses",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "c81db717-c543-4dd5-aac9-76e4591384ed",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "0067f2f1-dbb5-4551-852a-e841cbc0919c",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_url}}/courses/4/",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"courses",
+								"4",
+								""
+							]
+						},
+						"description": "Retrieve the info for a single Material instance."
+					},
+					"response": [
+						{
+							"name": "Retrieve Courses",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8000/api/courses/11/",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"courses",
+										"11",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 24 Nov 2019 19:41:28 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.6.7"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Content-Length",
+									"value": "325"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 11,\n    \"description\": \"A description\",\n    \"badge\": null,\n    \"teachers\": [\n        3,\n        4,\n        5\n    ],\n    \"ranking\": \"0.00\",\n    \"materials\": [\n        {\n            \"id\": 5,\n            \"title\": \"Una prueba\",\n            \"description\": \"description\",\n            \"videos\": [\n                {\n                    \"id\": 2,\n                    \"provider\": \"A\",\n                    \"url\": \"https://platzi.com\"\n                }\n            ],\n            \"is_active\": true\n        }\n    ],\n    \"created_at\": \"2019-11-24T17:40:16.486489Z\",\n    \"updated_at\": \"2019-11-24T17:40:16.486527Z\"\n}"
+						}
+					]
+				}
+			],
+			"description": "# Courses\n\nHere is where all courses endpoints are.",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "37ab8d9e-fd48-4be2-bf3e-2878ba589094",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "707f3cf8-1cb4-41b4-8534-520bcbf74ff8",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Materials",
+			"item": [
+				{
+					"name": "Retrieve material",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_url}}/materials/1/",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"materials",
+								"1",
+								""
+							]
+						},
+						"description": "Retrieve the info of a single Material instance."
+					},
+					"response": [
+						{
+							"name": "Retrieve material",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8000/api/materials/1/",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"materials",
+										"1",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 24 Nov 2019 19:41:54 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.6.7"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Content-Length",
+									"value": "139"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"title\": \"The title\",\n    \"description\": \"One Description\",\n    \"videos\": [\n        {\n            \"id\": 1,\n            \"provider\": \"A\",\n            \"url\": \"https://platzi.com\"\n        }\n    ],\n    \"is_active\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Retrieve material comments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_url}}/api/materials/1/comments/",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"materials",
+								"1",
+								"comments",
+								""
+							]
+						},
+						"description": "Get a paginated response for comments of a Material instance.\n\n## Params:\n\nThis endpoint recieve some params for filtering the request:\n\n- `page_size`: `Int` is the number of items by page.\n- `page`: `Int` is the page number."
+					},
+					"response": [
+						{
+							"name": "Retrieve material comments",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8000/api/materials/1/comments/",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"materials",
+										"1",
+										"comments",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 24 Nov 2019 19:42:01 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.6.7"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Content-Length",
+									"value": "623"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"count\": 4,\n    \"next\": null,\n    \"previous\": null,\n    \"results\": [\n        {\n            \"id\": 5,\n            \"content\": \"fgfsdgdsfgds\",\n            \"likes\": 0,\n            \"created_at\": \"2019-11-24T19:26:38.722828Z\",\n            \"updated_at\": \"2019-11-24T19:26:38.722864Z\",\n            \"material\": 1\n        },\n        {\n            \"id\": 4,\n            \"content\": \"OTRA PRUEBA EDIT 3\",\n            \"likes\": 0,\n            \"created_at\": \"2019-11-23T23:51:51.798226Z\",\n            \"updated_at\": \"2019-11-23T23:52:18.607292Z\",\n            \"material\": 1\n        },\n        {\n            \"id\": 2,\n            \"content\": \"PRUEBA\",\n            \"likes\": 0,\n            \"created_at\": \"2019-11-23T22:25:13.273313Z\",\n            \"updated_at\": \"2019-11-23T22:25:13.273367Z\",\n            \"material\": 1\n        },\n        {\n            \"id\": 1,\n            \"content\": \"Only testing\",\n            \"likes\": 3,\n            \"created_at\": \"2019-11-23T21:43:22.938934Z\",\n            \"updated_at\": \"2019-11-23T22:22:38.730956Z\",\n            \"material\": 1\n        }\n    ]\n}"
+						}
+					]
+				}
+			],
+			"description": "# Materials\n\nHere is where all the materials endpoints are.",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "b020f228-5de6-4775-82f4-017d619010b4",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "8bbd7c37-85c3-4951-af65-b2cb97ca6ca7",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Comments",
+			"item": [
+				{
+					"name": "Create comment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{today}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"content\": \"OTRA PRUEBA EDIT 2\",\n\t\"material\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/comments/",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"comments",
+								""
+							]
+						},
+						"description": "Creates a comment for a single Material instance.\n\n## Request\n\nThis endpoint accepts Content-Type: application/json and FormData for creation."
+					},
+					"response": [
+						{
+							"name": "Create comment",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token 956d1a8c0ceb7fb8ce1025ca353028b3fcdd025c",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"content\": \"OTRA PRUEBA EDIT 2\",\n\t\"material\": 1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8000/api/comments/",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"comments",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 24 Nov 2019 19:42:30 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.6.7"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Content-Length",
+									"value": "148"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 6,\n    \"content\": \"OTRA PRUEBA EDIT 2\",\n    \"likes\": 0,\n    \"created_at\": \"2019-11-24T19:42:30.115118Z\",\n    \"updated_at\": \"2019-11-24T19:42:30.115157Z\",\n    \"material\": 1\n}"
+						}
+					]
+				},
+				{
+					"name": "Dislike comment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{today}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_url}}/comments/1/dislike/",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"comments",
+								"1",
+								"dislike",
+								""
+							]
+						},
+						"description": "Substract a like for a single Comment instance.\n\nThis is only an endpoint that represents the functionality of dislike."
+					},
+					"response": []
+				},
+				{
+					"name": "Like comment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{today}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_url}}/comments/1/like/",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"comments",
+								"1",
+								"like",
+								""
+							]
+						},
+						"description": "Add a like for a single Comment instance.\n\nThis is only an endpoint that represents the functionality of like."
+					},
+					"response": []
+				},
+				{
+					"name": "Partial Update comment",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 956d1a8c0ceb7fb8ce1025ca353028b3fcdd025c",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"content\": \"OTRA PRUEBA EDIT 2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/comments/",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"comments",
+								""
+							]
+						},
+						"description": "Update only some fields of a Comment instance.\n\n## Important\n\nThis endpoint should be use *ONLY* when some fields will be updated. If all instance will be updated you should use `PUT` Method."
+					},
+					"response": []
+				},
+				{
+					"name": "Update comment",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{today}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"content\": \"OTRA PRUEBA EDIT 3\",\n    \"likes\": 0,\n    \"created_at\": \"2019-11-24T23:51:51.798226Z\",\n    \"updated_at\": \"2019-11-24T23:51:51.798268Z\",\n    \"material\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/comments/4/",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"comments",
+								"4",
+								""
+							]
+						},
+						"description": "Update all fields of a Comment instance.\n\n## Important\n\nThis endpoint should be use *ONLY* when all fields will be updated. If some fields of the instance will be updated you should use `PATCH` Method."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete comment",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"content\": \"OTRA PRUEBA EDIT 3\",\n    \"likes\": 0,\n    \"created_at\": \"2019-11-24T23:51:51.798226Z\",\n    \"updated_at\": \"2019-11-24T23:51:51.798268Z\",\n    \"material\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/comments/4/",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"comments",
+								"4",
+								""
+							]
+						},
+						"description": "Delete a single Comment instance."
+					},
+					"response": []
+				}
+			],
+			"description": "# Comments \n\nHere is where all comments endpoints are.",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "061c11ac-fe88-4caa-9559-2264f137cbe0",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "8fdabf4a-fb0d-4baf-a3d5-223839e8a1bd",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Authenticate User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7ac15a67-d5fe-49fd-91ab-bcf9f6aaaed8",
+						"exec": [
+							"pm.test(\"Status is 200\", function() {",
+							"    pm.response.to.be.ok;",
+							"});",
+							"",
+							"pm.test(\"Response should be JSON\", function() {",
+							"    pm.response.to.be.json;",
+							"});",
+							"",
+							"pm.test(\"Response should contains token\", function(){",
+							"    pm.response.to.have.jsonBody(\"token\"); ",
+							"    var json = JSON.parse(responseBody);",
+							"    postman.setEnvironmentVariable(\"Token\", `Token ${json.token}`);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "superadmin",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "ThisIs@SecurePassw0rd",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api_url}}/api-token-auth/",
+					"host": [
+						"{{api_url}}"
+					],
+					"path": [
+						"api-token-auth",
+						""
+					]
+				},
+				"description": "This is where you authenticate the User\n\n## Important\n\nThis endpoint will return a Token, used for `Authentication` header."
+			},
+			"response": [
+				{
+					"name": "Authenticate User",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "superadmin",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "ThisIs@SecurePassw0rd",
+									"type": "text"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/api-token-auth/",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api-token-auth",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 26 Nov 2019 14:09:24 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.6.9"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "Content-Length",
+							"value": "52"
+						},
+						{
+							"key": "Vary",
+							"value": "Cookie"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"token\": \"f329c4e8468a86b0b718c0a8aac3034a5a70af9f\"\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "a015c3d6-2e4d-4c1c-b456-dc91551641d7",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "a922fa74-d384-4f14-8577-93a192b8bcf1",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "63028fd4-e003-443b-8d0b-c3911f4bd884",
+			"key": "url",
+			"value": "http://localhost:8000",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}

@@ -1,0 +1,27 @@
+
+.ubicacion--perfil {
+	width: 50%;
+	height: 90px;
+	margin: 30px auto 0 auto;
+	padding: 20px 0 0 50px;
+	@include caja;
+
+	i {
+		display: block;
+		float: left;
+		padding-right: 10px;
+		font-size: 40px;
+		color: $color-variacion;
+	}
+	h2 {
+		text-transform: uppercase;
+		font-weight: 600;
+		font-size: 20px;
+		font-family: $Fuente2;
+	}
+	h3 {
+		text-transform: uppercase;
+		font-size: 12px;
+		font-family: $Fuente2;
+	}
+}

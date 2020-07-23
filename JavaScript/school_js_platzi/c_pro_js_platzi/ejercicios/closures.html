@@ -1,0 +1,77 @@
+<html>
+
+<head>
+    <title>Closures</title>
+</head>
+
+<body>
+    <a href="/ejercicios/">Go back</a>
+    <p><em>Abre la consola</em></p>
+    <script>
+    // Closures
+    // printColor
+
+    // IIFE
+    // (function() {
+    //   let color = 'green';
+
+    //   function printColor() {
+    //     console.log(color);
+    //   }
+
+    //   printColor();
+    // })();
+
+    // FUNCIONES QUE REGRESAN FUNCIONES
+    // function makeColorPrinter(color) {
+    //   let colorMessage = `The color is ${color}`;
+
+    //   return function() {
+    //     console.log(colorMessage);
+    //   };
+    // }
+
+    // let greenColorPrinter = makeColorPrinter('green');
+    // console.log(greenColorPrinter());
+
+    // VARIABLES "PRIVADAS"
+    // const counter = {
+    //   count: 3,
+    // };
+    // console.log(counter.count);
+    // counter.count = 99;
+    // console.log(counter.count);
+
+    function makeCounter(n) {
+        let count = n;
+
+        return {
+            increase: function() {
+                count = count + 1;
+            },
+            decrease: function() {
+                count = count - 1;
+            },
+            getCount: function() {
+                return count;
+            },
+        };
+    }
+
+    let counte_r = makeCounter(7);
+
+    console.log('The count is:', counte_r.getCount());
+    counte_r.increase();
+    console.log('The count is:', counte_r.getCount());
+    counte_r.decrease();
+    counte_r.decrease();
+    counte_r.decrease();
+    counte_r.decrease();
+    console.log('The count is:', counte_r.getCount());
+
+    counte_r.count = 0;
+    console.log('The count is:', counte_r.getCount());
+    </script>
+</body>
+
+</html>

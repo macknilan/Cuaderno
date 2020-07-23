@@ -1,0 +1,57 @@
+<!--
+# Manejo de formularios con Vue.js
+- combinar filtros y manejo de eventos para crear una interacción de usuario a través de un formulario en un sitio web
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>VueJs</title>
+    <link rel="stylesheet" href="">
+</head>
+<body>
+    <div id="app">
+        <input type="text" name="nombre" placeholder="Ingresa tu nombre" v-model="nombre">
+        <p>Tu nombre en mayusculas es: {{ nombre | uppercase}}</p>
+        
+        <form v-on:submit.prevent="submit"> 
+            <!--COMO ES EVENTO SE PUEDE USAR @ "@:submit.prevent" NO HAGA LO QUE HACE POR DEFAULT EL NAVEGADOR -->
+            <h2>¿Cuales son tus cursos favoritos?</h2>
+            <input v-model="cursos" type="checkbox" id="vue" value="vue">
+            <label for="vue">Curso de Vue.js</label>
+            <input v-model="cursos" type="checkbox" id="javascript" value="javascript">
+            <label for="javascript">Curso de JavaScript</label>
+            <input v-model="cursos" type="checkbox" id="python" value="python">
+            <label for="python">Curso de Python</label>
+            <input v-model="cursos" type="checkbox" id="django" value="django">
+            <label for="django">Curso de Django</label>
+            <input v-model="cursos" type="checkbox" id="linux" value="linux">
+            <label for="linux">Curso de Linux</label>
+            <button type="submit">Enviar</button>
+        </form>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="text/javascript">
+        let app = new Vue({
+            el: '#app',
+            data: {
+                nombre: '',
+                cursos: []
+            },
+            filters:{
+                uppercase: (str) => str.toUpperCase(),
+            },
+            methods: {
+                submit: function () {
+                    // console.log(`submit`)
+                    console.log(this.cursos)
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>

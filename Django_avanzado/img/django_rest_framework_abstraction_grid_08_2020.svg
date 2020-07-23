@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="2018px" height="960px" viewBox="0 0 2018 960" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>drf-abstraction-grid</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="2018" height="960"/>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Rectangle-2">
+            <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"/>
+            <rect stroke="#4A4A4A" stroke-width="1" x="0.5" y="0.5" width="2017" height="959"/>
+        </g>
+        <g id="box-copy-15" transform="translate(200.000000, 771.000000)">
+            <rect id="Rectangle" stroke="#000000" x="0.5" y="0.5" width="199" height="79"/>
+            <text id="APIView-extends-djan" font-family="Helvetica" font-size="18" font-weight="normal" letter-spacing="-0.346154004" fill="#000000">
+                <tspan x="15.6097561" y="29">APIView</tspan>
+                <tspan x="15.6097561" y="51" font-size="13">extends </tspan>
+                <tspan x="15.6097561" y="67" font-size="13">django.views.generic.View</tspan>
+            </text>
+        </g>
+        <text id="Views" font-family="Arial-BoldMT, Arial" font-size="20" font-weight="bold" fill="#000000">
+            <tspan x="50" y="800">Views</tspan>
+        </text>
+        <text id="Other-decorators:-•" font-family="ArialMT, Arial" font-size="18" font-weight="normal" letter-spacing="-0.346154004" fill="#000000">
+            <tspan x="1640" y="668">Other decorators:</tspan>
+            <tspan x="1640" y="688">•  renderer_classes</tspan>
+            <tspan x="1640" y="708">•  parser_classes</tspan>
+            <tspan x="1640" y="728">•  authentication_classes</tspan>
+            <tspan x="1640" y="748">•  throttle_classes</tspan>
+            <tspan x="1640" y="768">•  permission_classes</tspan>
+            <tspan x="1640" y="788">•  ViewSet - detail_route - extra path after</tspan>
+            <tspan x="1640" y="808">   detail URL, e.g., </tspan>
+            <tspan x="1640" y="828">   /objects/{pk}/{methodname}</tspan>
+            <tspan x="1640" y="848">•  ViewSet - list_route - extra path after list</tspan>
+            <tspan x="1640" y="868">   URL, e.g., /objects/{methodname}</tspan>
+        </text>
+        <g id="box-copy-13" transform="translate(200.000000, 641.000000)">
+            <rect id="Rectangle" stroke="#000000" x="0.5" y="0.5" width="199" height="79"/>
+            <text id="@api_view([…])-turns" font-family="Helvetica" font-size="18" font-weight="normal" letter-spacing="-0.346154004" fill="#000000">
+                <tspan x="15.6097561" y="29">@api_view([…])</tspan>
+                <tspan x="15.6097561" y="51" font-size="13">turns a function into an APIView</tspan>
+                <tspan x="15.6097561" y="67" font-size="13">pass http methods as list of strs</tspan>
+            </text>
+        </g>
+        <text id="Decorators" font-family="Arial-BoldMT, Arial" font-size="20" font-weight="bold" fill="#000000">
+            <tspan x="50" y="670">Decorators</tspan>
+        </text>
+        <g id="box-copy-12" transform="translate(1400.000000, 509.000000)">
+            <rect id="Rectangle" stroke="#000000" x="0.5" y="0.5" width="199" height="79"/>
+            <text id="UpdateModelMixin-def" font-family="Helvetica" font-size="18" font-weight="normal" letter-spacing="-0.346154004" fill="#000000">
+                <tspan x="15.6097561" y="29">UpdateModelMixin</tspan>
+                <tspan x="15.6097561" y="51" font-size="14">def update(self, request, …)</tspan>
+                <tspan x="15.6097561" y="68" font-size="14">def partial_update(…)</tspan>
+            </text>
+        </g>
+        <g id="box-copy-11" transform="translate(1160.000000, 509.000000)">
+            <rect id="Rectangle" stroke="#000000" x="0.5" y="0.5" width="199" height="79"/>
+            <text id="DestroyModelMixin-de" font-family="Helvetica" font-size="18" font-weight="normal" letter-spacing="-0.346154004" fill="#000000">
+                <tspan x="15.6097561" y="29">DestroyModelMixin</tspan>
+                <tspan x="15.6097561" y="51" font-size="14">def destroy(self, request, …)</tspan>
+            </text>
+        </g>
+        <g id="box-copy-5" transform="translate(920.000000, 509.000000)">
+            <rect id="Rectangle" stroke="#000000" x="0.5" y="0.5" width="199" height="79"/>
+            <text id="RetrieveModelMixin-d" font-family="Helvetica" font-size="18" font-weight="normal" letter-spacing="-0.346154004" fill="#000000">
+                <tspan x="15.6097561" y="29">RetrieveModelMixin</tspan>
+                <tspan x="15.6097561" y="51" font-size="14">def retrieve(self, request, …)</tspan>
+            </text>
+        </g>
+        <g id="box-copy-4" transform="translate(680.000000, 511.000000)">
+            <rect id="Rectangle" stroke="#000000" x="0.5" y="0.5" width="199" height="79"/>
+            <text id="ListModelMixin-def-l" font-family="Helvetica" font-size="18" font-weight="normal" letter-spacing="-0.346154004" fill="#000000">
+                <tspan x="15.6097561" y="29">ListModelMixin</tspan>
+                <tspan x="15.6097561" y="51" font-size="14">def list(self, request, …)</tspan>
+            </text>
+        </g>
+        <g id="box-copy-3" transform="translate(440.000000, 511.000000)">
+            <rect id="Rectangle" stroke="#000000" x="0.5" y="0.5" width="199" height="79"/>
+            <text id="CreateModelMixin-def" font-family="Helvetica" font-size="18" font-weight="normal" letter-spacing="-0.346154004" fill="#000000">
+                <tspan x="15.6097561" y="29">CreateModelMixin</tspan>
+                <tspan x="15.6097561" y="51" font-size="14">def create(self, request, …)</tspan>
+            </text>
+        </g>
+        <text id="Mixins-CRUD-operatio" font-family="Arial-BoldMT, Arial" font-size="20" font-weight="bold" fill="#000000">
+            <tspan x="50" y="540">Mixins</tspan>
+            <tspan x="112.236328" y="540" font-size="22"/>
+            <tspan x="50" y="562" font-family="ArialMT, Arial" font-size="14" font-weight="normal">CRUD operations:</tspan>
+            <tspan x="50" y="578" font-family="ArialMT, Arial" font-size="14" font-weight="normal">introduces underlying</tspan>
+            <tspan x="50" y="594" font-family="ArialMT, Arial" font-size="14" font-weight="normal">action events to sets </tspan>
+            <tspan x="50" y="610" font-family="ArialMT, Arial" font-size="14" font-weight="normal">or generics</tspan>
+        </text>
+        <text id="GenericViews-Combos:" font-family="ArialMT, Arial" font-size="18" font-weight="normal" letter-spacing="-0.346154004" fill="#000000">
+            <tspan x="1640" y="408">GenericViews Combos:</tspan>
+            <tspan x="1640" y="428">•  ListCreateAPIView</tspan>
+            <tspan x="1640" y="448">•  RetrieveUpdateAPIView</tspan>
+            <tspan x="1640" y="468">•  RetrieveDestroyAPIView</tspan>
+            <tspan x="1640" y="488">•  RetrieveUpdateDestroyAPIView</tspan>
+        </text>
+        <g id="box-copy-9" transform="translate(1400.000000, 381.000000)">
+            <rect id="Rectangle" stroke="#000000" x="0.5" y="0.5" width="199" height="79"/>
+            <text id="UpdateAPIView-def-pu" font-family="Helvetica" font-size="18" font-weight="normal" letter-spacing="-0.346154004" fill="#000000">
+                <tspan x="15.6097561" y="29">UpdateAPIView</tspan>
+                <tspan x="15.6097561" y="51" font-size="14">def put(self, request, …)</tspan>
+                <tspan x="15.6097561" y="68" font-size="14" letter-spacing="-0.35">def patch(self, request, …)</tspan>
+            </text>
+        </g>
+        <g id="box-copy-8" transform="translate(1160.000000, 381.000000)">
+            <rect id="Rectangle" stroke="#000000" x="0.5" y="0.5" width="199" height="79"/>
+            <text id="DestroyAPIView-def-d" font-family="Helvetica" font-size="18" font-weight="normal" letter-spacing="-0.346154004" fill="#000000">
+                <tspan x="15.6097561" y="29">DestroyAPIView</tspan>
+                <tspan x="15.6097561" y="51" font-size="14">def delete(self, request, …)</tspan>
+            </text>
+        </g>
+        <g id="box-copy-7" transform="translate(920.000000, 381.000000)">
+            <rect id="Rectangle" stroke="#000000" x="0.5" y="0.5" width="199" height="79"/>
+            <text id="RetrieveAPIView-def" font-family="Helvetica" font-size="18" font-weight="normal" letter-spacing="-0.346154004" fill="#000000">
+                <tspan x="15.6097561" y="29">RetrieveAPIView</tspan>
+                <tspan x="15.6097561" y="51" font-size="14">def get(self, request, …)</tspan>
+            </text>
+        </g>
+        <g id="box-copy-2" transform="translate(680.000000, 381.000000)">
+            <rect id="Rectangle" stroke="#000000" x="0.5" y="0.5" width="199" height="79"/>
+            <text id="ListAPIView-def-get(" font-family="Helvetica" font-size="18" font-weight="normal" letter-spacing="-0.346154004" fill="#000000">
+                <tspan x="15.6097561" y="29">ListAPIView</tspan>
+                <tspan x="15.6097561" y="51" font-size="14">def get(self, request, …)</tspan>
+            </text>
+        </g>
+        <g id="box" transform="translate(440.000000, 381.000000)">
+            <rect id="Rectangle" stroke="#000000" x="0.5" y="0.5" width="199" height="79"/>
+            <text id="CreateAPIView-def-po" font-family="Helvetica" font-size="18" font-weight="normal" letter-spacing="-0.346154004" fill="#000000">
+                <tspan x="15.6097561" y="29">CreateAPIView</tspan>
+                <tspan x="15.6097561" y="51" font-size="14">def post(self, request, …)</tspan>
+            </text>
+        </g>
+        <g id="box-copy-6" transform="translate(200.000000, 381.000000)">
+            <rect id="Rectangle" stroke="#000000" x="0.5" y="0.5" width="199" height="79"/>
+            <text id="GenericAPIView" font-family="Helvetica" font-size="18" font-weight="normal" letter-spacing="-0.346154004" fill="#000000">
+                <tspan x="15.6097561" y="29">GenericAPIView</tspan>
+            </text>
+        </g>
+        <text id="Generics-REST-operat" font-family="Arial-BoldMT, Arial" font-size="20" font-weight="bold" fill="#000000">
+            <tspan x="50" y="410">Generics</tspan>
+            <tspan x="135.605469" y="410" font-size="22"/>
+            <tspan x="50" y="432" font-family="ArialMT, Arial" font-size="14" font-weight="normal">REST operations:</tspan>
+            <tspan x="50" y="448" font-family="ArialMT, Arial" font-size="14" font-weight="normal">introduces the</tspan>
+            <tspan x="50" y="464" font-family="ArialMT, Arial" font-size="14" font-weight="normal">actual http</tspan>
+            <tspan x="50" y="480" font-family="ArialMT, Arial" font-size="14" font-weight="normal">method’s functions</tspan>
+        </text>
+        <text id="Pass-into-a-router-f" font-family="ArialMT, Arial" font-size="18" font-weight="normal" letter-spacing="-0.346154004" fill="#000000">
+            <tspan x="1640" y="278">Pass into a router for free URLs!</tspan>
+            <tspan x="1640" y="298">•  SimpleRouter</tspan>
+            <tspan x="1640" y="318">•  DefaultRouter</tspan>
+        </text>
+        <g id="box-copy" transform="translate(440.000000, 296.000000)">
+            <rect id="Rectangle" stroke="#000000" x="0.5" y="0.5" width="1159" height="34"/>
+            <text id="ModelViewSet" font-family="Helvetica" font-size="14" font-weight="normal" letter-spacing="-0.346154004" fill="#000000">
+                <tspan x="537.504122" y="21">ModelViewSet</tspan>
+            </text>
+        </g>
+        <g id="box" transform="translate(680.000000, 251.000000)">
+            <rect id="Rectangle" stroke="#000000" x="0.5" y="0.5" width="439" height="34"/>
+            <text id="ReadOnlyModelViewSet" font-family="Helvetica" font-size="14" font-weight="normal" letter-spacing="-0.346154004" fill="#000000">
+                <tspan x="147.834468" y="21">ReadOnlyModelViewSet</tspan>
+            </text>
+        </g>
+        <g id="box" transform="translate(200.000000, 251.000000)">
+            <rect id="Rectangle" stroke="#000000" x="0.5" y="0.5" width="199" height="79"/>
+            <text id="GenericViewSet" font-family="Helvetica" font-size="18" font-weight="normal" letter-spacing="-0.346154004" fill="#000000">
+                <tspan x="15.6097561" y="29">GenericViewSet</tspan>
+            </text>
+        </g>
+        <text id="ViewSets" font-family="Arial-BoldMT, Arial" font-size="20" font-weight="bold" fill="#000000">
+            <tspan x="50" y="280">ViewSets</tspan>
+        </text>
+        <text id="PUT-(full-update)--" font-family="Arial-BoldMT, Arial" font-size="20" font-weight="bold" fill="#000000">
+            <tspan x="1400" y="187">PUT (full update)</tspan>
+            <tspan x="1559.98047" y="187" font-family="ArialMT, Arial" font-weight="normal"> - /objects/{pk}/</tspan>
+            <tspan x="1400" y="209">PATCH (partial update)</tspan>
+        </text>
+        <text id="DELETE---/objects/{p" font-family="Arial-BoldMT, Arial" font-size="20" font-weight="bold" fill="#000000">
+            <tspan x="1160" y="187">DELETE</tspan>
+            <tspan x="1238.89648" y="187" font-family="ArialMT, Arial" font-weight="normal"> - /objects/{pk}/</tspan>
+        </text>
+        <text id="GET---/objects/{pk}/" font-family="Arial-BoldMT, Arial" font-size="20" font-weight="bold" fill="#000000">
+            <tspan x="920" y="187">GET</tspan>
+            <tspan x="961.113281" y="187" font-family="ArialMT, Arial" font-weight="normal"> - /objects/{pk}/</tspan>
+        </text>
+        <text id="GET---/objects/" font-family="Arial-BoldMT, Arial" font-size="20" font-weight="bold" fill="#000000">
+            <tspan x="680" y="187">GET</tspan>
+            <tspan x="721.113281" y="187" font-family="ArialMT, Arial" font-weight="normal"> - /objects/</tspan>
+        </text>
+        <text id="POST---/objects/" font-family="Arial-BoldMT, Arial" font-size="20" font-weight="bold" fill="#000000">
+            <tspan x="440" y="187">POST</tspan>
+            <tspan x="494.453125" y="187" font-family="ArialMT, Arial" font-weight="normal"> - /objects/</tspan>
+        </text>
+        <text id="A-quick-overview-of" font-family="ArialMT, Arial" font-size="20" font-weight="normal" fill="#000000">
+            <tspan x="50" y="115">A quick overview of the different levels of abstraction in DRF for handling different request methods and the URL structure for those.</tspan>
+        </text>
+        <text id="https://mrcoles.com/" font-family="ArialMT, Arial" font-size="16" font-weight="normal" fill="#000000">
+            <tspan x="50" y="913">https://mrcoles.com/drf</tspan>
+        </text>
+        <text id="Django-REST-Framewor" font-family="Arial-BoldMT, Arial" font-size="36" font-weight="bold" fill="#000000">
+            <tspan x="50" y="83">Django REST Framework - Abstraction Grid</tspan>
+        </text>
+    </g>
+</svg>

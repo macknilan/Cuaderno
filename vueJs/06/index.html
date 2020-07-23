@@ -1,0 +1,55 @@
+<!--
+# Listar elementos con Vue.js
+- Otra de las funcionalidades que nos permite utilizar Vue.js son los ciclos.
+- Los ciclos son iteraciones para poder mostrar en pantalla ciertos elementos de manera repetitiva.
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>VueJs</title>
+    <link rel="stylesheet" href="">
+</head>
+<body>
+    <div id="app">
+
+        <form v-on:submit.prevent="submit"> 
+            <!--COMO ES EVENTO SE PUEDE USAR @ "@:submit.prevent" NO HAGA LO QUE HACE POR DEFAULT EL NAVEGADOR -->
+            <h2>¿Cuales son tus cursos favoritos?</h2>
+            <template v-for="curso in cursos">
+                <input v-model="cursosSeleccionados" type="checkbox" v-bind:id="curso.value" v-bind:value="curso.value">
+                <label v-bind:for="curso.value">{{ curso.nombre }}</label>
+            </template>
+            <button type="submit">Enviar</button>
+        </form>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="text/javascript">
+        let app = new Vue({
+            el: '#app',
+            data: {
+                cursos: [
+                    { nombre: 'Curso de Vue.js', value: 'vue' },
+                    { nombre: 'Curso de JavaScript', value: 'javascript' },
+                    { nombre: 'Curso de Python', value: 'python' },
+                    { nombre: 'Curso de Django', value: 'django' },
+                    { nombre: 'Curso de Linux', value: 'linux' },
+                ],
+                cursosSeleccionados: []
+            },
+            methods: {
+                submit: function () {
+                    // console.log(`submit`)
+                    // console.log(this.cursos)
+                    console.log(this.cursosSeleccionados)
+                }
+
+            }
+        })
+
+    </script>
+</body>
+</html>

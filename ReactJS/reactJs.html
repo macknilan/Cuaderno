@@ -1,0 +1,1596 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><style>body {
+  max-width: 980px;
+  border: 1px solid #ddd;
+  outline: 1300px solid #fff;
+  margin: 16px auto;
+}
+
+body .markdown-body
+{
+  padding: 45px;
+}
+
+@font-face {
+  font-family: fontawesome-mini;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+.markdown-body {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  color: #333333;
+  overflow: hidden;
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.markdown-body a {
+  background: transparent;
+}
+
+.markdown-body a:active,
+.markdown-body a:hover {
+  outline: 0;
+}
+
+.markdown-body b,
+.markdown-body strong {
+  font-weight: bold;
+}
+
+.markdown-body mark {
+  background: #ff0;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body sub,
+.markdown-body sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+.markdown-body sup {
+  top: -0.5em;
+}
+.markdown-body sub {
+  bottom: -0.25em;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+.markdown-body img {
+  border: 0;
+}
+
+.markdown-body hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+.markdown-body pre {
+  overflow: auto;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+.markdown-body input {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+.markdown-body html input[disabled] {
+  cursor: default;
+}
+
+.markdown-body input {
+  line-height: normal;
+}
+
+.markdown-body input[type="checkbox"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.markdown-body table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body .codehilitetable {
+  border: 0;
+  border-spacing: 0;
+}
+
+.markdown-body .codehilitetable tr {
+  border: 0;
+}
+
+.markdown-body .codehilitetable pre,
+.markdown-body .codehilitetable div.codehilite {
+  margin: 0;
+}
+
+.markdown-body .linenos,
+.markdown-body .code,
+.markdown-body .codehilitetable td {
+  border: 0;
+  padding: 0;
+}
+
+.markdown-body td:not(.linenos) .linenodiv {
+  padding: 0 !important;
+}
+
+.markdown-body .code {
+  width: 100%;
+}
+
+.markdown-body .linenos div pre,
+.markdown-body .linenodiv pre,
+.markdown-body .linenodiv {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-left-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  -moz-border-radius-topleft: 3px;
+  -moz-border-radius-bottomleft: 3px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.markdown-body .code div pre,
+.markdown-body .code div {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-right-radius: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  -moz-border-radius-topright: 3px;
+  -moz-border-radius-bottomright: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.markdown-body * {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body input {
+  font: 13px Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+  line-height: 1.4;
+}
+
+.markdown-body a {
+  color: #4183c4;
+  text-decoration: none;
+}
+
+.markdown-body a:hover,
+.markdown-body a:focus,
+.markdown-body a:active {
+  text-decoration: underline;
+}
+
+.markdown-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.markdown-body hr:before,
+.markdown-body hr:after {
+  display: table;
+  content: " ";
+}
+
+.markdown-body hr:after {
+  clear: both;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  line-height: 1.1;
+}
+
+.markdown-body h1 {
+  font-size: 30px;
+}
+
+.markdown-body h2 {
+  font-size: 21px;
+}
+
+.markdown-body h3 {
+  font-size: 16px;
+}
+
+.markdown-body h4 {
+  font-size: 14px;
+}
+
+.markdown-body h5 {
+  font-size: 12px;
+}
+
+.markdown-body h6 {
+  font-size: 11px;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ul ul ol,
+.markdown-body ul ol ol,
+.markdown-body ol ul ol,
+.markdown-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body code,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+}
+
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body kbd {
+  background-color: #e7e7e7;
+  background-image: -moz-linear-gradient(#fefefe, #e7e7e7);
+  background-image: -webkit-linear-gradient(#fefefe, #e7e7e7);
+  background-image: linear-gradient(#fefefe, #e7e7e7);
+  background-repeat: repeat-x;
+  border-radius: 2px;
+  border: 1px solid #cfcfcf;
+  color: #000;
+  padding: 3px 5px;
+  line-height: 10px;
+  font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  display: inline-block;
+}
+
+.markdown-body>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+.markdown-body .headerlink {
+  font: normal 400 16px fontawesome-mini;
+  vertical-align: middle;
+  margin-left: -16px;
+  float: left;
+  display: inline-block;
+  text-decoration: none;
+  opacity: 0;
+  color: #333;
+}
+
+.markdown-body .headerlink:focus {
+  outline: none;
+}
+
+.markdown-body h1 .headerlink {
+  margin-top: 0.8rem;
+}
+
+.markdown-body h2 .headerlink,
+.markdown-body h3 .headerlink {
+  margin-top: 0.6rem;
+}
+
+.markdown-body h4 .headerlink {
+  margin-top: 0.2rem;
+}
+
+.markdown-body h5 .headerlink,
+.markdown-body h6 .headerlink {
+  margin-top: 0;
+}
+
+.markdown-body .headerlink:hover,
+.markdown-body h1:hover .headerlink,
+.markdown-body h2:hover .headerlink,
+.markdown-body h3:hover .headerlink,
+.markdown-body h4:hover .headerlink,
+.markdown-body h5:hover .headerlink,
+.markdown-body h6:hover .headerlink {
+  opacity: 1;
+  text-decoration: none;
+}
+
+.markdown-body h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+}
+
+.markdown-body h4 {
+  font-size: 1.25em;
+}
+
+.markdown-body h5 {
+  font-size: 1em;
+}
+
+.markdown-body h6 {
+  font-size: 1em;
+  color: #777;
+}
+
+.markdown-body p,
+.markdown-body blockquote,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body dl,
+.markdown-body table,
+.markdown-body pre,
+.markdown-body .admonition {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #e7e7e7;
+  border: 0 none;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 2em;
+}
+
+.markdown-body ul ul,
+.markdown-body ul ol,
+.markdown-body ol ol,
+.markdown-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body li>p {
+  margin-top: 16px;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.markdown-body blockquote {
+  padding: 0 15px;
+  color: #777;
+  border-left: 4px solid #ddd;
+}
+
+.markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+
+.markdown-body table th {
+  font-weight: bold;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  padding: 6px 13px;
+  border: 1px solid #ddd;
+}
+
+.markdown-body table tr {
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body code,
+.markdown-body samp {
+  padding: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(0,0,0,0.04);
+  border-radius: 3px;
+}
+
+.markdown-body code:before,
+.markdown-body code:after {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+
+.markdown-body pre>code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.markdown-body .codehilite {
+  margin-bottom: 16px;
+}
+
+.markdown-body .codehilite pre,
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+
+.markdown-body .codehilite pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body pre {
+  word-wrap: normal;
+}
+
+.markdown-body pre code {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+.markdown-body pre code:before,
+.markdown-body pre code:after {
+  content: normal;
+}
+
+/* Admonition */
+.markdown-body .admonition {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  position: relative;
+  border-radius: 3px;
+  border: 1px solid #e0e0e0;
+  border-left: 6px solid #333;
+  padding: 10px 10px 10px 30px;
+}
+
+.markdown-body .admonition table {
+  color: #333;
+}
+
+.markdown-body .admonition p {
+  padding: 0;
+}
+
+.markdown-body .admonition-title {
+  font-weight: bold;
+  margin: 0;
+}
+
+.markdown-body .admonition>.admonition-title {
+  color: #333;
+}
+
+.markdown-body .attention>.admonition-title {
+  color: #a6d796;
+}
+
+.markdown-body .caution>.admonition-title {
+  color: #d7a796;
+}
+
+.markdown-body .hint>.admonition-title {
+  color: #96c6d7;
+}
+
+.markdown-body .danger>.admonition-title {
+  color: #c25f77;
+}
+
+.markdown-body .question>.admonition-title {
+  color: #96a6d7;
+}
+
+.markdown-body .note>.admonition-title {
+  color: #d7c896;
+}
+
+.markdown-body .admonition:before,
+.markdown-body .attention:before,
+.markdown-body .caution:before,
+.markdown-body .hint:before,
+.markdown-body .danger:before,
+.markdown-body .question:before,
+.markdown-body .note:before {
+  font: normal normal 16px fontawesome-mini;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  line-height: 1.5;
+  color: #333;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.markdown-body .admonition:before {
+  content: "\f056\00a0";
+  color: 333;
+}
+
+.markdown-body .attention:before {
+  content: "\f058\00a0";
+  color: #a6d796;
+}
+
+.markdown-body .caution:before {
+  content: "\f06a\00a0";
+  color: #d7a796;
+}
+
+.markdown-body .hint:before {
+  content: "\f05a\00a0";
+  color: #96c6d7;
+}
+
+.markdown-body .danger:before {
+  content: "\f057\00a0";
+  color: #c25f77;
+}
+
+.markdown-body .question:before {
+  content: "\f059\00a0";
+  color: #96a6d7;
+}
+
+.markdown-body .note:before {
+  content: "\f040\00a0";
+  color: #d7c896;
+}
+
+.markdown-body .admonition::after {
+  content: normal;
+}
+
+.markdown-body .attention {
+  border-left: 6px solid #a6d796;
+}
+
+.markdown-body .caution {
+  border-left: 6px solid #d7a796;
+}
+
+.markdown-body .hint {
+  border-left: 6px solid #96c6d7;
+}
+
+.markdown-body .danger {
+  border-left: 6px solid #c25f77;
+}
+
+.markdown-body .question {
+  border-left: 6px solid #96a6d7;
+}
+
+.markdown-body .note {
+  border-left: 6px solid #d7c896;
+}
+
+.markdown-body .admonition>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body .admonition>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* progress bar*/
+.markdown-body .progress {
+  display: block;
+  width: 300px;
+  margin: 10px 0;
+  height: 24px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #ededed;
+  position: relative;
+  box-shadow: inset -1px 1px 3px rgba(0, 0, 0, .1);
+}
+
+.markdown-body .progress-label {
+  position: absolute;
+  text-align: center;
+  font-weight: bold;
+  width: 100%; margin: 0;
+  line-height: 24px;
+  color: #333;
+  text-shadow: 1px 1px 0 #fefefe, -1px -1px 0 #fefefe, -1px 1px 0 #fefefe, 1px -1px 0 #fefefe, 0 1px 0 #fefefe, 0 -1px 0 #fefefe, 1px 0 0 #fefefe, -1px 0 0 #fefefe, 1px 1px 2px #000;
+  -webkit-font-smoothing: antialiased !important;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.markdown-body .progress-bar {
+  height: 24px;
+  float: left;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #96c6d7;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5), inset 0 -1px 0 rgba(0, 0, 0, .1);
+  background-size: 30px 30px;
+  background-image: -webkit-linear-gradient(
+    135deg, rgba(255, 255, 255, .4) 27%,
+    transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%,
+    transparent 77%, transparent
+  );
+  background-image: -moz-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -ms-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -o-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+}
+
+.markdown-body .progress-100plus .progress-bar {
+  background-color: #a6d796;
+}
+
+.markdown-body .progress-80plus .progress-bar {
+  background-color: #c6d796;
+}
+
+.markdown-body .progress-60plus .progress-bar {
+  background-color: #d7c896;
+}
+
+.markdown-body .progress-40plus .progress-bar {
+  background-color: #d7a796;
+}
+
+.markdown-body .progress-20plus .progress-bar {
+  background-color: #d796a6;
+}
+
+.markdown-body .progress-0plus .progress-bar {
+  background-color: #c25f77;
+}
+
+.markdown-body .candystripe-animate .progress-bar{
+  -webkit-animation: animate-stripes 3s linear infinite;
+  -moz-animation: animate-stripes 3s linear infinite;
+  animation: animate-stripes 3s linear infinite;
+}
+
+@-webkit-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+@-moz-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+@keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+.markdown-body .gloss .progress-bar {
+  box-shadow:
+    inset 0 4px 12px rgba(255, 255, 255, .7),
+    inset 0 -12px 0 rgba(0, 0, 0, .05);
+}
+
+/* MultiMarkdown Critic Blocks */
+.markdown-body .critic_mark {
+  background: #ff0;
+}
+
+.markdown-body .critic_delete {
+  color: #c82829;
+  text-decoration: line-through;
+}
+
+.markdown-body .critic_insert {
+  color: #718c00 ;
+  text-decoration: underline;
+}
+
+.markdown-body .critic_comment {
+  color: #8e908c;
+  font-style: italic;
+}
+
+.markdown-body .headeranchor {
+  font: normal normal 16px fontawesome-mini;
+  line-height: 1;
+  display: inline-block;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.headeranchor:before {
+  content: '\e157';
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.markdown-body .task-list-item input {
+  margin: 0 4px 0.25em -20px;
+  vertical-align: middle;
+}
+
+/* Media */
+@media only screen and (min-width: 480px) {
+  .markdown-body {
+    font-size:14px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .markdown-body {
+    font-size:16px;
+  }
+}
+
+@media print {
+  .markdown-body * {
+    background: transparent !important;
+    color: black !important;
+    filter:none !important;
+    -ms-filter: none !important;
+  }
+
+  .markdown-body {
+    font-size:12pt;
+    max-width:100%;
+    outline:none;
+    border: 0;
+  }
+
+  .markdown-body a,
+  .markdown-body a:visited {
+    text-decoration: underline;
+  }
+
+  .markdown-body .headeranchor-link {
+    display: none;
+  }
+
+  .markdown-body a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  .markdown-body abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  .markdown-body .ir a:after,
+  .markdown-body a[href^="javascript:"]:after,
+  .markdown-body a[href^="#"]:after {
+    content: "";
+  }
+
+  .markdown-body pre {
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  .markdown-body pre,
+  .markdown-body blockquote {
+    border: 1px solid #999;
+    padding-right: 1em;
+    page-break-inside: avoid;
+  }
+
+  .markdown-body .progress,
+  .markdown-body .progress-bar {
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
+  .markdown-body .progress {
+    border: 1px solid #ddd;
+  }
+
+  .markdown-body .progress-bar {
+    height: 22px;
+    border-right: 1px solid #ddd;
+  }
+
+  .markdown-body tr,
+  .markdown-body img {
+    page-break-inside: avoid;
+  }
+
+  .markdown-body img {
+    max-width: 100% !important;
+  }
+
+  .markdown-body p,
+  .markdown-body h2,
+  .markdown-body h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  .markdown-body h2,
+  .markdown-body h3 {
+    page-break-after: avoid;
+  }
+}
+</style><style>/*GitHub*/
+.codehilite {background-color:#fff;color:#333333;}
+.codehilite .hll {background-color:#ffffcc;}
+.codehilite .c{color:#999988;font-style:italic}
+.codehilite .err{color:#a61717;background-color:#e3d2d2}
+.codehilite .k{font-weight:bold}
+.codehilite .o{font-weight:bold}
+.codehilite .cm{color:#999988;font-style:italic}
+.codehilite .cp{color:#999999;font-weight:bold}
+.codehilite .c1{color:#999988;font-style:italic}
+.codehilite .cs{color:#999999;font-weight:bold;font-style:italic}
+.codehilite .gd{color:#000000;background-color:#ffdddd}
+.codehilite .ge{font-style:italic}
+.codehilite .gr{color:#aa0000}
+.codehilite .gh{color:#999999}
+.codehilite .gi{color:#000000;background-color:#ddffdd}
+.codehilite .go{color:#888888}
+.codehilite .gp{color:#555555}
+.codehilite .gs{font-weight:bold}
+.codehilite .gu{color:#800080;font-weight:bold}
+.codehilite .gt{color:#aa0000}
+.codehilite .kc{font-weight:bold}
+.codehilite .kd{font-weight:bold}
+.codehilite .kn{font-weight:bold}
+.codehilite .kp{font-weight:bold}
+.codehilite .kr{font-weight:bold}
+.codehilite .kt{color:#445588;font-weight:bold}
+.codehilite .m{color:#009999}
+.codehilite .s{color:#dd1144}
+.codehilite .n{color:#333333}
+.codehilite .na{color:teal}
+.codehilite .nb{color:#0086b3}
+.codehilite .nc{color:#445588;font-weight:bold}
+.codehilite .no{color:teal}
+.codehilite .ni{color:purple}
+.codehilite .ne{color:#990000;font-weight:bold}
+.codehilite .nf{color:#990000;font-weight:bold}
+.codehilite .nn{color:#555555}
+.codehilite .nt{color:navy}
+.codehilite .nv{color:teal}
+.codehilite .ow{font-weight:bold}
+.codehilite .w{color:#bbbbbb}
+.codehilite .mf{color:#009999}
+.codehilite .mh{color:#009999}
+.codehilite .mi{color:#009999}
+.codehilite .mo{color:#009999}
+.codehilite .sb{color:#dd1144}
+.codehilite .sc{color:#dd1144}
+.codehilite .sd{color:#dd1144}
+.codehilite .s2{color:#dd1144}
+.codehilite .se{color:#dd1144}
+.codehilite .sh{color:#dd1144}
+.codehilite .si{color:#dd1144}
+.codehilite .sx{color:#dd1144}
+.codehilite .sr{color:#009926}
+.codehilite .s1{color:#dd1144}
+.codehilite .ss{color:#990073}
+.codehilite .bp{color:#999999}
+.codehilite .vc{color:teal}
+.codehilite .vg{color:teal}
+.codehilite .vi{color:teal}
+.codehilite .il{color:#009999}
+.codehilite .gc{color:#999;background-color:#EAF2F5}
+</style><title>reactJs</title></head><body><article class="markdown-body"><h1 id="curso-de-reactjs">Curso de React.js<a class="headerlink" href="#curso-de-reactjs" title="Permanent link"></a></h1>
+<h2 id="1-introduccion-a-reactjs">1. Introducción a React.js<a class="headerlink" href="#1-introduccion-a-reactjs" title="Permanent link"></a></h2>
+<h3 id="1-que-es-reactjs">1. ¿Qué es React.js?<a class="headerlink" href="#1-que-es-reactjs" title="Permanent link"></a></h3>
+<p><strong>React</strong> cumple su función como biblioteca ya que para utilizar su código se debe importar. También es un Framework aunque las convenciones de cómo debe ser organizado todo no son estrictas.
+En este curso aprenderás las prácticas que la comunidad ha decidido que son buenas.</p>
+<p><strong>React es declarativo</strong>, lo que quiere decir que se le indica qué debe hacer pero no cómo debe hacerse, ahorrando de esta manera muchos pasos.</p>
+<p><strong>JSX</strong> es <em>HTML</em> dentro de Javascript, esto se verá más adelante en detalle.</p>
+<p><strong>React</strong> está <em>estructurado por componentes</em> que son como pequeños bloques de lego que al ser unidos forman aplicaciones de <strong>React</strong>. Estos componentes pueden tener estilos, ser enlazados a eventos y sus estados pueden ser modificados.</p>
+<p>Con <strong>React</strong> también se tiene la ventaja de que será escrito una sola vez y podrá ser utilizado en aplicaciones web, móviles, entre otras.</p>
+<h3 id="2-pre-requisitos">2. Pre-requisitos<a class="headerlink" href="#2-pre-requisitos" title="Permanent link"></a></h3>
+<ul>
+<li><strong>Desarrollo web online</strong>: Esto implica tener familiaridad y fortaleza en el uso de HTML y CSS.</li>
+<li><strong>Javascript</strong>: React es Javascript. Es importante saber usar Javascript en el navegador. Es deseable conocer JQuery y saber sobre promesas, clases y tener conocimientos sobre asincronía.</li>
+<li><strong>Terminal</strong>: La línea de comandos es indispensable para instalar herramientas, correr servidores y hacer diversas tareas.</li>
+</ul>
+<h3 id="3-herramientas-que-usaremos">3. Herramientas que usaremos<a class="headerlink" href="#3-herramientas-que-usaremos" title="Permanent link"></a></h3>
+<ul>
+<li><strong>Navegador</strong>: Especialmente Chrome ya que cuenta con óptimas herramientas de desarrollo.</li>
+<li><strong>React Developer Tools</strong>: Es una herramienta Open Source creada por Facebook y tiene instalación para Chrome o Firefox. Nos dejará ver el código de React inspeccionando elementos.</li>
+<li><strong>Editor de texto</strong>: Puedes usar cualquiera, en este curso sugerimos Visual Studio Code. Tiene muchos plugins útiles para el desarrollo.</li>
+<li><strong>Prettier</strong>: Es un plugin que hace que el código se vea bien sin importar cómo esta escrito.</li>
+</ul>
+<h3 id="4-create-react-app">4. Create-react-app<a class="headerlink" href="#4-create-react-app" title="Permanent link"></a></h3>
+<p><img align="absmiddle" alt=":link:" class="gemoji" height="20px" src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png" title=":link:" width="20px" /> <a href="https://create-react-app.dev/docs/getting-started/">Create React App - Getting Started</a></p>
+<p><strong>Create-react-app</strong> es una aplicación moderna que se usa desde una línea de comando. Antes de ella se configuraba todo el entorno manualmente lo cual tomaba mucho tiempo.</p>
+<p><strong>Pasos para obtenerlo</strong>:<br />
+Se debe instalar desde la línea de comando usando, estando parado donde se desea crear la carpeta del proyecto.</p>
+<div class="codehilite"><pre>npx create-react-app hello-react
+</pre></div>
+
+<p>En este punto se estará instalando React y otras herramientas, también se configurará el entorno usando <strong>Webpack</strong>.</p>
+<p>Una vez se instala todo entra a la carpeta <code>src</code> donde estará todo el código fuente de la aplicación, siendo el más importante <code>index.js</code> que es el punto de entrada a la aplicación.</p>
+<p>Finalmente para correr la aplicación se usa el comando</p>
+<div class="codehilite"><pre>npm start
+</pre></div>
+
+<ul>
+<li>Otras herramientas:</li>
+<li><strong>Babel</strong>: Traduce Javascript moderno (JSX) a un Javascript que todos los navegadores puedan interpretar.</li>
+<li><strong>Eslint</strong>: Lee el código y avisa de errores.</li>
+</ul>
+<h2 id="2-fundamentos">2. Fundamentos<a class="headerlink" href="#2-fundamentos" title="Permanent link"></a></h2>
+<h3 id="5-clonar-el-codigo-de-github">5. Clonar el código de GitHub<a class="headerlink" href="#5-clonar-el-codigo-de-github" title="Permanent link"></a></h3>
+<p><img align="absmiddle" alt=":octocat:" class="gemoji" height="20px" src="https://github.githubassets.com/images/icons/emoji/octocat.png" title=":octocat:" width="20px" /> <a href="https://github.com/sparragus/platzi-badges">platzi-badges</a></p>
+<p>CLonar el repositorio desde la commit <code>ReactDOM.render</code></p>
+<div class="codehilite"><pre>git clone --branch 1.ReactDOM.render https://github.com/Sparragus/platzi-badges.git
+</pre></div>
+
+<p>Se tiene que eliminar el archivo <code>.git</code></p>
+<ol>
+<li>Luego de tener descargada la carpeta, entramos a la carpeta desde la terminal, luego escribimos lo siguiente para ver cuales dependencias se han actualizado:</li>
+</ol>
+<div class="codehilite"><pre>npx npm-check-updates -u
+</pre></div>
+
+<ol start="2">
+<li>Luego instalar las dependencias con</li>
+</ol>
+<div class="codehilite"><pre>npm install
+</pre></div>
+
+<h3 id="6-reactdomrender">6. ReactDOM.render<a class="headerlink" href="#6-reactdomrender" title="Permanent link"></a></h3>
+<ul>
+<li><strong>React y ReactDOM</strong> trabajarán en conjunto.</li>
+<li>React como análogo a <strong>createElement</strong></li>
+<li>ReactDOM a <strong>appendChild</strong></li>
+<li><code>ReactDOM.render()</code> toma dos argumentos: Qué queremos renderizar y dónde lo queremos renderizar.</li>
+<li>Siempre que escribas JSX es requisito importar React.</li>
+</ul>
+<div class="codehilite"><pre><span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s2">&quot;react&quot;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="nx">ReactDOM</span> <span class="nx">from</span> <span class="s2">&quot;react-dom&quot;</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">element</span> <span class="o">=</span> <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">Hello</span><span class="p">,</span> <span class="nx">Platzi</span> <span class="nx">Badges</span><span class="o">!&lt;</span><span class="err">/h1&gt;;</span>
+
+<span class="kr">const</span> <span class="nx">container</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;app&quot;</span><span class="p">);</span>
+
+<span class="c1">// ReactDOM.render(__qué__, __dónde__);</span>
+<span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="nx">element</span><span class="p">,</span> <span class="nx">container</span><span class="p">);</span>
+</pre></div>
+
+<h3 id="7-jsx">7. JSX<a class="headerlink" href="#7-jsx" title="Permanent link"></a></h3>
+<p>JSX === Azúcar Sintactica === JavaScript</p>
+<p><strong>JSX</strong> es una extensión de <em>JavaScript</em> creada por Facebook para el uso con la biblioteca React. Sirve de preprocesador (como Sass o Stylus a CSS) y transforma el código generado con React a <em>JavaScript</em>.</p>
+<p><strong>JSX</strong> tiene su alternativa que es <code>React.createElement</code> pero es preferible <strong>JSX</strong> porque es mucho más legible y expresivo. Ambos tienen el mismo poder y la misma capacidad.</p>
+<p><code>React.createElement</code> recibe 3 argumentos:
+1. El tipo de elemento que estamos creando
+2. Sus atributos o props
+3. Y el children que es el contenido.</p>
+<p>Ejemplo:
+<code>React.createElement(‘a’, { href: ‘https://platzi.com’ }, ‘Ir a Platzi’);</code></p>
+<p>En <strong>JSX</strong> se utilizan las llaves para introducir variables o expresiones de <em>Javascript</em>. Lo que sea que esté adentro se va a evaluar y su resultado se mostrará en pantalla.</p>
+<p>Las expresiones pueden ser llamadas a otras funciones, cálculos matemáticos, etc. <em>Si las expresiones son false, 0, null, undefined, entre otros, no se verán.</em></p>
+<h2 id="3-creacion-y-diseno-de-componentes">3. Creación y diseño de componentes<a class="headerlink" href="#3-creacion-y-diseno-de-componentes" title="Permanent link"></a></h2>
+<h3 id="8-que-es-un-componente">8. ¿Qué es un componente?<a class="headerlink" href="#8-que-es-un-componente" title="Permanent link"></a></h3>
+<p>NOTA: Pagina(s) 20 - 32 de slides del curso</p>
+<p><img align="absmiddle" alt=":octocat:" class="gemoji" height="20px" src="https://github.githubassets.com/images/icons/emoji/octocat.png" title=":octocat:" width="20px" /> <a href="https://overreacted.io/es/how-are-function-components-different-from-classes/">¿En qué se diferencian los componentes de función de las clases?</a></p>
+<p>Los componentes en React son <strong>bloques de construcción</strong>.
+Las aplicaciones hechas con React son como figuras de Lego. Junta varias piezas (componentes) y puedes construir un website tan pequeño o tan grande como quieras.
+Los componentes serán barras de búsquedas, enlaces, encabezados, el header, etc.
+<strong>”Componente” vs “elemento&rdquo;</strong>
+Un elemento es a un objeto como un componente es a una clase. Si el elemento fuera una casa, el componente serían los planos para hacer esa casa.</p>
+<p><strong>Identificación de componentes</strong>
+Para identificarlos debes hacerte las siguientes preguntas:</p>
+<ol>
+<li>¿Qué elementos se repiten? Estos son los elementos en una lista o los que comparten aspecto visual y su funcionalidad.</li>
+<li>¿Qué elementos cumplen una función muy específica? Estos sirven para encapsular la lógica y permiten juntar muchos comportamientos y aspectos visuales en un solo lugar.</li>
+</ol>
+<p><strong>Identificar componentes es una habilidad esencial para poder desarrollar aplicaciones de React.</strong></p>
+<p><em>‘Componente’ vs ‘Elemento’</em><br />
++ Un elemento es a un objeto como un componente es a una clase.
++ Si el elemento fuera una casa, el componente sería los planos para hacer  esa casa.</p>
+<p><img alt="Componentes reactJS" src="/home/mack/Documents/mi_cuaderno/ReactJS/imgs/react-components-blog-image.jpg" /></p>
+<h3 id="9-que-es-y-como-funciona-un-componente-en-reactjs">9. Qué es y cómo funciona un componente en React.js<a class="headerlink" href="#9-que-es-y-como-funciona-un-componente-en-reactjs" title="Permanent link"></a></h3>
+<p><img alt="Que es y como funciona un compomente en ReactJS" src="/home/mack/Documents/mi_cuaderno/ReactJS/imgs/que_es_y_como_funciona_un_componente_en_reactjs.webp" /></p>
+<ol>
+<li>Nacen</li>
+<li>Crecen</li>
+<li>Desaparecen</li>
+</ol>
+<p>El ciclo de vida de los componentes tienen 3 faces -&gt; MONTAJE, ACTUALIZACIÓN, ELIMINACIÓN DE COMPONENTES
+1. <strong>Montaje</strong> Cuando los usuarios llegan a nuestra aplicación, cuando tienen su primera interacción con el, que es cuando aparecen los componentes.
+2. <strong>Actualización</strong> Cuando los componentes cambian y otros no; si cambian pasan por una actualización y se ejecuta <code>render()</code> generando el nuevo <code>DOM</code> y react manda la señal de conformación <code>componentDidUpdate()</code>. Es un buen monento para reaccionar a cambios. Como por ejemplo añadir una sugerencia a una bebida.
+3. <strong>Eliminación de los componentes</strong>, al entrar a otra página, varios componentes que se veian  ya no estaran en ella, react manda la señal <code>componentWillUnmount()</code>, seguido de la eliminación del codigo en el <code>DOM</code></p>
+<p><img alt="Que es y como funciona un compomente en ReactJS tecnico" src="/home/mack/Documents/mi_cuaderno/ReactJS/imgs/diagrama-ciclo-de-vida_react-tecnico.png" /></p>
+<h3 id="10-nuestro-primer-componente">10. Nuestro primer componente<a class="headerlink" href="#10-nuestro-primer-componente" title="Permanent link"></a></h3>
+<p><strong>NOTA</strong>: Nombre de commit <code>Add. _Curso ReactJS_ 3.PrimerComponente</code> en mi repo</p>
+<p>Dentro de la carpeta <code>src</code> crear carpeta <code>components</code> y otra <code>images</code></p>
+<p>En carpeta <code>components</code> se crea el primer componente se crea el archivo <code>Badge.js</code></p>
+<p>Se afecta el archivo <code>index.js</code> para importar el nuevo componente.
+<div class="codehilite"><pre><span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s1">&#39;react&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="nx">ReactDOM</span> <span class="nx">from</span> <span class="s1">&#39;react-dom&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="nx">Badge</span> <span class="nx">from</span> <span class="s1">&#39;./components/Badge&#39;</span>
+<span class="kr">const</span> <span class="nx">container</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;app&#39;</span><span class="p">);</span>
+<span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="o">&lt;</span><span class="nx">Badge</span> <span class="o">/&gt;</span><span class="p">,</span> <span class="nx">container</span><span class="p">);</span>
+</pre></div></p>
+<h3 id="11-como-aplicar-estilos">11. Cómo aplicar estilos<a class="headerlink" href="#11-como-aplicar-estilos" title="Permanent link"></a></h3>
+<p><strong>NOTA</strong>: Nombre de commit <code>Add. _Curso ReactJS_ 4.Estilos</code> en mi repo</p>
+<p>Dentro de la carpeta <code>components</code> se crea otra carpeta <code>styles</code> que son los estilso para los componentes.</p>
+<p>Se importan el en el componente <code>Badge</code>
+<div class="codehilite"><pre><span class="kr">import</span> <span class="s1">&#39;./styles/Badge.css&#39;</span><span class="p">;</span>
+</pre></div>
+Se importan las clases pero con <strong>className</strong> para que react las identifique
+En el archivo <code>index.js</code> se importan los estylos globales y los archivos de estilos bootstrap, creando un archivo a mismo nivel de la carpeta <code>src</code> archivo <code>global.css</code> que son cambios personalisados para el proyecto.
+<div class="codehilite"><pre><span class="kr">import</span> <span class="s1">&#39;./global.css&#39;</span><span class="p">;</span>
+</pre></div>
+Y en Badge.js se cambian etiquetas.</p>
+<ul>
+<li>Para los estilos crearemos una carpeta llamada <strong>Styles</strong> y allí vivirán todos los archivos de estilos que tienen que ver con los componentes.</li>
+<li>Para usar los estilos es necesario importarlos con <strong>import</strong></li>
+<li>React funciona ligeramente diferente y para los atributos de clases no se utiliza class sino <strong>className</strong></li>
+<li>Es posible utilizar Bootstrap con React, sólo debe ser instalado con <code>npm install bootstrap</code> y debe ser importado en el index.js</li>
+<li>Existen estilos que son usados de manera global o en varios componentes, <em>así que deben ser importados en el</em> <code>index.js</code></li>
+</ul>
+<h3 id="12-props">12. Props<a class="headerlink" href="#12-props" title="Permanent link"></a></h3>
+<p>Los <em>props que es la forma corta de properties</em> son argumentos de una función y en este caso serán los atributos de nuestro componente como <strong>class, src, etc</strong>.</p>
+<p>Estos props salen de una variable de la clase que se llama <code>this.props</code> y los valores son asignados directamente en el <code>ReactDOM.render()</code>.</p>
+<p>Para pasarle <em>props</em> el componente <code>Badge</code> se modifican los archivos <code>index.js</code> y <code>Badge.js</code>. Se pasan como parametros del <code>index.js</code> al <code>Badge.js</code> como <code>this.props</code>
+<code>index.js</code>
+<div class="codehilite"><pre><span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s1">&#39;react&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="nx">ReactDOM</span> <span class="nx">from</span> <span class="s1">&#39;react-dom&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">&#39;bootstrap/dist/css/bootstrap.css&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">&#39;./global.css&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="nx">Badge</span> <span class="nx">from</span> <span class="s1">&#39;./components/Badge&#39;</span><span class="p">;</span>
+<span class="kr">const</span> <span class="nx">container</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;app&#39;</span><span class="p">);</span>
+<span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span>
+  <span class="o">&lt;</span><span class="nx">Badge</span>
+    <span class="nx">firstName</span><span class="o">=</span><span class="s2">&quot;Richard&quot;</span>
+    <span class="nx">lastName</span><span class="o">=</span><span class="s2">&quot;Kaufman&quot;</span>
+    <span class="nx">avatarUrl</span><span class="o">=</span><span class="s2">&quot;https://www.gravatar.com/avatar/21594ed15d68ace3965642162f8d2e84?d=identicon&quot;</span>
+    <span class="nx">jobTitle</span><span class="o">=</span><span class="s2">&quot;Frontend Engineer&quot;</span>
+    <span class="nx">twitter</span><span class="o">=</span><span class="s2">&quot;sparragus&quot;</span>
+  <span class="o">/&gt;</span><span class="p">,</span>
+  <span class="nx">container</span>
+<span class="p">);</span>
+</pre></div>
+<code>Badge.js</code>
+<div class="codehilite"><pre><span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s1">&#39;react&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">&#39;./styles/Badge.css&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="nx">confLogo</span> <span class="nx">from</span> <span class="s1">&#39;../images/badge-header.svg&#39;</span><span class="p">;</span>
+<span class="kr">class</span> <span class="nx">Badge</span> <span class="kr">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">&quot;Badge&quot;</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">&quot;Badge__header&quot;</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="nx">img</span> <span class="nx">src</span><span class="o">=</span><span class="p">{</span><span class="nx">confLogo</span><span class="p">}</span> <span class="nx">alt</span><span class="o">=</span><span class="s2">&quot;Logo de la conferencia&quot;</span> <span class="o">/&gt;</span>
+        <span class="o">&lt;</span><span class="err">/div&gt;</span>
+
+        <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">&quot;Badge__section-name&quot;</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="nx">img</span>
+            <span class="nx">className</span><span class="o">=</span><span class="s2">&quot;Badge__avatar&quot;</span>
+            <span class="nx">src</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">avatarUrl</span><span class="p">}</span> <span class="c1">// &lt;-- PROPS</span>
+            <span class="nx">alt</span><span class="o">=</span><span class="s2">&quot;Avatar&quot;</span>
+          <span class="o">/&gt;</span>
+          <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span>
+            <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">firstName</span><span class="p">}</span> <span class="o">&lt;</span><span class="nx">br</span> <span class="o">/&gt;</span> <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">lastName</span><span class="p">}</span> <span class="cm">/* &lt;-- PROPS */</span>
+          <span class="o">&lt;</span><span class="err">/h1&gt;</span>
+        <span class="o">&lt;</span><span class="err">/div&gt;</span>
+        <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">&quot;Badge__section-info&quot;</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="nx">h3</span><span class="o">&gt;</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">jobTitle</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/h3&gt; /</span><span class="o">/</span> <span class="o">&lt;--</span> <span class="nx">PROPS</span>
+          <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="err">@</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">twitter</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/div&gt; /</span><span class="o">/</span> <span class="o">&lt;--</span> <span class="nx">PROPS</span>
+        <span class="o">&lt;</span><span class="err">/div&gt;</span>
+        <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">&quot;Badge__footer&quot;</span><span class="o">&gt;</span><span class="err">#</span><span class="nx">platziconf</span><span class="o">&lt;</span><span class="err">/div&gt;</span>
+      <span class="o">&lt;</span><span class="err">/div&gt;</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="kr">export</span> <span class="k">default</span> <span class="nx">Badge</span><span class="p">;</span>
+</pre></div></p>
+<h3 id="13-nuestra-primera-pagina">13. Nuestra primera página<a class="headerlink" href="#13-nuestra-primera-pagina" title="Permanent link"></a></h3>
+<p><strong>NOTA</strong>: Nombre de commit <code>Add. _Curso ReactJS_ 6.NuestraPrimeraPagina"</code> en mi repo</p>
+<p>Navbar es un componente que se importa de Bootstrap</p>
+<ul>
+<li>Las páginas en React son componentes y conseguir distinguirlas nos servirá para saber que es un componente que adentro lleva otros componentes.</li>
+<li>Al escribir los <em>props</em> no importa el orden en el que lo hagas, únicamente importa el nombre.</li>
+</ul>
+<p>Dentro de la carpeta <code>src</code> se crea la nueva pagina se crea en la carpeta <code>pages</code> el archivo/componente <code>BadgeNew.js</code> que sera la nueva página y tambien , la carpeta <code>styles</code> y dentro <code>BadgeNew.css</code></p>
+<p>Dentro de la carpeta <code>components</code> se crea el archivo del componente <code>Navbar.js</code> y dentro de <code>styles</code> su archivo de estilos <code>Navbar.css</code></p>
+<p>En el archivo <code>index.js</code> se modifica para importar la nueva pagina <code>BadgeNew</code>
+<div class="codehilite"><pre><span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s1">&#39;react&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="nx">ReactDOM</span> <span class="nx">from</span> <span class="s1">&#39;react-dom&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">&#39;bootstrap/dist/css/bootstrap.css&#39;</span><span class="p">;</span>
+
+<span class="kr">import</span> <span class="s1">&#39;./global.css&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="nx">BadgeNew</span> <span class="nx">from</span> <span class="s1">&#39;./pages/BadgeNew&#39;</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">container</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;app&#39;</span><span class="p">);</span>
+
+<span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="o">&lt;</span><span class="nx">BadgeNew</span> <span class="o">/&gt;</span><span class="p">,</span> <span class="nx">container</span><span class="p">);</span>
+</pre></div></p>
+<h3 id="14-enlazando-eventos">14. Enlazando eventos<a class="headerlink" href="#14-enlazando-eventos" title="Permanent link"></a></h3>
+<ul>
+<li>React dispone de eventos. Cada vez que se recibe información en un input se obtiene un evento <code>onChange</code> y se maneja con un método de la clase this.handleChange</li>
+<li>Los elementos button también tienen un evento que es <code>onClick</code>.</li>
+<li>Cuando hay un botón dentro de un formulario, este automáticamente será de tipo <code>submit</code>. Si no queremos que pase así hay dos maneras de evitarlo: especificando que su valor es de tipo button o manejándolo desde el formulario cuando ocurre el evento <code>onSubmit</code>.</li>
+</ul>
+<p>Se crea en la carpeta de <code>components</code> el nuevo componente de formulario <code>BadgeForm.js</code> y se tienen que tomar en cuenta como se manejan los eventos en el formulario con:
+<div class="codehilite"><pre><span class="nx">handleChange</span> <span class="o">=</span> <span class="nx">e</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">({</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span>
+      <span class="nx">value</span><span class="o">:</span> <span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span>
+    <span class="p">});</span>
+  <span class="p">};</span>
+
+  <span class="nx">handleClick</span> <span class="o">=</span> <span class="nx">e</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Button was clicked&#39;</span><span class="p">);</span>
+  <span class="p">};</span>
+
+  <span class="nx">handleSubmit</span> <span class="o">=</span> <span class="nx">e</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Form was submitted&#39;</span><span class="p">);</span>
+  <span class="p">};</span>
+</pre></div>
+Y se enlasa el formulario con <code>Badge.js</code> con
+<div class="codehilite"><pre><span class="kr">import</span> <span class="nx">BadgeForm</span> <span class="nx">from</span> <span class="s1">&#39;../components/BadgeForm&#39;</span><span class="p">;</span>
+<span class="c1">// y </span>
+<span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">&quot;col-6&quot;</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="nx">BadgeForm</span> <span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="err">/div&gt;</span>
+</pre></div>
+para que en la página se pueda mostrar</p>
+<h3 id="15-manejo-de-estado">15. Manejo de estado<a class="headerlink" href="#15-manejo-de-estado" title="Permanent link"></a></h3>
+<p><strong>NOTA</strong>: Nombre de commit <code>Add. _Curso ReactJS_ 8.ManejoDeEstado"</code> en mi repo
+Hasta esta clase todos los componentes han obtenido su información a través de props que vienen desde afuera (otros componentes) pero hay otra manera en la que los componentes pueden producir su propia información y guardarla para ser consumida o pasada a otros componentes a través de sus props. <em>La clave está en que la información del</em> <strong>state</strong> a otros componentes pasará en una sola dirección y podrá ser consumida pero no modificada.</p>
+<p>Para inicializar el estado de las variables del formulario
+<div class="codehilite"><pre><span class="nx">state</span> <span class="o">=</span> <span class="p">{},</span>
+</pre></div>
+Antes de la funcion <code>handleChange</code> que se encarga de manejar/obtener los valores de los inputs.</p>
+<p>Para guardar la información en el estado se usa una función de la clase component llamada <strong>setState</strong> a la cual se le debe pasar un objeto con la información que se quiere guardar.
+<div class="codehilite"><pre><span class="nx">handleChange</span> <span class="o">=</span> <span class="nx">e</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span>
+      <span class="p">[</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">name</span><span class="p">]</span><span class="o">:</span> <span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span>
+    <span class="p">});</span>
+  <span class="p">};</span>
+</pre></div>
+Se guarda en un arreglo los estados del formulario/los valores de los inputs</p>
+<p>Aunque no se ve, la información está siendo guardada en dos sitios. Cada input guarda su propio valor y al tiempo la está guardando en <strong>setState</strong>, lo cual no es ideal. </p>
+<p><em>Para solucionarlo hay que modificar los inputs de un estado de no controlados a controlados.</em>
+<div class="codehilite"><pre><span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">firstName</span><span class="p">}</span>
+<span class="c1">// --</span>
+<span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">lastName</span><span class="p">}</span>
+<span class="c1">// --</span>
+<span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">email</span><span class="p">}</span>
+</pre></div></p>
+<h3 id="16-levantamiento-del-estado">16. Levantamiento del estado<a class="headerlink" href="#16-levantamiento-del-estado" title="Permanent link"></a></h3>
+<p><strong>NOTA</strong>: Nombre de commit <code>Add. _Curso ReactJS_ 9.LevantarElEstado 01"</code> en mi repo</p>
+<p><strong>Levantar el estado</strong> es una técnica de React que pone el estado en una localización donde se le pueda pasar como props a los componentes. Lo ideal es poner el estado en el lugar más cercano a todos los componentes que quieren compartir esa información.</p>
+<p>Algo interesante que le da el nombre a React es su parte de <strong>“reactivo”</strong> ya que cada vez que hay un cambio en el estado o en los props que recibe un componente se vuelve a renderizar todo el componente y todos sus descendientes.</p>
+<p>Ahora guardaremos las variables en el <code>BadgeNew.js</code> que contiene el formulario y los badges, por lo que:</p>
+<ul>
+<li>
+<p>En <code>BadgeNew.js</code><br />
+  1. <em>Inicializamos el state</em> y creamos un <code>objeto form</code>, con todos sus atributos inicializados vacíos tambien
+  2. Creamos el método <code>handleChange</code> para que cree una copia, la edite y la guarde en el state.form cada que suceda el evento <code>onchange</code></p>
+</li>
+<li>
+<p>Dentro del render
+  3. Mandamos como <em>props</em> cada uno de los states del form a <code>&lt;Badge /&gt;</code>
+  4. Mandamos como <em>props</em> el &ldquo;arreglo&rdquo; del <code>state.form</code> a <code>BadgeForm.js</code> para que refleje el valor(?no estoy seguro)
+  5. Declaramos el atributo <code>onchange</code> en <em>BadgeForm</em> para que llame al metodo <code>handleChange</code></p>
+</li>
+<li>
+<p>En <code>Badge.js</code>
+  6. Mostramos cada uno de los valores recibidos como <code>this.props.name</code> dentro del render</p>
+</li>
+<li>
+<p>En el <code>BadgeForm.js</code>
+  7. Mostramos cada posicion en el atributo value con <code>this.props.formValues.value</code>
+  8. Declaramos que al hacer un cambio se vera reflejado en el change padre, mediante el <code>onchange</code> hijo</p>
+</li>
+</ul>
+<ol>
+<li><code>BadgeNew.js</code>
+<div class="codehilite"><pre>  <span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">form</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">firstName</span><span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+      <span class="nx">lastName</span><span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+      <span class="nx">email</span><span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+      <span class="nx">jobTitle</span><span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+      <span class="nx">twitter</span><span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">};</span>
+</pre></div></li>
+<li><code>BadgeNew.js</code>
+<div class="codehilite"><pre>  <span class="nx">handleChange</span> <span class="o">=</span> <span class="nx">e</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span>
+      <span class="nx">form</span><span class="o">:</span> <span class="p">{</span>
+        <span class="p">...</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">form</span><span class="p">,</span>
+        <span class="p">[</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">name</span><span class="p">]</span><span class="o">:</span> <span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span>
+      <span class="p">},</span>
+    <span class="p">});</span>
+  <span class="p">};</span>
+</pre></div>
+2.1. <code>BadgeNew.js</code>
+<div class="codehilite"><pre><span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">&quot;col-6&quot;</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="nx">BadgeForm</span>
+    <span class="nx">onChange</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">handleChange</span><span class="p">}</span>
+    <span class="nx">formValues</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">form</span><span class="p">}</span>
+  <span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="err">/div&gt;</span>
+</pre></div>
+3 - 4 <code>&lt;Badge /&gt;</code>
+<div class="codehilite"><pre><span class="o">&lt;</span><span class="nx">Badge</span>
+  <span class="nx">firstName</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">firstName</span><span class="p">}</span>
+  <span class="nx">lastName</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">lastName</span><span class="p">}</span>
+  <span class="nx">twitter</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">twitter</span><span class="p">}</span>
+  <span class="nx">jobTitle</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">jobTitle</span><span class="p">}</span>
+  <span class="nx">email</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">email</span><span class="p">}</span>
+  <span class="nx">avatarUrl</span><span class="o">=</span><span class="s2">&quot;https://www.gravatar.com/avatar/21594ed15d68ace3965642162f8d2e84?d=identicon&quot;</span>
+<span class="err">/&gt;</span>
+</pre></div></li>
+<li><code>Badge.js</code>
+<div class="codehilite"><pre><span class="nx">Mostramos</span> <span class="nx">cada</span> <span class="nx">uno</span> <span class="nx">de</span> <span class="nx">los</span> <span class="nx">valores</span> <span class="nx">recibidos</span> <span class="nx">como</span> <span class="err">`</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">name</span><span class="err">`</span> <span class="nx">dentro</span> <span class="nx">del</span> <span class="nx">render</span>
+</pre></div>
+7 - 8. <code>BadgeForm.js</code>
+<div class="codehilite"><pre><span class="nx">onChange</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">onChange</span><span class="p">}</span>
+<span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">formValues</span><span class="p">.</span><span class="nx">firstName</span><span class="p">}</span>
+<span class="c1">// --</span>
+<span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">formValues</span><span class="p">.</span><span class="nx">lastName</span><span class="p">}</span>
+<span class="c1">// --</span>
+<span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">formValues</span><span class="p">.</span><span class="nx">email</span><span class="p">}</span>
+<span class="c1">// -- </span>
+<span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">formValues</span><span class="p">.</span><span class="nx">jobTitle</span><span class="p">}</span>
+<span class="c1">// --</span>
+<span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">formValues</span><span class="p">.</span><span class="nx">twitter</span><span class="p">}</span>
+</pre></div></li>
+</ol>
+<div class="codehilite"><pre>
+</pre></div>
+
+<h3 id="17-listas-de-componentes">17. Listas de componentes<a class="headerlink" href="#17-listas-de-componentes" title="Permanent link"></a></h3>
+<p><strong>NOTA</strong>: Nombre de commit <code>Add. _Curso ReactJS_ 10.ListaDeComponentes"</code> en mi repo
+<img alt="Componente para listar" src="/home/mack/Documents/mi_cuaderno/ReactJS/imgs/react_componente_para_listar.png" /></p>
+<p>Se modifica el archivo <code>index.js</code> para que se importe a la pagina principal la nueva pagina <code>index.js</code> 
+<div class="codehilite"><pre><span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s1">&#39;react&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="nx">ReactDOM</span> <span class="nx">from</span> <span class="s1">&#39;react-dom&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">&#39;bootstrap/dist/css/bootstrap.css&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">&#39;./global.css&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="nx">BadgeNew</span> <span class="nx">from</span> <span class="s1">&#39;./pages/BadgeNew&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="nx">Badges</span> <span class="nx">from</span> <span class="s1">&#39;./pages/Badges&#39;</span><span class="p">;</span>
+<span class="kr">const</span> <span class="nx">container</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;app&#39;</span><span class="p">);</span>
+<span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="o">&lt;</span><span class="nx">Badges</span> <span class="o">/&gt;</span><span class="p">,</span> <span class="nx">container</span><span class="p">);</span>
+</pre></div>
+Se crea el archivo <code>Badges.js</code> el cual es la nueva página que contendra el <code>set</code> de la <code>data</code> ya seteado con información. y el template para mostrar la información </p>
+<p>Que será enviada al nuevo componente que se encarga de &ldquo;Listar&rdquo; los badges <code>BadgesList.js</code> por medio del componente.
+Se modifica el archivo <code>index.js</code> para que se importe a la pagina principal la nueva pagina <code>Badges.js</code> 
+<div class="codehilite"><pre><span class="o">&lt;</span><span class="nx">BadgesList</span> <span class="nx">badges</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">data</span><span class="p">}</span> <span class="o">/&gt;</span>
+</pre></div>
+En el nuevo componente <code>BadgesList.js</code> importa la clase <strong>BadgesListItem</strong> que se encuentra en el mismo componente y se encarga de deplegar la info del <code>data</code> siertos datos del objeto <code>set</code>
+<code>BadgesList.js</code>
+<div class="codehilite"><pre><span class="kr">class</span> <span class="nx">BadgesListItem</span> <span class="kr">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">&quot;BadgesListItem&quot;</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">img</span>
+          <span class="nx">className</span><span class="o">=</span><span class="s2">&quot;BadgesListItem__avatar&quot;</span>
+          <span class="nx">src</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">badge</span><span class="p">.</span><span class="nx">avatarUrl</span><span class="p">}</span>
+          <span class="nx">alt</span><span class="o">=</span><span class="p">{</span><span class="err">`</span><span class="nx">$</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">badge</span><span class="p">.</span><span class="nx">firstName</span><span class="p">}</span> <span class="nx">$</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">badge</span><span class="p">.</span><span class="nx">lastName</span><span class="p">}</span><span class="err">`</span><span class="p">}</span>
+        <span class="o">/&gt;</span>
+
+        <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="nx">strong</span><span class="o">&gt;</span>
+            <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">badge</span><span class="p">.</span><span class="nx">firstName</span><span class="p">}</span> <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">badge</span><span class="p">.</span><span class="nx">lastName</span><span class="p">}</span>
+          <span class="o">&lt;</span><span class="err">/strong&gt;</span>
+          <span class="o">&lt;</span><span class="nx">br</span> <span class="o">/&gt;</span><span class="err">@</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">badge</span><span class="p">.</span><span class="nx">twitter</span><span class="p">}</span>
+          <span class="o">&lt;</span><span class="nx">br</span> <span class="o">/&gt;</span>
+          <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">badge</span><span class="p">.</span><span class="nx">jobTitle</span><span class="p">}</span>
+        <span class="o">&lt;</span><span class="err">/div&gt;</span>
+      <span class="o">&lt;</span><span class="err">/div&gt;</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="kr">class</span> <span class="nx">BadgesList</span> <span class="kr">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">&quot;BadgesList&quot;</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">ul</span> <span class="nx">className</span><span class="o">=</span><span class="s2">&quot;list-unstyled&quot;</span><span class="o">&gt;</span>
+          <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">badges</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">badge</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="p">(</span>
+              <span class="o">&lt;</span><span class="nx">li</span> <span class="nx">key</span><span class="o">=</span><span class="p">{</span><span class="nx">badge</span><span class="p">.</span><span class="nx">id</span><span class="p">}</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="nx">BadgesListItem</span> <span class="nx">badge</span><span class="o">=</span><span class="p">{</span><span class="nx">badge</span><span class="p">}</span> <span class="o">/&gt;</span>
+              <span class="o">&lt;</span><span class="err">/li&gt;</span>
+            <span class="p">);</span>
+          <span class="p">})}</span>
+        <span class="o">&lt;</span><span class="err">/ul&gt;</span>
+      <span class="o">&lt;</span><span class="err">/div&gt;</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="kr">export</span> <span class="k">default</span> <span class="nx">BadgesList</span><span class="p">;</span>
+</pre></div></p>
+<h2 id="4-react-router">4. React Router<a class="headerlink" href="#4-react-router" title="Permanent link"></a></h2>
+<h3 id="18-introduccion-a-react-router">18. Introducción a React Router<a class="headerlink" href="#18-introduccion-a-react-router" title="Permanent link"></a></h3>
+<p>Las aplicaciones que se trabajan en React son llamadas <strong>single page apps</strong>. Esto es posible gracias a <strong>React Router</strong> que es una librería Open Source.</p>
+<p><strong>Multi Page Apps</strong>: Cada página implica una petición al servidor. La respuesta usualmente tiene todo el contenido de la página.</p>
+<p><strong>Single Page Apps</strong> <em>(SPA)</em>: Aplicaciones que cargan una sola página de HTML y cualquier actualización la hacen re-escribiendo el HTML que ya tenían.</p>
+<p><strong>React Router (v4)</strong>: Nos da las herramientas para poder hacer <em>SPA</em> fácilmente. Usaremos 4 componentes:</p>
+<ol>
+<li><strong>BrowserRouter</strong>: es un componente que debe estar siempre lo más arriba de la aplicación. Todo lo que esté adentro funcionará como una <em>SPA</em>.</li>
+<li><strong>Route</strong>: Cuando hay un match con el path, se hace render del component. <em>El component va a recibir tres props</em>: <strong>match, history, location</strong>.</li>
+<li><strong>Switch</strong>: Dentro de <em>Switch</em> solamente van elementos de <em>Route</em>. <em>Switch</em> se asegura que solamente un <em>Route</em> se renderize.</li>
+<li><strong>Link</strong>: Toma el lugar del elemento <a>, evita que se recargue la página completamente y actualiza la URL.</li>
+</ol>
+<div class="codehilite"><pre>
+</pre></div>
+
+<h3 id="19-division-de-la-aplicacion-en-rutas">19. División de la aplicación en rutas<a class="headerlink" href="#19-division-de-la-aplicacion-en-rutas" title="Permanent link"></a></h3>
+<div class="codehilite"><pre>
+</pre></div>
+
+<h3 id="20-mejorando-la-user-interface-con-un-layout">20. Mejorando la User Interface con un Layout<a class="headerlink" href="#20-mejorando-la-user-interface-con-un-layout" title="Permanent link"></a></h3>
+<div class="codehilite"><pre>
+</pre></div>
+
+<h2 id="5-component-lifecycle">5. Component Lifecycle<a class="headerlink" href="#5-component-lifecycle" title="Permanent link"></a></h2>
+<h3 id="21-introduccion-del-ciclo-de-vida-de-un-componente">21. Introducción del ciclo de vida de un componente<a class="headerlink" href="#21-introduccion-del-ciclo-de-vida-de-un-componente" title="Permanent link"></a></h3>
+<div class="codehilite"><pre>
+</pre></div>
+
+<h3 id="22-practica-del-ciclo-de-vida">22. Práctica del ciclo de vida<a class="headerlink" href="#22-practica-del-ciclo-de-vida" title="Permanent link"></a></h3>
+<div class="codehilite"><pre>
+</pre></div>
+
+<h2 id="6-llamadas-a-un-api">6. Llamadas a un API<a class="headerlink" href="#6-llamadas-a-un-api" title="Permanent link"></a></h2>
+<h3 id="23-introduccion-llamadas-a-un-api">23. Introducción llamadas a un API<a class="headerlink" href="#23-introduccion-llamadas-a-un-api" title="Permanent link"></a></h3>
+<h3 id="24-reactjs-como-traer-datos-de-un-api-en-react">24. React.js: Cómo traer datos de un API en React<a class="headerlink" href="#24-reactjs-como-traer-datos-de-un-api-en-react" title="Permanent link"></a></h3>
+<h3 id="25-solicitando-datos-get">25. Solicitando datos (GET)<a class="headerlink" href="#25-solicitando-datos-get" title="Permanent link"></a></h3>
+<h3 id="26-mejorando-la-experiencia-de-usuario-durante-una-peticion">26. Mejorando la Experiencia de Usuario durante una petición<a class="headerlink" href="#26-mejorando-la-experiencia-de-usuario-durante-una-peticion" title="Permanent link"></a></h3>
+<h3 id="27-enviando-datos-post">27. Enviando datos (POST)<a class="headerlink" href="#27-enviando-datos-post" title="Permanent link"></a></h3>
+<h3 id="28-manejando-los-estados-de-la-peticion-durante-el-post">28. Manejando los estados de la petición durante el POST<a class="headerlink" href="#28-manejando-los-estados-de-la-peticion-durante-el-post" title="Permanent link"></a></h3>
+<h3 id="29-actualizando-datos-put">29. Actualizando datos (PUT)<a class="headerlink" href="#29-actualizando-datos-put" title="Permanent link"></a></h3>
+<h3 id="30-actualizaciones-automaticas">30. Actualizaciones automáticas<a class="headerlink" href="#30-actualizaciones-automaticas" title="Permanent link"></a></h3>
+<h2 id="7-mejorando-la-ui">7. Mejorando la UI<a class="headerlink" href="#7-mejorando-la-ui" title="Permanent link"></a></h2>
+<h3 id="31-los-detalles-de-un-badge">31. Los detalles de un Badge<a class="headerlink" href="#31-los-detalles-de-un-badge" title="Permanent link"></a></h3>
+<h3 id="32-ui-components-y-container-components">32. UI Components y Container Components<a class="headerlink" href="#32-ui-components-y-container-components" title="Permanent link"></a></h3>
+<h3 id="33-portales">33. Portales<a class="headerlink" href="#33-portales" title="Permanent link"></a></h3>
+<h3 id="34-modales">34. Modales<a class="headerlink" href="#34-modales" title="Permanent link"></a></h3>
+<h3 id="35-hooks">35. Hooks<a class="headerlink" href="#35-hooks" title="Permanent link"></a></h3>
+<h3 id="36-search-filter">36. Search filter<a class="headerlink" href="#36-search-filter" title="Permanent link"></a></h3>
+<p><em>Preguntas del examen Curso de React.js</em></p>
+<ol>
+<li>El hecho de que React sea declarativo quiere decir que:
+  + c[OK] Especificamos que queremos, no como lo hacemos</li>
+<li>Create-react-app nos ayuda a configurarlas siguientes herramientas:
+  + a[OK] Webpack, Babel</li>
+<li>En pseudocódigo, decimos que ReactDOM.render recibe los siguientes argumentos:
+  + d[OK] createPortal(que elemento, donde)</li>
+<li>¿Cuál de las siguientes no es JSX válido?
+  + c[OK] <code>&lt;BadgeList badges={{firstName:'Julio'}, {firstName: 'Sandra'}}/&gt;</code></li>
+<li>JSX es syntactic sugar para:
+  + a[OK] React.creatElement</li>
+<li>¿Cuál es la diferencia entre <code>&lt;Navbar /&gt;</code> y Navbar?
+  + b[OK] El primero es un elemento, y el segundo un componente</li>
+<li>¿Cuál de estos momentos presenta la mejor oportunidad para crear un componente?
+  + d[OK] Cuando tenemos una lista y presentamos alguna información repetitivamente</li>
+<li>¿Cuál de estos es un evento válido?
+  + b[OK] onKeyDown</li>
+<li>¿Qué evento se dispara cuando un usuario escribe en una caja de texto?
+  + a[OK] onChange</li>
+<li>¿Cuál es el único momento en el que podemos escribir directo a this.state?
+  + d[OK] Durante la inicialización de una clase Component</li>
+<li>Hay ocasiones en las cuales hay un estado que tenemos que compartir con dos o más componentes. ¿A dónde debemos levantar ese estado?
+  + b[OK] Al componente en común más cercano a los componentes que lo usan</li>
+<li>¿Cuál prop es importante cuando renderizamos una lista de componentes?
+  + a[OK] key</li>
+<li>¿Cuál es la diferencia entre <code>&lt;Link&gt;</code> y <code>&lt;a &gt;</code>?
+  + c[OK] <code>&lt;Link&gt;</code> evita que se cargue completamente la página, mientras que <code>&lt;a&gt;</code> si</li>
+<li>¿Cuál es el feature principal de un Switch?
+  + a[OK] Asegurar que solamente un Route se renderice</li>
+<li>En React hay un prop que representa el contenido entre las etiquetas de un elemento. ¿Cómo se llama?
+  + b[OK] props.children</li>
+<li>¿Cómo se llama el primer método que se ejecuta cuando se monta un componente?
+  + c[OK] constructor()</li>
+<li>¿Cuál es el último método que se llama cuando se desmonta un componente?
+  + a[OK] componentWillUnmount()</li>
+<li>¿Cuál es el método que React utiliza como señal de que ocurrió una actualización?
+  + b[OK] componentDidUpdate()</li>
+<li>componentDidUpdate recibe dos argumentos. ¿Cuáles son y en qué orden?
+  + d[OK] preProps, prevState</li>
+<li>¿Cuáles son los tres estados de una petición?
+  + a[OK] loading, error, data</li>
+<li>En algunas ocasiones podemos definir dos sub-estados para los datos que obtenemos de una peticion. Esto son:
+  + c[OK] con datos, vacio</li>
+<li>¿Cuál de estos es el mejor lugar para iniciar una llamada HTTP?
+  + c[OK] componentDidMount()</li>
+<li>Cuando tenemos un setInterval o un setTimeout en nuestro componente ¿en dónde debemos removerlo?
+  + d[OK] componentWillUnmount</li>
+<li>¿Cuándo es buen momento para dividir un componente en contenedor y componente presentacional?
+  + a[OK] Cuando contiene lógica compleja de comportamiento y tiene una interfaz por presentar</li>
+<li>ReactDOM.createPortal nos permite hacer render de
+  + c[OK] Un elemento fuera de la aplicación principal</li>
+<li>En pseudocódigo, decimos que ReactDOM.createPortal recibe los siguientes argumentos:
+  + c[OK] render(que elemento, donde)</li>
+<li>¿Por qué usamos un Portal para asegurar que los modales queden en un nodo fuera de la apli  cación principal?
+  + b[OK] Para evitar problemas de stilos, en particular, con el z-index</li>
+<li>Una regla de los hooks es que el su nombre debe comenzar con esta palabra:
+  + c[OK] use</li>
+<li>¿Cuál de estas sería un uso correcto de React.useState?
+  + b[OK] const [ name, setName ] = React.useState(&ldquo;&rdquo;)</li>
+</ol></article></body></html>

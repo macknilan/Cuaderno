@@ -1,0 +1,40 @@
+<!--
+# Control de eventos con Vue.js
+- Otra de las cosas que Vue.js nos permite hacer es el manejo de eventos,
+ es decir, reaccionar ante la interacción de los usuarios con los elementos de un sitio web.
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>VueJs</title>
+    <link rel="stylesheet" href="">
+</head>
+<body>
+    <div id="app">
+        <button v-on:click="sumar">Sumar 1</button> <!-- DE LOS DOS MEDOTOS ES CORRECTOS -->
+        <button @click="restar">Restar 1</button> <!-- DE LOS DOS MEDOTOS ES CORRECTOS -->
+        El contador esta en {{ contador }}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="text/javascript">
+        let app = new Vue({
+            el: '#app',
+            data: {
+                contador: 0
+            },
+            methods:{
+                sumar: function () { // NO ACEPTA =>
+                    this.contador++
+                },
+                restar: function () {
+                    this.contador--
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tamaño items en columnas</title>
+    <style>
+        body {
+            font-family: Arial;
+        }
+        .container {
+            display: grid;
+            grid-template-rows: repeat(4, 1fr);
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 10px;
+            height: 100vh;
+        }
+        .item {
+            text-align: center;
+            background: lightblue;
+            padding: 10px;
+            border: 1px solid red;
+        }
+        .item .item {
+            background: yellow;
+        }
+        .item:nth-of-type(1) {
+            background: blue;
+            grid-column-start: 1;
+            grid-column-end: 3;
+        }
+        .item:nth-of-type(8) {
+            /* grid-column: 1 / span 2; */ /* DEFINE EL NUMERO DE COLUMNAS QUE VA A OCUPAR */
+            grid-column: 1 / -1; /* -1 QUE ABARQUE TODO EL ANCHO */
+        }
+        .item:nth-of-type(7) {
+            grid-column: 2 / 4;
+        }
+    </style>
+</head>
+<body>
+    <section class="container">
+        <div class="item">#1</div>
+        <div class="item">#2</div>
+        <div class="item">#3</div>
+        <div class="item">#4</div>
+        <div class="item">#5</div>
+        <div class="item">#6</div>
+        <div class="item">#7</div>
+        <div class="item">#8</div>
+        <div class="item">#9</div>
+        <div class="item">#10</div>
+        <div class="item">#11</div>
+        <div class="item">#12</div>
+    </section>
+</body>
+</html>

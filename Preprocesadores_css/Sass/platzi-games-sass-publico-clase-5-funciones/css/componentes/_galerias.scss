@@ -1,0 +1,27 @@
+.galeria {
+	width: 50%;
+	height: 250px;
+	margin: 10px auto;
+	padding: 20px 0 0 30px;
+	justify-content: space-evenly;
+	@include caja;
+	&__foto-principal {
+		float: left;
+		margin-right: 10px;
+	}
+	&__fotos-adicionales img {
+		height: 70px;
+		margin-right: 5px;
+		margin-bottom: 5px;
+	}
+	h2 {
+		margin-bottom: 10px;
+		text-transform: uppercase;
+		font-weight: 600;
+		font-size: 20px;
+		font-family: $Fuente2;
+	}
+	img {
+		border-radius: 10px;
+	}
+}

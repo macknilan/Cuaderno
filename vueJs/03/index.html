@@ -1,0 +1,38 @@
+<!--
+# Filtro de datos en Vue.js
+- Una de las cosas que nos permite Vue.js es colocar filtros en nuestro código.
+- En este vídeo veremos cómo implementar algunos.
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>VueJs</title>
+    <link rel="stylesheet" href="">
+</head>
+<body>
+    <div id="app">
+        <h1>{{ titulo | uppercase }}</h1>
+        <h2>{{ subtitulo | lowercase }}</h2>
+        <h2>{{ subtitulo | lowercase | capitalize }}</h2>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="text/javascript">
+        let app = new Vue({
+            el: '#app',
+            data: {
+                titulo: 'Estas en el titulo',
+                subtitulo: 'Estas en el subtitulo',
+            },
+            filters:{
+                uppercase: (str) => str.toUpperCase(),
+                lowercase: (str) => str.toLowerCase(),
+                capitalize: (str) => str.charAt(0).toUpperCase() + str.slice(1),
+            }
+        })
+
+    </script>
+</body>
+</html>

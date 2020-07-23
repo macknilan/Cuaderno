@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <script src="/socket.io/socket.io.js"></script>
+    </head>
+    <body>
+        <h1>Mira la consola</h1>
+        <script>
+            var socket = io.connect('http://localhost:3000', {
+                forceNew: true,
+            });
+            /*<!-- RECIVE LOS MENSAJES PARA PODER MOSTRARLOS EN LA CONSOLA DEL BROWSER-->*/
+            socket.on('message', (data) => {
+                console.log(data);
+            })
+        </script>
+    </body>
+</html>

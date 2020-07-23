@@ -1,0 +1,1620 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><style>body {
+  max-width: 980px;
+  border: 1px solid #ddd;
+  outline: 1300px solid #fff;
+  margin: 16px auto;
+}
+
+body .markdown-body
+{
+  padding: 45px;
+}
+
+@font-face {
+  font-family: fontawesome-mini;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+.markdown-body {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  color: #333333;
+  overflow: hidden;
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.markdown-body a {
+  background: transparent;
+}
+
+.markdown-body a:active,
+.markdown-body a:hover {
+  outline: 0;
+}
+
+.markdown-body b,
+.markdown-body strong {
+  font-weight: bold;
+}
+
+.markdown-body mark {
+  background: #ff0;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body sub,
+.markdown-body sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+.markdown-body sup {
+  top: -0.5em;
+}
+.markdown-body sub {
+  bottom: -0.25em;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+.markdown-body img {
+  border: 0;
+}
+
+.markdown-body hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+.markdown-body pre {
+  overflow: auto;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+.markdown-body input {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+.markdown-body html input[disabled] {
+  cursor: default;
+}
+
+.markdown-body input {
+  line-height: normal;
+}
+
+.markdown-body input[type="checkbox"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.markdown-body table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body .codehilitetable {
+  border: 0;
+  border-spacing: 0;
+}
+
+.markdown-body .codehilitetable tr {
+  border: 0;
+}
+
+.markdown-body .codehilitetable pre,
+.markdown-body .codehilitetable div.codehilite {
+  margin: 0;
+}
+
+.markdown-body .linenos,
+.markdown-body .code,
+.markdown-body .codehilitetable td {
+  border: 0;
+  padding: 0;
+}
+
+.markdown-body td:not(.linenos) .linenodiv {
+  padding: 0 !important;
+}
+
+.markdown-body .code {
+  width: 100%;
+}
+
+.markdown-body .linenos div pre,
+.markdown-body .linenodiv pre,
+.markdown-body .linenodiv {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-left-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  -moz-border-radius-topleft: 3px;
+  -moz-border-radius-bottomleft: 3px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.markdown-body .code div pre,
+.markdown-body .code div {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-right-radius: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  -moz-border-radius-topright: 3px;
+  -moz-border-radius-bottomright: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.markdown-body * {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body input {
+  font: 13px Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+  line-height: 1.4;
+}
+
+.markdown-body a {
+  color: #4183c4;
+  text-decoration: none;
+}
+
+.markdown-body a:hover,
+.markdown-body a:focus,
+.markdown-body a:active {
+  text-decoration: underline;
+}
+
+.markdown-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.markdown-body hr:before,
+.markdown-body hr:after {
+  display: table;
+  content: " ";
+}
+
+.markdown-body hr:after {
+  clear: both;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  line-height: 1.1;
+}
+
+.markdown-body h1 {
+  font-size: 30px;
+}
+
+.markdown-body h2 {
+  font-size: 21px;
+}
+
+.markdown-body h3 {
+  font-size: 16px;
+}
+
+.markdown-body h4 {
+  font-size: 14px;
+}
+
+.markdown-body h5 {
+  font-size: 12px;
+}
+
+.markdown-body h6 {
+  font-size: 11px;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ul ul ol,
+.markdown-body ul ol ol,
+.markdown-body ol ul ol,
+.markdown-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body code,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+}
+
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body kbd {
+  background-color: #e7e7e7;
+  background-image: -moz-linear-gradient(#fefefe, #e7e7e7);
+  background-image: -webkit-linear-gradient(#fefefe, #e7e7e7);
+  background-image: linear-gradient(#fefefe, #e7e7e7);
+  background-repeat: repeat-x;
+  border-radius: 2px;
+  border: 1px solid #cfcfcf;
+  color: #000;
+  padding: 3px 5px;
+  line-height: 10px;
+  font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  display: inline-block;
+}
+
+.markdown-body>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+.markdown-body .headerlink {
+  font: normal 400 16px fontawesome-mini;
+  vertical-align: middle;
+  margin-left: -16px;
+  float: left;
+  display: inline-block;
+  text-decoration: none;
+  opacity: 0;
+  color: #333;
+}
+
+.markdown-body .headerlink:focus {
+  outline: none;
+}
+
+.markdown-body h1 .headerlink {
+  margin-top: 0.8rem;
+}
+
+.markdown-body h2 .headerlink,
+.markdown-body h3 .headerlink {
+  margin-top: 0.6rem;
+}
+
+.markdown-body h4 .headerlink {
+  margin-top: 0.2rem;
+}
+
+.markdown-body h5 .headerlink,
+.markdown-body h6 .headerlink {
+  margin-top: 0;
+}
+
+.markdown-body .headerlink:hover,
+.markdown-body h1:hover .headerlink,
+.markdown-body h2:hover .headerlink,
+.markdown-body h3:hover .headerlink,
+.markdown-body h4:hover .headerlink,
+.markdown-body h5:hover .headerlink,
+.markdown-body h6:hover .headerlink {
+  opacity: 1;
+  text-decoration: none;
+}
+
+.markdown-body h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+}
+
+.markdown-body h4 {
+  font-size: 1.25em;
+}
+
+.markdown-body h5 {
+  font-size: 1em;
+}
+
+.markdown-body h6 {
+  font-size: 1em;
+  color: #777;
+}
+
+.markdown-body p,
+.markdown-body blockquote,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body dl,
+.markdown-body table,
+.markdown-body pre,
+.markdown-body .admonition {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #e7e7e7;
+  border: 0 none;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 2em;
+}
+
+.markdown-body ul ul,
+.markdown-body ul ol,
+.markdown-body ol ol,
+.markdown-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body li>p {
+  margin-top: 16px;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.markdown-body blockquote {
+  padding: 0 15px;
+  color: #777;
+  border-left: 4px solid #ddd;
+}
+
+.markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+
+.markdown-body table th {
+  font-weight: bold;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  padding: 6px 13px;
+  border: 1px solid #ddd;
+}
+
+.markdown-body table tr {
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body code,
+.markdown-body samp {
+  padding: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(0,0,0,0.04);
+  border-radius: 3px;
+}
+
+.markdown-body code:before,
+.markdown-body code:after {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+
+.markdown-body pre>code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.markdown-body .codehilite {
+  margin-bottom: 16px;
+}
+
+.markdown-body .codehilite pre,
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+
+.markdown-body .codehilite pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body pre {
+  word-wrap: normal;
+}
+
+.markdown-body pre code {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+.markdown-body pre code:before,
+.markdown-body pre code:after {
+  content: normal;
+}
+
+/* Admonition */
+.markdown-body .admonition {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  position: relative;
+  border-radius: 3px;
+  border: 1px solid #e0e0e0;
+  border-left: 6px solid #333;
+  padding: 10px 10px 10px 30px;
+}
+
+.markdown-body .admonition table {
+  color: #333;
+}
+
+.markdown-body .admonition p {
+  padding: 0;
+}
+
+.markdown-body .admonition-title {
+  font-weight: bold;
+  margin: 0;
+}
+
+.markdown-body .admonition>.admonition-title {
+  color: #333;
+}
+
+.markdown-body .attention>.admonition-title {
+  color: #a6d796;
+}
+
+.markdown-body .caution>.admonition-title {
+  color: #d7a796;
+}
+
+.markdown-body .hint>.admonition-title {
+  color: #96c6d7;
+}
+
+.markdown-body .danger>.admonition-title {
+  color: #c25f77;
+}
+
+.markdown-body .question>.admonition-title {
+  color: #96a6d7;
+}
+
+.markdown-body .note>.admonition-title {
+  color: #d7c896;
+}
+
+.markdown-body .admonition:before,
+.markdown-body .attention:before,
+.markdown-body .caution:before,
+.markdown-body .hint:before,
+.markdown-body .danger:before,
+.markdown-body .question:before,
+.markdown-body .note:before {
+  font: normal normal 16px fontawesome-mini;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  line-height: 1.5;
+  color: #333;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.markdown-body .admonition:before {
+  content: "\f056\00a0";
+  color: 333;
+}
+
+.markdown-body .attention:before {
+  content: "\f058\00a0";
+  color: #a6d796;
+}
+
+.markdown-body .caution:before {
+  content: "\f06a\00a0";
+  color: #d7a796;
+}
+
+.markdown-body .hint:before {
+  content: "\f05a\00a0";
+  color: #96c6d7;
+}
+
+.markdown-body .danger:before {
+  content: "\f057\00a0";
+  color: #c25f77;
+}
+
+.markdown-body .question:before {
+  content: "\f059\00a0";
+  color: #96a6d7;
+}
+
+.markdown-body .note:before {
+  content: "\f040\00a0";
+  color: #d7c896;
+}
+
+.markdown-body .admonition::after {
+  content: normal;
+}
+
+.markdown-body .attention {
+  border-left: 6px solid #a6d796;
+}
+
+.markdown-body .caution {
+  border-left: 6px solid #d7a796;
+}
+
+.markdown-body .hint {
+  border-left: 6px solid #96c6d7;
+}
+
+.markdown-body .danger {
+  border-left: 6px solid #c25f77;
+}
+
+.markdown-body .question {
+  border-left: 6px solid #96a6d7;
+}
+
+.markdown-body .note {
+  border-left: 6px solid #d7c896;
+}
+
+.markdown-body .admonition>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body .admonition>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* progress bar*/
+.markdown-body .progress {
+  display: block;
+  width: 300px;
+  margin: 10px 0;
+  height: 24px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #ededed;
+  position: relative;
+  box-shadow: inset -1px 1px 3px rgba(0, 0, 0, .1);
+}
+
+.markdown-body .progress-label {
+  position: absolute;
+  text-align: center;
+  font-weight: bold;
+  width: 100%; margin: 0;
+  line-height: 24px;
+  color: #333;
+  text-shadow: 1px 1px 0 #fefefe, -1px -1px 0 #fefefe, -1px 1px 0 #fefefe, 1px -1px 0 #fefefe, 0 1px 0 #fefefe, 0 -1px 0 #fefefe, 1px 0 0 #fefefe, -1px 0 0 #fefefe, 1px 1px 2px #000;
+  -webkit-font-smoothing: antialiased !important;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.markdown-body .progress-bar {
+  height: 24px;
+  float: left;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #96c6d7;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5), inset 0 -1px 0 rgba(0, 0, 0, .1);
+  background-size: 30px 30px;
+  background-image: -webkit-linear-gradient(
+    135deg, rgba(255, 255, 255, .4) 27%,
+    transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%,
+    transparent 77%, transparent
+  );
+  background-image: -moz-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -ms-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -o-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+}
+
+.markdown-body .progress-100plus .progress-bar {
+  background-color: #a6d796;
+}
+
+.markdown-body .progress-80plus .progress-bar {
+  background-color: #c6d796;
+}
+
+.markdown-body .progress-60plus .progress-bar {
+  background-color: #d7c896;
+}
+
+.markdown-body .progress-40plus .progress-bar {
+  background-color: #d7a796;
+}
+
+.markdown-body .progress-20plus .progress-bar {
+  background-color: #d796a6;
+}
+
+.markdown-body .progress-0plus .progress-bar {
+  background-color: #c25f77;
+}
+
+.markdown-body .candystripe-animate .progress-bar{
+  -webkit-animation: animate-stripes 3s linear infinite;
+  -moz-animation: animate-stripes 3s linear infinite;
+  animation: animate-stripes 3s linear infinite;
+}
+
+@-webkit-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+@-moz-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+@keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+.markdown-body .gloss .progress-bar {
+  box-shadow:
+    inset 0 4px 12px rgba(255, 255, 255, .7),
+    inset 0 -12px 0 rgba(0, 0, 0, .05);
+}
+
+/* MultiMarkdown Critic Blocks */
+.markdown-body .critic_mark {
+  background: #ff0;
+}
+
+.markdown-body .critic_delete {
+  color: #c82829;
+  text-decoration: line-through;
+}
+
+.markdown-body .critic_insert {
+  color: #718c00 ;
+  text-decoration: underline;
+}
+
+.markdown-body .critic_comment {
+  color: #8e908c;
+  font-style: italic;
+}
+
+.markdown-body .headeranchor {
+  font: normal normal 16px fontawesome-mini;
+  line-height: 1;
+  display: inline-block;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.headeranchor:before {
+  content: '\e157';
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.markdown-body .task-list-item input {
+  margin: 0 4px 0.25em -20px;
+  vertical-align: middle;
+}
+
+/* Media */
+@media only screen and (min-width: 480px) {
+  .markdown-body {
+    font-size:14px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .markdown-body {
+    font-size:16px;
+  }
+}
+
+@media print {
+  .markdown-body * {
+    background: transparent !important;
+    color: black !important;
+    filter:none !important;
+    -ms-filter: none !important;
+  }
+
+  .markdown-body {
+    font-size:12pt;
+    max-width:100%;
+    outline:none;
+    border: 0;
+  }
+
+  .markdown-body a,
+  .markdown-body a:visited {
+    text-decoration: underline;
+  }
+
+  .markdown-body .headeranchor-link {
+    display: none;
+  }
+
+  .markdown-body a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  .markdown-body abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  .markdown-body .ir a:after,
+  .markdown-body a[href^="javascript:"]:after,
+  .markdown-body a[href^="#"]:after {
+    content: "";
+  }
+
+  .markdown-body pre {
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  .markdown-body pre,
+  .markdown-body blockquote {
+    border: 1px solid #999;
+    padding-right: 1em;
+    page-break-inside: avoid;
+  }
+
+  .markdown-body .progress,
+  .markdown-body .progress-bar {
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
+  .markdown-body .progress {
+    border: 1px solid #ddd;
+  }
+
+  .markdown-body .progress-bar {
+    height: 22px;
+    border-right: 1px solid #ddd;
+  }
+
+  .markdown-body tr,
+  .markdown-body img {
+    page-break-inside: avoid;
+  }
+
+  .markdown-body img {
+    max-width: 100% !important;
+  }
+
+  .markdown-body p,
+  .markdown-body h2,
+  .markdown-body h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  .markdown-body h2,
+  .markdown-body h3 {
+    page-break-after: avoid;
+  }
+}
+</style><style>/*GitHub*/
+.codehilite {background-color:#fff;color:#333333;}
+.codehilite .hll {background-color:#ffffcc;}
+.codehilite .c{color:#999988;font-style:italic}
+.codehilite .err{color:#a61717;background-color:#e3d2d2}
+.codehilite .k{font-weight:bold}
+.codehilite .o{font-weight:bold}
+.codehilite .cm{color:#999988;font-style:italic}
+.codehilite .cp{color:#999999;font-weight:bold}
+.codehilite .c1{color:#999988;font-style:italic}
+.codehilite .cs{color:#999999;font-weight:bold;font-style:italic}
+.codehilite .gd{color:#000000;background-color:#ffdddd}
+.codehilite .ge{font-style:italic}
+.codehilite .gr{color:#aa0000}
+.codehilite .gh{color:#999999}
+.codehilite .gi{color:#000000;background-color:#ddffdd}
+.codehilite .go{color:#888888}
+.codehilite .gp{color:#555555}
+.codehilite .gs{font-weight:bold}
+.codehilite .gu{color:#800080;font-weight:bold}
+.codehilite .gt{color:#aa0000}
+.codehilite .kc{font-weight:bold}
+.codehilite .kd{font-weight:bold}
+.codehilite .kn{font-weight:bold}
+.codehilite .kp{font-weight:bold}
+.codehilite .kr{font-weight:bold}
+.codehilite .kt{color:#445588;font-weight:bold}
+.codehilite .m{color:#009999}
+.codehilite .s{color:#dd1144}
+.codehilite .n{color:#333333}
+.codehilite .na{color:teal}
+.codehilite .nb{color:#0086b3}
+.codehilite .nc{color:#445588;font-weight:bold}
+.codehilite .no{color:teal}
+.codehilite .ni{color:purple}
+.codehilite .ne{color:#990000;font-weight:bold}
+.codehilite .nf{color:#990000;font-weight:bold}
+.codehilite .nn{color:#555555}
+.codehilite .nt{color:navy}
+.codehilite .nv{color:teal}
+.codehilite .ow{font-weight:bold}
+.codehilite .w{color:#bbbbbb}
+.codehilite .mf{color:#009999}
+.codehilite .mh{color:#009999}
+.codehilite .mi{color:#009999}
+.codehilite .mo{color:#009999}
+.codehilite .sb{color:#dd1144}
+.codehilite .sc{color:#dd1144}
+.codehilite .sd{color:#dd1144}
+.codehilite .s2{color:#dd1144}
+.codehilite .se{color:#dd1144}
+.codehilite .sh{color:#dd1144}
+.codehilite .si{color:#dd1144}
+.codehilite .sx{color:#dd1144}
+.codehilite .sr{color:#009926}
+.codehilite .s1{color:#dd1144}
+.codehilite .ss{color:#990073}
+.codehilite .bp{color:#999999}
+.codehilite .vc{color:teal}
+.codehilite .vg{color:teal}
+.codehilite .vi{color:teal}
+.codehilite .il{color:#009999}
+.codehilite .gc{color:#999;background-color:#EAF2F5}
+</style><title>nodejs_fundamentos</title></head><body><article class="markdown-body"><h1 id="curso-de-fundamentos-de-nodejs">Curso de Fundamentos de Node.js<a class="headerlink" href="#curso-de-fundamentos-de-nodejs" title="Permanent link"></a></h1>
+<h2 id="1-conocer-los-conceptos-basicos-de-nodejs">1. Conocer los conceptos básicos de NodeJS<a class="headerlink" href="#1-conocer-los-conceptos-basicos-de-nodejs" title="Permanent link"></a></h2>
+<h3 id="1-instalacion-de-nodejs">1. Instalación de Node.js<a class="headerlink" href="#1-instalacion-de-nodejs" title="Permanent link"></a></h3>
+<p><img align="absmiddle" alt=":link:" class="gemoji" height="20px" src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png" title=":link:" width="20px" /> <a href="https://nodejs.org/en/">Node offical page</a></p>
+<p>Simplemente pulsa en el botón verde de la versión que quieras (<em>mi recomendación es siempre usar las versiones LTS</em>) y completar el proceso de instalación. Dependiendo del sistema operativo, te hará más o menos preguntas, pero con las opciones por defecto se instalará bien.</p>
+<p>Como consejo, asegúrate de tener una buena conexión a internet cuando lo instales, para que tarde poco tiempo.</p>
+<p>Una vez lo hayas instalado, para comprobar que todo funciona correctamente, abre una terminal (en windows, CMD o PowerShell valen perfectamente) y escribe:
+<div class="codehilite"><pre>node -v
+</pre></div>
+Ese comando te devolverá la versión de Node.js que se ha instalado.</p>
+<p>También nos habrá instalado NPM, el gestor de paquetes. Para asegurarte de que está instalado, puedes ejecutar:
+<div class="codehilite"><pre>npm -v
+</pre></div>
+Y te devolverá la versión de NPM que hay instalada.</p>
+<p>Con esto, ya tenemos instalado <strong>Node.js</strong> y <strong>NPM</strong>, que es todo lo que necesitamos para empezar con nuestro curso de Fundamentos de Node.js.</p>
+<h3 id="2-node-origenes-y-filosofia">2.  Node: orígenes y filosofía<a class="headerlink" href="#2-node-origenes-y-filosofia" title="Permanent link"></a></h3>
+<p>NojeJS es la forma más rápida de ejecutar código y escalable, corre en servidores. Es un lenguaje.</p>
+<ul>
+<li>
+<p>Origines y filosofía.</p>
+<ul>
+<li>Es un entorno de ejecución fuera del navegador, orientado a servidores.Al estar fuera no necesito exploradores. Puedo ejecutarlo para herrameintas, transpialdores, scraping, automatización.Nos permite tener servers asincronos.</li>
+</ul>
+</li>
+<li>
+<p>Caracterisitcas:</p>
+<ul>
+<li>JS es concurrente; Monohilo, entradas y salidas asincronas.</li>
+<li>Un unico proceso corrriendo en el nucleo del procesador.</li>
+<li>No se queda bloqueante.</li>
+</ul>
+</li>
+</ul>
+<p><strong>NodeJS usa V8</strong> como entorno de ejecución fue creado por google escrito en <strong>c++</strong> convierte JS en código máquina en lugar de interpretarlo en tiempo real.
+Al estar escrito en c++ es muy rápido. Node es open source.<br />
+Todo lo que no sea sintaxis de programación son módulos.<br />
+Muchos módulos vienen por defecto en el paquete de Node.<br />
+Puedes crear tus propios módulos.  </p>
+<p><em>Node está orientado a eventos</em>. Un bucle de eventos que nos permite se programar de manera reactiva. Cualquier evento se puede escuchar.</p>
+<h3 id="3-eventloop-asincrona-por-diseno">3.  EventLoop: asíncrona por diseño<a class="headerlink" href="#3-eventloop-asincrona-por-diseno" title="Permanent link"></a></h3>
+<p><img alt="EventLoop" src="/home/mack/Documents/mi_cuaderno/NodeJS_fundamentos/imgs/nodejs_01.png" /></p>
+<p>Un proceso con un <strong>bucle</strong>  que gestiona de forma asincrona, todos los eventos de tu aplicación</p>
+<ol>
+<li><strong>Event Queue</strong>: Contiene todos los eventos que se generan por nuestro código (Funciones, peticiones, etc.), estos eventos quedan en una cola que van pasando uno a uno al Event Loop.</li>
+<li><strong>Event Loop</strong>: Se encarga de resolver los eventos ultra rápidos que llegan desde el Event Queue. En caso de no poder resolverse rápido, [enviá el evento al Thread Pool].</li>
+<li><strong>Thread Pool</strong>: Se encarga de gestionar los eventos de forma <em>asíncrona</em>. Una vez terminado lo devuelve al Event Loop. El Event Loop vera si lo pasa a Event Queue o no.</li>
+</ol>
+<h3 id="4-monohilo-implicaciones-en-diseno-y-seguridad">4. Monohilo: implicaciones en diseño y seguridad<a class="headerlink" href="#4-monohilo-implicaciones-en-diseno-y-seguridad" title="Permanent link"></a></h3>
+<p>/docs_fundamentos-node-platzi-master/conceptos/monohilo.js
+<div class="codehilite"><pre><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Hola mundo&#39;</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="nx">setInterval</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span>
+    <span class="nx">i</span><span class="o">++</span><span class="p">;</span>
+
+    <span class="c1">// if (i === 5) {</span>
+    <span class="c1">//     console.log(&#39;forzamos error&#39;);</span>
+    <span class="c1">//     var a = 3 + z;</span>
+    <span class="c1">// }</span>
+<span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Segunda instrucción&#39;</span><span class="p">);</span>
+</pre></div>
+<strong>Importante</strong>: Cuando ocurre un error dentro de alguno de los hilos y no se controla apropiadamente (catch); Node detiene todos los hilos ejecución. <em>Esto puede ser muy peligroso</em>, debido a que es dificil determinar fue el origen del problema y en que punto de ejecución se encontraba cada hilo cuando fue detenido.</p>
+<h3 id="5-variables-de-entorno">5. Variables de entorno<a class="headerlink" href="#5-variables-de-entorno" title="Permanent link"></a></h3>
+<p>NodeJS_fundamentos/docs_fundamentos-node-platzi-master/conceptos/entorno.js
+<div class="codehilite"><pre>let nombre = process.env.NOMBRE || &#39;Sin nombre&#39;; // SI NO SE ENCUENTRA LA VARIABLE TOMA EL VALOR POR DEFECTO
+let web = process.env.MI_WEB || &#39;no tengo web&#39;;
+
+console.log(&#39;Hola &#39;+ nombre);
+console.log(&#39;Mi web es &#39;+ web);
+</pre></div>
+Para ejecutar con Node el archivo JS con las variables de entorno
+<div class="codehilite"><pre>$ NOMBRE=Rodolfo MI_WEB=httos://mack.com node entorno.js
+# salida
+Hola Rodolfo
+Mi web es httos://mack.com
+</pre></div></p>
+<h3 id="6-herramientas-para-ser-mas-felices-nodemon-y-pm2">6. Herramientas para ser más felices: Nodemon y PM2<a class="headerlink" href="#6-herramientas-para-ser-mas-felices-nodemon-y-pm2" title="Permanent link"></a></h3>
+<ul>
+<li><img align="absmiddle" alt=":link:" class="gemoji" height="20px" src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png" title=":link:" width="20px" /> <a href="https://nodemon.io/">nodemon reload, automatically</a></li>
+<li>
+<p><img align="absmiddle" alt=":link:" class="gemoji" height="20px" src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png" title=":link:" width="20px" /> <a href="https://www.npmjs.com/package/nodemon">npm nodemon</a></p>
+</li>
+<li>
+<p><strong>nodedemon</strong> para usar en desarrollo, es un gestor que nos ayuda a detectar los cambios, compilarlos y ejecutarlos
+<div class="codehilite"><pre>sudo npm install -g nodemon
+</pre></div>
+<div class="codehilite"><pre>nodemon nombre_archivo
+</pre></div>
+<strong>PM2</strong> <em>Producción</em>: Es parecida a nodemon simplemente mas avanzada y mas compleja. No se debe utilizar en desarrollo por que dará más problemas que soluciones. Nos ayudara a ver los datos de nuestra aplicación en producción, como el uso del CPU, memoria, cuantas veces se ha reiniciado.</p>
+</li>
+</ul>
+<p>Es un administrador de <em>procesos demonio</em> que lo ayudará a administrar y mantener su aplicación en línea las 24 horas, los 7 días de la semana</p>
+<p><img align="absmiddle" alt=":link:" class="gemoji" height="20px" src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png" title=":link:" width="20px" /> <a href="https://pm2.keymetrics.io/">ADVANCED, PRODUCTION PROCESS MANAGER FOR NODE.JS</a>
+<img align="absmiddle" alt=":link:" class="gemoji" height="20px" src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png" title=":link:" width="20px" /> <a href="https://www.npmjs.com/package/pm2">npm PM2</a></p>
+<p><div class="codehilite"><pre>npm install pm2 -g
+</pre></div>
+<div class="codehilite"><pre>pm2 start
+<span class="c1"># EMPEZAR UN DEMONIO DE UN PROGRAMA</span>
+pm2 status
+<span class="c1"># VER QUE PROGRAMAS SE ESTAN EJECUTANDO Y CUALES SON SOS ESTATUS</span>
+pm2 log
+<span class="c1"># VER EL LOG DE UN PROGRAMA EN ESPECIFICO</span>
+</pre></div></p>
+<h2 id="2-como-manejar-la-asincronia">2. Cómo manejar la asincronía<a class="headerlink" href="#2-como-manejar-la-asincronia" title="Permanent link"></a></h2>
+<h3 id="7-callbacks">7. Callbacks<a class="headerlink" href="#7-callbacks" title="Permanent link"></a></h3>
+<p><strong>Dos funciones que son asíncronas, no se ejecutarían una después de otra, sino se llamaran dentro del Callback de la otra</strong></p>
+<p>Nuestras funciones pueden compartir variables a lo largo de la ejecución.</p>
+<p>Archivo <code>/docs_fundamentos-node-platzi-master/async/callback.js</code>
+<div class="codehilite"><pre><span class="kd">function</span> <span class="nx">hola</span><span class="p">(</span><span class="nx">nombre</span><span class="p">,</span> <span class="nx">miCallback</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Hola, &#39;</span><span class="o">+</span> <span class="nx">nombre</span><span class="p">);</span>
+        <span class="nx">miCallback</span><span class="p">(</span><span class="nx">nombre</span><span class="p">);</span>
+    <span class="p">},</span> <span class="mi">1500</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">adios</span><span class="p">(</span><span class="nx">nombre</span><span class="p">,</span> <span class="nx">otroCallback</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Adios&#39;</span><span class="p">,</span> <span class="nx">nombre</span><span class="p">);</span>
+        <span class="nx">otroCallback</span><span class="p">();</span>
+    <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Iniciando proceso...&#39;</span><span class="p">);</span>
+<span class="nx">hola</span><span class="p">(</span><span class="s1">&#39;Mack&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">nombre</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">adios</span><span class="p">(</span><span class="nx">nombre</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Terminando proceso...&#39;</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+<span class="c1">// hola(&#39;Carlos&#39;, function () {});</span>
+<span class="c1">// adios(&#39;Carlos&#39;, function () {});</span>
+</pre></div>
+salida&hellip;
+<div class="codehilite"><pre>Iniciando proceso...
+Hola, Mack
+Adios Mack
+Terminando proceso...
+</pre></div>
+<div class="codehilite"><pre><span class="nv">$ </span>nodemon callback.js
+</pre></div></p>
+<h3 id="8-callback-hell-refactorizar-o-sufrir">8. Callback Hell: refactorizar o sufrir<a class="headerlink" href="#8-callback-hell-refactorizar-o-sufrir" title="Permanent link"></a></h3>
+<p>Los <em>callback Hell</em> se dan cuando empiezo a pasar una función como parámetro que a su vez llama a otra función como parámetro, <em>y así hasta n</em>.</p>
+<p>Una estrategia para trabajar con estas estructuras lógicas tan monolíticas es usar estructuras de control y funciones recursivas.</p>
+<p>Las <em>funciones recursivas</em> se llaman así mismas y mediante la estructura de control le digo cuantas veces voy a necesitar llamar la función así misma.</p>
+<p>Archivo <code>ocs_fundamentos-node-platzi-master/async/callbackHell.js</code>
+<div class="codehilite"><pre><span class="kd">function</span> <span class="nx">hola</span><span class="p">(</span><span class="nx">nombre</span><span class="p">,</span> <span class="nx">miCallback</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Hola, &#39;</span><span class="o">+</span> <span class="nx">nombre</span><span class="p">);</span>
+        <span class="nx">miCallback</span><span class="p">(</span><span class="nx">nombre</span><span class="p">);</span>
+    <span class="p">},</span> <span class="mi">1500</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="nx">hablar</span><span class="p">(</span><span class="nx">callbackHablar</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Bla bla bla bla...&#39;</span><span class="p">);</span>
+        <span class="nx">callbackHablar</span><span class="p">();</span>
+    <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="nx">adios</span><span class="p">(</span><span class="nx">nombre</span><span class="p">,</span> <span class="nx">otroCallback</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Adios&#39;</span><span class="p">,</span> <span class="nx">nombre</span><span class="p">);</span>
+        <span class="nx">otroCallback</span><span class="p">();</span>
+    <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c1">// FUNCIONES CON RECURSIVIDAD</span>
+<span class="kd">function</span> <span class="nx">conversacion</span><span class="p">(</span><span class="nx">nombre</span><span class="p">,</span> <span class="nx">veces</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">veces</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">hablar</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="nx">conversacion</span><span class="p">(</span><span class="nx">nombre</span><span class="p">,</span> <span class="o">--</span><span class="nx">veces</span><span class="p">,</span> <span class="nx">callback</span><span class="p">);</span> <span class="cm">/* RECURSIVIDAD */</span>
+        <span class="p">})</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">adios</span><span class="p">(</span><span class="nx">nombre</span><span class="p">,</span> <span class="nx">callback</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// --</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Iniciando proceso...&#39;</span><span class="p">);</span>
+<span class="nx">hola</span><span class="p">(</span><span class="s1">&#39;Carlos&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">nombre</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">conversacion</span><span class="p">(</span><span class="nx">nombre</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="cm">/* RECURSIVIDAD */</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Proceso terminado&#39;</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+<span class="c1">// CALLBACKHELL</span>
+<span class="c1">// hola(&#39;Carlos&#39;, function (nombre) {</span>
+<span class="c1">//     hablar(function () {</span>
+<span class="c1">//         hablar(function () {</span>
+<span class="c1">//             hablar(function () {</span>
+<span class="c1">//                 adios(nombre, function() {</span>
+<span class="c1">//                     console.log(&#39;Terminando proceso...&#39;);</span>
+<span class="c1">//                 });</span>
+<span class="c1">//             });</span>
+<span class="c1">//         });</span>
+<span class="c1">//     });</span>
+<span class="c1">// });</span>
+</pre></div>
+Salida
+<div class="codehilite"><pre><span class="nx">Iniciando</span> <span class="nx">proceso</span><span class="p">...</span>
+<span class="nx">Hola</span><span class="p">,</span> <span class="nx">Carlos</span>
+<span class="nx">Bla</span> <span class="nx">bla</span> <span class="nx">bla</span> <span class="nx">bla</span><span class="p">...</span>
+<span class="nx">Bla</span> <span class="nx">bla</span> <span class="nx">bla</span> <span class="nx">bla</span><span class="p">...</span>
+<span class="nx">Bla</span> <span class="nx">bla</span> <span class="nx">bla</span> <span class="nx">bla</span><span class="p">...</span>
+<span class="nx">Adios</span> <span class="nx">Carlos</span>
+<span class="nx">Proceso</span> <span class="nx">terminado</span>
+</pre></div></p>
+<h3 id="9-promesas">9. Promesas<a class="headerlink" href="#9-promesas" title="Permanent link"></a></h3>
+<p>Las promesas son una sintaxis mas elegante y legible de realizar callbacks, creando así un código mucho más escalable y entendible para todas las personas.</p>
+<p>Una promesa al final no deja de ser un callback, solo que, con la novedad de tener estados, las promesas cuentan con 3 estados, resuelta, en progreso y en fallo.</p>
+<p>Para utilizar una promesa solo debemos de instanciar una nueva, una promesa en si es una función que recibe dos parámetros, resolve y reject, que son los dos estados de una promesa.</p>
+<p>Utilizamos resolve para retornar el valor deseado cuando una función se ejecute y utilizamos reject para cuando una función retorna un valor no deseado.
+<div class="codehilite"><pre><span class="nx">New</span> <span class="nx">Promise</span><span class="p">(</span> <span class="p">(</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="err">…</span><span class="nx">code</span>
+    <span class="nx">If</span><span class="p">(</span><span class="nx">code</span> <span class="o">===</span> <span class="kc">true</span><span class="p">){</span>
+        <span class="nx">resolve</span><span class="p">(</span><span class="nx">correctValue</span><span class="p">);</span>
+    <span class="p">}</span><span class="k">else</span> <span class="p">{</span>
+        <span class="nx">Reject</span><span class="p">(</span><span class="nx">wrongValue</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+Para poder obtener los valores que retorna una función debemos utilizar su propiedad <code>.then</code>, esta propiedad es una función que recibe un callback el cual tendrá como parámetro el valor retornado con <code>resolve</code> o <code>reject</code>.
+Siempre que usemos una promesa además de realizar la propiedad <code>.then</code> debemos invocar la propiedad <code>.catch</code>, la cual es un callback que recibe como parámetro el error ocurrido en caso de haber sucedió uno.
+<div class="codehilite"><pre><span class="nx">myPromise</span><span class="p">(</span><span class="err">‘</span><span class="nx">Parameter</span><span class="err">’</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span> <span class="nx">data</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">)</span>
+    <span class="p">.</span><span class="k">catch</span><span class="p">(</span> <span class="nx">err</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">);</span>
+</pre></div></p>
+<p>Archivo <code>/docs_fundamentos-node-platzi-master/async/promises.js</code>
+<div class="codehilite"><pre><span class="kd">function</span> <span class="nx">hola</span><span class="p">(</span><span class="nx">nombre</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">Promise</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Hola, &#39;</span><span class="o">+</span> <span class="nx">nombre</span><span class="p">);</span>
+            <span class="nx">resolve</span><span class="p">(</span><span class="nx">nombre</span><span class="p">);</span>
+        <span class="p">},</span> <span class="mi">1500</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="nx">hablar</span><span class="p">(</span><span class="nx">nombre</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">Promise</span><span class="p">(</span> <span class="p">(</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Bla bla bla bla...&#39;</span><span class="p">);</span>
+            <span class="c1">// SE OCACIONA EL ERROR PARA QUE ENTRE EL CATCH</span>
+            <span class="c1">//resolve(nombre); </span>
+            <span class="nx">reject</span><span class="p">(</span><span class="s1">&#39;Hay un error&#39;</span><span class="p">);</span>
+        <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="nx">adios</span><span class="p">(</span><span class="nx">nombre</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">Promise</span><span class="p">(</span> <span class="p">(</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Adios&#39;</span><span class="p">,</span> <span class="nx">nombre</span><span class="p">);</span>
+            <span class="nx">resolve</span><span class="p">();</span>
+        <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+<span class="c1">// ---</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Iniciando el proceso..&#39;</span><span class="p">);</span>
+<span class="nx">hola</span><span class="p">(</span><span class="s1">&#39;Carlos&#39;</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">hablar</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">hablar</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">hablar</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">hablar</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">adios</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">nombre</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Terminado el proceso&#39;</span><span class="p">);</span>
+    <span class="p">})</span>
+    <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Ha habido un error:&#39;</span><span class="p">);</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+    <span class="p">})</span>
+</pre></div></p>
+<h3 id="10-asyncawait">10. Async/await<a class="headerlink" href="#10-asyncawait" title="Permanent link"></a></h3>
+<p>Archivo <code>/docs_fundamentos-node-platzi-master/async/asyncAwait.js</code>
+<div class="codehilite"><pre><span class="nx">async</span> <span class="kd">function</span> <span class="nx">hola</span><span class="p">(</span><span class="nx">nombre</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">Promise</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Hola, &#39;</span><span class="o">+</span> <span class="nx">nombre</span><span class="p">);</span>
+            <span class="nx">resolve</span><span class="p">(</span><span class="nx">nombre</span><span class="p">);</span>
+        <span class="p">},</span> <span class="mi">1500</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+<span class="nx">async</span> <span class="kd">function</span> <span class="nx">hablar</span><span class="p">(</span><span class="nx">nombre</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">Promise</span><span class="p">(</span> <span class="p">(</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Bla bla bla bla...&#39;</span><span class="p">);</span>
+            <span class="c1">//resolve(nombre);</span>
+            <span class="nx">resolve</span><span class="p">(</span><span class="s1">&#39;Hay un error&#39;</span><span class="p">);</span>
+        <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+<span class="nx">async</span> <span class="kd">function</span> <span class="nx">adios</span><span class="p">(</span><span class="nx">nombre</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">Promise</span><span class="p">(</span> <span class="p">(</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Adios&#39;</span><span class="p">,</span> <span class="nx">nombre</span><span class="p">);</span>
+            <span class="nx">resolve</span><span class="p">();</span>
+        <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+<span class="nx">async</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">nombre</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">hola</span><span class="p">(</span><span class="s1">&#39;Carlos&#39;</span><span class="p">);</span>
+    <span class="nx">await</span> <span class="nx">hablar</span><span class="p">();</span>
+    <span class="nx">await</span> <span class="nx">hablar</span><span class="p">();</span>
+    <span class="nx">await</span> <span class="nx">hablar</span><span class="p">();</span>
+    <span class="nx">await</span> <span class="nx">adios</span><span class="p">(</span><span class="nx">nombre</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Termina el proceso&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Empezamos el proceso&#39;</span><span class="p">);</span>
+<span class="nx">main</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Va a ser la segunda instrucción&#39;</span><span class="p">)</span>
+</pre></div></p>
+<p>En <em>ECMAscript 2017</em> es cuando <em>Async</em> Await entra al juego. Este nuevo feature de Javascript planteaba un mejor manejo de las promesas. Estos ya no estarían encadenados uno del otro volviendo la sintaxis más entendible y fácil de usar. Sobre todo fácil de usar. Para usarlo tan solo se necesita <em>async functions</em> y la keyword <em>await</em>. Este keyword permite que una promesa se resuelva y retorne su valor, esto permite que podamos guardarlo en variables. Pero no todo podía ser oro. <em>await</em> solo funciona en <em>async functions</em>. Este tipo de funciones simplemente se aseguran que lo que sea que retornen sea una promesa. Dicho de otro modo, estas funciones siempre retornan una promesa. Veámoslo en un ejemplo.</p>
+<p>Tomaremos el ejemplo de las promesas y convertiremos su sintaxis usando <em>async await</em>
+<div class="codehilite"><pre><span class="c1">// USANDO PROMESAS</span>
+<span class="nx">callEndpoint</span><span class="p">(</span><span class="s1">&#39;api/getidbyusername/davos&#39;</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">results</span> <span class="o">=&gt;</span> <span class="nx">callEndpoint</span><span class="p">(</span><span class="s1">&#39;api/getfollowersbyid&#39;</span> <span class="o">+</span> <span class="nx">results</span><span class="p">.</span><span class="nx">userId</span><span class="p">))</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">results</span> <span class="o">=&gt;</span> <span class="nx">callEndpoint</span><span class="p">(</span><span class="s1">&#39;api/someothercall&#39;</span><span class="p">))</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">results</span> <span class="o">=&gt;</span> <span class="nx">callEndpoint</span><span class="p">(</span><span class="s1">&#39;api/someothercall&#39;</span><span class="p">))</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">results</span> <span class="o">=&gt;</span> <span class="nx">callEndpoint</span><span class="p">(</span><span class="s1">&#39;api/someothercall&#39;</span><span class="p">))</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">results</span> <span class="o">=&gt;</span> <span class="nx">callEndpoint</span><span class="p">(</span><span class="s1">&#39;api/someothercall&#39;</span><span class="p">))</span>
+
+<span class="c1">// usando Async Await</span>
+<span class="nx">async</span> <span class="kd">function</span> <span class="nx">callEndpoints</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">userResults</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">callEndpoint</span><span class="p">(</span><span class="s1">&#39;api/getidbyusername/davos&#39;</span><span class="p">)</span>
+    <span class="kr">const</span> <span class="nx">followersResults</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">callEndpoint</span><span class="p">(</span><span class="s1">&#39;api/getfollowersbyid&#39;</span> <span class="o">+</span> <span class="nx">userResults</span><span class="p">.</span><span class="nx">userId</span><span class="p">)</span>
+    <span class="kr">const</span> <span class="nx">someResults</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">callEndpoint</span><span class="p">(</span><span class="s1">&#39;api/someothercall&#39;</span><span class="p">)</span>
+    <span class="kr">const</span> <span class="nx">moreResults</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">callEndpoint</span><span class="p">(</span><span class="s1">&#39;api/someothercall&#39;</span><span class="p">)</span>
+    <span class="kr">const</span> <span class="nx">anotherResults</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">callEndpoint</span><span class="p">(</span><span class="s1">&#39;api/someothercall&#39;</span><span class="p">)</span>
+    <span class="kr">const</span> <span class="nx">finalResults</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">callEndpoint</span><span class="p">(</span><span class="s1">&#39;api/someothercall&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="nx">finalResults</span>
+<span class="p">}</span>
+
+<span class="nx">callEndpoints</span><span class="p">()</span>
+</pre></div>
+Async Await y Promesas trabajando juntos</p>
+<p>Vamos a suponer que estamos programando una carga inicial del perfil de usuario y que uno de los requerimientos sea que debamos mostrar la información básica del usuario, los cursos que ha tomado en la plataforma y la lista de sus amigos antes de que termine la carga. Estos recursos se consiguen por medio de una api, y cada recurso está en una diferente url. Y las url del api de los cursos y la de amigos vienen en la información del usuario en la propiedad links.</p>
+<ul>
+<li>Información del usuario: api/user/1234</li>
+<li>Cursos que ha tomado: api/user/1234/courses</li>
+<li>Lista de sus amigos: api/user/1234/friends</li>
+</ul>
+<p>Este es un ejemplo de la respuesta a un pedido a la url de la información del usuario
+<div class="codehilite"><pre><span class="p">{</span>
+    <span class="err">user:</span> <span class="err">{</span>
+        <span class="err">id:</span> <span class="err">1234,</span>
+        <span class="err">...</span>
+        <span class="err">links:</span> <span class="err">[&#39;api/user/1234/courses&#39;,</span> <span class="err">&#39;api/user/1234/friends&#39;]</span>
+    <span class="p">}</span>
+<span class="err">}</span>
+</pre></div>
+Entonces tenemos que hacer 3 pedidos a la api y debemos tener acceso a su data antes de que termine la carga. Está claro lo que debemos usar, <em>async</em> <em>await</em> y <em>promesas</em>.</p>
+<p>Vamos a crear una <em>async</em> function donde en primera instancia haremos un pedido a la url del usuario para obtener la información básica y los links que están como propiedad del usuario. Luego, usaremos una utilidad de las promesas, <code>Promise.all</code>. Esto hará que los pedidos se ejecuten paralelamente, por lo tanto el tiempo de espera se disminuye al no tener que ejectuar los pedidos de los links consecutivamente. Un detalle es que si alguno de estos pedidos falla en el <code>Promise.all</code>, todos fallarán. <em>O todo o nada.</em></p>
+<p>Dentro de <code>Promise.all</code>, iteraremos sobre los links con la función de los arreglos, <code>map</code> . Este recibe una función que tiene como argumento el elemento del arreglo en cada iteración, en este caso el link. Luego dentro de la función, aplicamos un arrow function que retorna un fetch al link en cada iteración. Esto hará que en cada iteración se retorne una promesa. Al final, tendremos un arreglo de estas promesas sin resolver. Para esto aplicamos await al <code>Promise.all</code> para que resuelva todas las promesas paralelamente. Una vez ya resueltos, obtendremos todas las respuestas de los pedidos si todo fue bien y lo guardamos en una variable userResponse. Por último aplicamos todo esto de nuevo para parsear las respuestas en data de tipo objeto para que Javascript pueda hacer operaciones sobre la data.</p>
+<div class="codehilite"><pre><span class="nx">async</span> <span class="kd">function</span> <span class="nx">getAllUserInfo</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">user</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="s1">&#39;api/user/&#39;</span> <span class="o">+</span> <span class="nx">id</span><span class="p">)</span>
+
+    <span class="kr">const</span> <span class="nx">userResponse</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">links</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">link</span> <span class="o">=&gt;</span> <span class="nx">fetch</span><span class="p">(</span><span class="nx">link</span><span class="p">)))</span>
+
+    <span class="kr">const</span> <span class="nx">userData</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span><span class="nx">userResponse</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">()))</span>
+
+    <span class="k">return</span> <span class="nx">userData</span>
+<span class="p">}</span>
+</pre></div>
+
+<h3 id="11-3-entender-los-modulos-del-core">11. ## 3. Entender los módulos del core<a class="headerlink" href="#11-3-entender-los-modulos-del-core" title="Permanent link"></a></h3>
+<h3 id="12-globals">12. Globals<a class="headerlink" href="#12-globals" title="Permanent link"></a></h3>
+<p><img align="absmiddle" alt=":link:" class="gemoji" height="20px" src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png" title=":link:" width="20px" /> <a href="https://nodejs.org/api/">Node.js v14.2.0 Documentation</a></p>
+<p>Los modulos globales son módulos del core.
+Una de las funciones muy usadas en Node es setInterval, clearInterval, para evaluar en n tiempo si el servidor está caído o no.</p>
+<p><strong>TIP</strong>: Si no tengo que usar variables globales no usarlas, pues son un foco de problemas
+<div class="codehilite"><pre>
+</pre></div></p>
+<div class="codehilite"><pre><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">global</span><span class="p">)</span> 
+<span class="cm">/*Object [global] {</span>
+<span class="cm">    global: [Circular], ---&gt; Dependencias ciruculares.</span>
+<span class="cm">    clearInterval: [Function: clearInterval],</span>
+<span class="cm">    clearTimeout: [Function: clearTimeout],</span>
+<span class="cm">    setInterval: [Function: setInterval],</span>
+<span class="cm">    setTimeout: [Function: setTimeout] {</span>
+<span class="cm">      [Symbol(nodejs.util.promisify.custom)]: [Function]</span>
+<span class="cm">    },</span>
+<span class="cm">    queueMicrotask: [Function: queueMicrotask],</span>
+<span class="cm">    clearImmediate: [Function: clearImmediate],</span>
+<span class="cm">    setImmediate: [Function: setImmediate] {</span>
+<span class="cm">      [Symbol(nodejs.util.promisify.custom)]: [Function]</span>
+<span class="cm">    }</span>
+<span class="cm">  }</span>
+<span class="cm">*/</span>
+
+
+<span class="nx">require</span><span class="p">();</span> <span class="c1">// nos va a permitir acceder a caulqueir módulo.</span>
+
+<span class="nx">setImmediate</span><span class="p">(()</span><span class="o">=&gt;</span><span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Ya mismo&quot;</span><span class="p">)</span>
+<span class="p">})</span>
+
+<span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">intervalo</span> <span class="o">=</span> <span class="nx">setInterval</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;hola intervalo&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">i</span> <span class="o">===</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">clearInterval</span><span class="p">(</span><span class="nx">intervalo</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="nx">i</span><span class="o">++</span><span class="p">;</span>
+<span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+
+<span class="nx">setImmediate</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Saludo inmediato&#39;</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">// requiere PARA AGREGAR MODULOS A NUESTRO PROYECTO </span>
+
+<span class="c1">// console.log(process);</span>
+<span class="c1">// MUESTRA EL DIRECTORIO DONDE ESTAMOS TRABAJANDO</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">);</span>
+<span class="c1">// MUESTRA EL DIRECTORIO Y EL ARCHIVO QUE TEMENOS ABIERTO</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">__filename</span><span class="p">);</span>
+<span class="c1">// ES BUENA PRACTICA NO USAR VARIABLES GLOBALES</span>
+
+<span class="nx">global</span><span class="p">.</span><span class="nx">miVariable</span> <span class="o">=</span> <span class="s1">&#39;mi variable global&#39;</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">miVariable</span><span class="p">);</span>
+</pre></div>
+
+<h3 id="13-file-system">13. File system<a class="headerlink" href="#13-file-system" title="Permanent link"></a></h3>
+<h3 id="14-console">14. Console<a class="headerlink" href="#14-console" title="Permanent link"></a></h3>
+<h3 id="15-errores-try-catch">15. Errores (try / catch)<a class="headerlink" href="#15-errores-try-catch" title="Permanent link"></a></h3>
+<h3 id="16-procesos-hijo">16. Procesos hijo<a class="headerlink" href="#16-procesos-hijo" title="Permanent link"></a></h3>
+<h3 id="17-modulos-nativos-en-c">17. Módulos nativos en C++<a class="headerlink" href="#17-modulos-nativos-en-c" title="Permanent link"></a></h3>
+<h3 id="18-http">18. HTTP<a class="headerlink" href="#18-http" title="Permanent link"></a></h3>
+<h3 id="19-os">19. OS<a class="headerlink" href="#19-os" title="Permanent link"></a></h3>
+<h3 id="20-process">20. Process<a class="headerlink" href="#20-process" title="Permanent link"></a></h3>
+<h2 id="4-utilizar-los-modulos-y-paquetes-externos">4. Utilizar los módulos y paquetes externos<a class="headerlink" href="#4-utilizar-los-modulos-y-paquetes-externos" title="Permanent link"></a></h2>
+<h3 id="21-gestion-de-paquetes-npm-y-packagejson">21. Gestión de paquetes: NPM y package.json<a class="headerlink" href="#21-gestion-de-paquetes-npm-y-packagejson" title="Permanent link"></a></h3>
+<h3 id="22-construyendo-modulos-require-e-import">22. Construyendo módulos: Require e Import<a class="headerlink" href="#22-construyendo-modulos-require-e-import" title="Permanent link"></a></h3>
+<h3 id="23-modulos-utiles">23. Módulos útiles<a class="headerlink" href="#23-modulos-utiles" title="Permanent link"></a></h3>
+<h3 id="24-datos-almacenados-vs-en-memoria">24. Datos almacenados vs en memoria<a class="headerlink" href="#24-datos-almacenados-vs-en-memoria" title="Permanent link"></a></h3>
+<h3 id="25-buffers">25. Buffers<a class="headerlink" href="#25-buffers" title="Permanent link"></a></h3>
+<h3 id="26-streams">26. Streams<a class="headerlink" href="#26-streams" title="Permanent link"></a></h3>
+<h2 id="5-conocer-trucos-que-no-quieren-que-sepas">5. Conocer trucos que no quieren que sepas<a class="headerlink" href="#5-conocer-trucos-que-no-quieren-que-sepas" title="Permanent link"></a></h2>
+<h3 id="27-benchmarking-console-time-y-timeend">27. Benchmarking (console time y timeEnd)<a class="headerlink" href="#27-benchmarking-console-time-y-timeend" title="Permanent link"></a></h3>
+<h3 id="28-debugger">28. Debugger<a class="headerlink" href="#28-debugger" title="Permanent link"></a></h3>
+<h3 id="29-error-first-callbacks">29. Error First Callbacks<a class="headerlink" href="#29-error-first-callbacks" title="Permanent link"></a></h3>
+<h2 id="6-manejar-herramientas-con-node">6. Manejar herramientas con Node<a class="headerlink" href="#6-manejar-herramientas-con-node" title="Permanent link"></a></h2>
+<h3 id="30-scraping">30. Scraping<a class="headerlink" href="#30-scraping" title="Permanent link"></a></h3>
+<h3 id="31-automatizacion-de-procesos">31. Automatización de procesos<a class="headerlink" href="#31-automatizacion-de-procesos" title="Permanent link"></a></h3>
+<h3 id="32-aplicaciones-de-escritorio">32. Aplicaciones de escritorio<a class="headerlink" href="#32-aplicaciones-de-escritorio" title="Permanent link"></a></h3>
+<p><em>Preguntas del esxamen de &ldquo;Curso de Fundamentos de Node.js&rdquo;</em></p>
+<ol>
+<li>¿Cuál es el motor de JavaScript sobre el que corre Node?<ul>
+<li>b[OK] V8</li>
+</ul>
+</li>
+<li>Cuando un evento llega al Event Loop, ¿dónde lo manda Node?<ul>
+<li>a[OK] Al thread poll</li>
+</ul>
+</li>
+<li>¿Cómo accedemos a una variable de entorno llamada NOMBRE?<ul>
+<li>d[OK] process.env.NOMBRE</li>
+</ul>
+</li>
+<li>¿Qué pasa si salta un error no capturado en el hilo principal?<ul>
+<li>a[OK] El proceso se detiene</li>
+</ul>
+</li>
+<li>¿Cual es la herramienta más adecuada para ejecutar nuestros procesos de Node en producción?<ul>
+<li>d[OK] PM2</li>
+</ul>
+</li>
+<li>¿Cómo se le llama a la función que se ejecuta cuando termina otra función asíncrona?<ul>
+<li>c[OK] Callback</li>
+</ul>
+</li>
+<li>¿Cuál es la mejor forma de evitar un Callback Hell?<ul>
+<li>d[OK] Todas son correctas</li>
+</ul>
+</li>
+<li>¿Cuántos parámetros puede recibir el then de una promesa?<ul>
+<li>d[OK] Sólo uno</li>
+</ul>
+</li>
+<li>¿Se puede usar la palabra reservada &ldquo;await&rdquo; en cualquier sitio?<ul>
+<li>a[OK] No, solo en funciones declaradas con async</li>
+</ul>
+</li>
+<li>¿Cuál de los siguientes módulos NO está en los módulos globales?<ul>
+<li>d[OK] crypto</li>
+</ul>
+</li>
+<li>¿Cómo indentamos un nivel los logs de consola?<ul>
+<li>b[OK] console.group</li>
+</ul>
+</li>
+<li>Por defecto, ¿cómo detectamos que un fichero se ha escrito con fs.writeFile?<ul>
+<li>c[OK] Con el callback</li>
+</ul>
+</li>
+<li>Cuando se lanzan excepciones, ¿cómo las capturamos?<ul>
+<li>a[OK] Con try/catch</li>
+</ul>
+</li>
+<li>¿Se pueden ejecutar comandos del sistema desde NodeJS? ¿Cómo?<ul>
+<li>c[OK] Si, con proceso hijo</li>
+</ul>
+</li>
+<li>¿En qué lenguajes se pueden desarrollar módulos nativos para NodeJS?<ul>
+<li>d[OK] Javascript y C++</li>
+</ul>
+</li>
+<li>¿En qué puerto se puede iniciar un servidor HTTP en Node?<ul>
+<li>d[OK] En cualquiera</li>
+</ul>
+</li>
+<li>¿Podemos acceder a la memoria disponible y total del sistema operativo desde NodeJS?<ul>
+<li>a[OK] Si, con el módulo OS</li>
+</ul>
+</li>
+<li>¿Podemos controlar cuando se cierra el proceso de Node, y ejecutar código antes de que muera?<ul>
+<li>b[OK] Si, con el módulo Process</li>
+</ul>
+</li>
+<li>¿Dónde se listan las dependencias de nuestro proyecto?<ul>
+<li>d[OK] En el package.json</li>
+</ul>
+</li>
+<li>Cuando creamos un módulo, ¿podemos exportar mas de una entidad?<ul>
+<li>b[OK] Si, tantas como queremos</li>
+</ul>
+</li>
+<li>¿Qué módulo nos permite trabajar con imágenes desde NodeJS?<ul>
+<li>b[OK] Sharp</li>
+</ul>
+</li>
+<li>¿Cuál es la principal ventaja de trabajar en memoria frente a la lectura y escritura en disco?<ul>
+<li>b[OK] La velocidad es mayor</li>
+</ul>
+</li>
+<li>¿Qué es un Buffer?<ul>
+<li>d[OK] Un conjunto de datos crudos</li>
+</ul>
+</li>
+<li>¿Puede un stream transformar datos?<ul>
+<li>b[OK] Si, usando un stream de transformación</li>
+</ul>
+</li>
+<li>¿Cómo sabemos lo que tarda un trozo de código en ejecutarse?<ul>
+<li>c[OK] Usando un console.time</li>
+</ul>
+</li>
+<li>¿Podemos parar el código en un punto determinado mientras se ejecuta?<ul>
+<li>a[OK] Si, con un debugger</li>
+</ul>
+</li>
+<li>En un callback, ¿cuál debería ser el primer parámetro?<ul>
+<li>a[OK] El error</li>
+</ul>
+</li>
+<li>¿Podemos usar NodeJS para acceder al DOM de un sitio externo y extraer información de él?<ul>
+<li>b[OK] Si, con puppeteer</li>
+</ul>
+</li>
+<li>¿Qué herramienta nos permite crear tareas en NodeJS para automatizar procesos?<ul>
+<li>b[OK] Gulp</li>
+</ul>
+</li>
+<li>¿Se puede usar NodeJS para crear aplicaciones de escritorio?<ul>
+<li>b[OK] Si, con Electron</li>
+</ul>
+</li>
+</ol></article></body></html>

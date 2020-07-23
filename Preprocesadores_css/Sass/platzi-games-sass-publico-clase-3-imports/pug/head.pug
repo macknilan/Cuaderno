@@ -1,0 +1,20 @@
+mixin stats(valor,leyenda)
+	.estadistica_elemento
+		h3=valor
+		span=leyenda
+mixin article(categoria,titulo, descripcion)
+	.articulo
+		span.articulo__categoria=categoria
+		h2.articulo__titulo=titulo
+		p.articulo__descripcion=descripcion
+doctype html
+html
+	head
+		title PlatziGames
+		meta(charset='utf-8')
+		meta(http-equiv='X-UA-Compatible', content='IE=edge')
+		meta(name='viewport', content='width=device-width, maximum-scale=1.0, user-scalable=no')
+		link(rel="stylesheet",href="https://fonts.googleapis.com/css?family=Lato:400,400i,700,700i|Oswald:400,500,600,700&display=swap" )
+		link(rel='stylesheet', href='../css/ejercicio-sass.css')
+		script(src='https://kit.fontawesome.com/552ebddad2.js')
+	body
