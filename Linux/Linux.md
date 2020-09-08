@@ -22,6 +22,7 @@
 + [Convertir videos gif mp4 y optimizarlos con ffmpeg](#10-Convertir-videos-gif-mp4-y-optimizarlos-con-ffmpeg)
 + [How to List Installed Packages on Debian](#11-How-to-List-Installed-Packages-on-Debian)
 + [Search For Available Packages From Command Line In Debian](#12-Search-For-Available-Packages-From-Command-Line-In-Debian)
++ [APT Cheat Sheet](#13-APT-Cheat-Sheet)
 
 
 ### 1. Ayuda
@@ -971,6 +972,16 @@ En el markdown para que se pueda ver el video se puede hacer de la siguiente man
 ### 11. How to List Installed Packages on Debian
 
 ```bash
+$ apt-cache pkgnames
+```
+```bash
+$ apt-cache search [package-name-pattern]
+```
+```bash
+$ apt-cache show [package-name]
+```
+
+```bash
 $ sudo dpkg-query -l
 #
 $ sudo dpkg-query -l | grep -i [PACKAGE_NAME]
@@ -985,10 +996,37 @@ $ dpkg --list
 #
 $ dpkg --list | grep -i [PACKAGE_NAME]
 ```
+
 Contar cuantos programas estan instalados
 ```bash
 $ sudo dpkg-query -f '${binary:Package}\n' -W | wc -l
 ```
+
+List files in a package
+```bash
+$ dpkg -L [package-name]
+```
+```bash
+$ dpkg --contents /path/to/redis_2.8.3-1_amd64.deb
+```
+
+Show packages containing a filename or filepath:
+```bash
+$ dpkg -S [filename-search-pattern]
+```
+```bash
+$ dpkg -S /usr/share/man/man5
+```
+
+Show package information:
+```bash
+ $ dpkg -s [package-name]
+```
+```bash
+$ dpkg -s screen
+```
+
+
 
 [[ Volver al índice ]](#INDEX)
 ### 12. Search For Available Packages From Command Line In Debian
@@ -1010,17 +1048,37 @@ apt search <PACKAGE>
 ```
 
 
+[[ Volver al índice ]](#INDEX)
 
+### 13. APT Cheat Sheet
 
++ apt-get
+    - install and --reinstall
+    - remove
+    - purge or --purge
+    - upgrade
+    - update
+    - clean and autoclean
 
++ apt-cache
+    - pkgnames
+    - search show
 
++ dpkg
+    - --list or -l
+    - --install
+    - --remove
+    - --purge
+    - --update
+    - --contents
 
++ Removing a Debian package:
+    - $ sudo apt-get --purge remove [package-name]
+    - sudo apt-get --purge remove [package-name] && sudo apt-get autoremove
 
-
-
-
-
-
++ Clear the APT cache: `/var/cache/apt/archives/`
+    - $ sudo apt-get clean
+    - $ sudo apt-get autoclean
 
 
 

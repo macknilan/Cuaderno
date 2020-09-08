@@ -1645,7 +1645,9 @@ testhost
 
 ## Cookiecutter Django list of commands 
 
-:link: :octocat: [Cookiecutter Django](https://github.com/pydanny/cookiecutter-django)
++ :link: :octocat: [Cookiecutter Django](https://github.com/pydanny/cookiecutter-django)
++ :link: [How To Remove Docker Containers, Images, Volumes, and Networks](https://linuxize.com/post/how-to-remove-docker-images-containers-volumes-and-networks/)
++ :link: [The Docker Handbook](https://www.freecodecamp.org/news/the-docker-handbook/)
 
 ### Docker's cheat sheet
 
@@ -1713,7 +1715,7 @@ testhost
 ```bash
 $ docker images
 $ docker container
-$ docker volumen
+$ docker volume
 $ docker network
 # PARA CADA UNO
 ls
@@ -1742,6 +1744,12 @@ Detener y eliminar todos contenedores
 ```bash
 $ docker container rm $(docker container ls -aq)
 ```
+
+Elininar todos los contenedore detenidos, imagenes colgadas y networks no utilizadas
+```bash
+$ docker system prune
+```
+
 Eliminar todos los volumenes no utilizados
 ```bash
 $ docker system prune --volumes
@@ -1785,18 +1793,27 @@ docker-compose run --rm django python manage.py createsuperuser
 #### Habilitar debugger
 ```bash
 # 1 Para correr el stack de contenedores
+# -f, --file FILE             Specify an alternate compose file
 $ docker-compose -f local.yml up
 ```
 ```bash
-# 2 Saber con que nombre esta el contenedor 
+# 2 Saber con que nombre esta el contenedor
+# -f, --file FILE             Specify an alternate compose file
+# ps List containers
 $ docker-compose -f local.yml ps
 ```
+
 ```bash
 # 3 MATAR EL DOCKER DJANGO
+# -f, --force     Force the removal of a running container (uses SIGKILL)
+# -l, --link      Remove the specified link
+# -v, --volumes   Remove anonymous volumes associated with the container
 $ docker rm -f <ID>
 ```
 ```bash
 # 4 DESPUES DE SACAR/MATAR EL DOCKER DE django PARA LEVANTAR LO DE NUEVO ES
+# run Run a one-off command
+# rm Remove stopped containers
 $ docker-compose -f local.yml run --rm --service-ports django
 # Hacer migraciones
 $ docker-compose -f local.yml run --rm django python manage.py makemigrations
