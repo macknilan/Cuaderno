@@ -135,8 +135,8 @@ Despues de realizar **CloudTrail** sobre un **S3** se puede conectar al servicio
 
 ### Transferencia acelerada
 
-:link:[Aceleración de transferencia de Amazon S3](https://docs.aws.amazon.com/es_es/AmazonS3/latest/dev/transfer-acceleration.html)
-:link:[Estimate the latency from your browser to each AWS region.](https://www.cloudping.info/)
++ :link:[Aceleración de transferencia de Amazon S3](https://docs.aws.amazon.com/es_es/AmazonS3/latest/dev/transfer-acceleration.html)
++ :link:[Estimate the latency from your browser to each AWS region.](https://www.cloudping.info/)
 
 La ruta para activar es Propiedades(del bucket, del que queremos hacer registro)>Transfer Acceleration
 

@@ -484,7 +484,8 @@ Following are the generic views provided by the DRF
 
 ### Django REST Framework Abstraction Grid
 
-:link: [Django REST Framework Abstraction Grid](https://mrcoles.com/django-rest-framework-abstraction-grid/)   
++ :link: [Django REST Framework Abstraction Grid](https://mrcoles.com/django-rest-framework-abstraction-grid/)
+
 ![Django REST Framework Abstraction Grid](img/django_rest_framework_abstraction_grid_08_2020.svg)
 
 
