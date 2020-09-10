@@ -95,6 +95,10 @@ Revisar que paquetes disponen de nuevas versiones
 ```bash
 npm outdate
 ```
+Revisar cual es la version mas resiente de un paquete en especifico
+```bash
+npm view <package_name> version
+```
 Para ver un output más detallado
  ```bash
 npm outdate --dd
