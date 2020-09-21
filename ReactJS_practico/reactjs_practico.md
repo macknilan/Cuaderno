@@ -1939,6 +1939,7 @@ $ json-server initialState.json
 React es una librería desarrollada por _Facebook_ que nos ayuda a construir interfaces de usuario interactivas para todo tipo de aplicaciones: páginas web, aplicaciones móviles o de escritorio, experiencias de realidad virtual, entre otras.
 
 
+> Son funciones que nos permiten acceder a **casi todas** las caracteristicas de RactJs desde componentes funcionales
 
 ### 24. Lectura React Hooks
 

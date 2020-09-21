@@ -96,6 +96,14 @@ $ python3 -m pip install --user --no-cache-dir <name_app>
 # --no-cache-dir -> desahabilitar cache
 # Instalar <name_app> 
 ```
+### Listar los paquetes que se encuentran desactualizados
++ :link: [how-to-update-all-python-packages](https://www.activestate.com/resources/quick-reads/how-to-update-all-python-packages/)
+
+```bash
+$ python3 -m pip list --outdate --format=columns
+```
+
+
 ## 4. Instalar virtualenv y virtualenvwrapper
 
 _Virtualenv_ se usa para aislar en ambientes virtuales diferentes los paquetes que vamos a instalar.  
