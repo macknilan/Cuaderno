@@ -3,6 +3,7 @@
 ## MyNotes
 
 + :link: [Offical webpage Webpack](https://webpack.js.org/)
++ :link: [Offical webpage Webpack Configuration](https://webpack.js.org/configuration/)
 + :link: [Create App - Frontend build config generator](https://createapp.dev/webpack)
 
 :eyes: :rotating_light:
@@ -21,7 +22,7 @@ Si agregas `--host 0.0.0.0` (sustituye `0.0.0.0` _por tu dirección IP_ que pued
 ```
 "start": "webpack-dev-server --open --mode development --host 0.0.0.0"
 ```
-Ahora al ejecutar npm run start tu proyecto se puede visualizar desde otros dispositivos conectados a tu red con la dirección IP. Por ejemplo:
+Ahora al ejecutar `npm run start` tu proyecto se puede visualizar desde otros dispositivos conectados a tu red con la dirección IP. Por ejemplo:
 
 `http://192.168.1.101:8080/`
 
@@ -119,10 +120,12 @@ module.export = {
 }
 ```
 13. `$ npm run build`
+
 14. Instalación de Webpack Dev Server:
 ```bash
 $ npm install --save-dev webpack-dev-server
 ```
+
 15. Para probrar lo que estamos contruyendo y crear un entorno de desarrollo local que nos permita ver los cambios en tiempo real.
 
 Script para ejecutar el servidor de Webpack y visualizar los cambios en tiempo real (package.json):
@@ -292,7 +295,8 @@ $ npm install @material-ui/core
 ```bash
 $ npm install @material-ui/icons
 ```
-Para instalar React router para moverse entre las páginas de la app
+
+Para instalar **React router** para moverse entre las páginas de la app
 
 + :link: [React router quick start](https://reactrouter.com/web/guides/quick-start)
 + :link: [npm React router](https://www.npmjs.com/package/react-router)
@@ -301,19 +305,56 @@ Para instalar React router para moverse entre las páginas de la app
 $ npm install react-router-dom
 ```
 
++ :link: [webpack configuration](https://webpack.js.org/configuration/dev-server/#devserverhistoryapifallback)
+
+Debemos modificar nuestra configuración del entorno de desarrollo local _para que pueda funcionar con el uso de rutas_, debemos ir al archivo `webpack.config.js` y añadir este fragmento de código antes de `plugins`:
+
+```js
+module.exports = {
+  {/*...*/}
+  devServer: {  
+    historyApiFallback: true,  
+  },
+  {/*...*/}
+}
+```
+
++ **Atributos para los Route Objects**:
+    - `path`: la ruta en la que se renderizará el componente en forma de cadena de texto
+    - `exact`: un booleano para definir si queremos que la ruta tiene o no que ser exacta para renderizar un componente. Eg: /index !== /index/all.
+    - `strict`: un booleano para definir si queremos que el último slash sea tomado en cuenta para renderizar un componente. Eg: /index !== /index/.
+    - `sensitive`: un booleano para definir si queremos distinguir entre minúsculas y mayúsculas, y tomar esto en cuenta para renderizar un componente. Eg: /index !== /Index
+    - `component`: recibe un componente a renderizar. Crea un nuevo elemento de React cada vez. Esto causa que el componente se monte y desmonte cada vez (no actualiza).
+    - `render`: recibe un método que retorna un componente. A diferencia de component no remonta el componente.
++ **Tipos de enrutadores**:
+    -  `BrowserRouter`: Es el enrutador que quizá más tiempo utilices como frontend, usa el HTML5 history API lo que quiere decir que es el enrutador que nos da la posibilidad de cambiar las rutas en el navegador.
+    - `HashRouter`: Funciona similar al BrowserRouter, pero usa un hash (#) al inicio de cada url.
+    - `MemoryRouter`: Mantiene el historial de búsqueda en memoria y te sirve para realizar pruebas sin navegador. En este curso no haremos pruebas unitarias por lo tanto no veremos este enrutador.
+    - `StaticRouter`: Nunca cambia de dirección, es perfecto para realizar Server Side Render.
 
 
+#### Para /mandar a llamarcarga variables de entorno desde un archivo `.env` se instala el paquete **dotenv**
 
+:link:  [dotenv](https://www.npmjs.com/package/dotenv)
+```js
+$ npm install dotenv --save
+```
 
+#### Para instalar **axios**
 
+:link: [axios](https://www.npmjs.com/package/axios)
+```js
+$ npm install axios
+```
 
+#### Para poder crear variables de entorno se instala `dotenv-webpack`
 
++ :link: [dotenv-webpack](https://github.com/mrsteele/dotenv-webpack)
++ :link: [npm dotenv-webpack](https://www.npmjs.com/package/dotenv-webpack)
 
-
-
-
-
-
+```js
+npm install dotenv-webpack --save-dev
+```
 
 
 

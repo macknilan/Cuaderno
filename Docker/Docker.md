@@ -199,10 +199,18 @@ $ docker run -it ubuntu bash
 ```
 y en los procesos de docker se muestra que se esta ejecutando
 
+Para crear un contenedor al que puedas entrar y salir todo lo que quieras se debe definir expresamente un entrypoint como `/bin/bash` usando por ejemplo el siguiente comando:
+```bash
+& docker run -it --entrypoint /bin/bash --name ubuntu ubuntu:latest
+```
+
 __PARA SALIR DEL CONTENEDOR__
 ```
 $ exit
 ```
+
+
+
 
 Cada vez que se ejecuta el comando `$ docker run` se crea un contenedor __nuevo, completamente diferente__ y nos damos cuenta en el __HASH__
 ```
@@ -394,12 +402,22 @@ $ docker run ubuntu:14.04 ping -c 10 www.google.com
 
 ## Ejecutando contenedores de fondo
 - Correr de fondo **(background)** o como **demonio**
-- Utiliza la bandera `-b`
+- Utiliza la bandera `-d` (detached mode)
 - Para poder ver el "output" utilizar el comando `docker logs [id contendor]/[nombre contenedor]`
 
 Ejemplo para hacer ping desde un contenedor ejecutarlo como **demonio ó contenedor de fondo**
 ```
 $ docker run -d ubuntu:14.04 ping -c 10 www.google.com
+```
+
+Los contenedores están aislados del sistema y a nivel de red, cada contenedor tiene su propia stack de net y sus propios puertos.
+
+Debemos redirigir los puertos del contenedor a los de la computadora y lo podemos hacer al utilizar este comando:
+```
+$  docker run -d --name server -p 8080:00  nombreDelContenedor
+```
+```
+$  docker run -d -name server ngnix -p 8080:80
 ```
 
 ### Para ver los log de un contenedor
@@ -1005,6 +1023,8 @@ docker tag [local repo:tag] [repo:tag]
 ## Utilizando volúmenes
 **ES UN DIRECTORIO ESTÁTICO QUE SE COMPARTE ENTRE TODOS LOS DIFERENTES CONTENEDORES DE DOCKER.**
 
+:link: [Manage data in Docker](https://docs.docker.com/storage/)
+
 - El comando docker volume contiene sub comando para gestionar los volúmenes en docker
 - Los comandos son:
 ```
@@ -1015,16 +1035,27 @@ $ docker volume rm <VOLUME_NAME>
 ```
 - Para montar un volúmen se utiliza la bandera `-v` en el comando `docker run` (_puede utilizarse más de una vez_)
 Se pueden montar directorios del host con el formato
-```
+```bash
 -v [host path]:[container path]:[ro|rw]
 ```
-ejem:
-```
-$ docker run -it -v prueva:/prueba ubuntu bash
+```bash
+-v host_src:container_dest:options
 ```
 
-Para saber en donde se encuentra el directorio estático que se comparte: `$ docker volume inspect [VOLUMEN_NAME]`.
++ The `host_src` ca` be an absolute path to a file or directory on the host or a named volume.
++ The `container_dest` is an absolute path to a file or directory on the container.
++ Options can be `rw` _(read-write)_ and `ro` _(read-only)_. If no option is specified, _it defaults_ to `rw`.
+
+ejem:
+```bash
+$ docker run --name web_server -d -p 8080:80 -v $(pwd)/public_html:/usr/share/nginx/html nginx
 ```
+ejem:
+```bash
+$ docker run -it -v prueva:/prueba ubuntu bash
+```
+Para saber en donde se encuentra el directorio estático que se comparte: `$ docker volume inspect [VOLUMEN_NAME]`.
+```bash
 # docker volume inspect <VOLUME_NAME>
 [
   {
