@@ -1,13 +1,13 @@
 
 # DOCKER
 
-![](img/docker_logo_400x400.jpg "doker")
+![doker](img/docker_logo_400x400.jpg "doker")
 
-
-- [Install Docker](https://docs.docker.com/engine/installation/)
-- [Docker Hub](https://hub.docker.com/)
-- [Docker ToolBox](https://www.docker.com/products/docker-toolbox)
-- [Docker In Action - Libro de Docker](https://www.manning.com/books/docker-in-action)
+- :link: [Install Docker](https://docs.docker.com/engine/installation/)
+- :link: [Docker Hub](https://hub.docker.com/)
+- :link: [Docker ToolBox](https://www.docker.com/products/docker-toolbox)
+- :link: [Docker In Action - Libro de Docker](https://www.manning.com/books/docker-in-action)
+- :link: [dive](https://github.com/wagoodman/dive)
 
 ## ¿Que es docker?
 **"Docker es una plataforma para desarrollo, entrega y
@@ -67,7 +67,7 @@ $ docker
 ```
 Y se tiene que mostrar algo por el estilo...
 
-![eje. ](img/docker00.png "captura de campaña")
+![eje. captura de campaña](img/docker00.png "captura de campaña")
 
 
 Para saber las opciones de cada comando y ayuda de ellos
@@ -82,8 +82,7 @@ $ docker version
 ```
 
 ## DOCKER ENGINE
-![](img/docker_engine.jpg "DOKER ENGINE")
-
+![DOKER ENGINE](img/docker_engine.jpg "DOKER ENGINE")
 
 ## Contenedores e imagenes
 + Imagenes
@@ -95,15 +94,14 @@ $ docker version
     + Contiene todo lo necesario para ejecutar nuestra aplicación.
     + Basados en una o más imagenes.
 
-![](img/docker_cont_e_imgs.jpg "Contenedores e imagenes")
-
+![Contenedores e imagenes](img/docker_cont_e_imgs.jpg "Contenedores e imagenes")
 
 Para saber que imágenes locales tenemos con docker
 ```
 $ docker images
 ```
 
-![eje. ](img/docker001.jpg "captura de campaña")
+![eje. captura de campaña](img/docker001.jpg "captura de campaña")
 
 
 ## Ciclo de vida de los contenedores
@@ -175,7 +173,7 @@ $ docker ps -a
 
 tiene salida...
 
-![eje. ](img/docker002.jpg "captura de campaña")
+![eje. captura de campaña](img/docker002.jpg "captura de campaña")
 
 
 Si se desea saber que __imágenes__ son las que se __están ejecutando__
@@ -468,7 +466,7 @@ eje.
 ```
 $docker inspect [CONTAINER_ID] | grep macadress
 ```
-![](img/docker003.jpg "doker inspect")
+![doker inspect](img/docker003.jpg "doker inspect")
 
 ## Formas de crear imagenes
 Tres modos
@@ -482,7 +480,7 @@ Creación de imagenes.
 - Las imagenes padre son de solo lectura.
 - Todos los cambios son realizados en la capa de escritura.
 
-![](img/docker_creacion_de_imagenes.jpg "docker creacion de imagenes")
+![docker creacion de imagenes](img/docker_creacion_de_imagenes.jpg "docker creacion de imagenes")
 
 
 ### Crear una imagen con el metodo `commit`
@@ -785,6 +783,9 @@ $ export DOCKER_HOST="-H tcp://0.0.0.0:2375"
 ```
 
 ## DOCKERFILES
+
+:link: [Best practices for writing Dockerfiles](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
+
 - Provee una forma más efectiva de generar imágenes en vez de utilizar `docker commit`
 - Se integra de manera automática en el flujo de desarrollo y de integración continua
 - Las instrucciones más utilizadas son `FROM` y `RUN`
@@ -806,7 +807,6 @@ Para comprobar que si se instalaron los paquetes:
 $ docker run -it <ID_CONTEINER> bash
 ```
 
-
 El comando para poder ejecutar ese archivo estando ubicados dentro de la ruta del archivo creado anteriormente.
 ```
 $ docker build .
@@ -817,7 +817,82 @@ Para poder crear una imagen con nombre con el con el contenedor anterior.
 ```
 $ docker build -t [NOMBRE_DE_LA_IMAGEN:NOMBRE_DE_TAG][RUTA_DE_DONDE_SE_ENCUENTRA_ARCHIVO_DOCKERFILE]
 ```
-![](img/docker008.jpg "docker build")
+![docker build](img/docker008.png "docker build")
+
++ `ARG` - This instruction allows you to define variables that can be passed at build-time. You can also set a default value.
++ `FROM` - The base image for building a new image. This instruction must be the first non-comment instruction in the Dockerfile. The only exception from this rule is when you want to use a variable in the `FROM` argument. In this case, `FROM` can be preceded by one or more `ARG` instructions.
++ `LABEL` - Used to add metadata to an image, such as description, version, author ..etc. You can specify more than one `LABEL`, and each `LABEL` instruction is a _key-value pair_.
++ `RUN` - The commands specified in this instruction will be executed during the build process. Each RUN instruction creates a new layer on top of the current image.
++ `ADD` - Used to copy files and directories from the specified source to the specified destination on the docker image. The source can be local files or directories or an URL. If the source is a local tar archive, then it is automatically unpacked into the Docker image.
++ `COPY` - Similar to `ADD` but the source can be only a local file or directory.
++ `ENV` - This instruction allows you to define an environment variable.
++ `CMD` - Used to specify a command that will be executed when you run a container. You can use only one `CMD` instruction in your Dockerfile.
++ `ENTRYPOINT` - Similar to `CMD`, this instruction defines what command will be executed when running a container.
++ `WORKDIR` - This directive sets the current working directory for the RUN, `CMD`, ENTRYPOINT, COPY, and `ADD` instructions.
++ `USER` - Set the username or `UID` to use when running any following RUN, `CMD`, ENTRYPOINT, COPY, and `ADD` instructions.
++ `VOLUME` - Enables you to mount a host machine directory to the container.
++ `EXPOSE` - Used to specify the port on which the container listens at runtime.
+
+```bash
+# DOCKERFILE
+FROM ubuntu:18.04
+
+RUN apt-get update && \
+    apt-get install -y redis-server && \
+    apt-get clean
+
+EXPOSE 6379
+
+CMD ["redis-server", "--protected-mode no"]
+```
+1. On line 1 we are defining the base image.
+2. The `RUN` instruction that starts on line 3 will update the `apt` index, install the _“redis-server”_ package and `clean the apt cache`. The commands used in instructions are the same as the commands you would use to install redis on Ubuntu server .
+3. The `EXPOSE` instruction defines the port on which the redis server listens.
+4. In the last line, we are using the `CMD` instruction to set the default command that will be executed when the container runs.
+
+The next step is to build the image. To do so run the following command from the directory where the Dockerfile is located:
+```bash
+docker build -t linuxize/redis .
+```
+The option `-t` specifies the image name and optionally a _username_ and _tag_ in the `username/imagename:tag` format.
+
+
+```bash
+# In path/to/your/dev/folder/Dockerfile
+# Base Image
+FROM python:3.6
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        python3-setuptools \
+        python3-pip \
+        python3-dev \
+        python3-venv \
+        git \
+        && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+EXPOSE 8000
+
+CMD python -c "print('hello world')"
+```
++ `FROM`
+    - `FROM` is going to build your image from another pre-existing image. This can get pretty advanced so for now, we just use a good python 3.6 image.
++ `RUN`
+    - `RUN` is a command that allows you to do any bash shell command you'd do normally. In our case, we just do some basic system updates and basic installs.
++ `EXPOSE`
+    - `EXPOSE` allows your docker image to have a port or posts exposed to outside the image. This is important for web applications and software you want to receive requests.
++ `CMD`
+    - `CMD` this is the final command your docker image will run. It's typically reserved for something like running a web application.
++ `COPY`
+    - `COPY` copy is another command we haven't yet added to our Dockerfile. This will allow you to copy local files to your Docker image.
+
+```bash
+$ docker build -t hello-world -f Dockerfile .
+```
++ `-t` portion means "_tag_" and you can add your own tag name I used _hello-world_ since this might be your first time using Docker. When in doubt, include a tag.
++ `-f` is the path to the _Dockerfile_ you're going to use to build your image.
+
 
 ## El build cache
 - Docker guarda un snapshot de cada imagen luego de cada instrucción de build
@@ -826,7 +901,7 @@ $ docker build -t [NOMBRE_DE_LA_IMAGEN:NOMBRE_DE_TAG][RUTA_DE_DONDE_SE_ENCUENTRA
 - Docker utuiliza comparación de estrings exactas para checar con la cache.
     - Simplemente cambiando el orden de las instrucciones la cache se invalida.
 - Para deshabilitar la cache manuelmente se pude utilizar la bandera `--no-cache`
-```
+```bash
 $ docker build --no-cache -t imagen .
 ```
 Estas lineas crean una imagen desde la imagen de "ubuntu" PERO en una sola CAPA "**LAYER" ESTO SE HACE PARA HACER MEJOR PERFORMANCE**
@@ -842,7 +917,7 @@ De esta namenra se crea **una** sola **capa** y se instalo lo mismo. Esta es la 
 - El comando `$ docker history [CONTAINER_ID]` muestra las capas de las cuales se encuentra creada una imagen.
 - Se puede observar cada capa, cuando fue creada, su tamaño y el comando con el cual se generó.
 
- ![](img/docker_history.jpg "docker history")
+ ![docker history](img/docker_history.jpg "docker history")
 
 ## La instrucción CDM
 - **CDM** define el comando por defecto a ejecutar cuando se crea el contenedor
@@ -1012,13 +1087,13 @@ docker tag [local repo:tag] [repo:tag]
 - Pueden compartirse entre contenedores
 - Las instrucciones `RUN` del Dockerfile no modifican la información de los volúmenes.
 
-![](img/docker009.jpg "docker volúmenes")
+![docker volúmenes](img/docker009.jpg "docker volúmenes")
 
 - Separa información del contenedor _vs_ persistente
 - Sirven para compartir datos entre contenedores
 - Tienen mejor performance ya que no utiliza `COW`
 
-![](img/docker010.jpg "docker volúmenes")
+![docker volúmenes](img/docker010.jpg "docker volúmenes")
 
 ## Utilizando volúmenes
 **ES UN DIRECTORIO ESTÁTICO QUE SE COMPARTE ENTRE TODOS LOS DIFERENTES CONTENEDORES DE DOCKER.**
@@ -1110,7 +1185,7 @@ $ docker run -it -v /ruta/absoluta/nombre_de_la_carpeta:/nombre_de_la_carpeta ub
 - Los Control groups (Cgroups) aislan los recursos del sistema utilizador por cada contenedor (memoria / cpu / red / io)
     - Aseguran que un contenedor no pueda hacer fallar el host por hacer mal uso de sus recursos.
 
-![](img/docker011.jpg "docker creacion de imagenes")
+![docker creacion de imagenes](img/docker011.jpg "docker creacion de imagenes")
 
 
 ### Configuración de TLS (cont.)
@@ -1382,7 +1457,7 @@ $ docker network inspect
 - Utilizar la bandera `--net` para especificar una red cuando se crea un contenedor
 - Utilizando la bandera `--link` se puede acceder a los contenedores por nombre.
 
-![](img/docker012.jpg "Modelo de red de docker")
+![Modelo de red de docker](img/docker012.jpg "Modelo de red de docker")
 
 ```
 ➜ ~ docker network ls
@@ -1472,7 +1547,7 @@ $ docker run -it --link [NOMBRE_DE_CONTENEDOR] --net=mi_red debian bash
 De esta manera los dos contenedores estarán en la misma red. **PERO AHORA SE CONECTAN POR MEDIO DE "DNS INTERNO" QUE ESTA EN EL ARCHIVO** 
 ```# cat /etc/resolv.conf```
 
-![](img/docker013.jpg "Visualizando nuestra res docker")
+![Visualizando nuestra res docker](img/docker013.jpg "Visualizando nuestra res docker")
 
 #### Para hacer un contenedor que vea dos redes distintas.
 1. Creación de contenedor _No1_ **(RED 1 DISTINTA)[SE CONECTA LA LA RED "bridge" DE FORMA PREDETERMINADA]**
@@ -1498,7 +1573,7 @@ $ docker network connect bridge container2
 - Para hacer que un contenedor pueda ser accedido desde el exterior, _es necesario mapear sus puertos mediante el hosts_.
 - El contenedor puede ser accedido mediante el puerto mapeado en el host.
 
-![](img/docker014_1.jpg "Exponiendo contenedores a una red externa")
+![Exponiendo contenedores a una red externa](img/docker014_1.jpg "Exponiendo contenedores a una red externa")
 
 ### Mapear puertos.
 1. Con la bandera `-P` "letra pe" _MAYUSCULA_ es para exponer un puerto de docker de manera **aleatoria**.
@@ -1527,11 +1602,11 @@ It creates servers, installs Docker on them, then configures the Docker client t
 2. Crea hosts de docker en clouds providers (eje. Amazon AWS, Digital Ocean, etc...)
 3. Machine crea el servidor, instala y configura Docker.
 
-![](img/docker015.jpg "Docker Machine 00")
+![Docker Machine 00](img/docker015.jpg "Docker Machine 00")
 
-![](img/docker016.jpg "Docker Machine 01")
+![Docker Machine 01](img/docker016.png "Docker Machine 01")
 
-![](img/docker017.jpg "docker creacion de imagenes 02")
+![docker creacion de imagenes 02](img/docker017.jpg "docker creacion de imagenes 02")
 
 ### Usando el comando `docker-machine` create y especificar el driver a usar
 
@@ -1627,7 +1702,7 @@ testhost
 
 ## Docker y microservicios
 
-![](img/docker018.jpg "Microservicios docker")
+![Microservicios docker](img/docker018.jpg "Microservicios docker")
 
 ### Docker Compose
 
@@ -1644,12 +1719,12 @@ testhost
 - [Referencia y lineamientos del archivo "docker-compose.yml"](https://docs.docker.com/compose/compose-file/#compose-file-structure-and-examples)
 - [Como se compone un archivo ".yml"](https://docs.docker.com/compose/compose-file)
 
-![](img/docker_compose_01.jpg "Docker compose")
+![Docker compose](img/docker_compose_01.png "Docker compose")
 
 - `docker-compose.yml` define los servicios que componen la aplicación
 - Cada servicio contiene las instrucciones para construir y ejecutar el contenedor
 
-![](img/docker019.jpg "Docker compose")
+![Docker compose](img/docker019.jpg "Docker compose")
 
 - Utilizar `docker-compose up` para iniciar nuestra aplicación
 - El comando `up`:
