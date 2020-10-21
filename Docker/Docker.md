@@ -199,16 +199,23 @@ y en los procesos de docker se muestra que se esta ejecutando
 
 Para crear un contenedor al que puedas entrar y salir todo lo que quieras se debe definir expresamente un entrypoint como `/bin/bash` usando por ejemplo el siguiente comando:
 ```bash
-& docker run -it --entrypoint /bin/bash --name ubuntu ubuntu:latest
+$ docker run -it --entrypoint /bin/bash --name ubuntu ubuntu:latest
 ```
-
-__PARA SALIR DEL CONTENEDOR__
+_PARA SALIR DEL CONTENEDOR_
 ```
 $ exit
 ```
 
++ :link: [Linux Alpine Docker Hub](https://hub.docker.com/_/alpine)
++ :link: [Linux Alpine](https://wiki.alpinelinux.org/wiki/Tutorials_and_Howtos#Postinstall:_desktops_and_applications)
 
-
+```bash
+$ docker pull alpine
+#
+$ docker run -it --entrypoint /bin/sh --name [NOMBRE_DESEADO] [NOMBRE_DE_IMAGEN]
+#
+$ docker run -it --entrypoint /bin/sh --name prueba alpine:latest
+```
 
 Cada vez que se ejecuta el comando `$ docker run` se crea un contenedor __nuevo, completamente diferente__ y nos damos cuenta en el __HASH__
 ```
