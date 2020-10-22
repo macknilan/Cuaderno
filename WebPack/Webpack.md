@@ -248,8 +248,25 @@ Modificar el archivo `package.json` para poder ejecutar los comandos
       "lint": "eslint src/ --fix"
   },
 }
-
 ```
+#### Para usar/habilitar Async/Await con react, webpack
+
+Se tiene que instalar el paquete de :link: [@babel/plugin-transform-runtime](https://babeljs.io/docs/en/babel-plugin-transform-runtime)
+
+Y modifcar el archivo `.babelrc` añadiendo la siguiente linea
+```json
+{
+  "plugins": ["@babel/plugin-transform-runtime"]
+}
+```
+Para que quede de la siguiente manera
+```json
+{
+  "presets": ["@babel/preset-env", "@babel/preset-react"],
+  "plugins": ["@babel/plugin-transform-runtime"]
+}
+```
+
 #### ¿Que son los hooks?
 > Son funciones que nos permiten acceder a *casi todas* las caracteristicas de RactJs desde componentes funcionales
 
