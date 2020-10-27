@@ -1,5 +1,21 @@
 # Terminal y Línea de Comandos
 
+                                                           $$$$$
+                                                           $$$$$$$
+               $                                           $$O$O$$
+$$$$$$        $$$                                          $VVVVV$
+  $$           $                                         $$  VVV  $$
+  $$       $$$    $$$ $$$$   $$$    $$$  $$$$$ $$$$$    $          $$
+  $$      $  $$    $$$    $$  $$     $$    $$   $$     $            $$
+  $$     $   $$    $$     $$  $$     $$      $$$       $            $$$
+  $$        $$$    $$     $$  $$     $$      $$$      QQ$           $$Q
+  $$     $ $$$     $$     $$  $$     $$     $$ $$   QQQQQQ$       $QQQQQQ
+  $$    $$ $$$ $   $$     $$  $$$   $$$    $$   $$  QQQQQQQ$     $QQQQQQQ
+$$$$$$$$$$  $$$   $$$$   $$$$   $$$$ $$$ $$$$$ $$$$$  QQQQQ$$$$$$$QQQQQ
+
+
+
+
 ## <a name="INDEX">Índice</a>
 + :link: [Documentos Linux](https://github.com/macknilan/Cuaderno/tree/master/Linux/docs_linux)
 + [Ayuda](#1-Ayuda)
@@ -23,6 +39,7 @@
 + [How to List Installed Packages on Debian](#11-How-to-List-Installed-Packages-on-Debian)
 + [Search For Available Packages From Command Line In Debian](#12-Search-For-Available-Packages-From-Command-Line-In-Debian)
 + [APT Cheat Sheet](#13-APT-Cheat-Sheet)
++ [History](#14-History)
 
 
 ### 1. Ayuda
@@ -1080,9 +1097,41 @@ apt search <PACKAGE>
     - $ sudo apt-get clean
     - $ sudo apt-get autoclean
 
+### 14. History
 
-
-
+Para ejecutar el comando previo
+```bash
+!!
+```
+Buscar en el historial 
+```bash
+$ history | grep [QUE_SE_BUSCA]
+```
+Ejecutar un comando en una linea especifica en el historial
+```bash
+$ !356
+```
+Guardar el historial en el archivo `.bash_history`
+```bash
+$ history -a
+```
+La opción escribe la lista completa del historial en el archivo de historial.
+```bash
+$ history -w
+```
+Limpia el historial
+```bash
+$ history -c
+```
+Eliminar una lista especifica del historial
+```bash
+$ history -d 365 375
+```
+Eliminar por completi el historial
+```bash
+$ history -c
+$ history -w
+```
 
 
 

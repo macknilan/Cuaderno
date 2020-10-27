@@ -235,6 +235,12 @@ git branch [nombre]
 ```
 
 ## 2.2 Ramas - git log
+
+Agrupar los commits por autor
+```bash
+$ git shortlog
+```
+
 ### GIT SUPER-LOG No.1
 
 NOTA: Se cambio el nombre de git superlog -> git slog Para que se sea más rapido escribirlo
@@ -517,9 +523,13 @@ To push to a specified repository:
 ```bash
 $ git push git@github.com:username/project.git
 ```
-To delete the branch "branch_name"
+To delete the branch "branch_name" locally (force)
 ```bash
 $ git branch -D branch_name
+```
+Delete branch remotely
+```bash
+$ git push origin --delete remoteBranchName
 ```
 To make an exisiting branch track a remote branch
 ```bash

@@ -222,6 +222,15 @@ El archivo sigerido por Platzi de [.gitignore](https://gist.github.com/gndx/747a
 $ npm install --save-dev eslint babel-eslint eslint-config-airbnb eslint-plugin-import eslint-plugin-react eslint-plugin-jsx-a11y
 
 ```
+
+18.1. Instalar :link: [eslint-plugin-react-hooks](https://www.npmjs.com/package/eslint-plugin-react-hooks)
+
+Y modificar el archivo `.eslint` como lo marca la documentacion.
+
+```bash
+$ npm install eslint-plugin-react-hooks --save-dev
+```
+
 19. Prettier an opinionated code formatter. :link: [Prettier](https://prettier.io/)
 
 + :link: [Prettier npm](https://www.npmjs.com/package/prettier)
@@ -252,6 +261,9 @@ Modificar el archivo `package.json` para poder ejecutar los comandos
 #### Para usar/habilitar Async/Await con react, webpack
 
 Se tiene que instalar el paquete de :link: [@babel/plugin-transform-runtime](https://babeljs.io/docs/en/babel-plugin-transform-runtime)
+
++ :link: [Async/Await with React, Webpack and Babel](https://andrew-flower.com/blog/Async-Await-with-React)
++ :link: [How To Use Async Await in React (componentDidMount Async)](https://www.valentinog.com/blog/await-react/)
 
 Y modifcar el archivo `.babelrc` añadiendo la siguiente linea
 ```json
