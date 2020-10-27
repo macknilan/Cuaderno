@@ -1,5 +1,6 @@
 # Terminal y Línea de Comandos
 
+```
                                                            $$$$$
                                                            $$$$$$$
                $                                           $$O$O$$
@@ -12,6 +13,7 @@ $$$$$$        $$$                                          $VVVVV$
   $$     $ $$$     $$     $$  $$     $$     $$ $$   QQQQQQ$       $QQQQQQ
   $$    $$ $$$ $   $$     $$  $$$   $$$    $$   $$  QQQQQQQ$     $QQQQQQQ
 $$$$$$$$$$  $$$   $$$$   $$$$   $$$$ $$$ $$$$$ $$$$$  QQQQQ$$$$$$$QQQQQ
+```
 
 
 
@@ -65,6 +67,7 @@ $ <comando> --help
 [Explain Shell](http://explainshell.com/), un sitio que permite explicar específicamente la mayoría de comandos.
 
 [[ Volver al índice ]](#INDEX)
+
 ### 2. Chaining Operators 
 
 This Article aims at throwing light on frequently used command­-chaining operators, with short descriptions and corresponding examples which surely will increase your productivity and lets you write short and meaningful codes beside reducing system load, at times.
@@ -190,11 +193,13 @@ The Concatenation Operator **(\)** as the name specifies, is used to concatenate
 mack@localhost:~/Downloads$ nano test\(1\).txt
 ```
 [[ Volver al índice ]](#INDEX)
+
 ### 3. Sistema de archivos
 
 Olvidémonos de C:, D:, E:, etc :)
 
 [[ Volver al índice ]](#INDEX)
+
 #### Rutas relativas y absolutas
 
 En Linux, si existe el usuario <code>braulio</code>, entonces también existe una carpeta en la ruta <code>/home/braulio</code>.
@@ -242,6 +247,7 @@ Donde:
 **[[ Volver al índice ]](#INDEX)**
 
 [[ Volver al índice ]](#INDEX)
+
 #### Comandos básicos
 
 #### Creación de archivos y directorios
@@ -369,6 +375,7 @@ $ less ~/.bash_history
 **[[ Volver al índice ]](#INDEX)**
 
 [[ Volver al índice ]](#INDEX)
+
 #### Listar directorios
 
 ```bash
@@ -423,6 +430,7 @@ $ ll > listado1.txt
 # Se crea un archivo listado1.txt con la salida de ll
 ```
 [[ Volver al índice ]](#INDEX)
+
 #### Búsqueda
 
 ##### find
@@ -537,6 +545,7 @@ ps aux | grep '[h]ttpd'
 ps aux | grep -E --color 'bash|$'
 ```
 [[ Volver al índice ]](#INDEX)
+
 #### Standard Input Standard Output y Standard Error
 
 ![](img/standard_input_standard_output_y_standard_error.png "Standard Input, Standard Output y Standard Error")
@@ -587,6 +596,7 @@ while(True):
     time.sleep(1)
 ```
 [[ Volver al índice ]](#INDEX)
+
 #### Crontab
 ![](img/crontab.png "Crontab")
 
@@ -700,6 +710,7 @@ $ sudo mkdir carpeta
 # Crea una carpeta como superman
 ```
 [[ Volver al índice ]](#INDEX)
+
 #### Enlaces simbólicos
 
 Los enlaces simbólicos sirven para tener una referencia a un archivo o carpeta y acceder a esta sin tener que ir a la ruta.
@@ -716,6 +727,7 @@ $ ln -s path/to/the/target/directory name-of-symlink
 $ ln -ls ~/public_html ~/www
 ```
 [[ Volver al índice ]](#INDEX)
+
 ### 4. Compresión y descompresión de archivos
 
 ### Descompresión
@@ -744,6 +756,7 @@ $ gzip -q archivo.gz
 $ zip archivo.zip archivo
 ```
 [[ Volver al índice ]](#INDEX)
+
 ### 5. Editando archivos
 
 ```bash
@@ -802,6 +815,7 @@ Pronto
 - [8 Técnicas al usar la consola](http://www.howtogeek.com/110150/)
 
 [[ Volver al índice ]](#INDEX)
+
 ### 7. Compresión de imagenes guetzli
 
 - :link: [Guetzli Converter GUI](https://www.guetzliconverter.net/)
@@ -897,6 +911,7 @@ $ ln -s /opt/mozjpeg/bin/cjpeg
 $ cjpeg -baseline -quality 90 foo.jpg > bar.jpg
 ```
 [[ Volver al índice ]](#INDEX)
+
 ### 9. How to Start Stop and Restart Services in Debian 10
 
 Ae ocupara para `init.d` y `systemctl`
@@ -960,6 +975,7 @@ Con `init.d`
 $ sudo /etc/init.d/clamav-daemon enable/disable
 ```
 [[ Volver al índice ]](#INDEX)
+
 ### 10. Convertir videos gif mp4 y optimizarlos con ffmpeg
 - :link: [How to Install FFmpeg in Linux](https://www.tecmint.com/install-ffmpeg-in-linux/)
 - :link: [Tecmint 15 Useful ‘FFmpeg’ Commands for Video, Audio and Image Conversion in Linux](https://www.tecmint.com/ffmpeg-commands-for-video-audio-and-image-conversion-in-linux/)
@@ -986,6 +1002,7 @@ En el markdown para que se pueda ver el video se puede hacer de la siguiente man
 </video>
 ```
 [[ Volver al índice ]](#INDEX)
+
 ### 11. How to List Installed Packages on Debian
 
 ```bash
@@ -1132,7 +1149,7 @@ Eliminar por completi el historial
 $ history -c
 $ history -w
 ```
-
+[[ Volver al índice ]](#INDEX)
 
 
 
