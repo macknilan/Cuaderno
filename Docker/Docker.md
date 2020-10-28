@@ -1715,6 +1715,9 @@ testhost
 
 > “Compose es una herramienta para crear y administrar aplicaciones multi-contenedor"
 
++ :link: [The Official YAML Web Site](https://yaml.org/)
++ :link: [Aprende X en Y minutos](https://learnxinyminutes.com/docs/es-es/yaml-es/)
+
 - En una arquitectura de microservicios existen demasiados servicios, por ende múltiples componentes para correr
 - Resulta tedioso ejecutar "docker run" por cada componente y luego manualmente orquestar todo
 - Docker Compose al rescate

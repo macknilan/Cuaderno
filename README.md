@@ -1,5 +1,5 @@
 <a href="https://github.com/macknilan/Cuaderno/blob/master/Admin_Servidores_Linux/Admin_Servidores_Linux.md"><img src="https://img.icons8.com/color/96/000000/devpost.png" alt="DevOps" title="DevOps"/></a>
-<a href="https://github.com/macknilan/Cuaderno/blob/master/Docker/Docker.md"><img src="https://img.icons8.com/color/96/000000/docker.png" alt="Docker" title="Docker"/></a>
+<a href="https://github.com/macknilan/Cuaderno/blob/master/Docker/Docker.md"><img src="img/Moby-logo.png" width="96px" alt="Docker" title="Docker"/></a>
 <a href="https://github.com/macknilan/Cuaderno/blob/master/Fundamentos_de_BD/Fundamentos_de_BD.md"><img src="https://img.icons8.com/color/96/000000/database.png" alt="Fundamentos de Base de Datos" title="Fundamentos de Base de Datos"/></a>
 <a href="https://github.com/macknilan/Cuaderno/blob/master/GitHub/github.md"><img src="img/Octocat.png" width="96px" alt="GitHub" title="GitHub"/></a>
 <a href="https://github.com/macknilan/Cuaderno/blob/master/Python_%26_Django/python_django.md"><img src="https://img.icons8.com/color/96/000000/django.png" alt="Python & Django" title="Python & Django"/></a>

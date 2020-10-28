@@ -175,6 +175,10 @@ Se agrega la dirección del repositorio remoto
 ```bash
 $ git remote add origin [REPOSITORIO HTTPS o SSH]
 ```
+Eliminar dirección del repositorio remoto
+```bash
+$ git remote rm <REMOTE-NAME>
+```
 
 Se comprueba que se añadieron correctamente
 ```bash
