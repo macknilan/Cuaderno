@@ -791,7 +791,26 @@ $ export DOCKER_HOST="-H tcp://0.0.0.0:2375"
 
 ## DOCKERFILES
 
-:link: [Best practices for writing Dockerfiles](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
++ :link: [Best practices for writing Dockerfiles](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
++ :link: [pythonspeed](https://pythonspeed.com/)
++ :link: [A deep dive into the official Docker image for Python](https://pythonspeed.com/articles/official-python-docker-image/)
++ :link: [Production-ready Docker packaging for Python developers](https://pythonspeed.com/docker/)
+
+
+#### Imagen oficial de Docker para Python recomendada
+
+#### :rotating_light:
+:link: [A deep dive into the official Docker image for Python](https://pythonspeed.com/articles/official-python-docker-image/) como lo recomienda el articulo y tambien en la imagen de python que esta basado :link: :octocat: [cookiecutter-django](https://github.com/pydanny/cookiecutter-django) es la imagen de Docker de :link: :octocat: [python 3.8 slim-buster](https://github.com/docker-library/python/blob/master/3.8/buster/slim/Dockerfile) La bariante de _Debian_ `slim`tiene menos paquetes instalados, así que no hay compiladores por ejemplo.
+
+```bash
+$ docker pull python:3.8-slim-buster
+```
+Crear un contenedor basado en la imagen de `python:3.8-slim-buster` y ponerle como combre `python_38_slim_buster` de _forma interactiva_ y entrar a _bash_
+```bash
+$ docker run -it --name python_38_slim_buster python:3.8-slim-buster /bin/bash
+```
+
+
 
 - Provee una forma más efectiva de generar imágenes en vez de utilizar `docker commit`
 - Se integra de manera automática en el flujo de desarrollo y de integración continua
@@ -883,6 +902,7 @@ EXPOSE 8000
 
 CMD python -c "print('hello world')"
 ```
+
 + `FROM`
     - `FROM` is going to build your image from another pre-existing image. This can get pretty advanced so for now, we just use a good python 3.6 image.
 + `RUN`
@@ -899,6 +919,22 @@ $ docker build -t hello-world -f Dockerfile .
 ```
 + `-t` portion means "_tag_" and you can add your own tag name I used _hello-world_ since this might be your first time using Docker. When in doubt, include a tag.
 + `-f` is the path to the _Dockerfile_ you're going to use to build your image.
+
+```bash
+FROM python:3
+
+WORKDIR /usr/src/app
+
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+CMD [ "python", "./your-daemon-or-script.py" ]
+```
+
+
+
 
 
 ## El build cache
@@ -993,7 +1029,7 @@ CMD cat /tmp/platzi
 Lo que realiza este build de la imagen ubuntu es copiar una archivo que se encuentra en la misma ruta de la imagen, 
 dentro de la imagen, y ya despues dentro de la imagen imprime el contenido del archivo
 
-## Dockerizando nuestra aplicación
+## Dockerizando nuestra aplicación :rotating_light: :link:
 - Utilizar Dockerfiles resulta esencial para lograr que nuestra aplicación se ejecute en contenedores
 - Tomemos nuestra por ejemplo. Para ejecutarla necesitamos lo siguiente
     - Python
@@ -1013,6 +1049,16 @@ RUN pip install -r /app/requirements.txt
 CMD python /app/app.py
 EXPOSE 5000
 ```
+
+
+
+
+
+
+
+
+
+
 ## Especificando un directorio de trabajo
 
 - La instrucción `WORKDIR` permite setear el directorio de trabajo para el cual las instrucciones `RUN`, `CMD`, `ENTRYPOINT` y `COPY` puedan utilizar
