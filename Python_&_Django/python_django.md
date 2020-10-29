@@ -82,12 +82,14 @@ $ pip install --upgrade pip
 **NOTA**: En caso de presentar un error con la instalación o funcionamiento de `pip` ó `pip3`
 ```bash
 $ python2 -m pip install --user --upgrade pip
-
+#
 $ python3 -m pip install --user --upgrade pip
 ```
-### :warning: PARA INSTALAR PAQUETES CON **PYTHON 3** DE FORMA ESPECIFICA :warning:
+### :warning: PARA INSTALAR PAQUETES CON :snake: **PYTHON 3** DE FORMA ESPECIFICA/CORRECTA :warning:
 ```bash
-$ python3 -m pip install --user --no-cache-dir <name_app>
+$ python3 -m pip install --user [name_app]S
+# OR
+$ python3 -m pip install --user --no-cache-dir [name_app]
 # python3 -> Ocupar python3
 # -m -> Ejecutar el modulo
 # pip -> Ejecutar el modulo pip
@@ -102,6 +104,11 @@ $ python3 -m pip install --user --no-cache-dir <name_app>
 ```bash
 $ python3 -m pip list --outdate --format=columns
 ```
+### :rotating_light: :construction: :construction: INFORMACIÓN OFICIAL DE PyPA(Python Packaging Authority) :construction: :construction: :rotating_light:
+
++ :link: [Python Packaging Authority](https://www.pypa.io/en/latest/)
++ :link: [Installing Packages](https://packaging.python.org/tutorials/installing-packages/)
++ :link: [Managing Application Dependencies](https://packaging.python.org/tutorials/managing-dependencies/)
 
 
 ## 4. Instalar virtualenv y virtualenvwrapper
@@ -317,9 +324,13 @@ sourcing an activate script in its bin directory.
 ```
 
 ## 7 Crear un ambiente virtual Pipenv
-:link: [Pipenv: Python Dev Workflow for Humans — pipenv 2018.11.27.dev0 documentation](https://pipenv.kennethreitz.org/en/latest/)  
+
++ :link: [Pipenv: Python Dev Workflow for Humans — pipenv 2018.11.27.dev0 documentation](https://pipenv.kennethreitz.org/en/latest/)
+
 Instalar Pipenv
 ```bash
+$ python3 -m pip install --user pipenv
+# OR
 $ pip3 install pipenv
 ```
 Crear el ambiente virtual

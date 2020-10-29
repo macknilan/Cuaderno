@@ -800,7 +800,7 @@ $ export DOCKER_HOST="-H tcp://0.0.0.0:2375"
 #### Imagen oficial de Docker para Python recomendada
 
 ### :rotating_light: :construction: :construction: :rotating_light:
-:link: [A deep dive into the official Docker image for Python](https://pythonspeed.com/articles/official-python-docker-image/) como lo recomienda el articulo y tambien en la imagen de python que esta basado :link: :octocat: [cookiecutter-django](https://github.com/pydanny/cookiecutter-django) es la imagen de Docker de :link: :octocat: [python 3.8 slim-buster](https://github.com/docker-library/python/blob/master/3.8/buster/slim/Dockerfile) La bariante de _Debian_ `slim`tiene menos paquetes instalados, así que no hay compiladores por ejemplo.
+:link: [A deep dive into the official Docker image for Python](https://pythonspeed.com/articles/official-python-docker-image/) como lo recomienda el articulo y tambien en la imagen de python que esta basado :link: :octocat: :whale: [cookiecutter-django](https://github.com/pydanny/cookiecutter-django) es la imagen de Docker de :link: :octocat: [python 3.8 slim-buster](https://github.com/docker-library/python/blob/master/3.8/buster/slim/Dockerfile) La bariante de _Debian_ `slim`tiene menos paquetes instalados, así que no hay compiladores por ejemplo.
 
 ```bash
 $ docker pull python:3.8-slim-buster
@@ -809,8 +809,6 @@ Crear un contenedor basado en la imagen de `python:3.8-slim-buster` y ponerle co
 ```bash
 $ docker run -it --name python_38_slim_buster python:3.8-slim-buster /bin/bash
 ```
-
-
 
 - Provee una forma más efectiva de generar imágenes en vez de utilizar `docker commit`
 - Se integra de manera automática en el flujo de desarrollo y de integración continua
@@ -902,7 +900,6 @@ EXPOSE 8000
 
 CMD python -c "print('hello world')"
 ```
-
 + `FROM`
     - `FROM` is going to build your image from another pre-existing image. This can get pretty advanced so for now, we just use a good python 3.6 image.
 + `RUN`
