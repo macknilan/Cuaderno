@@ -799,7 +799,7 @@ $ export DOCKER_HOST="-H tcp://0.0.0.0:2375"
 
 #### Imagen oficial de Docker para Python recomendada
 
-#### :rotating_light:
+### :rotating_light: |----------------------| :rotating_light:
 :link: [A deep dive into the official Docker image for Python](https://pythonspeed.com/articles/official-python-docker-image/) como lo recomienda el articulo y tambien en la imagen de python que esta basado :link: :octocat: [cookiecutter-django](https://github.com/pydanny/cookiecutter-django) es la imagen de Docker de :link: :octocat: [python 3.8 slim-buster](https://github.com/docker-library/python/blob/master/3.8/buster/slim/Dockerfile) La bariante de _Debian_ `slim`tiene menos paquetes instalados, así que no hay compiladores por ejemplo.
 
 ```bash
