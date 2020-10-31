@@ -931,7 +931,11 @@ CMD [ "python", "./your-daemon-or-script.py" ]
 ```
 
 #### :whale: + :snake: Docker + Django
-:link: [Django on Docker - A Simple Introduction](https://www.codingforentrepreneurs.com/blog/django-on-docker-a-simple-introduction)
+
+:construction: En la carpeta Docker se encuentra el ejemplo **dj_docker**
+
++ :link: [Django on Docker - A Simple Introduction](https://www.codingforentrepreneurs.com/blog/django-on-docker-a-simple-introduction)
++ :link: [Installing system packages in Docker with minimal bloat](https://pythonspeed.com/articles/system-packages-docker/)
 
 Crear una carpeta `dj_docker`
 

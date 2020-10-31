@@ -7,6 +7,10 @@
 ![Django](img/python_&_django_05.jpg "Django")
 
 
+#### <a name="INDEX">Índice</a>
++ [Django on Docker](#Django-on-Docker)
+
+
 **NOTA**
 Para remover/desinstalar un pro programa:
 ```bash
@@ -1569,3 +1573,217 @@ Si ya tiene las reglas de UFW configuradas pero decide que desea comenzar de nue
 ```bash
 sudo ufw reset
 ```
+
+### Django on Docker
+
+:construction: En la carpeta Docker se encuentra el ejemplo **dj_docker**
+
+#### :whale: + :snake: Docker + Django
++ :link: [Django on Docker - A Simple Introduction](https://www.codingforentrepreneurs.com/blog/django-on-docker-a-simple-introduction)
++ :link: [Installing system packages in Docker with minimal bloat](https://pythonspeed.com/articles/system-packages-docker/)
+
+Crear una carpeta `dj_docker`
+
+Instalar pipenv
+```bash
+$ $ python3 -m pip install --user pipenv
+```
+Crear carpeta con el nombre del projecto
+```bash
+$ mkdir dj_docker
+```
+Crear el ambiente virtual
+```bash
+# --tree QUE OCUPE PYTHON 3
+$ pipenv --three
+```
+Instalar django
+```bash
+$ pipenv install django
+```
+Instalar gunicorn
+```bash
+$ pipenv install gunicorn
+```
+Activar amviente virtual
+```bash
+$ pipenv shell
+```
+Crear un proyecto en django
+```bash
+$ pipenv run django-admin startproject dj_docker .
+```
+BD local y migraciones
+```bash
+python manage.py makemigrations
+python manage.py migrate
+python manage.py createsuperuse
+#
+USER: dj_doker_2020
+PWD: dj docker 2020
+```
+Actualizar dentro de `settings.py`
+```bash
+# importar os
+import os
+...
+# DEBUG can be True/False or 1/0
+DEBUG = int(os.environ.get('DEBUG', default=1)) 
+```
+Crear el archivo `.env` en carpeta raiz solo con la info de `DEBUG=1`
+```bash
+touch .env
+# EDITAR EL ARCHIVO Y PONER SOLO LA INFO
+DEBUG=1
+```
+Probar la configuración con
+```bash
+$ gunicorn dj_docker.wsgi:application --bind 0.0.0.0:8000
+```
+En local browser ir a la dirección `http://localhost:8000/`
+
+Crear el archivo `Dockerfile` la imagen y el contenedor
+
+Dentro de la carpeta del proyecto `dj_docker` crear el archivo `Dockerfile`
+```bash
+$ touch Dockerfile
+```
+Estructura de archivos y carpetas del projecto
+```bash
+.
+├── db.sqlite3
+├── dj_docker
+│   ├── asgi.py
+│   ├── __init__.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+├── Dockerfile
+├── .env
+├── install-packages.sh
+├── manage.py
+├── Pipfile
+└── Pipfile.lock
+```
+
+El archivo `Dockerfile` ocupa la imagen
+```bash
+$ docker pull $ docker pull python:3.8-slim-buster
+```
+
+```bash
+# BASE IMAGE
+FROM python:3.8-slim-buster
+
+# RUN ITS CONTENT THE FILE TO INSTALL
+# UPDATES FROM THE DEBIAN REPOSITORIES
+COPY install-packages.sh .
+RUN chmod +x install-packages.sh
+RUN ./install-packages.sh
+
+# CREATE AND SET WORKING DIRECTORY
+RUN mkdir /app
+WORKDIR /app
+
+# ADD CURRENT DIRECTORY CODE TO WORKING DIRECTORY
+ADD . /app/
+
+# SET DEFAULT ENVIRONMENT VARIABLES
+ENV PYTHONUNBUFFERED 1
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV DEBIAN_FRONTEND=noninteractive 
+# ENV LANG C.UTF-8
+
+# SET PROJECT ENVIRONMENT VARIABLES
+# GRAB THESE VIA PYTHON'S os.environ
+# THESE ARE 100% OPTIONAL HERE
+ENV PORT=8000
+
+# INSTALL SYSTEM DEPENDENCIES
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        # DEPENDENCIES FOR BUILDING PYTHON PACKAGES
+        build-essential \
+        # psycopg2 DEPENDENCIES FOR POSTGRESQL
+        libpq-dev \
+        # TRANSLATIONS DEPENDENCIES
+        gettext \
+        tzdata \
+        python3-setuptools \
+        python3-pip \
+        python3-dev \
+        python3-venv \
+        git \
+        && \
+    apt-get clean && \
+    apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false && \
+    rm -rf /var/lib/apt/lists/*
+
+
+# INSTALL ENVIRONMENT DEPENDENCIES
+RUN pip3 install --upgrade pip
+RUN pip3 install pipenv
+
+# INSTALL DEPENDENCIES FOR PROJECT FROM PIPFILE
+RUN pipenv install --skip-lock --system --dev
+
+EXPOSE 8888
+CMD gunicorn dj_docker.wsgi:application --bind 0.0.0.0:$PORT
+```
+:eyes: En el mismo nivel se crea el archivo `install-packages.sh` el cual tiene por objetivo instalar las actualizaciones de debian por separado (_hay que hacer más pruebas para obtener menor peso de la imagen_)
+
+```bash
+#!/bin/bash
+
+# Bash "strict mode", to help catch problems and bugs in the shell
+# script. Every bash script you write should include this. See
+# http://redsymbol.net/articles/unofficial-bash-strict-mode/ for
+# details.
+set -euo pipefail
+
+rm /etc/apt/sources.list && touch /etc/apt/sources.list
+
+echo "
+deb http://deb.debian.org/debian buster main contrib non-free
+deb-src http://deb.debian.org/debian buster main contrib non-free
+
+deb http://deb.debian.org/debian-security buster/updates main contrib non-free
+deb-src http://deb.debian.org/debian-security buster/updates main contrib non-free
+deb http://security.debian.org/ buster/updates contrib non-free main
+
+deb http://deb.debian.org/debian/ buster-updates main contrib non-free
+deb-src http://deb.debian.org/debian/ buster-updates main contrib non-free
+
+deb http://ftp.debian.org/debian buster-backports main contrib non-free
+deb-src http://ftp.debian.org/debian buster-backports main contrib non-free
+    " | tee -a /etc/apt/sources.list
+
+# Tell apt-get we're never going to be able to give manual
+# feedback:
+export DEBIAN_FRONTEND=noninteractive
+
+# Update the package listing, so we know what package exist:
+apt-get update
+
+# Install security updates:
+apt-get -y upgrade
+
+# Install a new package, without unnecessary recommended packages:
+apt-get -y install --no-install-recommends syslog-ng
+
+# Delete cached files we don't need anymore:
+apt-get clean
+rm -rf /var/lib/apt/lists/*
+```
+Construir la imagen Docker
+```bash
+$ docker build -t simple-django-on-docker -f Dockerfile .
+```
+Ejecutar el contenedor
+```bash
+$  docker run -it -p 80:8888 simple-django-on-docker
+```
+
+En el browser ir a la dirección `http://localhost` para comprobar que se esta ejecutando
+
+
+[[ Volver al inicio ]](#INDEX)
