@@ -87,7 +87,7 @@ $ python3 -m pip install --user --upgrade pip
 ```
 ### :warning: PARA INSTALAR PAQUETES CON :snake: **PYTHON 3** DE FORMA ESPECIFICA/CORRECTA :warning:
 ```bash
-$ python3 -m pip install --user [name_app]S
+$ python3 -m pip install --user [name_app]
 # OR
 $ python3 -m pip install --user --no-cache-dir [name_app]
 # python3 -> Ocupar python3
@@ -118,6 +118,9 @@ _Virtualenvwrapper_ se usa para agilizar _virtualenv_
 
 ### Instalar virtualenv y virtualenvwrapper
 ```bash
+# BETTER :ok:
+$ python3 -m pip install --user virtualenv virtualenvwrapper
+# NOT
 $ sudo pip install virtualenv virtualenvwrapper
 ```
 **NOTA**: En caso de presentar un error con la instalación o funcionamiento.   
@@ -333,17 +336,23 @@ $ python3 -m pip install --user pipenv
 # OR
 $ pip3 install pipenv
 ```
-Crear el ambiente virtual
+Crear el ambiente virtual   
 Dentro de la carpeta donde estaran los archivos del proyecto.
 ```bash
+# CREAR UN AMBIENTE VIRTUAL CON PYTHON 3 CON EL NOMBRE DE LA CARPETA
 $ pipenv --three
+```
+Eliminar el ambiente virtual   
+Dentro de la carpeta donde estaran los archivos del proyecto.
+```bash
+$ pipenv --rm
 ```
 Activar ambiente virtual  
 Dentro de la carpeta donde se estan los archivos del proyecto.
 ```bash
 $ pipenv shell
 ```
-Salir del ambiente virtual
+Salir/Desactivar del ambiente virtual
 ```bash
 $ pipenv exit
 ```
