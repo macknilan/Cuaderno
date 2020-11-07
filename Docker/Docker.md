@@ -931,7 +931,6 @@ CMD [ "python", "./your-daemon-or-script.py" ]
 ```
 
 #### :whale: + :snake: Docker + Django
-
 :construction: En la carpeta Docker se encuentra el ejemplo **dj_docker**
 
 + :link: [Django on Docker - A Simple Introduction](https://www.codingforentrepreneurs.com/blog/django-on-docker-a-simple-introduction)
@@ -1054,25 +1053,19 @@ ENV DEBIAN_FRONTEND=noninteractive
 # THESE ARE 100% OPTIONAL HERE
 ENV PORT=8000
 
-# INSTALL SYSTEM DEPENDENCIES
-RUN apt-get update && apt-get install -y --no-install-recommends \
-        # DEPENDENCIES FOR BUILDING PYTHON PACKAGES
-        build-essential \
-        # psycopg2 DEPENDENCIES FOR POSTGRESQL
-        libpq-dev \
-        # TRANSLATIONS DEPENDENCIES
-        gettext \
-        tzdata \
-        python3-setuptools \
-        python3-pip \
-        python3-dev \
-        python3-venv \
-        git \
-        && \
-    apt-get clean && \
-    apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false && \
-    rm -rf /var/lib/apt/lists/*
-
+RUN apt-get update \
+  # && apt-get install -y apt-utils \
+  # DEPENDENCIES FOR BUILDING PYTHON PACKAGES
+  && apt-get install -y build-essential \
+  # PSYCOPG2 DEPENDENCIES
+  && apt-get install -y libpq-dev \
+  # TRANSLATIONS DEPENDENCIES
+  && apt-get install -y gettext \
+  # INSTALL GIT
+  && apt-get install -y git \
+  # CLEANING UP UNUSED FILES
+  && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
+  && rm -rf /var/lib/apt/lists/*
 
 # INSTALL ENVIRONMENT DEPENDENCIES
 RUN pip3 install --upgrade pip
@@ -1095,23 +1088,6 @@ CMD gunicorn dj_docker.wsgi:application --bind 0.0.0.0:$PORT
 # details.
 set -euo pipefail
 
-rm /etc/apt/sources.list && touch /etc/apt/sources.list
-
-echo "
-deb http://deb.debian.org/debian buster main contrib non-free
-deb-src http://deb.debian.org/debian buster main contrib non-free
-
-deb http://deb.debian.org/debian-security buster/updates main contrib non-free
-deb-src http://deb.debian.org/debian-security buster/updates main contrib non-free
-deb http://security.debian.org/ buster/updates contrib non-free main
-
-deb http://deb.debian.org/debian/ buster-updates main contrib non-free
-deb-src http://deb.debian.org/debian/ buster-updates main contrib non-free
-
-deb http://ftp.debian.org/debian buster-backports main contrib non-free
-deb-src http://ftp.debian.org/debian buster-backports main contrib non-free
-    " | tee -a /etc/apt/sources.list
-
 # Tell apt-get we're never going to be able to give manual
 # feedback:
 export DEBIAN_FRONTEND=noninteractive
@@ -1121,6 +1097,8 @@ apt-get update
 
 # Install security updates:
 apt-get -y upgrade
+
+apt-get -y install --no-install-recommends apt-utils
 
 # Install a new package, without unnecessary recommended packages:
 apt-get -y install --no-install-recommends syslog-ng
@@ -1138,7 +1116,7 @@ Ejecutar el contenedor
 $  docker run -it -p 80:8888 simple-django-on-docker
 ```
 
-En el browser ir a la dirección `http://localhost` para comprobar que se esta ejecutando
+En la dirección `http://localhost` para comprobar que se esta ejecutando
 
 
 ## El build cache
