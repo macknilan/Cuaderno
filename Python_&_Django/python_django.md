@@ -1786,9 +1786,9 @@ En la dirección `http://localhost` para comprobar que se esta ejecutando
 [[ Volver al inicio ]](#INDEX)
 
 
-### :construction: :construction: :construction: :construction:
+## :construction: :construction: :construction: :construction:
 ###  Django on Docker in progress 
-### :construction: :construction: :construction: :construction:
+## :construction: :construction: :construction: :construction:
 
 Crear una carpeta `core`
 
@@ -1994,7 +1994,7 @@ $ docker-compose -f local.yml ps
 ```
 
 
-
+[[ Volver al inicio ]](#INDEX)
 
 
 
