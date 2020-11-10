@@ -1786,7 +1786,8 @@ En la dirección `http://localhost` para comprobar que se esta ejecutando
 [[ Volver al inicio ]](#INDEX)
 
 
-### :construction: :construction: Django on Docker in progress :construction: :construction:
+###  Django on Docker in progress 
+#### :construction: :construction: :construction: :construction:
 
 Crear una carpeta `core`
 
@@ -1819,7 +1820,7 @@ Crear un proyecto en django
 ```bash
 $ pipenv run django-admin startproject core .
 ```
-:eyes: Tener previamente POstgreSQL :octocat: [PostgreSQL](https://github.com/macknilan/Cuaderno/blob/master/PostgreSQL/PostgreSQL.md)
+:eyes: Tener previamente PostgreSQL :octocat: [PostgreSQL](https://github.com/macknilan/Cuaderno/blob/master/PostgreSQL/PostgreSQL.md)
 
 Cambiar la configuración de conección en `settings.py` para que se conecte a la BD de _PostgreSQL(local)_ y hacer pruebas de conexión
 ```bash
@@ -1924,7 +1925,7 @@ EXPOSE 8000
 
 - :link: :whale2: [Compose file versions and upgrading](https://docs.docker.com/compose/compose-file/compose-versioning/)
 
-:file_cabinet: `docker-compose.yml`
+:file_cabinet: `local.yml`
 ```bash
 version: '3.8'
 
