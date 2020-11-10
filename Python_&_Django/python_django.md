@@ -9,6 +9,7 @@
 
 #### <a name="INDEX"> :whale2: + :snake: </a>
 + [Django on Docker](#Django-on-Docker)
++ [Django on Docker in progress](#Django-on-Docker-in-progress)
 
 
 **NOTA**
@@ -1784,9 +1785,10 @@ En la dirección `http://localhost` para comprobar que se esta ejecutando
 
 [[ Volver al inicio ]](#INDEX)
 
-### Django on Docker en desarrollo
 
-Crear una carpeta `dj_pg_docker`
+### :construction: :construction: Django on Docker in progress :construction: :construction:
+
+Crear una carpeta `core`
 
 Instalar pipenv
 ```bash
@@ -1794,7 +1796,7 @@ $ $ python3 -m pip install --user pipenv
 ```
 Crear carpeta con el nombre del projecto
 ```bash
-$ mkdir dj_pg_docker
+$ mkdir core
 ```
 Crear el ambiente virtual
 ```bash
@@ -1806,6 +1808,8 @@ Instalar django & libreria para PosrgreSQL
 $ pipenv install django
 # psycopg2
 $ pipenv install psycopg2
+# django-environ
+$ pipenv install django-environ
 ```
 :rotating_light: Activar ambiente virtual
 ```bash
@@ -1813,7 +1817,7 @@ $ pipenv shell
 ```
 Crear un proyecto en django
 ```bash
-$ pipenv run django-admin startproject dj_pg_docker .
+$ pipenv run django-admin startproject core .
 ```
 :eyes: Tener previamente POstgreSQL :octocat: [PostgreSQL](https://github.com/macknilan/Cuaderno/blob/master/PostgreSQL/PostgreSQL.md)
 
@@ -1838,7 +1842,7 @@ python manage.py makemigrations
 python manage.py migrate
 python manage.py createsuperuse
 # 
-USER: dj_pg_docker_2020
+USER: core_2020
 PWD: dj pg docker 2020
 ```
 Actualizar dentro de `settings.py`
@@ -1856,7 +1860,7 @@ touch .env
 DEBUG=1
 ```
 
-En la carpeta `dj_pg_docker`
+En la carpeta `core`
 
 El archivo `Dockerfile` ocupa la imagen
 ```bash
@@ -1925,21 +1929,12 @@ EXPOSE 8000
 version: '3.8'
 
 services:
-  postgres:
-    image: postgres
-    environment:
-      - POSTGRES_DB=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-    container_name: postgres
-    volumes:
-      - local_postgres_data:/var/lib/postgresql/data
-      # - local_postgres_data_backups:/backups
-    ports:
-      - "5432:5432"
   django:
     build: .
-    # container_name: django
+    env_file:
+      - ./.envs/.local/.django
+      - ./.envs/.local/.postgres
+    container_name: django
     command: python /app/manage.py migrate
     command: python /app/manage.py runserver 0.0.0.0:8000
     volumes:
@@ -1948,13 +1943,52 @@ services:
         - "8000:8000"
     depends_on:
         - postgres
+  postgres:
+    image: postgres
+    env_file:
+      - ./.envs/.local/.postgres
+    container_name: postgres
+    volumes:
+      - local_postgres_data:/var/lib/postgresql/data
+      # - local_postgres_data_backups:/backups
+    ports:
+      - "5432:5432"
 volumes:
   local_postgres_data:
 ```
 
+Estructura de archivos y carpetas del projecto
+```bash
+.
+├── core
+│   ├── asgi.py
+│   ├── __init__.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+├── Dockerfile
+├── install-packages.sh
+├── local.yml
+├── manage.py
+├── Pipfile
+└── Pipfile.lock
+```
+
 Como la imagen esta previamente desarrollada con un proyecto
 ```bash
-$ docker-compose up --build
+# COMPOSE_FILE
+$ export COMPOSE_FILE=local.yml
+
+$ docker-compose build
+$ docker-compose up
+$ docker-compose ps
+$ docker-compose down
+```
+
+```bash
+$ docker-compose -f local.yml up --build
+# 
+$ docker-compose -f local.yml ps
 ```
 
 
