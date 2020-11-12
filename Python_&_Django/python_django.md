@@ -1931,6 +1931,16 @@ EXPOSE 8000
 version: '3.8'
 
 services:
+  postgres:
+    image: postgres
+    env_file:
+      - ./.envs/.local/.postgres
+    container_name: postgres
+    volumes:
+      - local_postgres_data:/var/lib/postgresql/data
+      # - local_postgres_data_backups:/backups
+    ports:
+      - "5432:5432"
   django:
     build: .
     env_file:
@@ -1945,16 +1955,6 @@ services:
         - "8000:8000"
     depends_on:
         - postgres
-  postgres:
-    image: postgres
-    env_file:
-      - ./.envs/.local/.postgres
-    container_name: postgres
-    volumes:
-      - local_postgres_data:/var/lib/postgresql/data
-      # - local_postgres_data_backups:/backups
-    ports:
-      - "5432:5432"
 volumes:
   local_postgres_data:
 ```
