@@ -33,7 +33,10 @@ Web Services es la manera en que se implementan las arquitecturas orientadas a s
     - GraphQL: Es el más moderno, desarrollado por Facebook. Funciona más como un Query Language para las API, un lenguaje de consultas.
 
 ### 2. The Twelve-Factor App
-- :link: [he twelve-factor app](https://12factor.net/)
+- :link: [The twelve-factor app](https://12factor.net/)
+- :link: [The twelve-factor/es/ app](https://12factor.net/es/)
+- :link: [Twelve-factor app development on Google Cloud](https://cloud.google.com/solutions/twelve-factor-app-development-on-gcp)
+
 
 + Algunos principios de Twelve Factor app
     - Formas declarativas de configuración
@@ -51,12 +54,31 @@ Web Services es la manera en que se implementan las arquitecturas orientadas a s
 + **Dev/prod parity**: Reducir la diferencia entre entornos para reducir tiempo entre deploys y las personas involucradas sean las mismas que puedan hacer el deploy
 + **Admin processes**: Tratar los procesos administrativos como una cosa diferente, no deben estar con la app.
 
+- :link: [Twelve-Factor App methodology](https://en.wikipedia.org/wiki/Twelve-Factor_App_methodology)
+
+
+| #    	| Factor              	| Description                                                                                                         	|
+|------	|---------------------	|---------------------------------------------------------------------------------------------------------------------	|
+| I    	| Codebase            	| There should be exactly one codebase for a deployed service with the codebase being used for many deployments.      	|
+| II   	| Dependencies        	| All dependencies should be declared, with no implicit reliance on system tools or libraries.                        	|
+| III  	| Config              	| Configuration that varies between deployments should be stored in the environment.                                  	|
+| IV   	| Backing services    	| All backing services are treated as attached resources and attached and detached by the execution environment.      	|
+| V    	| Build, release, run 	| The delivery pipeline should strictly consist of build, release, run.                                               	|
+| VI   	| Processes           	| Applications should be deployed as one or more stateless processes with persisted data stored on a backing service. 	|
+| VII  	| Port binding        	| Self-contained services should make themselves available to other services by specified ports.                      	|
+| VIII 	| Concurrency         	| Concurrency is advocated by scaling individual processes.                                                           	|
+| IX   	| Disposability       	| Fast startup and shutdown are advocated for a more robust and resilient system.                                     	|
+| X    	| Dev/Prod parity     	| All environments should be as similar as possible.                                                                  	|
+| XI   	| Logs                	| Applications should produce logs as event streams and leave the execution environment to aggregate.                 	|
+| XII  	| Admin Processes     	| Any needed admin tasks should be kept in source control and packaged with the application.                          	|
+
+
 ### 3. Codebase: Settings modular
-:link: :octocat: [Codebase](https://github.com/macknilan/cride-platzi/commit/88c798f8f34cbe2cee5688f8259276e15ad13480)
-:link: :octocat: [joke2k/django-environ](https://github.com/joke2k/django-environ)
-:link: :octocat: [django-extensions/django-extensions ](https://github.com/django-extensions/django-extensions)
-:link: :octocat: [anymail/django-anymail](https://github.com/anymail/django-anymail)
-:link: :octocat: [jschneier/django-storages ](https://github.com/jschneier/django-storages)
++ :link: :octocat: [Codebase](https://github.com/macknilan/cride-platzi/commit/88c798f8f34cbe2cee5688f8259276e15ad13480)
++ :link: :octocat: [joke2k/django-environ](https://github.com/joke2k/django-environ)
++ :link: :octocat: [django-extensions/django-extensions ](https://github.com/django-extensions/django-extensions)
++ :link: :octocat: [anymail/django-anymail](https://github.com/anymail/django-anymail)
++ :link: :octocat: [jschneier/django-storages ](https://github.com/jschneier/django-storages)
 
 ### 4. Codebase: Dependencias y archivos de docker
 :link: :octocat: []()
