@@ -9,7 +9,7 @@
 <a href="https://github.com/macknilan/Cuaderno/blob/master/PostgreSQL/PostgreSQL.md"><img src="https://img.icons8.com/color/96/000000/postgreesql.png" alt="PostgreSql" title="PostgreSql"/></a>
 <a href="https://github.com/macknilan/Cuaderno/blob/master/Mysql/MySQL.md"><img src="https://img.icons8.com/ios-filled/100/000000/mysql-logo.png" alt="MySql & MariaDb" title="MySql & MariaDb"/></a>
 [![jQuery to Javascript](img/jquery_to_javascript.png "jQuery to Javascript")](https://github.com/macknilan/Cuaderno/blob/master/jQuery_to_Javascript/c_jquery_2_javascript_2018.md)
-<a href="https://github.com/macknilan/Cuaderno/tree/master/Python"><img src="https://img.icons8.com/color/96/000000/python.png" alt="Python" title="Python"/></a>
+<a href="https://github.com/macknilan/Cuaderno/tree/master/Python"><img src="img/Python-logo-notext.svg" width="96px" alt="Python" title="Python"/></a>
 <a href="https://github.com/macknilan/Cuaderno/blob/master/Linux/Linux.md"><img src="https://img.icons8.com/color/96/000000/linux.png" alt="Linux" title="Linux"/></a>
 <a href="https://github.com/macknilan/Cuaderno/blob/master/Aws/c_amazon_web_services.md"><img src="https://img.icons8.com/color/96/000000/amazon-web-services.png" alt="AWS" title="AWS"/></a>
 <a href="https://github.com/macknilan/Cuaderno/blob/master/Admin_Servidores_Linux/Admin_Servidores_Linux.md"><img src="https://img.icons8.com/color/96/000000/linux-client.png" alt="Administracion de Servidores Linux" title="Administracion de Servidores Linux"/></a>
