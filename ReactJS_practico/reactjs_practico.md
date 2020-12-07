@@ -41,7 +41,7 @@ Recuerda que los cambios en el Virtual **DOM** no afectan el HTML que ven los us
 **NOTA** Mi repo commit `Add. _Curso Practico ReactJS_ 3. Create React App y Tipos de Componentes`
 
 Inicialización de un proyecto en React
-Creación de nuestro sitio web usando la plantilla por defecto de :link:[Create React App](https://create-react-app.dev/docs/getting-started/)
+Creación de nuestro sitio web usando la plantilla por defecto de :link: [Create React App](https://create-react-app.dev/docs/getting-started/)
 ```bash
 npx create-react-app nombre-de-tu-proyecto
 ```

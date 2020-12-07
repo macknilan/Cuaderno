@@ -58,13 +58,14 @@ $ ssh-keygen -t rsa -b 4096 -C "comentario_de_la_llave+your_email@example.com" -
 ```
 
 METODO No.2 **HACER LA LLAVE SSH "ed25519"**  
-- :link:[Upgrade Your SSH Key to Ed25519](https://medium.com/risan/upgrade-your-ssh-key-to-ed25519-c6e8d60d3c54)
-- :link:[EdDSA WikiPedia](https://en.wikipedia.org/wiki/EdDSA)
-- :link:[How to use ssh-keygen to generate a new SSH key](https://www.ssh.com/ssh/keygen)
-- :link:[SSH keys - ArchWiki](https://wiki.archlinux.org/index.php/SSH_keys)
+- :link: [Upgrade Your SSH Key to Ed25519](https://medium.com/risan/upgrade-your-ssh-key-to-ed25519-c6e8d60d3c54)
+- :link: [EdDSA WikiPedia](https://en.wikipedia.org/wiki/EdDSA)
+- :link: [How to use ssh-keygen to generate a new SSH key](https://www.ssh.com/ssh/keygen)
+- :link: [SSH keys - ArchWiki](https://wiki.archlinux.org/index.php/SSH_keys)
+- :link: [Comparison of the SSH Key Algorithms](https://medium.com/@nbeguier/a-real-world-comparison-of-the-ssh-key-algorithms-b26b0b31bfd9)
 
 ```bash
-$ ssh-keygen -o -a 100 -t ed25519 -f ~/.ssh/id_ed25519 -C "comentario_de_la_llave+your_john@example.com" #-> frase_de_la_llave
+$ ssh-keygen -o -a 256 -t ed25519 -f ~/.ssh/id_ed25519 -C "comentario_de_la_llave+your_john@example.com" #-> frase_de_la_llave
 ```
 Preguntara para hacer la frase de la contraseña.  
 - `-o` : Save the private-key using the new _OpenSSH_ format rather than the PEM format. Actually, this option is implied when you specify the key type as **ed25519**.
