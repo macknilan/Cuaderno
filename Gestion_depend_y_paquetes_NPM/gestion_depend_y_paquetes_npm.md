@@ -1,7 +1,8 @@
 
 # Curso de Gestión de Dependencias y Paquetes con NPM
 
-## 1. Introducción a NPM
+## Introducción a NPM(#1-Acerca-de-NPM-paquetes-y-módulos)
+## YARN(#yarn)
 ### 1.Acerca de NPM, paquetes y módulos
 ¿Qué es **NPM** (_node package manager_) ? Es un gestor de paquetes, el más popular que tiene JavaScript, donde encontrarás una gran cantidad de recursos para poder implementar en tus proyectos. También vas a poder crear tus propios paquetes y compartirlos con toda la comunidad.
 
@@ -191,7 +192,7 @@ Y en caso de que esto no lo solucione, podemos ir actualizandolos de uno en uno.
 
 
 
-
+## Yarn
 
 
 
