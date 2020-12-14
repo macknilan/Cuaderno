@@ -194,9 +194,47 @@ Y en caso de que esto no lo solucione, podemos ir actualizandolos de uno en uno.
 
 ## Yarn
 
+1.
+```bash
+$ curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+$ echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+```
+2. 
+```bash
+$ sudo apt update
+$ sudo apt install yarn
+```
+3.
+```bash
+$ yarn --version
+```
+
+```bash
+```
+
+|           npm          |           yarn          |
+|:----------------------:|:-----------------------:|
+| npm init               | yarn init               |
+| npm run                | yarn run                |
+| npm test               | yarn test               |
+| npm login (and logout) | yarn login (and logout) |
+| npm link               | yarn link               |
+| npm publish            | yarn publish            |
+| npm cache clean        | yarn cache clean        |
+| npm ugrade             | yarn upgrade-interactive        |
 
 
-
+| Command                  | npm                                | yarn                         |
+|--------------------------|------------------------------------|------------------------------|
+| Install dependencies     | npm install                        | yarn                         |
+| Install package          | npm install [package]              | yarn add [package]           |
+| Install dev package      | npm install --save-dev [package]   | yarn add --dev [package]     |
+| Uninstall package        | npm uninstall [package]            | yarn remove [package]        |
+| Uninstall dev package    | npm uninstall --save-dev [package] | yarn remove [package]        |
+| Update                   | npm update                         | yarn upgrade                 |
+| Update package           | npm update [package]               | yarn upgrade [package]       |
+| Global install package   | npm install --global [package]     | yarn global add [package]    |
+| Global uninstall package | npm uninstall --global [package]   | yarn global remove [package] |
 
 
 
