@@ -23,8 +23,9 @@ $ sudo apt-get purge --auto-remove [PACKAGE_NAME]
 ## 1.  Actualizar los paquetes de Ubuntu o del sistema Debian:
 
 ```bash
-$ sudo apt-get install python-pip python3-pip python3-dev python-dev build-essential python-setuptools python-pip virtualenv virtualenvwrapper
+$ sudo apt install python3-pip python3-venv
 ```
+
 ```bash
 $ pip install -r requirements.txt
 ```
