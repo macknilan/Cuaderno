@@ -92,6 +92,10 @@ Mostrar el árbol de jerarquía de los paquetes
 ```bash
 npm list
 ```
+Mostrar todos los paquetes locales sin dependencias.
+```bash
+npm list --depth=0
+```
 Revisar que paquetes disponen de nuevas versiones
 ```bash
 npm outdate
@@ -235,6 +239,10 @@ $ yarn --version
 | Update package           | npm update [package]               | yarn upgrade [package]       |
 | Global install package   | npm install --global [package]     | yarn global add [package]    |
 | Global uninstall package | npm uninstall --global [package]   | yarn global remove [package] |
+| List Global packages     | npm list -g --depth 0              | yarn global list             |
+| List local packages      | npm list --depth=0                 | yarn list --depth=0          |
+| List outdated local packa| npm outdated                       | yarn outdated                |
+| List outdated global pack| npm outdated --global              | :x:                       |
 
 
 
