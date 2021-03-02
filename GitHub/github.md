@@ -207,10 +207,10 @@ ssh -T git@github.com
 
 ### Después configuraremos nuestros datos (usaré los míos):
 ```
-$git config --global user.name "TU NOMBRE"
-$git config --global user.email "TU CORREO DE GITHUB"
-$git config --global color.ui true
-$git config --global --list
+$ git config --global user.name "TU NOMBRE"
+$ git config --global user.email "TU CORREO DE GITHUB"
+$ git config --global color.ui true
+$ git config --global --list
 ```
 
 ### Subir cambios a GitHub
