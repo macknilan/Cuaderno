@@ -33,7 +33,8 @@
 <a href="https://github.com/macknilan/Cuaderno/blob/master/Sass_css/sass_css.md"><img src="https://img.icons8.com/color/48/000000/sass.png" alt="Sass" title="Sass"/></a>
 <a href="https://github.com/macknilan/Cuaderno/blob/master/Sistemas_de_diseno_para_dev/sistemas_de_diseno_para_dev.md"><img src="img/icons8-web-design-80-design-for-dev.png" alt="Sistemas de Diseño para Desarrolladores" title="Sistemas de Diseño para Desarrolladores"/></a>
 <a href="https://github.com/macknilan/Cuaderno/tree/master/vueJs"><img src="https://img.icons8.com/color/96/000000/vue-js.png" alt="vueJS" title="vueJS"/></a>
-<a href="https://github.com/macknilan/Cuaderno/blob/master/WebPack/Webpack.md"><img src="https://img.icons8.com/dusk/64/000000/webpack.png" alt="Webpack" title="Webpack"/></a>
+<a href="https://github.com/macknilan/Cuaderno/blob/master/WebPack/Webpack.md"><img src="img/webpack.png" alt="Webpack" title="Webpack"/></a>
+<a href="https://github.com/macknilan/Cuaderno/blob/master/Webpack_2/webpack.md"><img src="img/webpack.png" alt="Webpack" title="Webpack_2"/></a>
 
 
 <a target="_blank" href="https://icons8.com/icons/set/web-design">Web Design icon</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>

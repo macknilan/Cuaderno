@@ -105,10 +105,10 @@ module.export = {
 ├── package.json
 ├── package-lock.json
 ├── public
-│   └── index.html
+│   └── index.html
 ├── src
-│   ├── components
-│   └── index.js
+│   ├── components
+│   └── index.js
 └── webpack.config.js
 ```
 12. Script para ejecutar las tareas de Webpack `package.json` se modifica añadiendo lo siguiente para compilar el proyecto
@@ -198,11 +198,11 @@ Hasta el momento la estructura
 ```bash
 src
 ├── assets
-│   └── styles
-│       └── componentes
-    │       └── <NOMBRE_DE_LOS_COMPONENTES>.scss
+│   └── styles
+│       └── componentes
+    │       └── <NOMBRE_DE_LOS_COMPONENTES>.scss
 ├── components
-│   └── <NOMBRE_DE_LOS_COMPONENTES>.jsx
+│   └── <NOMBRE_DE_LOS_COMPONENTES>.jsx
 └── index.js
 ```
 18. Eslint
@@ -384,7 +384,6 @@ $ npm install axios
 ```js
 npm install dotenv-webpack --save-dev
 ```
-
 
 
 
