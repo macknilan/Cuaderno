@@ -449,47 +449,434 @@ new MiniCssExtractPlugin(),
 new MiniCssExtractPlugin({
       filename: 'assets/[name].[contenthash].css'
     }),
-
 ```
 
-```
-```
-
-```
-```
 
 ## Webpack Alias
+_Alias_ nos permiten otorgar nombres paths específicos evitando los paths largos
+
+_Aias_ **forma parte del objeto resolve** el cual nos permite configurar la forma en que webpack resolverá los módulos incorporados.
+En nuestro camino, tenemos dos:
+
++ `resolve.alias` - para crear atajos que optimizan el tiempo de búsqueda e incorporación de módulos (commonJS o ES6)
++ `resolve.extensions` - para darle prioridad en resolución para con las extensiones donde si hay archivos nombrados igualmente, pero con diferentes extensiones, webpack resolverá conforme están listados.
+
+En el archivo `webpack.config.js` en el modulo `resolve` se añade
+```js
+alias: {
+  '@utils': path.resolve(__dirname, 'src/utils/'),
+  '@templates': path.resolve(__dirname, 'src/templates/'),
+  '@styles': path.resolve(__dirname, 'src/styles/'),
+  '@images': path.resolve(__dirname, 'src/assets/images/'),
+}
+```
+Y se tienen que hacer modificaciones a los archivos en los cuales se hacen los `imports`
+`src/index.js`
+```js
+import Template from './templates/Template.js';
+import './styles/main.css'
+// A
+import Template from '@templates/Template.js';
+import '@styles/main.css'
+```
+`src/templates/Template.js`
+```js
+import getData from '../utils/getData.js';
+import github from '../assets/images/github.png';
+import instagran from '../assets/images/instagram.png';
+import twitter from '../assets/images/twitter.png';
+// A
+import getData from '@utils/getData.js';
+import github from '@images/github.png';
+import instagran from '@images/instagram.png';
+import twitter from '@images/twitter.png';
+```
 
 
 4. Deploy del proyecto
 ## Variables de entorno
++ [Environment Variables](https://webpack.js.org/guides/environment-variables/)
++ [EnvironmentPlugin](https://webpack.js.org/plugins/environment-plugin/)
++ [Random user API](https://randomuser.me/api)
+
++ Es importante considerar las variables de entorno va a ser un espacio seguro donde podemos guardar datos sensibles
+  - Por ejemplo, subir llaves al repositorio no es buena idea cuando tienes un proyecto open source
+
+```bash
+$ yarn add dotenv-webpack -D
+```
+Crear dos archivos en raiz `.env` y `.env.example`   
+En el archivo `.env` para este ejemplo se añade
+```
+API=https://randomuser.me/api/
+```
+En el archivo `.env.example` para este ejemplo se añade
+```js
+API=#
+```
+En el archivo `webpack.config.js` se añade
+```js
+const Dotenv = require('dotenv-webpack');
+// Y EN LOS PLUGINS
+plugins: [
+  new Dotenv()
+],
+```
+En el archivo `/src/utils/getData.js` se cambia
+```js
+const API = 'https://randomuser.me/api/';
+// POR
+const API = process.env.API;
+```
 
 ## Webpack en modo desarrollo
+Para crear un entorno de desarollo se crea el archivo `webpack.config.dev.js` en el cual se copia primero lo que esta en `webpack.config.js`
+para después eliminar lo siguiente que no se ocupa en el modo de desarrollo
+
+```js
+// ...
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+// ...
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new CssMinimizerPlugin(),
+      new TerserPlugin(),
+    ]
+  }
+```
+Se añade `webpack.config.dev.js` el modo de desarrollo despues de `entry`
+```js
+mode: 'development',
+```
+En el archivo `package.json` se añade la linea siguiente para poder ejecutar el webpack en modo development
+```js
+"dev": "webpack --config webpack.config.dev.js"
+```
 
 ## Webpack en modo producción
++ [Mode](https://webpack.js.org/configuration/mode/)
++ [EnvironmentPlugin](https://webpack.js.org/plugins/environment-plugin/)
+
+
++ Actualmente tenemos el problema de tener varios archivos repetidos los cuales se fueron acumulando por compilaciones anteriores
++ Para ello puedes limpiar la carpeta cada vez que hacemos un build, usando clean-webpack-plugin
+  - Cabe recalcar que esta característica es mucho más util para la configuración de producción
+
+Se instala el plugin
+```bash
+$ yarn add clean-webpack-plugin -D
+```
+
+Se añade a `webpack.config.js` para que elimine los archivos que no son necesarios para producción como los _hashes_ anteriores. 
+```js
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+// SE AÑADE EN LOS PLUGINS
+plugins: [
+...
+  new CleanWebpackPlugin()
+]
+```
+En el archivo `package.json` se cambia el _script build_ de esto 
+```js
+"build": "webpack --mode production",
+// A 
+"build": "webpack --mode production --config webpack.config.js",
+```
 
 ## Webpack Watch
+:link: [Watch and WatchOptions](https://webpack.js.org/configuration/watch/)
+
+El modo watch hace que nuestro proyecto se compile de forma automática, que este al pendeiente los cambios realizados
+
+Se dede de agregar a al configuración de `webpack.config.dev.js` en 
+```js
+module.exports = {
+  //...
+  watch: true,
+};
+
+```
 
 ## Deploy a Netlify
++ :link:[netlify](https://www.netlify.com/)
++ :octocat: [gitmogi](https://github.com/carloscuesta/gitmoji)
++ :octocat: [gitmoji-cli](https://github.com/carloscuesta/gitmoji-cli)
 
 5. Herramientas de desarrollo complementarias
 ## Webpack Dev Server
++ :link: [DevServer](https://webpack.js.org/configuration/dev-server/)
+
+**HTML5 History API** permite la manipulación de session history del navegador, es decir las páginas visitadas en el tab o el frame en la cual la página está cargada.
+
+Para ver con webpack cambios en tiempo real en un navegador
+```bash
+$ yarn add webpack-dev-server -D
+```
+En el archivo `webpack.config.dev.js` se hace configuración de desarrollo debido a que esta característica solo nos ayudara a ver cambios al momento de desarrollar la aplicación.   
+Despues de `plugins`
+
+```js
+devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    compress: true,
+    historyApiFallback: true,
+    port: 3006,
+  },
+```
+Si en en la configuración de webpack se encuentra la configuración
+```js
+watch: true,
+```
+Se elimina para que no cause conflicto.   
+En el archivo `package.json` se agrega la configuración de script
+```
+"start": "webpack serve --config webpack.config.dev.js"
+```
 
 ## Webpack Bundle Analyzer
++ :link: [webpack-bundle-analyzer](https://www.npmjs.com/package/webpack-bundle-analyzer)
++ :link: [Analiza tus dependencias de forma gráfica con Webpack Bundle Analyzer](https://platzi.com/blog/analizar-dependencias-webpack-bundle-analyzer/)
+
+Existe un plugin de Webpack que permite analizar qué dependencias componen nuestros bundles a detalle
+
+`webpack-bundle-analyzer` despliega una gráfica interactiva con el resultado de nuestro bundle, qué dependencias contiene y cuánto pesan.
+
+```bash
+$ yarn add -D webpack-bundle-analyzer
+```
+En el archivo `webpack.config.dev.js` se instala el plugin
+```js
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+```
+Y en la seccion de plugins se agrega
+```js
+new  BundleAnalyzerPlugin()
+```
+Ahora para ejecutar el plugin de nuestro bundle y analizar qué dependencias componen nuestros bundles a detalle
+```bash
+$ npx webpack --profile --json > stats.json
+```
+Para mostrar de forma grafica el bundle
+```bash
+$ npx webpack-bundle-analyzer stats.json
+```
 
 ## Webpack DevTools
+:link: [Devtool](https://webpack.js.org/configuration/devtool/)
+
+**source map** _es un mapeo que se realiza entre el código original y el código transformado_, tanto para archivos JavaScript como para archivos CSS. De esta forma podremos debuggear tranquilamente nuestro código.
+
+En la configuración de desarrollo `webpack.config.dev.js` despues de modo de desarrollo
+```js
+devtool: 'source-map',
+```
 
 
 6. Integración básica de React.js
 ## Instalación y configuración de React
+Clonar el repo :octocat: [curso-webpack-react](https://github.com/platzi/curso-webpack-react)
+
+:rotating_light: :file_folder: del proyecto `webpack-react-base` :eyes:
+
+Isntalar react y react-dom
+```bash
+$ yarn add react react-dom
+```
+
+Se crea la estructura 
+```bash
+.
+├── csr
+│   ├── components
+│   └── index.js
+├── package.json
+├── public
+│   └── index.html
+└── yarn.lock
+```
 
 ## Configuración de Webpack 5 para React.js
 
+```bash
+$ yarn add @babel/core @babel/preset-env @babel/preset-react babel-loader -D
+```
+webpack
+```bash
+$ yarn add webpack webpack-cli webpack-dev-server -D
+```
+Se creal el archivo `.babelrc` en raiz con la configuración
+```js
+{
+  "presets": [
+    "@babel/preset-env",
+    "@babel/preset-react"
+  ],
+}
+```
+Se crea el archivo `webpack.config.js`
+```bash
+const { resolve } = require('path');
+const path = require('path');
+
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js',
+  },
+  resolve: {
+    extensions: ['.js', '.jsx']
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+        }
+      }
+    ]
+  },
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    compress: true,
+    port: 3006
+  }
+}
+```
+
 ## Configuración de plugins y loaders para React
+
+```bash
+$ yarn add html-loader html-webpack-plugin -D
+```
+
+En el archivo `webpack.config.js` se añade el plugin
+```js
+//...
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+//... EN EL MODULO SE AÑADE LA REGLA
+{
+  test: /\.html$/,
+  use: [
+    { loader: 'html-loader' }
+  ]
+}
+// .. Y EN PLUGINS SE AÑADE
+plugins: [
+  new HtmlWebpackPlugin({
+    template: './public/index.html',
+    filename: './index.html'
+  })
+],
+```
+En el archivo `package.json` se agrega el script
+```js
+"start": "webpack serve",
+"build": "webpack --mode production"
+```
 
 ## Configuración de Webpack para CSS en React
 
+Se instalan las dependencias y dependencias para sass
+```bash
+$ yarn add -D mini-css-extract-plugin css-loader style-loader sass sass-loader
+```
+
+En el archivo `webpack.config.js` se añaden los plugins
+```js
+//..
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+
+//.. SE AÑADE EL MODULO LA REGLA PARA CSS SASS
+{
+    test: /\.s[ac]ss$/,
+    use: [
+        'style-loader',
+        'css-loader',
+        'sass-loader'
+    ]
+}
+// SE AÑADE EL PLUGIN QUE SE INSTANCIO AL INICIO
+new MiniCssExtractPlugin({
+    filename: '[name].css'
+})
+```
+Se crea un archivo `styles/global.scss` en la cual se ponen los estilos de prueba
+```css
+$base-color: #c6538c;
+$color: rgba(black, 0.88);
+
+body {
+  background-color: $base-color;
+  color: $color;
+}
+```
+Para despues añadirlos a la aplicación en `src/index,js`
+```js
+//..
+import '../src/styles/global.scss';
+```
+
 ## Optimización de Webpack para React
+
+Se instalan las dependencias
+```bash
+$ yarn add -D css-minimizer-webpack-plugin terser-webpack-plugin clean-webpack-plugin
+```
+
+Se creal el `webpack.config.dev.js` para el modo en desarrollo y se hacen las modificaciones   
+Se copia todo lo del otro archivo de webpack y se añade
+```js
+// resolve: {
+//   extensions: ['.js', '.jsx']
+// },
+mode: 'development',
+```
+Se optimia el `webpack.config.js`
+```js
+// resolve: {
+//   extensions: ['.js', '.jsx']
+// },
+mode: 'production',
+// SE AÑADEN LOS PLUGINS INSTALADOS
+const CssMinimizerWebpackPlugin = require('css-minimizer-webpack-plugin')
+const TerserWebpackPlugin = require('terser-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+//..
+publicPath: "/",
+//.. SE AÑADEN LOS ALIAS
+// extensions: ['.js', '.jsx'],
+alias: {
+  '@components': path.resolve(__dirname, 'src/components/'),
+  '@styles': path.resolve(__dirname, 'src/styles/')
+}
+// SE AÑADE AL PLUGIN EN plugins
+new CleanWebpackPlugin(),
+//.. SE AÑADE LA PARTE DE OPTIMIZACIÓN DESPUES DE LOS plugins
+optimization: {
+  minimize: true,
+  minimizer: [
+    new CssMinimizerPlugin(),
+    new TerserPlugin(),
+  ]
+}
+// SE ELIMINA
+devServer: {
+  contentBase: path.join(__dirname, 'dist'),
+  compress: true,
+  port: 3006
+}
+```
+Se modifica el archivo `package.json` en lso scripts para que tomen en cuenta los archivos de modo prod y dev
+```js
+"start": "webpack serve --config webpack.config.dev.js",
+"build": "webpack --config webpack.config.js"
+```
+
 
 ## Deploy del proyecto con React.js
 
