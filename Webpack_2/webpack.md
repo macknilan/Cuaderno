@@ -344,7 +344,7 @@ y en donde se inserta la imagen, remplasarlo por la variable así
 ```
 
 ## Loaders de fuentes
-+ [google-webfonts-helper](http://google-webfonts-helper.herokuapp.com/fonts/ubuntu?subsets=cyrillic,latin)
++ [google-webfonts-helper](https://google-webfonts-helper.herokuapp.com/fonts/ubuntu?subsets=cyrillic,latin)
 + [Loading Fonts](https://webpack.js.org/guides/asset-management/#loading-fonts)
 
 + Cuando utilizamos fuentes externas una buena práctica es descargarlas a nuestro proyecto
@@ -675,7 +675,7 @@ devtool: 'source-map',
 
 
 6. Integración básica de React.js
-## Instalación y configuración de React
+## :rotating_light: Instalación y configuración de React :rotating_light:
 Clonar el repo :octocat: [curso-webpack-react](https://github.com/platzi/curso-webpack-react)
 
 :rotating_light: :file_folder: del proyecto `webpack-react-base` :eyes:
@@ -783,7 +783,7 @@ En el archivo `package.json` se agrega el script
 
 Se instalan las dependencias y dependencias para sass
 ```bash
-$ yarn add -D mini-css-extract-plugin css-loader style-loader sass sass-loader
+$ yarn add mini-css-extract-plugin css-loader style-loader sass sass-loader -D
 ```
 
 En el archivo `webpack.config.js` se añaden los plugins
@@ -825,7 +825,7 @@ import '../src/styles/global.scss';
 
 Se instalan las dependencias
 ```bash
-$ yarn add -D css-minimizer-webpack-plugin terser-webpack-plugin clean-webpack-plugin
+$ yarn add css-minimizer-webpack-plugin terser-webpack-plugin clean-webpack-plugin -D
 ```
 
 Se creal el `webpack.config.dev.js` para el modo en desarrollo y se hacen las modificaciones   
@@ -877,19 +877,48 @@ Se modifica el archivo `package.json` en lso scripts para que tomen en cuenta lo
 "build": "webpack --config webpack.config.js"
 ```
 
-
 ## Deploy del proyecto con React.js
 
 
+## EXTRA ESLINT con Webpack y React
 
+Instalar de manera global Eslint
+```bash
+npm install -g eslint
+```
 
+Isntalar las dependencias
+```
+$ yarn add eslint babel-eslint eslint-config-airbnb eslint-plugin-import eslint-plugin-react eslint-plugin-jsx-a11y -D
+```
+Se creal el archivo `.eslintrc` con la configuración de :link: :octocat: [gist gndx/eslintrc](https://gist.github.com/gndx/17c1b5e6d443b9415679079ef9f58629)
 
+## Prettier an opinionated code formatter. :link: [Prettier](https://prettier.io/)
 
++ :link: [Prettier npm](https://www.npmjs.com/package/prettier)
+```bash
+$ yarn add prettier eslint-plugin-prettier eslint-config-prettier -D
+```
 
+`.prettierrc`
+```json
+{
+  "trailingComma": "es5",
+  "semi": true,
+  "singleQuote": true
+}
+```
+Modificar el archivo `package.json` para poder ejecutar los comandos
 
-
-
-
+`package.json`
+```json
+{
+  "scripts": {
+      "format": "prettier --write '{*.js,src/**/*.{js,jsx}}'",
+      "lint": "eslint src/ --fix"
+  },
+}
+```
 
 
 
