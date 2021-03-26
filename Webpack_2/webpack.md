@@ -749,7 +749,7 @@ module.exports = {
 ```
 
 ## Configuración de plugins y loaders para React
-
+Para leer, modificar y cargar el archivo HTML que se encuentra en la carpeta `dist`
 ```bash
 $ yarn add html-loader html-webpack-plugin -D
 ```
@@ -793,7 +793,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 //.. SE AÑADE EL MODULO LA REGLA PARA CSS SASS
 {
-    test: /\.s[ac]ss$/,
+    test: /\.s[ac]ss$/, // PARA ARCHIVOS SASS
     use: [
         'style-loader',
         'css-loader',
@@ -920,7 +920,29 @@ Modificar el archivo `package.json` para poder ejecutar los comandos
 }
 ```
 
+## EXTRA Inatalar Husky 5
 
++ :link: [Husky home page](https://typicode.github.io/husky/#/)
++ :link: [Husky 5](https://blog.typicode.com/husky-5/)
++ :link: :octocat: [Husky 5](https://github.com/typicode/husky)
+```bash
+$ yarn add husky -D && npx husky init
+```
+
+Se crea la estructura de archivos
+```bash
+husky
+├── _
+│   └── husky.sh
+└── pre-commit
+```
+En el  archivo `pre-commit` se pone la siguiente configuración
+```bash
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+yarn run lint # ESTE ES EL SCRIPT QUE SE EJECUTA DESDE EL ARCHIVO package.json
+```
 
 
 
