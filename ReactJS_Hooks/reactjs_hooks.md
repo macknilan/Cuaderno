@@ -10,6 +10,34 @@ Los Hooks presentan una alternativa al desarrollo con clases, ya que estos viene
 
 Un Hook es una función especial que nos permitirá conectarnos a características de React, para trabajar con métodos especiales, los cuales nos permitirán manejar el estado de mejor forma sin depender de clases.
 
+**Hooks** son una nueva característica en React 16.8. Estos te permiten usar el estado y otras características de React sin escribir una clase.
+
+**useState**   
+`useState` nos ayuda a manejar el estado en componentes creados como funciones
+
+**useEffect**   
+`useEffect` nos permite manejar efectos que van a ser transmitidos dentro del componente.
+
+**useContext**   
+`useContext` Resuelve el problema de pasar información entre componentes, poderlos interconectar sin necesidad del prop y estarán ligadas de padre a hijo; es la fusión de React Hooks y React Context
+
+**useReducer**   
+`useReducer` Implementa una forma más amigable y con más características para trabajar con el estado; es como `useState`, pero más escalable.
+Se tiene un estado inicial, un reducer y un dispatch para mandar la información.
+
+**useMemo**   
+`useMemo` Nos ayuda a evitar cálculos innecesarios utilizando la memoización.
+
+**useRef**   
+`useRef` Es el manejo profesional de inputs y formularios, todo esto para manejar como las referencias a los formularios e inputs.
+
+**useCallback**   
+`useCallback` Nos ayuda a evitar cálculos innecesarios en funciones
+
+**Custom hooks**   
+En React Hooks podemos realizar hooks personalizados con los cuales podemos separar lógica y separarlos de cualquier componente; es la abstracción en la lógica de tus componentes.
+
+
 2. Introducción a React Hooks
 ## `useState`: estado en componentes creados como funciones
 Este Hook nos ayuda a manejar el estado en componentes creados como funciones

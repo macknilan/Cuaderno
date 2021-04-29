@@ -492,6 +492,32 @@ import instagran from '@images/instagram.png';
 import twitter from '@images/twitter.png';
 ```
 
+## :warning: EXTRA Webpack Alias :warning:
+
+:warning: :warning: :warning:
+
+SI CON LA CONFIGURACIÓN DE __SLINT__ Y LOS __ALIAS__ DE __WEBPACK__ CAUSAN PROBLEMAS CON __HUSKY__ AL MOMENTO DE HACER EL _COMMIT_ 
+COM COMO SE MUESTRA EN LA IMAGEN
+
+![ERROR_HUSKY_COMMIT_SLITN_WEBPACK](imgs/01.png)
+
+Se tiene que instalar este paquete [eslint-import-resolver-webpack](https://www.npmjs.com/package/eslint-import-resolver-webpack)
+
+- Con la ayuda como ejemplo de :link: [Robust Frontend Development With Aliases No more ../relative/path/to/file hell!](https://medium.com/@benjamintodts/robust-frontend-development-with-aliases-76efbfd44556)
+- Con la ayuda como ejemplo de :link: [Javascript Linting and Formatting with ESLint, Prettier, and Airbnb](https://medium.com/@joshuacrass/javascript-linting-and-formatting-with-eslint-prettier-and-airbnb-30eb746db862)
+
+```bash
+$ yarn add eslint-import-resolver-webpack -D
+```
+
+Para que el archivo `.eslintrc` se le agregue la siguiene configuración.
+```js
+  "settings": {
+    "import/resolver": {
+      "webpack": "webpack"
+    }
+  },
+```
 
 4. Deploy del proyecto
 ## Variables de entorno
@@ -528,6 +554,28 @@ const API = 'https://randomuser.me/api/';
 // POR
 const API = process.env.API;
 ```
+
+Para que al momento de subir el proyecto a _Netlify_ o a _Vercel_ se puedan leer las variables de entorno en el servidor **se crea el archivo dentro dentro de una carpeta** que la llamamos `scripts`
+
+`create-env.js` en raiz del proyecto   
+:rotating_light: NOTA :rotating_light: Cambiar la variable de acuerdo a las necesidades del proyecto
+```js
+const fs = require('fs');
+
+fs.writeFileSync('./.env',`API=${process.env.API}\n`)
+```
+Despues vamos a la pagina de netlify a la seccion de _build & deploy_ > _Environment variables_    
+y le damos en edit variables, y alli colocamos las variables que en este caso solo es la variable `API` y con su valor que es `https://randomuser.me/api`
+
+Después en el archivo `package.json` el script de **build** se modifica para que al momento de hacer el **build** en servidor aplique las variables de entorno y las pueda leer la aplicación
+
+`package.json`
+```js
+...
+"build": "node ./scripts/create-env.js && webpack --config webpack.config.js"
+...
+```
+
 
 ## Webpack en modo desarrollo
 Para crear un entorno de desarollo se crea el archivo `webpack.config.dev.js` en el cual se copia primero lo que esta en `webpack.config.js`
@@ -925,6 +973,7 @@ Modificar el archivo `package.json` para poder ejecutar los comandos
 + :link: [Husky home page](https://typicode.github.io/husky/#/)
 + :link: [Husky 5](https://blog.typicode.com/husky-5/)
 + :link: :octocat: [Husky 5](https://github.com/typicode/husky)
+
 ```bash
 $ yarn add husky -D && npx husky init
 ```
@@ -944,6 +993,40 @@ En el  archivo `pre-commit` se pone la siguiente configuración
 yarn run lint # ESTE ES EL SCRIPT QUE SE EJECUTA DESDE EL ARCHIVO package.json
 ```
 
+husky > _ > `husky.sh`
+```bash
+#!/bin/sh
+if [ -z "$husky_skip_init" ]; then
+  debug () {
+    [ "$HUSKY_DEBUG" = "1" ] && echo "husky (debug) - $1"
+  }
+
+  readonly hook_name="$(basename "$0")"
+  debug "starting $hook_name..."
+
+  if [ "$HUSKY" = "0" ]; then
+    debug "HUSKY env variable is set to 0, skipping hook"
+    exit 0
+  fi
+
+  if [ -f ~/.huskyrc ]; then
+    debug "sourcing ~/.huskyrc"
+    . ~/.huskyrc
+  fi
+
+  export readonly husky_skip_init=1
+  sh -e "$0" "$@"
+  exitCode="$?"
+
+  if [ $exitCode != 0 ]; then
+    echo "husky - $hook_name hook exited with code $exitCode (error)"
+    exit $exitCode
+  fi
+
+  exit 0
+fi
+
+```
 
 
 
