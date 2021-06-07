@@ -105,7 +105,7 @@ def run():
 
     while True:
 
-        command = str(raw_input('''--- * --- * --- * --- * --- * --- * --- * ---
+        command = str(input('''--- * --- * --- * --- * --- * --- * --- * ---
 
             Bienvenido a criptografía. ¿Qué deseas hacer?
 
@@ -115,11 +115,11 @@ def run():
         -> '''))
 
         if command == 'c':
-            message = str(raw_input('Escribe tu mensaje -> '))
+            message = str(input('Escribe tu mensaje -> '))
             cypher_message = cypher(message)
             print(cypher_message)
         elif command == 'd':
-            message = str(raw_input('Escribe tu mensaje CIFRADO -> '))
+            message = str(input('Escribe tu mensaje CIFRADO -> '))
             decypher_message = decipher(message)
             print(decypher_message)
         elif command == 's':

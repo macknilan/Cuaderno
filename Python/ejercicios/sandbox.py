@@ -10,7 +10,7 @@ def comod(message):
 
 if __name__ == '__main__':
     print('M E N S A J E S  C I F R A D O S')
-    message = str(raw_input('Escribe tu mensaje -> '))
+    message = str(input('Escribe tu mensaje -> '))
     cypher_message = comod(message)
     print(cypher_message)
     # run()
@@ -21,7 +21,7 @@ def run():
 
     while True:
 
-        command = str(raw_input('''--- * --- * --- * --- * --- * --- * --- * ---
+        command = str(input('''--- * --- * --- * --- * --- * --- * --- * ---
 
             Bienvenido a criptografía. ¿Qué deseas hacer?
 
@@ -31,7 +31,7 @@ def run():
         '''))
 
         if command == 'c':
-            message = str(raw_input('Escribe tu mensaje -> '))
+            message = str(input('Escribe tu mensaje -> '))
             cypher_message = cypher(message)
             print(cypher_message)
         elif command == 'd':

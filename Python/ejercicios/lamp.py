@@ -12,7 +12,7 @@ class Lamp:
         _|=|_
        |_____|
     ''',
-    '''
+              '''
          ,-.
         (   )
          \ /
@@ -42,7 +42,7 @@ def run():
     lamp = Lamp(is_turned_on=False)  # <<INSTANCIA>> DE LA CLASE
 
     while True:
-        command = str(raw_input('''
+        command = str(input('''
             ¿Qué deseas hacer?
 
             [p]render

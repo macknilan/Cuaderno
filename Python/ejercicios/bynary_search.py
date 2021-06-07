@@ -24,11 +24,13 @@ def bynary_search(order_numbers, number_to_find, low, high):
 
 
 if __name__ == '__main__':
-    disorder_list = str(raw_input('Escribe una lista de numeros --AL MENOS DIEZ NUMEROS-- separados por <<ESPACIOS>>: '))
+    disorder_list = str(input(
+        'Escribe una lista de numeros --AL MENOS DIEZ NUMEROS-- separados por <<ESPACIOS>>: '))
     order_numbers = str_2_list(disorder_list)
-    number_to_find = int(raw_input('Ingresa un número a buscar: '))
+    number_to_find = int(input('Ingresa un número a buscar: '))
 
-    result = bynary_search(order_numbers, number_to_find, 0, len(order_numbers) - 1)
+    result = bynary_search(order_numbers, number_to_find,
+                           0, len(order_numbers) - 1)
 
     if result is True:
         print('El numero sí esta en la lista')

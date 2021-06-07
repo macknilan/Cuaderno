@@ -19,6 +19,6 @@ def protected_func():
 
 
 if __name__ == '__main__':
-    password = str(raw_input('Ingresa tu contraseña: '))
+    password = str(input('Ingresa tu contraseña: '))
 
     protected_func(password)

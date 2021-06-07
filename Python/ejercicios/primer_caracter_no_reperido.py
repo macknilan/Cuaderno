@@ -15,7 +15,8 @@ def first_not_repeating_char(char_sequence):
         if letter not in seen_letters:
             seen_letters[letter] = (idx, 1)
         else:
-            seen_letters[letter] = (seen_letters[letter][0], seen_letters[letter][1] + 1)
+            seen_letters[letter] = (
+                seen_letters[letter][0], seen_letters[letter][1] + 1)
         """
         "abacabad" # LO QUE SE ESCREIBE HASTA ESTE PUNTO
         {
@@ -25,7 +26,7 @@ def first_not_repeating_char(char_sequence):
         }
         """
 
-    final_letters = []  # LAS LETRAS QUE SOLO VIMOS SOLO UNA VES Y EN QIE INDICE SE ENCUENTRA
+    final_letters = []  # LAS LETRAS QUE SOLO VIMOS SOLO UNA VES Y EN QUE INDICE SE ENCUENTRA
     for key, value in seen_letters.iteritems():
         if value[1] == 1:
             final_letters.append((key, value[0]))
@@ -34,7 +35,8 @@ def first_not_repeating_char(char_sequence):
             [('a',0),('b',7)] # UNA LISTA DE TUPLAS
             """
 
-    not_repeated_letters = sorted(final_letters, key=lambda value: value[1])  # lambda -> UNA FUNCION EN UNA LINEA
+    # lambda -> UNA FUNCION EN UNA LINEA
+    not_repeated_letters = sorted(final_letters, key=lambda value: value[1])
 
     if not_repeated_letters:
         return not_repeated_letters[0][0]
@@ -49,7 +51,7 @@ def first_not_repeating_char(char_sequence):
 
 
 if __name__ == '__main__':
-    char_sequence = str(raw_input('Escribe una secuencia de caracteres: '))
+    char_sequence = str(input('Escribe una secuencia de caracteres: '))
 
     result = first_not_repeating_char(char_sequence)
 

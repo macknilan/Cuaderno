@@ -7,7 +7,7 @@ def run():
     random_number = random.randint(0, 20)
 
     while not number_found:
-        number = int(raw_input('Intenta un número：'))
+        number = int(input('Intenta un número：'))
 
         if number == random_number:
             print('Felicidades. Encontraste el número')
