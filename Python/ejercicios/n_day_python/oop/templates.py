@@ -22,6 +22,7 @@ class Template:
         template_string = ""
         with open(template_path, 'r') as f:
             template_string = f.read()
+        # print(f'template_string -> {template_string}')
         return template_string
 
     def render(self, context=None):
@@ -31,11 +32,11 @@ class Template:
         DICCIONARY PASSED IN CONTEXT
         """
         render_ctx = context
-        # print(f'render_ctx -> {render_ctx}')
+        print(f'render_ctx -> {render_ctx}')
         if self.context != None:
             render_ctx = self.context
             # print(f'render_ctx -> {render_ctx}')
-        if not isinstance(render_ctx, dict):
+        if not isinstance(render_ctx, dict):  # MAKE SURE THAT IS A DICTIONARY
             render_ctx = {}
         template_string = self.get_template()
         # print(f'template_string -> {template_string}')
@@ -43,6 +44,6 @@ class Template:
         # {"name": "Justin"} -> name="Justin"
 
 # python3 -i templates.py
-# obj = Template(template_name='hello.txt', context={'name': 'Mack'})
+# obj = Template(template_name='hello.txt', context={'name': 'Mack', 'body_text': 'Texto dinamico'})
 # obj.get_template()
 # obj.render()
