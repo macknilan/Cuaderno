@@ -12,8 +12,8 @@ TEMPLATE_DIR = os.path.join(BASE_DIR, "templates")
 CONTEXT = ssl.create_default_context()
 
 # ENVIRONMENT VARIABLES
-USERNAME = "la.bodega.services@gmail.com"
-PASSWORD = "kxbemfbutkmmefkt"
+USERNAME = ""
+PASSWORD = ""
 
 
 class Emailer:

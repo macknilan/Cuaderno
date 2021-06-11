@@ -1,8 +1,11 @@
 import sys
 import requests
 from datetime import datetime
-
 from formatting import format_msg
+"""
+sys.argv IS THE LIST OF COMMAND-LINE ARGUMENTS.
+len(sys.argv) IS THE NUMBER OF COMMAND-LINE ARGUMENTS.
+"""
 
 
 def send(name, website=None, verbose=False):
