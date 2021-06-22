@@ -10,6 +10,9 @@ import datetime
 import pandas as pd
 
 # https://docs.python-requests.org/projects/requests-html/en/latest/index.html
+# IT TURNS OUT TO BE A BETTER PACKAGE / WAY TO DO WEB SCRAPING
+# BETTER THAN beautifulsoup
+
 from requests_html import HTMLSession
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
