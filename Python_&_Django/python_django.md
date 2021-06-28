@@ -8,7 +8,7 @@
 
 - [Django on Docker](#Django-on-Docker)
 - [Django on Docker in progress](#Django-on-Docker-in-progress)
-- [Docker With Django And Postgresql (WIP)](<#Docker-With-Django-And-Postgresql-(WIP)>)
+- [Docker With Django And Postgresql](#Docker-With-Django-And-Postgresql)
 
 **NOTA**
 Para remover/desinstalar un pro programa:
@@ -2558,7 +2558,9 @@ $ docker-compose -f local.yml up --build
 $ docker-compose -f local.yml ps
 ```
 
-### Docker With Django And Postgresql (WIP)
+### Docker With Django And Postgresql
+
+(WIP)
 
 ## :construction: :construction: :construction: :construction:
 
