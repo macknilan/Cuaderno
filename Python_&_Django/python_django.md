@@ -2557,4 +2557,98 @@ $ docker-compose -f local.yml up --build
 $ docker-compose -f local.yml ps
 ```
 
+### Docker With Django And Postgresql (WIP)
+
+## :construction: :construction: :construction: :construction:
+
+1. Hacer folder `sandbox_dj_docker`
+2. Crear el archivo `requirements.txt`
+
+```txt
+Django >= 3.2
+psycopg2-binary >= 2.9
+```
+
+3. Crear el archivo Dockerfile
+
+```
+# GET THE IMAGE SLIM-BUSTER
+FROM python:3.9-slim-buster
+# FORCE STDIN, STDOUT AND STDERR TO BE TOTALLY UNBUFFERED. ON SYSTEMS WHERE IT MATTERS, ALSO PUT STDIN, STDOUT AND STDERR IN BINARY MODE.
+ENV PYTHONUNBUFFERED=1
+WORKDIR /code
+COPY requirements.txt /code/
+RUN pip3 install -r requirements.txt
+COPY . /code/
+#
+```
+
+4. Crear el archivo `docker-compose.yml`
+
+```yml
+version: "3.9"
+
+services:
+  db:
+    image: postgres
+    volumes:
+      - ./data/db:/var/lib/postgres/data
+    environment: -POSTGRES_DB=postgres
+      -POSTGRES_USER=postgres
+      -POSTGRES_PASSWORD=postgres
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+```
+
+5. ejecutar el siguiente comando para crear el proyecto en la carpeta que se creo
+
+```bash
+$ docker-compose run web django-admin startproject dj_docker .
+```
+
+🚨 ¿POR QUE SE INSTALA CON ROOT, INVESTIGAR?
+
+5. Modificar en el `settings.py`
+
+```py
+...
+import psycopg2.extensions
+...
+ALLOWED_HOSTS = ['0.0.0.0']
+...
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': 'db',  # SET IN docker-compose.yml
+        'PORT': '5432',
+    },
+    'OPTIONS': {
+        'isolation_level': psycopg2.extensions.ISOLATION_LEVEL_SERIALIZABLE,
+    },
+}
+```
+
+6. Ejecutar los comando para ejecutar docker
+
+```bash
+# REALISAR LAS MIGRACIONES
+$  docker-compose run web python manage.py makemigrations
+#
+$  docker-compose run web python manage.py migrate
+# PARA LEVANTAR/INICIAR DOCKER-COMPOSE
+$ docker-compose up
+# PARA DETENER DOCKER-COMPOSE
+$ docker-compose down
+```
+
 [[Volver al inicio]](#INDEX)

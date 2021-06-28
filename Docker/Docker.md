@@ -8,7 +8,7 @@
 - :link: [Docker In Action - Libro de Docker](https://www.manning.com/books/docker-in-action)
 - :link: [dive](https://github.com/wagoodman/dive)
 
-- [Cookiecutter Django list of commands](#Cookiecutter-Django-list-of-commands)
+- [Cookiecutter Django list of commands](#Cookiecutter-Django-list-of-commands) ⬇️
 
 ## ¿Que es docker?
 
@@ -25,8 +25,6 @@ La plataforma de Docker se compone de múltiples herramientas
 - Docker Swarm
 - Docker Compose
 - Kitematic
-
-[Cookiecutter Django list of commands](#cookiecutter-django-list-of-commands)
 
 Para la instalación de docker en cualquier versión de linux se utiliza el siguiente archivo que esta en el siguiente link
 [https://get.docker.com/](https://get.docker.com/)
