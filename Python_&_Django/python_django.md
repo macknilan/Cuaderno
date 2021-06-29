@@ -2560,9 +2560,7 @@ $ docker-compose -f local.yml ps
 
 ### Docker With Django And Postgresql
 
-(WIP)
-
-## :construction: :construction: :construction: :construction:
+## :construction: :construction: (WIP) :construction: :construction:
 
 1. Hacer folder `sandbox_dj_docker`
 2. Crear el archivo `requirements.txt`
@@ -2596,9 +2594,10 @@ services:
     image: postgres
     volumes:
       - ./data/db:/var/lib/postgres/data
-    environment: -POSTGRES_DB=postgres
-      -POSTGRES_USER=postgres
-      -POSTGRES_PASSWORD=postgres
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
   web:
     build: .
     command: python manage.py runserver 0.0.0.0:8000
