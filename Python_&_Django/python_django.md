@@ -2118,7 +2118,7 @@ Crear una carpeta `dj_docker`
 Instalar pipenv
 
 ```bash
-$ $ python3 -m pip install --user pipenv
+$ python3 -m pip install --user pipenv
 ```
 
 Crear carpeta con el nombre del projecto
@@ -2225,12 +2225,12 @@ Estructura de archivos y carpetas del projecto
 El archivo `Dockerfile` ocupa la imagen
 
 ```bash
-$ docker pull $ docker pull python:3.8-slim-buster
+$ docker pull $ docker pull python:3.9-slim-buster
 ```
 
 ```bash
 # BASE IMAGE
-FROM python:3.8-slim-buster
+FROM python:3.9-slim-buster
 
 # RUN ITS CONTENT THE FILE TO INSTALL
 # UPDATES FROM THE DEBIAN REPOSITORIES
@@ -2429,12 +2429,12 @@ En la carpeta `core`
 El archivo `Dockerfile` ocupa la imagen
 
 ```bash
-$ docker pull $ docker pull python:3.8-slim-buster
+$ docker pull $ docker pull python:3.9-slim-buster
 ```
 
 ```bash
 # BASE IMAGE
-FROM python:3.8-slim-buster
+FROM python:3.9-slim-buster
 
 # RUN ITS CONTENT THE FILE TO INSTALL
 # UPDATES FROM THE DEBIAN REPOSITORIES
@@ -2491,7 +2491,7 @@ EXPOSE 8000
 :file_cabinet: `local.yml`
 
 ```bash
-version: '3.8'
+version: '3.9'
 
 services:
   postgres:
