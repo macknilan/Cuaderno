@@ -1,5 +1,7 @@
 #### <a name="INDEX"> :whale2: + :snake: </a>
 
+<img src="imgs/containers_dj.png" width="512px" alt="Dockerizando Django y +" title="Dockerizando Django y +"/>
+
 - :link: [Last estable release python](https://endoflife.date/python)
 - :link: [discuss.python.org release](https://discuss.python.org/tag/release)
 
