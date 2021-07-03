@@ -4,14 +4,7 @@
 ![Django](img/python_&_django_04.jpg "Django")
 ![Django](img/python_&_django_05.jpg "Django")
 
-#### <a name="INDEX"> :whale2: + :snake: </a>
-
-- :link: [Last estable release python](https://endoflife.date/python)
-- :link: [discuss.python.org release](https://discuss.python.org/tag/release)
-
-- [Django on Docker](#Django-on-Docker)
-- [Django on Docker in progress](#Django-on-Docker-in-progress)
-- [Docker With Django And Postgresql](#Docker-With-Django-And-Postgresql)
+#### <a name="INDEX"> 📇 </a>
 
 **NOTA**
 Para remover/desinstalar un pro programa:
