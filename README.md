@@ -36,9 +36,6 @@
 <a href="https://github.com/macknilan/Cuaderno/blob/master/WebPack/WebPack.md"><img src="img/webpack.png" width="96px" alt="Webpack" title="Webpack"/></a>
 <a href="https://github.com/macknilan/Cuaderno/blob/master/Webpack_2/webpack.md"><img src="img/webpack.png" width="96px" alt="Webpack" title="Webpack_2"/></a>
 <a href="https://github.com/macknilan/Cuaderno/blob/master/ReactJS_Hooks/reactjs_hooks.md"><img src="img/reactjs_hooks.png" width="96px" alt="ReactJS Hooks" title="ReactJS Hooks"/></a>
-
+<a href="https://github.com/macknilan/Cuaderno/blob/master/Dockerize_django/Dockerize_django.md"><img src="img/dockerize.jpg" width="96px" alt="Dockerizando Django y +" title="Dockerizando Django y +"/></a>
 
 <a target="_blank" href="https://icons8.com/icons/set/web-design">Web Design icon</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
-
-
-
