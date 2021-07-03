@@ -6,6 +6,9 @@
 
 #### <a name="INDEX"> :whale2: + :snake: </a>
 
+- :link: [Last estable release python](https://endoflife.date/python)
+- :link: [discuss.python.org release](https://discuss.python.org/tag/release)
+
 - [Django on Docker](#Django-on-Docker)
 - [Django on Docker in progress](#Django-on-Docker-in-progress)
 - [Docker With Django And Postgresql](#Docker-With-Django-And-Postgresql)
@@ -577,8 +580,6 @@ python = "^3.7"
 - :link: [Download anaconda individual](https://www.anaconda.com/products/individual)
 - :link: [User guide](https://docs.anaconda.com/anaconda/user-guide/?utm_source=anaconda.com&utm_medium=individual-get-started)
 - :link: :notebook: [Anaconda-Starter-Guide](https://docs.anaconda.com/anaconda/user-guide/cheatsheet/)
-- :link: []()
-- :link: []()
 
 ```bash
 $ conda
@@ -590,10 +591,10 @@ Display information about current conda install
 $ conda info
 ```
 
-Crear un ambiente virtual con python 3.5.10
+Crear un ambiente virtual con python 3.9.5
 
 ```bash
-$ conda create --name demo python=3.5.10
+$ conda create --name demo python=3.9.5
 ```
 
 Activar el ambiente virtual
@@ -2090,8 +2091,6 @@ sudo ufw reset
 
 #### :whale: + :snake: Docker + Django
 
-:construction: En la carpeta Docker se encuentra el ejemplo **dj_docker**
-
 Descargar la imagen de PostgreSQL
 
 ```bash
@@ -2339,7 +2338,7 @@ Crear una carpeta `core`
 Instalar pipenv
 
 ```bash
-$ $ python3 -m pip install --user pipenv
+$ python3 -m pip install --user pipenv
 ```
 
 Crear carpeta con el nombre del projecto

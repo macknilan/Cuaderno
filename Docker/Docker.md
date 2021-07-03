@@ -2255,13 +2255,11 @@ testhost
 * Resulta tedioso ejecutar "docker run" por cada componente y luego manualmente orquestar todo
 * Docker Compose al rescate
 
-:link:
-
-- [Docker compose github - Define and run multi-container applications with Docker](https://github.com/docker/compose)
-- [Instalar docker-compose](https://github.com/docker/compose/releases)
-- [Full documentation is available on](https://github.com/docker/compose/releases)
-- [Referencia y lineamientos del archivo "docker-compose.yml"](https://docs.docker.com/compose/compose-file/#compose-file-structure-and-examples)
-- [Como se compone un archivo ".yml"](https://docs.docker.com/compose/compose-file)
+- :link: [Docker compose github - Define and run multi-container applications with Docker](https://github.com/docker/compose)
+- :link: [Instalar docker-compose](https://github.com/docker/compose/releases)
+- :link: [Full documentation is available on](https://github.com/docker/compose/releases)
+- :link: [Referencia y lineamientos del archivo "docker-compose.yml"](https://docs.docker.com/compose/compose-file/#compose-file-structure-and-examples)
+- :link: [Como se compone un archivo ".yml"](https://docs.docker.com/compose/compose-file)
 
 ![Docker compose](img/docker_compose_01.png "Docker compose")
 
@@ -2294,6 +2292,123 @@ testhost
 ## Cookiecutter Django list of commands
 
 - :link: :octocat: [Cookiecutter Django](https://github.com/pydanny/cookiecutter-django)
+- :link: [Cookiecutter Django Docs](https://cookiecutter-django.readthedocs.io/en/latest/index.html)
+
+1. Crear ambiente local
+2. Dentro del ambiente local, y estar ubicados donde se desee que este la carpeta del proyecto
+
+```bash
+$ python3 -m pip install pip install "cookiecutter>=1.7.0"
+```
+
+3. Instalar _cookiecutter-django_
+
+```bash
+$ cookiecutter https://github.com/pydanny/cookiecutter-django
+# OR
+$ cookiecutter gh:pydanny/cookiecutter-django
+```
+
+👀 También puede configurar la variable de entorno `COMPOSE_FILE` apuntando a `local.yml`
+
+```bash
+$ export COMPOSE_FILE=local.yml
+```
+
+4. Build the Stack
+
+```bash
+$ docker-compose -f local.yml build
+```
+
+5. Run the Stack
+
+```bash
+$ docker-compose -f local.yml up
+#
+$ docker-compose -f local.yml down
+```
+
+6. Comandos de administración
+   Como con cualquier comando de shell que deseamos ejecutar en nuestro contenedor, esto se hace usando el
+
+```bash
+$ docker-compose -f local.yml run --rm
+```
+
+```bash
+$ docker-compose -f local.yml run --rm django python manage.py makemigrations
+$ docker-compose -f local.yml run --rm django python manage.py migrate
+$ docker-compose -f local.yml run --rm django python manage.py createsuperuser
+```
+
+Configuración posible para cookiecutter
+
+```bash
+project_name [My Awesome Project]: dj_docker_sandbox
+project_slug [dj_docker_sandbox]:
+description [Behold My Awesome Project!]: Sandbox Django cookiecutter
+author_name [Daniel Roy Greenfeld]: Rodolfo
+domain_name [example.com]:
+email [rodolfo@example.com]:
+version [0.1.0]:
+Select open_source_license:
+1 - MIT
+2 - BSD
+3 - GPLv3
+4 - Apache Software License 2.0
+5 - Not open source
+Choose from 1, 2, 3, 4, 5 [1]: 1
+timezone [UTC]: America/Mexico_City
+windows [n]: n
+use_pycharm [n]: n
+use_docker [n]: y
+Select postgresql_version:
+1 - 13.2
+2 - 12.6
+3 - 11.11
+4 - 10.16
+Choose from 1, 2, 3, 4 [1]: 1
+Select js_task_runner:
+1 - None
+2 - Gulp
+Choose from 1, 2 [1]: 1
+Select cloud_provider:
+1 - AWS
+2 - GCP
+3 - None
+Choose from 1, 2, 3 [1]: 2
+Select mail_service:
+1 - Mailgun
+2 - Amazon SES
+3 - Mailjet
+4 - Mandrill
+5 - Postmark
+6 - Sendgrid
+7 - SendinBlue
+8 - SparkPost
+9 - Other SMTP
+Choose from 1, 2, 3, 4, 5, 6, 7, 8, 9 [1]: 1
+use_async [n]: n
+use_drf [n]: y
+custom_bootstrap_compilation [n]: n
+use_compressor [n]: n
+use_celery [n]: y
+use_mailhog [n]: y
+use_sentry [n]: n
+use_whitenoise [n]: n
+use_heroku [n]: n
+Select ci_tool:
+1 - None
+2 - Travis
+3 - Gitlab
+4 - Github
+Choose from 1, 2, 3, 4 [1]: 1
+keep_local_envs_in_vcs [y]: y
+debug [n]: n
+
+```
+
 - :link: [How To Remove Docker Containers, Images, Volumes, and Networks](https://linuxize.com/post/how-to-remove-docker-images-containers-volumes-and-networks/)
 - :link: [The Docker Handbook](https://www.freecodecamp.org/news/the-docker-handbook/)
 
