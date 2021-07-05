@@ -7,8 +7,8 @@
 
 - [Django on Docker](#Django-on-Docker)
 - [Django on Docker in progress](#Django-on-Docker-in-progress)
-- [Docker With Django And Postgresql](#Docker-With-Django-And-Postgresql)
-- [Cookiecutter Django list of commands](#Cookiecutter-Django-list-of-commands) ⬇️
+- [Cookiecutter Django list of commands](#Cookiecutter-Django-list-of-commands)
+- [Docker + Django + Postgresql fast way](#Docker-+-Django-+-Postgresql-fast-way)
 
 ### Django on Docker
 
@@ -597,11 +597,11 @@ keep_local_envs_in_vcs [y]: y
 debug [n]: n
 ```
 
-### Docker With Django And Postgresql
+### Docker + Django + Postgresql fast way
 
-## :construction: :construction: (WIP) :construction: :construction:
+:construction: :construction: (WIP) :construction: :construction:
 
-1. Hacer folder `sandbox_dj_docker`
+1. `$ mkdir sandbox_dj_docker`
 2. Crear el archivo `requirements.txt`
 
 ```txt
@@ -654,7 +654,7 @@ services:
 $ docker-compose run web django-admin startproject dj_docker .
 ```
 
-🚨 Se instala con root
+🚨 Se instala como root
 
 5. Modificar en el `settings.py`
 
