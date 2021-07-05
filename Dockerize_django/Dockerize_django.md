@@ -8,7 +8,7 @@
 - [Django on Docker](#Django-on-Docker)
 - [Django on Docker in progress](#Django-on-Docker-in-progress)
 - [Cookiecutter Django list of commands](#Cookiecutter-Django-list-of-commands)
-- [Docker + Django + Postgresql fast way](#Docker-+-Django-+-Postgresql-fast-way)
+- [Docker + Django + Postgresql fast way](#docker-+-django-+-postgresql-fast-way)
 
 ### Django on Docker
 
