@@ -2279,6 +2279,17 @@ testhost
 - :link: [How To Remove Docker Containers, Images, Volumes, and Networks](https://linuxize.com/post/how-to-remove-docker-images-containers-volumes-and-networks/)
 - :link: [The Docker Handbook](https://www.freecodecamp.org/news/the-docker-handbook/)
 
+### Docker Compose - extras
+
+- Muchos de los parámetros en el archivo `docker-compose.yml` tienen su equivalente como instrucción utilizando el **docker engine**
+- Las opciones especificadas en el Dockerfile son respetadas por compose y no es necesario redefinirlas
+  - Ejemplo
+    - Exponemos el puerto **8080** en el Dockerfile utilizado por tomcat
+    - Necesitamos correr tomcat mediante un servicio via Compose
+    - No es necesario especifica el parámetro `ports` siendo que se encuentra definido en el Dockerfile
+- `docker-compose build` solamente generará las imágenes de aquellos Dockerfiles q hayan sido modificados
+- Pueden utilizarse variables de entorno en compose mediante la sintaxis `$(MI_VARIABLE)`
+
 ### Docker's cheat sheet
 
 - `docker run <image-name:tag>` busca la imagen en el host si no la pilla intenta descargarla

@@ -252,11 +252,7 @@ En la dirección `http://localhost` para comprobar que se esta ejecutando
 
 [[Volver al inicio]](#INDEX)
 
-## :construction: :construction: :construction: :construction:
-
-### Django on Docker in progress
-
-## :construction: :construction: :construction: :construction:
+### :construction: :construction: Django on Docker in progress :construction: :construction:
 
 Crear una carpeta `core`
 
@@ -539,7 +535,7 @@ services:
 $ docker-compose run web django-admin startproject dj_docker .
 ```
 
-🚨 ¿POR QUE SE INSTALA CON ROOT, INVESTIGAR?
+🚨 Se instala con root
 
 5. Modificar en el `settings.py`
 
