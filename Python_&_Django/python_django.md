@@ -567,56 +567,7 @@ python = "^3.7"
 3. Creear el ambiente virtual `$ poetry install`
 4. Crear\Entrar al ambiente virtual `$ poetry shell`
 
-## 9 Crear un ambiente virtual Conda
-
-- :link: :traffic_light: [Conda](https://docs.conda.io/en/latest/)
-- :link: [Download anaconda individual](https://www.anaconda.com/products/individual)
-- :link: [User guide](https://docs.anaconda.com/anaconda/user-guide/?utm_source=anaconda.com&utm_medium=individual-get-started)
-- :link: :notebook: [Anaconda-Starter-Guide](https://docs.anaconda.com/anaconda/user-guide/cheatsheet/)
-
-```bash
-$ conda
-```
-
-Display information about current conda install
-
-```bash
-$ conda info
-```
-
-Crear un ambiente virtual con python 3.9.5
-
-```bash
-$ conda create --name demo python=3.9.5
-```
-
-Activar el ambiente virtual
-
-```bash
-$ conda activate demo
-```
-
-Deshactivar el ambiente virtual
-
-```bash
-$ conda deactivate
-```
-
-Listar los anvientes virtuales
-
-```bash
-$ conda info --envs
-#
-$ conda env list
-```
-
-Eliminar un amviente virtual
-
-```bash
-$ conda env remove --name demo
-#
-$ conda env remove -n demo
-```
+## 9 ?
 
 ### Actualizar las versiones de los paquetes en "requirements.txt"
 
