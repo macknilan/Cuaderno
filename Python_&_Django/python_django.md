@@ -520,7 +520,7 @@ $ pipenv lock
 
 > En caso especifico para manejar los comandos con **django**, se pueden hacer de forma normal.
 
-## 8 Crear un ambiente virtual poetry
+## 8 Crear un ambiente virtual Poetry
 
 - :link: [Poetry home](https://python-poetry.org/)
 - :link: [Poetry docs](https://python-poetry.org/docs/cli/)
@@ -552,22 +552,29 @@ $ pipenv lock
 - `$ poetry build` : Crea el paquete que se encuentra en el projecto, listo para publicarlo y que otros lo instalen y usen.
 - `$ poetry publish` : Publica el paquete en Pypi.
 - `$ poetry publish --build` : Crea y publica el paquete.
-- `$ poetry self:update` : Actualiza poetry a la ultima versino estable.
+- `$ poetry self update` : Actualiza poetry a la ultima version estable.
 
-:1234: Pasos
+Environment
+
+- `$ poetry env info` : Mostrar información del ambiente virtual
+- `$ poetry env list` : Enumerar los entornos asociados con el proyecto
+- `$ poetry env remove <NAME-OF-ENV>` : Eliminar emviente virtual
+
+:footprints: Pasos
 
 1. Crear un nuevo proyecto `$ poetry new [PROJECT-NAME]`
 2. Modificar el archivo `pyproject.toml` para indicar que version de python se desea ocupar
 
 ```bash
 [tool.poetry.dependencies]
-python = "^3.7"
+python = "^3.8.10"
 ```
 
 3. Creear el ambiente virtual `$ poetry install`
 4. Crear\Entrar al ambiente virtual `$ poetry shell`
+5. salir del amviente virtual creado `$ exit`
 
-## 9 ?
+## 9 ¿:-?
 
 ### Actualizar las versiones de los paquetes en "requirements.txt"
 
