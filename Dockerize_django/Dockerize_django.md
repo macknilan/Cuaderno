@@ -599,8 +599,6 @@ debug [n]: n
 
 ### Docker + Django + Postgresql fast way
 
-:construction: :construction: (WIP) :construction: :construction:
-
 1. `$ mkdir sandbox_dj_docker`
 2. Crear el archivo `requirements.txt`
 
@@ -690,6 +688,214 @@ $  docker-compose run web python manage.py migrate
 $ docker-compose up
 # PARA DETENER DOCKER-COMPOSE
 $ docker-compose down
+```
+
+### Docker + Django + Postgresql
+
+:construction: :construction: (WIP) :construction: :construction:
+
+1. `$ mkdir django-on-docker && cd django-on-docker`
+2. `$ touch Dockerfile`
+
+```dockerfile
+# GET THE IMAGE SLIM-BUSTER
+FROM python:3.9.6-slim-buster
+
+# RUN ITS CONTENT THE FILE TO INSTALL
+# UPDATES FROM THE DEBIAN REPOSITORIES
+COPY install-packages.sh .
+RUN chmod +x install-packages.sh
+RUN ./install-packages.sh
+
+# INSTALL APT PACKAGES
+# RUN apt-get update && apt-get install --no-install-recommends -y \
+#     # dependencies for building Python packages
+#     build-essential \
+#     # psycopg2 dependencies
+#     libpq-dev \
+#     && rm -rf /var/lib/apt/lists/*
+
+# CREATE AND SET WORKING DIRECTORY
+RUN mkdir /app
+WORKDIR /app
+
+# FORCE STDIN, STDOUT AND STDERR TO BE TOTALLY UNBUFFERED. ON SYSTEMS WHERE IT MATTERS, ALSO PUT STDIN, STDOUT AND STDERR IN BINARY MODE.
+# SET DEFAULT ENVIRONMENT VARIABLES
+ENV PYTHONUNBUFFERED 1
+# PYTHON FROM COPYING PYC FILES TO THE CONTAINER
+ENV PYTHONDONTWRITEBYTECODE 1
+
+COPY /requirements/requirements.txt /app
+
+RUN python3 -m pip install --no-cache-dir --upgrade \
+    pip \
+    setuptools \
+    wheel
+RUN python3 -m pip install --no-cache-dir -r requirements.txt
+
+# INSTALL REQUIRED SYSTEM DEPENDENCIES
+RUN apt-get update && apt-get install --no-install-recommends -y \
+    # psycopg2 dependencies
+    libpq-dev \
+    # Translations dependencies
+    gettext \
+    # cleaning up unused files
+    && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
+    && rm -rf /var/lib/apt/lists/*
+
+# ADD CURRENT DIRECTORY CODE TO WORKING DIRECTORY
+COPY . /app
+
+```
+
+3.  `$ touch local.yml`
+
+```yml
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres
+    container_name: postgres
+    volumes:
+      - local_postgres_data:/var/lib/postgresql/data
+    env_file:
+      - ./.envs/.local/.postgres
+    ports:
+      - "5432:5432"
+
+  django:
+    build:
+      context: .
+    container_name: django
+    env_file:
+      - ./.envs/.local/.django
+      - ./.envs/.local/.postgres
+    command: python3 manage.py migrate
+    command: python3 manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+        - "8000:8000"
+    depends_on:
+        - postgres
+
+volumes:
+  local_postgres_data:
+```
+
+4.  `$ touch install-packages.sh`
+
+```bash
+#!/bin/bash
+
+# Bash "strict mode", to help catch problems and bugs in the shell
+# script. Every bash script you write should include this. See
+# http://redsymbol.net/articles/unofficial-bash-strict-mode/ for
+# details.
+set -euo pipefail
+
+# Tell apt-get we're never going to be able to give manual
+# feedback:
+export DEBIAN_FRONTEND=noninteractive
+
+# Update the package listing, so we know what package exist:
+apt-get update
+
+# Install security updates:
+apt-get -y upgrade
+
+# Install a new package, without unnecessary recommended packages:
+apt-get -y install --no-install-recommends syslog-ng
+
+# INSTALL APT PACKAGES
+# build-essential -> DEPENDENCIES FOR BUILDING PYTHON PACKAGES
+# libpq-dev -> psycopg2 DEPENDENCIES
+apt-get update && apt-get install --no-install-recommends -y \
+    build-essential \
+    libpq-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Delete cached files we don't need anymore (note that if you're
+# using official Docker images for Debian or Ubuntu, this happens
+# automatically, you don't need to do it yourself):
+apt-get clean
+# Delete index files we don't need anymore:
+rm -rf /var/lib/apt/lists/*
+```
+
+5. Crear el proyecto, **sin** _que se esten ejecutando los contenedores._
+
+```bash
+# CREAR EL PROYECTO EN LA CARPETA
+$ docker-compose -f local.yml run django django-admin startproject root .
+#
+# EN LUGAR DE HACER Build the Stack CON
+# $ docker-compose -f local.yml build
+```
+
+6. Modificar en el `settings.py` para setear las las variables de entorno de _postgres_
+
+```py
+...
+import psycopg2.extensions
+import environ
+# ENVIRON SETTINGS
+env = environ.Env()
+
+# SECURITY WARNING: don't run with debug turned on in production!
+# DEBUG = True
+DEBUG = env.bool("DJANGO_DEBUG", False)
+...
+ALLOWED_HOSTS = ['localhost', '0.0.0.0', '127.0.0.1']
+...
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': env.str('POSTGRES_DB'),
+        'USER': env.str('POSTGRES_USER'),
+        'PASSWORD': env.str('POSTGRES_PASSWORD'),
+        'HOST': env.str('POSTGRES_HOST'),
+        'PORT': env.str('POSTGRES_PORT')
+    },
+    'OPTIONS': {
+        'isolation_level': psycopg2.extensions.ISOLATION_LEVEL_SERIALIZABLE,
+    },
+}
+```
+
+7. Hacer las migraciones para comprobar que estan bien las variables de entorno
+
+```bash
+$ docker-compose -f local.yml run --rm django python manage.py makemigrations
+#
+$ docker-compose -f local.yml run --rm django python manage.py migrate
+```
+
+8. Se levantan los servicio para comprobar errores
+
+```bash
+$ docker-compose -f local.yml up
+```
+
+9. Se crea el super-usuario
+
+```bash
+$ docker-compose -f local.yml run --rm django python manage.py createsuperuser
+```
+
+¿?. Build the Stack
+
+```bash
+$ docker-compose -f local.yml build
+```
+
+10. Dar de baja los servicios y comprobar el estado de los servicios levandados
+
+```bash
+$ docker-compose -f local.yml down
+# WATCH PROCESS UP
+$ docker-compose -f local.yml ps
 ```
 
 [[Volver al inicio]](#INDEX)
