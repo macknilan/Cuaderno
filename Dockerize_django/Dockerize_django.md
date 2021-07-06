@@ -9,6 +9,7 @@
 - [Django on Docker in progress](#Django-on-Docker-in-progress)
 - [Cookiecutter Django list of commands](#Cookiecutter-Django-list-of-commands)
 - [Docker + Django + Postgresql fast way](#docker--django--postgresql-fast-way)
+- [Docker + Django + Postgresql](#docker--django--postgresql)
 
 ### Django on Docker
 
@@ -884,12 +885,6 @@ $ docker-compose -f local.yml up
 $ docker-compose -f local.yml run --rm django python manage.py createsuperuser
 ```
 
-¿?. Build the Stack
-
-```bash
-$ docker-compose -f local.yml build
-```
-
 10. Dar de baja los servicios y comprobar el estado de los servicios levandados
 
 ```bash
@@ -897,5 +892,25 @@ $ docker-compose -f local.yml down
 # WATCH PROCESS UP
 $ docker-compose -f local.yml ps
 ```
+
+11. :moon*cake: Conectarse al servicio de \_postgres* cuando se esta ejecutando con **pgAdmin4**
+
+- Identificar cual es el **contenedor** _de posrgres_
+
+```bash
+$ docker container ls -a
+# OUTPUT
+CONTAINER ID   IMAGE                     COMMAND                  CREATED             STATUS             PORTS                                       NAMES
+c3705fe5e238   django-on-docker_django   "python3 manage.py r…"   26 minutes ago      Up 26 minutes      0.0.0.0:8000->8000/tcp, :::8000->8000/tcp   django
+bfe4f282013d   postgres                  "docker-entrypoint.s…"   About an hour ago   Up About an hour   0.0.0.0:5432->5432/tcp, :::5432->5432/tcp   postgres
+```
+
+- _Inspeccionar_ el contenedor `bfe4f282013d` para saber la _IP_ en particular
+
+```bash
+docker inspect bfe4f282013d | grep IPAddress
+```
+
+- Ejecutar **pgAdmin4** y conectarse a esa _IP_ con las credenciales del archivo `.envs` > `.postgres`
 
 [[Volver al inicio]](#INDEX)
