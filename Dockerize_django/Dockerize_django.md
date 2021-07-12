@@ -867,6 +867,8 @@ DATABASES = {
 
 7. Hacer las migraciones para comprobar que estan bien las variables de entorno
 
+La bandera `--rm` lo que hace es que crea un contenedor solo para el fin indicado y cuando acabe de ejecutarse el comando **mata el contenedor**
+
 ```bash
 $ docker-compose -f local.yml run --rm django python manage.py makemigrations
 #
@@ -893,7 +895,7 @@ $ docker-compose -f local.yml down
 $ docker-compose -f local.yml ps
 ```
 
-11. :moon*cake: Conectarse al servicio de \_postgres* cuando se esta ejecutando con **pgAdmin4**
+11. :moon_cake: Conectarse al servicio de \_postgres\* cuando se esta ejecutando con **pgAdmin4**
 
 - Identificar cual es el **contenedor** _de posrgres_
 
@@ -912,5 +914,56 @@ docker inspect bfe4f282013d | grep IPAddress
 ```
 
 - Ejecutar **pgAdmin4** y conectarse a esa _IP_ con las credenciales del archivo `.envs` > `.postgres`
+
+#### Habilitar debugger
+
+```bash
+# 1 Para correr el stack de contenedores
+# -f, --file FILE             Specify an alternate compose file
+$ docker-compose -f local.yml up
+```
+
+```bash
+# 2 Saber con que nombre esta el contenedor
+# -f, --file FILE             Specify an alternate compose file
+# ps List containers
+$ docker-compose -f local.yml ps
+```
+
+```bash
+# 3 MATAR EL DOCKER DJANGO
+# -f, --force     Force the removal of a running container (uses SIGKILL)
+# -l, --link      Remove the specified link
+# -v, --volumes   Remove anonymous volumes associated with the container
+$ docker rm -f <ID>
+```
+
+```bash
+# 4 DESPUES DE SACAR/MATAR EL DOCKER DE django PARA LEVANTAR LO DE NUEVO ES
+# run Run a one-off command
+# rm Remove stopped containers
+$ docker-compose -f local.yml run --rm --service-ports django
+# Hacer migraciones
+$ docker-compose -f local.yml run --rm django python manage.py makemigrations
+# Migrar a la BD
+$ docker-compose -f local.yml run --rm django python manage.py migrate
+# EJEMPLO PARA CREAR SUPER-USUARIO
+$ docker-compose -f local.yml run --rm django python manage.py createsuperuser
+#
+$
+#
+$
+#
+$
+#
+$
+# Cuando se presentan problemas con las migraciones y una opción es que se elimine el "volumen" de la BD donde se almacena la data tiene la terminación NOMBRE DEL PROYECTO_postgres_data
+#Primero se tiene que detener la ejecucion de docker-compose
+$ docker-compose -f local.yml down
+# Mostrar los volunenes de docker
+$ docker volume ls
+# Eliminar el volimen NOMBRE DEL PROYECTO_postgres_data
+$ docker volume rm NOMBRE DEL PROYECTO_postgres_data
+```
 
 [[Volver al inicio]](#INDEX)
