@@ -949,8 +949,10 @@ $ docker-compose -f local.yml run --rm django python manage.py makemigrations
 $ docker-compose -f local.yml run --rm django python manage.py migrate
 # EJEMPLO PARA CREAR SUPER-USUARIO
 $ docker-compose -f local.yml run --rm django python manage.py createsuperuser
+# Entrar al shell de django +
+$ docker-compose run --rm django python manage.py shell_plus
 # Cuando se presentan problemas con las migraciones y una opción es que se elimine el "volumen" de la BD donde se almacena la data tiene la terminación NOMBRE DEL PROYECTO_postgres_data
-#Primero se tiene que detener la ejecucion de docker-compose
+# Primero se tiene que detener la ejecucion de docker-compose
 $ docker-compose -f local.yml down
 # Mostrar los volunenes de docker
 $ docker volume ls
