@@ -6,6 +6,11 @@
 
 #### <a name="INDEX"> 📇 </a>
 
+:link: **Links** :link:
+
+- :link: [Last estable release python](https://endoflife.date/python)
+- :link: [discuss.python.org release](https://discuss.python.org/tag/release)
+
 **NOTA**
 Para remover/desinstalar un pro programa:
 
