@@ -443,6 +443,25 @@ Dentro de la carpeta donde estaran los archivos del proyecto.
 $ pipenv --three
 ```
 
+Especificar la version de Python  
+Para usar python 3
+
+```py
+$ pipenv --python 3
+```
+
+para usar python 3.6
+
+```py
+pipenv --python 3.6
+```
+
+Para usar python 2.7.14
+
+```py
+pipenv --python 2.7.14
+```
+
 Eliminar el ambiente virtual  
 Dentro de la carpeta donde estaran los archivos del proyecto.
 
