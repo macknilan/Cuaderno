@@ -443,6 +443,18 @@ Dentro de la carpeta donde estaran los archivos del proyecto.
 $ pipenv --three
 ```
 
+Instalar desde Pipfile, si hay uno:
+
+```bash
+$ pipenv install
+```
+
+Instalar paquetes que solo se ocuparan que ocuparan en proceso de desarrollo
+
+```bash
+$ pipenv install flake8 --dev
+```
+
 Especificar la version de Python  
 Para usar python 3
 
@@ -450,7 +462,7 @@ Para usar python 3
 $ pipenv --python 3
 ```
 
-para usar python 3.9.6
+Para usar python 3.9.6
 
 ```py
 pipenv --python 3.9.6
