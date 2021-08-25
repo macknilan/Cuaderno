@@ -450,10 +450,10 @@ Para usar python 3
 $ pipenv --python 3
 ```
 
-para usar python 3.6
+para usar python 3.9.6
 
 ```py
-pipenv --python 3.6
+pipenv --python 3.9.6
 ```
 
 Para usar python 2.7.14
