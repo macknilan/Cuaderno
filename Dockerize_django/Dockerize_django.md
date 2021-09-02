@@ -895,7 +895,42 @@ $ docker-compose -f local.yml down
 $ docker-compose -f local.yml ps
 ```
 
-11. :moon_cake: Conectarse al servicio de \_postgres\* cuando se esta ejecutando con **pgAdmin4**
+11. Comandos de imagenes y contenedores
+
+Eliminar _todas_ las imagenes.
+
+```bash
+$ docker rmi $(docker images -aq)
+```
+
+Eliminar _todos_ los contenedores.
+
+```bash
+$ docker rm $(docker ps -a -q)
+```
+
+Eliminar volumenes
+
+```bash
+$ docker volume rm [NOMBRE_DEL_VOLUME]
+```
+
+Docker básicos
+
+```bash
+$ docker images
+$ docker container
+$ docker volume
+$ docker network
+# PARA CADA UNO
+ls
+rm
+prune
+-a
+-q
+```
+
+12. :moon_cake: Conectarse al servicio de \_postgres\* cuando se esta ejecutando con **pgAdmin4**
 
 - Identificar cual es el **contenedor** _de posrgres_
 
@@ -964,6 +999,8 @@ Para crear una aplicación dentro de del proyecto, la carpeta se tiene que crear
 
 ```bash
 $ docker-compose -f local.yml run --rm django python manage.py startapp <NOMBRE_APP> ./root/<NOMBRE_APP>
+#
+$ docker-compose -f local.yml run --rm django django-admin startapp <NOMBRE_APP> ./root/<NOMBRE_APP>
 ```
 
 [[Volver al inicio]](#INDEX)

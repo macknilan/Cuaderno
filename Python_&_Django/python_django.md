@@ -492,6 +492,8 @@ Salir/Desactivar del ambiente virtual
 
 ```bash
 $ pipenv exit
+# Ó
+$ exit
 ```
 
 Revisar la version de Python dentro del ambiente virtual
@@ -533,7 +535,7 @@ $ pipenv uninstall <nombre_del_paquete> --dev
 Instalar paquetes en el ambiente virtual desde el archivo `requirements.txt`
 
 ```bash
-$ pipenv install -r ./requirements.txt
+$ pipenv install -r path/to/requirements.txt
 ```
 
 Revisar vulnerabilidades en el ambiente virtual
@@ -726,7 +728,7 @@ $ pip install -U Django
 3. Crear un proyecto en django
 
 ```bash
-$ django-admin.py startproject [NombreDeTuProyecto]
+$ django-admin startproject [NombreDeTuProyecto]
 ```
 
 Despues de hacer hacer el proyecto se tiene que ceacrear las tablas del proyecto, con el siguiente comando.  
@@ -779,7 +781,12 @@ $ python manage.py runserver
 _NOTA:_ ejecutando el siguiente comando nos muestra todas las opciones que podemos realizar cuando esta correctamente instalado
 
 ```bash
-./manage.py
+$ ./manage.py
+```
+
+Aoutput
+
+```bash
 Type 'manage.py help <subcommand>' for help on a specific subcommand.
 
 Available subcommands:
