@@ -15,7 +15,7 @@
 Para remover/desinstalar un pro programa:
 
 ```bash
-$ sudo apt-get purge --auto-remove [PACKAGE_NAME]
+sudo apt-get purge --auto-remove [PACKAGE_NAME]
 ```
 
 # Django en maquina de desarrollo.
@@ -23,35 +23,35 @@ $ sudo apt-get purge --auto-remove [PACKAGE_NAME]
 ## 1. Actualizar los paquetes de Ubuntu o del sistema Debian:
 
 ```bash
-$ sudo apt install python3-pip python3-venv
+sudo apt install python3-pip python3-venv
 ```
 
 ```bash
-$ pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 ### Actualizar el índice local de paquetes
 
 ```bash
-$ sudo apt-get update
+sudo apt-get update
 ```
 
 ### Actualizar todos los paquetes que puedan ser actualizados
 
 ```bash
-$ sudo apt-get dist-upgrade
+sudo apt-get dist-upgrade
 ```
 
 ### Remover los paquetes que no sean necesarios
 
 ```bash
-$ sudo apt-get autoremove
+sudo apt-get autoremove
 ```
 
 ### Reiniciar la maquina (solo necesario para algunas actualizaciones)
 
 ```bash
-$ sudo reboot
+sudo reboot
 ```
 
 ## 2. Instalar build-essential y python dev
@@ -61,7 +61,7 @@ Python-dev provee los archivos necesarios para compilar módulos Python/C.
 Para instalar `pip` en Debian/Ubuntu
 
 ```bash
-$ sudo apt-get install python-setuptools build-essential python-dev
+sudo apt-get install python-setuptools build-essential python-dev
 ```
 
 ### Para instalar pip en Debian/Ubuntu
@@ -69,7 +69,7 @@ $ sudo apt-get install python-setuptools build-essential python-dev
 :link: [GitHub - pypa/get-pip](https://github.com/pypa/get-pip)
 
 ```bash
-$ # Install the latest version of pip
+# Install the latest version of pip
 $ curl https://bootstrap.pypa.io/get-pip.py | python
 $ # Install the latest version of pip, supported by a legacy Python
 $ curl https://bootstrap.pypa.io/3.2/get-pip.py | python3.2
@@ -80,7 +80,7 @@ $ curl https://bootstrap.pypa.io/get-pip.py | python - 'pip==8.0.0'
 ### Para instalar pip3 para Python 3.5+
 
 ```bash
-$ sudo apt-get install python3-pip
+sudo apt-get install python3-pip
 ```
 
 Para verificar la instalación
@@ -101,7 +101,7 @@ sudo apt-get install python-pip
 ### Actualizar `pip`
 
 ```bash
-$ pip install -U pip
+pip install -U pip
 $ pip install --upgrade pip
 ```
 
@@ -109,7 +109,7 @@ $ pip install --upgrade pip
 **NOTA**: En caso de presentar un error con la instalación o funcionamiento de `pip` ó `pip3`
 
 ```bash
-$ python2 -m pip install --user --upgrade pip
+python2 -m pip install --user --upgrade pip
 #
 $ python3 -m pip install --user --upgrade pip
 ```
@@ -117,7 +117,7 @@ $ python3 -m pip install --user --upgrade pip
 ### :warning: PARA INSTALAR PAQUETES CON :snake: **PYTHON 3** DE FORMA ESPECIFICA/CORRECTA :warning:
 
 ```bash
-$ python3 -m pip install --user [name_app]
+python3 -m pip install --user [name_app]
 # OR
 $ python3 -m pip install --user --no-cache-dir [name_app]
 # python3 -> Ocupar python3
@@ -134,7 +134,7 @@ $ python3 -m pip install --user --no-cache-dir [name_app]
 - :link: [how-to-update-all-python-packages](https://www.activestate.com/resources/quick-reads/how-to-update-all-python-packages/)
 
 ```bash
-$ python3 -m pip list --outdate --format=columns
+python3 -m pip list --outdate --format=columns
 ```
 
 ### :rotating_light: :construction: :construction: INFORMACIÓN OFICIAL DE PyPA(Python Packaging Authority) :construction: :construction: :rotating_light:
@@ -161,14 +161,14 @@ $ sudo pip install virtualenv virtualenvwrapper
 En caso de que causar _error_ al momento de instalar `virtualenv` y `virtualenvwrapper` y no se puestre en la ruta `/usr/local/bin` el archivo `virtualenvwrapper.sh` intentar con el siguiente comando.
 
 ```bash
-$ sudo -H pip3 install virtualenv
+sudo -H pip3 install virtualenv
 $ sudo -H pip3 install virtualenvwrapper
 ```
 
 ### Editar el archivo .bashrc con ayuda de vim
 
 ```bash
-$ vim .bashrc
+vim .bashrc
 ```
 
 ### Agregar la siguiente linea al final del archivo para habilitar el `virtualenvwrapper`
@@ -205,13 +205,13 @@ source /usr/local/bin/virtualenvwrapper.sh # ESTO ES PARA LAS DISTRIBUCIONES DEB
 Salvar y cerrar el editor. Salir y volver a acceder de la consola.
 
 ```bash
-$ exit
+exit
 ```
 
 ### Lo anterior se hace para que no se tenga que hacer lo siguiente
 
 ```bash
-$ source virtualenvwrapper.sh
+source virtualenvwrapper.sh
 $ workon NOMBRE_ENTORNO
 ```
 
@@ -230,13 +230,13 @@ La segunda variable, `VIRTUALENVWRAPPER_HOOK_DIR`, establece el directorio en do
 ### Crear un ambiente virtual
 
 ```bash
-$ mkvirtualenv <NOMBRE_DEL_AMBIENTE_VIRTUAL>
+mkvirtualenv <NOMBRE_DEL_AMBIENTE_VIRTUAL>
 ```
 
 Para revisar el ambiente virtual cual es su version de python
 
 ```bash
-$(nombre_ambiente_virtual) ~/ nombre_carpeta python --version
+nombre_ambiente_virtual) ~/ nombre_carpeta python --version
 ```
 
 Output
@@ -248,7 +248,7 @@ python 2.7.6
 Para saber en que ruta esta instalado python 2 & 3
 
 ```bash
-$ which python2
+which python2
 ```
 
 Output
@@ -258,7 +258,7 @@ Output
 ```
 
 ```bash
-$ which python3
+which python3
 ```
 
 Output
@@ -284,29 +284,29 @@ $ mkvirtualenv --python=/usr/bin/python3 <NOMBRE_DEL_AMBIENTE_VIRTUAL>
 ### Desactivar ambiente virtual
 
 ```bash
-$ deactivate
+deactivate
 ```
 
 ### Activar ambiente virtual o cambiar a otro
 
 ```bash
-$ workon <NOMBRE_DEL_AMBIENTE_VIRTUAL>
+workon <NOMBRE_DEL_AMBIENTE_VIRTUAL>
 ```
 
 ### Mostrar lo paquetes instalados en un ambiente virtual
 
 ```bash
-$ workon <NOMBRE_DEL_AMBIENTE_VIRTUAL>
+workon <NOMBRE_DEL_AMBIENTE_VIRTUAL>
 ```
 
 ```bash
-$ pip freeze
+pip freeze
 ```
 
 ### Listar los ambientes vistuales
 
 ```bash
-$ lsvirtualenv
+lsvirtualenv
 ```
 
 _lsvirtualenv [-b] [-l] [-h]_
@@ -318,25 +318,25 @@ _lsvirtualenv [-b] [-l] [-h]_
 ### Mostrar los detalles de un solo ambiente vistual
 
 ```bash
-$ showvirtualenv <NOMBRE DEL AMBIENTE VIRTUAL>
+showvirtualenv <NOMBRE DEL AMBIENTE VIRTUAL>
 ```
 
 ### Remover el ambiente virtual posicionando nos en la carpeta del proyecto
 
 ```bash
-$ rmvirtualenv <NOMBRE DE LA CARPETA VIRTUAL> (Se tiene que desactivar primero el ambiente virtual)
+rmvirtualenv <NOMBRE DE LA CARPETA VIRTUAL> (Se tiene que desactivar primero el ambiente virtual)
 ```
 
 ### Calling lssitepackages shows the content of the site-packages directory of the currently-active virtualenv.
 
 ```bash
-$ lssitepackages
+lssitepackages
 ```
 
 ### Mostrar todos los comandos
 
 ```bash
-$ virtualenvwrapper
+virtualenvwrapper
 ```
 
 ```
@@ -367,7 +367,7 @@ workon: list or change working virtualenvs
 Se recomienda crear una carpeta en donde se encuentren todos los entornos virtuales de Python3 **(oculta)**
 
 ```bash
-$ mkdir .[CARPETA-OCULTA]
+mkdir .[CARPETA-OCULTA]
 ```
 
 ```bash
@@ -378,7 +378,7 @@ python3 -m venv [NOMBRE-DEL-ENTORNO-VIRTUAL]
 Para activar el entorno virtual
 
 ```bash
-$ source .[CARPETA-OCULTA]/[NOMBRE-DEL-ENTORNO-VIRTUAL]/bin/activate
+source .[CARPETA-OCULTA]/[NOMBRE-DEL-ENTORNO-VIRTUAL]/bin/activate
 ```
 
 Para desactivar el entorno virtual
@@ -391,7 +391,7 @@ Para desactivar el entorno virtual
 - :link: [venv — Creation of virtual environments](https://docs.python.org/3/library/venv.html)
 
 ```bash
-$ python -m venv -h
+python -m venv -h
 
 usage: venv [-h] [--system-site-packages] [--symlinks | --copies] [--clear]
             [--upgrade] [--without-pip]
@@ -424,13 +424,13 @@ sourcing an activate script in its bin directory.
 
 ## 7 Crear un ambiente virtual Pipenv
 
-- :link: [Pipenv: Python Dev Workflow for Humans — pipenv 2018.11.27.dev0 documentation](https://pipenv.kennethreitz.org/en/latest/)
+- :link: [Pipenv: Python Dev Workflow for Humans](https://pipenv.kennethreitz.org/en/latest/)
 - :link: [Basic Usage of Pipenv](https://pipenv.kennethreitz.org/en/latest/basics/)
 
 Instalar Pipenv
 
 ```bash
-$ python3 -m pip install --user pipenv
+python3 -m pip install --user pipenv
 # OR
 $ pip3 install pipenv
 ```
@@ -446,13 +446,13 @@ $ pipenv --three
 Instalar desde Pipfile, si hay uno:
 
 ```bash
-$ pipenv install
+pipenv install
 ```
 
 Instalar paquetes que solo se ocuparan que ocuparan en proceso de desarrollo
 
 ```bash
-$ pipenv install flake8 --dev
+pipenv install flake8 --dev
 ```
 
 Especificar la version de Python  
@@ -478,20 +478,20 @@ Eliminar el ambiente virtual
 Dentro de la carpeta donde estaran los archivos del proyecto.
 
 ```bash
-$ pipenv --rm
+pipenv --rm
 ```
 
 Activar ambiente virtual  
 Dentro de la carpeta donde se estan los archivos del proyecto.
 
 ```bash
-$ pipenv shell
+pipenv shell
 ```
 
 Salir/Desactivar del ambiente virtual
 
 ```bash
-$ pipenv exit
+pipenv exit
 # Ó
 $ exit
 ```
@@ -499,61 +499,63 @@ $ exit
 Revisar la version de Python dentro del ambiente virtual
 
 ```bash
-$ python --version
+python --version
 ```
 
 Instalar un paquete con Pipenv
 
 ```bash
-$ pipenv install <NOMBRE_DE_PAQUETE>
+pipenv install <NOMBRE_DE_PAQUETE>
 ```
 
 Instalar un paquete con Pipenv con una version en especifico.
 
 ```bash
-$ pipenv install django==1.11
+pipenv install django==1.11
 ```
 
-Listar los paquetes instalados
+Listar los paquetes instalados por pipenv
 
 ```bash
-$ pipenv lock -r
+pipenv lock -r
+#
+pipenv lock --requirements
 ```
 
 Desistalar un paquete dentro del emviente virtual
 
 ```bash
-$ pipenv uninstall <nombre_del_paquete>
+pipenv uninstall <nombre_del_paquete>
 ```
 
 Instalar un paquete dentro del ambiente virtual **para desarrollo**
 
 ```bash
-$ pipenv uninstall <nombre_del_paquete> --dev
+pipenv uninstall <nombre_del_paquete> --dev
 ```
 
 Instalar paquetes en el ambiente virtual desde el archivo `requirements.txt`
 
 ```bash
-$ pipenv install -r path/to/requirements.txt
+pipenv install -r path/to/requirements.txt
 ```
 
 Revisar vulnerabilidades en el ambiente virtual
 
 ```bash
-$ pipenv check
+pipenv check
 ```
 
 Revisar las depencias dentro delos paquetes instalados en nustro ambiente virtual.
 
 ```bash
-$ pipenv graph
+pipenv graph
 ```
 
 Generar archivo `Pipfile.lock`
 
 ```bash
-$ pipenv lock
+pipenv lock
 ```
 
 > En caso especifico para manejar los comandos con **django**, se pueden hacer de forma normal.
@@ -620,7 +622,7 @@ Mostrar una lista de los paquetes que se encuentran desactualizados ó que ya ha
 Se mostrará una lista con las versiones actuales(instaladas) y versiones nuevas del lado derecho.
 
 ```bash
-$ pip list --outdated
+pip list --outdated
 ```
 
 Instalar el paquete mediante `pip` fuera del ambiente virtual(prefrerentemente) como lo recomienta el manual.
@@ -628,7 +630,7 @@ Instalar el paquete mediante `pip` fuera del ambiente virtual(prefrerentemente) 
 - :link: [pip-upgrader](https://github.com/simion/pip-upgrader)
 
 ```bash
-$ pip install pip-upgrader
+pip install pip-upgrader
 # Note: this packages installs the following requirements: 'docopt', 'packaging', 'requests', 'terminaltables', 'colorclass'
 ```
 
@@ -647,7 +649,7 @@ requirements_file(s)          The requirement FILE, or WILDCARD PATH to multiple
 ejemplo:
 
 ```bash
-$ pip-upgrade             # auto discovers requirements file. Prompts for selecting upgrades
+pip-upgrade             # auto discovers requirements file. Prompts for selecting upgrades
 $ pip-upgrade requirements.txt
 $ pip-upgrade requirements/dev.txt requirements/production.txt
 
@@ -685,20 +687,20 @@ Instalar los generadores
 - Dotplus
 
 ```bash
-$ sudo apt-get install graphviz libgraphviz-dev pkg-config
+sudo apt-get install graphviz libgraphviz-dev pkg-config
 ```
 
 Dentro del ambiente virtual
 
 ```bash
-$ pip install pygraphviz
+pip install pygraphviz
 $ pip install pydot
 ```
 
 Para generar el modelo grafico.
 
 ```bash
-$ python manage.py graph_models -e -g -l dot -o core.png core # olny app core
+python manage.py graph_models -e -g -l dot -o core.png core # olny app core
 $ python manage.py graph_models -a -g -o eventex.png # all
 ```
 
@@ -710,38 +712,38 @@ $ python manage.py graph_models -a -g -o eventex.png # all
 - Para instalar django (estando dentro del ambiente virtual),
 
 ```bash
-$ pip install django
+pip install django
 ```
 
 2.1. Para instalar una actualización **ESPECIFICA** en el ambiente virtual con pip
 
 ```bash
-$ pip install --upgrade django==1.6.5
+pip install --upgrade django==1.6.5
 ```
 
 2.2. Para instalar la **ULTIMA** actualizacón en el ambiente virtual con pip
 
 ```bash
-$ pip install -U Django
+pip install -U Django
 ```
 
 3. Crear un proyecto en django
 
 ```bash
-$ django-admin startproject [NombreDeTuProyecto]
+django-admin startproject [NombreDeTuProyecto]
 ```
 
 Despues de hacer hacer el proyecto se tiene que ceacrear las tablas del proyecto, con el siguiente comando.  
 Crea\prepara las migraciones para cualquier cambio que se halla echo para despues aplicarlas.
 
 ```bash
-$ python manage.py makemigrations
+python manage.py makemigrations
 ```
 
 Despues para aplicar las migraciones se ejecuta el sig comando; de esta manera los cambios echos a las BD se aplican y en caso de aver errores se mostraran en pantalla
 
 ```bash
-$ python manage.py migrate
+python manage.py migrate
 ```
 
 salida..
@@ -768,20 +770,20 @@ Operations to perform:
 Esto se hace para poder crear la BD inicial del proyecto y despues se tiene que crear el usuario (super usuario) para que tenga acceso sin restriciones al proyecto y a las aplicaciones.
 
 ```bash
-$ python manage.py createsuperuser
+python manage.py createsuperuser
 ```
 
 _NOTA_: Se tiene que crear un usuario y la contraseña tiene que cimplir con los requerimientos NUEVOS de seguridad.  
 Para correr el proyecto se ejecuta entramos a `http://localhost:8000/admin - http://127.0.0.1:8000/admin` y entramos con el usuario y contraseña anterior puestas
 
 ```bash
-$ python manage.py runserver
+python manage.py runserver
 ```
 
 _NOTA:_ ejecutando el siguiente comando nos muestra todas las opciones que podemos realizar cuando esta correctamente instalado
 
 ```bash
-$ ./manage.py
+./manage.py
 ```
 
 Aoutput
@@ -835,14 +837,14 @@ Available subcommands:
 Para ejecutar el shell de python
 
 ```bash
-$ python manage.py shell
+python manage.py shell
 ```
 
 - Con el shell de python se puede hacer CRUD en la B.D. Para revisar los datos que se modificaron a la tabla -> `$`
   4 Crear (app) aplicación en django para un proyecto
 
 ```bash
-$ python manage.py startapp [NombreDeLaApp] (POR CONVENCIÓN LAS APPS/MODULOS SE CREA SU NOMBRE EN PLURAL)
+python manage.py startapp [NombreDeLaApp] (POR CONVENCIÓN LAS APPS/MODULOS SE CREA SU NOMBRE EN PLURAL)
 ```
 
 ## Administrador de django
@@ -850,7 +852,7 @@ $ python manage.py startapp [NombreDeLaApp] (POR CONVENCIÓN LAS APPS/MODULOS SE
 ### Cambiar/crear Nuevo Usuario en Django
 
 ```bash
-$ ./manage.py createsuperuser [# LAS PREGUNTAS SIGUIENTES SE CONTESTAN CORRECTAMENTE]
+./manage.py createsuperuser [# LAS PREGUNTAS SIGUIENTES SE CONTESTAN CORRECTAMENTE]
 $ ./manage.py changepassword [# POR DEFAULT TOMA EL DE SISTEMA, EN CASO DE NO EXISTIR EL USUARIO Y DE PREFERENCIA SE DEBE DE CREAR UNO NUEVO]
 ```
 
@@ -944,7 +946,7 @@ sudo apt install redis-server
 #### 1.- Se edita el archivo "redis.conf"
 
 ```bash
-$ sudo vim /etc/redis/redis.conf
+sudo vim /etc/redis/redis.conf
 ```
 
 En el archivo, encuentra la directiva `supervised`. Actualmente, esto está establecido en **no**. Como estamos ejecutando un O.S. (Debian[Buster]) que usa el sistema **init(systemd)**, podemos cambiar esto a **systemd**
@@ -966,13 +968,13 @@ supervised systemd
 Para que los cambios tengan efecto se reincia el servicio
 
 ```bash
-$ sudo systemctl restart redis
+sudo systemctl restart redis
 ```
 
 #### 1.- Comprobando REDIS
 
 ```bash
-$ sudo systemctl status redis
+sudo systemctl status redis
 
 # SALIDA...
 ● redis-server.service - Advanced key-value store
@@ -999,7 +1001,7 @@ Feb 16 13:35:18 mack systemd[1]: Started Advanced key-value store.
 #### 2.- Comprobando su funcionamiento
 
 ```bash
-$ redis-cli
+redis-cli
 $ 127.0.0.1:6379> ping
 $ 127.0.0.1:6379> PONG
 $ 127.0.0.1:6379> set test "It's working!"
@@ -1014,7 +1016,7 @@ $ 127.0.0.1:6379> exit
 Abrir el el archivo `redis.conf` para solo permitir conexiones de `localhost`
 
 ```bash
-$ sudo vim /etc/redis/redis.conf
+sudo vim /etc/redis/redis.conf
 ```
 
 Localizar la linea y quitar `#`si se encuentra
@@ -1026,13 +1028,13 @@ bind 127.0.0.1
 Guardar. cerrar y re-iniciar el servicio Redis
 
 ```bash
-$ sudo systemctl restart redis
+sudo systemctl restart redis
 ```
 
 Para comprobar que se realizaron los cambios se tiene que revisar con el siguiente comando `netstat`
 
 ```bash
-$ sudo netstat -lnp | grep redis
+sudo netstat -lnp | grep redis
 #salida...
 
 tcp        0      0 127.0.0.1:6379          0.0.0.0:*               LISTEN      10959/redis-server
@@ -1071,18 +1073,18 @@ requirepass zi7pLVue2GpIS8ffGU1z/99+uEdVWm/5rAZ7Vl4K3NzFYDtZhjNzSV91BWWVs2BXfMzW
 Guardar. cerrar y re-iniciar el servicio Redis
 
 ```bash
-$ sudo systemctl restart redis
+sudo systemctl restart redis
 ```
 
 **NOTA-2**:
 Para poder hacer una contraseña en la linea de comandos se puede hacer de la siguiente manera:
 
 ```bash
-$ echo "cualquer-texto" | sha512sum
+echo "cualquer-texto" | sha512sum
 ```
 
 ```bash
-$ echo "cualquer-texto" | sha512sum
+echo "cualquer-texto" | sha512sum
 ```
 
 salida..
@@ -1195,7 +1197,7 @@ Para que funcione django con redis se tienen que instalar el paquete django-redi
   En el (dentro) ambiente del trabajo del proyecto:
 
 ```bash
-$ pip install django-redis
+pip install django-redis
 ```
 
 En el `settings.py` de queda de la iguiente manera:
@@ -1282,7 +1284,7 @@ if settings.DEBUG:
 - Par apoder ocupar **Argon2** se tienen que instalar en el ambiente de del proyecto. :link: https://pypi.python.org/pypi/argon2_cffi/
 
 ```bash
-$ pip install argon2-cffi
+pip install argon2-cffi
 ```
 
 ```bash
@@ -1308,21 +1310,21 @@ Para instalar git la versión mas reciente del link
 - :link: https://www.kernel.org/pub/software/scm/git/
 
 ```bash
-$ sudo apt-get update
+sudo apt-get update
 $ sudo apt-get install git
 $ sudo apt-get update
 ```
 
 ```bash
-$ sudo apt-get install libcurl4-gnutls-dev libexpat1-dev gettext libz-dev libssl-dev
+sudo apt-get install libcurl4-gnutls-dev libexpat1-dev gettext libz-dev libssl-dev
 ```
 
 ```bash
-$ wget https://github.com/git/git/archive/v1.9.2.zip -O git.zip
+wget https://github.com/git/git/archive/v1.9.2.zip -O git.zip
 ```
 
 ```bash
-$ unzip git.zip
+unzip git.zip
 $ cd git-XXX
 $ make prefix=/usr/local all
 $ sudo make prefix=/usr/local install
@@ -1334,7 +1336,7 @@ $ sudo make prefix=/usr/local install
 Si quiere crear un par de llave RSA en vez de DSA solo debe usar -t rsa ( no debe especificar el largo "-b" por defecto el largo para RSA es de 4096 y es suficiente)
 
 ```bash
-$ ssh-keygen -t rsa -b 4096 -C "comentario_de_la_llave+your_email@example.com" -> frase_de_la_llave
+ssh-keygen -t rsa -b 4096 -C "comentario_de_la_llave+your_email@example.com" -> frase_de_la_llave
 ```
 
 ## Adding your SSH key to the ssh-agent
@@ -1344,21 +1346,21 @@ Before adding a new SSH key to the ssh-agent to manage your keys, you should hav
 1. Start the ssh-agent in the background.
 
 ```bash
-$ eval "$(ssh-agent -s)"
+eval "$(ssh-agent -s)"
 Agent pid 59566
 ```
 
 2. Add your SSH private key to the ssh-agent. If you created your key with a different name, or if you are adding an existing key that has a different name, replace id_rsa in the command with the name of your private key file.
 
 ```bash
-$ ssh-add ~/.ssh/id_rsa
+ssh-add ~/.ssh/id_rsa
 ```
 
 3. Add the SSH key to your GitHub account.Copy the SSH key to your clipboard.
    If your SSH key file has a different name than the example code, modify the filename to match your current setup. When copying your key, don't add any newlines or whitespace.
 
 ```bash
-$ sudo apt-get install xclip
+sudo apt-get install xclip
 # Downloads and installs xclip. If you don't have `apt-get`, you might need to use another installer (like `yum`)
 
 $ xclip -sel clip < ~/.ssh/id_rsa.pub
@@ -1387,7 +1389,7 @@ Before testing your SSH connection, you should have:
 1. Abrir la terminal y
 
 ```bash
-$ ssh -T git@github.com
+ssh -T git@github.com
 ```
 
 # Attempts to ssh to GitHub
@@ -1426,38 +1428,38 @@ Verify that the resulting message contains your username. If you receive a "perm
 Para entrar vía terminal a maquina remota vía ssh
 
 ```bash
-$ ssh root@XXX.XXX.XXX.XXX -> Después pedirá cambia la contraseña por otra nueva "xxxxxxxxxxxxxxx"
+ssh root@XXX.XXX.XXX.XXX -> Después pedirá cambia la contraseña por otra nueva "xxxxxxxxxxxxxxx"
 ```
 
 Para que se pueda conectar el VPS con nuestro repositorio en github se tiene que hacer una llave ssh en el usuario en el que se esta ejecutando nuestra aplicación.  
 Cuando se crea la llave ssh, en el repositorio de github se añade. Con nombre lacanteramack854JdsK
 
 ```bash
-$ ssh-keygen -t rsa -b 4096 -C "comentario_de_la_llave" -> Frase contrasena_de_la_llave
+ssh-keygen -t rsa -b 4096 -C "comentario_de_la_llave" -> Frase contrasena_de_la_llave
 ```
 
 Cuando se crea la llave ssh y esta instalal en github ahora en nuestra sesión de nuestro usuario en vps dentro de la carpeta donde se encuentra manage.py y dentro del ambiente virtual se ejecuta
 
 ```bash
-$ git init
+git init
 ```
 
 Se agrega la dirección del repositorio remoto
 
 ```bash
-$ git remote add origin [REPOSITORIO HTTPS o SSH]
+git remote add origin [REPOSITORIO HTTPS o SSH]
 ```
 
 Se comprueba que se añadieron correctamente
 
 ```bash
-$ git remote -v
+git remote -v
 ```
 
 Para descargar/jalar el repositorio a nuestro vps, tiene que ser de la rama master
 
 ```bash
-$ git pull origin master -> Piede el password del ssh
+git pull origin master -> Piede el password del ssh
 ```
 
 ## Instalar gunicorn, nginx, postgresql
@@ -1469,7 +1471,7 @@ $ git pull origin master -> Piede el password del ssh
 Dentro del ambiente virtual del proyecto.
 
 ```bash
-$ pip install gunicorn
+pip install gunicorn
 ```
 
 ### Para instalar nginx :link: [nginx.com](https://www.nginx.com/)
@@ -1479,7 +1481,7 @@ $ pip install gunicorn
 > The web server receives an HTTP request from the client (the browser) and is usually responsible for load balancing, proxying requests to other processes, serving static files, caching and more. The web server usually interprets the request and sends it to the gateway.
 
 ```bash
-$ sudo apt-get install nginx
+sudo apt-get install nginx
 ```
 
 ### Instalar PostgreSql :link: https://www.postgresql.org/
@@ -1519,7 +1521,7 @@ deb http://apt.postgresql.org/pub/repos/apt/ stretch-pgdg main
 Estando dentro del ambiente virtual del proyecto
 
 ```bash
-$ pip install boto3
+pip install boto3
 ```
 
 > django-storages, es una colección de backends de almacenamiento personalizados para Django y boto3.
@@ -1530,7 +1532,7 @@ $ pip install boto3
 Estando dentro del ambiente virtual.
 
 ```bash
-$ pip install django-storages
+pip install django-storages
 ```
 
 Se añade `storages` en el archivo **settings.py**
@@ -1576,11 +1578,11 @@ ejemplo:
 Para ejecutar los diferentes tipos de ambientes se hace de la siguiente manera
 
 ```bash
-$ ./manage.py runserver --settings=<NOMBRE_DEL_PROYECTO>.settings.<NOMBRE_DEL_ARCHIVO_QUE_ESTAMOS_CORRIENDO>
+./manage.py runserver --settings=<NOMBRE_DEL_PROYECTO>.settings.<NOMBRE_DEL_ARCHIVO_QUE_ESTAMOS_CORRIENDO>
 ```
 
 ```bash
-$ ./manage.py runserver --settings=NOMBRE_DEL_PROYECTO.settings.prod
+./manage.py runserver --settings=NOMBRE_DEL_PROYECTO.settings.prod
 ```
 
 ## Crear un "droplet" en digitalocean
@@ -1588,13 +1590,13 @@ $ ./manage.py runserver --settings=NOMBRE_DEL_PROYECTO.settings.prod
 - Antes de crear el droplet se tiene que crear la llave ssh
 
 ```bash
-$ ssh-keygen -t rsa -b 4096 -C "comentario_de_la_llave+your_email@example.com"
+ssh-keygen -t rsa -b 4096 -C "comentario_de_la_llave+your_email@example.com"
 ```
 
 y se guarda en `~/.ssh/<LLAVE> <LLAVE.pub>`
 
 ```bash
-$ ssh-keygen -t rsa -b 4096 -C "COMENTARIO_DE_LA_LLAVE+YOUR_EMAIL@EXAMPLE.COM"
+ssh-keygen -t rsa -b 4096 -C "COMENTARIO_DE_LA_LLAVE+YOUR_EMAIL@EXAMPLE.COM"
 Generating public/private rsa key pair.
 Enter file in which to save the key (/home/mack/.ssh/id_rsa): <FRASE_DE_LA_LLAVE>
 Enter passphrase (empty for no passphrase): [SE_ESCRIBE_LA_FRASE]
@@ -1627,7 +1629,7 @@ Ya que se tiene la llave creada se tiene en entrar al panel de control, y abrir 
 - Se copia la llave a `xxxxxxxx_xxxxxxx_xxxxx_xxxxx.pub` **digitalocean**.
 
 ```bash
-$ cat ~.ssh/xxxxxxxx_xxxxxxx_xxxxx_xxxxx.pub
+cat ~.ssh/xxxxxxxx_xxxxxxx_xxxxx_xxxxx.pub
 ```
 
 ![SSH Keys](img/key_added_01.png "SSH Keys")
@@ -1636,7 +1638,7 @@ $ cat ~.ssh/xxxxxxxx_xxxxxxx_xxxxx_xxxxx.pub
 - Para agregar llaves adicionales a **droplets** preexistentes, puede pegar las claves usando SSH:
 
 ```bash
-$ cat ~/.ssh/id_rsa.pub | ssh root@[LA_IP_DE_EL_DROPLET] "cat >> ~/.ssh/authorized_keys"
+cat ~/.ssh/id_rsa.pub | ssh root@[LA_IP_DE_EL_DROPLET] "cat >> ~/.ssh/authorized_keys"
 ```
 
 Cuando realmente esté creando un nuevo servidor, seleccione las teclas que desea instalar en su servidor desde la pantalla **Create a droplet**. Puede seleccionar tantas llaves como desee:  
@@ -1646,7 +1648,7 @@ Ya que este creado el "droplet" desaparece mensaje "Your root password will be e
 - Ya que esta creado el "droplet" con la llave pre-instalada nos conectamos de la siguiente manera.
 
 ```bash
-$ ssh root@[IP_DE_LA_MAQUINA_DROPLET]
+ssh root@[IP_DE_LA_MAQUINA_DROPLET]
 ```
 
 Paso seguido se escriben las contraseñas de las llaves.  
@@ -1693,7 +1695,7 @@ root 681 0.0 0.1 49948 2332 ? Ss 2012 3:23 /usr/sbin/sshd -D
 ```
 
 ```bash
-$ sudo systemctl restart ssh
+sudo systemctl restart ssh
 # or
 # kill -HUP 681
 ```
@@ -1725,7 +1727,7 @@ chmod [DIGITIGO-DUEÑO][DIGITO-GRUPO][DIGITO-RESTO] <ARCHIVO>
 Para poder hacer una contraseña en la linea de comandos se puede hacer de la siguiente manera con _sha512sum_:
 
 ```bash
-$ echo "cualquer-texto" | sha512sum
+echo "cualquer-texto" | sha512sum
 ```
 
 salida..
@@ -1737,7 +1739,7 @@ salida..
 Para poder hacer una contraseña en la linea de comandos se puede hacer de la siguiente manera con _pwgen_:
 
 ```bash
-$ pwgen -ysBvC 64 3
+pwgen -ysBvC 64 3
 ```
 
 salida..
@@ -1825,7 +1827,7 @@ Link extra -> [UFW Essentials: Common Firewall Rules and Commands](https://www.d
 #### Para instalar UFW
 
 ```bash
-$ sudo apt-get install ufw
+sudo apt-get install ufw
 ```
 
 #### Para usar UFW con IPV6 - LAS CONFIGURACIONES PARA IPV4 FUNCIONAN PARA IPV6
@@ -1872,38 +1874,38 @@ To Action From
 Estos parametros son suficientes para una computadora personal, pero los servidores necesitan responder a peticiones desde fuera
 
 ```bash
-$ sudo ufw default deny incoming
+sudo ufw default deny incoming
 $ sudo ufw default allow outgoing
 ```
 
 #### Permitir conexiones SHH
 
 ```bash
-$ sudo ufw allow ssh
+sudo ufw allow ssh
 ```
 
 #### Permitir conexiones SHH POR EL PUERTO
 
 ```bash
-$ sudo ufw allow 22
+sudo ufw allow 22
 ```
 
 #### Permitir conexiones SHH POR OTRO PUERTO
 
 ```bash
-$ sudo ufw allow 2222
+sudo ufw allow 2222
 ```
 
 #### Habilitar ufw
 
 ```bash
-$ sudo ufw enable
+sudo ufw enable
 ```
 
 #### Para ver las reglas que estan definidas
 
 ```bash
-$ sudo ufw status verbose
+sudo ufw status verbose
 ```
 
 ### Permitir otras conexiones
@@ -1953,20 +1955,20 @@ sudo ufw allow 21/tcp
 #### Permitir puertos especificos
 
 ```bash
-$ sudo ufw allow 6000:6007/tcp
+sudo ufw allow 6000:6007/tcp
 $ sudo ufw allow 6000:6007/udp
 ```
 
 #### Permitir IP especifica
 
 ```bash
-$ sudo ufw allow from 15.15.15.51
+sudo ufw allow from 15.15.15.51
 ```
 
 #### Permitir IP especifica y asignarle un puerto
 
 ```bash
-$ sudo ufw allow from 15.15.15.51 to any port 22
+sudo ufw allow from 15.15.15.51 to any port 22
 ```
 
 #### Permitir sub-redes
@@ -1974,7 +1976,7 @@ $ sudo ufw allow from 15.15.15.51 to any port 22
 Si se requiere permitir las direcciones que van desde 15.15.15.15 a 15.15.15.254
 
 ```bash
-$ sudo ufw allow from 15.15.15.0/24
+sudo ufw allow from 15.15.15.0/24
 ```
 
 #### Asignarle a la subred que se conecte por el puerto 22
@@ -2004,7 +2006,7 @@ Se tiene que identificar la red la interfas de la red publica, y despues se podr
 (puerto 80)
 
 ```bash
-$ sudo ufw allow in on eth0 to any port 80
+sudo ufw allow in on eth0 to any port 80
 ```
 
 Haciendo esto, se le permite a la interfas de red recibir peticiones HTTP de usuarios de internet
