@@ -522,6 +522,12 @@ pipenv lock -r
 pipenv lock --requirements
 ```
 
+Crear `requirements.txt` con pipenv
+
+```bash
+pipenv lock -r > requirements.txt
+```
+
 Desistalar un paquete dentro del emviente virtual
 
 ```bash
