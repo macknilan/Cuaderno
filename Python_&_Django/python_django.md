@@ -10,6 +10,7 @@
 
 - :link: [Last estable release python](https://endoflife.date/python)
 - :link: [discuss.python.org release](https://discuss.python.org/tag/release)
+- :link: [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html)
 
 **NOTA**
 Para remover/desinstalar un pro programa:
