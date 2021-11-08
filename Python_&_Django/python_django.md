@@ -363,7 +363,10 @@ workon: list or change working virtualenvs
 
 ## 6 Crear un ambiente virtual con Python 3
 
-### Crear un ambiente virtual
+### Crear un ambiente virtual con venv
+
+- :link: [Using Different Versions of Python - pyenv](https://github.com/pyenv/pyenv)
+- :link: [venv — Creation of virtual environments](https://docs.python.org/3/library/venv.html)
 
 Se recomienda crear una carpeta en donde se encuentren todos los entornos virtuales de Python3 **(oculta)**
 
@@ -387,9 +390,6 @@ Para desactivar el entorno virtual
 ```bash
 ([NOMBRE-DEL-ENTORNO-VIRTUAL])$ deactivate
 ```
-
-- :link: [Using Different Versions of Python - pyenv](https://github.com/pyenv/pyenv)
-- :link: [venv — Creation of virtual environments](https://docs.python.org/3/library/venv.html)
 
 ```bash
 python -m venv -h
