@@ -8,16 +8,16 @@ class Email:
         self._username = username
         self._password = password
 
-    def send(self,subject:str,body:str)->None:
+    def send(self, subject: str, body: str) -> None:
         self._connect()
-        print(self._parseContent(subject,body))
-        self._close() 
+        print(self._parseContent(subject, body))
+        self._close()
 
-    def _parseContent(self,subject:str,body:str)->str:
+    def _parseContent(self, subject: str, body: str) -> str:
         pass
 
-    def _connect(self)->None:
+    def _connect(self) -> None:
         pass
 
-    def _close(self)->None:
+    def _close(self) -> None:
         pass

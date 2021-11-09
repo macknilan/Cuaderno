@@ -1,4 +1,3 @@
-
 class User:
     __name: str
     __lastName: str

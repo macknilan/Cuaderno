@@ -1,4 +1,3 @@
-
 # abstract base classes
 
 import abc
@@ -14,22 +13,19 @@ class Personaje(abc.ABC):
     @abc.abstractmethod
     def atacar(self, objetivo):
         pass
-        
+
     @abc.abstractmethod
     def getStatus(self):
         print(f"Nombre: {self.nombre}. Nivel: {self.nivel}")
 
-    
     def subirDeNivel(self):
         self.nivel += 1
         print(f"El nivel actual de {self.nombre} es {self.nivel}")
-
 
     def verInventario(self):
         print(f"Inventario de {self.nombre}: ")
         for objeto in self.inventario:
             print(objeto)
-
 
 
 class Mago(Personaje):
@@ -44,9 +40,8 @@ class Mago(Personaje):
         super().getStatus()
 
     def atacar(self, objetivo):
-        objetivo.vida -= self.inteligencia*0.6
+        objetivo.vida -= self.inteligencia * 0.6
         print(f"Vida actual del objetivo: {objetivo.vida}")
-
 
 
 class Guerrero(Personaje):
@@ -61,11 +56,9 @@ class Guerrero(Personaje):
         super().getStatus()
 
     def atacar(self, objetivo):
-        objetivo.vida -= self.fuerza*0.85
+        objetivo.vida -= self.fuerza * 0.85
         print(f"Vida actual del objetivo: {objetivo.vida}")
 
-    
-    
 
 guerrero = Guerrero("Kaladin")
 mago = Mago("Yuno")

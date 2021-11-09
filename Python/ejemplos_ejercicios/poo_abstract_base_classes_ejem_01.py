@@ -2,10 +2,12 @@
 
 import abc
 
+
 class Vehicle(abc.ABC):
     """
     Declaracion de la clase abstracta
     """
+
     @abc.abstractmethod
     def go(self):
         pass
@@ -19,6 +21,7 @@ class Car(Vehicle):
     """
     Clase heredada de -Vehicle-
     """
+
     def go(self):
         print("You drive the car")
 
@@ -30,20 +33,22 @@ class Motorcycle(Vehicle):
     """
     Clase heredada de -Vehicle-
     """
+
     def go(self):
         print("You ride the motorcycle")
 
     def stop(self):
         print("This motorcycle is stopped")
 
-#vehicle = Vehicle()
+
+# vehicle = Vehicle()
 car = Car()
 motorcycle = Motorcycle()
 
-#vehicle.go()
+# vehicle.go()
 car.go()
 motorcycle.go()
 
-#vehicle.stop()
+# vehicle.stop()
 car.stop()
 motorcycle.stop()

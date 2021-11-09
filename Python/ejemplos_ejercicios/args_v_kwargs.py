@@ -1,5 +1,6 @@
 # EJEMPLO *args, **kwargs
 
+
 def my_func(*args, **kwargs):
     print("hello world", args, kwargs)
 

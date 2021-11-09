@@ -2,7 +2,7 @@ from app.repository.user_repository import UserRepository
 from app.models.user import User
 
 
-class FileSystem (UserRepository):
+class FileSystem(UserRepository):
     __directory: str
 
     def __init__(self, directory: str):
