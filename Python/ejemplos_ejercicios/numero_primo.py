@@ -17,14 +17,14 @@ def is_prime(number):
 
 
 def run():
-    number = int(input('Escribe un número: '))
+    number = int(input("Escribe un número: "))
     result = is_prime(number)
 
     if result is True:
-        print('Tu número es primo')
+        print("Tu número es primo")
     else:
-        print('Tu número NO es primo')
+        print("Tu número NO es primo")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     run()

@@ -12,4 +12,3 @@ david.forward(50)
 david.left(90)
 
 turtle.mainloop()
-

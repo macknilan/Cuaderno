@@ -5,7 +5,8 @@
 import random
 
 # CUANDO UNA VARIALBE ESTA EN MAYUSCULA ES UNA CONSTANTE
-IMAGES = ['''
+IMAGES = [
+    """
 
     +---+
     |   |
@@ -13,23 +14,26 @@ IMAGES = ['''
         |
         |
         |
-        =========''', '''
-
-    +---+
-    |   |
-    O   |
-        |
-        |
-        |
-        =========''', '''
+        =========""",
+    """
 
     +---+
     |   |
     O   |
+        |
+        |
+        |
+        =========""",
+    """
+
+    +---+
+    |   |
+    O   |
     |   |
         |
         |
-        =========''', '''
+        =========""",
+    """
 
     +---+
     |   |
@@ -37,7 +41,8 @@ IMAGES = ['''
    /|   |
         |
         |
-        =========''', '''
+        =========""",
+    """
 
     +---+
     |   |
@@ -45,7 +50,8 @@ IMAGES = ['''
    /|\  |
         |
         |
-        =========''', '''
+        =========""",
+    """
 
     +---+
     |   |
@@ -53,7 +59,8 @@ IMAGES = ['''
    /|\  |
     |   |
         |
-        =========''', '''
+        =========""",
+    """
 
     +---+
     |   |
@@ -61,7 +68,8 @@ IMAGES = ['''
    /|\  |
     |   |
    /    |
-        =========''', '''
+        =========""",
+    """
 
     +---+
     |   |
@@ -69,11 +77,13 @@ IMAGES = ['''
    /|\  |
     |   |
    / \  |
-        =========''', '''
-''']
+        =========""",
+    """
+""",
+]
 
 # CUANDO UNA VARIALBE ESTA EN MAYUSCULA ES UNA CONSTANTE
-WORDS = ['rodolfo', 'puerta', 'ordenador', 'abogado', 'codigo', 'carro']
+WORDS = ["rodolfo", "puerta", "ordenador", "abogado", "codigo", "carro"]
 
 
 def random_word():  # SELECCIONAR UNA PALABRA DE LA LISTA "WORD"
@@ -82,19 +92,19 @@ def random_word():  # SELECCIONAR UNA PALABRA DE LA LISTA "WORD"
 
 
 def display_board(hidden_word, tries):
-    print(IMAGES[tries] + '\n')
+    print(IMAGES[tries] + "\n")
     print(hidden_word)
-    print('\n' + '--- * --- * --- * --- * --- * ---' + '\n')
+    print("\n" + "--- * --- * --- * --- * --- * ---" + "\n")
 
 
 def run():
     word = random_word()
-    hidden_word = ['-'] * len(word)
+    hidden_word = ["-"] * len(word)
     tries = 0
 
     while True:
         display_board(hidden_word, tries)
-        current_letter = str(input('Escoje una letra: '))
+        current_letter = str(input("Escoje una letra: "))
 
         letter_indexes = []
         for i in range(len(word)):
@@ -106,8 +116,8 @@ def run():
 
             if tries == 7:
                 display_board(hidden_word, tries)
-                print('\n')
-                print('Perdiste! La pralabra correcta era: {}'.format(word))
+                print("\n")
+                print("Perdiste! La pralabra correcta era: {}".format(word))
                 break
 
         else:
@@ -117,13 +127,13 @@ def run():
             letter_indexes = []
 
         try:
-            hidden_word.index('-')
+            hidden_word.index("-")
             pass
         except ValueError:
-            print('\n !GANASTE¡ La palabra es {} '.format(word))
+            print("\n !GANASTE¡ La palabra es {} ".format(word))
             break
 
 
-if __name__ == '__main__':
-    print('B I E N V E N I D O S  A  A H O R C A D O S')
+if __name__ == "__main__":
+    print("B I E N V E N I D O S  A  A H O R C A D O S")
     run()
