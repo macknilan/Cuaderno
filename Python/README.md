@@ -11,4 +11,4 @@
 - :link: :octocat: [mCoding](https://github.com/mCodingLLC/VideosSampleCode)
 - :link: :octocat: [ArjanCodes](https://github.com/ArjanCodes)
 
-[ArjanCodes](https://github.com/ArjanCodes){: target = "_blank"}
+[ArjanCodes](<a href="https://github.com/ArjanCodes" target="_blank">ArjanCodes</a>)
