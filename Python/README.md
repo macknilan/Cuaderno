@@ -10,3 +10,6 @@
 - :link: <a href="https://github.com/CoreyMSchafer/code_snippets" target="_blank">CoreyMSchafer/code_snippets</a>
 - :link: :octocat: [mCoding](https://github.com/mCodingLLC/VideosSampleCode)
 - :link: :octocat: [ArjanCodes](https://github.com/ArjanCodes)
+- :link: :octocat: [Fhernd - PythonEjercicios](https://github.com/Fhernd/PythonEjercicios)
+
+
