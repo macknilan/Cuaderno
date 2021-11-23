@@ -524,11 +524,22 @@ class CasillaDeVotacion:
 
 9. Herencia
 
-Pag 19 - 
+Pag 19 - 20
 
 La herencia nos permite generar una jerarquía de clases en las que podemos compartir funcionamientos comunes y en el que existirá una clase _padre_ también conocida como **superclase** y una o varias _clases hijas_ conocidas como **subclases**.
 
 Para extender de una clase _padre_ en Python solo tendremos que pasar como parámetro el nombre de la clase _padre_ **a la hija en su definición** y ya podremos usar las funcionalidades de la clase padre.
+
+La herencia es el fenomeno que se da cuando una clase superior, ejem **Profesional** le comparte sus _atributos_ y _metodos_ a una clase derivada. Ejem. **medico** sin necesidad de que esta última clase defina _todos los atributos y métodos nuevamente_.
+
+```py
+class BaseClass:
+    Cuerpo de la clase BaseClass
+
+class DerivedClass(BaseClass):
+    Cuerpo de la clase derivada
+```
+La clase derivada hereda caracteristicas de la clase base donde se pueden agregar nuevas caracteristicas, esto da como resultado la _reutilización de código_
 
 ```py
 class Rectangulo:
@@ -552,25 +563,236 @@ if __name__ == "__main__":
     cuadrado = Cuadrado(lado=5)
     print(cuadrado.area())
 ```
+`super()` es una funcion que te acceder a los _atributos y metodos_ de la clase base.   
 
+**Herencia multiple** una clase puede derivarse de más de una clase base en python :snake: En la herencia multiple, las caracteristicas de todas las clases base se heredan a la clase derivada.
 
+```py
+class Base1:
+    pass
+
+class Base2:
+    pass
+
+class Multiderivada(Base1, Base2):
+    pass
+```
+También podemos heredar de una clase derivada, esto se define como **herencia multi-nival**
+
+```py
+class Base:
+    pass
+
+class Derivada1(Base):
+    pass
+
+class Derivada1(Derivada1):
+    pass
+```
 
 10. Polimorfismo
 
-```py
-```
+El polimorfismo en la POO nos permite modificar el comportamiento de una superclase para adaptarlo a las necesidades de una subclase. Esto nos ayudará a crear una clase general con unas definiciones por defecto que luego podremos ir adaptando según las necesidades de la clase hija
 
 ```py
+class Persona:
+
+    def __init__(self, nombre):
+        self.nombre = nombre
+
+    def avanza(self):
+        print('Ando caminando')
+
+
+class Ciclista(Persona):
+
+    def __init__(self, nombre):
+        super().__init__(nombre)
+
+    def avanza(self):
+        print('Ando moviendome en mi bicicleta')
+
+
+def main():
+    persona = Persona('David')
+    persona.avanza()
+
+    ciclista = Ciclista('Daniel')
+    ciclista.avanza()
+
+
+if __name__ == '__main__':
+    main()
 ```
+
 ## Complejidad algorítmica
-
 11. Introducción a la complejidad algorítmica
+:link: [Youtube - Complejidad alforitmica](https://www.youtube.com/watch?v=GD254Gotp-4)
+Pag 23 - 26
 
+La **complejidad algorítmica** nos permite comparar la eficiencia de 2 algoritmos, esto a su vez va a predecir el tiempo que va a tomar resolver un problema. _No solamente podemos analizar la complejidad desde la perspectiva temporal, también la podemos hacer desde la espacial_; como por ejemplo cuanto espacio en memoria necesitamos.
+
+La **complejidad algorítmica temporal** la podemos definir como `T(n)` el cual determinara el tiempo que demora en resolver nuestro algoritmo.
+
+Aproximaciones
+
+¿Como podríamos aplicar nuestra función T(n)?
+
++ Cronometrar el tiempo en el que corre un algoritmo. Sin embargo no es una buena forma de medir los algoritmos, ya que no se puede predecir cuanto demorara a medida que crece nuestros pasos.
++ Contar los pasos con una medida abstracta de operación. Nos puede acercar a una medición ideal, sin embargo varia mucho de algoritmo en algoritmo y a medida que crece nuestro dataset existen muchos términos que llegan a ser irrelevantes.
++ Contar los pasos conforme nos aproximamos al infinito pero con una medida asintótica.
+
+Medición temporal
+
+Para una realizar una medida temporal simplemente calculamos la diferencia del tiempo previo y posterior de la ejecución del algoritmo.
+
+```py
+# complejidad algorítmica
+
+import time
+
+
+def factorial(n):
+    respuesta = 1
+
+    while n > 1:
+        # print(f"respuesta: {respuesta} n: {n}")
+        respuesta *= n
+        # print(f"respuesta *= n -> {respuesta} n -> {n}")
+        n -= 1
+
+    return respuesta
+
+
+def factorial_r(n):
+    if n == 1:
+        return 1
+
+    return n * factorial(n - 1)
+
+
+if __name__ == "__main__":
+    n = 200000
+
+    comienzo = time.time()
+    factorial(n)
+    final = time.time()
+    print(final - comienzo)
+
+    comienzo = time.time()
+    factorial_r(n)
+    final = time.time()
+    print(final - comienzo)
+```
 12. Conteo abstracto de operación
+Con esta técnica contamos los pasos que realiza nuestro algoritmo. En el siguiente _ejemplo_ respuesta tendrá los números de pasos que realiza nuestro código al ejecutar.
+
+```py
+def f(x):
+
+    respuesta = 0
+
+    for i in range(1000):
+        respuesta += 1
+
+    for i in range(x):
+        respuesta += x
+
+    for i in range(x):
+        for j in range(x):
+            respuesta += 1
+            respuesta += 1
+
+    return respuesta
+```
+
 
 13. Notación asintótica
 
++ *Un loop* => crecimiento lineal.
++ *Un loop dentro de otro* => crecimiento cuadratico
++ *Llamadas recursivas* => crecimiento exponecncial.
+
+Cuando hablamos de **notación asintótica** no importan las variaciones pequeñas, _el enfoque se centra en lo que pasa conforme el tamaño del problema se acerca al infinito._
+
+Siempre tenemos que estar preparados para cualquier caso, por lo que tenemos que saber medir a nuestro algoritmo en el mejor, promedio y peor de los casos.
+
+Lo mejor que nos permite comparar nuestros algoritmos y su capacidad es medir el peor de los casos, ahí es donde entra el **Big O notation**, donde lo único que importa es el termino de mayor tamaño, sin importar las constantes que las acompañan.
+
+#### Ley de la suma
+```py
+
+def f(n):
+    for i in range(n):
+        print(i)
+
+    for i in range(n):
+        print(i)
+
+# En este caso el mayor término es n
+# O(n) + O(n) = O(n + n) = O(2n) = O(n)
+```
+#### Ley de la suma
+```py
+
+def f(n):
+    for i in range(n):
+        print(i)
+
+    for i in range(n * n):
+        print(i)
+
+# En este caso el mayor término es n²
+# O(n) + O(n * n) = O(n + n²) = O(n²)
+```
+#### Ley de la multiplicación
+```py
+
+def f(n):
+
+    for i in range(n):
+
+        for i in range(n):
+            print(i, j)
+
+# En este caso el mayor término es n²
+# O(n) + O(n * n) = O(n * n) = O(n²)
+```
+#### Recursividad múltiple
+```py
+def fibonacci(n):
+    print(f"n: {n}")
+    if n == 0 or n == 1:
+        return 1
+
+    # print(f"({n} - 1) -> {fibonacci(n - 1)} + ({n} - 2) -> {fibonacci(n - 1)}")
+    print(f"({n} - 1) + ({n} - 2): {(n -1) + (n - 2)}")
+    return fibonacci(n - 1) + fibonacci(n - 2)
+
+# En este caso el mayor término es 2**n (el símbolo ** denota "elevado a"),
+# ya que realiza recursividad 2 veces por n veces.
+# O(2**n)
+```
+
 14. Clases de complejidad algorítmica
+
+Existen distintos tipos de complejidad algorítmica:
+
+- **O(1) Constante:** no importa la cantidad de input que reciba, siempre demorara el **mismo tiempo**.
+- **O(n) Lineal:** la complejidad crecerá de forma **proporcional** a medida que crezca el input.
+- **O(log n) Logarítmica:** nuestra función crecerá de forma **logarítmica** con respecto al input. Esto significa que en un inicio crecerá rápido, pero luego se estabilizara.
+- **O(n log n) Log lineal:** crecerá de forma **logarítmica** pero junto con una **constante**.
+- **O(n²) Polinomial:** crecen de forma cuadrática. No son recomendables a menos que el input de datos en pequeño.
+- **O(2^n) Exponencial:** crecerá de forma **exponencial**, por lo que la carga es muy alta. Para nada recomendable en ningún caso, solo para análisis conceptual.
+- **O(n!) Factorial:** crece de forma **factorial**, por lo que al igual que el exponencial su carga es muy alta, por lo que jamas utilizar algoritmos de este tipo.
+
+![big-O Cheat Sheet](../img/big-O_cheat_sheet.png)
+
+```py
+```
+
+```py
+```
 
 Algoritmos de búsqueda y ordenación
 
