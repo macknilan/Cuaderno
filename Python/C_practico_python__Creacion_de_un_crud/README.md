@@ -4,16 +4,16 @@
 
 ### PROGRAMA DE CURSO -PLATZI-VENTAS-
 
-- :link: [Python Tips - Intermediate Python — Python Tips 0.1 documentation](http://book.pythontips.com/en/latest/index.html)
-- :link: [Built-in Functions](https://docs.python.org/3/library/functions.html)
-- :link: [itertools — Functions creating iterators for efficient looping](https://docs.python.org/3.7/library/itertools.html)
+- :link: <a href="http://book.pythontips.com/en/latest/index.html" target="_blank">Python Tips - Intermediate Python — Python Tips 0.1 documentation</a>
+- :link: <a href="https://docs.python.org/3/library/functions.html" target="_blank">Built-in Functions</a>
+- :link: <a href="itertools — Functions creating iterators for efficient looping" target="_blank">https://docs.python.org/3.7/library/itertools.html</a>
 
 ### Formatos & f-strings
 
 Also, check out:
 
-- [pyformat](https://pyformat.info/)
-- [strftime.org](https://strftime.org/)
+- :link: <a href="https://pyformat.info/" target="_blank">pyformat</a>
+- :link: <a href="https://strftime.org/" target="_blank">strftime.org</a>
 
 ### String Formatting
 
