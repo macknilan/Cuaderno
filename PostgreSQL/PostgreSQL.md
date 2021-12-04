@@ -6,9 +6,9 @@
 ### 1. Bienvenida al curso
 hola postgreSQL
 ### 2. ¿Qué es Postgresql?
-- :link: [PostgreSQL 11.6 Documentation](https://www.postgresql.org/docs/11/index.html)
-- :link: [PostgreSQL 11.6 Part VI. Reference](https://www.postgresql.org/docs/11/reference.html)
-- :link: [PostgreSQL 11.6 Part Chapter 8. Data Types](https://www.postgresql.org/docs/11/datatype.html)
+- :link: [PostgreSQL 14.6 Documentation](https://www.postgresql.org/docs/14/index.html)
+- :link: [PostgreSQL 14.6 Part VI. Reference](https://www.postgresql.org/docs/14/reference.html)
+- :link: [PostgreSQL 14.6 Part Chapter 8. Data Types](https://www.postgresql.org/docs/14/datatype.html)
 - :link: [PosgresSQL Course](https://www.youtube.com/playlist?list=PLwvrYc43l1MxAEOI_KwGe8l42uJxMoKeS)
 - :octocat: [Learn by Example](https://github.com/vitaly-t/pg-promise/wiki/Learn-by-Example)
 
