@@ -42,17 +42,15 @@ hola postgreSQL
 ```bash
 # PostgreSQL
 # deb http://apt.postgresql.org/pub/repos/apt/ YOUR_DEBIAN_VERSION_HERE-pgdg main
-deb http://apt.postgresql.org/pub/repos/apt/ stretch-pgdg main
-# wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
 ```
 - Importar la key
 ```bash
 wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
-sudo apt-get update
 ```
 - Instalamos los paquetes de postgresql
 ```bash
-apt-get install postgresql postgresql-client postgresql-contrib libpq-dev
+sudo apt-get install postgresql postgresql-client postgresql-contrib libpq-dev
 ```
 
 :warning: __NOTA__: Por recomendación django se realizan los siguientes pasos para que se realisen de forma segura y mas eficiente Optimizando la configuración de POstgreSQL
