@@ -339,6 +339,17 @@ PostgreSQL instalado en WSL(Windows 10) y PgAdmin instalado en Windows 10
 
 + Instalar en WSL PostgreSQL
 + Establecer una contraseña para PostgreSQL
++ Editar el archivo `/etc/postgresql/13/main/postgresql.conf` para permitir conecciones en `127.0.0.1`
+```
+#------------------------------------------------------------------------------
+# CONNECTIONS AND AUTHENTICATION
+#------------------------------------------------------------------------------
+# - Connection Settings -
+listen_addresses = 'localhost'		# what IP address(es) to listen on;
+#------------------------------------------------------------------------------
+```
+Guardar el archivo y reinicar PostgreSQL
+
 + Cuando esta instaldo PostgreSQL en WSL se hace system
 
 |         Systemd command        |       Sysvinit command       |
