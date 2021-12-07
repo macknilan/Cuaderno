@@ -53,6 +53,22 @@ wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-
 sudo apt-get install postgresql postgresql-client postgresql-contrib libpq-dev
 ```
 
+### Wiki
+```sql
+CREATE ROLE [role-name] WITH LOGIN NOSUPERUSER INHERIT NOCREATEDB NOCREATEROLE NOREPLICATION ENCRYPTED PASSWORD ['password'];
+#
+CREATE DATABASE [data-base-name];
+#
+GRANT ALL PRIVILEGES ON DATABASE sandbox TO [role-name];
+#
+ALTER ROLE [role-name] SET default_transaction_isolation TO 'read committed';
+#
+ALTER ROLE [role-name] SET client_encoding TO 'utf8';
+#
+ALTER ROLE [role-name] SET timezone TO 'UTC';
+#
+```
+
 :warning: __NOTA__: Por recomendación django se realizan los siguientes pasos para que se realisen de forma segura y mas eficiente Optimizando la configuración de POstgreSQL
 
 + :link: [Optimizing PostgreSQL’s configuration](https://docs.djangoproject.com/en/1.11/ref/databases/#optimizing-postgresql-s-configuration "Optimizing PostgreSQL’s configuration")
@@ -79,7 +95,6 @@ postgres=# GRANT ALL PRIVILEGES ON DATABASE [NOMBRE_BD/ROLE] TO [USUARIO]; # ASI
 - Cambiar/asignar la contraseña del usuario creado, dentro de la consola de postgresql(PREFERENTEMENTE)
     - `postgres=# ALTER USER [USUARIO] WITH LOGIN ENCRYPTED PASSWORD '[CONTRASENA]';`
     - `postgres=# ALTER ROLE [USUARIO] WITH PASSWORD '[CONTRASENA]';`
-
 
 
 ### 4. Interacción con Postgres desde la Consola
@@ -319,7 +334,37 @@ _Your terminal prompt should now say_ `postgres@yourserver`. _If this is the cas
 _Your database has now been created and is named_ `mydb` _if you didn't change the command. You can name your database whatever you would like. Now create your database user with the following command:_
 `$ createuser` _ES CREAR USUARIO SIN NINGUN ATRIBUTO_
 
+### 5.1 PgAdmin: Interacción con Postgres desde la Interfaz Gráfica 
+PostgreSQL instalado en WSL(Windows 10) y PgAdmin instalado en Windows 10
 
++ Instalar en WSL PostgreSQL
++ Establecer una contraseña para PostgreSQL
++ Cuando esta instaldo PostgreSQL en WSL se hace system
+
+|         Systemd command        |       Sysvinit command       |
+|:------------------------------:|:----------------------------:|
+| systemctl start service_name   | service service_name start   |
+| systemctl stop service_name    | service service_name stop    |
+| systemctl restart service_name | service service_name restart |
+| systemctl status service_name  | service service_name status  |
+| systemctl enable service_name  | chkconfig service_name on    |
+| systemctl disable service_name | chkconfig service_name off   |
+
++ Iniciar PostgreSQL
++ Instalar PgAdmin4 en Windows 10 [pgAdmin 4 (Windows)](https://www.pgadmin.org/download/pgadmin-4-windows/)
++ Modificar el archivo `config.py` de PgAdmin4 para que no pida la contraseña al inicio
+```
+C:\Users<YOURUSERNAME>\AppData\Local\Programs\pgAdmin 4\v5\web\config.py
+```
+Cambiar el parametro `MASTER_PASSWORD_REQUIRED` a `False` y despues **Reiniciar Windows**
+
++ Para conectarse con PgAdmin(Win) a PostgreSQL(WSL)
+    - Iniciar PgAdmin4
+    - En la pestaña general escribir el nombre de la conección
+    - En la pestaña de coneccion en _Hostname_ `127.0.0.1`
+    - El puerto _5432_
+    - `maintenance database` y  `Username` se deja por defecto _postgres_
+    - En `Pasword` se escribe la contraseña que se establecio previamente cuando se instalo PostgreSQL
 
 ### 6. Archivos de Configuración
 
