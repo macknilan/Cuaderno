@@ -53,6 +53,7 @@ $$$$$$$$$$  $$$   $$$$   $$$$   $$$$ $$$ $$$$$ $$$$$  QQQQQ$$$$$$$QQQQQ
 - [Process handling](#25-process-handling)
 - [Tips & tricks](#26-tips-&-tricks)
 - [Debugging shell programs](#27-debugging-shell-programs)
+- [Domain Information Groper](#28-domain-information-groper)
 
 ### 1. Ayuda
 
@@ -1807,5 +1808,83 @@ function returntrap {
 
 trap returntrap RETURN  # is executed each time a shell function or a script executed with the . or source commands finishes executing
 ```
+
+[[Volver al índice]](#INDEX)
+
+### 28. Domain Information Groper
+#### dig
+Este comando es util para verificar problemas con DNS y sirve tambien para realizar busquedas para mostrar el resultado de la busqueda retorna desde el servidor al que se le hace la peticion
+
+Query Domain “A” Record
+```shell
+dig yahoo.com
+```
+Query Domain “A” Record with +short
+```shell
+dig yahoo.com +short
+```
+Querying MX Record for Domain(Mail eXchange)
+```shell
+dig yahoo.com MX
+```
+Querying SOA Record for Domain
+```shell
+dig yahoo.com SOA
+```
+Querying TTL Record for Domain
+```shell
+dig yahoo.com TTL
+```
+Querying Only Answer Section
+```shell
+dig yahoo.com +nocomments +noquestion +noauthority +noadditional +nostats
+```
+Querying ALL DNS Records Types
+```shell
+dig yahoo.com ANY +noall +answer
+```
+DNS Reverse Look-up
+```shell
+dig -x 72.30.38.140 +short
+```
+Multiples DNS
+```shell
+dig yahoo.com mx +noall +answer redhat.com ns +noall +answer
+```
+#### nslookup
+Encontrar record(direccion IP) tipo "A" de un dominio
+```shell
+nslookup yahoo.com
+```
+Búsqueda inversa de dominios
+```shell
+nslookup 209.191.122.70
+```
+Búsqueda de dominios específicos
+```shell
+nslookup ir1.fp.vip.mud.yahoo.com.
+```
+Query MX (Mail Exchange) record.
+```shell
+nslookup -query=mx www.yahoo.com
+```
+Query NS(Name Server) record.
+```shell
+nslookup -query=ns www.yahoo.com
+```
+Query SOA (Start of Authority) record.
+```shell
+nslookup -type=soa www.yahoo.com
+```
+Query all Available DNS records.
+```shell
+nslookup -query=any yahoo.com
+```
+_Debug_ mode
+```shell
+nslookup -debug yahoo.com
+```
+
+
 
 [[Volver al índice]](#INDEX)
