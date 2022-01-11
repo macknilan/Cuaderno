@@ -1323,7 +1323,7 @@ $ sudo apt-get update
 ```
 
 ```bash
-sudo apt-get install libcurl4-gnutls-dev libexpat1-dev gettext libz-dev libssl-dev
+sudo apt-get install libcurl4-gnutls-dev libexpat1-dev gettext libz-dev libssl-dev cmake gcc
 ```
 
 ```bash
