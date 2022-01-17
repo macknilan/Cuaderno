@@ -15,12 +15,12 @@
 
 ### Instalación
 ```
-$ sudo apt-get install git
+sudo apt-get install git
 ```
 
 ### Para comprobar la version
 ```
-$ git --version
+git --version
 ```
 
 ## Instalar git
@@ -29,32 +29,32 @@ Para instalar git la versión mas reciente del link
 - :link: https://github.com/git/git.git
 - :link: https://www.kernel.org/pub/software/scm/git/
 ```bash
-$ sudo apt-get update
-$ sudo apt-get install git
-$ sudo apt-get update
+sudo apt-get update
+sudo apt-get install git
+sudo apt-get update
 ```
 ```bash
-$ sudo apt-get install libcurl4-gnutls-dev libexpat1-dev gettext libz-dev libssl-dev
+sudo apt-get install libcurl4-gnutls-dev libexpat1-dev gettext libz-dev libssl-dev
 ```
 ```bash
-$ wget https://github.com/git/git/archive/v1.9.2.zip -O git.zip
+wget https://github.com/git/git/archive/v1.9.2.zip -O git.zip
 ```
 ```bash
-$ unzip git.zip
-$ cd git-XXX
-$ make prefix=/usr/local all
-$ sudo make prefix=/usr/local install
+unzip git.zip
+cd git-XXX
+make prefix=/usr/local all
+sudo make prefix=/usr/local install
 ```
 Para instalar **Gitk** visualisador de commits para **git** en linux/windows
 ```bash
-$ sudo apt-get install git-gui
+sudo apt-get install git-gui
 ```
 ## Paso_GIT
 
 METODO No.1 **HACER LA LLAVE SSH "sra"**
 Si quiere crear un par de llave RSA en vez de DSA solo debe usar -t rsa ( no debe especificar el largo "-b" por defecto el largo para RSA es de 4096 y es suficiente)
 ```bash
-$ ssh-keygen -t rsa -b 4096 -C "comentario_de_la_llave+your_email@example.com" -> frase_de_la_llave
+ssh-keygen -t rsa -b 4096 -C "comentario_de_la_llave+your_email@example.com" -> frase_de_la_llave
 ```
 
 METODO No.2 **HACER LA LLAVE SSH "ed25519"**  
@@ -65,7 +65,7 @@ METODO No.2 **HACER LA LLAVE SSH "ed25519"**
 - :link: [Comparison of the SSH Key Algorithms](https://medium.com/@nbeguier/a-real-world-comparison-of-the-ssh-key-algorithms-b26b0b31bfd9)
 
 ```bash
-$ ssh-keygen -o -a 256 -t ed25519 -f ~/.ssh/id_ed25519 -C "comentario_de_la_llave+your_john@example.com" #-> frase_de_la_llave
+ssh-keygen -o -a 256 -t ed25519 -f ~/.ssh/id_ed25519 -C "comentario_de_la_llave+your_john@example.com" #-> frase_de_la_llave
 ```
 Preguntara para hacer la frase de la contraseña.  
 - `-o` : Save the private-key using the new _OpenSSH_ format rather than the PEM format. Actually, this option is implied when you specify the key type as **ed25519**.
@@ -82,22 +82,22 @@ Before adding a new SSH key to the ssh-agent to manage your keys, you should hav
 
 1. Start the ssh-agent in the background.
 ```bash
-$ eval "$(ssh-agent -s)"
+eval "$(ssh-agent -s)"
 Agent pid 59566
 ```
 
 2. Add your SSH private key to the ssh-agent. If you created your key with a different name, or if you are adding an existing key that has a different name, replace id_rsa in the command with the name of your private key file.
 ```bash
-$ ssh-add ~/.ssh/id_rsa
+ssh-add ~/.ssh/id_rsa
 ```
 
 3. Add the SSH key to your GitHub account.Copy the SSH key to your clipboard.
 If your SSH key file has a different name than the example code, modify the filename to match your current setup. When copying your key, don't add any newlines or whitespace.
 ```bash
-$ sudo apt-get install xclip
+sudo apt-get install xclip
 # Downloads and installs xclip. If you don't have `apt-get`, you might need to use another installer (like `yum`)
 
-$ xclip -sel clip < ~/.ssh/id_rsa.pub
+xclip -sel clip < ~/.ssh/id_rsa.pub
 # Copies the contents of the id_rsa.pub file to your clipboard
 ```
 
@@ -122,7 +122,7 @@ Before testing your SSH connection, you should have:
 
 1. Abrir la terminal  y
 ```bash
-$ ssh -T git@github.com
+ssh -T git@github.com
 ```
 
 # Attempts to ssh to GitHub
@@ -157,46 +157,46 @@ Verify that the resulting message contains your username. If you receive a "perm
 
 Para entrar vía terminal a maquina remota vía ssh
 ```bash
-$ ssh root@XXX.XXX.XXX.XXX -> Después pedirá cambia la contraseña por otra nueva "xxxxxxxxxxxxxxx"
+ssh root@XXX.XXX.XXX.XXX -> Después pedirá cambia la contraseña por otra nueva "xxxxxxxxxxxxxxx"
 ```
 
 Para que se pueda conectar el VPS con nuestro repositorio en github se tiene que hacer una llave ssh en el usuario en el que se esta ejecutando nuestra aplicación.
 
 Cuando se crea la llave ssh, en el repositorio de github se añade. Con nombre lacanteramack854JdsK
 ```bash
-$ ssh-keygen -t rsa -b 4096 -C "comentario_de_la_llave" -> Frase contrasena_de_la_llave
+ssh-keygen -t rsa -b 4096 -C "comentario_de_la_llave" -> Frase contrasena_de_la_llave
 ```
 
 Cuando se crea la llave ssh y esta instalal en github ahora en nuestra sesión de nuestro usuario en vps dentro de la carpeta donde se encuentra manage.py y dentro del ambiente virtual se ejecuta
 ```bash
-$ git init
+git init
 ```
 
 Se agrega la dirección del repositorio remoto
 ```bash
-$ git remote add origin [REPOSITORIO HTTPS o SSH]
+git remote add origin [REPOSITORIO HTTPS o SSH]
 ```
 Eliminar dirección del repositorio remoto
 ```bash
-$ git remote rm <REMOTE-NAME>
+git remote rm <REMOTE-NAME>
 ```
 
 Se comprueba que se añadieron correctamente
 ```bash
-$ git remote -v
+git remote -v
 ```
 
 Para descargar/jalar el repositorio a nuestro vps, tiene que ser de la rama master
 ```bash
-$ git pull origin master -> Piede el password del ssh
+git pull origin master -> Piede el password del ssh
 ```
 
 ### Añadir nuestra llave SSH al agente ssh-agent
 ```
-$ eval "$(ssh-agent -s)"
+eval "$(ssh-agent -s)"
 Agent pid 59566
 
-$ ssh-add ~/.ssh/id_rsa
+ssh-add ~/.ssh/id_rsa
 ```
 
 ### Probar la conexión con Github
@@ -207,17 +207,17 @@ ssh -T git@github.com
 
 ### Después configuraremos nuestros datos (usaré los míos):
 ```
-$ git config --global user.name "TU NOMBRE"
-$ git config --global user.email "TU CORREO DE GITHUB"
-$ git config --global color.ui true
-$ git config --global --list
+git config --global user.name "TU NOMBRE"
+git config --global user.email "TU CORREO DE GITHUB"
+git config --global color.ui true
+git config --global --list
 ```
 
 ### Subir cambios a GitHub
 ```
-$ git init
-$ git remote add origin [HTTPS or SSH]
-$ git remote -v [Para ver en que rama nos encontramos]
+git init
+git remote add origin [HTTPS or SSH]
+git remote -v [Para ver en que rama nos encontramos]
 ```
 
 ### Abreviatura/contracciones
@@ -228,10 +228,10 @@ $ git remote -v [Para ver en que rama nos encontramos]
 
 ### Generamos cambios
 ```
-$ git add -A
-$ git commit -m "[Mensaje]" - (ABREVIATURA __$ git commit -am "[Mensaje]"__ )
-$ git push origin master
-$ git checkout [branch/rama/puede ser master ó otra rama del proyecto]
+git add -A
+git commit -m "[Mensaje]" - (ABREVIATURA __$ git commit -am "[Mensaje]"__ )
+git push origin master
+git checkout [branch/rama/puede ser master ó otra rama del proyecto]
 ```
 
 ### 2.2 Ramas - Practiquemos ramas
@@ -243,59 +243,55 @@ git branch [nombre]
 
 Agrupar los commits por autor
 ```bash
-$ git shortlog
+git shortlog
 ```
 
 ### GIT SUPER-LOG No.1
 
 NOTA: Se cambio el nombre de git superlog -> git slog Para que se sea más rapido escribirlo
 ```bash
-$ git config --global alias.slog "log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'" --all
+git log --graph --abbrev-commit --decorate --date=default --pretty=format:"%C(bold blue)%h%Creset - %C(bold green)(%ci)%Creset %C(white)%s%Creset %C(dim white) - %an%Creset%C(bold yellow)%d%Creset" --all
 ```
-### GIT SUPER-LOG No.2
-NOTA: Se cambio el nombre de git superlog -> git slog Para que se sea más rapido escribirlo
-```bash
-$ git config --global alias.slog "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
-```
+
 ### Exploración: Git Clone
 ```bash
-$ git clone [https or SSH]
+git clone [https or SSH]
 ```
 ```bash
-$ git log (comprobar commits)
+git log (comprobar commits)
 ```
 
 ## Git Fetch & Git Merge
 ### Creamos ó entramos a la carpeta de nuestro proyecto
 ```
-$ git branch -v [Para ver en que rama nos encontramos]
-$ git init (si apenas vamos a iniciar)
-$ git remote add origin [HTTS or SSH]
-$ git branch -a [Para mostrar los branches ocultos]
-$ git fetch origin
-$ git merge origin/master
+git branch -v [Para ver en que rama nos encontramos]
+git init (si apenas vamos a iniciar)
+git remote add origin [HTTS or SSH]
+git branch -a [Para mostrar los branches ocultos]
+git fetch origin
+git merge origin/master
 ```
 ### Hacen cambios
 ```
-$ git fetch origin
-$ git merge origin/master
-$ git push origin master
+git fetch origin
+git merge origin/master
+git push origin master
 ```
 
 ### Repositorios "forked" - Crear ó entrar a la carpeta del proyecto
 ```
-$ git remote add origin [HTTPS ó SSH del proyecto forked]
-$ git remote add upstream [HTTPS ó SSH del proyecto "main"]
-$ git fetch upstream
-$ git merge origin/upstream
-$ git fetch origin
-$ git merge origin/master
+git remote add origin [HTTPS ó SSH del proyecto forked]
+git remote add upstream [HTTPS ó SSH del proyecto "main"]
+git fetch upstream
+git merge origin/upstream
+git fetch origin
+git merge origin/master
 ```
 ### Hacer cambios en local
 ```
-$ git fetch upstream
-$ git merge origin/upstream
-$ git push origin master
+git fetch upstream
+git merge origin/upstream
+git push origin master
 ```
 
 ### Tags
@@ -361,9 +357,9 @@ git commit –m "Creación inicial del proyecto. Assets, Imágenes"
 ### Modificar el código y hacer un segundo Commit:
 ```bash
 # Modificar index.html
-$ git status # (Muestra en rojo que index.html fue modificado)
-$ git add index.html
-$ git commit –m "Título y descripción agregadas."
+git status # (Muestra en rojo que index.html fue modificado)
+git add index.html
+git commit –m "Título y descripción agregadas."
 ```
 ### Asignar un Alias a un comando largo de Git:
 ```bash
@@ -387,7 +383,7 @@ git config --global alias.<alias> <git-command>
 
 Formato para remover un alias
 ```bash
-$ git config --global --unset alias.<NOMBRE-DEL-ALIAS>
+git config --global --unset alias.<NOMBRE-DEL-ALIAS>
 ```
 
 Cuando se usa **oh-my-zsh** se instala un plug-in de github el cual se encuentra en la ruta
@@ -498,148 +494,148 @@ git filter-branch --env-filter \
 ```
 To removed staged and working directory changes
 ```bash
-$ git reset --hard
+git reset --hard
 ```
 To go 2 commits back
 ```bash
-$ git reset --hard HEAD~2
+git reset --hard HEAD~2
 ```
 Para saber que archivos se borran\eliminar(prueba en seco)
 ```bash
-$ git clean --dry-run
+git clean --dry-run
 ```
 Para borrar\eliminar todos los archivos listados con el comando anterior (que no son carpetas) tecleamos
 ```bash
-$ git bash -f
+git bash -f
 ```
 Borrar\eliminar archivos no trakeados
 ```bash
-$ git clean -f -d
+git clean -f -d
 ```
 Eliminar\borrar archivos no trakeados y archivos ignorados
 ```bash
-$ git clean -f -d -x
+git clean -f -d -x
 ```
 To push to the tracked master branch:
 ```bash
-$ git push origin master
+git push origin master
 ```
 To push to a specified repository:
 ```bash
-$ git push git@github.com:username/project.git
+git push git@github.com:username/project.git
 ```
 To delete the branch "branch_name" locally (force)
 ```bash
-$ git branch -D branch_name
+git branch -D branch_name
 ```
 Delete branch remotely
 ```bash
-$ git push origin --delete remoteBranchName
+git push origin --delete remoteBranchName
 ```
 To make an exisiting branch track a remote branch
 ```bash
-$ git branch -u upstream/foo
+git branch -u upstream/foo
 ```
 To see who commited which line in a file
 ```bash
-$ git blame filename
+git blame filename
 ```
 To sync a fork with the master repo:
 ```bash
-$ git remote add upstream git@github.com:name/repo.git # Set a new repo
-$ git remote -v # Confirm new remote repo
-$ git fetch upstream # Get branches
-$ git branch -va # List local - remote branches
-$ git checkout master # Checkout local master branch
-$ git checkout -b new_branch # Create and checkout a new branch
-$ git merge upstream/master # Merge remote into local repo
-$ git show 83fb499 # Show what a commit did.
-$ git show 83fb499:path/fo/file.ext # Shows the file as it appeared at 83fb499.
-$ git diff branch_1 branch_2 # Check difference between branches
-$ git log # Show all the commits
-$ git status # Show the changes from last commit
+git remote add upstream git@github.com:name/repo.git # Set a new repo
+git remote -v # Confirm new remote repo
+git fetch upstream # Get branches
+git branch -va # List local - remote branches
+git checkout master # Checkout local master branch
+git checkout -b new_branch # Create and checkout a new branch
+git merge upstream/master # Merge remote into local repo
+git show 83fb499 # Show what a commit did.
+git show 83fb499:path/fo/file.ext # Shows the file as it appeared at 83fb499.
+git diff branch_1 branch_2 # Check difference between branches
+git log # Show all the commits
+git status # Show the changes from last commit
 ```
 
 Commit history of a set of files
 ```bash
-$ git log --pretty=email --patch-with-stat --reverse --full-index -- Admin\*.py > Sripts.patch
+git log --pretty=email --patch-with-stat --reverse --full-index -- Admin\*.py > Sripts.patch
 ```
 Import commits from another repo
 ```bash
-$ git --git-dir=../some_other_repo/.git format-patch -k -1 --stdout <commit SHA> | git am -3 -k
+git --git-dir=../some_other_repo/.git format-patch -k -1 --stdout <commit SHA> | git am -3 -k
 ```
 View commits that will be pushed
 ```bash
-$ git log @{u}..
+git log @{u}..
 ```
 View changes that are new on a feature branch
 ```bash
-$ git log -p feature --not master
-$ git diff master...feature
+git log -p feature --not master
+git diff master...feature
 ```
 Interactive rebase for the last 7 commits
 ```bash
-$ git rebase -i @~7
+git rebase -i @~7
 ```
 Diff files WITHOUT considering them a part of git  
 This can be used to diff files that are not in a git repo!
 ```bash
-$ git diff --no-index path/to/file/A path/to/file/B
+git diff --no-index path/to/file/A path/to/file/B
 ```
 
 To pull changes while overwriting any local commits
 ```bash
-$ git fetch --all
-$ git reset --hard origin/master
+git fetch --all
+git reset --hard origin/master
 ```
 Update all your submodules
 ```bash
-$ git submodule update --init --recursive
+git submodule update --init --recursive
 ```
 Perform a shallow clone to only get latest commits (helps save data when cloning large repos)
 ```bash
-$ git clone --depth 1 <remote-url>
+git clone --depth 1 <remote-url>
 ```
 To unshallow a clone
 ```bash
-$ git pull --unshallow
+git pull --unshallow
 ```
 Create a bare branch (one that has no commits on it)
 ```bash
-$ git checkout --orphan branch_name
+git checkout --orphan branch_name
 ```
 Checkout a new branch from a different starting point
 ```bash
-$ git checkout -b master upstream/master
+git checkout -b master upstream/master
 ```
 Remove all stale branches (ones that have been deleted on remote)  
 So if you have a lot of useless branches, delete them on Github and then run this
 ```bash
-$ git remote prune origin
+git remote prune origin
 ```
 The following can be used to prune all remotes at once
 ```bash
-$ git remote prune $(git remote | tr '\n' ' ')
+git remote prune $(git remote | tr '\n' ' ')
 ```
 Revisions can also be identified with `:/text`  
 So, this will show the first commit that has "cool" in their message body
 ```bash
-$ git show :/cool
+git show :/cool
 ```
 Undo parts of last commit in a specific file
 ```bash
-$ git checkout -p HEAD^ -- /path/to/file
+git checkout -p HEAD^ -- /path/to/file
 ```
 Revert a commit and keep the history of the reverted change as a separate revert commit
 ```bash
-$ git revert <commit SHA>
+git revert <commit SHA>
 ```
 **Git cherry-pick**: Traer commits viejos al head de un branch
 _Pich a commit from a branch to current branch. This is different than merge as this just applies a single commit from a branch to current branch_  
 Existe un mundo alternativo en el cual vamos avanzando en una rama pero necesitamos en master uno de esos avances de la rama, para eso utilizamos el comando.  
 `cherry-pick` es una mala práctica porque significa que estamos reconstruyendo la historia, usa `cherry-pick` con sabiduría. _Si no sabes lo que estás haciendo ten mucho cuidado_.
 ```bash
-$ git cherry-pick <commit-SHA1>
+git cherry-pick <commit-SHA1>
 ```
 ### <a name="notas_c_nuevo_git">Notas C. Nuevo Git y GitHub</a>
 
@@ -695,39 +691,39 @@ En cambio, si usamos `git reset HEAD`, lo único que haremos será mover estos c
 
 Con `git reflog` despliga todo el el historial hasta 90 días, mostrando el `HEAD` en donde se ha estado el proyecto de la forma `HEAD@{12}`
 ```bash
-$ git reflog --all
+git reflog --all
 #
-$ git reflog
+git reflog
 ```
 ¿Qué pasa cuando todo se rompe y no sabemos qué está pasando? Con `git reset HashDelHEAD` nos devolveremos al estado en que el proyecto funcionaba.
 - `git reset --soft HashDelHEAD` te mantiene lo que tengas en _staging_ ahí.
 - `git reset --hard HashDelHEAD` resetea absolutamente todo incluyendo lo que tengas en _staging_.
 Comandos y recursos colaborativos en Git y Github
 ```bash
-$ git shortlog -sn # MUESTRA CUANTOS COMMIT HAN HECHO CADA MIEMBROS DEL EQUIPO.
+git shortlog -sn # MUESTRA CUANTOS COMMIT HAN HECHO CADA MIEMBROS DEL EQUIPO.
 ```
 ```bash
-$ git shortlog -sn --all # MUESTRA CUANTOS COMMIT HAN HECHO CADA MIEMBROS DEL EQUIPO HASTA LOS QUE HAN SIDO ELIMINADO
+git shortlog -sn --all # MUESTRA CUANTOS COMMIT HAN HECHO CADA MIEMBROS DEL EQUIPO HASTA LOS QUE HAN SIDO ELIMINADO
 ```
 ```bash
-$ git shortlog -sn --all --no-merge # MUESTRA CUANTOS COMMIT HAN HECHO CADA MIEMBROS QUITANDO LOS ELIMINADOS SIN LOS 
+git shortlog -sn --all --no-merge # MUESTRA CUANTOS COMMIT HAN HECHO CADA MIEMBROS QUITANDO LOS ELIMINADOS SIN LOS 
 MERGES
 ```
 ```bash
-$ git blame ARCHIVO # MUESTRA QUIEN HIZO CADA COSA LINEA POR LINEA
+git blame ARCHIVO # MUESTRA QUIEN HIZO CADA COSA LINEA POR LINEA
 ```
 ```bash
-$ git COMANDO --help # MUESTRA COMO FUNCIONA EL COMANDO.
+git COMANDO --help # MUESTRA COMO FUNCIONA EL COMANDO.
 ```
 ```bash
-$ git blame ARCHIVO -Llinea_inicial,linea_final # MUESTRA QUIEN HIZO CADA COSA LINEA POR LINEA INDICÁNDOLE DESDE QUE 
+git blame ARCHIVO -Llinea_inicial,linea_final # MUESTRA QUIEN HIZO CADA COSA LINEA POR LINEA INDICÁNDOLE DESDE QUE 
 LINEA VER EJEMPLO -L35,50
 ```
 ```bash
-$ git branch -r # SE MUESTRAN TODAS LAS RAMAS REMOTAS
+git branch -r # SE MUESTRAN TODAS LAS RAMAS REMOTAS
 ```
 ```bash
-$ git branch -a # SE MUESTRAN TODAS LAS RAMAS TANTO LOCALES COMO REMOTAS
+git branch -a # SE MUESTRAN TODAS LAS RAMAS TANTO LOCALES COMO REMOTAS
 ```
 
 
