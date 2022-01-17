@@ -250,7 +250,7 @@ git shortlog
 
 NOTA: Se cambio el nombre de git superlog -> git slog Para que se sea más rapido escribirlo
 ```bash
-git log --graph --abbrev-commit --decorate --date=default --pretty=format:"%C(bold blue)%h%Creset - %C(bold green)(%ci)%Creset %C(white)%s%Creset %C(dim white) - %an%Creset%C(bold yellow)%d%Creset" --all
+git config --global alias.slog "log --graph --abbrev-commit --decorate --date=default --pretty=format:'%C(bold blue)%h%Creset - %C(bold green)(%ci)%Creset %C(white)%s%Creset %C(dim white) - %an%Creset%C(bold yellow)%d%Creset'" --all
 ```
 
 ### Exploración: Git Clone
