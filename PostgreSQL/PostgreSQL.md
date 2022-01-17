@@ -50,7 +50,7 @@ wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-
 ```
 - Instalamos los paquetes de postgresql
 ```bash
-sudo apt-get install postgresql postgresql-client postgresql-contrib libpq-dev
+sudo apt-get install postgresql-14 postgresql-client-14 postgresql-contrib libpq-dev
 ```
 
 ### Wiki
