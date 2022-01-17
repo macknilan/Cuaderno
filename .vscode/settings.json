@@ -1,6 +1,0 @@
-{
-    "python.linting.pylintEnabled": true,
-    "editor.fontFamily": "Fira Code",
-    "editor.fontLigatures": true,
-    "editor.fontSize": 12,
-}
