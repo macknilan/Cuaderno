@@ -36,7 +36,7 @@ hola postgreSQL
 
 
 ### 3. Instalación y configuración de la Base de Datos
-#### Instalar PostgreSQL Debian 11.1
+#### Instalar PostgreSQL Debian
 
 - Añadir en el archivo /etc/apt/sources.list
 ```bash
