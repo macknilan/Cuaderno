@@ -807,17 +807,78 @@ ln -ls ~/public_html ~/www
 
 ### 4. Compresión y descompresión de archivos
 
+- `c` – create an archive file.
+- `x` – extract an archive file.
+- `v` – show the progress of the archive file.
+- `f` – filename of the archive file.
+- `t` – viewing the content of the archive file.
+- `j` – filter archive through bzip2.
+- `z` – filter archive through gzip.
+- `r` – append or update files or directories to the existing archive files.
+- `W` – Verify an archive file.
+- ``wildcards`` – Specify patterns in UNIX tar command.
+
 ### Descompresión
 
 ```bash
 # Archivos tar.gz
-tar -zxf archivo.tar.gz
+tar -xvf archivo.tar.gz
 
 # Archivos gz
 gzip -d archivo.gz
 
 # Archivos zip
 unzip archivo.zip
+
+# Archivos tar.bx2
+tar -xvf archivo.tar.bz2
+
+# Archivos .7z
+7z e archivo_comprimido.7z
+```
+
+Extraer un archivo de un archivo `.sh.tar`
+
+```bash
+tar -xvf cleanfiles.sh.tar cleanfiles.sh
+#
+tar --extract --file=cleanfiles.sh.tar cleanfiles.sh
+```
+
+Extraer un archivo de un archivo `.tar.gz`
+
+```bash
+tar -zxvf archivo.tar.gz archivo.xml
+# 
+tar --extract --file=archivo.tar.gz archivo.xml
+```
+
+Extraer un archivo de un archivo `.tar.bz2`
+
+```bash
+tar -jxvf archivo.tar.bz2 archivo.xml
+# 
+tar --extract --file=archivo.tar.bz2 archivo.xml
+```
+
+Extraer multiples archivos de `tar`, `tat.gz` y `tat.bz2`
+
+```bash
+tar -xvf archivo-14-09-12.tar "file1" "file2" 
+#
+tar -zxvf archivo-14-09-12.tar.gz "file1" "file2" 
+#
+tar -jxvf archivo-org.tar.bz2 "file1" "file2"
+```
+
+Extraer de multiples archivos de `tar`, `tat.gz` y `tat.bz2` archivos con la extension `.py`
+
+```bash
+tar -xvf Phpfiles-org.tar --wildcards '*.php'
+
+tar -zxvf Phpfiles-org.tar.gz --wildcards '*.php'
+
+tar -jxvf Phpfiles-org.tar.bz2 --wildcards '*.php'
 ```
 
 ### Compresión
@@ -831,6 +892,91 @@ gzip -q archivo.gz
 
 # Comprimo la carpeta braulio y la llamo archivo.zip
 zip archivo.zip archivo
+
+# Comprimir un archivo .bx2
+tar -cvfj archivo_comprimido.tar.bz2 /home/archivo
+#
+tar -cvfj archivo_comprimido.tar.tbz /home/archivo
+#
+tar -cvfj archivo_comprimido.tar.tb2 /home/archivo
+
+# Comprimir un archivo 7zip. Los formatos soportados son 7z, XZ, GZIP, TAR, ZIP and BZIP2
+7z a archivo_comprimido.7z archivo_1.4.2_i386.deb
+
+# Comprimir un archivo y seleccionar el formato se usa `-t` 7zip. Los formatos soportados son xz, gzip, tar, zip and bzip2
+7z a -tzip archivo_comprimido.zip archivo_1.4.2_i386.deb
+```
+
+Listar contenido de un archivo `tar`
+
+```bash
+tar -tvf archivo.tar
+```
+
+Listar contenido de un archivo `tar.gz`
+
+```bash
+tar -tvf archivo.tar.gz
+```
+
+Listar contenido de un archivo `tar.bz2`
+
+```bash
+tar -tvf archivo.tar.bz2
+```
+
+Listar el contenido de un archivo `.7z`
+
+```bash
+7z l archivo_comprimido.7z
+```
+
+Probar la integridad de un archivo `.z7`
+
+```bash
+7z t archivo_comprimido.7z
+```
+
+### Añadir archivos
+
+Añadir un archivo a `.tar`
+
+```bash
+tar -rvf archivo-14-09-12.tar xyz.txt
+#
+tar -rvf archivo-14-09-12.tar php
+```
+
+Añadir un archivo o directorio a `.tar.gz`, `tar.bz2`
+
+```bash
+tar -rvf archivo-14-09-12.tar.gz xyz.txt
+#
+tar -rvf archivo-14-09-12.tar.bz2 xyz.txt
+```
+
+Hacer el respaldo de un directorio y preservar propietario/grupo. La opción `-si` habilita la lectura desde `stdin`
+
+```bash
+tar -cf - carpeta_respaldo | 7za a -si carpeta_respaldo.tar.7z
+```
+
+Hacer la restauración de un archivo de respaldo `.7z`, la opción `-so` envía la salida a `stdout`
+
+```bash
+7za x -so carpeta_respaldo.tar.7z | tar xf -
+```
+
+Para establecer un nivel de compresión, se una la opción `-mx`
+
+```bash
+tar -cf - carpeta_respaldo | 7za a -si -mx=9 carpeta_respaldo.tar.7z
+```
+
+Para establecer una contraseña se una la opción `-p`
+
+```bash
+7za a -p{la_contraseña_se_escribe_aqui} carpeta_respaldo.tar.7z
 ```
 
 [[Volver al índice]](#INDEX)
