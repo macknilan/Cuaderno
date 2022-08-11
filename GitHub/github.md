@@ -348,6 +348,8 @@ Comandos para trabajar con etiquetas:
 - Crear un nuevo tag y asignarlo a un commit: `git tag -a nombre-del-tag id-del-commit`
 - Borrar un tag en el repositorio local: `git tag -d nombre-del-tag`
 - Listar los tags de nuestro repositorio local: `git tag o git show-refs --tags`
+  - Para asegurar que se limpien sus tags locales y no choquen con los del server en sus futuros push, deberán correr estos dos comandos: `git tag -d $(git tag -l) && git fetch --all --tags`
+  - `git tag --sort=v:refname | tail -n 1`
 - Publicar un tag en el repositorio remoto: `git push origin --tags`
 - Borrar un tag del repositorio remoto: `git tag -d nombre-del-tag y git push origin :refs/tags/nombre-del-tag`
 
