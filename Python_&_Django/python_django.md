@@ -88,9 +88,11 @@ Para verificar la instalación
 
 ```bash
 # Python 2
-$ pip -V
+pip -V
 # Python 3
-$ pip3 -V
+pip3 -V
+#
+python3 -m pip --version
 ```
 
 ## 3. Instalar pip en Debian/Ubuntu
