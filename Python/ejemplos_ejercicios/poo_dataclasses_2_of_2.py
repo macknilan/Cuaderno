@@ -1,7 +1,7 @@
 """
 https://youtu.be/rdRLfgVp8O0
 Ejemplo 01 de Dataclasses
-Como se peude hacer una clase y despues como se puede hacer por Dataclasses
+Como se puede hacer una clase y después como se puede hacer por Dataclasses
 
 Particularmente adecuado para modelar clases que representan datos y,
 como tales, ofrecen mecanismos fáciles para inicializar,
