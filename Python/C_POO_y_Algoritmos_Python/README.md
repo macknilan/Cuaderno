@@ -266,6 +266,8 @@ if __name__ == '__main__':
 
 ## Abstracción
 
+Una interfaz para interactuar con el objeto sin preocuparnos como funciona internamente.
+
 Pag. 14 - 15
 
 ```py
