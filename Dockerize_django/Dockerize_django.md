@@ -20,13 +20,13 @@
 Descargar la imagen de PostgreSQL
 
 ```bash
-$ docker pull postgres
+docker pull postgres
 ```
 
 Iniciar una instancia de PostgreSQL
 
 ```bash
-$ docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d postgres
+docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d postgres
 ```
 
 Ya que el contenedor/imagen se este ejecutando, en otra terminal(o en la misma), ejecutar el siguiente comando, para poder entrar al contenedor
@@ -40,16 +40,22 @@ docker exec -it postgres psql -U postgres
 
 Crear una carpeta `dj_docker`
 
+Verificar la version de `pip`
+
+```bash
+python3 -m pip --version
+```
+
 Instalar pipenv
 
 ```bash
-$ python3 -m pip install --user pipenv
+python3 -m pip install --user pipenv
 ```
 
 Crear carpeta con el nombre del projecto
 
 ```bash
-$ mkdir dj_docker
+mkdir dj_docker
 ```
 
 Crear el ambiente virtual
@@ -62,25 +68,25 @@ $ pipenv --three
 Instalar django
 
 ```bash
-$ pipenv install django
+pipenv install django
 ```
 
 Instalar gunicorn
 
 ```bash
-$ pipenv install gunicorn
+pipenv install gunicorn
 ```
 
-Activar amviente virtual
+Activar ambiente virtual
 
 ```bash
-$ pipenv shell
+pipenv shell
 ```
 
 Crear un proyecto en django
 
 ```bash
-$ pipenv run django-admin startproject dj_docker .
+pipenv run django-admin startproject dj_docker .
 ```
 
 BD local y migraciones
@@ -115,7 +121,7 @@ DEBUG=1
 Probar la configuración con
 
 ```bash
-$ gunicorn dj_docker.wsgi:application --bind 0.0.0.0:8000
+gunicorn dj_docker.wsgi:application --bind 0.0.0.0:8000
 ```
 
 En local browser ir a la dirección `http://localhost:8000/`
@@ -125,10 +131,10 @@ Crear el archivo `Dockerfile` la imagen y el contenedor
 Dentro de la carpeta del proyecto `dj_docker` crear el archivo `Dockerfile`
 
 ```bash
-$ touch Dockerfile
+touch Dockerfile
 ```
 
-Estructura de archivos y carpetas del projecto
+Estructura de archivos y carpetas del proyecto
 
 ```bash
 .
@@ -150,7 +156,7 @@ Estructura de archivos y carpetas del projecto
 El archivo `Dockerfile` ocupa la imagen
 
 ```bash
-$ docker pull $ docker pull python:3.9-slim-buster
+docker pull $ docker pull python:3.9-slim-buster
 ```
 
 ```bash
@@ -240,33 +246,33 @@ rm -rf /var/lib/apt/lists/*
 Construir la imagen Docker
 
 ```bash
-$ docker build -t simple-django-on-docker -f Dockerfile .
+docker build -t simple-django-on-docker -f Dockerfile .
 ```
 
 Ejecutar el contenedor
 
 ```bash
-$  docker run -it -p 80:8888 simple-django-on-docker
+docker run -it -p 80:8888 simple-django-on-docker
 ```
 
 En la dirección `http://localhost` para comprobar que se esta ejecutando
 
 [[Volver al inicio]](#INDEX)
 
-### :construction: :construction: Django on Docker in progress :construction: :construction:
+### :construction: :construction: Django on Docker in progress :construction: :construction
 
 Crear una carpeta `core`
 
 Instalar pipenv
 
 ```bash
-$ python3 -m pip install --user pipenv
+python3 -m pip install --user pipenv
 ```
 
 Crear carpeta con el nombre del projecto
 
 ```bash
-$ mkdir core
+mkdir core
 ```
 
 Crear el ambiente virtual
@@ -289,13 +295,13 @@ $ pipenv install django-environ
 :rotating_light: Activar ambiente virtual
 
 ```bash
-$ pipenv shell
+pipenv shell
 ```
 
 Crear un proyecto en django
 
 ```bash
-$ pipenv run django-admin startproject core .
+pipenv run django-admin startproject core .
 ```
 
 :eyes: Tener previamente PostgreSQL :octocat: [PostgreSQL](https://github.com/macknilan/Cuaderno/blob/master/PostgreSQL/PostgreSQL.md)
@@ -304,15 +310,15 @@ Cambiar la configuración de conección en `settings.py` para que se conecte a l
 
 ```bash
 DATABASES = {
-	'default': {
-    	'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    	'NAME': 'sandbox',
-    	'USER': 'user_sandbox',
-    	'PASSWORD': 'user_sandbox_2020',
-    	# 'HOST': 'db', # SET IN docker-compose.yml
-    	'HOST': 'localhost',
-    	'PORT': '5432',
-	}
+ 'default': {
+     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+     'NAME': 'sandbox',
+     'USER': 'user_sandbox',
+     'PASSWORD': 'user_sandbox_2020',
+     # 'HOST': 'db', # SET IN docker-compose.yml
+     'HOST': 'localhost',
+     'PORT': '5432',
+ }
 }
 ```
 
@@ -350,7 +356,7 @@ En la carpeta `core`
 El archivo `Dockerfile` ocupa la imagen
 
 ```bash
-$ docker pull $ docker pull python:3.9-slim-buster
+docker pull $ docker pull python:3.9-slim-buster
 ```
 
 ```bash
@@ -484,11 +490,30 @@ $ docker-compose -f local.yml ps
 - :link: :octocat: [Cookiecutter Django](https://github.com/pydanny/cookiecutter-django)
 - :link: [Cookiecutter Django Docs](https://cookiecutter-django.readthedocs.io/en/latest/index.html)
 
+Verificar la version de `pip`
+
+```bash
+python3 -m pip --version
+```
+
+Actualizr pip
+
+```bash
+python3 -m pip install --user --upgrade pip
+#
+python3 -m pip install --upgrade pip
+```
+
 1. Crear ambiente local
+
+```bash
+python3 -m venv [NOMBRE-DEL-ENTORNO-VIRTUAL]
+```
+
 2. Dentro del ambiente local, y estar ubicados donde se desee que este la carpeta del proyecto
 
 ```bash
-$ python3 -m pip install pip install "cookiecutter>=1.7.0"
+python3 -m pip install "cookiecutter>=2.1.1"
 ```
 
 3. Instalar _cookiecutter-django_
@@ -499,48 +524,15 @@ $ cookiecutter https://github.com/pydanny/cookiecutter-django
 $ cookiecutter gh:pydanny/cookiecutter-django
 ```
 
-👀 También puede configurar la variable de entorno `COMPOSE_FILE` apuntando a `local.yml`
-
-```bash
-$ export COMPOSE_FILE=local.yml
-```
-
-4. Build the Stack
-
-```bash
-$ docker-compose -f local.yml build
-```
-
-5. Run the Stack
-
-```bash
-$ docker-compose -f local.yml up
-#
-$ docker-compose -f local.yml down
-```
-
-6. Comandos de administración
-   Como con cualquier comando de shell que deseamos ejecutar en nuestro contenedor, esto se hace usando el
-
-```bash
-$ docker-compose -f local.yml run --rm
-```
-
-```bash
-$ docker-compose -f local.yml run --rm django python manage.py makemigrations
-$ docker-compose -f local.yml run --rm django python manage.py migrate
-$ docker-compose -f local.yml run --rm django python manage.py createsuperuser
-```
-
 Configuración posible para cookiecutter
 
 ```bash
-project_name [My Awesome Project]: dj_docker_sandbox
-project_slug [dj_docker_sandbox]:
-description [Behold My Awesome Project!]: Sandbox Django cookiecutter
-author_name [Daniel Roy Greenfeld]: Rodolfo
-domain_name [example.com]:
-email [rodolfo@example.com]:
+project_name [My Awesome Project]: root-backend
+project_slug [root_backend]:
+description [Behold My Awesome Project!]: Behold My Awesome Project!
+author_name [Daniel Roy Greenfeld]: Rodolfo Ugalde
+domain_name [example.com]: mack.com
+email [rodolfo-ugalde@example.com]: my_mail@gmail.com
 version [0.1.0]:
 Select open_source_license:
 1 - MIT
@@ -554,20 +546,17 @@ windows [n]: n
 use_pycharm [n]: n
 use_docker [n]: y
 Select postgresql_version:
-1 - 13.2
-2 - 12.6
-3 - 11.11
-4 - 10.16
-Choose from 1, 2, 3, 4 [1]: 1
-Select js_task_runner:
-1 - None
-2 - Gulp
-Choose from 1, 2 [1]: 1
+1 - 14
+2 - 13
+3 - 12
+4 - 11
+5 - 10
+Choose from 1, 2, 3, 4, 5 [1]: 1
 Select cloud_provider:
 1 - AWS
 2 - GCP
 3 - None
-Choose from 1, 2, 3 [1]: 2
+Choose from 1, 2, 3 [1]: 1
 Select mail_service:
 1 - Mailgun
 2 - Amazon SES
@@ -581,8 +570,11 @@ Select mail_service:
 Choose from 1, 2, 3, 4, 5, 6, 7, 8, 9 [1]: 1
 use_async [n]: n
 use_drf [n]: y
-custom_bootstrap_compilation [n]: n
-use_compressor [n]: n
+Select frontend_pipeline:
+1 - None
+2 - Django Compressor
+3 - Gulp
+Choose from 1, 2, 3 [1]: 2
 use_celery [n]: y
 use_mailhog [n]: y
 use_sentry [n]: n
@@ -597,6 +589,40 @@ Choose from 1, 2, 3, 4 [1]: 1
 keep_local_envs_in_vcs [y]: y
 debug [n]: n
 ```
+
+👀 También puede configurar la variable de entorno `COMPOSE_FILE` apuntando a `local.yml`
+
+```bash
+export COMPOSE_FILE=local.yml
+```
+
+4. Build the Stack
+
+```bash
+docker-compose -f local.yml build
+```
+
+5. Run the Stack
+
+```bash
+$ docker-compose -f local.yml up
+#
+$ docker-compose -f local.yml down
+```
+
+6. Comandos de administración
+   Como con cualquier comando de shell que deseamos ejecutar en nuestro contenedor, esto se hace usando el
+
+```bash
+docker-compose -f local.yml run --rm
+```
+
+```bash
+docker-compose -f local.yml run --rm django python manage.py makemigrations
+docker-compose -f local.yml run --rm django python manage.py migrate
+docker-compose -f local.yml run --rm django python manage.py createsuperuser
+```
+
 
 ### Docker + Django + Postgresql fast way
 
@@ -650,7 +676,7 @@ services:
 5. ejecutar el siguiente comando para crear el proyecto en la carpeta que se creo
 
 ```bash
-$ docker-compose run web django-admin startproject dj_docker .
+docker-compose run web django-admin startproject dj_docker .
 ```
 
 🚨 Se instala como root
@@ -700,24 +726,24 @@ $ docker-compose down
 
 ```dockerfile
 # GET THE IMAGE SLIM-BUSTER
-FROM python:3.9.6-slim-buster
+FROM python:3.10.6-slim-buster
 
 # RUN ITS CONTENT THE FILE TO INSTALL
 # UPDATES FROM THE DEBIAN REPOSITORIES
-COPY install-packages.sh .
-RUN chmod +x install-packages.sh
-RUN ./install-packages.sh
+# COPY install-packages.sh .
+# RUN chmod +x install-packages.sh
+# RUN ./install-packages.sh
 
 # INSTALL APT PACKAGES
-# RUN apt-get update && apt-get install --no-install-recommends -y \
-#     # dependencies for building Python packages
-#     build-essential \
-#     # psycopg2 dependencies
-#     libpq-dev \
-#     && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install --no-install-recommends -y \
+    # dependencies for building Python packages
+    build-essential \
+    # psycopg2 dependencies
+    libpq-dev \
+    && rm -rf /var/lib/apt/lists/*
 
 # CREATE AND SET WORKING DIRECTORY
-RUN mkdir /app
+# RUN mkdir /app
 WORKDIR /app
 
 # FORCE STDIN, STDOUT AND STDERR TO BE TOTALLY UNBUFFERED. ON SYSTEMS WHERE IT MATTERS, ALSO PUT STDIN, STDOUT AND STDERR IN BINARY MODE.
@@ -726,13 +752,15 @@ ENV PYTHONUNBUFFERED 1
 # PYTHON FROM COPYING PYC FILES TO THE CONTAINER
 ENV PYTHONDONTWRITEBYTECODE 1
 
-COPY /requirements/requirements.txt /app
+# COPY /requirements/requirements.txt /app
+COPY /requirements /app
 
 RUN python3 -m pip install --no-cache-dir --upgrade \
     pip \
     setuptools \
     wheel
-RUN python3 -m pip install --no-cache-dir -r requirements.txt
+# RUN python3 -m pip install --no-cache-dir -r requirements.txt
+RUN python3 -m pip install --no-cache-dir -r local.txt
 
 # INSTALL REQUIRED SYSTEM DEPENDENCIES
 RUN apt-get update && apt-get install --no-install-recommends -y \
@@ -746,46 +774,51 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
 
 # ADD CURRENT DIRECTORY CODE TO WORKING DIRECTORY
 COPY . /app
-
 ```
 
-3.  `$ touch local.yml`
+3. `$ touch local.yml`
 
 ```yml
 version: "3.9"
 
-services:
-  postgres:
-    image: postgres
-    container_name: postgres
-    volumes:
-      - local_postgres_data:/var/lib/postgresql/data
-    env_file:
-      - ./.envs/.local/.postgres
-    ports:
-      - "5432:5432"
+volumes:
+  local_postgres_data: {}
+  local_postgres_data_backups: {}
 
-  django:
+services:
+  django: &django
     build:
       context: .
+      dockerfile: ./compose/local/django/Dockerfile
+    image: root_local_django
     container_name: django
+    depends_on:
+        - postgres
+    volumes:
+      - .:/app
     env_file:
       - ./.envs/.local/.django
       - ./.envs/.local/.postgres
-    command: python3 manage.py migrate
-    command: python3 manage.py runserver 0.0.0.0:8000
-    volumes:
-      - .:/app
     ports:
         - "8000:8000"
-    depends_on:
-        - postgres
+    command: /start
 
-volumes:
-  local_postgres_data:
+  postgres:
+    build:
+      context: .
+      dockerfile: ./compose/production/postgres/Dockerfile
+    image: root_production_postgres
+    container_name: postgres
+    volumes:
+      - local_postgres_data:/var/lib/postgresql/data
+      - local_postgres_data_backups:/backups
+    env_file:
+      - ./.envs/.local/.postgres
+    ports:
+      - "5431:5432"
 ```
 
-4.  `$ touch install-packages.sh`
+4. `$ touch install-packages.sh`
 
 ```bash
 #!/bin/bash
@@ -878,13 +911,13 @@ $ docker-compose -f local.yml run --rm django python manage.py migrate
 8. Se levantan los servicio para comprobar errores
 
 ```bash
-$ docker-compose -f local.yml up
+docker-compose -f local.yml up
 ```
 
 9. Se crea el super-usuario
 
 ```bash
-$ docker-compose -f local.yml run --rm django python manage.py createsuperuser
+docker-compose -f local.yml run --rm django python manage.py createsuperuser
 ```
 
 10. Dar de baja los servicios y comprobar el estado de los servicios levandados
@@ -900,19 +933,19 @@ $ docker-compose -f local.yml ps
 Eliminar _todas_ las imagenes.
 
 ```bash
-$ docker rmi $(docker images -aq)
+docker rmi $(docker images -aq)
 ```
 
 Eliminar _todos_ los contenedores.
 
 ```bash
-$ docker rm $(docker ps -a -q)
+docker rm $(docker ps -a -q)
 ```
 
 Eliminar volumenes
 
 ```bash
-$ docker volume rm [NOMBRE_DEL_VOLUME]
+docker volume rm [NOMBRE_DEL_VOLUME]
 ```
 
 Docker básicos

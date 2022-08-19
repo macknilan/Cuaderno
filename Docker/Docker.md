@@ -62,7 +62,7 @@ Después de la instalación de docker se tiene que **agregar el usuario** el cua
 Posterior mente se siente que deslogearse o abrir una sesión de bash nueva y ejecutar el comando
 
 ```
-$ docker
+docker
 ```
 
 Y se tiene que mostrar algo por el estilo...
@@ -72,14 +72,14 @@ Y se tiene que mostrar algo por el estilo...
 Para saber las opciones de cada comando y ayuda de ellos
 
 ```
-$ docker ps --help
+docker ps --help
 ```
 
 Para saver la información del docker que tenemos instalado
 
 ```
-$ docker info
-$ docker version
+docker info
+docker version
 ```
 
 ## DOCKER ENGINE
@@ -102,7 +102,7 @@ $ docker version
 Para saber que imágenes locales tenemos con docker
 
 ```
-$ docker images
+docker images
 ```
 
 ![eje. captura de campaña](img/docker001.jpg "captura de campaña")
@@ -127,13 +127,13 @@ Para instalar o correr una imagen que se encuentra instalada y si no lo esta se 
 - Cuando se ejecuta un contenedor con el comando `docker run` las imágenes son descargadas automáticamente si no se encuentran en el repositorio `local local copy is found`
 
 ```
-$ docker run hello-world
+docker run hello-world
 ```
 
 Para instalar una imagen de manera OFICIAL de [Docker Hub](https://hub.docker.com/ "Docker Hub")
 
 ```
-$ docker pull <NOMBRE_DE_IMAGEN>
+docker pull <NOMBRE_DE_IMAGEN>
 ```
 
 De forma automática se descargara la ultima version **latest** que esta marcada en **tag**
@@ -146,13 +146,13 @@ $docker pull <NOMBRE_DE_IMAGEN:TAG_NAME>
 **NOTA: Para buscar imagenes de docker con la linea de comandos:**
 
 ```
-$ docker search <NOMBRE_DE_LA_IMAGEN>
+docker search <NOMBRE_DE_LA_IMAGEN>
 ```
 
 ejem.
 
 ```
-$ docker pull ubuntu:14:04
+docker pull ubuntu:14:04
 ```
 
 ## Creando nuestro primer contenedor
@@ -177,13 +177,13 @@ docker run [opciones] [imagen] [comando][args]
 ejem.
 
 ```
-$ docker run ubuntu echo "Hola desde Docker en ubuntu"
+docker run ubuntu echo "Hola desde Docker en ubuntu"
 ```
 
 Para comprobar que se ejecuto desde la imagen de **docker ubuntu**
 
 ```
-$ docker ps -a
+docker ps -a
 ```
 
 tiene salida...
@@ -193,7 +193,7 @@ tiene salida...
 Si se desea saber que **imágenes** son las que se **están ejecutando**
 
 ```
-$ docker ps
+docker ps
 ```
 
 ## Listando los contenedores
@@ -211,7 +211,7 @@ $ docker ps
 ejem...
 
 ```
-$ docker run -it ubuntu bash
+docker run -it ubuntu bash
 ```
 
 y en los procesos de docker se muestra que se esta ejecutando
@@ -219,13 +219,13 @@ y en los procesos de docker se muestra que se esta ejecutando
 Para crear un contenedor al que puedas entrar y salir todo lo que quieras se debe definir expresamente un entrypoint como `/bin/bash` usando por ejemplo el siguiente comando:
 
 ```bash
-$ docker run -it --entrypoint /bin/bash --name ubuntu ubuntu:latest
+docker run -it --entrypoint /bin/bash --name ubuntu ubuntu:latest
 ```
 
 _PARA SALIR DEL CONTENEDOR_
 
 ```
-$ exit
+exit
 ```
 
 - :link: [Linux Alpine Docker Hub](https://hub.docker.com/_/alpine)
@@ -248,13 +248,13 @@ root@10c74cf79623:/#
 Para poder entrar de nuevo al **mismo contenedor** se tiene que poner el mismo **HASH**
 
 ```
-$ docker start <CONTAINER_ID>
+docker start <CONTAINER_ID>
 ```
 
 para confirmar que este correctamente levantado el contenedor se ejecuta el comando
 
 ```
-$ docker ps
+docker ps
 ```
 
 **SI Y SOLO SI**, con el contenedor levantado podemos entrar con el comando
@@ -285,7 +285,7 @@ docker ps -a --no-trunc
 #### Para poder hacer referencia a un contenedor por nombre (NO SE PUEDEN REFERENCIAR DOS CONTENEDORES CON EL MISMO NOMBRE)
 
 ```
-$ docker run --name [UN_NOMBRE] ubuntu ls
+docker run --name [UN_NOMBRE] ubuntu ls
 ```
 
 ahora cuando ejecutando el comando `docker ps -a` aparece en la lista el `[CONTAINER_ID]` seguido por el `[NOMBRE]`
@@ -299,7 +299,7 @@ $docker rm [UN_NOMBRE]
 Para forzar la detención de un contenedor se usa
 
 ```
-$ docker kill [CONTAINER_ID]
+docker kill [CONTAINER_ID]
 ```
 
 ## Listado con filtro de contenedores con `docker ps`
@@ -324,7 +324,7 @@ $ docker ps -h
 SINTAXIS IMAGENES
 
 ```
-$ docker rmi [OPTIONS] IMAGE [IMAGE...]
+docker rmi [OPTIONS] IMAGE [IMAGE...]
 ```
 
 | Name, shorthand | Default | Description                    |
@@ -335,13 +335,13 @@ $ docker rmi [OPTIONS] IMAGE [IMAGE...]
 LISTAR
 
 ```
-$ docker ps -a
+docker ps -a
 ```
 
 ELIMINAR
 
 ```
-$ docker rmi <image ó hash>
+docker rmi <image ó hash>
 ```
 
 Eliminar imagenes que se quedan colgadas
@@ -349,13 +349,13 @@ Eliminar imagenes que se quedan colgadas
 LISTAR
 
 ```
-$ docker images -f dangling=true
+docker images -f dangling=true
 ```
 
 ELIMINAR
 
 ```
-$ docker rmi $(docker images -f dangling=true -q)
+docker rmi $(docker images -f dangling=true -q)
 ```
 
 Eliminar imagenes de acuerdo a algun patron
@@ -363,14 +363,14 @@ Eliminar imagenes de acuerdo a algun patron
 LISTAR
 
 ```
-$ docker ps -a | grep "pattern"
-$ docker ps -a | grep "pattern"
+docker ps -a | grep "pattern"
+docker ps -a | grep "pattern"
 ```
 
 ELIMINAR
 
 ```
-$ docker images | grep "pattern" | awk '{primt $1}' | xargs docker rm
+docker images | grep "pattern" | awk '{primt $1}' | xargs docker rm
 ```
 
 ELiminar todas las imagenes
@@ -378,37 +378,37 @@ ELiminar todas las imagenes
 LISTAR
 
 ```
-$ docker images -a
+docker images -a
 ```
 
 ELIMINAR
 
 ```
-$ docker rmi $(docker images -a -q)
+docker rmi $(docker images -a -q)
 ```
 
 ### Eliminar contenedores e imagenes al mismo tiempo
 
 ```
-$ docker rm $(docker ps -aq) && docker rmi $(docker images -q)
+docker rm $(docker ps -aq) && docker rmi $(docker images -q)
 ```
 
 ### Sintaxis contenedores
 
 ```
-$ docker rm [OPTIONS] CONTAINER [CONTAINER...]
+docker rm [OPTIONS] CONTAINER [CONTAINER...]
 ```
 
 Para eliminar un contenedor especifico
 
 ```
-$ docker rm [ID_or_Name] [ID_or_Name]
+docker rm [ID_or_Name] [ID_or_Name]
 ```
 
 Para eliminar un contenedor después de crearlo. Se crea y cuando acaba su función para la cual fue creado se elimina
 
 ```
-$ docker run --rm [image_name]
+docker run --rm [image_name]
 ```
 
 Puede localizar contenedores utilizando `docker ps -a` y filtrarlos por su estado: `created, restarting, running, paused, o exited`.
@@ -418,13 +418,13 @@ Cuando haya verificado que desea eliminar esos contenedores, utilice `-q` para p
 LISTAR
 
 ```
-$ docker ps -a -f status=exited
+docker ps -a -f status=exited
 ```
 
 ELIMINAR
 
 ```
-$ docker rm $(docker ps -a -f status=exited -q)
+docker rm $(docker ps -a -f status=exited -q)
 ```
 
 (otra forma de filtrado)
@@ -432,26 +432,26 @@ $ docker rm $(docker ps -a -f status=exited -q)
 LISTAR
 
 ```
-$ docker ps -a -f status=exited -f status=created
+docker ps -a -f status=exited -f status=created
 ```
 
 ELIMINAR
 
 ```
-$ docker rm $(docker ps -a -f stauts=exited -f status=created -q)
+docker rm $(docker ps -a -f stauts=exited -f status=created -q)
 ```
 
 Eliminar contenedores dependiendo de un patron
 LISTAR
 
 ```
-$ docker ps -a | grep "pattern"
+docker ps -a | grep "pattern"
 ```
 
 ELIMINAR
 
 ```
-$ docker ps -a | grep "pattern" | awk '{print $3}' | xargs docker rmi
+docker ps -a | grep "pattern" | awk '{print $3}' | xargs docker rmi
 ```
 
 ### Detener y eliminar todos los contenedores
@@ -459,20 +459,20 @@ $ docker ps -a | grep "pattern" | awk '{print $3}' | xargs docker rmi
 LISTAR
 
 ```
-$ docker ps -a
+docker ps -a
 ```
 
 ELIMINAR
 
 ```
-$ docker stop $(docker ps -a -q)
-$ docker rm $(docker ps -a -q)
+docker stop $(docker ps -a -q)
+docker rm $(docker ps -a -q)
 ```
 
 Ejemplo para hacer **ping** desde un contenedor
 
 ```
-$ docker run ubuntu:14.04 ping -c 10 www.google.com
+docker run ubuntu:14.04 ping -c 10 www.google.com
 ```
 
 ## Ejecutando contenedores de fondo
@@ -484,7 +484,7 @@ $ docker run ubuntu:14.04 ping -c 10 www.google.com
 Ejemplo para hacer ping desde un contenedor ejecutarlo como **demonio ó contenedor de fondo**
 
 ```
-$ docker run -d ubuntu:14.04 ping -c 10 www.google.com
+docker run -d ubuntu:14.04 ping -c 10 www.google.com
 ```
 
 Los contenedores están aislados del sistema y a nivel de red, cada contenedor tiene su propia stack de net y sus propios puertos.
@@ -492,11 +492,11 @@ Los contenedores están aislados del sistema y a nivel de red, cada contenedor t
 Debemos redirigir los puertos del contenedor a los de la computadora y lo podemos hacer al utilizar este comando:
 
 ```
-$  docker run -d --name server -p 8080:00  nombreDelContenedor
+docker run -d --name server -p 8080:00  nombreDelContenedor
 ```
 
 ```
-$  docker run -d -name server ngnix -p 8080:80
+docker run -d -name server ngnix -p 8080:80
 ```
 
 ### Para ver los log de un contenedor
@@ -504,13 +504,13 @@ $  docker run -d -name server ngnix -p 8080:80
 Se tiene que ejecutar el comando **cuando un contenedor se encuentra activo**
 
 ```
-$ docker loogs [CONTAINER_ID]
+docker loogs [CONTAINER_ID]
 ```
 
 Para poder ver en **tiempo real el log** de un contenedor se añade una bandera
 
 ```
-$ docker logs -f [CONTAINER_ID]
+docker logs -f [CONTAINER_ID]
 ```
 
 ## Un caso practico
@@ -531,12 +531,12 @@ $ docker logs -f [CONTAINER_ID]
 - Generalmente se utiliza para acceder dentro de una terminal dentro de un contenedor en ejecucion.
 
 ```
-$ docker exec -i -t [CONTENEDOR_ID] [comando]
+docker exec -i -t [CONTENEDOR_ID] [comando]
 ```
 
 - Al salir del contenedor no finaliza el contaniner.
 
-## Acciones sobre un contenedor.
+## Acciones sobre un contenedor
 
 - `docker stop` y `docker kill` detienen un contenedor en ejecución.}
 - `docker start` se utiliza para un contenedor en estado **STOPED** o **KILLED**.
@@ -545,8 +545,8 @@ $ docker exec -i -t [CONTENEDOR_ID] [comando]
 Pausa un contenedor
 
 ```
-$ docker pause [CONTAINER_ID]
-$ docker unpause [CONTAINER_ID]
+docker pause [CONTAINER_ID]
+docker unpause [CONTAINER_ID]
 ```
 
 ## Inspeccionando un contenedor
@@ -554,7 +554,7 @@ $ docker unpause [CONTAINER_ID]
 El comando `docker inspect` se utiliza para acceder a información util de un contenedor.
 
 ```
-$ docker inpect [CONTAINER_ID]
+docker inpect [CONTAINER_ID]
 ```
 
 eje.
@@ -587,7 +587,7 @@ Creación de imagenes.
 1ro Se tiene que crear un cotenedor de form interactiva
 
 ```
-$ docker run -it <NOMBRE_DE_LA_IMAGEN>
+docker run -it <NOMBRE_DE_LA_IMAGEN>
 ```
 
 Para ejemplo demostrativo se podría crear un archivo el cual se verificara más adelante.
@@ -595,21 +595,21 @@ Para ejemplo demostrativo se podría crear un archivo el cual se verificara más
 - Dejando el contenedor corriendo, se habre otra consola y en la consola nueva se crea la imagen con el comando `commit`
 
 ```
-$ docker commit [CONTAINER_ID] [NOMBRE_QUE_SE_DESEA]:[TAG(opcional)]
+docker commit [CONTAINER_ID] [NOMBRE_QUE_SE_DESEA]:[TAG(opcional)]
 ```
 
 - Con esto la imagen ya esta creada
 - Verificar que la imagen este creada con el comando
 
 ```
-$ docker ps
+docker ps
 ```
 
 - Ingresar dentro del contenedor y realizar las modificaciones necesarias
 - Utlizar:
 
 ```
-$ docker commit [CONTAINER_ID]
+docker commit [CONTAINER_ID]
 ```
 
 - Para observar los cambios realizados.
@@ -627,7 +627,7 @@ $ docker commit [CONTAINER_ID]
 Para poder saber cuales son las **diferiencias** o los **cambios** en una **imagen** creada
 
 ```
-$ docker diff [CONTAINER_ID]
+docker diff [CONTAINER_ID]
 ```
 
 ### Para poder iniciar y detener docker
@@ -916,7 +916,7 @@ NOTA: EL **PUERTO 2375** ES PARA CONEXIONES **NO ENCRIPTIDADAS** Y EL **PUERTO 2
 Con las modificaciones al archivo `/lib/systemd/system/docker.service` se tiene que ejecutar docker de la siguiente manera:
 
 ```
-$ docker -H tcp://0.0.0.0:2375 ps[SE EJECUTA EL COMANDO ps]
+docker -H tcp://0.0.0.0:2375 ps[SE EJECUTA EL COMANDO ps]
 ```
 
 ### Utilizar variales del file system
@@ -924,7 +924,7 @@ $ docker -H tcp://0.0.0.0:2375 ps[SE EJECUTA EL COMANDO ps]
 Para que no se tenga que escribir en todas las ocasiones el comando `-H tcp://0.0.0.0:2375` se setea una variable en FILE SYSTEM de linux de la siguiente manera:
 
 ```
-$ export DOCKER_HOST="-H tcp://0.0.0.0:2375"
+export DOCKER_HOST="-H tcp://0.0.0.0:2375"
 ```
 
 ## DOCKERFILES
@@ -936,18 +936,18 @@ $ export DOCKER_HOST="-H tcp://0.0.0.0:2375"
 
 #### Imagen oficial de Docker para Python recomendada
 
-### :rotating_light: :construction: :construction: :rotating_light:
+### :rotating_light: :construction: :construction: :rotating_light
 
 :link: [A deep dive into the official Docker image for Python](https://pythonspeed.com/articles/official-python-docker-image/) como lo recomienda el articulo y tambien en la imagen de python que esta basado :link: :octocat: :whale: [cookiecutter-django](https://github.com/pydanny/cookiecutter-django) es la imagen de Docker de :link: :octocat: [python 3.8 slim-buster](https://github.com/docker-library/python/blob/master/3.8/buster/slim/Dockerfile) La bariante de _Debian_ `slim`tiene menos paquetes instalados, así que no hay compiladores por ejemplo.
 
 ```bash
-$ docker pull python:3.8-slim-buster
+docker pull python:3.8-slim-buster
 ```
 
 Crear un contenedor basado en la imagen de `python:3.8-slim-buster` y ponerle como combre `python_38_slim_buster` de _forma interactiva_ y entrar a _bash_
 
 ```bash
-$ docker run -it --name python_38_slim_buster python:3.8-slim-buster /bin/bash
+docker run -it --name python_38_slim_buster python:3.8-slim-buster /bin/bash
 ```
 
 - Provee una forma más efectiva de generar imágenes en vez de utilizar `docker commit`
@@ -972,13 +972,13 @@ RUN apt-get install -y curl
 Para comprobar que si se instalaron los paquetes:
 
 ```
-$ docker run -it <ID_CONTEINER> bash
+docker run -it <ID_CONTEINER> bash
 ```
 
 El comando para poder ejecutar ese archivo estando ubicados dentro de la ruta del archivo creado anteriormente.
 
 ```
-$ docker build .
+docker build .
 ```
 
 **NOTA:** Se crea sin nombre y sin "_tag_"
@@ -986,7 +986,7 @@ $ docker build .
 Para poder crear una imagen con nombre con el con el contenedor anterior.
 
 ```
-$ docker build -t [NOMBRE_DE_LA_IMAGEN:NOMBRE_DE_TAG][RUTA_DE_DONDE_SE_ENCUENTRA_ARCHIVO_DOCKERFILE]
+docker build -t [NOMBRE_DE_LA_IMAGEN:NOMBRE_DE_TAG][RUTA_DE_DONDE_SE_ENCUENTRA_ARCHIVO_DOCKERFILE]
 ```
 
 ![docker build](img/docker008.png "docker build")
@@ -1063,7 +1063,7 @@ CMD python -c "print('hello world')"
   - `COPY` copy is another command we haven't yet added to our Dockerfile. This will allow you to copy local files to your Docker image.
 
 ```bash
-$ docker build -t hello-world -f Dockerfile .
+docker build -t hello-world -f Dockerfile .
 ```
 
 - `-t` portion means "_tag_" and you can add your own tag name I used _hello-world_ since this might be your first time using Docker. When in doubt, include a tag.
@@ -1094,13 +1094,13 @@ Crear una carpeta `dj_docker`
 Instalar pipenv
 
 ```bash
-$ $ python3 -m pip install --user pipenv
+$ python3 -m pip install --user pipenv
 ```
 
 Crear carpeta con el nombre del projecto
 
 ```bash
-$ mkdir dj_docker
+mkdir dj_docker
 ```
 
 Crear el ambiente virtual
@@ -1113,25 +1113,25 @@ $ pipenv --three
 Instalar django
 
 ```bash
-$ pipenv install django
+pipenv install django
 ```
 
 Instalar gunicorn
 
 ```bash
-$ pipenv install gunicorn
+pipenv install gunicorn
 ```
 
 Activar amviente virtual
 
 ```bash
-$ pipenv shell
+pipenv shell
 ```
 
 Crear un proyecto en django
 
 ```bash
-$ pipenv run django-admin startproject dj_docker .
+pipenv run django-admin startproject dj_docker .
 ```
 
 BD local y migraciones
@@ -1166,7 +1166,7 @@ DEBUG=1
 Probar la configuración con
 
 ```bash
-$ gunicorn dj_docker.wsgi:application --bind 0.0.0.0:8000
+gunicorn dj_docker.wsgi:application --bind 0.0.0.0:8000
 ```
 
 En local browser ir a la dirección `http://localhost:8000/`
@@ -1176,7 +1176,7 @@ Crear el archivo `Dockerfile` la imagen y el contenedor
 Dentro de la carpeta del proyecto `dj_docker` crear el archivo `Dockerfile`
 
 ```bash
-$ touch Dockerfile
+touch Dockerfile
 ```
 
 Estructura de archivos y carpetas del projecto
@@ -1201,7 +1201,7 @@ Estructura de archivos y carpetas del projecto
 El archivo `Dockerfile` ocupa la imagen
 
 ```bash
-$ docker pull $ docker pull python:3.8-slim-buster
+docker pull $ docker pull python:3.8-slim-buster
 ```
 
 ```bash
@@ -1291,13 +1291,13 @@ rm -rf /var/lib/apt/lists/*
 Construir la imagen Docker
 
 ```bash
-$ docker build -t simple-django-on-docker -f Dockerfile .
+docker build -t simple-django-on-docker -f Dockerfile .
 ```
 
 Ejecutar el contenedor
 
 ```bash
-$  docker run -it -p 80:8888 simple-django-on-docker
+docker run -it -p 80:8888 simple-django-on-docker
 ```
 
 En la dirección `http://localhost` para comprobar que se esta ejecutando
@@ -1312,7 +1312,7 @@ En la dirección `http://localhost` para comprobar que se esta ejecutando
 - Para deshabilitar la cache manuelmente se pude utilizar la bandera `--no-cache`
 
 ```bash
-$ docker build --no-cache -t imagen .
+docker build --no-cache -t imagen .
 ```
 
 Estas lineas crean una imagen desde la imagen de "ubuntu" PERO en una sola CAPA "**LAYER" ESTO SE HACE PARA HACER MEJOR PERFORMANCE**
@@ -1409,7 +1409,7 @@ CMD cat /tmp/platzi
 Lo que realiza este build de la imagen ubuntu es copiar una archivo que se encuentra en la misma ruta de la imagen,
 dentro de la imagen, y ya despues dentro de la imagen imprime el contenido del archivo
 
-## Dockerizando nuestra aplicación :rotating_light: :link:
+## Dockerizando nuestra aplicación :rotating_light: :link
 
 - Utilizar Dockerfiles resulta esencial para lograr que nuestra aplicación se ejecute en contenedores
 - Tomemos nuestra por ejemplo. Para ejecutarla necesitamos lo siguiente
@@ -1535,10 +1535,10 @@ docker tag [local repo:tag] [repo:tag]
 - Los comandos son:
 
 ```
-$ docker volume create <VOLUME_NAME>
-$ docker volume ls
-$ docker volume inspect <VOLUME_NAME>
-$ docker volume rm <VOLUME_NAME>
+docker volume create <VOLUME_NAME>
+docker volume ls
+docker volume inspect <VOLUME_NAME>
+docker volume rm <VOLUME_NAME>
 ```
 
 - Para montar un volúmen se utiliza la bandera `-v` en el comando `docker run` (_puede utilizarse más de una vez_)
@@ -1559,13 +1559,13 @@ $ docker volume rm <VOLUME_NAME>
 ejem:
 
 ```bash
-$ docker run --name web_server -d -p 8080:80 -v $(pwd)/public_html:/usr/share/nginx/html nginx
+docker run --name web_server -d -p 8080:80 -v $(pwd)/public_html:/usr/share/nginx/html nginx
 ```
 
 ejem:
 
 ```bash
-$ docker run -it -v prueva:/prueba ubuntu bash
+docker run -it -v prueva:/prueba ubuntu bash
 ```
 
 Para saber en donde se encuentra el directorio estático que se comparte: `$ docker volume inspect [VOLUMEN_NAME]`.
@@ -1615,7 +1615,7 @@ Los volumenes se pueden definir por **ruta** o por **nombre**.
 Para especificar la ruta del volumen para que no la determine docker; pero se crea de manera anonima.:
 
 ```
-$ docker run -it -v /ruta/absoluta/nombre_de_la_carpeta:/nombre_de_la_carpeta ubuntu bash
+docker run -it -v /ruta/absoluta/nombre_de_la_carpeta:/nombre_de_la_carpeta ubuntu bash
 ```
 
 ## Aspectos de Seguridad en Docker
@@ -1652,18 +1652,18 @@ $ docker run -it -v /ruta/absoluta/nombre_de_la_carpeta:/nombre_de_la_carpeta ub
 - _Iniciar el demonio_ de docker con la opción de **TLS** y _especificar_ la _ubicación_ de la _clave privada_ del **CA**, el certificado del servidor y la clave privada del servidor
 - _Configurar_ el _cliente de docker_ para que utilice la _clave privada del cliente_ y la clave privada del **CA**
 
-#### 1 Crear la clave privada y un certificado.
+#### 1 Crear la clave privada y un certificado
 
 Se crea una carpeta donde se guarde la llave de la _Autoridad Certificante_ (**CA**)
 
 ```
-$ mkdir docker-ca
+mkdir docker-ca
 ```
 
 (**1ra OPCION**) Se crea la llave **.pem** con el comando **"genrsa"** (`ESTA OPCIÓN ESTA DREPECADA`)
 
 ```
-$ openssl genrsa -aes256 -out ca-key.pem 2048
+openssl genrsa -aes256 -out ca-key.pem 2048
 ```
 
 - **"-genrsa"** -> Comando para decirle a **openssl** que se creara una llave privada **rsa**
@@ -1675,7 +1675,7 @@ $ openssl genrsa -aes256 -out ca-key.pem 2048
 (**2da OPCION**) Se crea la llave **.pem** con el comando **"genpkey"**
 
 ```
-$ openssl genpkey -algorithm RSA -out ca-key.pem -pkeyopt rsa_keygen_bits:4096
+openssl genpkey -algorithm RSA -out ca-key.pem -pkeyopt rsa_keygen_bits:4096
 ```
 
 - **"-algorithm RSA"** -> Se le indica que deseamos que ocupe el algoritmo **RSA**.
@@ -1686,7 +1686,7 @@ $ openssl genpkey -algorithm RSA -out ca-key.pem -pkeyopt rsa_keygen_bits:4096
 (**3da OPCION**) Se crea la llave **.pem** con el comando **"genpkey"** `ENCRIPTADA (RECOMENDADA)` - _Clave privada de la autoridad autorizante_
 
 ```
-$ openssl genpkey -aes-256-cbc -algorithm RSA -out ca-key.pem -pkeyopt rsa_keygen_bits:4096
+openssl genpkey -aes-256-cbc -algorithm RSA -out ca-key.pem -pkeyopt rsa_keygen_bits:4096
 ```
 
 - **"-aes-256-cbc"** -> Algoritmo de cifrado.
@@ -1698,7 +1698,7 @@ $ openssl genpkey -aes-256-cbc -algorithm RSA -out ca-key.pem -pkeyopt rsa_keyge
 **1.1** - Crear un certificado que ocupara el servidor y el cliente. Se crea el archivo **C**ertificación de **A**utoridad (**CA**) Es la solicitud de firma del certificado.
 
 ```
-$ openssl req -new -x509 -days 365 -key ca-key.pem -sha256 -out ca.pem
+openssl req -new -x509 -days 365 -key ca-key.pem -sha256 -out ca.pem
 ```
 
 - **"req -new"** -> Solicita generar un nuevo certificado. **request new**
@@ -1710,14 +1710,14 @@ $ openssl req -new -x509 -days 365 -key ca-key.pem -sha256 -out ca.pem
 
 **NOTA**: AL CREAR EL CERTIFICADO PREGUNTARA POR LA **"frase"** DE LA LLAVE QUE SE ASIGNO AL CERTIFICADO **CA**
 
-#### 2 Configurar la llave privada del servidor.
+#### 2 Configurar la llave privada del servidor
 
 **NOTA**: Se crea la llave privada del servidor, _SIN LA FRASE DE SEGURIDAD_
 
 Se crea la llave **.pem** con el comando **"genpkey"**
 
 ```
-$ openssl genpkey -algorithm RSA -out server-key.pem -pkeyopt rsa_keygen_bits:4096
+openssl genpkey -algorithm RSA -out server-key.pem -pkeyopt rsa_keygen_bits:4096
 ```
 
 - **"-algorithm RSA"** -> Se le indica que deseamos que ocupe el algoritmo RSA.
@@ -1728,7 +1728,7 @@ $ openssl genpkey -algorithm RSA -out server-key.pem -pkeyopt rsa_keygen_bits:40
 #### 3 - Crear un requerimiento de firma (Certificate Signing Request - CSR) de certificado para el servidor
 
 ```
-$ openssl req -subj "/CN=localhost" -sha256 -new -key server-key.pem -out server.csr
+openssl req -subj "/CN=localhost" -sha256 -new -key server-key.pem -out server.csr
 ```
 
 - **"openssl req"** -> Se solicita que **openssl** requiera la forma del certificado.
@@ -1748,7 +1748,7 @@ $ openssl req -subj "/CN=localhost" -sha256 -new -key server-key.pem -out server
   - Como las conexiones **TLS** pueden realizarse usando la dirección **IP** o un nombre **DNS**, _deben especificarse durante la creación del certificado._
 
 ```
-$ echo subjectAltName = IP:192.168.1.20,IP:127.0.0.1 > extfile.cnf
+echo subjectAltName = IP:192.168.1.20,IP:127.0.0.1 > extfile.cnf
 ```
 
 - **PASO DOS** -> Firmar la clave del servidor con la autoridad autorizante - **Firmar la clave pública con nuestra CA**
@@ -1760,7 +1760,7 @@ $ echo subjectAltName = IP:192.168.1.20,IP:127.0.0.1 > extfile.cnf
 `Since TLS connections can be made via IP address as well as DNS name, the IP addresses need to be specified when creating the certificate. For example, to allow connections using 10.10.10.20 and 127.0.0.1:`
 
 ```
-$ echo subjectAltName = DNS:$HOST,IP:10.10.10.20,IP:127.0.0.1 >> extfile.cnf
+echo subjectAltName = DNS:$HOST,IP:10.10.10.20,IP:127.0.0.1 >> extfile.cnf
 ```
 
 FRAGMENTO DE PÁGINA
@@ -1768,7 +1768,7 @@ FRAGMENTO DE PÁGINA
 ---
 
 ```
-$ openssl x509 -req -days 365 -sha256 -in server.csr -CA ca.pem -CAkey ca-key.pem -CAcreateserial -out server-cert.pem -extfile extfile.cnf
+openssl x509 -req -days 365 -sha256 -in server.csr -CA ca.pem -CAkey ca-key.pem -CAcreateserial -out server-cert.pem -extfile extfile.cnf
 ```
 
 - **"openssl x509 -req -days 365"** -> Es el tipo de certificado, que también sirve para poder gestionar el ciclo de vida del certificado.Es el tiempo de vida que se le asigna al certificado.
@@ -1788,7 +1788,7 @@ $ openssl x509 -req -days 365 -sha256 -in server.csr -CA ca.pem -CAkey ca-key.pe
 (**1ra OPCION**) Se crea la llave **.pem** con el comando **"genpkey"** _---SIN ENCRIPTAR---_ **Clave para el cliente**
 
 ```
-$ openssl genpkey -algorithm RSA -out client-key.pem -pkeyopt rsa_keygen_bits:4096
+openssl genpkey -algorithm RSA -out client-key.pem -pkeyopt rsa_keygen_bits:4096
 ```
 
 - **"-algorithm RSA"** -> Se le indica que deseamos que ocupe el algoritmo RSA.
@@ -1799,7 +1799,7 @@ $ openssl genpkey -algorithm RSA -out client-key.pem -pkeyopt rsa_keygen_bits:40
 (**2da OPCION**) Se crea la llave **.pem** con el comando **"genpkey"** _---ENCRIPTADA---_ **Clave privada para el cliente.**
 
 ```
-$ openssl genpkey -aes-256-cbc -algorithm RSA -out client-key.pem -pkeyopt rsa_keygen_bits:4096
+openssl genpkey -aes-256-cbc -algorithm RSA -out client-key.pem -pkeyopt rsa_keygen_bits:4096
 ```
 
 - **"-aes-256-cbc"** -> Algoritmo de cifrado.
@@ -1811,7 +1811,7 @@ $ openssl genpkey -aes-256-cbc -algorithm RSA -out client-key.pem -pkeyopt rsa_k
 ##### PASO DOS Crear un requerimiento de firma (Certificate Signing Request - CSR) de certificado para el cliente
 
 ```
-$ openssl req -subj "/CN=client" -sha256 -new -key server-key.pem -out client.csr
+openssl req -subj "/CN=client" -sha256 -new -key server-key.pem -out client.csr
 ```
 
 - **"openssl req"** -> Se solicita que openssl requiera la forma del certificado.
@@ -1829,7 +1829,7 @@ _Lo mismo que se aplica para el servidor en el paso 4, aplica pero del lado del 
 **PASO UNO**
 
 ```
-$ echo "extendedKeyUsage = clientAuth" > extfile.cnf
+echo "extendedKeyUsage = clientAuth" > extfile.cnf
 ```
 
 **""extendedKeyUsage = clientAuth""** -> Se le dice a la autoridad autorizante **(CA)**; esto _es para una cliente_ y no para un servidor
@@ -1837,7 +1837,7 @@ $ echo "extendedKeyUsage = clientAuth" > extfile.cnf
 **PASO DOS**
 
 ```
-$ openssl x509 -req -days 365 -sha256 -in client.csr -CA ca.pem -CAkey ca-key.pem -CAcreateserial -out client-cert.pem -extfile extfile.cnf
+openssl x509 -req -days 365 -sha256 -in client.csr -CA ca.pem -CAkey ca-key.pem -CAcreateserial -out client-cert.pem -extfile extfile.cnf
 ```
 
 - **"openssl x509 -req -days 365"** -> Es el tipo de certificado, que también sirve para poder gestionar el ciclo de vida del certificado.Es el tiempo de vida que se le asigna al certificado.
@@ -1936,12 +1936,12 @@ Cuando se esta ejecutando contenedor de docker se crean las interfaces de red:
 - Los sub commandos son:
 
 ```
-$ docker network create
-$ docker network connect
-$ docker network ls (LISTA TODAS LAS REDES QUE TIENE DOCKER CONFIGURADAS POR DEFECTO)
-$ docker network rm
-$ docker network disconnect
-$ docker network inspect
+docker network create
+docker network connect
+docker network ls (LISTA TODAS LAS REDES QUE TIENE DOCKER CONFIGURADAS POR DEFECTO)
+docker network rm
+docker network disconnect
+docker network inspect
 ```
 
 - Utilizar la bandera `--net` para especificar una red cuando se crea un contenedor
@@ -1964,7 +1964,7 @@ Esto se demuestra usando la bandera **"--net"** al momento de crear un contenedo
 eje:
 
 ```
-$ docker run -it --net=host debian bash
+docker run -it --net=host debian bash
 ```
 
 El resultado de visualizar las conexiones de red **DENTRO DEL CONTENEDOR** es el siguiente **(EN NEGRITAS)**:
@@ -2028,7 +2028,7 @@ $ docker run -it --name mi_red debian bash
 2. Para **conectarse** al **contenedor** _desde otro contenedor_ **PERO A LA MISMA RED**
 
 ```
-$ docker run -it --link [NOMBRE_DEL_CONTENEDOR] debian bash
+docker run -it --link [NOMBRE_DEL_CONTENEDOR] debian bash
 ```
 
 3. Para poder comprobarlo se tiene que hacer un ping **PERO AL NOMBRE [NOMBRE_DEL_CONTENEDOR]**, y tienen que contestar.
@@ -2040,13 +2040,13 @@ Para ocupar la bandera `--link` y también la bandera `--net` para _conectar con
 Se crea el contenedor **No1**
 
 ```
-$ docker run -it --name [NOMBRE_DE_CONTENEDOR] --net=mi_red debian bash
+docker run -it --name [NOMBRE_DE_CONTENEDOR] --net=mi_red debian bash
 ```
 
 Se crea contenedor **No2**
 
 ```
-$ docker run -it --link [NOMBRE_DE_CONTENEDOR] --net=mi_red debian bash
+docker run -it --link [NOMBRE_DE_CONTENEDOR] --net=mi_red debian bash
 ```
 
 De esta manera los dos contenedores estarán en la misma red. **PERO AHORA SE CONECTAN POR MEDIO DE "DNS INTERNO" QUE ESTA EN EL ARCHIVO**
@@ -2054,30 +2054,30 @@ De esta manera los dos contenedores estarán en la misma red. **PERO AHORA SE CO
 
 ![Visualizando nuestra res docker](img/docker013.jpg "Visualizando nuestra res docker")
 
-#### Para hacer un contenedor que vea dos redes distintas.
+#### Para hacer un contenedor que vea dos redes distintas
 
-1. Creación de contenedor _No1_ **(RED 1 DISTINTA)[SE CONECTA LA LA RED "bridge" DE FORMA PREDETERMINADA]**
+1. Creación de contenedor _No1_ **[RED 1 DISTINTA](SE CONECTA LA LA RED "bridge" DE FORMA PREDETERMINADA)**
 
 ```
-$ docker run -it --name container1 debian bash
+docker run -it --name container1 debian bash
 ```
 
 2. Creación de contenedor _No3_ **(RED 3 DISTINTA)**
 
 ```
-$ docker run -it --name container3 --net=mi_red debian bash
+docker run -it --name container3 --net=mi_red debian bash
 ```
 
 3. Creación de contenedor _No2_ **(VE RED DE CONTENEDOR No3)**
 
 ```
-$ docker run -it --name container2 --net=mi_red debian bash
+docker run -it --name container2 --net=mi_red debian bash
 ```
 
 4. PARA CONECTAR EL `container2` **A LA RED DE** `container1`
 
 ```
-$ docker network connect bridge container2
+docker network connect bridge container2
 ```
 
 #### Exponiendo contenedores a una red externa
@@ -2088,7 +2088,7 @@ $ docker network connect bridge container2
 
 ![Exponiendo contenedores a una red externa](img/docker014_1.jpg "Exponiendo contenedores a una red externa")
 
-### Mapear puertos.
+### Mapear puertos
 
 1. Con la bandera `-P` "letra pe" _MAYUSCULA_ es para exponer un puerto de docker de manera **aleatoria**.
 2. Con la bandera `-P` "letra pe" _MINUSCULA_ es para exponer un puerto de docker de manera **personalizada**.
@@ -2136,7 +2136,7 @@ docker-machine create --driver <driver> <hostname>
 ejem:
 
 ```
-$ docker-machine create -d virtualbox primera-maquina
+docker-machine create -d virtualbox primera-maquina
 ```
 
 Si la maquina tiene problemas para crear la maquina virtual por que se presenta el siguiente error:
@@ -2145,13 +2145,13 @@ Si la maquina tiene problemas para crear la maquina virtual por que se presenta 
 se puede ejecutar:
 
 ```
-$ docker-machine create --virtualbox-no-vtx-check -d virtualbox primera-maquina
+docker-machine create --virtualbox-no-vtx-check -d virtualbox primera-maquina
 ```
 
 Para acceder a la maquina virtual creada
 
 ```
-$ docker-machine ssh <NOMBRE_DE_VM>
+docker-machine ssh <NOMBRE_DE_VM>
 ```
 
 **Adentro de la maquina funciona como cualquier maquina de docker**
@@ -2159,38 +2159,38 @@ $ docker-machine ssh <NOMBRE_DE_VM>
 Para conectarse mi cliente de mi **host** al **docker-machine** se puede hacer saber cuales son las configuraciones para conectarse al `docker-machine"`
 
 ```
-$ docker-machine config <NOMBRE_DE_VM>
+docker-machine config <NOMBRE_DE_VM>
 ```
 
 Se le pasan los parámetros a docker de la siguiente manera y se ejecutan parámetros de docker(**CONECTAMOS DESDE EL DOCKER DE HOST A LA MV**)
 
 ```
-$ docker $(docker-machine config <NOMBRE_DE_VM>) ps
-$ docker $(docker-machine config <NOMBRE_DE_VM>) images
+docker $(docker-machine config <NOMBRE_DE_VM>) ps
+docker $(docker-machine config <NOMBRE_DE_VM>) images
 ```
 
 Para saber la manera de como debería de definir las variables de entorno para conectar con el demonio
 
 ```
-$ docker-machine env <NOMBRE_DE_VM>
+docker-machine env <NOMBRE_DE_VM>
 ```
 
 Para pasar las variables de entorno al host
 
 ```
-$ eval $(docker-machine env <NOMBRE_DE_VM>)
+eval $(docker-machine env <NOMBRE_DE_VM>)
 ```
 
 Pasa quitar las variables de entorno
 
 ```
-$ eval $(docker-machine env -u)
+eval $(docker-machine env -u)
 ```
 
 En la ruta
 
 ```
-$ .docker/machine/machines/
+.docker/machine/machines/
 ```
 
 - Es en donde se crean los parámetros de la VM
@@ -2198,13 +2198,13 @@ $ .docker/machine/machines/
 Para saber la IP de la VM
 
 ```
-$ docker-machine ip <NOMBRE_DE_VM>
+docker-machine ip <NOMBRE_DE_VM>
 ```
 
 Y con la IP es posible conectarse por medio de SSH
 
 ```
-$ ssh -i .docker/machine/machines/<NOMBRE_DE_VM>/id_rsa docker@192.168.99.103
+ssh -i .docker/machine/machines/<NOMBRE_DE_VM>/id_rsa docker@192.168.99.103
 ```
 
 ### Docker Machine - AWS
@@ -2249,9 +2249,9 @@ testhost
 - :link: [The Official YAML Web Site](https://yaml.org/)
 - :link: [Aprende X en Y minutos](https://learnxinyminutes.com/docs/es-es/yaml-es/)
 
-* En una arquitectura de microservicios existen demasiados servicios, por ende múltiples componentes para correr
-* Resulta tedioso ejecutar "docker run" por cada componente y luego manualmente orquestar todo
-* Docker Compose al rescate
+- En una arquitectura de microservicios existen demasiados servicios, por ende múltiples componentes para correr
+- Resulta tedioso ejecutar "docker run" por cada componente y luego manualmente orquestar todo
+- Docker Compose al rescate
 
 - :link: [Docker compose github - Define and run multi-container applications with Docker](https://github.com/docker/compose)
 - :link: [Instalar docker-compose](https://github.com/docker/compose/releases)
@@ -2379,31 +2379,31 @@ docker images -a
 Listar todos los contenedores
 
 ```bash
-$ docker container ls -a
+docker container ls -a
 ```
 
 Detener todos los contenedores
 
 ```bash
-$ docker container stop $(docker container ls -aq)
+docker container stop $(docker container ls -aq)
 ```
 
 Detener y eliminar todos contenedores
 
 ```bash
-$ docker container rm $(docker container ls -aq)
+docker container rm $(docker container ls -aq)
 ```
 
 Elininar todos los contenedore detenidos, imagenes colgadas y networks no utilizadas
 
 ```bash
-$ docker system prune
+docker system prune
 ```
 
 Eliminar todos los volumenes no utilizados
 
 ```bash
-$ docker system prune --volumes
+docker system prune --volumes
 ```
 
 #### Algunos comandos de `docker-compose`

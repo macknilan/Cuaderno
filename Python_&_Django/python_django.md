@@ -394,10 +394,8 @@ Para desactivar el entorno virtual
 ```
 
 ```bash
-python -m venv -h
-
 usage: venv [-h] [--system-site-packages] [--symlinks | --copies] [--clear]
-            [--upgrade] [--without-pip]
+            [--upgrade] [--without-pip] [--prompt PROMPT] [--upgrade-deps]
             ENV_DIR [ENV_DIR ...]
 
 Creates virtual Python environments in one or more target directories.
@@ -420,6 +418,10 @@ optional arguments:
                         of Python, assuming Python has been upgraded in-place.
   --without-pip         Skips installing or upgrading pip in the virtual
                         environment (pip is bootstrapped by default)
+  --prompt PROMPT       Provides an alternative prompt prefix for this
+                        environment.
+  --upgrade-deps        Upgrade core dependencies: pip setuptools to the
+                        latest version in PyPI
 
 Once an environment has been created, you may wish to activate it, e.g. by
 sourcing an activate script in its bin directory.
