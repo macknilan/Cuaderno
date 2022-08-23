@@ -2491,6 +2491,7 @@ docker rm -f <ID>
 ```docker
 # run,  Run a one-off command
 # --rm,   Remove stopped containers
+# --service-ports,   Run command with the service's ports enabled and mapped to the host.
 docker-compose -f local.yml run --rm --service-ports django
 # Hacer migraciones
 docker-compose -f local.yml run --rm django python manage.py makemigrations

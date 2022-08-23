@@ -885,7 +885,10 @@ tar -jxvf Phpfiles-org.tar.bz2 --wildcards '*.php'
 
 ```bash
 # Empaqueto y comprimo la carpeta braulio y la llamo archivo.tar.gz
-tar -czf archivo.tar.gz braulio
+tar -zcf archivo.tar.gz braulio
+#
+# Empaqueto y comprimo de forma verbosa y conserva los permisos de los archivos colocados en el archivo para restaurarlos más tarde la carpeta braulio y la llamo archivo.tar.gz
+tar -zcvpf archivo.tar.gz braulio
 
 # Comprimo la carpeta braulio y la llamo archivo.gz
 gzip -q archivo.gz
