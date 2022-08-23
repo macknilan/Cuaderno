@@ -575,7 +575,7 @@ Select frontend_pipeline:
 2 - Django Compressor
 3 - Gulp
 Choose from 1, 2, 3 [1]: 2
-use_celery [n]: y
+use_celery [n]: n
 use_mailhog [n]: y
 use_sentry [n]: n
 use_whitenoise [n]: n
@@ -1027,8 +1027,9 @@ docker rm -f <ID>
 5. Despues de sacar/matar el docker de django para levantar lo de nuevo es:
 
 ```docker
-# run,  Run a one-off command
+# run,   Run a one-off command
 # --rm,   Remove stopped containers
+# --service-ports,   Run command with the service's ports enabled and mapped to the host.
 docker-compose -f local.yml run --rm --service-ports django
 # Hacer migraciones
 docker-compose -f local.yml run --rm django python manage.py makemigrations
