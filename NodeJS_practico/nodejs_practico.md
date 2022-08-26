@@ -7,6 +7,19 @@
 ## 1. Introducción al proyecto del curso y su arquitectura
 ### 1. Arquitectura de un backend complejo
 
+Debian and Ubuntu based Linux distributions  
+:octocat: 🔗 [NodeSource Node.js Binary Distributions](https://github.com/nodesource/distributions/blob/master/README.md) ↗️
+
+```bash
+# Using Ubuntu
+curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+# Using Debian, as root
+curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
+apt-get install -y nodejs
+```
+
 ![NODEJS ARQUITECTURA APLICACIÓN](imgs/nodejs_arquitectura_aplicación.png)
 
 + PRIMER NIVEL DE CARPETAS
@@ -23,7 +36,7 @@
 
 ### 2. Estructuras de datos para nuestro proyecto
 
-![Propuesta de modelo MER](modelo er-propuesto.jpg)
+![Propuesta de modelo MER](imgs/modelo-er-propuesto.jpg)
 
 ## 2. Creando la estructura principal
 ### 3. Estructura inicial del proyecto: API y rutas

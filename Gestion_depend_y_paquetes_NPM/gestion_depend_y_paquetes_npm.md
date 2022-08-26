@@ -10,7 +10,20 @@ Es la forma más popular de manejar nuestras dependencias en JS
 
 ## 2. Instalación
 ### 2. Windows
-### 3. Mac
+### 3. Linux
+
+Debian and Ubuntu based Linux distributions  
+:octocat: 🔗 [NodeSource Node.js Binary Distributions](https://github.com/nodesource/distributions/blob/master/README.md) ↗️
+
+```bash
+# Using Ubuntu
+curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+# Using Debian, as root
+curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
+apt-get install -y nodejs
+```
 
 ## 3. Configuración
 ### 4. Iniciar un proyecto

@@ -18,6 +18,20 @@ backend-node-platzi)
     * [Babel](https://babeljs.io/)
     * [Webpack](https://github.com/webpack/webpack)
 
+
+Debian and Ubuntu based Linux distributions  
+:octocat: 🔗 [NodeSource Node.js Binary Distributions](https://github.com/nodesource/distributions/blob/master/README.md) ↗️
+
+```bash
+# Using Ubuntu
+curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+# Using Debian, as root
+curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
+apt-get install -y nodejs
+```
+
 ### 3. ¿Qué son y cómo se usan las peticiones HTTP?
 Una petición **HTTP** es un protocolo de comunicación que permite las transferencias de información en la web.
 
@@ -36,7 +50,7 @@ Connection: keep-alive
     * **Estado**: Cómo ha ido la operación
     * **Cuerpo**: Lo que el servidor devuelve
 
-**HTTP** es un protocolo que se encuentra dentro de la capa de aplicacion, dicha capa se encuentra en el **septimo nivel** del **MODELO OSI** y cuarto del modelo **TCP**.
+**HTTP** es un protocolo que se encuentra dentro de la capa de aplicación, dicha capa se encuentra en el **séptimo nivel** del **MODELO OSI** y cuarto del modelo **TCP**.
 
 La diferencia de **http** y **https** es que **https** pasa por un canal de encriptacion haciendo que los datos que se envían por Internet sean imposibles de entender y cuando llegan al servido estos se descifra.
 
@@ -249,7 +263,7 @@ Las respuestas en consola se deben de mostrar de la siguiente mandera cuando se 
 ```bash
 { text: 'hola' }
 ```
-Cuanndo se le pasa el request por `query` con postman mandar la peticion
+Cuando se le pasa el request por `query` con postman mandar la petición
 ```bash
 http://localhost:3000/message?orderBy=id&AGE=15
 ```

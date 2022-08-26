@@ -5,11 +5,10 @@
 - :link: [Last estable release python](https://endoflife.date/python)
 - :link: [discuss.python.org release](https://discuss.python.org/tag/release)
 
-- [Django on Docker](#Django-on-Docker)
-- [Django on Docker in progress](#Django-on-Docker-in-progress)
-- [Cookiecutter Django list of commands](#Cookiecutter-Django-list-of-commands)
-- [Docker + Django + Postgresql fast way](#docker--django--postgresql-fast-way)
-- [Docker + Django + Postgresql](#docker--django--postgresql)
+- [Cookiecutter Django list of commands](#cookiecutter-django-list-of-commands)
+  - [Docker + Django + Postgresql fast way](#docker--django--postgresql-fast-way)
+  - [Docker + Django + Postgresql](#docker--django--postgresql)
+  - [Habilitar debugger/Hacer modiciaciones/migraciones](#habilitar-debuggerhacer-modiciacionesmigraciones)
 
 ### Django on Docker
 
@@ -513,7 +512,7 @@ python3 -m venv [NOMBRE-DEL-ENTORNO-VIRTUAL]
 2. Dentro del ambiente local, y estar ubicados donde se desee que este la carpeta del proyecto
 
 ```bash
-python3 -m pip install "cookiecutter>=2.1.1"
+pip install "cookiecutter>=2.1.1"
 ```
 
 3. Instalar _cookiecutter-django_

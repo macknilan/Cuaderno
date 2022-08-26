@@ -4,11 +4,24 @@
 
 ## 1. Conocer los conceptos básicos de NodeJS
 ### 1. Instalación de Node.js
-:link: [Node offical page](https://nodejs.org/en/)
+:link: [Node official page](https://nodejs.org/en/)
 
 Simplemente pulsa en el botón verde de la versión que quieras (_mi recomendación es siempre usar las versiones LTS_) y completar el proceso de instalación. Dependiendo del sistema operativo, te hará más o menos preguntas, pero con las opciones por defecto se instalará bien.
 
 Como consejo, asegúrate de tener una buena conexión a internet cuando lo instales, para que tarde poco tiempo.
+
+Debian and Ubuntu based Linux distributions  
+:octocat: 🔗 [NodeSource Node.js Binary Distributions](https://github.com/nodesource/distributions/blob/master/README.md) ↗️
+
+```bash
+# Using Ubuntu
+curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+# Using Debian, as root
+curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
+apt-get install -y nodejs
+```
 
 Una vez lo hayas instalado, para comprobar que todo funciona correctamente, abre una terminal (en windows, CMD o PowerShell valen perfectamente) y escribe:
 ```bash
