@@ -68,12 +68,13 @@ Endpoint / Route / Path
 Aquí se simplifica la creación de los endpoints, sin embargo hay que saber que cada sigla del CRUD tiene una representación en el mundo de las APIs y se llaman verbos http que sencillamente indican en la petición que se realiza al servidor que se quiere hacer.
 
 Aquí la transformación de CRUD a los verbos HTTP
+
 - _Create_: `POST`
 - _Read_: `GET`
 - _Update_: `PUT`
 - _Delete_: `Delete`
 
-🔗 [HTTP request methods][https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods] ↗️
+🔗 [HTTP request methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) ↗️
 
 Seria buena practica mejor definir los endpoints de la siguiente manera
 
