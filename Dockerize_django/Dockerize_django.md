@@ -526,11 +526,11 @@ cookiecutter gh:pydanny/cookiecutter-django
 Configuración posible para cookiecutter
 
 ```bash
-project_name [My Awesome Project]: root-backend
+project_name [My Awesome Project]: root-backend-for-projects
 project_slug [root_backend]:
-description [Behold My Awesome Project!]: Behold My Awesome Project!
+description [Behold My Awesome Project!]: Backend for different projects
 author_name [Daniel Roy Greenfeld]: Rodolfo Ugalde
-domain_name [example.com]: mack.com
+domain_name [example.com]: mack.host
 email [rodolfo-ugalde@example.com]: my_mail@gmail.com
 version [0.1.0]:
 Select open_source_license:
@@ -542,7 +542,7 @@ Select open_source_license:
 Choose from 1, 2, 3, 4, 5 [1]: 1
 timezone [UTC]: America/Mexico_City
 windows [n]: n
-use_pycharm [n]: n
+use_pycharm [n]: y
 use_docker [n]: y
 Select postgresql_version:
 1 - 14
@@ -573,8 +573,8 @@ Select frontend_pipeline:
 1 - None
 2 - Django Compressor
 3 - Gulp
-Choose from 1, 2, 3 [1]: 2
-use_celery [n]: n
+Choose from 1, 2, 3 [1]: 1
+use_celery [n]: y
 use_mailhog [n]: y
 use_sentry [n]: n
 use_whitenoise [n]: n
