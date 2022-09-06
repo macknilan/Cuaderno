@@ -71,11 +71,8 @@ sudo apt-get install python-setuptools build-essential python-dev
 
 ```bash
 # Install the latest version of pip
-$ curl https://bootstrap.pypa.io/get-pip.py | python
-$ # Install the latest version of pip, supported by a legacy Python
-$ curl https://bootstrap.pypa.io/3.2/get-pip.py | python3.2
-$ # Install a specific version of pip
-$ curl https://bootstrap.pypa.io/get-pip.py | python - 'pip==8.0.0'
+curl -sSL https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+python get-pip.py
 ```
 
 ### Para instalar pip3 para Python 3.5+
@@ -122,7 +119,7 @@ $ python3 -m pip install --user --upgrade pip
 ```bash
 python3 -m pip install --user [name_app]
 # OR
-$ python3 -m pip install --user --no-cache-dir [name_app]
+python3 -m pip install --user --no-cache-dir [name_app]
 # python3 -> Ocupar python3
 # -m -> Ejecutar el modulo
 # pip -> Ejecutar el modulo pip
@@ -146,226 +143,9 @@ python3 -m pip list --outdate --format=columns
 - :link: [Installing Packages](https://packaging.python.org/tutorials/installing-packages/)
 - :link: [Managing Application Dependencies](https://packaging.python.org/tutorials/managing-dependencies/)
 
-## 4. Instalar virtualenv y virtualenvwrapper
+## 4 Crear un ambiente virtual con Python 3
 
-_Virtualenv_ se usa para aislar en ambientes virtuales diferentes los paquetes que vamos a instalar.  
-_Virtualenvwrapper_ se usa para agilizar _virtualenv_
-
-### Instalar virtualenv y virtualenvwrapper
-
-```bash
-# BETTER :ok:
-$ python3 -m pip install --user virtualenv virtualenvwrapper
-# NOT
-$ sudo pip install virtualenv virtualenvwrapper
-```
-
-**NOTA**: En caso de presentar un error con la instalación o funcionamiento.  
-En caso de que causar _error_ al momento de instalar `virtualenv` y `virtualenvwrapper` y no se puestre en la ruta `/usr/local/bin` el archivo `virtualenvwrapper.sh` intentar con el siguiente comando.
-
-```bash
-sudo -H pip3 install virtualenv
-$ sudo -H pip3 install virtualenvwrapper
-```
-
-### Editar el archivo .bashrc con ayuda de vim
-
-```bash
-vim .bashrc
-```
-
-### Agregar la siguiente linea al final del archivo para habilitar el `virtualenvwrapper`
-
-```bash
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/[NOMBRE_DE_USUARIO]
-source /usr/local/bin/virtualenvwrapper.sh # ESTO ES PARA LAS DISTRIBUCIONES DEBIAN Y UBUNTU
-```
-
-:warning: En caso de encontrarse con el siguiente error
-
-```bash
-/usr/bin/python: No module named virtualenvwrapper
-virtualenvwrapper.sh: There was a problem running the initialization hooks.
-
-If Python could not import the module virtualenvwrapper.hook_loader,
-check that virtualenvwrapper has been installed for
-VIRTUALENVWRAPPER_PYTHON=/usr/bin/python and that PATH is
-set properly.
-```
-
-**Hacer lo siguiente:**  
-Añadir la linea `export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3`  
-Para que quede del siguiente modo.
-
-```bash
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/[NOMBRE_DE_USUARIO]
-source /usr/local/bin/virtualenvwrapper.sh # ESTO ES PARA LAS DISTRIBUCIONES DEBIAN Y UBUNTU
-```
-
-Salvar y cerrar el editor. Salir y volver a acceder de la consola.
-
-```bash
-exit
-```
-
-### Lo anterior se hace para que no se tenga que hacer lo siguiente
-
-```bash
-source virtualenvwrapper.sh
-$ workon NOMBRE_ENTORNO
-```
-
-Por defecto virtualenvwrapper crea todos los virtualenvs en la carpeta `~/.virtualenvs`. Sin embargo ese comportamiento se puede cambiar. Para eso se necesita agregar un par de variables de entorno al archivo `~/.bashrc` ó `~/.bash_profile`:
-
-```bash
-export WORKON_HOME=/opt/virtualenvs
-export VIRTUALENVWRAPPER_HOOK_DIR=$WORKON_HOME/hooks
-```
-
-La variable `WORKON_HOME` determina en que directorio se deben crear los virtualenvs al ejecutar el comando mkvirtualenv.
-La segunda variable, `VIRTUALENVWRAPPER_HOOK_DIR`, establece el directorio en donde se instalaran algunos scripts muy útiles que pueden ser usados para automatizar ciertas tareas, como por ejemplo hacer un commit a un repositorio justo antes de desactivar el _virtualenv_.
-
-## 5. Crear un ambiente virtual
-
-### Crear un ambiente virtual
-
-```bash
-mkvirtualenv <NOMBRE_DEL_AMBIENTE_VIRTUAL>
-```
-
-Para revisar el ambiente virtual cual es su version de python
-
-```bash
-nombre_ambiente_virtual) ~/ nombre_carpeta python --version
-```
-
-Output
-
-```bash
-python 2.7.6
-```
-
-Para saber en que ruta esta instalado python 2 & 3
-
-```bash
-which python2
-```
-
-Output
-
-```bash
-/usr/bin/python2
-```
-
-```bash
-which python3
-```
-
-Output
-
-```bash
-/usr/bin/python3
-```
-
-**PARA CREAR UN AMBIENTE VIRTUAL CON UNA VERSION DE PYTHON ESPECIFICA**
-
-```bash
-#python 2
-$ mkvirtualenv --python=/usr/bin/python2 <NOMBRE_DEL_AMBIENTE_VIRTUAL>
-```
-
-```bash
-#python 3
-$ mkvirtualenv --python=/usr/bin/python3 <NOMBRE_DEL_AMBIENTE_VIRTUAL>
-```
-
-### Algunos comandos útiles para el ambiente virtual:
-
-### Desactivar ambiente virtual
-
-```bash
-deactivate
-```
-
-### Activar ambiente virtual o cambiar a otro
-
-```bash
-workon <NOMBRE_DEL_AMBIENTE_VIRTUAL>
-```
-
-### Mostrar lo paquetes instalados en un ambiente virtual
-
-```bash
-workon <NOMBRE_DEL_AMBIENTE_VIRTUAL>
-```
-
-```bash
-pip freeze
-```
-
-### Listar los ambientes vistuales
-
-```bash
-lsvirtualenv
-```
-
-_lsvirtualenv [-b] [-l] [-h]_
-
-- -b -> Brief mode, disables verbose output.
-- -l -> Long mode, enables verbose output. Default.
-- -h -> Print the help for lsvirtualenv.
-
-### Mostrar los detalles de un solo ambiente vistual
-
-```bash
-showvirtualenv <NOMBRE DEL AMBIENTE VIRTUAL>
-```
-
-### Remover el ambiente virtual posicionando nos en la carpeta del proyecto
-
-```bash
-rmvirtualenv <NOMBRE DE LA CARPETA VIRTUAL> (Se tiene que desactivar primero el ambiente virtual)
-```
-
-### Calling lssitepackages shows the content of the site-packages directory of the currently-active virtualenv.
-
-```bash
-lssitepackages
-```
-
-### Mostrar todos los comandos
-
-```bash
-virtualenvwrapper
-```
-
-```
-add2virtualenv: add directory to the import path
-allvirtualenv: run a command in all virtualenvs
-cdproject: change directory to the active project
-cdsitepackages: change to the site-packages directory
-cdvirtualenv: change to the $VIRTUAL_ENV directory
-cpvirtualenv: duplicate the named virtualenv to make a new one
-lssitepackages: list contents of the site-packages directory
-lsvirtualenv: list virtualenvs
-mkproject: create a new project directory and its associated virtualenv
-mktmpenv: create a temporary virtualenv
-mkvirtualenv: Create a new virtualenv in $WORKON_HOME
-rmvirtualenv: Remove a virtualenv
-setvirtualenvproject: associate a project directory with a virtualenv
-showvirtualenv: show details of a single virtualenv
-toggleglobalsitepackages: turn access to global site-packages on/off
-virtualenvwrapper: show this help message
-wipeenv: remove all packages installed in the current virtualenv
-workon: list or change working virtualenvs
-```
-
-## 6 Crear un ambiente virtual con Python 3
-
-### Crear un ambiente virtual con venv
+### Crear un ambiente virtual con `venv`
 
 - :link: [Using Different Versions of Python - pyenv](https://github.com/pyenv/pyenv)
 - :link: [venv — Creation of virtual environments](https://docs.python.org/3/library/venv.html)
@@ -427,7 +207,7 @@ Once an environment has been created, you may wish to activate it, e.g. by
 sourcing an activate script in its bin directory.
 ```
 
-## 7 Crear un ambiente virtual Pipenv
+## 5 Crear un ambiente virtual Pipenv
 
 - :link: [Pipenv: Python Dev Workflow for Humans](https://pipenv.kennethreitz.org/en/latest/)
 - :link: [Basic Usage of Pipenv](https://pipenv.kennethreitz.org/en/latest/basics/)
@@ -571,7 +351,7 @@ pipenv lock
 
 > En caso especifico para manejar los comandos con **django**, se pueden hacer de forma normal.
 
-## 8 Crear un ambiente virtual Poetry
+## 6 Crear un ambiente virtual Poetry
 
 - :link: [Poetry home](https://python-poetry.org/)
 - :link: [Poetry docs](https://python-poetry.org/docs/cli/)
@@ -625,7 +405,7 @@ python = "^3.8.10"
 4. Crear\Entrar al ambiente virtual `$ poetry shell`
 5. salir del amviente virtual creado `$ exit`
 
-## 9 ¿:-?
+## 7 ¿:-?
 
 ### Actualizar las versiones de los paquetes en "requirements.txt"
 
@@ -732,7 +512,7 @@ pip install django
 pip install --upgrade django==1.6.5
 ```
 
-2.2. Para instalar la **ULTIMA** actualizacón en el ambiente virtual con pip
+2.2. Para instalar la **ULTIMA** actualización en el ambiente virtual con pip
 
 ```bash
 pip install -U Django
@@ -744,8 +524,8 @@ pip install -U Django
 django-admin startproject [NombreDeTuProyecto]
 ```
 
-Despues de hacer hacer el proyecto se tiene que ceacrear las tablas del proyecto, con el siguiente comando.  
-Crea\prepara las migraciones para cualquier cambio que se halla echo para despues aplicarlas.
+Después de hacer hacer el proyecto se tiene que crear las tablas del proyecto, con el siguiente comando.  
+Crea\prepara las migraciones para cualquier cambio que se halla echo para después aplicarlas.
 
 ```bash
 python manage.py makemigrations
@@ -778,7 +558,7 @@ Operations to perform:
   Applying sessions.0001_initial... OK
 ```
 
-Esto se hace para poder crear la BD inicial del proyecto y despues se tiene que crear el usuario (super usuario) para que tenga acceso sin restriciones al proyecto y a las aplicaciones.
+Esto se hace para poder crear la BD inicial del proyecto y después se tiene que crear el usuario (super usuario) para que tenga acceso sin restricciones al proyecto y a las aplicaciones.
 
 ```bash
 python manage.py createsuperuser
@@ -899,33 +679,18 @@ $ ./manage.py changepassword [# POR DEFAULT TOMA EL DE SISTEMA, EN CASO DE NO EX
 
 ## Cache Django
 
-:link: https://docs.djangoproject.com/en/1.11/topics/cache/
+:link: https://docs.djangoproject.com/en/4.1/topics/cache/
 ¿Cuando usarlo?  
 Cuando necesitas una información que consume tiempo de calcular, procesar o conseguir (traer tweets, fotos de instagram) Cuando quieres que todo vaya mucho más rapido
 
 - Low level
-- Por vista - Per view -> :link: https://docs.djangoproject.com/en/1.11/topics/cache/#the-per-site-cache
+- Por vista - Per view -> :link: https://docs.djangoproject.com/en/4.1/topics/cache/#the-per-site-cache
 - En las plantillas
   En Django se tiene que llevar un orden para poner en los _Middleware_ el cache por vista. -> Middleware ordering
 
-```bash
-""" setting.py """
-MIDDLEWARE = [
-  'django.middleware.security.SecurityMiddleware',
-  'django.middleware.cache.UpdateCacheMiddleware', # ESTO PARA USAR CACHING PERO EN PRODUCCION EN LA 2da LINEA
-  'django.contrib.sessions.middleware.SessionMiddleware',
-  'django.middleware.common.CommonMiddleware',
-  'django.middleware.csrf.CsrfViewMiddleware',
-  'django.contrib.auth.middleware.AuthenticationMiddleware',
-  'django.contrib.messages.middleware.MessageMiddleware',
-  'django.middleware.cache.FetchFromCacheMiddleware', # ESTO PARA USAR CACHING PERO EN PRODUCCION EN LA PENULTINA LINEA
-  'django.middleware.clickjacking.XFrameOptionsMiddleware',
-]
-```
-
 ### Cache para las sesiones. Para un mejor rendimiento es posible utilizar en Django un backend de sesión basado en cache.
 
-:link: https://docs.djangoproject.com/en/1.11/topics/http/sessions/#using-cached-sessions
+:link: https://docs.djangoproject.com/en/4.1/topics/http/sessions/#using-cached-sessions
 Se pone en el `setings.py`  
 Para no pegarle tanto a la b.d. Este cache funciona de manera simultanea. Cada escritura que se ahce en la cache tambien se hace en la BD. La sesion solo usa la BD si los datos no estan en la memoria cache.
 
@@ -943,7 +708,8 @@ SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 
 ### Instalar REDIS
 
-- :link: :house: [Quickstart] (https://redis.io/topics/quickstart)
+- :link: :house: [Quickstart](https://redis.io/topics/quickstart)
+- :link: [Redis Django 4.0](https://docs.djangoproject.com/en/4.1/topics/cache/#redis)
 - :link: [Redis Security](https://redis.io/topics/security)
 - :link: [How To Install and Secure Redis on Debian 9 DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-redis-on-debian-9#step-1-%E2%80%94-installing-and-configuring-redis)
 
@@ -1230,6 +996,8 @@ CACHES = {
 
 ## Templates
 
+🔗 [The template layer](https://docs.djangoproject.com/en/4.1/topics/cache/#redis)
+
 Configuración para que busque en todas las carpetas del proyecto la carpeta **templates**
 
 ```bash
@@ -1291,8 +1059,8 @@ if settings.DEBUG:
 
 ## Administración de las contraseñas en Django
 
-- Se ocupa de preferencia **Argon2** :link: https://docs.djangoproject.com/en/2.0/topics/auth/passwords/#using-argon2-with-django
-- Par apoder ocupar **Argon2** se tienen que instalar en el ambiente de del proyecto. :link: https://pypi.python.org/pypi/argon2_cffi/
+- Se ocupa de preferencia **Argon2** :link: [Using Argon2 with Django](https://docs.djangoproject.com/en/2.0/topics/auth/passwords/#using-argon2-with-django)
+- Par apoder ocupar **Argon2** se tienen que instalar en el ambiente de del proyecto. :link: [pypi.org/project/argon2-cffi/](https://pypi.python.org/pypi/argon2_cffi/)
 
 ```bash
 pip install argon2-cffi
@@ -1301,11 +1069,11 @@ pip install argon2-cffi
 ```bash
 """ settings.py """
 PASSWORD_HASHERS = [
-  'django.contrib.auth.hashers.Argon2PasswordHasher',
-  'django.contrib.auth.hashers.PBKDF2PasswordHasher',
-  'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
-  'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
-  'django.contrib.auth.hashers.BCryptPasswordHasher',
+    'django.contrib.auth.hashers.Argon2PasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+    'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
+    'django.contrib.auth.hashers.ScryptPasswordHasher',
 ]
 ```
 
