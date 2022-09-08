@@ -1,8 +1,14 @@
 ![Django](img/python_&_django_01.jpg "Django")
+
 ![Django](img/python_&_django_02.jpg "Django")
+
 ![Django](img/python_&_django_03.jpg "Django")
+
 ![Django](img/python_&_django_04.jpg "Django")
+
 ![Django](img/python_&_django_05.jpg "Django")
+
+![Django Folder Structure](img/best_practice_to_structure_django_project_directories_and_files.png "Django Folder Structure")
 
 #### <a name="INDEX"> 📇 </a>
 
@@ -19,9 +25,9 @@ Para remover/desinstalar un pro programa:
 sudo apt-get purge --auto-remove [PACKAGE_NAME]
 ```
 
-# Django en maquina de desarrollo.
+# Django en maquina de desarrollo
 
-## 1. Actualizar los paquetes de Ubuntu o del sistema Debian:
+## 1. Actualizar los paquetes de Ubuntu o del sistema Debian
 
 ```bash
 sudo apt install python3-pip python3-venv
@@ -105,7 +111,7 @@ pip install -U pip
 $ pip install --upgrade pip
 ```
 
-:link: https://pip.pypa.io/en/latest/installing.html  
+:link: <https://pip.pypa.io/en/latest/installing.html>  
 **NOTA**: En caso de presentar un error con la instalación o funcionamiento de `pip` ó `pip3`
 
 ```bash
@@ -114,7 +120,7 @@ python2 -m pip install --user --upgrade pip
 $ python3 -m pip install --user --upgrade pip
 ```
 
-### :warning: PARA INSTALAR PAQUETES CON :snake: **PYTHON 3** DE FORMA ESPECIFICA/CORRECTA :warning:
+### :warning: PARA INSTALAR PAQUETES CON :snake: **PYTHON 3** DE FORMA ESPECIFICA/CORRECTA :warning
 
 ```bash
 python3 -m pip install --user [name_app]
@@ -137,7 +143,7 @@ python3 -m pip install --user --no-cache-dir [name_app]
 python3 -m pip list --outdate --format=columns
 ```
 
-### :rotating_light: :construction: :construction: INFORMACIÓN OFICIAL DE PyPA(Python Packaging Authority) :construction: :construction: :rotating_light:
+### :rotating_light: :construction: :construction: INFORMACIÓN OFICIAL DE PyPA(Python Packaging Authority) :construction: :construction: :rotating_light
 
 - :link: [Python Packaging Authority](https://www.pypa.io/en/latest/)
 - :link: [Installing Packages](https://packaging.python.org/tutorials/installing-packages/)
@@ -244,7 +250,7 @@ Especificar la version de Python
 Para usar python 3
 
 ```py
-$ pipenv --python 3
+pipenv --python 3
 ```
 
 Para usar python 3.9.6
@@ -416,7 +422,7 @@ Se mostrará una lista con las versiones actuales(instaladas) y versiones nuevas
 pip list --outdated
 ```
 
-Instalar el paquete mediante `pip` fuera del ambiente virtual(prefrerentemente) como lo recomienta el manual.
+Instalar el paquete mediante `pip` fuera del ambiente virtual(preferentemente) como lo recomienda el manual.
 
 - :link: [pip-upgrader](https://github.com/simion/pip-upgrader)
 
@@ -425,7 +431,7 @@ pip install pip-upgrader
 # Note: this packages installs the following requirements: 'docopt', 'packaging', 'requests', 'terminaltables', 'colorclass'
 ```
 
-> To avoid installing all these dependencies in your project, you can install `pip-upgrader` in your system, rather than your virtualenv. If you install it in your system, and need to upgrade it, run `pip install -U pip-upgrader`
+- To avoid installing all these dependencies in your project, you can install `pip-upgrader` in your system, rather than your virtualenv. If you install it in your system, and need to upgrade it, run `pip install -U pip-upgrader`
 
 ```bash
 requirements_file(s)          The requirement FILE, or WILDCARD PATH to multiple files. (positional arguments)
@@ -441,18 +447,18 @@ ejemplo:
 
 ```bash
 pip-upgrade             # auto discovers requirements file. Prompts for selecting upgrades
-$ pip-upgrade requirements.txt
-$ pip-upgrade requirements/dev.txt requirements/production.txt
+pip-upgrade requirements.txt
+pip-upgrade requirements/dev.txt requirements/production.txt
 
 # skip prompt and manually choose some/all packages for upgrade
-$ pip-upgrade requirements.txt -p django -p celery
-$ pip-upgrade requirements.txt -p all
+pip-upgrade requirements.txt -p django -p celery
+pip-upgrade requirements.txt -p all
 
 # include pre-release versions
-$ pip-upgrade --prerelease
+pip-upgrade --prerelease
 ```
 
-### :chart_with_upwards_trend: Generar MER(UML) diagrama de los modelos de django :chart_with_downwards_trend:
+## :chart_with_upwards_trend: Generar MER(UML) diagrama de los modelos de django
 
 :link: [django-extensions](https://django-extensions.readthedocs.io/en/latest/graph_models.html)
 
@@ -495,10 +501,32 @@ python manage.py graph_models -e -g -l dot -o core.png core # olny app core
 $ python manage.py graph_models -a -g -o eventex.png # all
 ```
 
-## Estructura de django para crear proyectos
+## Proyectos Django
+
+Django es? es uno de los frameworks más populares para crear web apps.
+
+- Cuáles son las características de Django
+  - Rápido
+  - Open Source
+
+- Algunos proyectos que usan Django son:
+  - Instagram
+  - Pinterest
+  - National Geographic
+  - Platzi
+
+- Posee tres características:
+  - Es veloz: Aunque no el framework mas veloz.
+  - Es seguro: Posee protección contra: `([documentación](https://docs.djangoproject.com/es/4.0/topics/security/#clickjacking-protection))`
+        - **Cross site scripting (XSS) protection**
+        - **Cross site request forgery (CSRF) protection**
+        - **SQL injection protection**
+        - **Clickjacking protection**
+  - Es escalable: Permite que tu app crezca de forma escalable
+
 
 1. Crear una carpeta con el nombre de la carpeta del proyecto con la primera letra en mayúsculas.
-2. `$ mkvirtualenv <Nombre del ambiente virtual>` (Esto es para crear en una sola carpeta las carpetas bin, include, lib, local) y la carpeta la crea en `/home/rodolfo/.virtualenvs/<NOMBRE DE LA CARPETA CREADA>`
+2. `python3 -m venv [NOMBRE-DEL-ENTORNO-VIRTUAL]`
 
 - Para instalar django (estando dentro del ambiente virtual),
 
@@ -509,7 +537,7 @@ pip install django
 2.1. Para instalar una actualización **ESPECIFICA** en el ambiente virtual con pip
 
 ```bash
-pip install --upgrade django==1.6.5
+pip install --upgrade django
 ```
 
 2.2. Para instalar la **ULTIMA** actualización en el ambiente virtual con pip
@@ -679,18 +707,18 @@ $ ./manage.py changepassword [# POR DEFAULT TOMA EL DE SISTEMA, EN CASO DE NO EX
 
 ## Cache Django
 
-:link: https://docs.djangoproject.com/en/4.1/topics/cache/
+:link: <https://docs.djangoproject.com/en/4.1/topics/cache/>
 ¿Cuando usarlo?  
 Cuando necesitas una información que consume tiempo de calcular, procesar o conseguir (traer tweets, fotos de instagram) Cuando quieres que todo vaya mucho más rapido
 
 - Low level
-- Por vista - Per view -> :link: https://docs.djangoproject.com/en/4.1/topics/cache/#the-per-site-cache
+- Por vista - Per view -> :link: <https://docs.djangoproject.com/en/4.1/topics/cache/#the-per-site-cache>
 - En las plantillas
   En Django se tiene que llevar un orden para poner en los _Middleware_ el cache por vista. -> Middleware ordering
 
-### Cache para las sesiones. Para un mejor rendimiento es posible utilizar en Django un backend de sesión basado en cache.
+### Cache para las sesiones. Para un mejor rendimiento es posible utilizar en Django un backend de sesión basado en cache
 
-:link: https://docs.djangoproject.com/en/4.1/topics/http/sessions/#using-cached-sessions
+:link: <https://docs.djangoproject.com/en/4.1/topics/http/sessions/#using-cached-sessions>
 Se pone en el `setings.py`  
 Para no pegarle tanto a la b.d. Este cache funciona de manera simultanea. Cada escritura que se ahce en la cache tambien se hace en la BD. La sesion solo usa la BD si los datos no estan en la memoria cache.
 
@@ -968,8 +996,8 @@ Created symlink from /etc/systemd/system/multi-user.target.wants/redis.service t
 
 Para que funcione django con redis se tienen que instalar el paquete django-redis
 
-- :link: https://github.com/niwinz/django-redis
-- :link: http://niwinz.github.io/django-redis/latest/
+- :link: <https://github.com/niwinz/django-redis>
+- :link: <http://niwinz.github.io/django-redis/latest/>
   Para que se hagan las configuraciones.  
   En el (dentro) ambiente del trabajo del proyecto:
 
@@ -1085,8 +1113,8 @@ PASSWORD_HASHERS = [
 
 Para instalar git la versión mas reciente del link
 
-- :link: https://github.com/git/git.git
-- :link: https://www.kernel.org/pub/software/scm/git/
+- :link: <https://github.com/git/git.git>
+- :link: <https://www.kernel.org/pub/software/scm/git/>
 
 ```bash
 sudo apt-get update
@@ -1255,7 +1283,7 @@ pip install gunicorn
 
 ### Para instalar nginx :link: [nginx.com](https://www.nginx.com/)
 
-> nginx (pronunciado en inglés “engine X”) es un servidor web/proxy inverso ligero de alto rendimiento y un proxy para protocolos de correo electrónico (IMAP/POP3). https://nginx.org/en/
+> nginx (pronunciado en inglés “engine X”) es un servidor web/proxy inverso ligero de alto rendimiento y un proxy para protocolos de correo electrónico (IMAP/POP3). <https://nginx.org/en/>
 
 > The web server receives an HTTP request from the client (the browser) and is usually responsible for load balancing, proxying requests to other processes, serving static files, caching and more. The web server usually interprets the request and sends it to the gateway.
 
@@ -1263,7 +1291,7 @@ pip install gunicorn
 sudo apt-get install nginx
 ```
 
-### Instalar PostgreSql :link: https://www.postgresql.org/
+### Instalar PostgreSql :link: <https://www.postgresql.org/>
 
 En debian 9  
 Añadir en el archivo `/etc/apt/sources.list`
@@ -1294,8 +1322,8 @@ deb http://apt.postgresql.org/pub/repos/apt/ stretch-pgdg main
 
 > Boto3 es un **SDK** "Software Development Kid" de "Amazon Web Services" **AWS** para **python**, que permite a los usuarios escribir software para hacer uso de los servicios de **AWS S3 y EC2**
 
-- :link: - http://boto3.readthedocs.io/en/latest/
-- :link: - https://github.com/boto/boto3
+- :link: - <http://boto3.readthedocs.io/en/latest/>
+- :link: - <https://github.com/boto/boto3>
 
 Estando dentro del ambiente virtual del proyecto
 
@@ -1305,8 +1333,8 @@ pip install boto3
 
 > django-storages, es una colección de backends de almacenamiento personalizados para Django y boto3.
 
-- :link:- https://django-storages.readthedocs.io/en/latest/
-- :link:- https://github.com/jschneier/django-storages
+- :link:- <https://django-storages.readthedocs.io/en/latest/>
+- :link:- <https://github.com/jschneier/django-storages>
 
 Estando dentro del ambiente virtual.
 
@@ -1324,7 +1352,7 @@ INSTALLED_APPS = (
 )
 ```
 
-## Usar diferentes archivos **settings**, para poder trabajar con diferentes ambientes.
+## Usar diferentes archivos **settings**, para poder trabajar con diferentes ambientes
 
 ejemplo:
 
@@ -1481,7 +1509,7 @@ sudo systemctl restart ssh
 
 Ahora el inicio de sesión **root** del servidor está protegido y puede entrar intentando con SSH directamente como **root**, este servidor desde un sistema que no tiene sus claves compartidas y será expulsado automáticamente sin que se le solicite una contraseña de root.  
 A las llaves creadas se les cambian los permisos para que solo sean de solo lectura para **root** de muestro sistema de archivos  
-:link: https://es.wikipedia.org/wiki/Chmod
+:link: <https://es.wikipedia.org/wiki/Chmod>
 
 ```bash
 # chmod 400 ruta/al/archivo/.ssh/xxxxxxxx_xxxxxxx_xxxxx_xxxxx.pub
@@ -1764,7 +1792,7 @@ sudo ufw allow from 15.15.15.0/24
 sudo ufw allow from 15.15.15.0/24 to any port 22
 ```
 
-#### Si desea crear una regla de firewall que solo se aplique a una interfaz de red específica,
+#### Si desea crear una regla de firewall que solo se aplique a una interfaz de red específica
 
 Puede hacer especificando `allow in on` seguido del nombre de la **interfaz de red**.  
 Es posible que desee buscar sus interfaces de red antes de continuar.
