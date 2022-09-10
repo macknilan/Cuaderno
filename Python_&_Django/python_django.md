@@ -35,6 +35,8 @@ sudo apt install python3-pip python3-venv
 
 ```bash
 pip install -r requirements.txt
+#
+pip install -r requirements.txt --ignore-installed --force-reinstall --upgrade --no-cache-dir
 ```
 
 ### Actualizar el índice local de paquetes
@@ -297,6 +299,12 @@ Instalar un paquete con Pipenv
 
 ```bash
 pipenv install <NOMBRE_DE_PAQUETE>
+```
+
+Antes de actualizar Django, para asegurar de resolver cualquier advertencia de obsolescencia reportada. De forma predeterminada, las advertencias de obsolescencia están desactivadas. Para saber cuales son:
+
+```bash
+python -Wa manage.py test
 ```
 
 Instalar un paquete con Pipenv con una version en especifico.
