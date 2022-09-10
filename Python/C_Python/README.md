@@ -6,7 +6,7 @@
 
 - :link: <a href="http://book.pythontips.com/en/latest/index.html" target="_blank">Python Tips - Intermediate Python — Python Tips 0.1 documentation</a>
 - :link: <a href="https://docs.python.org/3/library/functions.html" target="_blank">Built-in Functions</a>
-- :link: <a href="itertools — Functions creating iterators for efficient looping" target="_blank">https://docs.python.org/3.7/library/itertools.html</a>
+- :link: <a href="itertools — Functions creating iterators for efficient looping" target="_blank"><https://docs.python.org/3.7/library/itertools.html></a>
 
 ### Formatos & f-strings
 
@@ -208,7 +208,7 @@ f"{format(pi, '.2f')}"
 
 ### Clases
 
-22.
+22
 
 ##### Uso de listas
 
@@ -240,7 +240,7 @@ for country in countries:
     print(country)
 ```
 
-23.
+23
 
 #### Operadores con listas
 
@@ -259,7 +259,41 @@ Las listas tienen varios métodos que podemos utilizar.
 - `del` nos permite eliminar elementos vía indices, funciona con slices
 - `remove` nos permite es pasarle un valor para que Python compare internamente los valores y determina cuál de ellos hace match o son iguales para eliminarlos.
 
-24.
+Ejemplos de **append** y como unir dos listas
+
+```py
+list1 = [1,2,3]
+list2 = [4,5,6]
+list1.append(list2)
+list1
+Out: [1, 2, 3, [4, 5, 6]]
+```
+
+```py
+list1 = [1,2,3]
+list2 = [4,5,6]
+list1.extend(list2)
+list1
+Out: [1, 2, 3, 4, 5, 6]
+```
+
+```py
+list1 = [1,2,3]
+list2 = [4,5,6]
+list1 += list2
+list1
+Out: [1, 2, 3, 4, 5, 6]
+```
+
+```py
+list1 = [1,2,3]
+list2 = [4,5,6]
+list3 = [*list1, *list2]
+list3
+Out: [1, 2, 3, 4, 5, 6]
+```
+
+24
 
 #### Diccionarios
 
@@ -269,7 +303,7 @@ Un diccionario es similar a una lista sabiendo que podemos acceder a través de 
 
 Un diccionario es una asociación entre llaves(keys) y valores(values) y la referencia en Python es muy precisa. Si abres un diccionario verás muchas palabras y cada palabra tiene su definición.
 
-Para iniciar un diccionario se usa ` {}`` o con la función  `dict`
+Para iniciar un diccionario se usa `{}`` o con la función`dict`
 
 Estos también tienen varios métodos. Siempre puedes usar la función dir para saber todos los métodos que puedes usar con un objeto.
 
@@ -279,7 +313,7 @@ Si queremos ciclar a lo largo de un diccionario tenemos las opciones:
 - `values` nos imprime una lista de los valores
 - `items`. nos manda una lista de tuplas de los valores
 
-26.
+26
 
 #### Tuplas y conjuntos
 
@@ -295,14 +329,14 @@ return (students, teachers)
 
 Una de las características de las Estructuras de Datos es que cada una de ellas nos sirve para algo especifico. No existe en programación una navaja suiza que nos sirva para todos. los mejores programas son aquellos que utilizan la herramienta correcta para el trabajo correcto.
 
-Conjutos(_sets_) nacen de la teoría de conjuntos. Son una de las Estructuras más importantes y se parecen a las listas, podemos añadir varios elementos al conjuntos, _pero no pueden existir elementos duplicados_. *A diferencia de los *tuples* podemos agregar y eliminar, son mutables*.
+Conjutos(_sets_) nacen de la teoría de conjuntos. Son una de las Estructuras más importantes y se parecen a las listas, podemos añadir varios elementos al conjuntos, _pero no pueden existir elementos duplicados_. *A diferencia de los *tuples*podemos agregar y eliminar, son mutables*.
 
 Los sets se pueden inicializar con la función `set`. Una recomendación es inicializarlos con esta función para no causar confusión con los diccionarios.
 
 - `add` nos sirve añadir elementos.
 - `remove` nos permite eliminar elementos.
 
-27.
+27
 
 ### Módulo Collections
 
@@ -568,7 +602,7 @@ Student(fname='John', lname='Clarke', age='13')
 Student(fname='John', lname='Clarke', age='14')
 ```
 
-29.
+29
 
 ### List comprenhensions
 
@@ -581,7 +615,7 @@ Student(fname='John', lname='Clarke', age='14')
 ![List comprehension](imgs/list_comprenhensions_2.png "List Comprehension with Filtering Condition")
 
 List
-[*element* `for` *element* `in` element_list `if` *element_meets_conditions*]
+[_element_ `for` _element_ `in` element_list `if` _element_meets_conditions_]
 
 ```python
 [element for element in element_list if element_meets_conditions]
@@ -615,7 +649,7 @@ Set
 {'d', 'r'}
 ```
 
-38.
+38
 
 ### Click
 
@@ -629,15 +663,7 @@ _Click_ es un pequeño framework que nos permite crear aplicaciones de Línea de
 `@click_option`: Son parámetros opcionales
 Click también realiza las conversiones de tipo por nosotros. Esta basado muy fuerte en decoradores.
 
-```python
-
-```
-
-```python
-
-```
-
-45.
+45
 
 ### Manejo de errores y jerarquía de errores en Python
 
@@ -727,11 +753,11 @@ BaseException
            +-- ResourceWarning
 ```
 
-### 45
+45
 
 ### Context managers
 
-Los **context managers** son objetos de Python que proveen información contextual adicional al bloque de código. Esta información consiste en correr una función (o cualquier callable) cuando se inicia el contexto con el keyword with; al igual que correr otra función cuando el código dentro del bloque with concluye. Por ejemplo:
+Los __context managers__ son objetos de Python que proveen información contextual adicional al bloque de código. Esta información consiste en correr una función (o cualquier callable) cuando se inicia el contexto con el keyword with; al igual que correr otra función cuando el código dentro del bloque with concluye. Por ejemplo:
 
 ```python
 with open(‘some_file.txt’) as f:
