@@ -982,6 +982,42 @@ docker inspect bfe4f282013d | grep IPAddress
 
 - Ejecutar **pgAdmin4** y conectarse a esa _IP_ con las credenciales del archivo `.envs` > `.postgres`
 
+Identificar que el los volumenes de declarados se hayan creado correctamente
+
+```bash
+docker volume inspect <NOMBRE-DEL-VOLUMEN-DECLARADO>
+```
+
+Entrar dentro del _contenedor_ de postgres para revisar dentro de la ruta los volumenes creados.
+
+```bash
+docker exec -it <ID-DEL-CONTENEDOR-POSTGRES> bash
+```
+
+Para ejecutar el script de backup de postgres, dentro de la carpeta del proyecto.
+
+```bash
+docker-compose -f local.yml exec postgres backup
+```
+
+output
+```bash
+SUCCESS: 'root_base_backend' database backup 'backup_2022_10_07T22_21_18.sql.gz' has been created and placed in '/backups'.
+```
+Para visualizar los backups realizados, dentro de la carpeta del proyecto.
+
+```bash
+docker-compose -f local.yml exec postgres backups
+```
+
+output
+```bash
+These are the backups you have got:
+total 16K
+-rw-r--r-- 1 root root 5.4K Oct  7 22:25 backup_2022_10_07T22_25_08.sql.gz
+-rw-r--r-- 1 root root 5.4K Oct  7 22:21 backup_2022_10_07T22_21_18.sql.gz
+```
+
 ### Habilitar debugger/Hacer modiciaciones/migraciones
 
 Cuando sea necesario hacer modificaciones/presentan problemas con las migraciones y una opción es que se elimine el _volumen_ de la BD donde se almacena la data tiene la terminación `NOMBRE DEL PROYECTO_postgres_data`
