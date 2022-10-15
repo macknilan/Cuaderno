@@ -201,6 +201,12 @@ Se agrega la dirección del repositorio remoto
 git remote add origin [REPOSITORIO HTTPS o SSH]
 ```
 
+Eliminar la dirección de repositorio remoto
+
+```bash
+git remote set-url origin [NUEVO REPOSITORIO HTTPS o SSH]
+```
+
 Eliminar dirección del repositorio remoto
 
 ```bash
@@ -892,3 +898,33 @@ git branch -r # SE MUESTRAN TODAS LAS RAMAS REMOTAS
 ```bash
 git branch -a # SE MUESTRAN TODAS LAS RAMAS TANTO LOCALES COMO REMOTAS
 ```
+
+## Wikis
+
+Removing sensitive information from git history
+
+Op #1.
+
+```git
+git filter-branch -f --index-filter "git rm -rf --cached --ignore-unmatch PATH-TO-YOUR-FILE-WITH-SENSITIVE-DATA" HEAD
+```
+
+Op #3. preferencia.
+
+```git
+git filter-branch --force --index-filter "git rm --cached --ignore-unmatch PATH-TO-YOUR-FILE/FOLDER-WITH-SENSITIVE-DATA" --prune-empty --tag-name-filter cat -- --all
+```
+
+Después.
+
+```git
+git push --force --verbose --dry-run
+#
+git push --force
+```
+
+```git
+git push --force
+```
+
+
