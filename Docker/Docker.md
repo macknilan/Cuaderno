@@ -1,6 +1,36 @@
 # DOCKER
 
-![doker](img/docker_logo_400x400.jpg "doker")
+```bash
+                                             .?777777777?^                                          
+                                             ^B555555555B7                                          
+                                             ^BYYPJPY55YG7                                          
+                                             ^BYYPJPY55YG7                                          
+                         ................... ~G5Y5Y5Y555G7                                          
+                        .GPP5P5PP5PGGPPPP5P55PGPPPPPPPPPG7                                          
+                        .G5Y5Y5YY5YPPJ5YY5Y5Y5GYY5J5Y55YG7                :P57.                     
+                        .G5YPJP55PJPPJP55PYPY5GY5PYPY55YG7               ~G5Y5GY:                   
+                        .G5Y5J5YY5JPPJ5YY5J5Y5GYY5J5Y55YG7              .G5JYYY5G7                  
+              ^777777777?GPPPPPPPPPGGPPPPPPPPPGPPPPPPPPPG5777777777!    7GYYYYYYYB!                 
+              7B555555555GPY5Y5555YGGY5555Y5Y5G5Y5Y5Y555GP55555555GG    ?GYYYYYYJPG7??J??7~^.       
+              7GY55YPJPYYG5YPJPYYPJPPJPYYPJPY5GYYPJPY55YGPJPY55YPJPP    ~B5YYYYYY55P5555PPPPG5.     
+              7GY55YPJPYYG5YPJPYYPJPPJPYYPJPY5GYYPJPY55YGPJPY55YPJPP     ?GYYYYYY5555555555PG!      
+          ... ?G555Y5Y5Y5G5Y5Y55Y5YGGY5YY5Y5Y5G5Y5Y5Y555GPY5Y55Y5YPP...:~JGPYYYY555555555PGY:       
+         !GPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP55YYYYY5PPPPPPPPY!.         
+         ?G55YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY55PP~^^::.             
+         7G55YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY55PG:                   
+         ^B55YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY55GP.                    
+          PP55YYYYYYYYYYYYYYYYYYYYYYJJYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY555GY.                     
+          !G55YYYYYYYYYYYYYYYYYYYY7:^:.!YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY555PG!                       
+           YG55YYYYYYYYYYYYYYYYYYY:.J?..YYYYYYYYYYYYYYYYYYYYYYYYYYYYY555PGY.                        
+            5G55YYYYYYYYYYYYYYYYYYJ~^^^?YYYYYYYYYYYYYYYYYYYYYYYYYYY555PG5^                          
+             JG55YYYYYYYYYY55PPJYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY555PGY^                            
+              ~PGPPPPPPP55Y?!^. :JYYYYYYYYYYYYYYYYYYYYYYYYYYYY555PG57.                              
+               .7GY~::..          ^JYYYYYYYYYYYYYYYYYYYYYYY555PP5?:                                 
+                  ~YJ~.             :7JYYYYYYYYYYYYYYY555PPP5J~.                                    
+                    .~JJ?!^:..        .^!?YY555555PPPPP5J7^.                                        
+                        .^!7?J???77!!!!!!7J5P555Y?7~^..                                             
+                               ....::::::...                                                        
+```
 
 - :link: [Install Docker](https://docs.docker.com/engine/installation/)
 - :link: [Docker Hub](https://hub.docker.com/)
@@ -936,7 +966,7 @@ export DOCKER_HOST="-H tcp://0.0.0.0:2375"
 
 #### Imagen oficial de Docker para Python recomendada
 
-### :rotating_light: :construction: :construction: :rotating_light
+### :rotating_light: :construction: :construction: :rotating_light:
 
 :link: [A deep dive into the official Docker image for Python](https://pythonspeed.com/articles/official-python-docker-image/) como lo recomienda el articulo y tambien en la imagen de python que esta basado :link: :octocat: :whale: [cookiecutter-django](https://github.com/pydanny/cookiecutter-django) es la imagen de Docker de :link: :octocat: [python 3.8 slim-buster](https://github.com/docker-library/python/blob/master/3.8/buster/slim/Dockerfile) La bariante de _Debian_ `slim`tiene menos paquetes instalados, así que no hay compiladores por ejemplo.
 

@@ -901,7 +901,7 @@ git branch -a # SE MUESTRAN TODAS LAS RAMAS TANTO LOCALES COMO REMOTAS
 
 ## Wikis
 
-Removing sensitive information from git history
+### Removing sensitive information from git history
 
 Op #1.
 
@@ -927,4 +927,30 @@ git push --force
 git push --force
 ```
 
+Restablecer la una local para que sea igual a la rama remota.
 
+Fetch origin. También puede ser la rama que se busca restablecer.
+
+```git
+git fetch origin
+```
+
+Restablecer repositorio local.
+
+```git
+git reset --hard origin/main
+```
+
+Clean Up Any Untracked Changes(Optional)
+
+```git
+git clean -xdf
+```
+
+- The `-x` flag removes ignored files.
+- The `-d` flag removes untracked folders.
+- The `-f` flag removes untracked files.
+
+```git
+
+```
