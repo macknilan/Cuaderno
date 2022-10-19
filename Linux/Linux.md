@@ -32,7 +32,7 @@ $$$$$$$$$$  $$$   $$$$   $$$$   $$$$ $$$ $$$$$ $$$$$  QQQQQ$$$$$$$QQQQQ
 - [Compresión y descompresión de archivos](#4-Compresión-y-descompresión-de-archivos)
 - [Editando archivos](#5-Editando-archivos)
 - [Introducción a SSH Olvídate del FTP](#6-Introducción-a-SSH-Olvídate-del-FTP)
-  [[Volver al índice]](#INDEX)+ [Compresión de imagenes guetzli](#7-Compresión-de-imagenes-guetzli)
+- [Compresión de imagenes guetzli](#7-Compresión-de-imagenes-guetzli)
 - [Compresión de imagenes mozjpeg](#8-Compresión-de-imagenes-mozjpeg)
 - [How to Start Stop and Restart Services in Debian 10](#9-How-to-Start-Stop-and-Restart-Services-in-Debian-10)
 - [Convertir videos gif mp4 y optimizarlos con ffmpeg](#10-Convertir-videos-gif-mp4-y-optimizarlos-con-ffmpeg)
@@ -54,6 +54,7 @@ $$$$$$$$$$  $$$   $$$$   $$$$   $$$$ $$$ $$$$$ $$$$$  QQQQQ$$$$$$$QQQQQ
 - [Tips & tricks](#26-tips-&-tricks)
 - [Debugging shell programs](#27-debugging-shell-programs)
 - [Domain Information Groper](#28-domain-information-groper)
+- [Copy standard out to clipboard](#29-copy-standard-out-to-clipboard)
 
 ### 1. Ayuda
 
@@ -2080,6 +2081,28 @@ _Debug_ mode
 
 ```shell
 nslookup -debug yahoo.com
+```
+
+[[Volver al índice]](#INDEX)
+
+### 29. Copy standard out to clipboard
+
+```shell
+sudo apt-get install xclip
+```
+
+Copiar salida de comando a clipboard
+
+```shell
+uptime | xclip
+# OR #
+uptime | xclip -i
+```
+
+Copy output to clipboard for Crtl+V
+
+```shell
+command | xclip -selection clipboard
 ```
 
 [[Volver al índice]](#INDEX)
