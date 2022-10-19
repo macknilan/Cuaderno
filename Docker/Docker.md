@@ -1086,7 +1086,7 @@ CMD python -c "print('hello world')"
 - `RUN`
   - `RUN` is a command that allows you to do any bash shell command you'd do normally. In our case, we just do some basic system updates and basic installs.
 - `EXPOSE`
-  - `EXPOSE` allows your docker image to have a port or posts exposed to outside the image. This is important for web applications and software you want to receive requests.
+  - `EXPOSE` allows your docker image to have a port or ports exposed to outside the image. This is important for web applications and software you want to receive requests.
 - `CMD`
   - `CMD` this is the final command your docker image will run. It's typically reserved for something like running a web application.
 - `COPY`
@@ -2275,6 +2275,7 @@ testhost
 
 > “Compose es una herramienta para crear y administrar aplicaciones multi-contenedor"
 
+- :link: :octicat: [Docker compose github](https://github.com/docker/compose)
 - :link: [The Official YAML Web Site](https://yaml.org/)
 - :link: [Aprende X en Y minutos](https://learnxinyminutes.com/docs/es-es/yaml-es/)
 
@@ -2316,7 +2317,7 @@ testhost
     - Exponemos el puerto **8080** en el Dockerfile utilizado por tomcat
     - Necesitamos correr tomcat mediante un servicio via Compose
     - No es necesario especifica el parámetro `ports` siendo que se encuentra definido en el Dockerfile
-- `docker-compose build` solamente generará las imágenes de aquellos Dockerfiles q hayan sido modificados
+- `docker compose build` solamente generará las imágenes de aquellos Dockerfiles q hayan sido modificados
 - Pueden utilizarse variables de entorno en compose mediante la sintaxis `$(MI_VARIABLE)`
 
 ### Docker's cheat sheet
@@ -2435,32 +2436,32 @@ Eliminar todos los volumenes no utilizados
 docker system prune --volumes
 ```
 
-#### Algunos comandos de `docker-compose`
+#### Algunos comandos de `docker compose`
 
 ```docker
 # COMPOSE_FILE
 export COMPOSE_FILE=local.yml
 
-docker-compose build
-docker-compose up
-docker-compose ps
-docker-compose down
+docker compose build
+docker compose up
+docker compose ps
+docker compose down
 ```
 
-#### Docker-compose imagenes
+#### Docker compose imagenes
 
 ```docker
 # Para construir las imagenes
-docker-compose -f local.yml build
+docker compose -f local.yml build
 
 # Para correr el stack
-docker-compose -f local.yml up
+docker compose -f local.yml up
 
 # Para ver el estado de los procesos de Docker
-docker-compose -f local.yml ps
+docker compose -f local.yml ps
 
 # Para detener la ejecución
-docker-compose -f local.yml down
+docker compose -f local.yml down
 ```
 
 #### Comandos de administración
@@ -2469,20 +2470,20 @@ La bandera `--rm` lo que hace es que crea un contenedor solo para el fin indicad
 
 ```docker
 # Para correr comandos de Django usamos
-docker-compose run --rm django COMMAND
+docker compose run --rm django COMMAND
 #
 # Por ejemplo para crear un super usuario
-docker-compose run --rm django python manage.py createsuperuser
+docker compose run --rm django python manage.py createsuperuser
 ```
 
 ### Habilitar debugger/Hacer modiciaciones/migraciones
 
 Cuando sea necesario hacer modificaciones/presentan problemas con las migraciones y una opción es que se elimine el _volumen_ de la BD donde se almacena la data tiene la terminación `NOMBRE DEL PROYECTO_postgres_data`
 
-1. Primero se tiene que detener la ejecucion de docker-compose
+1. Primero se tiene que detener la ejecucion de docker compose
 
 ```docker
-docker-compose -f local.yml down
+docker compose -f local.yml down
 ```
 
 ```docker
@@ -2496,7 +2497,7 @@ docker volume rm NOMBRE DEL PROYECTO_postgres_data
 
 ```docker
 # -f, --file FILE             Specify an alternate compose file
-docker-compose -f local.yml up
+docker compose -f local.yml up
 ```
 
 3. Saber con que nombre esta el contenedor
@@ -2504,7 +2505,7 @@ docker-compose -f local.yml up
 ```docker
 # -f, --file FILE             Specify an alternate compose file
 # ps List containers
-docker-compose -f local.yml ps
+docker compose -f local.yml ps
 ```
 
 4. Matar el docker django
@@ -2522,22 +2523,22 @@ docker rm -f <ID>
 # run,  Run a one-off command
 # --rm,   Remove stopped containers
 # --service-ports,   Run command with the service's ports enabled and mapped to the host.
-docker-compose -f local.yml run --rm --service-ports django
+docker compose -f local.yml run --rm --service-ports django
 # Hacer migraciones
-docker-compose -f local.yml run --rm django python manage.py makemigrations
+docker compose -f local.yml run --rm django python manage.py makemigrations
 # Migrar a la BD
-docker-compose -f local.yml run --rm django python manage.py migrate
+docker compose -f local.yml run --rm django python manage.py migrate
 # EJEMPLO PARA CREAR SUPER-USUARIO
-docker-compose -f local.yml run --rm django python manage.py createsuperuser
+docker compose -f local.yml run --rm django python manage.py createsuperuser
 
 # Entrar al shell de django +
-docker-compose run --rm django python manage.py shell_plus
+docker compose run --rm django python manage.py shell_plus
 ```
 
 Para crear una aplicación dentro de del proyecto, la carpeta se tiene que crear.
 
 ```docker
-docker-compose -f local.yml run --rm django python manage.py startapp <NOMBRE_APP> ./root/<NOMBRE_APP>
+docker compose -f local.yml run --rm django python manage.py startapp <NOMBRE_APP> ./root/<NOMBRE_APP>
 #
-docker-compose -f local.yml run --rm django django-admin startapp <NOMBRE_APP> ./root/<NOMBRE_APP>
+docker compose -f local.yml run --rm django django-admin startapp <NOMBRE_APP> ./root/<NOMBRE_APP>
 ```
