@@ -472,16 +472,16 @@ Como la imagen esta previamente desarrollada con un proyecto
 # COMPOSE_FILE
 export COMPOSE_FILE=local.yml
 
-docker-compose build
-docker-compose up
-docker-compose ps
-docker-compose down
+docker compose build
+docker compose up
+docker compose ps
+docker compose down
 ```
 
 ```bash
-docker-compose -f local.yml up --build
+docker compose -f local.yml up --build
 #
-docker-compose -f local.yml ps
+docker compose -f local.yml ps
 ```
 
 ## Cookiecutter Django list of commands
@@ -598,28 +598,28 @@ export COMPOSE_FILE=local.yml
 4. Build the Stack
 
 ```bash
-docker-compose -f local.yml build
+docker compose -f local.yml build
 ```
 
 5. Run the Stack
 
 ```bash
-docker-compose -f local.yml up
+docker compose -f local.yml up
 #
-docker-compose -f local.yml down
+docker compose -f local.yml down
 ```
 
 6. Comandos de administración  
 Como con cualquier comando de shell que deseamos ejecutar en nuestro contenedor, esto se hace usando el
 
 ```bash
-docker-compose -f local.yml run --rm
+docker compose -f local.yml run --rm
 ```
 
 ```bash
-docker-compose -f local.yml run --rm django python manage.py makemigrations
-docker-compose -f local.yml run --rm django python manage.py migrate
-docker-compose -f local.yml run --rm django python manage.py createsuperuser
+docker compose -f local.yml run --rm django python manage.py makemigrations
+docker compose -f local.yml run --rm django python manage.py migrate
+docker compose -f local.yml run --rm django python manage.py createsuperuser
 ```
 
 
@@ -647,7 +647,7 @@ COPY . /code/
 #
 ```
 
-4. Crear el archivo `docker-compose.yml`
+4. Crear el archivo `docker compose.yml`
 
 ```yml
 version: "3.9"
@@ -675,7 +675,7 @@ services:
 5. ejecutar el siguiente comando para crear el proyecto en la carpeta que se creo
 
 ```bash
-docker-compose run web django-admin startproject dj_docker .
+docker compose run web django-admin startproject dj_docker .
 ```
 
 🚨 Se instala como root
@@ -694,7 +694,7 @@ DATABASES = {
         'NAME': 'postgres',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
-        'HOST': 'db',  # SET IN docker-compose.yml
+        'HOST': 'db',  # SET IN docker compose.yml
         'PORT': '5432',
     },
     'OPTIONS': {
@@ -707,13 +707,13 @@ DATABASES = {
 
 ```bash
 # REALISAR LAS MIGRACIONES
- docker-compose run web python manage.py makemigrations
+ docker compose run web python manage.py makemigrations
 #
- docker-compose run web python manage.py migrate
-# PARA LEVANTAR/INICIAR DOCKER-COMPOSE
-docker-compose up
-# PARA DETENER DOCKER-COMPOSE
-docker-compose down
+ docker compose run web python manage.py migrate
+# PARA LEVANTAR/INICIAR docker compose
+docker compose up
+# PARA DETENER docker compose
+docker compose down
 ```
 
 ### Docker + Django + Postgresql
@@ -861,10 +861,10 @@ rm -rf /var/lib/apt/lists/*
 
 ```bash
 # CREAR EL PROYECTO EN LA CARPETA
-docker-compose -f local.yml run django django-admin startproject root .
+docker compose -f local.yml run django django-admin startproject root .
 #
 # EN LUGAR DE HACER Build the Stack CON
-# docker-compose -f local.yml build
+# docker compose -f local.yml build
 ```
 
 6. Modificar en el `settings.py` para setear las las variables de entorno de _postgres_
@@ -902,29 +902,29 @@ DATABASES = {
 La bandera `--rm` lo que hace es que crea un contenedor solo para el fin indicado y cuando acabe de ejecutarse el comando **mata el contenedor**
 
 ```bash
-docker-compose -f local.yml run --rm django python manage.py makemigrations
+docker compose -f local.yml run --rm django python manage.py makemigrations
 #
-docker-compose -f local.yml run --rm django python manage.py migrate
+docker compose -f local.yml run --rm django python manage.py migrate
 ```
 
 8. Se levantan los servicio para comprobar errores
 
 ```bash
-docker-compose -f local.yml up
+docker compose -f local.yml up
 ```
 
 9. Se crea el super-usuario
 
 ```bash
-docker-compose -f local.yml run --rm django python manage.py createsuperuser
+docker compose -f local.yml run --rm django python manage.py createsuperuser
 ```
 
 10. Dar de baja los servicios y comprobar el estado de los servicios levandados
 
 ```bash
-docker-compose -f local.yml down
+docker compose -f local.yml down
 # WATCH PROCESS UP
-docker-compose -f local.yml ps
+docker compose -f local.yml ps
 ```
 
 11. Comandos de imagenes y contenedores
@@ -997,7 +997,7 @@ docker exec -it <ID-DEL-CONTENEDOR-POSTGRES> bash
 Para ejecutar el script de backup de postgres, dentro de la carpeta del proyecto.
 
 ```bash
-docker-compose -f local.yml exec postgres backup
+docker compose -f local.yml exec postgres backup
 ```
 
 output
@@ -1007,7 +1007,7 @@ SUCCESS: 'root_base_backend' database backup 'backup_2022_10_07T22_21_18.sql.gz'
 Para visualizar los backups realizados, dentro de la carpeta del proyecto.
 
 ```bash
-docker-compose -f local.yml exec postgres backups
+docker compose -f local.yml exec postgres backups
 ```
 
 output
@@ -1022,10 +1022,10 @@ total 16K
 
 Cuando sea necesario hacer modificaciones/presentan problemas con las migraciones y una opción es que se elimine el _volumen_ de la BD donde se almacena la data tiene la terminación `NOMBRE DEL PROYECTO_postgres_data`
 
-1. Primero se tiene que detener la ejecucion de docker-compose
+1. Primero se tiene que detener la ejecucion de docker compose
 
 ```docker
-docker-compose -f local.yml down
+docker compose -f local.yml down
 ```
 
 ```docker
@@ -1039,7 +1039,7 @@ docker volume rm NOMBRE DEL PROYECTO_postgres_data
 
 ```docker
 # -f, --file FILE             Specify an alternate compose file
-docker-compose -f local.yml up
+docker compose -f local.yml up
 ```
 
 3. Saber con que nombre esta el contenedor
@@ -1047,7 +1047,7 @@ docker-compose -f local.yml up
 ```docker
 # -f, --file FILE             Specify an alternate compose file
 # ps List containers
-docker-compose -f local.yml ps
+docker compose -f local.yml ps
 ```
 
 4. Matar el docker django
@@ -1065,24 +1065,24 @@ docker rm -f <ID>
 # run,   Run a one-off command
 # --rm,   Remove stopped containers
 # --service-ports,   Run command with the service's ports enabled and mapped to the host.
-docker-compose -f local.yml run --rm --service-ports django
+docker compose -f local.yml run --rm --service-ports django
 # Hacer migraciones
-docker-compose -f local.yml run --rm django python manage.py makemigrations
+docker compose -f local.yml run --rm django python manage.py makemigrations
 # Migrar a la BD
-docker-compose -f local.yml run --rm django python manage.py migrate
+docker compose -f local.yml run --rm django python manage.py migrate
 # EJEMPLO PARA CREAR SUPER-USUARIO
-docker-compose -f local.yml run --rm django python manage.py createsuperuser
+docker compose -f local.yml run --rm django python manage.py createsuperuser
 
 # Entrar al shell de django +
-docker-compose run --rm django python manage.py shell_plus
+docker compose run --rm django python manage.py shell_plus
 ```
 
 Para crear una aplicación dentro de del proyecto, la carpeta se tiene que crear.
 
 ```docker
-docker-compose -f local.yml run --rm django python manage.py startapp <NOMBRE_APP> ./root/<NOMBRE_APP>
+docker compose -f local.yml run --rm django python manage.py startapp <NOMBRE_APP> ./root/<NOMBRE_APP>
 #
-docker-compose -f local.yml run --rm django django-admin startapp <NOMBRE_APP> ./root/<NOMBRE_APP>
+docker compose -f local.yml run --rm django django-admin startapp <NOMBRE_APP> ./root/<NOMBRE_APP>
 ```
 
 [[Volver al inicio]](#INDEX)
