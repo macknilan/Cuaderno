@@ -39,6 +39,18 @@ pip install -r requirements.txt
 pip install -r requirements.txt --ignore-installed --force-reinstall --upgrade --no-cache-dir
 ```
 
+Desinstalar todos los paquetes del ambiente virtual #1.
+
+```bash
+pip uninstall -y -r <(pip freeze) # <() is known as -process substitution- in linux
+```
+
+Desinstalar todos los paquetes del ambiente virtual #2.
+
+```bash
+pip uninstall -y -r requirements.txt
+```
+
 ### Actualizar el índice local de paquetes
 
 ```bash

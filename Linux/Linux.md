@@ -2099,6 +2099,12 @@ uptime | xclip
 uptime | xclip -i
 ```
 
+Pegar en pantalla
+
+```shell
+xclip -o
+```
+
 Copy output to clipboard for Crtl+V
 
 ```shell
