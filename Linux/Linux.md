@@ -55,6 +55,7 @@ $$$$$$$$$$  $$$   $$$$   $$$$   $$$$ $$$ $$$$$ $$$$$  QQQQQ$$$$$$$QQQQQ
 - [Debugging shell programs](#27-debugging-shell-programs)
 - [Domain Information Groper](#28-domain-information-groper)
 - [Copy standard out to clipboard](#29-copy-standard-out-to-clipboard)
+- [netstat Command in Linux](#30-netstat-command-in-linux)
 
 ### 1. Ayuda
 
@@ -1385,6 +1386,12 @@ Apt
 apt search <PACKAGE>
 ```
 
+Afinar la busqueda
+
+```bash
+apt search "PACKAGE_NAME$"
+```
+
 [[Volver al índice]](#INDEX)
 
 ### 13. APT Cheat Sheet
@@ -2109,6 +2116,109 @@ Copy output to clipboard for Crtl+V
 
 ```shell
 command | xclip -selection clipboard
+```
+
+[[Volver al índice]](#INDEX)
+
+### 30. netstat Command in Linux
+
+Install netstat
+
+```shell
+apt install net-tools
+```
+
+Viewing the Network Routing Table  
+`-r` Mostrar la tabla de enrutamiento  
+`-n` Fuerza a _netstat_ para mostrar la direcciones separadas por puntos. La opción es útil para evitar búsquedas de direcciones en una red.
+
+```shell
+netstat -nr
+```
+
+Mostrar stadisticas de la interfaz de red  
+`-i` Muestra las estadisticas de la interfas de red que estan configuradas.  
+`-a` Mustra todas las interfases de red
+
+```shell
+netstat -ai
+```
+
+Mostrar todos las conecciones TCP sin resolucion DNS(mostrandos la IP en su lugar)
+
+```shell
+netstat -ant
+```
+
+🚨 Mostrar lista de los servicios, su estado y su correspondiente puerto.  
+`-t` Mostrar los puertos TCP  
+`-u` Mostrar los puertos UDP  
+`-l` Los archivos que esten en escucha  
+`-p` Mustre los puertos  
+`-n` Muestre los puertos de forma numerica  
+
+```shell
+netstat -tulpn
+```
+
+Mostrar todos los puertos TCP y UDP en _LISTENING_
+
+```shell
+netstat -a | more
+```
+
+Mostrar todos los puertos TPC
+
+```shell
+netstat -at
+```
+
+Mostrar todos los puertos UDP
+
+```shell
+netstat -au
+```
+
+Mostrar todos puertos en estado _LISTENING_
+
+```shell
+netstat -l
+```
+
+Mostrar todos puertos activos TCP en _LISTENING_
+
+```shell
+netstat -lt
+```
+
+Mostrar todos puertos activos UDP en _LISTENING_
+
+```shell
+netstat -lu
+```
+
+Mostrar todos puertos activos UNIX en _LISTENING_
+
+```shell
+netstat -lx
+```
+
+Mostrar modo promiscuo.
+
+```shell
+netstat -ac 5 | grep tcp
+```
+
+Mostrar la tabla/confoguración de las infaces de red
+
+```shell
+netstat -ie
+```
+
+Mostrar cuantos programas estan a la escucha y en que puerto
+
+```shell
+netstat -ap | grep http
 ```
 
 [[Volver al índice]](#INDEX)
