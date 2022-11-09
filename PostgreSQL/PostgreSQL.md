@@ -590,6 +590,10 @@ postgres=# DROP DATABASE [NAME_DB]; # Delete database
 | uuid                                     |                     | universally unique identifier                       |
 | xml                                      |                     | XML data                                            |
 
+Relaciones en __MES__
+
+![Tipos de relaciones en MES](img/relaciones.png "relaciones en mes")
+
 ### 10. Diseño de la solución del Proyecto
 
 ### 11. Jerarquía de Bases de Datos
