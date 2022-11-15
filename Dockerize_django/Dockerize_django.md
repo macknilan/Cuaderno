@@ -962,7 +962,7 @@ prune
 -q
 ```
 
-12. :moon_cake: Conectarse al servicio de \_postgres\* cuando se esta ejecutando con **pgAdmin4**
+12. :moon_cake: Conectarse al servicio de `\_postgres\*` cuando se esta ejecutando con **pgAdmin4**
 
 - Identificar cual es el **contenedor** _de posrgres_
 
@@ -979,6 +979,13 @@ bfe4f282013d   postgres                  "docker-entrypoint.s…"   About an hou
 ```docker
 docker inspect bfe4f282013d | grep IPAddress
 ```
+
+Tambien ↕️
+
+```docker
+docker inspect --format='{{json .NetworkSettings.Networks}}' bfe4f282013d
+```
+
 
 - Ejecutar **pgAdmin4** y conectarse a esa _IP_ con las credenciales del archivo `.envs` > `.postgres`
 

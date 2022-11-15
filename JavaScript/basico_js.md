@@ -1,10 +1,10 @@
 
-
-
 # Curso Básico de JavaScript
 
 ## Introducción a JavaScript
+
 ### ¿Qué es JavaScript?
+
     Leguaje interpretado, orientado a objetos, debilmente tipado y dinamico.
 ¿Realmente es un leguaje interpretado? **SI**  
 Motor de JS es V8  
@@ -24,9 +24,11 @@ JS tiene a ser Desarrollo web, ya que tiene muchas framework que te ayudaran a d
 **WebAssembly**: es un nuevo tipo de código que puede ser ejecutado en navegadores modernos es un lenguaje de bajo nivel, similar al lenguaje ensamblador, con un formato binario compacto que se ejecuta con rendimiento casi nativo y provee un objetivo de compilación para lenguajes como C/C++ y Rust que les permite correr en la web. También está diseñado para correr a la par de JavaScript, permitiendo que ambos trabajen juntos.
 
 ### Elementos de un Lenguaje de Programación: Variables, Funciones y Sintaxis
+
 Dos componentes principales:
     1. Data que guardamos en memoria
     2. Tareas(funciones) que haremos con esa data
+
 ```javascript
 // ------------------ VALORES PRIMITIVOS 
 40 <- valores
@@ -57,7 +59,9 @@ typeof undefined -> "undefined"
 typeof [1,2,3] -> "object"
 typeof {nombre: Funano} -> "object"
 ```
+
 ### Variables
+
 ```javascript
 /*
 var es una palabra reservada en JS para poder guardar un valor en memoria.
@@ -73,15 +77,17 @@ var persona = {
     edad: 30
 }
 ```
+
 ### Funciones
 
-Las funciones son un conjunto de sentencias, que utilizamos para realizar acciones con valores que guardamos en las variables.  
-Funciones son como procedimientos o tares.  
-Hay dos tipos de funciones, _DECLARATIVAS_ y de _EXPRESIÓN_.
-Las funciones _declarativas_ se llaman así porque les declaramos un nombre a la función.  
-Las funciones _expresivas_, también son conocidas como anónimas porque no les ponemos un nombre a la función, simplemente almacenamos la función dentro de una variable.  
-Para llamar una función, se coloca el bombre de la función, seguido de "()". El "()" le dice a JS que hay mismo se llama la función.  
-Dentro de "()", se indican los parámetros.  
+- Las funciones son un conjunto de sentencias, que utilizamos para realizar acciones con valores que guardamos en las - variables.  
+- Funciones son como procedimientos o tares.  
+- Hay dos tipos de funciones, _DECLARATIVAS_ y de _EXPRESIÓN_.
+- Las funciones _declarativas_ se llaman así porque les declaramos un nombre a la función.  
+- Las funciones _expresivas_, también son conocidas como anónimas porque **no** les ponemos un nombre a la función, simplemente almacenamos la función dentro de una variable.  
+- Para llamar una función, se coloca el nombre de la función, seguido de "`()`". El "`()`" le dice a JS que hay mismo se llama la - función.  
+- Dentro de "`()`", se indican los parámetros.  
+
 ```javascript
 /*
     function() es una función anónima porque no tiene nombre.
@@ -135,9 +141,11 @@ functioncalcular(x,y){
 ```
 
 ### ¿Cuándo utilizar una función declarativa y una expresiva?
+
 Cuando hablamos de funciones en JavaScript, tenemos dos tipos de funciones: Funciones Declarativas (function declaration / function statement) y Expresiones de función (function expression / funciones anónimas).
 
 **Funciones Declarativas:** En las funciones declarativas, utilizamos la palabra reservada function al inicio para poder declarar la función:
+
 ```javascript
 function saludar(nombre) {
     console.log(`Hola ${nombre}`);
@@ -145,7 +153,9 @@ function saludar(nombre) {
 
 saludar('Diego');
 ```
+
 **Expresión de función:** En la expresión de función, la declaración se inicia con la palabra reservada var, donde se generará una variable que guardará un función anónima.
+
 ```javascript
 var nombre = function(nombre){
     console.log(`Hola ${nombre}`)
@@ -153,12 +163,15 @@ var nombre = function(nombre){
 
 nombre(‘Diego’);
 ```
+
 A las funciones declarativas se les aplica `hoisting`, y a la expresión de función, no. Ya que el `hoisting` solo se aplica en las palabras reservadas `var` y `function`.
 
 Lo que quiere decir que con las funciones declarativas, podemos mandar llamar la función antes de que ésta sea declarada, y con la expresión de función, no, tendríamos que declararla primero, y después mandarla llamar.
 
 ## Bases de JavaScript
+
 ### Scope
+
 **variables globales:** Pueden ser accedidas desde un scope local o global. las variables globales son definidas fuera de las funciones _(Scope global)_
 
 _**Scope local:**_Son aquellas variables definidas dentro del cuerpo de la función, estas son solo accedidas desde _dentro de la misma función._
@@ -166,14 +179,17 @@ _**Scope local:**_Son aquellas variables definidas dentro del cuerpo de la funci
 **Scope Global:** variables que pueden ser accedidas y procesadas por cualquier función dentro del código.
 
 ### Hoisting
+
 En JavaScript, las declaraciones (por ejemplo, de variables o funciones) se mueven al principio de su scope o ámbito. Este comportamiento se conoce como hoisting y es muy importante tenerlo en cuenta a la hora de programar para prevenir posibles errores.
 
-+ Las funciones siempre se mueven arriba del scope. Por lo tanto, podemos elegir donde declararlas y usarlas.  
-+ La declaración de las variables se mueven arriba del scope, pero no la asignación. Antes de usar una variable, habrá que crearla y asignarla.
+- Las funciones siempre se mueven arriba del scope. Por lo tanto, podemos elegir donde declararlas y usarlas.  
+- La declaración de las variables se mueven arriba del scope, pero no la asignación. Antes de usar una variable, habrá que crearla y asignarla.
 
 ### Coerción
-+ Coerción implícita: Es cuando el lenguaje nos ayuda y cambia de un tipo de valor a otro tipo de valor.
-+ Coerción explícita : Es cuando nosotros obligamos a un valor de un tipo a cambiar a otro tipo.
+
+- Coerción implícita: Es cuando el lenguaje nos ayuda y cambia de un tipo de valor a otro tipo de valor.
+- Coerción explícita : Es cuando nosotros obligamos a un valor de un tipo a cambiar a otro tipo.
+
 ```javascript
 // EJEMPLOS DE COERCIÓN:
 
@@ -193,8 +209,9 @@ console.log(d);
 ```
 
 ### Valores: Truthy y Falsy
-+ :link:[Truthy](https://developer.mozilla.org/es/docs/Glossary/Truthy)
-+ :link:[Falsy](https://developer.mozilla.org/es/docs/Glossary/Falsy)
+
+- :link:[Truthy](https://developer.mozilla.org/es/docs/Glossary/Truthy)
+- :link:[Falsy](https://developer.mozilla.org/es/docs/Glossary/Falsy)
 
 ```javascript
 // EJEMPLOS EN LOS QUE BOOLEAN DEVUELVE FALSO:
@@ -212,7 +229,9 @@ Boolean([]); // true aunque el array esté vacío
 Boolean({}); // true aunque el objeto esté vacío
 Boolean(function(){}); // Cualquier función es verdadera también
 ```
-### Operadores: Asignación, Comparación y Aritméticos.
+
+### Operadores: Asignación, Comparación y Aritméticos
+
 :link:[Expressions and operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators)
 
 ```javascrit
@@ -249,10 +268,12 @@ edad++ // INCREMENTA EL VALOR EN 1
 edad += 2 // INCREMENTA EL VALOR POR 2
 ```
 
-
 ## Condicionales
+
 ### Condicionales: If, Else, else if
+
 :link:[Operador condicional (ternario)](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Operadores/Conditional_Operator)
+
 ```javascript
 var piedra = 0
 var tijera = 1 
@@ -278,6 +299,7 @@ play(papel);
 ```
 
 ### Switch
+
 ```javascript
 var movimientos = ["piedra", "papel", "tijeras"];
 
@@ -333,7 +355,9 @@ console.log(juego("tijeras"));
 ```
 
 ## Arrays
+
 ### Arrays
+
 ```javascript
 // FORMA SINTAXICA DE GENERAR UN ARRAY
 var frutas = ["Manzana", "Plátano", "Cereza", "Fresa"];
@@ -355,16 +379,19 @@ var posicion = frutas.indexOf("Cereza");
 ```
 
 ## Loops
+
 ### Loops:For y For..of
+
 Los bucles pueden ejecutar un bloque de código varias veces. JavaScript admite diferentes tipos de bucles:
 
-+ `for` recorre un bloque de código varias veces
-+ `for/in` recorre las propiedades de un objeto
-+ `for/of` recorre los valores de un objeto iterable
-+ `while` recorre un bloque de código mientras se cumple una condición específica
-+ `do/while` también recorre un bloque de código mientras se cumple una condición específica
+- `for` recorre un bloque de código varias veces
+- `for/in` recorre las propiedades de un objeto
+- `for/of` recorre los valores de un objeto iterable
+- `while` recorre un bloque de código mientras se cumple una condición específica
+- `do/while` también recorre un bloque de código mientras se cumple una condición específica
 
 **For**
+
 ```javascript
 // NUESTRO ARREY TIENE 4 ELEMENTOS
 var estudiantes = [ "Soter", "Maria", "Sergio"];
@@ -381,7 +408,9 @@ for(var i = 0; i < estudiantes.length; i++){
     saludarEstudiantes(estudiantes[i]);
 }
 ```
+
 **For of**
+
 ```javascript
 var estudiantes = [ "Soter", "Maria", "Sergio"];
 functionsaludarEstudiantes (estudiante){
@@ -395,6 +424,7 @@ for(var estudiante of estudiantes){
 ```
 
 ### Loops:While
+
 ```javascript
 var estudiantes = ["Maria", "Sergio", "Rosa", "Daniel"];
 
@@ -418,8 +448,11 @@ while (estudiantes.length > 0) {
 ```
 
 ## Objects
+
 ### Objects
+
 Ejemplo de Objeto:
+
 ```javascript
 var miAuto = {
     marca: "Toyota",
@@ -427,12 +460,16 @@ var miAuto = {
     año: 2020
 }
 ```
+
 Acceder a una propiedad del objeto:
+
 ```javascript
 miAuto.marca 
 // "Toyota"
 ```
+
 **Se pueden agregar propiedades que van a ser una función, se les llama métodos de objetos.**
+
 ```javascript
 var miAuto = {
     marca: "Toyota",
@@ -444,7 +481,9 @@ var miAuto = {
 // miAuto.detallesDelAuto();
 // Auto Corolla 2020
 ```
+
 ### Objects: Función constructora
+
 ```javascript
 var brands = ['Toyota', 'Mazda', 'Renault']
 var cars = []
@@ -462,9 +501,12 @@ console.log(cars)
 ```
 
 ## Métodos de Arrays
+
 ### Métodos de recorridos de Arrays
-+ **.filter** : Filtrar solo los elementos que deseamos (según ciertos criterios) y devolverlos en un nuevo array.
-+ **.map** : Crea un nuevo array con los resultados de la llamada a la función indicada aplicados a cada uno de sus elementos.
+
+- **.filter** : Filtrar solo los elementos que deseamos (según ciertos criterios) y devolverlos en un nuevo array.
+- **.map** : Crea un nuevo array con los resultados de la llamada a la función indicada aplicados a cada uno de sus elementos.
+
 ```javascript
 var articulos = [
     {nombre:'Bici',costo:800000},
@@ -487,6 +529,7 @@ var mapeaFiltro = filtraArticulos.map(function(articulo){
 });
 console.log(`Los articulos comprados son ${mapearArticulos} y los que tienen un valor menor a 500 mil son ${ apeaFiltro}.`);
 ```
+
 ```javascript
 const articulos = [
   { nombre: 'Bici', costo: 800000 },
@@ -544,6 +587,7 @@ var articulosBaratos = articulos.some(function(articulo){
     return articulo.costo <= 700;
 });
 ```
+
 **Otra forma**
 
 ```javascript
@@ -572,92 +616,3 @@ let printArticulos = articulos.forEach( ( {nombre, costo} ) => console.log(nombr
 let exitenEsosArticulos = articulos.some( ( {costo} ) => costo <= 500000 ); // Devuelve Verdader cuando si existen o falso cuando no
 console.log(exitenEsosArticulos);
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
