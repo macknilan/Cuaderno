@@ -119,8 +119,9 @@ En la carpeta del proyecto en raíz, se crea el archivo `.prettierrc`. Se puede 
     "trailingComma": "es5",
     "semi": true,
     "singleQuote": true,
-    "printWidth:": 120,
-    "jsxSingleQuote": true
+    "printWidth": 120,
+    "jsxSingleQuote": true,
+    "bracketSpacing": true
 }
 ```
 
@@ -136,13 +137,25 @@ Se configura en VSCode con que librería se va a hacer el formato.
 
 Verificar que VSCode este activada la opción **Format on save** en _User_ y _Workspace_
 
-Para que se queden configurado las reglas de pretties por en sima de las de slint se instala el paquete
+Para que se queden configurado las reglas de prettier por en sima de las de slint se instala el paquete
 
 🔗 [npm link eslint-config-prettier](https://www.npmjs.com/package/eslint-config-prettier "npm link eslint-config-prettier")
 
 ```bash
 npm i -D eslint-config-prettier
 ```
+
+En el archivo `.eslintrc.js` se configura para que tome los cambios.
+
+```json
+extends: [
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'standard',
+    'eslint-config-prettier'  // <-- 👀
+    ],
+```
+
 
 Establecer los siguientes comando en el archivo `package.json` para su correcto funcionamiento con prettier.
 
