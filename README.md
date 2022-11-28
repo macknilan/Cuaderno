@@ -5,7 +5,7 @@
 <a href="https://github.com/macknilan/Cuaderno/blob/master/Python_%26_Django/python_django.md"><img src="https://img.icons8.com/color/96/000000/django.png" alt="Python & Django" title="Python & Django"/></a>
 <a href="https://github.com/macknilan/Cuaderno/blob/master/Django_avanzado/Django_rest_framework.md"><img src="img/django_rest_framework.png" alt="Django Rest Framework" title="Django Rest Framework" width="128px"/></a>
 <a href="https://github.com/macknilan/Cuaderno/blob/master/Django_avanzado/django_avanzado.md"><img src="img/icons8-django_plus.svg" alt="Django Avanzado" title="Django Avanzado" width="128px"/></a>
-<a href="https://github.com/macknilan/Cuaderno/blob/master/JavaScript/javascript.md"><img src="https://img.icons8.com/color/96/000000/javascript.png" alt="JavaScript" title="JavaScript"/></a>
+<a href="https://github.com/macknilan/Cuaderno/blob/master/JavaScript/README.md"><img src="https://img.icons8.com/color/96/000000/javascript.png" alt="JavaScript" title="JavaScript"/></a>
 <a href="https://github.com/macknilan/Cuaderno/blob/master/PostgreSQL/PostgreSQL.md"><img src="img/Postgresql_elephant.svg" width="96px" alt="PostgreSql" title="PostgreSql"/></a>
 <a href="https://github.com/macknilan/Cuaderno/blob/master/Mysql/MySQL.md"><img src="https://img.icons8.com/ios-filled/100/000000/mysql-logo.png" alt="MySql & MariaDb" title="MySql & MariaDb"/></a>
 [![jQuery to Javascript](img/jquery_to_javascript.png "jQuery to Javascript")](https://github.com/macknilan/Cuaderno/blob/master/jQuery_to_Javascript/c_jquery_2_javascript_2018.md)

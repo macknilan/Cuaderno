@@ -1,11 +1,11 @@
-# -*- coding: utf-8 -*-
 """factorial.py"""
 
 
 def factorial(number):
+    print(number)
     if number == 0:
         return 1
-
+    # print(number)
     return number * factorial(number - 1)
 
 

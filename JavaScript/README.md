@@ -1,27 +1,645 @@
 
-
 ### Links
 
 - :octocat: :link: :school: [Escuela de Js](https://github.com/macknilan/Cuaderno/blob/master/JavaScript/school_js_platzi/school_js_platzi.md)
-* :link: [ECMAScript 6 — New Features: Overview & Comparison](http://es6-features.org/#Constants)
-* :link: [CMA-262 7ᵗEdition / June 2016 ECMAScript 2016 Language Specification](https://www.ecma-international.org/ecma-262/7.0/index.html)
-* :link: [The best front-end hacking cheatsheets — all in one place.](https://medium.freecodecamp.org/modern-frontend-hacking-cheatsheets-df9c2566c72a)
-* :link: [ES2015+ cheatsheet A quick overview of new JavaScript features in ES2015, ES2016, ES2017 and beyond](https://devhints.io/es6)
-* :link: [JavaScript Cheat Sheet - OverAPI](http://overapi.com/javascript)
-* :link: [JavaScript in one page](http://www.cheat-sheets.org/sites/javascript.su/#arrayDescription)
-* :link: [JavaScript Regular Expression - Cheatsheet](https://www.debuggex.com/cheatsheet/regex/javascript)
-* :link: [JavaScript Event KeysCodes](http://keycode.info/)
-* :link: [33 Concepts Every JavaScript Developer Should Know](https://github.com/leonardomso/33-js-concepts)
+
+- :link: [ECMAScript 6 — New Features: Overview & Comparison](http://es6-features.org/#Constants)
+
+- :link: [CMA-262 7ᵗEdition / June 2016 ECMAScript 2016 Language Specification](https://www.ecma-international.org/ecma-262/7.0/index.html)
+- :link: [The best front-end hacking cheatsheets — all in one place.](https://medium.freecodecamp.org/modern-frontend-hacking-cheatsheets-df9c2566c72a)
+- :link: [ES2015+ cheatsheet A quick overview of new JavaScript features in ES2015, ES2016, ES2017 and beyond](https://devhints.io/es6)
+- :link: [JavaScript Cheat Sheet - OverAPI](http://overapi.com/javascript)
+- :link: [JavaScript in one page](http://www.cheat-sheets.org/sites/javascript.su/#arrayDescription)
+- :link: [JavaScript Regular Expression - Cheatsheet](https://www.debuggex.com/cheatsheet/regex/javascript)
+- :link: [JavaScript Event KeysCodes](http://keycode.info/)
+- :link: [33 Concepts Every JavaScript Developer Should Know](https://github.com/leonardomso/33-js-concepts)
 
 ## Estructura del lenguaje Js
 
-![](img/js_01.jpg "Estructura del lenguaje JavaScript")
-![](img/js_02.jpg "Estructura del lenguaje JavaScript")
-![](img/js_03.jpg "Estructura del lenguaje JavaScript")
-![](img/js_04.jpg "Estructura del lenguaje JavaScript")
-![](img/js_05.jpg "Estructura del lenguaje JavaScript")
-![](img/js_06.jpg "Estructura del lenguaje JavaScript")
-![](img/js_07.jpg "Estructura del lenguaje JavaScript")
+![Variables 00](img/js_01.jpg "Estructura del lenguaje JavaScript" )
+![Variables 01](img/js_02.jpg "Estructura del lenguaje JavaScript" )
+![Variables 02](img/js_03.jpg "Estructura del lenguaje JavaScript" )
+![Variables no tan variables](img/js_04.jpg "Variables muy variables 00" )
+![Variables muy variables](img/js_05.jpg "Variables muy variables 01" )
+![Variables muy variables 01](img/js_06.jpg "Estructura del lenguaje JavaScript" )
+![Declaración correcta de variables](img/js_07.jpg "Declaración correcta de variables" )
+
+### ¿Qué es JavaScript?
+
+Lenguaje interpretado, orientado a objetos, débilmente tipado y dinamico.
+
+¿Realmente es un lenguaje interpretado? **SI**  
+
+Motor de JS es V8  
+
+**JS es Backwards es Compatible**: La compatibilidad con versiones anteriores significa que cuando acepta como JS válida, no habrá un cambio futuro que haga que el código deje de funcionar.  
+
+### ¿Por qué JavaScript?
+
+JavaScript es uno de los 3 lenguajes que todos los desarrolladores web deben aprender:
+    + HTML para definir el contenido de las páginas web
+    + CSS para especificar el diseño de las páginas web
+    + JavaScript para programar el comportamiento de las páginas web
+
+Las páginas web no son el único lugar donde se usa JavaScript. Muchos programas de escritorio y servidor usan JavaScript. Node.js es el más conocido. Algunas bases de datos, como MongoDB y CouchDB, también usan JavaScript como su lenguaje de programación.
+
+JS tiene a ser Desarrollo web, ya que tiene muchas framework que te ayudaran a desarrollar la aplicación web que deseas, pero también te sirve para desarrollar aplicaciones con React Native para android y ios, y electron para aplicaciones de escritorio para Windows y mac.
+
+**WebAssembly**: es un nuevo tipo de código que puede ser ejecutado en navegadores modernos es un lenguaje de bajo nivel, similar al lenguaje ensamblador, con un formato binario compacto que se ejecuta con rendimiento casi nativo y provee un objetivo de compilación para lenguajes como C/C++ y Rust que les permite correr en la web. También está diseñado para correr a la par de JavaScript, permitiendo que ambos trabajen juntos.
+
+### Elementos de un Lenguaje de Programación: Variables, Funciones y Sintaxis
+
+Dos componentes principales:
+    1. Data que guardamos en memoria
+    2. Tareas(funciones) que haremos con esa data
+
+```js
+// ------------------ VALORES PRIMITIVOS 
+40 <- valores
+
+"Cadena de texto" <-- Cadena de texto
+
+    ____
+true    |
+false   |<- boleanos
+    ____|
+
+        ____
+null        |
+undefined   |<- valores vacios, empty values
+        ____|
+
+// ------------------ VALORES OBJETOS
+[1,2,3] <- Arrays
+{ nombre:Rodolfo } <- Objeto
+
+// ------------------ VALORES NO PRIMITIVOS 
+
+typeof 40 -> "number"
+typeof "Cadena de texto" -> "string"
+typeof true -> "boolean"
+typeof null -> "object"
+typeof undefined -> "undefined"
+typeof [1,2,3] -> "object"
+typeof {nombre: Funano} -> "object"
+```
+
+### Variables
+
+```js
+/*
+var es una palabra reservada en JS para poder guardar un valor en memoria.
+El ";" nos permite indicar que termina una sentencia.
+Las variales tienen dos estados: declarado e inicializado.
+*/
+var nombre = "Diego"; // VALOR DECLARADO E INICIADO.
+var apellido; // VALOR DECLARADO.
+apellido = "Perez"; // VALOR INICIADO.
+
+var persona = {
+    nombre: "Diego",
+    edad: 30
+}
+```
+
+### Funciones
+
+- Las funciones son un conjunto de sentencias, que utilizamos para realizar acciones con valores que guardamos en las - variables.  
+- Funciones son como procedimientos o tares.  
+- Hay dos tipos de funciones, _DECLARATIVAS_ y de _EXPRESIÓN_.
+- Las funciones _declarativas_ se llaman así porque les declaramos un nombre a la función.  
+- Las funciones _expresivas_, también son conocidas como anónimas porque **no** les ponemos un nombre a la función, simplemente almacenamos la función dentro de una variable.  
+- Para llamar una función, se coloca el nombre de la función, seguido de "`()`". El "`()`" le dice a JS que hay mismo se llama la - función.  
+- Dentro de "`()`", se indican los parámetros.  
+
+```js
+/*
+    function() es una función anónima porque no tiene nombre.
+*/
+// DECLARATIVAS
+function miFuncion1(){
+    return;
+}
+
+// EXPRESION
+var miFuncion2 = function(){
+    return;
+}
+
+// DE EXPRESIÓN CON PARÁMETROS
+var miFuncion3 = function(a,b){
+    return a + b;
+}
+
+// LLAMANDO UNA FUNCIÓN.
+miFuncion1();
+miFuncion2();
+miFuncion3(1,2);
+
+
+// USO DE PARÁMETROS DE UNA FUNCIÓN.
+var estudiante = "Diego"
+
+holaEstudiante1(estudiante);
+holaEstudiante2(estudiante);
+
+functionholaEstudiante1(estudiante){
+    console.log(`Hola ${estudiante}`);
+}
+
+functionholaEstudiante2(estudiante){
+    console.log("Hola " + estudiante);
+}
+
+// USO DE PARÁMETRO DE UNA FUNCIÓN CON RETURN
+
+var num1 = 10;
+var num2 = 25;
+
+console.log("Resultado: " + calcular(num1,num2));
+
+functioncalcular(x,y){
+    var resultado = x + y;
+    return resultado;
+}
+```
+
+### ¿Cuándo utilizar una función declarativa y una expresiva?
+
+Cuando hablamos de funciones en JavaScript, tenemos dos tipos de funciones: Funciones Declarativas (function declaration / function statement) y Expresiones de función (function expression / funciones anónimas).
+
+**Funciones Declarativas:** En las funciones declarativas, utilizamos la palabra reservada function al inicio para poder declarar la función:
+
+```js
+function saludar(nombre) {
+    console.log(`Hola ${nombre}`);
+}
+
+saludar('Diego');
+```
+
+**Expresión de función:** En la expresión de función, la declaración se inicia con la palabra reservada var, donde se generará una variable que guardará un función anónima.
+
+```js
+var nombre = function(nombre){
+    console.log(`Hola ${nombre}`)
+}
+
+nombre(‘Diego’);
+```
+
+A las funciones declarativas se les aplica `hoisting`, y a la expresión de función, no. Ya que el `hoisting` solo se aplica en las palabras reservadas `var` y `function`.
+
+Lo que quiere decir que con las funciones declarativas, podemos mandar llamar la función antes de que ésta sea declarada, y con la expresión de función, no, tendríamos que declararla primero, y después mandarla llamar.
+
+## Bases de JavaScript
+
+### Scope
+
+**variables globales:** Pueden ser accedidas desde un scope local o global. las variables globales son definidas fuera de las funciones _(Scope global)_
+
+_**Scope local:**_Son aquellas variables definidas dentro del cuerpo de la función, estas son solo accedidas desde _dentro de la misma función._
+
+**Scope Global:** variables que pueden ser accedidas y procesadas por cualquier función dentro del código.
+
+### Hoisting
+
+En JavaScript, las declaraciones (por ejemplo, de variables o funciones) se mueven al principio de su scope o ámbito. Este comportamiento se conoce como hoisting y es muy importante tenerlo en cuenta a la hora de programar para prevenir posibles errores.
+
+- Las funciones siempre se mueven arriba del scope. Por lo tanto, podemos elegir donde declararlas y usarlas.  
+- La declaración de las variables se mueven arriba del scope, pero no la asignación. Antes de usar una variable, habrá que crearla y asignarla.
+
+### Coerción
+
+- Coerción implícita: Es cuando el lenguaje nos ayuda y cambia de un tipo de valor a otro tipo de valor.
+- Coerción explícita : Es cuando nosotros obligamos a un valor de un tipo a cambiar a otro tipo.
+
+```js
+// EJEMPLOS DE COERCIÓN:
+
+var a = 4 + "7"; // CONVIERTE A 4 EN UN STRING Y LO CONCATENA CON EL "7", POR ESTO REGRESA UN STRING DE VALOR "47"
+
+4 * "7"; // CONVIERTE AL "7" EN UN NÚMERO Y REALIZA LA OPERACIÓN, POR ESTO DEVUELVE 28
+
+var a = 20;
+var b = a + ""; // AQUÍ CONCATENAMOS PARA CONVERTIR LA VARIABLE A STRING (COERCIÓN IMPLÍCITA)
+console.log(b); 
+
+var c = String(a); // AQUÍ OBLIGAMOS A LA VARIABLE A CONVERTIRSE EN STRING (COERCIÓN EXPLÍCITA)
+console.log(c);
+
+vard = Number(c); // AQUÍ OBLIGAMOS A LA VARIABLE A CONVERTIRSE EN NÚMERO (COERCIÓN EXPLÍCITA)
+console.log(d);
+```
+
+### Valores: Truthy y Falsy
+
+- :link:[Truthy](https://developer.mozilla.org/es/docs/Glossary/Truthy)
+- :link:[Falsy](https://developer.mozilla.org/es/docs/Glossary/Falsy)
+
+```js
+// EJEMPLOS EN LOS QUE BOOLEAN DEVUELVE FALSO:
+Boolean(0); // false
+Boolean(null); // false
+Boolean(NaN); // false
+Boolean(undefined); // false
+Boolean(false); // false
+Boolean(""); // false
+
+// EJEMPLOS EN LOS QUE BOOLEAN DEVUELVE VERDADERO:
+Boolean(1); // true para 1 o cualquier número diferente de cero (0)
+Boolean("a"); // true para cualquier caracter o espacio en blanco en el string
+Boolean([]); // true aunque el array esté vacío
+Boolean({}); // true aunque el objeto esté vacío
+Boolean(function(){}); // Cualquier función es verdadera también
+```
+
+### Operadores: Asignación, Comparación y Aritméticos
+
+:link:[Expressions and operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators)
+
+```javascrit
+// OPERADORES BINARIOS:
+3 + 2 // SUMA
+50 - 10 //  RESTA
+10 * 20 // MULTIPLICACIÓN
+20 / 2 // DIVISIÓN
+
+"Diego " + "De Granda" // CONCATENACIÓN DE STRINGS
+
+// OPERADORES UNITARIOS:
+!false // NEGACIÓN DE LA NEGACIÓN = TRUE
+
+// OPERADORES DE ASIGNACIÓN:
+var a = 1; // ASIGNAMOS UN VALOR A LA VARIABLE
+
+// OPERADORES PARA COMPARAR:
+3 == "3"; // COMPARA LOS VALORES Y DEVUELVE "TRUE" EN ESTE CASO
+
+3 === "3"; // COMPARA Y VALIDA LOS TIPOS Y VALORES. DEVUELVE "FALSO" EN ESTE CASO
+
+5 < 3 // COMPARA Y VALIDA SI EL 5 ES MENOR A 3
+5 > 3 // COMPARA Y VALIDA SI EL 5 ES MAYOR A 3
+5 <= 6 // COMPARA Y VALIDA SI EL 5 ES MENOR O IGUAL AL 6
+5 >= 6 // COMPARA Y VALIDA SI EL 5 ES MAYOR O IGUAL AL 6
+
+a && b // VALIDA SI AMBAS VARIABLES SON VERDADERAS PARA QUE SE CUMPLA LA CONDICIÓN
+a || b // AQUÍ SE CUMPLE LA CONDICIÓN SI ALGUNA DE LAS DOS VARIABLES ES VERDADERA
+
+var edad = 40
+edad++ // INCREMENTA EL VALOR EN 1
+
+edad += 2 // INCREMENTA EL VALOR POR 2
+```
+
+## Condicionales
+
+### Condicionales: If, Else, else if
+
+:link:[Operador condicional (ternario)](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Operadores/Conditional_Operator)
+
+```js
+var piedra = 0
+var tijera = 1 
+var papel = 2
+
+function play (eleccion) {
+    let computer = Math.floor(Math.random() * 3);
+    console.log(computer)
+    if (eleccion === computer) {
+        console.log ("Empate");
+    } else if ((eleccion === 0) && (computer === 1)) {
+        console.log("Ganaste");
+    } else if ((eleccion === 1) && (computer === 2)) {
+        console.log("Ganaste");
+    } else if ((eleccion === 2) && (computer === 0)) {
+        console.log ("Ganaste")
+    } else {
+        console.log("Perdiste")
+    }
+};
+
+play(papel);
+```
+
+### Switch
+
+```js
+var movimientos = ["piedra", "papel", "tijeras"];
+
+function juego(eleccion) {
+    random = movimientos[Math.floor(Math.random() * movimientos.length)];
+    console.log("La PC eligió --> " + random);
+    console.log("Tú elegiste --> " + eleccion);
+
+    switch (eleccion) {
+        case"piedra":
+            switch (random) {
+                case"piedra":
+                    console.log("Empate");
+                    break;
+                case"papel":
+                    console.log("Perdiste");
+                    break;
+                case"tijeras":
+                    console.log("Ganaste");
+                    break;
+            }
+            break;
+        case"papel":
+            switch (random) {
+                case"piedra":
+                    console.log("Ganaste");
+                    break;
+                case"papel":
+                    console.log("Empate");
+                    break;
+                case"tijeras":
+                    console.log("Perdiste");
+                    break;
+            }
+            break;
+        case"tijeras":
+            switch (random) {
+                case"piedra":
+                    console.log("Perdiste");
+                    break;
+                case"papel":
+                    console.log("Ganaste");
+                    break;
+                case"tijeras":
+                    console.log("Empate");
+                    break;
+            }
+            break;
+    }
+}
+
+console.log(juego("tijeras"));
+```
+
+## Arrays
+
+### Arrays
+
+```js
+// FORMA SINTAXICA DE GENERAR UN ARRAY
+var frutas = ["Manzana", "Plátano", "Cereza", "Fresa"];
+console.log(frutas);
+console.log(frutas.length); // PARA VER TAMAÑO DEL ARRAY
+console.log(frutas[0]); // CONSULTAR UN ELEMENTO DEL ARRAY EN POSICIÓN ESPECIFICA
+
+// METODOS QUE NOS AYUDAN A MUTAR UN ARRAY
+// AGREGAR MÁS FRUTAS AL FINAL DE NUESTRO ARRAY
+var masFrutas = frutas.push("Uvas");
+// ELIMINAR ULTIMO ELEMENTO DEL ARRAY
+var ultimo = frutas.pop("Uvas");
+// AGREGAR AL INICIO DE NUESTRO ARRAY
+var nuevaLongitud = frutas.unshift("Uvas");
+// BORRAR PRIMER ELEMENTO DEL ARRAY
+var borrarFruta = frutas.shift("Manzana");
+// NOS AYUDA A SABER LA POSICIÓN DEL ELEMENTO QUE LE PASEMOS AL ARRAY
+var posicion = frutas.indexOf("Cereza");
+```
+
+## Loops
+
+### Loops:For y For..of
+
+Los bucles pueden ejecutar un bloque de código varias veces. JavaScript admite diferentes tipos de bucles:
+
+- `for` recorre un bloque de código varias veces
+- `for/in` recorre las propiedades de un objeto
+- `for/of` recorre los valores de un objeto iterable
+- `while` recorre un bloque de código mientras se cumple una condición específica
+- `do/while` también recorre un bloque de código mientras se cumple una condición específica
+
+**For**
+
+```js
+// NUESTRO ARREY TIENE 4 ELEMENTOS
+var estudiantes = [ "Soter", "Maria", "Sergio"];
+
+// HACER LA TAREA DEL LOOP, LO EJECUTARA DE FORMA MANUAL. TRABAJAR LA FUNCIÓN PARA QUE HAGA LA TAREA
+functionsaludarEstudiantes (estudiante){
+    console.log(`Hola, ${estudiante}`);
+}
+// CUÁL SERÍA EL LOOP?
+// ESTE SERÍA EL LOOP
+// MIENTRAS LA VARIABLE I SEA MENOR A MENOR A LA LONGITUD DE ESTUDIANTES I SE VA A AUMENTAR CON +1 
+for(var i = 0; i < estudiantes.length; i++){
+    // SI SE CUMPLE LA CONDICIÓN MANDA A LLAMAR LOS SALUDOS
+    saludarEstudiantes(estudiantes[i]);
+}
+```
+
+**For of**
+
+```js
+var estudiantes = [ "Soter", "Maria", "Sergio"];
+functionsaludarEstudiantes (estudiante){
+    console.log(`Hola, ${estudiante}`);
+}
+// TENEMOS UN ARRAY DE ESTUDIANTES Y VAMOS A MANDAR  LLAMAR A CADA ESTUDIANTE DEL ARREY DE ESTUDIANTES
+for(var estudiante of estudiantes){
+    // MANDAMOS A LLAMAR NUESTRA FUNCIÓN
+    saludarEstudiantes(estudiante);
+}
+```
+
+### Loops:While
+
+```js
+var estudiantes = ["Maria", "Sergio", "Rosa", "Daniel"];
+
+function saludarEstudiante(estudiante) {
+    console.log(`Hola ${estudiante}`);
+}
+
+var i = 0;
+
+// DO-WHILE
+do {
+    saludarEstudiante(estudiantes[i]);
+    i++;
+} while (i < estudiantes.length)
+
+// WHILE
+while (estudiantes.length > 0) {
+    var estudiante = estudiantes.shift();
+    saludarEstudiante(estudiante);
+}
+```
+
+## Objects
+
+### Objects
+
+Ejemplo de Objeto:
+
+```js
+var miAuto = {
+    marca: "Toyota",
+    modelo: "Corolla",
+    año: 2020
+}
+```
+
+Acceder a una propiedad del objeto:
+
+```js
+miAuto.marca 
+// "Toyota"
+```
+
+**Se pueden agregar propiedades que van a ser una función, se les llama métodos de objetos.**
+
+```js
+var miAuto = {
+    marca: "Toyota",
+    modelo: "Corolla",
+    año: 2020, 
+    detallesDelAuto: function () {
+        console.log(`Auto ${this.modelo}${this.año}`);
+}
+// miAuto.detallesDelAuto();
+// Auto Corolla 2020
+```
+
+### Objects: Función constructora
+
+```js
+var brands = ['Toyota', 'Mazda', 'Renault']
+var cars = []
+
+function Car(brand, model, year) { // <- FUNCION CONSTRUCTORA
+    this.brand = brand
+    this.model = model
+    this.year = year
+}
+
+for (var i = 0; i < 30; i++)
+    cars.push(new Car(brands[Math.floor(i/10)], `Serie ${i % 10}`, 1999 + i % 10)) // <- FUNCION CONSTRUCTORA
+
+console.log(cars)
+```
+
+## Métodos de Arrays
+
+### Métodos de recorridos de Arrays
+
+- **.filter** : Filtrar solo los elementos que deseamos (según ciertos criterios) y devolverlos en un nuevo array.
+- **.map** : Crea un nuevo array con los resultados de la llamada a la función indicada aplicados a cada uno de sus elementos.
+
+```js
+var articulos = [
+    {nombre:'Bici',costo:800000},
+    {nombre:'Tv',costo:2000000},
+    {nombre:'Radio',costo:350000},
+    {nombre:'Movil',costo:3000000},
+    {nombre:'Cuaderno',costo:50000},
+    {nombre:'PC',costo:1900000},
+    {nombre:'Mouse',costo:30000},
+    {nombre:'Escoba',costo:10000}
+];
+var filtraArticulos = articulosComprados.filter(function(articulo){
+    return articulo.costo <= 500000;
+});
+var mapearArticulos = articulosComprados.map(function(articulo){
+    return articulo.nombre;
+});
+var mapeaFiltro = filtraArticulos.map(function(articulo){
+    return articulo.nombre;
+});
+console.log(`Los articulos comprados son ${mapearArticulos} y los que tienen un valor menor a 500 mil son ${ apeaFiltro}.`);
+```
+
+```js
+const articulos = [
+  { nombre: 'Bici', costo: 800000 },
+  { nombre: 'Tv', costo: 2000000 },
+  { nombre: 'Radio', costo: 350000 },
+  { nombre: 'Movil', costo: 3000000 },
+  { nombre: 'Cuaderno', costo: 50000 },
+  { nombre: 'PC', costo: 1900000 },
+  { nombre: 'Mouse', costo: 30000 },
+  { nombre: 'Escoba', costo: 10000 }
+];
+
+let articulosFitrados = articulos.filter( ({costo}) => costo < 500000 );
+console.log(articulosFitrados);
+
+let nombreFitrados = articulos.map( ({nombre}) => nombre);
+console.log(nombreFitrados);
+```
+
+### Métodos de recorridos de Arrays 2
+
+```js
+var articulos = [
+    { nombre: "Bici", costo: 3000 },
+    { nombre: "TV", costo: 2500 },
+    { nombre: "Libro", costo: 320 },
+    { nombre: "Celular", costo: 10000 },
+    { nombre: "Laptop", costo: 20000 },
+    { nombre: "Teclado", costo: 500 },
+    { nombre: "Audifonos", costo: 1700 },
+];
+
+//filter Genera un nuevo array
+var articulosFiltrados = articulos.filter(function(articulo){
+    return articulo.costo <= 500; //articulos con precio menor a 500 pesos
+});
+
+//map Ayuda a mapear ciertos elementos de los articulos, es necesario generar nuevo array
+var nombreArticulos = articulos.map(function(articulo){
+    return articulo.nombre;
+});
+
+//find Ayuda a encontrar algo dentro del array articulos
+var encuentraArticulo = articulos.find(function(articulo){
+    return articulo.nombre === "Laptop";
+});
+
+//forEach No es necesario generar nuevo array, se utiliza para realizar un recorrido de un array principal
+articulos.forEach(function(articulo){
+    console.log(articulo.nombre);
+});
+
+//some Se genera nuevo array, regresa un condición en Boolean
+var articulosBaratos = articulos.some(function(articulo){
+    return articulo.costo <= 700;
+});
+```
+
+**Otra forma**
+
+```js
+const articulos = [
+  { nombre: 'Bici', costo: 800000 },
+  { nombre: 'Tv', costo: 2000000 },
+  { nombre: 'Radio', costo: 350000 },
+  { nombre: 'Movil', costo: 3000000 },
+  { nombre: 'Cuaderno', costo: 50000 },
+  { nombre: 'PC', costo: 1900000 },
+  { nombre: 'Mouse', costo: 30000 },
+  { nombre: 'Escoba', costo: 10000 }
+];
+
+let articulosFitrados = articulos.filter( ( {costo} ) => costo < 500000 ); // filtra todos los valores semejantes
+console.log(articulosFitrados);
+
+let nombreFitrados = articulos.map( ( {nombre} ) => nombre);
+console.log(nombreFitrados);
+
+let buscarArticulo = articulos.find( ( {nombre} ) => nombre === 'Cuaderno' ); // Devuelve el primer valor que encuentra
+console.log(buscarArticulo);
+
+let printArticulos = articulos.forEach( ( {nombre, costo} ) => console.log(nombre, costo)); // Itera el array como un for of
+
+let exitenEsosArticulos = articulos.some( ( {costo} ) => costo <= 500000 ); // Devuelve Verdader cuando si existen o falso cuando no
+console.log(exitenEsosArticulos);
+```
 
 ### Los callbacks de JavaScript
 
@@ -30,20 +648,21 @@ en una pila de ejecución; javascript solo ejecuta una cosa ala vez, por esto, d
 más limpia posible; sin embargo se puede delegar la ejecución de otras cosas.
 
 **Javascript** cuando ejecuta código lo hace de manera **síncrona**, pero de una manera que tiene que ejecutar
-código **asíncrono** es con las funciones llamadas *callbacks*.  Estás se ejecutan y nos debuelben el proceso,
+código **asíncrono** es con las funciones llamadas _callbacks_.  Estás se ejecutan y nos debuelben el proceso,
 generalmente después de algun evebto de tiempo, al completarse request o al terminar de leer un archivo.
 
-
-```javascript
+```js
 console.log("El area de un triangulo de base 5 y altura 7 es: " + 5 * 7 / 2)
 console.log(`El area de un triangulo de base 5 y altura 7 es: ${5 *7 / 2}`)
 ```
 
 ### Operador condicional (ternario)
-* :link: [Operador condicional (ternario)](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Operadores/Conditional_Operator)
+
+- :link: [Operador condicional (ternario)](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Operadores/Conditional_Operator)
 
 El operador condicional (ternario) es el único operador en JavaScript que tiene tres operandos. Este operador se usa con frecuencia como atajo para la instrucción if.
-```javascript
+
+```js
 "La Cuota es de:  " + (isMember ? "$2.00" : "$10.00")
 
 var elvisLives = Math.PI > 4 ? "Sip" : "Nop";
@@ -55,19 +674,21 @@ var firstCheck = false,
 console.log( access ); // muestra "Acceso Permitido"
 ```
 
+## Ejemplo de forEach
 
-## Ejemplo de forEach 
-* :link: [forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
+- :link: [forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
 
-```javascript
+```js
 var array1 = ['a', 'b', 'c'];
 
 array1.forEach(function(element) {
   console.log(element);
 });
 ```
+
 ### Ejemplo de forEach
-```javascript
+
+```js
 const items = ['item1', 'item2', 'item3'];
 const copy = [];
 
@@ -76,14 +697,14 @@ items.forEach(function(item){
 });
 ```
 
-```javascript
+```js
 // CALCULAR LABASE DE UN TRIANGULO
 let base = 5
 let height = 7
 console.log(`El area de un triangulo de base ${base} y ${height}  es: ${base * height / 2}`)
 ```
 
-```javascript
+```js
 // CALCULAR LABASE DE UN TRIANGULO
     let base = 5
     let height = 7
@@ -94,8 +715,7 @@ console.log(`El area de un triangulo de base ${base} y ${height}  es: ${base * h
     console.log(`El area de un triangulo de base ${base} y ${height}  es: ${triangleArea(base, height)}`)
 ```
 
-
-```javascript
+```js
 // CALCULAR LABASE DE UN TRIANGULO
 let base = 5
 let height = 7
@@ -105,8 +725,7 @@ let triangleArea = (base, height) => base * height / 2
 console.log(`El area de un triangulo de base ${base} y ${height}  es: ${triangleArea(base, height)}`)
 ```
 
-
-```javascript
+```js
 // CALCULAR LABASE DE UN TRIANGULO
 let base = 5
 let height = 7
@@ -118,8 +737,7 @@ const triangleArea = (base, height) => { //ARROW FUNTIONS
 console.log(`El area de un triangulo de base ${base} y ${height}  es: ${triangleArea(base, height)}`)
 ```
 
-
-```javascript
+```js
 // RESTRICCION POR EDAD
 const startWars7 = 'Start Wars: El despertar de la fuerza'
 const pgStartWars7 = 13
@@ -146,7 +764,7 @@ canWatchStartWars7(nameSacha, ageSacha)
 canWatchStartWars7(nameSantiago, ageSantiago, true)
 ```
 
-```javascript
+```js
 // RESTRICCION POR EDAD
 const startWars7 = 'Start Wars: El despertar de la fuerza',
     pgStartWars7 = 13,
@@ -171,8 +789,7 @@ canWatchStartWars7(nameSacha, ageSacha)
 canWatchStartWars7(nameSantiago, ageSantiago, true)
 ```
 
-
-```javascript
+```js
 // MANEJO DE STRINGS
 function platzom(str) {
     let translation = str
@@ -226,7 +843,7 @@ console.log(platzom("abecedario")) //abece-dario
 console.log(platzom("sometemos")) //SoMeTeMoS
 ```
 
-```javascript
+```js
 // PROMEDIO CORRIDO POR SEMANA
 // Math.floor(3.9) //rendondea hacia abajo 3.9 = 3
 // Math.ceil(3.1) //redondea para arriba 3.1 = 4
@@ -261,7 +878,7 @@ const promedioKms = totalKms/dias.length
 console.log(` En promedio ${nombre} corrio ${promedioKms.toFixed(2)} kms `)
 ```
 
-```javascript
+```js
 //CALCULAR GOLPES ENTRE GOKU SV SUPERMAN Y CALCULAR QUIEN GANA
 let vidaGoku = 100;
 let vidaSuperman = 100;
@@ -306,7 +923,7 @@ if(gokuSigueVivo())
 
 ```
 
-```javascript
+```js
 // CALCULAR LA FECHA DE NACIMIENTO
 > const nacimiento = new Date(1979, 10, 16)
 > nacimiento
@@ -341,7 +958,8 @@ if(gokuSigueVivo())
 > console.log(diasSemana1[proximo.getDay()])
   Viernes
 ```
-```javascript
+
+```js
 // CALCULAR LA FECHA DE NACIMIENTO
 let hoy = new Date();
 let diasSemana = ['Lunes','Martes','Miercoles','Jueves','Viernes','Sabado','Domingo']
@@ -378,9 +996,10 @@ console.log(`Han pasado ${tiempoDias} años ${tiempoMeses} meses dias ${dias} de
 // Han pasado 13937.549797256945 años 2 meses dias 5 desde mi nacimiento
 
 ```
+
 ### Prototipos
 
-```javascript
+```js
 //EJEMPLO #1
 function Persona(nombre, apellido) { // --> PROTOTIPO
     this.nombre = nombre
@@ -398,7 +1017,7 @@ erika.saludar();
 var arturo = new Persona('Arturo', 'Martinez')
 ```
 
-```javascript
+```js
 //EJEMPLO #1.1
 function Persona(nombre, apellido, altura) {
   this.nombre = nombre
@@ -424,7 +1043,7 @@ arturo.soyAlto();
 
 ### Prototipos a Clases con "Herencia de clases"
 
-```javascript
+```js
 //EJEMPLO #1.2 AHORA EN "CLASES"
 
 class Persona {
@@ -460,8 +1079,10 @@ arturo.saludar()
 ```
 
 ### Clases con "Herencia de clases"
+
 #### Pasar funciones como parametros
-```javascript
+
+```js
 class Persona {
   constructor(nombre, apellido, altura) {
     this.nombre = nombre
@@ -517,7 +1138,8 @@ arturo.saludar(responderSaludo)
 ```
 
 ### CallBacks
-```javascript
+
+```js
 const API_URL = 'https://swapi.co/api/'
 const PEOPLE_URL = 'people/:id'
 
@@ -530,10 +1152,12 @@ const onPeopleResponse = function (persona) {
 
 $.get(lukeUrl, opts, onPeopleResponse)
 ```
+
 ### Promesas
 
 #### SINTAXIS
-```javascript
+
+```js
 new Promise( ( resolve, reject ) => {
   // LLAMADO ASÍNCRONO
   if( todoOK ) {
@@ -546,7 +1170,7 @@ new Promise( ( resolve, reject ) => {
 })
 ```
 
-```javascript
+```js
 const API_URL = 'https://swapi.co/api/'
 const PEOPLE_URL = 'people/:id'
 const opts = { crossDomain: true }
@@ -573,8 +1197,9 @@ obtenerPersonaje(1)
   .catch(onError)
 ```
 
-###  MÚLTIPLES PROMESAS EN PARALELO
-```javascript
+### MÚLTIPLES PROMESAS EN PARALELO
+
+```js
 const API_URL = 'https://swapi.co/api/'
 const PEOPLE_URL = 'people/:id'
 const opts = { crossDomain: true }
@@ -606,7 +1231,8 @@ Promise
 ```
 
 ### ASYNC-AWAIT: LO ÚLTIMO EN ASINCRONISMO
-```javascript
+
+```js
 const API_URL = 'https://swapi.co/api/'
 const PEOPLE_URL = 'people/:id'
 const opts = { crossDomain: true }
@@ -641,7 +1267,8 @@ obtenerPersonajes()
 ```
 
 ### RECURSIVIDAD Ejemplo 01
-```javascript
+
+```js
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -671,9 +1298,9 @@ obtenerPersonajes()
 </html>
 ```
 
-
 ### RECURSIVIDAD Ejemplo 02
-```javascript
+
+```js
 let contadorRec = 1
 function fibonacciRecursivo(num) {
   contadorRec++
@@ -684,8 +1311,10 @@ function fibonacciRecursivo(num) {
       fibonacciRecursivo(num - 2)
 }
 ```
+
 ### RECURSIVIDAD & MEMORIZACIÓN Ejemplo 01
-```javascript
+
+```js
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -721,9 +1350,9 @@ function fibonacciRecursivo(num) {
 </html>
 ```
 
-
 ### RECURSIVIDAD & MEMORIZACIÓN Ejemplo 02
-```javascript
+
+```js
 let contadorMemo = 1
 function fibonacciMemo(num, memoria = {}) {
     contadorMemo++
@@ -737,7 +1366,8 @@ function fibonacciMemo(num, memoria = {}) {
 ```
 
 ### Iteradores en Javascript
-```javascript
+
+```js
 // EJEMPLO No.1
 function fibonacci() {
     let a = 0, b = 1
@@ -774,8 +1404,10 @@ const fibo = fibonacci()
 // 8   5+8     8
 // 13  8+13    13
 ```
-### Iteradores en Javascript
-```javascript
+
+### Iteradores en Javascript 01
+
+```js
 // EJEMPLO No. 2
 function fibonacci() {
     let a = 0, b = 1
@@ -801,8 +1433,10 @@ for (let value of fibo) {
 ```
 
 ### Generadores en Javascript
-* :link: [Generadores en Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*)
-```javascript
+
+- :link: [Generadores en Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*)
+
+```js
 //EJEMPLO No. 1
 function* fibonacci () {
     let a = 0, b = 1
@@ -825,8 +1459,9 @@ fibo.next()
 // {value: 5, done: false}
 ```
 
-### Generadores en Javascript
-```javascript
+### Generadores en Javascript 01
+
+```js
 //EJEMPLO No. 2
 function* fibonacci () {
     let a = 0, b = 1
@@ -858,8 +1493,10 @@ fibo.next()
 ```
 
 ## JUEGO EN HTML & JAVASCRIPT (Simon says)
-![](img/game_simon_says.png "Juego en HTML & JavaScript de -Simon Says-")
-```javascript
+
+![Juego en HTML & JavaScript de -Simon Says-](img/game_simon_says.png "Juego en HTML & JavaScript de -Simon Says-")
+
+```js
 <!DOCTYPE html>
 <html>
 
@@ -1091,8 +1728,10 @@ fibo.next()
 
 </html>
 ```
+
 ## Estructura de datos inmutables
-```javascript
+
+```js
 const nombrePersona = {
     nombre: 'Pepito',
     apellido: 'Perez',
@@ -1115,6 +1754,7 @@ const cumpleanosInmutable = persona => ({
 ```
 
 ### Cambiando de contexto al llamar a una función
+
 El contexto (o alcance) de una función es por lo general, window. Así que en ciertos casos, cuando intentamos referirnos a this en alguna parte del código, es posible que tengamos un comportamiento inesperado, porque el contexto quizás no sea el que esperamos.
 
 Existen al menos tres maneras de cambiar el contexto de una función.
@@ -1122,7 +1762,8 @@ Existen al menos tres maneras de cambiar el contexto de una función.
 - Usando el método .bind, enviamos la referencia a la función sin ejecutarla, pasando el contexto como parámetro.
 - Usando el método .call, ejecutamos inmediatamente la función con el contexto indicado
 - Usando el método .apply, es similar a .call pero los parámetros adicionales se pasan como un arreglo de valores
-```javascript
+
+```js
 const Pepito = {
     nombre: 'Pepito',
     apellido: 'Perez'
@@ -1148,9 +1789,9 @@ saludar.apply(Pepito, ['Hola pe'])
 // Hola pe, mi nombre es Pepito
 ```
 
-
 ### CLASES ejempllo de -DISTANCIA ENTRE DOS PUNTOS-
-```javascript
+
+```js
 // DISTANCIA ENTRE DOS PUNTOS
 const p1 = {
     x: 0,
@@ -1174,7 +1815,7 @@ console.log(distancia(p1,p2))
 
 ```
 
-```javascript
+```js
 // DISTANCIA ENTRE DOS PUNTOS
 
 const p1 = {
@@ -1205,7 +1846,7 @@ function distancia(p1, p2){
 console.log(distancia(p1,p2))
 ```
 
-```javascript
+```js
 // DEFINIR LA CLASE/PROTOTIPO "Punto"
 
 
@@ -1220,7 +1861,7 @@ p2.moverEnY(-4)
 console.log(p1.distancia(p2))
 ```
 
-```javascript
+```js
 // DEFINIR LA CLASE/PROTOTIPO "Punto" - Object.create
 const Punto = {
     init: function(x, y){
@@ -1256,7 +1897,7 @@ p2.moverEnY(-4)
 console.log(p1.distancia(p2))
 ```
 
-```javascript
+```js
 // DEFINIR LA CLASE/PROTOTIPO "Punto" - Class de Javascript
 class Punto{ // SE CREA UN NUEVO OBJETO DE TIPO PUNTO
     constructor(x, y){ // DICE QUE ES CLASE PERO FUNCIONA COMO PROTOTIPO
@@ -1291,7 +1932,7 @@ p2.moverEnY(-4)
 console.log(p1.distancia(p2))
 ```
 
-```javascript
+```js
 var nombre = "Sacha"
 
 function saludar10() {
@@ -1316,10 +1957,12 @@ function saludarASacha10() {
 
 saludarASacha10()
 ```
-### Ejemplo Operador Spread (...)
-* :link: [Spread syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax)
 
-```javascript
+### Ejemplo Operador Spread (...)
+
+- :link: [Spread syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax)
+
+```js
 var mackObj = {
     nombre:   'Mack',
     apellido: 'Nilan',
@@ -1337,7 +1980,7 @@ function cumpleanos(persona){
 // {nombre: "Mack", apellido: "Nilan", edad: 31, mensaje: "Feliz cumple!"}
 ```
 
-```javascript
+```js
 var a, b, c, d, e;
 a = [1,2,3];
 b = "dog";
@@ -1359,8 +2002,7 @@ console.log(e);
 
 ```
 
-
-```javascript
+```js
 // OPERACIONES CON METODOS DE ARRAYS
 
 function suma(...numeros) {
@@ -1375,15 +2017,17 @@ const dobles = (...numeros) => numeros.map(numero => numero * 2)
 const pares = (...numeros) => numeros.filter(numero => numero % 2 == 0)
 
 ```
-* :link: - [reduce](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/reduce)
-* :link: - [push](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/push)
-* :link: - [filter](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/filter)
-* :link: - [map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
-* :link: - [sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)
+
+- :link: - [reduce](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/reduce)
+
+- :link: - [push](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/push)
+- :link: - [filter](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/filter)
+- :link: - [map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
+- :link: - [sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)
 
 ### Ejemplo de reduce
 
-```javascript
+```js
 var alan = {
     nombre: 'Alan',
     apellido: 'Perez',
@@ -1414,10 +2058,9 @@ var totalDeLibros = personas.reduce(reducer, 0);
 console.log(`Total de libros entre todos -> ${totalDeLibros}`);
 ```
 
-
 ### Ejemplo de map
 
-```javascript
+```js
 var sacha = {
   nombre: 'Sacha',
   apellido: 'Lifszyc',
@@ -1456,9 +2099,9 @@ const pasarAlturaACms = personas => {
 var personasCms = personas.map(pasarAlturaACms)
 ```
 
-
 ### Ejemplo de Closures
-```javascript
+
+```js
 function saludarFamilia(apellido) {
   return function saludarMiembroDeFamilia(nombre) {
     console.log(`Hola ${nombre} ${apellido}`)
@@ -1482,7 +2125,7 @@ saludarRomero("Jorge")
 
 ```
 
-```javascript
+```js
 // CLOSURES JAVASCRIPT EJEMPLO 2
 function makePrefixer(antes) {
     return function palabra(palabra) {
@@ -1498,7 +2141,8 @@ makePrefixer("bueno")
 ```
 
 ### PRIMERRA FORMA - this, _this y los arrow functions
-```javascript
+
+```js
 class Persona{
     constructor(nombre, amigos = []){
         this.nombre = nombre
@@ -1517,8 +2161,10 @@ const mack = new Persona("Pablo", ["Pedro", "Paco", "Luis"])
 
 // mack.listarAmigos()
 ```
-### SEGUNDA FORMA - this, _this y los arrow functions  - bind() sirve para definir this en contecto de esa funcion.
-```javascript
+
+### SEGUNDA FORMA - this, _this y los arrow functions  - bind() sirve para definir this en contecto de esa funcion
+
+```js
 class Persona{
     constructor(nombre, amigos = []){
         this.nombre = nombre
@@ -1537,7 +2183,8 @@ const mack = new Persona("Pablo", ["Pedro", "Paco", "Luis"])
 ```
 
 ### Funcion bind()
-```javascript
+
+```js
 <html>
   <head>
     <style>
@@ -1582,7 +2229,8 @@ const mack = new Persona("Pablo", ["Pedro", "Paco", "Luis"])
 ```
 
 ### bind DE LOS PARAMETROS
-```javascript
+
+```js
 function saludar(nombre, apellido){
     console.log(`Hola soy ${nombre} ${apellido}`)
 }
@@ -1600,9 +2248,11 @@ saludarBind("Primero")
 ```
 
 ### EL METODO BIND()
-+ **El metodo bind()**: es un metodo de todas las funciones, el cual **nos debuelve una funcion para ser invocada en cualquier momento**  
+
+- **El metodo bind()**: es un metodo de todas las funciones, el cual **nos debuelve una funcion para ser invocada en cualquier momento**  
 Se caracteriza por permitirnos definir el scope/contextoy por permitir establecer previamente los parametros
-```javascript
+
+```js
 const new function = fun.bind(contexto, primerParametro) // ESTABLECE EL scope Y EL/LOS PARAMETROS fun
 
 newFunction(segundoParametro) // EJECUTA fun PERO CON LA CARACTERISTICA DE QUE YA ESTA ESTABLECIDO EL SCOPE
@@ -1611,7 +2261,8 @@ Y LOS PARAMETROS, Y NOS PERMITE ENVIARLE MÁS PARAMETROS A fun SI FUERA EL CASO
 ```
 
 ### METODO call()
-```javascript
+
+```js
 const sacha = {
   nombre: 'Paco',
   apellido: 'Perez'
@@ -1629,7 +2280,8 @@ saludar.call(sacha, 3, true)
 ```
 
 ### METODO apply()
-```javascript
+
+```js
 const sacha = {
     nombre: 'Sacha',
     apellido: 'Lifszyc'
@@ -1646,9 +2298,11 @@ saludar.apply(sacha,[3, true])
 ```
 
 ### METODO CALL() Y APPLY()
-* LOS METODS call() Y apply() **EJECUTAN LA FUNCION "PADRE"** INSTANTANEAMENTE, Y NOS PERMITE ESTABLECER EL SCOPE
+
+- LOS METODS call() Y apply() **EJECUTAN LA FUNCION "PADRE"** INSTANTANEAMENTE, Y NOS PERMITE ESTABLECER EL SCOPE
 Y LOS PARAMETROS CON LA **DIFERIENCIA** DE QUE apply(), RECIBE LOS PARAMETROS EN UN ARRAY
-```javascript
+
+```js
 fun.call(contexto, primerParametro, segundoParametro) //EJECUTA fun CON EL SCOPE ESTABLECIDO Y CON LOS PARAMETROS
 ENVIADOS.
 
@@ -1658,7 +2312,8 @@ LOS PARAMETROS ENVIADOS EN EL ARRAY
 ```
 
 ### EJEMPLO QUE AL PRECIONAR LAS TECLAS SE ACTIVA UN SONIDO Y SE MUESTRA EN HTML Y CSS QUE TECLA SE PRECIONO
-```javascript
+
+```js
 
 <!DOCTYPE html>
 <html lang="en">
@@ -1757,7 +2412,8 @@ LOS PARAMETROS ENVIADOS EN EL ARRAY
 ```
 
 ### EJEMPLO PARA HACER UN RELOG CON MANESILLAS
-```javascript
+
+```js
 
 <!DOCTYPE html>
 <html lang="en">
@@ -1864,8 +2520,10 @@ LOS PARAMETROS ENVIADOS EN EL ARRAY
 
 
 ```
+
 ### EJEMPLO DE REDUCE, PUSH, MAP, FILTER
-```javascript
+
+```js
 
 <!DOCTYPE html>
 <html lang="en">
@@ -2003,7 +2661,8 @@ LOS PARAMETROS ENVIADOS EN EL ARRAY
 ```
 
 ### BUSCAR EN LINK (JSON) MIENTRAS ESCRIBES
-```javascript
+
+```js
 
 <!DOCTYPE html>
 <html lang="en">
@@ -2081,11 +2740,15 @@ LOS PARAMETROS ENVIADOS EN EL ARRAY
 
 
 ```
+
 ### Manejo de Arrays No.2
-* :link: [some](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some)
-* :link: [findIndex](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex)
-* :link: [slice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice)
-```javascript
+
+- :link: [some](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some)
+
+- :link: [findIndex](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex)
+- :link: [slice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice)
+
+```js
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -2161,20 +2824,3 @@ LOS PARAMETROS ENVIADOS EN EL ARRAY
 </body>
 </html>
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
