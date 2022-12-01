@@ -5,7 +5,7 @@ Run:
     uvicorn main:app --reload
 """
 # python
-
+from enum import Enum
 
 # Pydantic
 from pydantic import BaseModel, Field
@@ -16,15 +16,21 @@ from fastapi import FastAPI, Path, Query
 app = FastAPI()
 
 # models
+class HairColor(Enum):
+    white = "white"
+    brown = "brown"
+    blonde = "blonde"
+
+
 class Location(BaseModel):
     city: str = Field(
-        title="The City", description="The City", min_length=8, max_length=20
+        title="The City", description="The City", min_length=3, max_length=20
     )
     state: str = Field(
-        title="The State", description="The State", min_length=8, max_length=20
+        title="The State", description="The State", min_length=3, max_length=20
     )
     country: str = Field(
-        title="The Country", description="The Country", min_length=8, max_length=20
+        title="The Country", description="The Country", min_length=3, max_length=20
     )
 
 
@@ -36,12 +42,12 @@ class Person(BaseModel):
         title="Last name", description="Last name", min_length=8, max_length=20
     )
     age: int = Field(default=0, title="The age", description="The age", gt=0, le=100)
-    hair_color: str | None = Field(
-        default=None, title="Hair color", description="Hair color", max_length=20
-    )  # optional parameter
+    hair_color: HairColor | None = Field(
+        default=None, title="Hair color", description="Hair color"
+    )  # OPTIONAL PARAMETER Y HACE REFERENCIA A LA CLASE HairColor PARA SOLO TOMAR LAS OPCIONES
     is_married: bool | None = Field(
         default=None, title="Is Married", description="Is Married"
-    )  # optional parameter
+    )  # OPTIONAL PARAMETER
 
 
 @app.get("/")

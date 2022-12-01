@@ -281,6 +281,67 @@ def update_person(
 ):
     results = {"person_id": person_id, "person": person, "location": location}
     return results
+``
+
+## Validaciones: Models
+
+Diferencia Path, Query Parameters and Request Body  
+Usamos `Path Parameters` cuando por ejemplo se trata de un `id` y esas cosas, como una variable etc, usamos los `Requests Body` para enviar información que tiene formato de un modelo y usamos los `Query Parameters` para solicitar información opcional del servidor.
+
+**Validaciones Models**  
+Para validar modelos tomamos uso de la clase de `Pydantic Field`, que funciona igual a las validaciones que ya hemos hecho con `Path`, `Query` y `Body`
+
+```py
+class HairColor(Enum):
+    white = "white"
+    brown = "brown"
+    blonde = "blonde"
+
+
+class Location(BaseModel):
+    city: str = Field(
+        title="The City", description="The City", min_length=3, max_length=20
+    )
+    state: str = Field(
+        title="The State", description="The State", min_length=3, max_length=20
+    )
+    country: str = Field(
+        title="The Country", description="The Country", min_length=3, max_length=20
+    )
+
+
+class Person(BaseModel):
+    first_name: str = Field(
+        title="First name", description="First name", min_length=8, max_length=20
+    )
+    last_name: str = Field(
+        title="Last name", description="Last name", min_length=8, max_length=20
+    )
+    age: int = Field(default=0, title="The age", description="The age", gt=0, le=100)
+    hair_color: HairColor | None = Field(
+        default=None, title="Hair color", description="Hair color"
+    )  # OPTIONAL PARAMETER Y HACE REFERENCIA A LA CLASE HairColor PARA SOLO TOMAR LAS OPCIONES
+    is_married: bool | None = Field(
+        default=None, title="Is Married", description="Is Married"
+    )  # OPTIONAL PARAMETER 
+```
+
+## Tipos de datos especiales
+
+
+- 🔗 [#special-types-and-validation](https://fastapi.tiangolo.com/tutorial/body-nested-models/?h=httpu#special-types-and-validation "#special-types-and-validation")  
+- 🔗 [Pydantic's exotic types](https://pydantic-docs.helpmanual.io/usage/types/#pydantic-types "Pydantic's exotic types")  
+
+![Pydantic's exotic types](imgs/tipos_de_datos_especiales.png "Pydantic's exotic types")
+
+
+```py
+```
+
+```py
+```
+
+```py
 ```
 
 ```py
