@@ -15,7 +15,10 @@ def first_not_repeating_char(char_sequence):
         if letter not in seen_letters:
             seen_letters[letter] = (idx, 1)
         else:
-            seen_letters[letter] = (seen_letters[letter][0], seen_letters[letter][1] + 1)
+            seen_letters[letter] = (
+                seen_letters[letter][0],
+                seen_letters[letter][1] + 1,
+            )
         """
         "abacabad" # LO QUE SE ESCREIBE HASTA ESTE PUNTO
         {
@@ -25,7 +28,9 @@ def first_not_repeating_char(char_sequence):
         }
         """
 
-    final_letters = []  # LAS LETRAS QUE SOLO VIMOS SOLO UNA VES Y EN QUE INDICE SE ENCUENTRA
+    final_letters = (
+        []
+    )  # LAS LETRAS QUE SOLO VIMOS SOLO UNA VES Y EN QUE INDICE SE ENCUENTRA
     for key, value in seen_letters.iteritems():
         if value[1] == 1:
             final_letters.append((key, value[0]))

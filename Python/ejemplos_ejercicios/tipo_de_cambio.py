@@ -12,7 +12,9 @@ def run():
     print("C A L C U L A D O R A D E D I V I S A S")
     print("Convierte pesos mexicanos a pesos colombianos. \n")
 
-    ammount = float(input("Ingresa la cantidad de pesos mexicanos que quieres convertir: "))
+    ammount = float(
+        input("Ingresa la cantidad de pesos mexicanos que quieres convertir: ")
+    )
 
     result = foreign_exchange_calculator(ammount)
 

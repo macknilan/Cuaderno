@@ -1,13 +1,15 @@
 #  Decoradores
 
 
-def my_custom_decorator(function):  # funcion_b = saludar/suma
+def my_custom_decorator(function):  # function_b = saludar/suma
     def wrapper(*args, **kwargs):
-        print(f"*args - {args} / **kwargs - {kwargs}")
-        print(f"Antes de la ejecucion")
+        print(f"*args - {args} / **kwargs - {kwargs} 0")
+        print(f"Antes de la ejection")
+
         resultado = function(*args, **kwargs)
-        print(f"Despues de la ejecucion")
-        print(f"*args - {args} / **kwargs - {kwargs}")
+
+        print(f"Después de la ejection")
+        print(f"*args - {args} / **kwargs - {kwargs} 1")
 
         return resultado
 
@@ -16,7 +18,7 @@ def my_custom_decorator(function):  # funcion_b = saludar/suma
 
 @my_custom_decorator
 def saludar():
-    print(f"Holas desde la cuncion a")
+    print(f"Hola desde la función -saludar-")
 
 
 @my_custom_decorator
@@ -24,4 +26,5 @@ def suma(a, b):
     return a + b
 
 
-print(suma(4, 3))
+suma(4, 3)
+# saludar()

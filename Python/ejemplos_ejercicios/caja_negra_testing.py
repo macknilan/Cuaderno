@@ -23,7 +23,7 @@ class CajaNegraTest(unittest.TestCase):
     En Python existe la posibilidad de realizar test gracias a la librería unittest.
     Puede ser que el siguiente código no lo entiendas en su totalidad, pero en
     una próxima guía detallare mas el tema de clases en programación.
-    
+
     https://docs.python.org/3.9/library/unittest.html
     """
 

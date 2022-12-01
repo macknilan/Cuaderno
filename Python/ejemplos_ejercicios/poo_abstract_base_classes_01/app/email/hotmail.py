@@ -16,7 +16,9 @@ class Hotmail(Email):
         return base64.b64encode(connectionAscii).decode("ascii")
 
     def _connect(self) -> None:
-        connectionEncoded = self.__encodeConnection(f"{self._host}/{self._username}:{self._password}")
+        connectionEncoded = self.__encodeConnection(
+            f"{self._host}/{self._username}:{self._password}"
+        )
         print(f"connecting to hotmail -->{connectionEncoded}")
 
     def _close(self) -> None:

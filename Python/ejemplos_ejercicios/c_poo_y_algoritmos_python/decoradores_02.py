@@ -5,12 +5,15 @@ import time
 
 def calcular_tiempo(function):
     def wrapper(*args, **kwargs):
-        print(f"*args - {args} / **kwargs - {kwargs}")
-        print(f"Antes de la ejecucion")
+
+        print(f"*args - {args} / **kwargs - {kwargs} 0")
+        print(f"Antes de la ejecución")
+
         start = time.time()
+
         result = function(*args, **kwargs)
 
-        print(f"Tiempo total: {time.time() - start}")
+        print(f"Tiempo total: {time.time() - start} 1")
 
         return result
 
@@ -23,4 +26,4 @@ def suma(a, b):
     return a + b
 
 
-print(suma(3, 48))
+print(suma(2, 48))

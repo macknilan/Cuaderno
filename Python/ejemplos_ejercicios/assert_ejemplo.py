@@ -8,7 +8,7 @@ def primera_palabra(lista_palabras):
 
     Programación defensiva: Pueden utilizarse para verificar que los
     tipos sean correctos en una función.
-    
+
     También sirven para debuguear: Para generarlas tenemos que utilizar
     el keyword -assert- y dar una expresión booleana y un mensaje de error
     """

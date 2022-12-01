@@ -13,10 +13,13 @@ else:
 
 
 # logging format I'll use
-LOG_FORMAT_01 = (
-    "%(levelname)s : %(module)s : line %(lineno)d : %(asctime)s : %(relativeCreated)d : %(thread)d :  %(message)s"
+LOG_FORMAT_01 = "%(levelname)s : %(module)s : line %(lineno)d : %(asctime)s : %(relativeCreated)d : %(thread)d :  %(message)s"
+logging.basicConfig(
+    filename="log_files/current_cars.log",
+    level=logging.DEBUG,
+    format=LOG_FORMAT_01,
+    filemode="w",
 )
-logging.basicConfig(filename="log_files/current_cars.log", level=logging.DEBUG, format=LOG_FORMAT_01, filemode="w")
 
 logger1 = logging.getLogger()
 
@@ -174,7 +177,9 @@ class Lights:
         elif self.tipe_of_light == "taillights":
             self.tipe_of_light = TailLights()
         else:
-            print(f" the specified type of propulsion '{self.tipe_of_light}' doesn't exists")
+            print(
+                f" the specified type of propulsion '{self.tipe_of_light}' doesn't exists"
+            )
 
     def turn_on(self):
         self.state = "On"
@@ -198,7 +203,9 @@ class HeadLights:  # Turn on the headlights when driving at night or in the rain
     def get_visibility_data(self):
         return _visibility_data
 
-    def wether_determination(self, visibility):  # ranges = 0-25 »» 25-50 »» 50-75 »» 75-90 »» 90-100
+    def wether_determination(
+        self, visibility
+    ):  # ranges = 0-25 »» 25-50 »» 50-75 »» 75-90 »» 90-100
         try:
             if type(visibility) == IntType:
                 return float(visibility)
@@ -217,7 +224,9 @@ class HeadLights:  # Turn on the headlights when driving at night or in the rain
         else:
 
             if visibility > 100:
-                print(f"ERROR: the max. ammount of level of visibility is 100, you iserted '{visibility}'")
+                print(
+                    f"ERROR: the max. ammount of level of visibility is 100, you iserted '{visibility}'"
+                )
             else:
                 if self.visibility == 100.0 and self.visibility >= 90.0:
                     self._l1 = "LOW"
@@ -262,11 +271,17 @@ class Engine:
         self.cilinders = cilinders
         self.propulsion_method = propulsion_method
         if self.propulsion_method == "electric":
-            self.propulsion_method = Electric(tipe="nickel-metal_hydried", ammount=7104)  # 	;) elon
+            self.propulsion_method = Electric(
+                tipe="nickel-metal_hydried", ammount=7104
+            )  # 	;) elon
         elif self.propulsion_method == "gasoline":
-            self.propulsion_method = Gasoline(tipe="unleaded", state="raw", ammount=1000)
+            self.propulsion_method = Gasoline(
+                tipe="unleaded", state="raw", ammount=1000
+            )
         else:
-            print(f" the specified type of propulsion '{self.propulsion_method}' doesn't exists")
+            print(
+                f" the specified type of propulsion '{self.propulsion_method}' doesn't exists"
+            )
         self.valves = valves
         self._temperature = 0
         self._energy = 0
@@ -313,7 +328,9 @@ class Electric:
 
 
 v1 = Vehicle(model="S1", brand="Porsche", color="White", tipe="Car")
-v2 = Vehicle(model="standard", brand="Wayne Corporation", color="Yellow and Black", tipe="Bus")
+v2 = Vehicle(
+    model="standard", brand="Wayne Corporation", color="Yellow and Black", tipe="Bus"
+)
 v3 = Vehicle(model="S2", brand="Lamborghini", color="Yellow", tipe="Car")
 
 Vehicle.get_all_instances_of_Vehicle()

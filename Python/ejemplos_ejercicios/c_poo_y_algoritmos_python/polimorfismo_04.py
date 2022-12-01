@@ -24,7 +24,7 @@ class Square(Shape):
         self.length = length
 
     def area(self):
-        return self.length ** 2
+        return self.length**2
 
     def fact(self):
         return "Squares have each angle equal to 90 degrees."
@@ -36,7 +36,7 @@ class Circle(Shape):
         self.radius = radius
 
     def area(self):
-        return pi * self.radius ** 2
+        return pi * self.radius**2
 
 
 if __name__ == "__main__":

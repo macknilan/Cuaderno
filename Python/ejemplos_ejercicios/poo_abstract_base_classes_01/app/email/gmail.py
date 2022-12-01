@@ -18,7 +18,9 @@ class Gmail(Email):
         """
 
     def _connect(self) -> None:
-        print(f"connecting to google --> {self._host}/{self._username}:{self._password}")
+        print(
+            f"connecting to google --> {self._host}/{self._username}:{self._password}"
+        )
 
     def _close(self) -> None:
         print(f"closing connection to google")

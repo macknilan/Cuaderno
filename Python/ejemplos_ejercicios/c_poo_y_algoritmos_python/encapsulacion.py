@@ -13,7 +13,9 @@ class CasillaDeVotacion:
         print(region)
         if region in self._pais:
             self._region = region
-            raise ValueError(f"La region {region} no es valida o ya se encuentra en {self._pais}")
+            raise ValueError(
+                f"La region {region} no es valida o ya se encuentra en {self._pais}"
+            )
 
 
 # casilla = CasillaDeVotacion(123, ["CDMX", "Morelos"])

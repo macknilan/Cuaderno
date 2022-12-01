@@ -1,7 +1,7 @@
 # polimorfismo
 
-class Persona:
 
+class Persona:
     def __init__(self, nombre):
         self.nombre = nombre
 
@@ -10,21 +10,20 @@ class Persona:
 
 
 class Ciclista(Persona):
-
     def __init__(self, nombre):
         super().__init__(nombre)
 
     def avanza(self):
-        print(f"Ando moviendome en mi bicicleta {self.nombre}")
+        print(f"Ando moviéndome en mi bicicleta {self.nombre}")
 
 
 def main():
-    persona = Persona('David')
+    persona = Persona("David")
     persona.avanza()
 
-    ciclista = Ciclista('Daniel')
+    ciclista = Ciclista("Daniel")
     ciclista.avanza()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

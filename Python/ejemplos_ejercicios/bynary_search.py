@@ -24,7 +24,11 @@ def bynary_search(order_numbers, number_to_find, low, high):
 
 
 if __name__ == "__main__":
-    disorder_list = str(input("Escribe una lista de numeros --AL MENOS DIEZ NUMEROS-- separados por <<ESPACIOS>>: "))
+    disorder_list = str(
+        input(
+            "Escribe una lista de numeros --AL MENOS DIEZ NUMEROS-- separados por <<ESPACIOS>>: "
+        )
+    )
     order_numbers = str_2_list(disorder_list)
     number_to_find = int(input("Ingresa un número a buscar: "))
 

@@ -7,7 +7,9 @@ class Automovil:
         self._motor = Motor(cilindros=4)
 
     def informacion_automovil(self):
-        print(f"Informacion de -Automovil- motor:{self.modelo} marca: {self.marca} color:{self.color}")
+        print(
+            f"Informacion de -Automovil- motor:{self.modelo} marca: {self.marca} color:{self.color}"
+        )
 
     def acelerar(self, tipo="despacio"):
         if tipo == "rapida":
@@ -29,7 +31,9 @@ class Motor:
         self, temperatura_motor
     ):  # Esta funcion es temporal, solo para revisar que todo esta funcionanndo
         self.temperatura_motor = temperatura_motor
-        print(f"Informacion de -Motor- = tipo de combustion: {self.tipo} temperatura: {self.temperatura_motor}")
+        print(
+            f"Informacion de -Motor- = tipo de combustion: {self.tipo} temperatura: {self.temperatura_motor}"
+        )
 
     def inyecta_gasolina(self, cantidad):
         self.cantidad = cantidad

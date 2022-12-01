@@ -42,7 +42,7 @@ class Circulo(Figura):
         self._radio = radio
 
     def area(sefl):
-        return math.pi * (sefl._radio ** 2)
+        return math.pi * (sefl._radio**2)
 
     def perimetro(sefl):
         return 2 * math.pi * sefl._radio

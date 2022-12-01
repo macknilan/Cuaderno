@@ -16,7 +16,11 @@ class S3(UserRepository):
         print(f"Opening connection to AWS S3 {self.__clientId}:{self.__secretKey}")
 
     def store(self, user: User) -> None:
-        user = {"name": user.getName(), "lastName": user.getLastName(), "age": user.getAge()}
+        user = {
+            "name": user.getName(),
+            "lastName": user.getLastName(),
+            "age": user.getAge(),
+        }
         print(f"Storing user from bucket:{self.__bucket}: {user}")
 
     def close(self) -> None:

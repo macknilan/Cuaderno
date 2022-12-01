@@ -559,6 +559,8 @@ ChainMap({'f': 6, 'e': 5}, {'a': 1, 'b': 2}, {'b': 4, 'c': 3})
 
 ##### namedtuple()
 
+Con `namedtuple()` es posible generar clases, los atributos del objeto son de lectura.
+
 ```python
 from collections import namedtuple
 ```
@@ -573,6 +575,43 @@ Jhon
 Student(fname='John', lname='Clarke', age='13')
 ```
 
+```py
+Setting = namedtuple("Setting", ['port', 'name', 'alias'])
+setting = Setting(3000, 'Rails', 'RoR')
+print(setting)
+# Output
+Setting(port=3000, name='Rails', alias='RoR')
+```
+
+Valores por default con `namedtuple()`, en Python los valores por default se asignan de izquierda a derecha.
+
+```py
+Setting = namedtuple("Setting", ['port', 'name', 'alias'], defaults=('No Name', 'No Alias'))
+```
+
+Se asigna al parámetro `port` un valor.
+
+```py
+setting = Setting(port=3000)
+print(setting.port)
+# Output
+3000
+print(setting.name)
+# Output
+'No Name'
+print(setting.alias)
+# Output
+'No Name'
+```
+
+Clase `Setting` definida.
+
+```py
+print(setting)
+# Output
+Setting(port=3000, name='No Name', alias='No Alias')
+```
+
 Creando namedtuple usando una lista
 
 ```python
@@ -580,6 +619,32 @@ s2 = Student._make(['Adam','joe','18'])
 print(s2)
 # Output
 Student(fname='Adam', lname='joe', age='18')
+```
+
+Métodos y atributos del objeto  
+Por ejemplo, si queremos conocer todos los atributos que posee un objeto
+
+```py
+setting._fields
+# Output
+('port', 'name', 'alias')
+```
+
+Si lo que deseamos es convertir nuestro objecto a un diccionario
+
+```py
+setting._asdict()
+#Output
+{'port': 3000, 'name': 'No Name', 'alias': 'No Alias'}
+```
+
+Con el método `_replace()` se crea una nueva instancia a partir del objeto original con la posibilidad de modificar algunos de sus atributos.
+
+```py
+new_setting = setting._replace(port=8000)
+print(new_setting)
+# Output
+Setting(port=8000, name='No Name', alias='No Alias')
 ```
 
 Creando una nueva instancia usando una instancia existente
