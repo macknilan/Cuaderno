@@ -940,7 +940,7 @@ git filter-branch -f --index-filter "git rm -rf --cached --ignore-unmatch PATH-T
 Op #3. preferencia.
 
 ```git
-git filter-branch --force --index-filter "git rm --cached --ignore-unmatch PATH-TO-YOUR-FILE/FOLDER-WITH-SENSITIVE-DATA" --prune-empty --tag-name-filter cat -- --all
+git filter-branch --force --index-filter "git rm -rf --cached --ignore-unmatch PATH-TO-YOUR-FILE/FOLDER-WITH-SENSITIVE-DATA" --prune-empty --tag-name-filter cat -- --all
 ```
 
 Después.
