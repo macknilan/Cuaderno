@@ -102,6 +102,23 @@ Un _Query Patameter_ es un conjunto de elementos opcionales los cuales son añad
 
 ![Query Parameters](imgs/url%2Bparameter%2Bcomponents.png "Query Parameters")
 
+## Request Body y Response Body
+
+![Request Body](imgs/request_body.png "Request Body")
+
+El protocolo HTTP existe una comunicación entre el usuario y el servidor. Esta comunicación está compuesta por cabeceras (_headers_) y un cuerpo (_body_). Por lo mismo, se tienen dos direcciones en la comunicación entre el cliente y el servidor y definen de la siguiente manera:
+
+**Request** : Cuando el cliente solicita/pide datos al servidor.  
+**Response** : Cuando el servidor responde al cliente.  
+**Request Body**: Con lo anterior mencionado, Request Body viene a ser el cuerpo (body) de una solicitud del cliente al servidor.  
+
+**Response Body**
+Con lo anterior mencionado, Response Body viene a ser el cuerpo (body) de una respuesta del servidor al cliente.
+
+¿Con cuál de las siguientes operations no deberías enviar jamás un request body?
+
+No se debería de _enviar datos_ jamas un request body con _operations_ **GET**
+
 ## Models
 
 🔗 [sql-databases](https://fastapi.tiangolo.com/tutorial/sql-databases/ "models") ↗️  
@@ -328,14 +345,23 @@ class Person(BaseModel):
 
 ## Tipos de datos especiales
 
-
 - 🔗 [#special-types-and-validation](https://fastapi.tiangolo.com/tutorial/body-nested-models/?h=httpu#special-types-and-validation "#special-types-and-validation")  
 - 🔗 [Pydantic's exotic types](https://pydantic-docs.helpmanual.io/usage/types/#pydantic-types "Pydantic's exotic types")  
 
 ![Pydantic's exotic types](imgs/tipos_de_datos_especiales.png "Pydantic's exotic types")
 
+## Creando ejemplos de Request Body automáticos
+
+> You can declare examples of the data your app can receive. Here are several ways to do it.
+
+🔗 [#field-additional-arguments](https://fastapi.tiangolo.com/tutorial/schema-extra-example/?h=schema_extra#field-additional-arguments "#field-additional-arguments") ↗️
+
+When using `Field()` with Pydantic models, you can also declare extra info for the _JSON_ Schema by passing any other arbitrary arguments to the function.
+
+You can use this to add `example` for each field.
 
 ```py
+
 ```
 
 ```py
