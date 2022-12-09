@@ -6,7 +6,7 @@
 
 - :link: <a href="http://book.pythontips.com/en/latest/index.html" target="_blank">Python Tips - Intermediate Python — Python Tips 0.1 documentation</a>
 - :link: <a href="https://docs.python.org/3/library/functions.html" target="_blank">Built-in Functions</a>
-- :link: <a href="itertools — Functions creating iterators for efficient looping" target="_blank"><https://docs.python.org/3.7/library/itertools.html></a>
+- :link: <a href="itertools — Functions creating iterators for efficient looping" target="_blank"><https://docs.python.org/3.10/library/itertools.html></a>
 
 ### Formatos & f-strings
 
@@ -329,7 +329,7 @@ return (students, teachers)
 
 Una de las características de las Estructuras de Datos es que cada una de ellas nos sirve para algo especifico. No existe en programación una navaja suiza que nos sirva para todos. los mejores programas son aquellos que utilizan la herramienta correcta para el trabajo correcto.
 
-Conjutos(_sets_) nacen de la teoría de conjuntos. Son una de las Estructuras más importantes y se parecen a las listas, podemos añadir varios elementos al conjuntos, _pero no pueden existir elementos duplicados_. *A diferencia de los *tuples*podemos agregar y eliminar, son mutables*.
+Conjutos(_sets_) nacen de la teoría de conjuntos. Son una de las Estructuras más importantes y se parecen a las listas, podemos añadir varios elementos al conjuntos, _pero no pueden existir elementos duplicados_. _A diferencia de los_tuples_podemos agregar y eliminar, son mutables_.
 
 Los sets se pueden inicializar con la función `set`. Una recomendación es inicializarlos con esta función para no causar confusión con los diccionarios.
 
@@ -557,25 +557,28 @@ print(new_chain_map)
 ChainMap({'f': 6, 'e': 5}, {'a': 1, 'b': 2}, {'b': 4, 'c': 3})
 ```
 
-##### namedtuple()
+##### `namedtuple()`
 
 Con `namedtuple()` es posible generar clases, los atributos del objeto son de lectura.
 
 ```python
 from collections import namedtuple
-```
 
-```python
 Student = namedtuple('Student', 'fname, lname, age')
 s1 = Student('John', 'Clarke', '13')
 print(s1)
 print(s1.fname)
+```
+
+```python
 # Output
 Jhon
 Student(fname='John', lname='Clarke', age='13')
 ```
 
 ```py
+from collections import namedtuple
+
 Setting = namedtuple("Setting", ['port', 'name', 'alias'])
 setting = Setting(3000, 'Rails', 'RoR')
 print(setting)
@@ -586,6 +589,8 @@ Setting(port=3000, name='Rails', alias='RoR')
 Valores por default con `namedtuple()`, en Python los valores por default se asignan de izquierda a derecha.
 
 ```py
+from collections import namedtuple
+
 Setting = namedtuple("Setting", ['port', 'name', 'alias'], defaults=('No Name', 'No Alias'))
 ```
 
@@ -612,7 +617,7 @@ print(setting)
 Setting(port=3000, name='No Name', alias='No Alias')
 ```
 
-Creando namedtuple usando una lista
+Creando `namedtuple` usando una lista.
 
 ```python
 s2 = Student._make(['Adam','joe','18'])
@@ -621,30 +626,58 @@ print(s2)
 Student(fname='Adam', lname='joe', age='18')
 ```
 
-Métodos y atributos del objeto  
-Por ejemplo, si queremos conocer todos los atributos que posee un objeto
+**Métodos y atributos del objeto**  
+Por ejemplo, si queremos conocer todos los _atributos_ que posee un objeto
 
 ```py
-setting._fields
+from collections import namedtuple
+
+Setting = namedtuple("Setting", ['port', 'name', 'alias'], defaults=('No Name', 'No Alias'))
+
+Setting._fields
 # Output
 ('port', 'name', 'alias')
+
+Retornar una tupla de strings con cada uno de los atributos que posee dicho objeto.
 ```
 
-Si lo que deseamos es convertir nuestro objecto a un diccionario
+Si lo que deseamos es convertir nuestro objecto a un diccionario, y después se puede serializar como un objeto JSON.
 
 ```py
-setting._asdict()
-#Output
-{'port': 3000, 'name': 'No Name', 'alias': 'No Alias'}
+from collections import namedtuple
+
+Doctor = namedtuple("Medico", ['Nombre', 'Especialidad', 'Telefono'])
+doctor = Doctor("Nombre Doc", "Corazon", 4359876432)
+# --
+Doctor._fields
+('Nombre', 'Especialidad', 'Telefono')
+# --
+doctor.Nombre
+'Nombre Doc'
+
+doctor.Especialidad
+'Corazon'
+
+doctor.Telefono
+4359876432
+# --
+doctor._asdict()
+{'Nombre': 'Nombre Doc', 'Especialidad': 'Corazon', 'Telefono': 4359876432}
+# --
+
 ```
 
 Con el método `_replace()` se crea una nueva instancia a partir del objeto original con la posibilidad de modificar algunos de sus atributos.
 
 ```py
-new_setting = setting._replace(port=8000)
-print(new_setting)
+doctor_1 = doctor._replace(Especialidad="Pulmones")
+print(doctor_1)
 # Output
-Setting(port=8000, name='No Name', alias='No Alias')
+Medico(Nombre='Nombre Doc', Especialidad='Pulmones', Telefono=4359876432)
+# -- 
+doctor_1._asdict()
+# Output
+{'Nombre': 'Nombre Doc', 'Especialidad': 'Pulmones', 'Telefono': 4359876432}
 ```
 
 Creando una nueva instancia usando una instancia existente
@@ -818,11 +851,11 @@ BaseException
            +-- ResourceWarning
 ```
 
-45
+### 45
 
 ### Context managers
 
-Los __context managers__ son objetos de Python que proveen información contextual adicional al bloque de código. Esta información consiste en correr una función (o cualquier callable) cuando se inicia el contexto con el keyword with; al igual que correr otra función cuando el código dentro del bloque with concluye. Por ejemplo:
+Los **context managers** son objetos de Python que proveen información contextual adicional al bloque de código. Esta información consiste en correr una función (o cualquier callable) cuando se inicia el contexto con el keyword with; al igual que correr otra función cuando el código dentro del bloque with concluye. Por ejemplo:
 
 ```python
 with open(‘some_file.txt’) as f:
@@ -1026,4 +1059,401 @@ Although never is often better than *right* now.
 If the implementation is hard to explain, it's a bad idea.
 If the implementation is easy to explain, it may be a good idea.
 Namespaces are one honking great idea -- let's do more of those!
+```
+
+### Guion bajo en Python
+
+De esta manera no se crea una variable que no se ocupa, haciendo el código más eficiente.
+
+```py
+for _ in range(0, 10):
+    print('Hola')
+```
+
+Desempaquetar tuplas
+
+```py
+first, second, *_, last = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+print(first)
+1
+print(second)
+2
+```
+
+Como **placeholder**, cuando se esta trabajando con el shell de python.
+
+```py
+10 + 20
+>>> 30
+_ + 1
+>>> 31
+```
+
+**Namespace**, se evitan conflictos con el interprete y el namespace podemos hacer uso el sufijo guion bajo (`_`) y se evita el uso de palabras reservadas.
+
+```py
+type_ = 'String'
+class_ = 'User'
+```
+
+Para saber las palabras reservadas en python se puede hacer lo siguiente.
+
+```py
+from keyword import kwlist
+print(kwlist)
+
+[
+'False', 'None', 'True', '__peg_parser__', 'and', 'as', 'assert', 'async', 'await', 'break', 
+'class', 'continue', 'def', 'del', 'elif', 'else', 'except', 'finally', 'for', 'from', 'global',
+ 'if', 'import', 'in', 'is', 'lambda', 'nonlocal', 'not', 'or', 'pass', 'raise', 'return', 'try',
+ 'while', 'with', 'yield'
+]
+```
+
+**Atributos privados** con doble guion bajo `__`.
+En la clase `User` se declara el atributo `password` pero con doble guion bajo, para que se trate como privado.
+
+```py
+class User:
+    def __init__(self):
+        self.__password = ''
+```
+
+Por lo tanto, si se intenta acceder a dicho atributo obtendremos un error.
+
+```py
+>>> user = User()
+>>> user.password
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'User' object has no attribute 'password'
+```
+
+Representación de números grandes, para que tengan una mejor legibilidad.
+
+```py
+>>> 1000000000000
+```
+
+```py
+>>> 1_000_000_000_000
+```
+
+### Función `sum`
+
+No es tan eficiente y se puede hacer mejor :point_down:
+
+```py
+total = 0
+for element in range(0, 1_000_000):
+    total += element
+
+print(total)
+```
+
+Es mejor con la función `sum`
+
+```py
+total = sum(range(0, 1_000_000))
+print(total)
+```
+
+### Tipos de métodos de clase
+
+1. Métodos de instancia
+2. Métodos de clase
+3. Método estáticos
+
+#### Métodos de instancia
+
+Como su nombre lo indica, son métodos que le pertenecen a la instancia, _es decir al objeto mismo_, por lo tanto, para poder utilizarlos deberá ser a través del objeto.
+
+```py
+class User:
+    def __init__(self, username):
+        self.username = username
+
+    def say_hello(self):
+        print(f'Hola, mi username es {self.username}')
+```
+
+:point_down:
+
+```py
+user = User("mack")
+user.say_hello()
+# output
+Hola, mi username es mack
+```
+
+El método `say_hello` como esta dentro de la clase `User` le pertenece a la instancia.  
+Frecuentemente tienen un parámetro que hace referencia al mismo objeto que por convención se nombra `self` que es un parámetro que representa a la instancia.
+
+```py
+class User:
+    def __init__(self, username):
+        self.username = username
+
+    def update(self, username, password):  # método que recibe dos argumentos, modifica dos atributos y hace llamado a otro método
+        self.username = username
+        self.password = password
+
+         self.save()
+
+    def __save(self):  # método privado por `__` 
+        pass
+```
+
+#### [Métodos de clase](https://docs.python.org/3.10/library/functions.html#classmethod "Métodos de clase")
+
+> Transforma un método en un método de clase.
+
+Los métodos de clase, **estos métodos que le pertenecen a la clase**. Para hacer uso de ellos lo haremos a utilizar la clase.
+
+Se hace uso del decorador `@classmethod` se define el parámetro que hace referencia a la clase que por convención es `cls`
+
+```py
+class User:
+
+    @classmethod
+    def set_password(cls, password):
+        return password + " mas cifrado"
+```
+
+:point_down:
+
+```py
+User.set_password("mack")
+# output
+'mack mas cifrado'
+```
+
+Los métodos de clase nos permiten acceder a los atributos y métodos.
+
+```py
+class Circle:
+
+    PI = 3.14159265359
+
+    @classmethod
+    def area(cls, radio):
+        return cls.PI  * float(radio ^ 2)
+```
+
+```py
+Circle.PI
+# output
+3.14159265359
+```
+
+```py
+Circle.area(10)
+# output
+25.1327412287
+```
+
+```py
+from datetime import date
+
+# random Person
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    @classmethod
+    def fromBirthYear(cls, name, birthYear):
+        return cls(name, date.today().year - birthYear)
+
+    def display(self):
+        print(self.name + "'s age is: " + str(self.age))
+```
+
+```py
+person = Person("mack", 12)
+person.display()
+# output
+mack's age is: 12
+```
+
+🔦  
+El método `fromBirthYear` toma la **clase** `Person` no el objeto `Person` y como de define el primer parámetro `cls` retorna el constructor llamando `cls(name, date.today().year - birthYear)` que es equivalente a `Person(name, date.today().year - birthYear)`
+
+Haciendo posible 👇
+
+```py
+person = Person.fromBirthYear("mack", 12)
+person.display()
+# output
+mack's age is: 2010
+```
+
+Otro ejemplo. :eyes:
+
+```py
+"""
+Ejemplo de @classmethod
+Contar  cuantas veces se crea un objeto
+de la clase Accumulator
+"""
+
+
+class Accumulator:
+    count = 0  # Atributo de la clase
+
+    def __init__(self):
+        Accumulator.increase_count()
+        print(f"EL TRIBUTO  DE LA CLASE self.count -> {self.count}")
+        self.acc = 0
+        print(f"SE INICIALIZA LA CLASE CON TRIBUTO self.acc -> {self.acc}")
+
+    def add(self, x):
+        self.acc += x
+
+    @classmethod
+    def increase_count(cls):
+        print("SE INCREMENTA A UNO EL ATRIBUTO DE LA CLASE count")
+        cls.count += 1
+
+    @classmethod
+    def get_count(cls):
+        print("RETORNA EL VALOR count")
+        return cls.count
+
+
+if __name__ == "__main__":
+    a = Accumulator()
+    # se crea un objeto de la clase del accumulator
+    print(Accumulator.get_count())
+
+    b = Accumulator()
+    # se crea otro objeto de la clase accumulator
+    print(Accumulator.get_count())
+
+    c = Accumulator()
+    # se crea otro objeto de la clase accumulator
+    print(Accumulator.get_count())
+```
+
+👇 🖨️
+
+```bash
+SE INCREMENTA A UNO EL ATRIBUTO DE LA CLASE count
+EL TRIBUTO  DE LA CLASE self.count -> 1
+SE INICIALIZA LA CLASE CON TRIBUTO self.acc -> 0
+RETORNA EL VALOR count
+1
+SE INCREMENTA A UNO EL ATRIBUTO DE LA CLASE count
+EL TRIBUTO  DE LA CLASE self.count -> 2
+SE INICIALIZA LA CLASE CON TRIBUTO self.acc -> 0
+RETORNA EL VALOR count
+2
+SE INCREMENTA A UNO EL ATRIBUTO DE LA CLASE count
+EL TRIBUTO  DE LA CLASE self.count -> 3
+SE INICIALIZA LA CLASE CON TRIBUTO self.acc -> 0
+RETORNA EL VALOR count
+3
+
+```
+
+#### [Método estáticos](https://docs.python.org/3.10/library/functions.html?highlight=staticmethod#staticmethod "@staticmethod")
+
+> Transform a method into a static method.
+
+- Para crear métodos estáticos es necesario utilizar el decorador @staticmethod, y, al no pertenecer a una clase o a instancia, estos métodos pueden no poseer parámetro alguno.
+- Estos métodos pueden ser utilizados directamente por la clase **pero no pertenesen a la clase**
+- Estos métodos no pueden acceder a los atributos de clase ni a sus métodos.
+
+
+```py
+class Circle:
+
+    @staticmethod
+    def area(radio):
+        return 3.14159265359  * float(radio ^ 2)
+```
+
+👇 🖨️
+
+```py
+>>> Circle.area(10)
+25.1327412287
+```
+
+Aunque, de igual forma, los métodos estáticos también pueden ser llamados por las instancias de las clases.
+
+```py
+circle = Circle()
+circle.area(10)
+# output
+25.1327412287
+```
+
+Otro ejemplo.
+
+```py
+"""
+Ejemplo funcionamiento de @staticmethid
+"""
+
+
+class Accumulator:
+    def __init__(self):
+        self.acc = 0
+        print(f"INICIALIZA LA FUNCIÓN Accumulator CON self.acc -> {self.acc}")
+
+    def add(self, x):
+        print(f"VALOR ANTES DE self.acc -> {self.acc}")
+        print(f"SE LLAMA A AL FUNCIÓN add CON EL PARÁMETRO x -> {x}")
+        self.acc += x
+        print(f"VALOR DESPUÉS DE self.acc -> {self.acc}")
+
+    @staticmethod
+    def sub(x, y):
+        return x - y
+
+
+if __name__ == "__main__":
+    a = Accumulator()
+    a.add(23)
+    a.add(42)
+
+    print(f" VALOR TOTAL DE LA FUNCIÓN add CON EL VALOR DE acc -> {a.acc}")
+
+    print(f"LLAMADA A LA FUNCIÓN staticmethod -> {Accumulator.sub(23, 42)}")
+
+    print(f"LLAMADA A LA FUNCIÓN staticmethod -> {a.sub(20, 3)}")
+```
+
+👇 🖨️
+
+```bash
+INICIALIZA LA FUNCIÓN Accumulator CON self.acc -> 0
+VALOR ANTES DE self.acc -> 0
+SE LLAMA A AL FUNCIÓN add CON EL PARÁMETRO x -> 23
+VALOR DESPUÉS DE self.acc -> 23
+VALOR ANTES DE self.acc -> 23
+SE LLAMA A AL FUNCIÓN add CON EL PARÁMETRO x -> 42
+VALOR DESPUÉS DE self.acc -> 65
+ VALOR TOTAL DE LA FUNCIÓN add CON EL VALOR DE acc -> 65
+LLAMADA A LA FUNCIÓN staticmethod -> -19
+LLAMADA A LA FUNCIÓN staticmethod -> 17
+```
+
+
+
+
+```py
+```
+
+```py
+```
+
+```py
+```
+
+```py
+```
+
+```py
 ```

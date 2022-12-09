@@ -49,7 +49,11 @@ pip install fastapi uvicorn
 🔗:octocat:  [redoc](https://github.com/Redocly/redoc) ↗️  
 🔗 [swagger.io](https://swagger.io/) ↗️  
 
+FastAPI un framework de desarrollo backend para Python.
+
 FastAPI también está parado sobre los hombros de OpenAPI, el cual es un conjunto de reglas que permite definir cómo describir, crear y visualizar APIs.  Open apI ES una especificación de como definir una API
+
+OpenAPI es una especificación para describir, crear, consumir y visualizar APIs REST.
 
 Es un conjunto de reglas que permiten decir que una API está bien definida.
 
@@ -359,6 +363,24 @@ class Person(BaseModel):
 When using `Field()` with Pydantic models, you can also declare extra info for the _JSON_ Schema by passing any other arbitrary arguments to the function.
 
 You can use this to add `example` for each field.
+
+- Pydantic permite validar que un string es un correo electrónico con `EmailStr`
+- La clase Field se importa desde Pydantic
+- **Una excepción** es el tipo de dato que NO puede ser retornado por una path operation function
+- Los parámetros utilizados para validar un query parameter, son igualmente correctos para validar un path parameter
+- Un request body es enviado por un cliente
+- El comando curl Descargar el resultado de visitar un sitio web.
+- Pydantic permite crear modelos de datos, y utilizarlos en una API.
+- `...` Es ul valor alores especiales en Python establece que un query o path parameter es obligatorio
+- `Bool` No es una clases válida que permita definir el tipo de parámetro de uno en particular en la definición de una path operation function
+- FastAPI es Open Source y significa que que cualquier desarrollador en el mundo tiene acceso al código fuente y puede contribuir.
+- Si es posible combinar dos request body en la respuesta http de una path operation
+- Es opcional un query parameter en un endpoint en específico.
+- Una _Path Operation_ function es una función atada a un path operation decorator, que, junto al mismo, hace parte de una path operation.
+- `GET`es una `operations` no deberías enviar jamás un request body.
+- Un Path Parameter en un endpoint en específico, el mismo es _obligatorio
+
+
 
 ```py
 
