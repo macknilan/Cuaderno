@@ -1096,6 +1096,16 @@ type_ = 'String'
 class_ = 'User'
 ```
 
+Representación de números grandes, para que tengan una mejor legibilidad.
+
+```py
+>>> 1000000000000
+```
+
+```py
+>>> 1_000_000_000_000
+```
+
 Para saber las palabras reservadas en python se puede hacer lo siguiente.
 
 ```py
@@ -1110,8 +1120,11 @@ print(kwlist)
 ]
 ```
 
+**Atributos privados**  
 **Atributos privados** con doble guion bajo `__`.
 En la clase `User` se declara el atributo `password` pero con doble guion bajo, para que se trate como privado.
+
+Python implementa el mecanismo **name mangling** para poder simular crear atributos privados.
 
 ```py
 class User:
@@ -1128,15 +1141,91 @@ Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 AttributeError: 'User' object has no attribute 'password'
 ```
-
-Representación de números grandes, para que tengan una mejor legibilidad.
+Otro ejemplo.
 
 ```py
->>> 1000000000000
+class User:
+
+    def __init__(self, username):
+        self.__username = username
+
+
+    def __private_method(self):
+        print('Este es un método privado')
 ```
 
+👇
+
 ```py
->>> 1_000_000_000_000
+user = User("mack")
+user.__username
+# --
+AttributeError                            Traceback (most recent call last)
+Cell In [3], line 1
+----> 1 user.__username
+
+AttributeError: 'User' object has no attribute '__username'
+
+In [4]: user.__private_method
+```
+
+👆 Se indica que el atributo/metodo no se encuentra definido.
+
+Pero si se utiliza un atributo y metodos privados en un método publico **dentro de la clase** no presenta errores. Y es un tipo de encapsulamiento.
+
+```py
+class User:
+
+    def __init__(self, username):
+        self.__username = username
+
+
+    def __private_method(self):
+        print('Este es un método privado')
+
+
+    def public_method(self):
+        print(self.__username)
+        self.__private_method()
+```
+
+👇
+
+```py
+user = User("mack")
+user.public_method()
+# --
+mack
+Este es un método privado
+```
+
+El interprete de 🐍 cambia el nombre de los **atributos del objeto** que tienen doble guión bajo (`__`) como prefijo
+
+```py
+user = User("mack")
+# --
+user.__dict__
+{'_User__username': 'mack'}
+```
+
+Internamente es almancenado con la estructura `_<Clase>__<Atributo>`  
+Y se puede acceder a los atributos y metodos de esta forma.
+
+```py
+user._User__username
+'mack'
+# --
+user._User__private_method()
+Este es un método privado
+```
+
+Se puede modificar los atributos privados de un objeto
+
+```py
+user._User__username = "OTRO NOMBRE"
+# --
+user._User__username
+'OTRO NOMBRE'
 ```
 
 ### Función `sum`

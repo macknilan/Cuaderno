@@ -19,26 +19,32 @@ Hasta ahora, en el curso previo de esta serie hemos utilizado programación orie
 
 Así como los creadores de un lenguaje de programación solo pueden diseñar una fracción muy pequeña de todas las _funciones útiles_ (como abs, float, type, etc.), también pueden escribir una fracción muy pequeña de los _tipos útiles_ (int, str, dict, list, etc.). Ya sabemos los mecanismos que nos permiten crear funciones, ahora veremos los mecanismos que nos permiten crear nuevos tipos (o clases).
 
-#### Clases en Python
+## Clases en Python
 
----
-Las estructuras primitivas con las que hemos trabajado hasta ahora nos permiten definir cosas sencillas, como el costo de algo, el nombre de un usuario, las veces que debe correr un bucle, etc. Sin embargo, existen ocasiones cuando necesitamos definir estructuras más complejas, por ejemplo un hotel. Podríamos utilizar dos listas: una para definir los cuartos y una segunda para definir si el cuarto se encuentra ocupado o no.
+Las estructuras primitivas con las que hemos trabajado hasta ahora nos permiten definir cosas sencillas, como el costo de algo, el nombre de un usuario, las veces que debe correr un bucle, etc. Sin embargo, existen ocasiones cuando necesitamos definir estructuras más complejas, por ejemplo un hotel.
+
+Podríamos utilizar dos listas: una para definir los cuartos y una segunda para definir si el cuarto se encuentra ocupado o no.
 
 ```py
 cuartos_de_hotel = [101, 102, 103, 201, 202, 203]
 cuarto_ocupado = [True, False, False, True, True, False]
 ```
 
-Sin embargo, este tipo de organización rápidamente se sale de control. ¿Qué tal que quisiéramos añadir más _propiedades_, cómo si el cuarto ya fue aseado o no? ¿Si el cuarto tiene cama doble o sencilla? Esto nos lleva a una falta fuerte de organización y es justamente el punto que justifica la existencia de clases.
+Sin embargo, este tipo de organización rápidamente se sale de control.  
+¿Qué tal que quisiéramos añadir más _propiedades_, cómo si el cuarto ya fue aseado o no? ¿Si el cuarto tiene cama doble o sencilla?  
+Esto nos lleva a una falta fuerte de organización y es justamente el punto que justifica la existencia de clases.
 
-Las clases nos permiten crear nuevos tipos que contiene información arbitraria sobre un objeto. En el caso del hotel, podríamos crear dos clases Hotel() y Cuarto() que nos permitiera dar seguimiento a las _propiedades_ como número de cuartos, ocupación, aseo, tipo de habitación, etc.
+Las clases nos permiten crear nuevos tipos que contiene información arbitraria sobre un objeto.  
+En el caso del hotel, podríamos crear dos clases `Hotel()` y `Cuarto()` que nos permitiera dar seguimiento a las _propiedades_ como número de cuartos, ocupación, aseo, tipo de habitación, etc.
 
-Es importante resaltar que las clases solo proveen estructura. Son un molde con el cual podemos construir objetos específicos. _La clase señala las propiedades_ que los hoteles que modelemos tendrán, pero no es ningún hotel específico. _Para eso necesitamos las instancias._
+Es importante resaltar que las clases solo proveen estructura. Son un molde con el cual podemos construir objetos específicos.  
+_La clase señala las propiedades_ que los hoteles que modelemos tendrán, pero no es ningún hotel específico. _Para eso necesitamos las instancias._
 
-#### Instancias
+## Instancias
 
----
-Mientras que las clases proveen la estructura, las instancias son los objetos reales que creamos en nuestro programa: un hotel llamado PlatziHotel o Hilton. Otra forma de pensarlo es que las clases son como un formulario y una vez que se llena cada copia del formulario tenemos las instancias que pertenecen a dicha clase. Cada copia puede tener datos distintos, al igual que cada instancia es distinta de las demás (aunque todas pertenecen a una misma clase).
+Mientras que las clases proveen la estructura, las instancias son los objetos reales que creamos en nuestro programa: un hotel llamado _PlatziHotel_ o _Hilton_.  
+Otra forma de pensarlo es que las clases son como un formulario y una vez que se llena cada copia del formulario tenemos las instancias que pertenecen a dicha clase.  
+Cada copia puede tener datos distintos, al igual que cada instancia es distinta de las demás (aunque todas pertenecen a una misma clase).
 
 Para definir una clase, simplemente utilizamos el keyword class. Por ejemplo:
 
@@ -53,36 +59,42 @@ Una vez que tenemos una clase llamada `Hotel` _podemos generar una instancia lla
 hotel = Hotel()
 ```
 
-#### Atributos de la instancia
+## Atributos de la instancia
 
-_Todas las clases crean objetos y todos los objetos tienen atributos._ Utilizamos el método especial `__init__` para definir el estado inicial de nuestra instancia. Recibe como primer parámetro obligatorio `self` (_que es simplemente una referencia a la instancia_).
+_Todas las clases crean objetos y todos los objetos tienen atributos._
+
+Utilizamos el método especial `__init__` para definir el estado inicial de nuestra instancia. Recibe como primer parámetro obligatorio `self` (**que es simplemente una referencia a la instancia**).
 
 ```py
 class Hotel:
     
-    def __init__(self, numero_maximo_de_huespedes, lugares_de_estacionamiento):
+    def __init__(self, numero_maximo_de_huespedes: int, lugares_de_estacionamiento: int):
         self.numero_maximo_de_huespedes = numero_maximo_de_huespedes
         self.lugares_de_estacionamiento = lugares_de_estacionamiento
-        self.huespedes = 0
+        self.huespedes: int = 0
 
 
 hotel = Hotel(numero_maximo_de_huespedes=50, lugares_de_estacionamiento=20)
-print(hotel.lugares_de_estacionamiento) # 20
+print(hotel.lugares_de_estacionamiento)
+# output
+# 20
 ```
 
-#### Métodos de instancia
+## Métodos de instancia
 
-Mientras que los **atributos de la instancia describen lo que representa el objeto**, los **métodos de instancia nos indican qué podemos hacer con las instancias de dicha clase** y normalmente operan en los mencionados atributos. Los métodos son equivalentes a funciones dentro de la definición de la clase, pero todos reciben self como primer argumento.
+Mientras que los **atributos de la instancia describen lo que representa el objeto**, los **métodos de instancia nos indican qué podemos hacer con las instancias de dicha clase** y normalmente operan en los mencionados atributos. Los métodos son equivalentes a funciones dentro de la definición de la clase, pero todos reciben `self` como primer argumento.
 
 ```py
 class Hotel:
+    def __init__(self, numero_maximo_de_huespedes: int, lugares_de_estacionamiento: int):
+        self.numero_maximo_de_huespedes = numero_maximo_de_huespedes
+        self.lugares_de_estacionamiento = lugares_de_estacionamiento
+        self.huespedes: int = 0
 
-    ...
-
-    def anadir_huespedes(self, cantidad_de_huespedes):
+    def anadir_huespedes(self, cantidad_de_huespedes: int):
         self.huespedes += cantidad_de_huespedes
 
-    def checkout(self, cantidad_de_huespedes):
+    def checkout(self, cantidad_de_huespedes: int):
         self.huespedes -= cantidad_de_huespedes
 
     def ocupacion_total(self):
@@ -102,7 +114,7 @@ hotel.ocupacion_total() # 2
 Pag. 5 - 11
 
 ```py
-# definicion de la clase
+# DEFINICIÓN DE LA CLASE
 class <nombre_de_la_clase>(super_de_la_clase):
     def __init__(self, <params>):
         <expresion>
@@ -114,13 +126,13 @@ class <nombre_de_la_clase>(super_de_la_clase):
 Ejemplo
 
 ```py
-# definicion
+# DEFINICIÓN
 class Persona:
-    def __init__(self, nombre, edad):
+    def __init__(self, nombre: str, edad: int):
         self.nombre = nombre
         self.edad = edad
     
-    def saluda(self, otra_persona):
+    def saluda(self, otra_persona: str):
         return f"Hola, {otra_persona.nombre}, me llamo {self.nombre}"
     
 #Uso
@@ -136,13 +148,13 @@ ejemplo
 ```py
 class Coordenada:
 
-    def __init__(self, x, y):
+    def __init__(self, x: int, y: int):
         self.x = x
         self.y = y
 
-    def distancia(self, otra_coordendada):
-        x_diff = (self.x - otra_coordendada.x)**2
-        y_diff = (self.y - otra_coordendada.y)**2
+    def distancia(self, otra_coordenada: int):
+        x_diff = (self.x - otra_coordenada.x)**2
+        y_diff = (self.y - otra_coordenada.y)**2
 
         return (x_diff + y_diff)**0.5
 
@@ -153,20 +165,23 @@ if __name__ == '__main__':
 
     print(coord_1.distancia(coord_2))
     # 22.02271554554524
-    print(isinstance(coord_2, Coordenada))
+    print(isinstance(coord_2, Coordenada))  # REVISA SI EL OBJETO -PRIMER OBJETO- ES UNA INSTANCIA Ó SUB-CLASE DE -Coordenada-
+    # 👇
     # True
 ```
+
+Otro ejemplo.
 
 ```py
 class TrafficLight:
     '''This is an updated traffic light class'''
-    def __init__(self, color):
+    def __init__(self, color: str):
         self.color = color
 
     def action(self):
         if self.color=='red':
             print('Stop & wait')
-        elif self.color=='yellow':
+        elif self.color=='yellow':  # 👈
             print('Prepare to stop')
         elif self.color=='green':
             print('Go')
@@ -183,30 +198,34 @@ yellow.action()
 
 Pag. 12 - 13
 
+- Descomponer un problema en problemas más pequeños.
+- Las clases permiten crear mayores abstracciones en forma de componentes.
+- Cada clase se encarga de una parte del problema y el programa se vuelve más fácil de mantener.
+
 ```py
 class Car:
-    def __init__(self, model, brand, color):
+    def __init__(self, model: str, brand:str, color: str):
         self.model = model
         self.brand = brand
         self.color = color
-        self._state = 'off'
+        self._state: str = 'off'
         self._motor = Motor(cylinders=4)
         self._tank = Tank(10, 10)
 
-    # Turns car on, if off only
+    # TURNS CAR ON, IF OFF ONLY
     def turn_on(self):
         if self._state == 'off':
             print('*Car turns on*')
             self._state = 'on'
 
-    # Turns car off, if on only
+    # TURNS CAR OFF, IF ON ONLY
     def turn_off(self):
         if self._state == 'on':
             print('*Car turns off*')
             self._state = 'off'
 
-    # Goes forward if on and if has gas in tank, 
-    # else, does nothing or goes off
+    # GOES FORWARD IF ON AND IF HAS GAS IN TANK, 
+    # ELSE, DOES NOTHING OR GOES OFF
     def forward(self, type='slow'):
         if self._state == 'on' and self._tank.current_fuel > 0:
             if type == 'slow':
@@ -224,30 +243,30 @@ class Car:
             self._state = 'off'
 
 
-# Unnecesary to overcomplicate,
-# we only need to know that there is a motor thats needs gas
+# UNNECESARY TO OVERCOMPLICATE,
+# WE ONLY NEED TO KNOW THAT THERE IS A MOTOR THATS NEEDS GAS
 class Motor:
     def __init__(self, cylinders, fuel='gas'):
         self.cylinders = cylinders
         self.fuel = fuel
         self._temperature = 0.0
 
-    def put_gas(self, cuantity):
+    def put_gas(self, quantity):
         pass
 
 
-# Car's gas tank, if ca goes forward,
-# gas goes down
+# CAR'S GAS TANK, IF CA GOES FORWARD,
+# GAS GOES DOWN
 class Tank:
     def __init__(self, capacity, current_fuel):
         self.capacity = capacity
         self.current_fuel = current_fuel
 
-    def use_gas(self, cuantity):
-        if self.current_fuel - cuantity < 0:
+    def use_gas(self, quantity):
+        if self.current_fuel - quantity < 0:
             self.current_fuel = 0
         else:
-            self.current_fuel -= cuantity
+            self.current_fuel -= quantity
 
 
 if __name__ == '__main__':
@@ -268,6 +287,10 @@ if __name__ == '__main__':
 
 Una interfaz para interactuar con el objeto sin preocuparnos como funciona internamente.
 
+- Enfocarse en la información relevante.
+- Separar la información central de los detalles secundarios.
+- Se pude utilizar variables y métodos(privados o públicos)
+
 Pag. 14 - 15
 
 ```py
@@ -275,7 +298,7 @@ class Lavadora:
     def __init__(self):
         pass
 
-    def lavar(self, temperatura="caliente"):
+    def lavar(self, temperatura: str ="caliente"):
         self._llenar_tanque_de_agua(temperatura)
         self._anadir_jabon()
         self._lavar()
@@ -313,7 +336,7 @@ Antes de abordar el tema de decoradores haremos un pequeño repaso por las funci
 Analicemos este sencillo ejemplo donde una función que multiplica un número se eleva a la tercera potencia:
 
 ```py
-def elevar_cubo(numero):
+def elevar_cubo(numero: int):
  return numero * numero * numero
 ```
 
@@ -330,17 +353,17 @@ Otro concepto importante a tener en cuenta es que en Python las funciones son ob
 Veamos un ejemplo donde definimos 3 diferentes funciones que utilizaremos de manera conjunta:
 
 ```py
-def presentarse(nombre):
- return f"Me llamo {nombre}"
+def presentarse(nombre: str) -> None:
+    return f"Me llamo {nombre}"
 
-def estudiemos_juntos(nombre):
- return f"¡Hey {nombre}, aprendamos Python!"
+def estudiemos_juntos(nombre: str) -> None:
+    return f"¡Hey {nombre}, aprendamos Python!"
 
-def consume_funciones(funcion_entrante):
- return funcion_entrante("David")
+def consume_funciones(funcion_entrante: Callable[str], str):
+    return funcion_entrante("David")
 ```
 
-Las primeras dos funciones son obvias en su resultado, donde nos mostrarán un mensaje con el valor de la variable nombre. La tercera función puede ser más compleja de predecir, ya que toma otra función como entrada. Veamos que pasa cuando colocamos una función como atributo:
+Las primeras dos funciones son obvias en su resultado, donde nos mostrarán un mensaje con el valor de la variable nombre. La tercera función puede ser más compleja de predecir, **ya que toma otra función como entrada**. Veamos que pasa cuando colocamos una función como atributo:
 
 ```py
 >>> consume_funciones(presentarse)
@@ -383,16 +406,52 @@ Algunas librerías de Python son: Scikit-learn, NumPy y TensorFlow.
 
 Debemos considerar que las funciones anidadas dentro de `funcion_mayor` no se ejecutan hasta que se llama a esta primera, _siendo muestra del scope o alcance de las funciones_. Si las llamamos obtendremos un error
 
-📹 ![Ejemplo decorador simple python youtube](https://www.youtube.com/watch?v=DQXm6bIZgvk)
+📹 [Ejemplo decorador simple python youtube](https://www.youtube.com/watch?v=DQXm6bIZgvk)
 
-🔗 [Ejemplo decorador simple python youtube](/Python/img/python_decorator_example_01.png) ↗️
+Ejemplo decorador simple python youtube
 
-🔗 [Decoradores en python](/Python/img/python_decorator_example_01.png) ↗️
+Decoradores en python  
+🔗 ![Decoradores en python](/Python/img/python_decorator_example_01.png "Decoradores en python") ↗️
+
+```py
+"""
+Ejemplo de una función que actua como decorador
+"""
+
+
+def funcion_decoradora(funcion_pararametro):
+    """Función que actua como decorador"""
+
+    def funcion_anterior():
+        # ACCIONES ADICIONALES QUE DECORAN
+        print("Se va a realizar un calculo")
+        funcion_pararametro()
+
+        # ACCIONES ADICIONALES QUE DECORAN
+        print("Se termina el calculo")
+
+    return funcion_anterior
+
+
+@funcion_decoradora
+def suma():
+    print(15 + 15)
+
+
+@funcion_decoradora
+def resta():
+    print(30 - 10)
+
+
+suma()
+
+resta()
+
+```
 
 ## Setters, getters y decorador property
 
 Entendiendo el concepto de decorador  
-Antes de comenzar me gustaría que analices el siguiente código:
 
 ```py
 def funcion_decoradora(funcion):
@@ -428,13 +487,14 @@ def zumbido():
  print("Buzzzzzz")
 ```
 
-En solo tres líneas de código tenemos el mismo resultado que escribir zumbido = funcion_decoradora(zumbido).
+En solo tres líneas de código tenemos el mismo resultado que escribir `zumbido = funcion_decoradora(zumbido)`.
 
 **¿Qué son getters y setters?**
 
-A diferencia de otros lenguajes de programación, en Python los `getters` y `setters` tienen el objetivo de asegurar el encapsulamiento de datos. Cómo habrás visto, si declaramos una variable privada en Python al colocar un guion bajo al inicio de esta (_) y normalmente son utilizados para: añadir lógica de validación al momento de obtener y definir un valor y, para evitar el acceso directo al campo de una clase.
+A diferencia de otros lenguajes de programación, en Python los `getters` y `setters` tienen el objetivo de asegurar el encapsulamiento de datos. Cómo habrás visto, si declaramos una variable privada en Python al colocar un guion bajo al inicio de esta (`_`) y normalmente son utilizados para: añadir lógica de validación al momento de obtener y definir un valor y, para evitar el acceso directo al campo de una clase.
 
-La realidad es que en Python no existen variables netamente privadas, pues aunque se declaren con un guion bajo podemos seguir accediendo a estas. En Programación Orientada a Objetos esto es peligroso, pues podemos alterar el método de alguna clase y tener efectos colaterales que afecten la lógica de nuestra aplicación.
+La realidad es que en Python no existen variables netamente privadas, pues aunque se declaren con un guion bajo podemos seguir accediendo a estas.  
+En Programación Orientada a Objetos esto es peligroso, pues podemos alterar el método de alguna clase y tener efectos colaterales que afecten la lógica de nuestra aplicación.
 
 Clases sin getters y setters
 
@@ -445,8 +505,8 @@ class Millas:
     def __init__(self, distancia = 0):
         self.distancia = distancia
 
- def convertir_a_kilometros(self):
-    return (self.distancia * 1.609344)
+    def convertir_a_kilometros(self):
+        return (self.distancia * 1.609344)
 ```
 
 Ahora creemos un objeto que haga referencia a un viaje:
@@ -479,11 +539,11 @@ class Millas:
     def convertir_a_kilometros(self):
         return (self.distancia * 1.609344)
 
-    # Método getter
+    # MÉTODO GETTER
     def obtener_distancia(self):
         return self._distancia
 
-    # Método setter
+    # MÉTODO SETTER
     def definir_distancia(self, valor):
         if valor < 0:
             raise ValueError("No es posible convertir distancias menores a 0.")
@@ -500,10 +560,10 @@ Esta función está incluida en Python, en particular crea y retorna la propieda
 
 En tanto la función tiene cuatro atributos: `property(fget, fset, fdel, fdoc)` :
 
-+ `fget` : trae el valor de un atributo.
-+ `fset` : define el valor de un atributo.
-+ `fdel` : elimina el valor de un atributo.
-+ `fdoc` : crea un docstring por atributo.
+- `fget` : trae el valor de un atributo.
+- `fset` : define el valor de un atributo.
+- `fdel` : elimina el valor de un atributo.
+- `fdoc` : crea un docstring por atributo.
 
 Veamos un ejemplo del mismo caso implementando la función `property()` :
 
@@ -512,17 +572,17 @@ class Millas:
     def __init__(self):
         self._distancia = 0
 
-    # Función para obtener el valor de _distancia
+    # FUNCIÓN PARA OBTENER EL VALOR DE _DISTANCIA
     def obtener_distancia(self):
         print("Llamada al método getter")
         return self._distancia
 
-    # Función para definir el valor de _distancia
+    # FUNCIÓN PARA DEFINIR EL VALOR DE _DISTANCIA
     def definir_distancia(self, recorrido):
         print("Llamada al método setter")
         self._distancia = recorrido
 
-    # Función para eliminar el atributo _distancia
+    # FUNCIÓN PARA ELIMINAR EL ATRIBUTO _DISTANCIA
     def eliminar_distancia(self):
         del self._distancia
 
@@ -531,13 +591,13 @@ class Millas:
 
 if __name__ == "__main__":
 
-    # Creamos un nuevo objeto
+    # CREAMOS UN NUEVO OBJETO
     avion = Millas()
 
-    # Indicamos la distancia
+    # INDICAMOS LA DISTANCIA
     avion.distancia = 200
 
-    # Obtenemos su atributo distancia
+    # OBTENEMOS SU ATRIBUTO DISTANCIA
     print(avion.distancia)
     # Llamada al método getter
     # Llamada al método setter
@@ -589,7 +649,7 @@ Llamada al método setter
 
 [Role of Underscore(_) in Python](https://www.datacamp.com/community/tutorials/role-underscore-python)
 
-La encapsulacin nos permite agrupar datos y controlar su comportamiento en nuestra clase. También nos permite controlar el acceso a nuestros datos y prevenir modificaciones no autorizadas.
+La encapsulación nos permite agrupar datos y controlar su comportamiento en nuestra clase. También nos permite controlar el acceso a nuestros datos y prevenir modificaciones no autorizadas.
 
 ```py
 class CasillaDeVotacion:
@@ -667,11 +727,51 @@ if __name__ == "__main__":
     print(cuadrado.area())
 ```
 
-`super()` es una funcion que te acceder a los _atributos y metodos_ de la clase base.
+Otro ejemplo.
 
 ```py
-class Espada:
+# Creamos una clase padre llamada "Animal"
+class Animal:
+  def __init__(self, name):
+    self.name = name
 
+  def speak(self):
+    print("{} makes a noise.".format(self.name))
+
+# Creamos una clase hija llamada "Dog" que hereda de la clase "Animal"
+class Dog(Animal):
+  def __init__(self, name, breed):
+    # Llamamos al método __init__ de la clase padre
+    super().__init__(name)
+    self.breed = breed
+
+  # Sobrescribimos el método "speak" de la clase padre
+  def speak(self):
+    print("{} barks.".format(self.name))
+
+# Creamos una instancia de la clase "Dog"
+dog = Dog("Max", "Golden Retriever")
+
+# Llamamos al método "speak" de la clase "Dog"
+dog.speak()
+
+```
+
+print 👇
+
+```bash
+Max barks.
+```
+
+`super()` es una funcion para acceder a los **atributos y métodos** de la clase base.
+
+```py
+"""
+Programa de ejemplo de herencia de clases.
+"""
+
+
+class Espada:
     def __init__(self, nombre, rareza, dano, durabilidad):
         self.nombre = nombre
         self.rareza = rareza
@@ -682,13 +782,14 @@ class Espada:
         if self.durabilidad > 0 and objetivo["vida"] > 0:
             objetivo["vida"] -= self.dano + objetivo["resistencia"]
             self.durabilidad -= 0.7
+            print(f"self.durabilidad -- > {self.durabilidad}")
         elif objetivo["vida"] <= 0:
             print("El objetivo ha muerto")
         else:
-            print("La espada se ha roto") # durabilidad <= 0
+            print("La espada se ha roto")  # durabilidad <= 0
+
 
 class SuperEspada(Espada):
-
     def __init__(self, nombre, rareza, dano, durabilidad, atributo, dano_elemental):
         super().__init__(nombre, rareza, dano, durabilidad)
         self.atributo = atributo
@@ -701,16 +802,32 @@ class SuperEspada(Espada):
         elif objetivo["Tipo"] != self.atributo:
             objetivo["Vida"] -= self.dano + self.dano_elemental
             self.durabilidad -= 1
-        
+
+
 if __name__ == "__main__":
     espada_basica = Espada("Espada de Principiante", "Normal", 15, 100)
-    print(f"Nombre: {espada_basica.nombre} \nRareza: {espada_basica.rareza}\n" )
+    print(f"Nombre: {espada_basica.nombre} \nRareza: {espada_basica.rareza}\n")
+    espada_basica.atacar({"vida": 1, "resistencia": 1})
 
     espada_elemental = SuperEspada("Espada Rayo", "Rara", 30, 150, "Rayo", 15)
-    print(f"Nombre: {espada_elemental.nombre} \nRareza: {espada_elemental.rareza} \nAtributo: {espada_elemental.atributo}\n")
+    print(
+        f"Nombre: {espada_elemental.nombre} \nRareza: {espada_elemental.rareza} \nAtributo: {espada_elemental.atributo}\n"
+    )
+
 ```
 
-**Herencia multiple** una clase puede derivarse de más de una clase base en python :snake: En la herencia multiple, las caracteristicas de todas las clases base se heredan a la clase derivada.
+print 👇
+
+```py
+Nombre: Espada de Principiante 
+Rareza: Normal
+
+Nombre: Espada Rayo 
+Rareza: Rara 
+Atributo: Rayo
+```
+
+**Herencia multiple** una clase puede derivarse de más de una clase base en :snake: En la herencia multiple, las caracteristicas de todas las clases base se heredan a la clase derivada.
 
 🔗 [Herencia en python](https://ellibrodepython.com/herencia-en-python) ↗️
 
@@ -771,6 +888,13 @@ if __name__ == '__main__':
     main()
 ```
 
+output :point_down:
+
+```bash
+Ando caminando
+Ando moviendome en mi bicicleta
+```
+
 También podemos heredar de una clase derivada, esto se define como **herencia multi-nivel**
 
 ## Complejidad algorítmica
@@ -788,9 +912,9 @@ Aproximaciones
 
 ¿Como podríamos aplicar nuestra función T(n)?
 
-+ Cronometrar el tiempo en el que corre un algoritmo. Sin embargo no es una buena forma de medir los algoritmos, ya que no se puede predecir cuanto demorara a medida que crece nuestros pasos.
-+ Contar los pasos con una medida abstracta de operación. Nos puede acercar a una medición ideal, sin embargo varia mucho de algoritmo en algoritmo y a medida que crece nuestro dataset existen muchos términos que llegan a ser irrelevantes.
-+ Contar los pasos conforme nos aproximamos al infinito pero con una medida asintótica(con forme se acerque al infinito).
+- Cronometrar el tiempo en el que corre un algoritmo. Sin embargo no es una buena forma de medir los algoritmos, ya que no se puede predecir cuanto demorara a medida que crece nuestros pasos.
+- Contar los pasos con una medida abstracta de operación. Nos puede acercar a una medición ideal, sin embargo varia mucho de algoritmo en algoritmo y a medida que crece nuestro dataset existen muchos términos que llegan a ser irrelevantes.
+- Contar los pasos conforme nos aproximamos al infinito pero con una medida asintótica(con forme se acerque al infinito).
 
 Medición temporal
 
@@ -860,9 +984,9 @@ def f(x):
 
 🔗 [Notación Big-O](https://www.youtube.com/watch?v=MyAiCtuhiqQ) ↗️  
 
-+ _Un loop_ => crecimiento lineal.
-+ _Un loop dentro de otro_ => crecimiento cuadratico
-+ _Llamadas recursivas_ => crecimiento exponecncial.
+- _Un loop_ => crecimiento lineal.
+- _Un loop dentro de otro_ => crecimiento cuadratico
+- _Llamadas recursivas_ => crecimiento exponecncial.
 
 Cuando hablamos de **notación asintótica** no importan las variaciones pequeñas, _el enfoque se centra en lo que pasa conforme el tamaño del problema se acerca al infinito._
 
@@ -938,18 +1062,17 @@ def fibonacci(n):
 
 Existen distintos tipos de complejidad algorítmica:
 
-+ **O(1) Constante:** no importa la cantidad de input que reciba, siempre demorara el **mismo tiempo**. Un loop de 1000.
-+ **O(n) Lineal:** la complejidad crecerá de forma **proporcional** a medida que crezca el input.
-+ **O(log n) Logarítmica:** nuestra función crecerá de forma **logarítmica** con respecto al input. Esto significa que en un inicio crecerá rápido, pero luego se estabilizara.
-+ **O(n log n) Log lineal:** crecerá de forma **logarítmica** pero junto con una **constante**.
-+ **O(n²) Polinomial:** crecen de forma cuadrática. No son recomendables a menos que el input de datos en pequeño.
-+ **O(2^n) Exponencial:** crecerá de forma **exponencial**, por lo que la carga es muy alta. Para nada recomendable en ningún caso, solo para análisis conceptual.
-+ **O(n!) Factorial:** crece de forma **factorial**, por lo que al igual que el exponencial su carga es muy alta, por lo que jamas utilizar algoritmos de este tipo.
+- **O(1) Constante:** no importa la cantidad de input que reciba, siempre demorara el **mismo tiempo**. Un loop de 1000.
+- **O(n) Lineal:** la complejidad crecerá de forma **proporcional** a medida que crezca el input.
+- **O(log n) Logarítmica:** nuestra función crecerá de forma **logarítmica** con respecto al input. Esto significa que en un inicio crecerá rápido, pero luego se estabilizara.
+- **O(n log n) Log lineal:** crecerá de forma **logarítmica** pero junto con una **constante**.
+- **O(n²) Polinomial:** crecen de forma cuadrática. No son recomendables a menos que el input de datos en pequeño.
+- **O(2^n) Exponencial:** crecerá de forma **exponencial**, por lo que la carga es muy alta. Para nada recomendable en ningún caso, solo para análisis conceptual.
+- **O(n!) Factorial:** crece de forma **factorial**, por lo que al igual que el exponencial su carga es muy alta, por lo que jamas utilizar algoritmos de este tipo.
 
 🔗 [Big-O Cheat Sheet](https://www.bigocheatsheet.com/) ↗️
 
 ![big-O Cheat Sheet](../img/big-O_cheat_sheet.png)
-
 
 ## Algoritmos de búsqueda y ordenación
 
@@ -981,7 +1104,6 @@ if __name__ == '__main__':
     print(lista)
     print(f'El elemento {objetivo} {"esta" if encontrado else "no esta"} en la lista')
 ```
-
 
 ### Búsqueda binaria
 
@@ -1253,8 +1375,6 @@ if __name__ == '__main__':
     print(lista_ordenada)
 ```
 
-## Ambientes virtuales
-
 ### Ambientes virtuales
 
 🔗 [venv — Creation of virtual environments](https://docs.python.org/3/library/venv.html) ↗️
@@ -1281,6 +1401,8 @@ Para desactivar el entorno virtual
 ### ¿Por qué graficar?
 
 ### Graficado simple
+
+🔗 [boke](https://docs.bokeh.org/en/latest/index.html "boke") ↗️
 
 ## Algoritmos de optimización
 
@@ -1314,3 +1436,151 @@ if __name__ == '__main__':
     resultado = morral(tamano_morral, pesos, valores, n)
     print(resultado)
 ```
+
+## Data clases(@dataclasses)
+
+
+Desde la versión 3.7 de Python se puede hacer uso del feature **Data classes**, una forma muy sencilla con la cual podemos crear clases que posean, principalmente datos.
+
+Para nosotros hacer uso de los Data classes nos apoyaremos del decorador `@dataclass`.
+
+
+```py
+from dataclasses import dataclass
+
+@dataclass
+class User:
+    username: str
+    email: str
+```
+
+En este caso basta con decorar nuestra clase, y definir todos los atributos (con sus correspondientes tipos) que poseerá.
+
+🔗 [docs.python.org/es/3.10/library/dataclasses.html](https://docs.python.org/es/3.10/library/dataclasses.html "@dataclasses")
+
+> Este módulo provee un decorador y funciones para añadir métodos especiales automáticamente, como `__init__()` y `__repr__()` por ejemplo, a clases definidas por el usuario. Fue originalmente descrito en PEP 557.  
+> Las variables miembro a utilizar en estos métodos generados son definidas teniendo en cuenta anotaciones de tipo PEP 526. Por ejemplo, en este código:
+
+```py
+from dataclasses import dataclass
+
+@dataclass
+class InventoryItem:
+    """Class for keeping track of an item in inventory."""
+    name: str
+    unit_price: float
+    quantity_on_hand: int = 0
+
+    def total_cost(self) -> float:
+        return self.unit_price * self.quantity_on_hand
+```
+
+Añadirá, además de otros métodos, un método `__init__()` con la siguiente estructura:
+
+Es importante observar que este método es añadido a la clase automáticamente; está implícito en la definición de `InventoryItem` implementada arriba.
+
+Otro ejemplo.
+
+```py
+"""
+EJEMPLO DE @dataclasses
+"""
+
+import random
+import string
+from dataclasses import dataclass, field
+
+
+def generate_id() -> str:
+    return "".join(random.choices(string.ascii_uppercase, k=12))
+
+
+# @dataclass(frozen=True)
+# -frozen=True- hace que los atributos de la clase no sean mutables, los valores con los que sé
+# iniciaron al momento de crear la clase -Person-
+# -@dataclass(kw_only=True)- 3.10 FUERZA a que al momento de inicializar el objeto -Person- sea con llave valor
+# -Person(name="Rodolfo", address="123 calle siempre viva")-
+@dataclass(kw_only=True, slots=True)
+class Person:
+    """
+    De forma implicita se genera __repr__
+
+    """
+
+    name: str
+    address: str
+    active: bool = True  # valor por defecto(True) y no se tienen que declarar cuando se crea el objeto Person
+    email_addressess: list[str] = field(default_factory=list)
+    # 👆 El parámetro es una lista de strings, que es diferente para cada objeto que se cree.
+    id: str = field(init=False, default_factory=generate_id)
+    # 👆 El parámetro de tipo string es diferente para cada objeto que se cree y por default
+    # se crea un valor random por medio de la función
+    # -init=False- ocasiona que no se inicialice al momento de crear el objeto -Person- ❌ id="CHKWKFCGSNPY"
+    # y que se cree por default por medio de la función.
+    _search_string: str = field(init=False, repr=False)
+
+    def __post_init__(self) -> None:
+        self._search_string = f"{self.name} {self.address}"
+        # 👆 El atributo de la clase -search_string- con el método predefinido -__post_init__- se le asigna un
+        # valor después de crear el objeto con los atributos -name- y -address-
+        # -repr=False- indica que oculta el atributo al momento de imprimir la instancia del objeto -Person-
+        # pero sigue siendo parte de la clase.
+
+
+def main() -> None:
+    person = Person(name="Rodolfo", address="123 calle siempre viva")
+    # print(person.__dict__["name"])
+    # 👆 -slots=False- permite imprimir de esta forma
+    print(person.__dir__())
+    # 👆 -slots- en dataclass hacen posible -> @dataclass(slots=True) LAS CLASES SON MUCHO MÁS RÁPIDAS 👀
+    # ❌ No utilizar con herencia multiple -slots-.
+    print(person.name)
+    print(person)
+
+
+if __name__ == "__main__":
+    main()
+
+```
+
+output 👇
+
+```bash
+['__module__', '__annotations__', '__doc__', '__post_init__', '__weakref__', '__dataclass_params__', '__dataclass_fields__', '__init__', '__repr__', '__eq__', '__hash__', '__match_args__', '__slots__', '_search_string', 'active', 'address', 'email_addressess', 'id', 'name', '__new__', '__str__', '__getattribute__', '__setattr__', '__delattr__', '__lt__', '__le__', '__ne__', '__gt__', '__ge__', '__reduce_ex__', '__reduce__', '__subclasshook__', '__init_subclass__', '__format__', '__sizeof__', '__dir__', '__class__']
+Rodolfo
+Person(name='Rodolfo', address='123 calle siempre viva', active=True, email_addressess=[], id='QODUKIQBFQVD')
+```
+
+
+```py
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
