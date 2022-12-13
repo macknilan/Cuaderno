@@ -56,6 +56,7 @@ $$$$$$$$$$  $$$   $$$$   $$$$   $$$$ $$$ $$$$$ $$$$$  QQQQQ$$$$$$$QQQQQ
 - [Domain Information Groper](#28-domain-information-groper)
 - [Copy standard out to clipboard](#29-copy-standard-out-to-clipboard)
 - [netstat Command in Linux](#30-netstat-command-in-linux)
+- [Tmux](#31-tmux)
 
 ### 1. Ayuda
 
@@ -2220,5 +2221,56 @@ Mostrar cuantos programas estan a la escucha y en que puerto
 ```shell
 netstat -ap | grep http
 ```
+
+[[Volver al índice]](#INDEX)
+
+### 31. Tmux
+
+Tmux is a terminal multiplexer an alternative to GNU Screen . In other words, it means that you can start a Tmux session and then open multiple windows inside that session. Each window occupies the entire screen and can be split into rectangular panes.
+
+With Tmux you can easily switch between multiple programs in one terminal, detach them and reattach them to a different terminal.
+
+Tmux sessions are persistent, which means that programs running in Tmux will continue to run even if you get disconnected.
+
+Todos los comandos en Tmux comienzan con un prefijo, que por defecto es `ctrl+b`
+
+Crear una sesion con un nomber
+
+```shell
+tmux new -s session_name
+```
+
+Desconectarse de la sesión de Tmux y volver al su shell normal.
+
+```shell
+ctrl+b d
+```
+
+Re-desconectarse de la sesión de Tmux y volver al su shell normal.  
+Para listar el nombnre de las sesiones que se encuentran ejecutandose.
+
+```shell
+tmux ls
+# output
+dev: 1 windows (created Tue Dec 13 16:56:49 2022)
+```
+
+Re-conectarse a la sesion `dev`
+
+```shell
+tmux attach-session -t dev
+```
+
+Maneno de ventanas y paneles.
+
+1. `Ctrl+b` `c` Create a new window (with shell)
+2. `Ctrl+b` `w` Choose window from a list
+3. `Ctrl+b` `0` Switch to window 0 (by number )
+4. `Ctrl+b` `,` Rename the current window
+5. `Ctrl+b` `%` Split current pane horizontally into two panes
+6. `Ctrl+b` `"` Split current pane vertically into two panes
+7. `Ctrl+b` `o` Go to the next pane
+8. `Ctrl+b` `;` Toggle between the current and previous pane
+9. `Ctrl+b` `x` Close the current pane
 
 [[Volver al índice]](#INDEX)
