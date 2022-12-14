@@ -1437,13 +1437,296 @@ if __name__ == '__main__':
     print(resultado)
 ```
 
-## Data clases(@dataclasses)
+## Tipos de métodos de clase
 
+1. Métodos de instancia
+2. Métodos de clase
+3. Método estáticos
+
+### Métodos de instancia
+
+Como su nombre lo indica, son métodos que le pertenecen a la instancia, _es decir al objeto mismo_, por lo tanto, para poder utilizarlos deberá ser a través del objeto.
+
+```py
+class User:
+    def __init__(self, username):
+        self.username = username
+
+    def say_hello(self):
+        print(f'Hola, mi username es {self.username}')
+```
+
+:point_down:
+
+```py
+user = User("mack")
+user.say_hello()
+# output
+Hola, mi username es mack
+```
+
+El método `say_hello` como esta dentro de la clase `User` le pertenece a la instancia.  
+Frecuentemente tienen un parámetro que hace referencia al mismo objeto que por convención se nombra `self` que es un parámetro que representa a la instancia.
+
+```py
+class User:
+    def __init__(self, username):
+        self.username = username
+
+    def update(self, username, password):  # método que recibe dos argumentos, modifica dos atributos y hace llamado a otro método
+        self.username = username
+        self.password = password
+
+         self.save()
+
+    def __save(self):  # método privado por `__` 
+        pass
+```
+
+### [Métodos de clase](https://docs.python.org/3.10/library/functions.html#classmethod "Métodos de clase")
+
+> Transforma un método en un método de clase.
+
+Los métodos de clase, **estos métodos que le pertenecen a la clase**. Para hacer uso de ellos lo haremos a utilizar la clase.
+
+Se hace uso del decorador `@classmethod` se define el parámetro que hace referencia a la clase que por convención es `cls`
+
+```py
+class User:
+
+    @classmethod
+    def set_password(cls, password):
+        return password + " mas cifrado"
+```
+
+:point_down:
+
+```py
+User.set_password("mack")
+# output
+'mack mas cifrado'
+```
+
+Los métodos de clase nos permiten acceder a los atributos y métodos.
+
+```py
+class Circle:
+
+    PI = 3.14159265359
+
+    @classmethod
+    def area(cls, radio):
+        return cls.PI  * float(radio ^ 2)
+```
+
+```py
+Circle.PI
+# output
+3.14159265359
+```
+
+```py
+Circle.area(10)
+# output
+25.1327412287
+```
+
+Otro ejemplo 👇
+
+```py
+from datetime import date
+
+# random Person
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    @classmethod
+    def fromBirthYear(cls, name, birthYear):
+        return cls(name, date.today().year - birthYear)
+
+    def display(self):
+        print(self.name + "'s age is: " + str(self.age))
+```
+
+```py
+person = Person("mack", 12)
+person.display()
+# output
+mack's age is: 12
+```
+
+🔦  
+El método `fromBirthYear` toma la **clase** `Person` no el objeto `Person` y como de define el primer parámetro `cls` retorna el constructor llamando `cls(name, date.today().year - birthYear)` que es equivalente a `Person(name, date.today().year - birthYear)`
+
+Haciendo posible 👇
+
+```py
+person = Person.fromBirthYear("mack", 12)
+person.display()
+# output
+mack's age is: 2010
+```
+
+Otro ejemplo. :eyes:
+
+```py
+"""
+Ejemplo de @classmethod
+Contar  cuantas veces se crea un objeto
+de la clase Accumulator
+"""
+
+
+class Accumulator:
+    count = 0  # Atributo de la clase
+
+    def __init__(self):
+        Accumulator.increase_count()
+        print(f"EL TRIBUTO  DE LA CLASE self.count -> {self.count}")
+        self.acc = 0
+        print(f"SE INICIALIZA LA CLASE CON TRIBUTO self.acc -> {self.acc}")
+
+    def add(self, x):
+        self.acc += x
+
+    @classmethod
+    def increase_count(cls):
+        print("SE INCREMENTA A UNO EL ATRIBUTO DE LA CLASE count")
+        cls.count += 1
+
+    @classmethod
+    def get_count(cls):
+        print("RETORNA EL VALOR count")
+        return cls.count
+
+
+if __name__ == "__main__":
+    a = Accumulator()
+    # se crea un objeto de la clase del accumulator
+    print(Accumulator.get_count())
+
+    b = Accumulator()
+    # se crea otro objeto de la clase accumulator
+    print(Accumulator.get_count())
+
+    c = Accumulator()
+    # se crea otro objeto de la clase accumulator
+    print(Accumulator.get_count())
+```
+
+👇 🖨️
+
+```bash
+SE INCREMENTA A UNO EL ATRIBUTO DE LA CLASE count
+EL TRIBUTO  DE LA CLASE self.count -> 1
+SE INICIALIZA LA CLASE CON TRIBUTO self.acc -> 0
+RETORNA EL VALOR count
+1
+SE INCREMENTA A UNO EL ATRIBUTO DE LA CLASE count
+EL TRIBUTO  DE LA CLASE self.count -> 2
+SE INICIALIZA LA CLASE CON TRIBUTO self.acc -> 0
+RETORNA EL VALOR count
+2
+SE INCREMENTA A UNO EL ATRIBUTO DE LA CLASE count
+EL TRIBUTO  DE LA CLASE self.count -> 3
+SE INICIALIZA LA CLASE CON TRIBUTO self.acc -> 0
+RETORNA EL VALOR count
+3
+
+```
+
+### [Método estáticos](https://docs.python.org/3.10/library/functions.html?highlight=staticmethod#staticmethod "@staticmethod")
+
+> Transform a method into a static method.
+
+- Para crear métodos estáticos es necesario utilizar el decorador `@staticmethod`, y al no pertenecer a una clase o a instancia, estos métodos pueden no poseer parámetro alguno.
+- Estos métodos pueden ser utilizados directamente por la clase **pero no pertenesen a la clase**
+- Estos métodos no pueden acceder a los atributos de clase ni a sus métodos.
+
+```py
+class Circle:
+
+    @staticmethod
+    def area(radio):
+        return 3.14159265359  * float(radio ^ 2)
+```
+
+👇 🖨️
+
+```py
+>>> Circle.area(10)
+25.1327412287
+```
+
+Aunque, de igual forma, los métodos estáticos también pueden ser llamados por las instancias de las clases.
+
+```py
+circle = Circle()
+circle.area(10)
+# output
+25.1327412287
+```
+
+Otro ejemplo.
+
+```py
+"""
+Ejemplo funcionamiento de @staticmethid
+"""
+
+
+class Accumulator:
+    def __init__(self):
+        self.acc = 0
+        print(f"INICIALIZA LA FUNCIÓN Accumulator CON self.acc -> {self.acc}")
+
+    def add(self, x):
+        print(f"VALOR ANTES DE self.acc -> {self.acc}")
+        print(f"SE LLAMA A AL FUNCIÓN add CON EL PARÁMETRO x -> {x}")
+        self.acc += x
+        print(f"VALOR DESPUÉS DE self.acc -> {self.acc}")
+
+    @staticmethod
+    def sub(x, y):
+        return x - y
+
+
+if __name__ == "__main__":
+    a = Accumulator()
+    a.add(23)
+    a.add(42)
+
+    print(f" VALOR TOTAL DE LA FUNCIÓN add CON EL VALOR DE acc -> {a.acc}")
+
+    print(f"LLAMADA A LA FUNCIÓN staticmethod -> {Accumulator.sub(23, 42)}")
+
+    print(f"LLAMADA A LA FUNCIÓN staticmethod -> {a.sub(20, 3)}")
+```
+
+👇 🖨️
+
+```bash
+INICIALIZA LA FUNCIÓN Accumulator CON self.acc -> 0
+VALOR ANTES DE self.acc -> 0
+SE LLAMA A AL FUNCIÓN add CON EL PARÁMETRO x -> 23
+VALOR DESPUÉS DE self.acc -> 23
+VALOR ANTES DE self.acc -> 23
+SE LLAMA A AL FUNCIÓN add CON EL PARÁMETRO x -> 42
+VALOR DESPUÉS DE self.acc -> 65
+ VALOR TOTAL DE LA FUNCIÓN add CON EL VALOR DE acc -> 65
+LLAMADA A LA FUNCIÓN staticmethod -> -19
+LLAMADA A LA FUNCIÓN staticmethod -> 17
+```
+
+
+
+## Data clases(@dataclasses)
 
 Desde la versión 3.7 de Python se puede hacer uso del feature **Data classes**, una forma muy sencilla con la cual podemos crear clases que posean, principalmente datos.
 
 Para nosotros hacer uso de los Data classes nos apoyaremos del decorador `@dataclass`.
-
 
 ```py
 from dataclasses import dataclass
@@ -1551,36 +1834,75 @@ Rodolfo
 Person(name='Rodolfo', address='123 calle siempre viva', active=True, email_addressess=[], id='QODUKIQBFQVD')
 ```
 
+### Restructuración/refactor de clases grandes con `@dataclasess`
+
+Si se tieien  clases con muchos atributos lo más recomendable es re-estructurar en varias clases.
+
+```py
+"""
+EJEMPLO DE @dataclasses
+Demostrar como una clase con muchos atributos se pude descomponer en varias
+clases y tener una mejor estructura
+"""
+from __future__ import annotations
+
+import random
+from dataclasses import dataclass, field
+
+
+def constrained_sum_sample_pos(n: int, total: int) -> list[int]:
+    dividers = sorted(random.sample(range(1, total), n - 1))
+    return [a - b for a, b in zip(dividers + [total], [0] + dividers)]
+
+
+@dataclass
+class CharacterTraits:
+    strength: int = 0
+    constitution: int = 0
+    dexterity: int = 0
+    intelligent: int = 0
+    wisdown: int = 0
+    charisma: int = 0
+
+    @staticmethod
+    def roll() -> CharacterTraits:  # esto se puede hacer por -annotations-
+        print(constrained_sum_sample_pos)
+        return CharacterTraits(*constrained_sum_sample_pos(6, 100))
+
+
+@dataclass
+class Player:
+    name: str
+    traits: CharacterTraits = field(default_factory=CharacterTraits.roll)
+    health: int = 100
+    xp: int = 0
+    inventory: list[str] = field(default_factory=list)
+
+
+def main():
+    # player = Player(name="mack", traits=CharacterTraits(strength=10))
+    player = Player(name="mack")
+
+    print(f"player.name  --> {player.name}")
+    print(f"player.health  --> {player.health}")
+    print(f"player.xp  --> {player.xp}")
+    print(f"player.inventory  --> {player.inventory}")
+    print(f"player.traits.strength  --> {player.traits.strength}")
+    print(f"player.traits.constitution  --> {player.traits.constitution}")
+    print(f"player.traits.dexterity  --> {player.traits.dexterity}")
+    print(f"player.traits.wisdown  --> {player.traits.wisdown}")
+    print(f"player.traits.charisma  --> {player.traits.charisma}")
+
+    print(f"player.__annotations__ --> {player.__annotations__}")
+
+
+if __name__ == "__main__":
+    main()
+
+```
 
 ```py
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+```py
+```
