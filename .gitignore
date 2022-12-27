@@ -25,6 +25,8 @@ media
 *.bak
 
 # If you are using PyCharm # 
+**/.idea
+**/**/.idea
 .idea/**/workspace.xml 
 .idea/**/tasks.xml 
 .idea/dictionaries 
@@ -37,8 +39,6 @@ media
 .idea/**/uiDesigner.xml 
 .idea/**/gradle.xml 
 .idea/**/libraries 
-**/.idea
-**/**/.idea
 *.iws /out/
 
 # Distribution / packaging
