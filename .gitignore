@@ -37,6 +37,8 @@ media
 .idea/**/uiDesigner.xml 
 .idea/**/gradle.xml 
 .idea/**/libraries 
+**/.idea
+**/**/.idea
 *.iws /out/
 
 # Distribution / packaging
