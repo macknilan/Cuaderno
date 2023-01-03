@@ -572,7 +572,7 @@ git stash
 To stash changes with a message
 
 ```bash
-git stash save "message"
+git stash -m "message"
 ```
 
 To list all the stashed changes

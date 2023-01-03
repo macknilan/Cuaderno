@@ -622,7 +622,6 @@ docker compose -f local.yml run --rm django python manage.py migrate
 docker compose -f local.yml run --rm django python manage.py createsuperuser
 ```
 
-
 ### Docker + Django + Postgresql fast way
 
 1. `mkdir sandbox_dj_docker`
@@ -986,7 +985,6 @@ Tambien ↕️
 docker inspect --format='{{json .NetworkSettings.Networks}}' bfe4f282013d
 ```
 
-
 - Ejecutar **pgAdmin4** y conectarse a esa _IP_ con las credenciales del archivo `.envs` > `.postgres`
 
 Identificar que el los volumenes de declarados se hayan creado correctamente
@@ -1008,9 +1006,11 @@ docker compose -f local.yml exec postgres backup
 ```
 
 output
+
 ```bash
 SUCCESS: 'root_base_backend' database backup 'backup_2022_10_07T22_21_18.sql.gz' has been created and placed in '/backups'.
 ```
+
 Para visualizar los backups realizados, dentro de la carpeta del proyecto.
 
 ```bash
@@ -1018,6 +1018,7 @@ docker compose -f local.yml exec postgres backups
 ```
 
 output
+
 ```bash
 These are the backups you have got:
 total 16K

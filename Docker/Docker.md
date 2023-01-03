@@ -2353,6 +2353,7 @@ testhost
   - Dado que el comando por defecto que ejecutar el contenedor de ubuntu es `/bin/bash` este se apagara cuando no tenga nada que mostrar
   - `tail -f /dev/null` mostrara el contenido nuevo que nunca llegar a nuestro archivo, de esta manera el contenedor nunca se apagara
 - `docker exec -it <id|name> <comando>`
+  - Sirve para entrar a un contenedor activo 👇
   - Ejecuta de forma interactiva un comando en el contenedor, por ejemplo `docker exec -it ubuntu-name bash` "Ejecutamos bash dentro del container ubuntu-name"
 - `docker volume`
   - `create` crea un volumen
@@ -2470,10 +2471,10 @@ La bandera `--rm` lo que hace es que crea un contenedor solo para el fin indicad
 
 ```docker
 # Para correr comandos de Django usamos
-docker compose run --rm django COMMAND
+docker compose -f local.yml run --rm django COMMAND
 #
 # Por ejemplo para crear un super usuario
-docker compose run --rm django python manage.py createsuperuser
+docker compose -f local.yml run --rm django python manage.py createsuperuser
 ```
 
 ### Habilitar debugger/Hacer modiciaciones/migraciones
@@ -2489,7 +2490,7 @@ docker compose -f local.yml down
 ```docker
 # Mostrar los volunenes de docker
 docker volume ls
-# Eliminar el volimen NOMBRE DEL PROYECTO_postgres_data
+# Eliminar el volumen NOMBRE DEL PROYECTO_postgres_data
 docker volume rm NOMBRE DEL PROYECTO_postgres_data
 ```
 
