@@ -884,7 +884,13 @@ Para poder hacer una contraseña en la linea de comandos se puede hacer de la si
 
 ```bash
 # Generate 32 bytes, base64 encode
-$ openssl rand -base64 32
+openssl rand -base64 32
+
+```
+
+salida...
+
+```bash
 AkxB9lmNkDc80ZEuGR4B0lhQPdhwvTlTv95sANXYMYM=
 ```
 
@@ -893,6 +899,25 @@ Para que quede de la siguiente manera
 ```bash
 /etc/redis/redis.conf
 requirepass zi7pLVue2GpIS8ffGU1z/99+uEdVWm/5rAZ7Vl4K3NzFYDtZhjNzSV91BWWVs2BXfMzWgmUm+eru9h5P
+```
+
+Con Openssl generar una contraseña SHA512
+
+```bash
+openssl passwd -6 -salt <SOME_SALT_HERE>
+```
+
+La cadena `SALT` podría ser cualquier cadena aleatoria, solo asegúrese de que no sea corta.
+
+```bash
+openssl passwd -6 -salt mack
+Password: <SECRIBE_LA_CONTRASEÑA>
+```
+
+salida...
+
+```bash
+$6$mack$o8RgiFIGx85x48u4pxx1RBfFHxc/C4bpVo.d7m/45gCXDe6zFk3OTNa9SYWkpSzONDkjS/WhH1pVhZ9oLSluR/
 ```
 
 Guardar. cerrar y re-iniciar el servicio Redis
@@ -1566,13 +1591,19 @@ salida..
 Para poder hacer una contraseña en la linea de comandos se puede hacer de la siguiente manera con _pwgen_:
 
 ```bash
+sudo apt install pwgen
+```
+
+```bash
 pwgen -ysBvC 64 3
 ```
 
 salida..
 
 ```bash
-
+:;v"K)w{j~q@F'!@=bR3V#c:g/_qd*P'r)R~V<mT9~R\V)J7/R-&Rh^*z$b\4t>w
+?;+"!@c@\!np"xVhxJ,,HRbdWv:t[?"x|>!M~,jTV.9?[%%Rjc^{n3,f>m*z$'hT
+ghnk=+.9K&X4_>9^47`cbt;>}/*sk9;9k|TN/9wfKmkRMRtkw~m`Ps^!3-WCv^=N
 ```
 
 =C/j<WV!tHtN*(%w-h;m:Fxs~<gV4Nt]Fdb@(3bj7C-]9V/WK<J%n$|fL!*>f^bp
@@ -1584,13 +1615,17 @@ Para poder hacer una contraseña en la linea de comandos se puede hacer de la si
 
 ### Base64
 
+```bash
 openssl rand -base64 NUMBER
+```
 
 ### HEX
 
+```bash
 openssl rand -hex NUMBER
-
 ```
+
+```bash
 salida..
 ```
 

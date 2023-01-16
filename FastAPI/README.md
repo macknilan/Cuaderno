@@ -1,5 +1,5 @@
 
-```
+```bash
     .     .    .  .    .  .    .  .    .  .    .  .    .  .    .  .    .  .    .  .    .  .    .  .    .  .    .  .    .  .    .  .    .  .       . . 
   .    .   .       .  ;8X88@8@8S8; . .     .  .;ttttt%tttt.. .     .       .       .  ..    .      . :tt.  .     .;tSSSS%t: .    .tt; .     . .       
      .   .   .  .  .X8S tt;tX8; ; 8S.  .     ..Xt t t.%.%;S   .  .   .  .    .  .    S%8   .  .  .  t8S 8;   .  .%.t %.% t:@%%  .t:tX.   .      . .  .
@@ -380,11 +380,67 @@ You can use this to add `example` for each field.
 - `GET`es una `operations` no deberías enviar jamás un request body.
 - Un Path Parameter en un endpoint en específico, el mismo es _obligatorio
 
+## Status Code personalizados
 
+Los status code o códigos de estado son respuestas http los cuales indican el el estado de finalización de una solicitud especifica:
+
+- Respuestas informativas (100-199)
+- Respuestas Satisfactorias (200-299)
+- Redirecting (300-399)
+- Errores de los clientes (400-499)
+- Errores de los servidores (500-599)
+- más información: [HTTP response status codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status "developer.mozilla.org HTTP response status codes")
+
+> HTTP response status codes. HTTP response status codes indicate whether a specific HTTP request has been successfully completed. Responses are grouped in five classes:
+
+🔗 [HTTP response status codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status "developer.mozilla.org HTTP response status codes")
+
+Para FastAPI se tiene que importar el modulo `status`
 
 ```py
-
+from fastapi import status
 ```
+
+Archivos  
+
+- 🔗 [Request Files](https://fastapi.tiangolo.com/tutorial/request-files/ "Request Files")
+- 🔗 [Request Forms and Files](https://fastapi.tiangolo.com/tutorial/request-forms-and-files/ "Request Forms and Files")
+
+- Tipos de entradas de datos en FastAPI:
+  - Path Parameters -> URL y obligatorios
+  - Query Parameters -> URL y opcionales
+  - Request Body -> JSON
+  - Formularios -> Campos en el frontend
+  - Headers -> Cabeceras HTTP que pueden ser de cliente a servidor y viceversa
+  - Cookies -> Almacenan información
+  - Files -> Archivos como imágenes, audio, vídeo, etc.
+  - Para manejar archivos con FastAPI necesitamos de las clases ‘File’ y ‘Upload File’.
+
+- Upload file tiene 3 parámetros:
+  - Filename -> Nombre del archivo
+  - Content_Type -> Tipo de archivo
+  - File -> El archivo en sí mismo
+
+_Archivos_  
+Entrada de datos que se refiere a los archivos FastAPI, por ejemplo una imagen o un video, se utilizan dos `clases File` y `UploadFile`
+
+_UploadFile_  
+Esta clase tiene una serie de parámetros, se refiere a la clase donde se guardará el archivo
+
+- **filename**: se refiere al nombre del archivo, con esto tenemos el control sobre el nombre del archivo que suba el cliente a la aplicación.
+- **content_type**: formato del archivo por ejemplo JPEG, MP4, GIF…
+- **file**: se refiere al archivo en si mismo, los bytes del mismo
+
+_File_  
+Hereda de Form y funciona similar a las clases Query, Path y Body, se encarga de guardar los bytes del archivo.
+
+**Deprecar una pieza de código sucede cuando:**
+
+1. Se encuentra un mejor método mas eficiente para resolver un problema que nosotros ya tenemos. Lo que hacemos no es eliminar dicho método si no la dejamos sin efecto. Para aprovechar el código posteriormente si lo requerimos nuevamente.
+2. Una funcionalidad diferente de nuestro código a la que ya tenemos definidos.
+3. Cuando se esta realizando una re-factorización profunda del código, debido a que no tiene las mejores practicas, se define deprecar las path operation que se tienen por otras nuevas y se reemplazan. Nota: Siempre es mejor mantener el código que modificarlo desde cero.
+
+
 
 ```py
 ```
