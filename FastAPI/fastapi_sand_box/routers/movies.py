@@ -70,11 +70,11 @@ movies_list_update = {
     status_code=status.HTTP_200_OK,
     summary="List movies",
     response_model=list[Movies],
-    dependencies=[Depends(security_manager.JWTBearer())]
+    dependencies=[Depends(security_manager.JWTBearer())],
 )
 async def get_movies() -> JSONResponse:
     """
-    Obtener listado de películas.
+    Obtener listado de películas y servicio protegido.
     """
     return JSONResponse(content=movies_list)
 
@@ -92,7 +92,9 @@ async def get_movie(movie_id: int):
     filtered_list_movies = list(filter(lambda x: movie_id == x["id"], movies_list))
     list_movies = list(filtered_list_movies)
     if not list_movies:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Movie not found!")
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND, detail="Movie not found!"
+        )
 
     return JSONResponse(content=list_movies)
 
@@ -107,10 +109,14 @@ async def get_movie_category(category: str):
     """
     Obtener película por categorías por Query Parameters
     """
-    filtered_list_movies = list(filter(lambda x: category == x["category"], movies_list))
+    filtered_list_movies = list(
+        filter(lambda x: category == x["category"], movies_list)
+    )
     list_movies = list(filtered_list_movies)
     if not list_movies:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Movie not found! t(-_-t)")
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND, detail="Movie not found! t(-_-t)"
+        )
 
     return JSONResponse(content=list_movies)
 
@@ -134,7 +140,7 @@ async def create_movie(movie: Movies):
     response_model=dict,
     status_code=status.HTTP_200_OK,
     summary="Update movie",
-    deprecated=True
+    deprecated=True,
 )
 async def update_movie(movie_id: int, movie_to_update: dict = movies_list_update):
     """
@@ -145,14 +151,16 @@ async def update_movie(movie_id: int, movie_to_update: dict = movies_list_update
     if not list_movies:
         raise HTTPException(status_code=404, detail="Movie not found! t(-_-t)")
     else:
-        movies_list[0].update({
-            "id": id,
-            "title": movie_to_update["title"],
-            "overview": movie_to_update["overview"],
-            "year": movie_to_update["year"],
-            "rating": movie_to_update["rating"],
-            "category": movie_to_update["category"],
-        })
+        movies_list[0].update(
+            {
+                "id": id,
+                "title": movie_to_update["title"],
+                "overview": movie_to_update["overview"],
+                "year": movie_to_update["year"],
+                "rating": movie_to_update["rating"],
+                "category": movie_to_update["category"],
+            }
+        )
 
     return JSONResponse(content=movies_list)
 
@@ -182,7 +190,7 @@ async def update_person(
     "/delete/{movie_id}",
     status_code=status.HTTP_200_OK,
     summary="Delete movie",
-    response_model=dict
+    response_model=dict,
 )
 async def delete_movie(movie_id: int):
     """
