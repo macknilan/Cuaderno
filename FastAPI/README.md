@@ -152,6 +152,7 @@ Entonces, se definen las validaciones para las Query Parameters para definir un 
 Script de FastAPI de hello word
 
 Run:
+    uvicorn main:app --reload --port 8000 --host 127.0.0.1
     uvicorn main:app --reload
 """
 # python
@@ -430,6 +431,20 @@ Hereda de Form y funciona similar a las clases Query, Path y Body, se encarga de
 1. Se encuentra un mejor método mas eficiente para resolver un problema que nosotros ya tenemos. Lo que hacemos no es eliminar dicho método si no la dejamos sin efecto. Para aprovechar el código posteriormente si lo requerimos nuevamente.
 2. Una funcionalidad diferente de nuestro código a la que ya tenemos definidos.
 3. Cuando se esta realizando una re-factorización profunda del código, debido a que no tiene las mejores practicas, se define deprecar las path operation que se tienen por otras nuevas y se reemplazan. Nota: Siempre es mejor mantener el código que modificarlo desde cero.
+
+:octocat: 🔗 [PyJWT](https://github.com/jpadilla/pyjwt)
+
+**PyJWT** (_Python JSON Web Token_) es una biblioteca de Python que se utiliza para codificar y decodificar tokens _JWT_ (_JSON Web Token_). Un token _JWT_ es un objeto de seguridad que se utiliza para autenticar a los usuarios en aplicaciones web y móviles. Los tokens _JWT_ se emiten por un servidor de autenticación y luego se envían al cliente, que los utiliza para demostrar su identidad al acceder a recursos protegidos en el servidor
+
+- **Flujo de autenticación**
+  - _Ruta para iniciar sesión_
+        - Lo que obtendremos como resultado al final de este módulo es la protección de determinadas rutas de nuestra aplicación para las cuales solo se podrá acceder mediante el inicio de sesión del usuario. Para esto crearemos una ruta que utilice el método POST donde se solicitarán los datos como email y contraseña.
+    - _Creación y envío de token_
+      - Luego de que el usuario ingrese sus datos de sesión correctos este obtendrá un token que le servirá para enviarlo al momento de hacer una petición a una ruta protegida.
+    - _Validación de token_
+      - Al momento de que nuestra API reciba la petición del usuario, comprobará que este le haya enviado el token y validará si es correcto y le pertenece. Finalmente se le dará acceso a la ruta que está solicitando.
+
+
 
 
 

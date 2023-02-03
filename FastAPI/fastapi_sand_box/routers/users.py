@@ -17,41 +17,45 @@ from fastapi import (
 )
 
 # Models
-
 from models.user import Location, Person
 
-router_users = APIRouter(prefix="/users", tags=["Users"])
+router = APIRouter(prefix="/users", tags=["Users"])
 
 # ROUTES
 
 
-@router_users.get("/", summary="First service for testing", status_code=status.HTTP_200_OK)
+@router.get("/", summary="First service for testing", status_code=status.HTTP_200_OK)
 async def home():
     """
     Endpoint for test Hellow Word
+
     :return: {"Hello": "World"}
     """
     return {"Hello": "World"}
 
 
-@router_users.post(
+@router.post(
     "/add",
     response_model=Person,
     response_model_exclude={"password"},
     status_code=status.HTTP_201_CREATED,
-    summary="Add new user/person"
+    summary="Add new user/person",
 )
 async def add_person(person: Person):
     """
     Endpoint for add person
+
     :param person:
+
     :return: person, exclude password
     """
     return person
 
 
 # Validaciones Query Parameters
-@router_users.get("/detail", status_code=status.HTTP_200_OK, summary="Get detail user/person by ID")
+@router.get(
+    "/detail", status_code=status.HTTP_200_OK, summary="Get detail user/person by ID"
+)
 async def detail_person(
     name: str
     | None = Query(
@@ -70,9 +74,13 @@ async def detail_person(
 ):
     """
     Endpoint for test Query parameters
+
     :param name:
+
     :param age:
+
     :return: {name: age}
+
     """
     return {name: age}
 
@@ -81,7 +89,11 @@ async def detail_person(
 persons = [1, 2, 3, 4, 5]
 
 
-@router_users.get("/detail/{person_id}", status_code=status.HTTP_200_OK, summary="Get detail user/person by ID")
+@router.get(
+    "/detail/{person_id}",
+    status_code=status.HTTP_200_OK,
+    summary="Get detail user/person by ID",
+)
 async def detail_person(
     person_id: int = Path(
         gt=0,
@@ -103,7 +115,7 @@ async def detail_person(
 
 
 # PRIMERA OPCIÓN
-@router_users.put("/detail-one/{person_id}", deprecated=True)
+@router.put("/detail-one/{person_id}", deprecated=True)
 async def update_person(
     person: Person,
     location: Location,
@@ -119,7 +131,7 @@ async def update_person(
 
 
 # SEGUNDA OPCIÓN
-@router_users.put("/detail-two/{person_id}", deprecated=True)
+@router.put("/detail-two/{person_id}", deprecated=True)
 async def update_person(
     person_id: int,
     person: Person,
@@ -130,7 +142,9 @@ async def update_person(
 
 
 # TERCERA OPCIÓN
-@router_users.put("/detail/{person_id}", status_code=status.HTTP_200_OK, summary="Update user/person")
+@router.put(
+    "/detail/{person_id}", status_code=status.HTTP_200_OK, summary="Update user/person"
+)
 async def update_person(
     person: Person,
     location: Location,
@@ -145,16 +159,20 @@ async def update_person(
     Service for update user
 
     :param person:
+
     :param location:
+
     :param person_id:
+
     :return: {"person_id": person_id, "person": person, "location": location}
+
     """
     results = {"person_id": person_id, "person": person, "location": location}
     return results
 
 
 # Cookies and Headers Parameters
-@router_users.post("/contact", status_code=status.HTTP_200_OK, summary="Send contact form.")
+@router.post("/contact", status_code=status.HTTP_200_OK, summary="Send contact form.")
 async def contact(
     first_name: str = Form(max_length=20, min_length=8),
     email: EmailStr = Form(),
@@ -167,22 +185,28 @@ async def contact(
     Servicio como ejemplo de headers y cookies que regresa el mensaje de quien lo envío.
 
     :param first_name:
+
     :param email:
+
     :param message:
+
     :param user_agent:
+
     :param ads:
+
     :return: # "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36"
     """
     return user_agent
 
 
 # Upload files
-@router_users.post("/post-image", status_code=status.HTTP_200_OK, summary="Upload a image")
+@router.post("/post-image", status_code=status.HTTP_200_OK, summary="Upload a image")
 async def post_image(image: UploadFile):
     """
     Ejemplo de subir imágenes
 
     :param image:
+
     :return: filename, format, Size(kb)
     """
     return {

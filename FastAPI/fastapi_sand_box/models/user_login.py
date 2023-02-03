@@ -1,10 +1,9 @@
 """User Model Class User Login"""
 
 # python
-from enum import Enum
 
 # Pydantic
-from pydantic import BaseModel, Field, SecretStr
+from pydantic import BaseModel, Field
 
 
 class LoginOut(BaseModel):
