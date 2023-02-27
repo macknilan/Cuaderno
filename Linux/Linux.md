@@ -80,7 +80,7 @@ man <comando>
 
 [Explain Shell](http://explainshell.com/), un sitio que permite explicar específicamente la mayoría de comandos.
 
-[[Volver al índice]](#INDEX)
+[Volver al índice](#INDEX)
 
 ### 2. Chaining Operators
 
