@@ -24,16 +24,16 @@ $$$$$$$$$$  $$$   $$$$   $$$$   $$$$ $$$ $$$$$ $$$$$  QQQQQ$$$$$$$QQQQQ
   - [Rutas relativas y absolutas](#rutas-relativas-y-absolutas)
   - [Comandos básicos](#comandos-básicos)
   - [Listar directorios](#listar-directorios)
-  - [Búsqueda](#Búsqueda)
+  - [Búsqueda](#búsqueda)
   - [Standard Input Standard Output y Standard Error](#standard-input-standard-output-y-standard-error)
   - [Crontab](#crontab)
   - [Permisos](#permisos)
-  - [Enlaces simbólicos](#Enlaces-simbólicos)
-- [Compresión y descompresión de archivos](#4-Compresión-y-descompresión-de-archivos)
+  - [Enlaces simbólicos](#enlaces-simbólicos)
+- [Compresión y descompresión de archivos](#4-compresión-y-descompresión-de-archivos)
 - [Editando archivos](#5-editando-archivos)
-- [Introducción a SSH Olvídate del FTP](#6-Introducción-a-SSH-Olvídate-del-FTP)
-- [Compresión de imagenes guetzli](#7-Compresión-de-imagenes-guetzli)
-- [Compresión de imagenes mozjpeg](#8-Compresión-de-imagenes-mozjpeg)
+- [Introducción a SSH Olvídate del FTP](#6-introducción-a-ssh-olvídate-del-ftp)
+- [Compresión de imagenes guetzli](#7-compresión-de-imagenes-guetzli)
+- [Compresión de imagenes mozjpeg](#8-compresión-de-imagenes-mozjpeg)
 - [How to Start Stop and Restart Services in Debian 10](#9-how-to-start-stop-and-restart-services-in-debian-10)
 - [Convertir videos gif mp4 y optimizarlos con ffmpeg](#10-convertir-videos-gif-mp4-y-optimizarlos-con-ffmpeg)
 - [How to List Installed Packages on Debian](#11-how-to-list-installed-packages-on-debian)
@@ -44,14 +44,14 @@ $$$$$$$$$$  $$$   $$$$   $$$$   $$$$ $$$ $$$$$ $$$$$  QQQQQ$$$$$$$QQQQQ
 - [Bash basics](#16-bash-basics)
 - [File commands](#17-file-commands)
 - [Directory commands](#18-directory-commands)
-- [Ssh, system info & network commands](#19-ssh-system-info-&-network-commands)
+- [SSH system info & network commands](#19-ssh-system-info--network-commands)
 - [Variables](#20-variables)
 - [Functions](#21-functions)
 - [Flow controls](#22-flow-controls)
 - [Command-line processing cycle](#23-command-line-processing-cycle)
-- [Input/output redirectors](#24-input/output-redirectors)
+- [Input/output redirectors](#24-inputoutput-redirectors)
 - [Process handling](#25-process-handling)
-- [Tips & tricks](#26-tips-&-tricks)
+- [Tips & tricks](#26-tips--tricks)
 - [Debugging shell programs](#27-debugging-shell-programs)
 - [Domain Information Groper](#28-domain-information-groper)
 - [Copy standard out to clipboard](#29-copy-standard-out-to-clipboard)
@@ -1603,10 +1603,13 @@ head -y lines.txt | tail +x   # want to display all the lines from x to y. This 
 sed 's/<pattern>/<replacement>/g' <filename> # replace pattern in file with replacement value to std output the character after s (/) is the delimeter
 sed -i 's/<pattern>/<replacement>/g' <filename> # replace pattern in file with replacement value in place
 echo "this" | sed 's/is/at/g' # replace pattern from input stream with replacement value
+```
 
 [[ Volver al índice ]](#INDEX)
 
 ### 18. Directory commands
+
+```bash
 mkdir <dirname>               # makes a new directory
 rmdir <dirname>               # remove an empty directory
 rmdir -rf <dirname>           # remove a non-empty directory
@@ -1622,7 +1625,7 @@ cd -                          # changes to previous working directory
 
 [[Volver al índice]](#INDEX)
 
-### 19. Ssh, system info & network commands
+### 19. SSH system info & network commands
 
 ```bash
 ssh user@host            # connects to host as user
@@ -1733,18 +1736,20 @@ $(UNIX command)              # command substitution: runs the command and return
 # $@ is equal to "$1" "$2"... "$N", where N is the number of positional parameters. $# holds the number of positional parameters.
 
 
+
 function functname() {
   shell commands
 }
 
 unset -f functname  # deletes a function definition
 declare -f          # displays all defined functions in your login session
+```
 
-[[ Volver al índice ]](#INDEX)
-
+[[Volver al índice]](#INDEX)
 
 ### 22. Flow controls
 
+```bash
 statement1 && statement2  # and operator
 statement1 || statement2  # or operator
 
