@@ -18,7 +18,7 @@ $$$$$$$$$$  $$$   $$$$   $$$$   $$$$ $$$ $$$$$ $$$$$  QQQQQ$$$$$$$QQQQQ
 ## <a name="INDEX">Índice</a>
 
 - :link: [Documentos Linux](https://github.com/macknilan/Cuaderno/tree/master/Linux/docs_linux)
-- [Ayuda](#1-Ayuda)
+- [Ayuda](#1-ayuda)
 - [Chaining Operators](#2-Chaining-Operators)
 - [Sistema de archivos](#3-Sistema-de-archivos)
   - [Rutas relativas y absolutas](#Rutas-relativas-y-absolutas)
