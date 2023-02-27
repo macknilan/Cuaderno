@@ -15,8 +15,6 @@ $$$$$$        $$$                                          $VVVVV$
 $$$$$$$$$$  $$$   $$$$   $$$$   $$$$ $$$ $$$$$ $$$$$  QQQQQ$$$$$$$QQQQQ
 ```
 
-## <a name="INDEX">Índice</a>
-
 - :link: [Documentos Linux](https://github.com/macknilan/Cuaderno/tree/master/Linux/docs_linux)
 - [Ayuda](#1-ayuda)
 - [Chaining Operators](#2-chaining-operators)
@@ -80,7 +78,7 @@ man <comando>
 
 [Explain Shell](http://explainshell.com/), un sitio que permite explicar específicamente la mayoría de comandos.
 
-[Volver al índice](#INDEX)
+[Indice](#terminal-y-línea-de-comandos)
 
 ### 2. Chaining Operators
 
@@ -253,13 +251,13 @@ The Concatenation Operator **(\)** as the name specifies, is used to concatenate
 mack@localhost:~/Downloadsnano test\(1\).txt
 ```
 
-[[Volver al índice]](#INDEX)
+[Indice](#terminal-y-línea-de-comandos)
 
 ### 3. Sistema de archivos
 
 Olvidémonos de C:, D:, E:, etc :)
 
-[[Volver al índice]](#INDEX)
+[Indice](#terminal-y-línea-de-comandos)
 
 #### Rutas relativas y absolutas
 
@@ -305,9 +303,9 @@ Donde:
 - El `.` se refiere a la carpeta en sí misma.
 - El `..` se refiere a la carpeta padre.
 
-**[[Volver al índice]](#INDEX)**
+**[Indice](#terminal-y-línea-de-comandos)**
 
-[[Volver al índice]](#INDEX)
+[Indice](#terminal-y-línea-de-comandos)
 
 #### Comandos básicos
 
@@ -433,9 +431,9 @@ type ls
 less ~/.bash_history
 ```
 
-**[[Volver al índice]](#INDEX)**
+**[Indice](#terminal-y-línea-de-comandos)**
 
-[[Volver al índice]](#INDEX)
+[Indice](#terminal-y-línea-de-comandos)
 
 #### Listar directorios
 
@@ -491,7 +489,7 @@ ll > listado1.txt
 # Se crea un archivo listado1.txt con la salida de ll
 ```
 
-[[Volver al índice]](#INDEX)
+[Indice](#terminal-y-línea-de-comandos)
 
 #### Búsqueda
 
@@ -609,7 +607,7 @@ ps aux | grep '[h]ttpd'
 ps aux | grep -E --color 'bash|$'
 ```
 
-[[Volver al índice]](#INDEX)
+[Indice](#terminal-y-línea-de-comandos)
 
 #### Standard Input Standard Output y Standard Error
 
@@ -668,7 +666,7 @@ while(True):
     time.sleep(1)
 ```
 
-[[Volver al índice]](#INDEX)
+[Indice](#terminal-y-línea-de-comandos)
 
 #### Crontab
 
@@ -694,7 +692,7 @@ Una de las herramientas más potentes de los sistemas UNIX, que nos permite prog
 1,2,3,9    - ejecutate estas horas
 ```
 
-[[Volver al índice]](#INDEX)
+[Indice](#terminal-y-línea-de-comandos)
 
 #### Permisos
 
@@ -788,7 +786,7 @@ sudo mkdir carpeta
 # Crea una carpeta como superman
 ```
 
-[[Volver al índice]](#INDEX)
+[Indice](#terminal-y-línea-de-comandos)
 
 #### Enlaces simbólicos
 
@@ -806,7 +804,7 @@ ln -s path/to/the/target/directory name-of-symlink
 ln -ls ~/public_html ~/www
 ```
 
-[[Volver al índice]](#INDEX)
+[Indice](#terminal-y-línea-de-comandos)
 
 ### 4. Compresión y descompresión de archivos
 
@@ -985,7 +983,7 @@ Para establecer una contraseña se una la opción `-p`
 7za a -p{la_contraseña_se_escribe_aqui} carpeta_respaldo.tar.7z
 ```
 
-[[Volver al índice]](#INDEX)
+[Indice](#terminal-y-línea-de-comandos)
 
 ### 5. Editando archivos
 
@@ -1005,7 +1003,7 @@ vim index.html
 
 Más información en los [Recursos](#recursos).
 
-[[Volver al índice]](#INDEX)
+[Indice](#terminal-y-línea-de-comandos)
 
 ### 6. Introducción a SSH Olvídate del FTP
 
@@ -1028,7 +1026,7 @@ ssh-keygen -t rsa -C "braulio@soncco.com"
 
 Pronto
 
-**[[Volver al índice]](#INDEX)**
+**[Indice](#terminal-y-línea-de-comandos)**
 
 ### 7. Recursos
 
@@ -1047,7 +1045,7 @@ Pronto
 
 - [8 Técnicas al usar la consola](http://www.howtogeek.com/110150/)
 
-[[Volver al índice]](#INDEX)
+[Indice](#terminal-y-línea-de-comandos)
 
 ### 7. Compresión de imagenes guetzli
 
@@ -1082,7 +1080,7 @@ Flags:
   --nomemlimit - Do not limit memory usage.
 ```
 
-[[Volver al índice]](#INDEX)
+[Indice](#terminal-y-línea-de-comandos)
 
 ### 8. Compresión de imagenes mozjpeg
 
@@ -1167,7 +1165,7 @@ ln -s /opt/mozjpeg/bin/cjpeg
 cjpeg -baseline -quality 90 foo.jpg > bar.jpg
 ```
 
-[[Volver al índice]](#INDEX)
+[Indice](#terminal-y-línea-de-comandos)
 
 ### 9. How to Start Stop and Restart Services in Debian 10
 
@@ -1245,7 +1243,7 @@ Con `init.d`
 sudo /etc/init.d/clamav-daemon enable/disable
 ```
 
-[[Volver al índice]](#INDEX)
+[Indice](#terminal-y-línea-de-comandos)
 
 ### 10. Convertir videos gif mp4 y optimizarlos con ffmpeg
 
@@ -1291,7 +1289,7 @@ En el markdown para que se pueda ver el video se puede hacer de la siguiente man
 </video>
 ```
 
-[[Volver al índice]](#INDEX)
+[Indice](#terminal-y-línea-de-comandos)
 
 ### 11. How to List Installed Packages on Debian
 
@@ -1361,7 +1359,7 @@ Show package information:
 dpkg -s screen
 ```
 
-[[Volver al índice]](#INDEX)
+[Indice](#terminal-y-línea-de-comandos)
 
 ### 12. Search For Available Packages From Command Line In Debian
 
@@ -1393,7 +1391,7 @@ Afinar la busqueda
 apt search "PACKAGE_NAME$"
 ```
 
-[[Volver al índice]](#INDEX)
+[Indice](#terminal-y-línea-de-comandos)
 
 ### 13. APT Cheat Sheet
 
@@ -1480,7 +1478,7 @@ history -c
 history -w
 ```
 
-[[Volver al índice]](#INDEX)
+[Indice](#terminal-y-línea-de-comandos)
 
 ### 15. Shortcuts and history
 
@@ -1540,7 +1538,7 @@ history   # shows command line history
 exit      # logs out of current session
 ```
 
-[[Volver al índice]](#INDEX)
+[Indice](#terminal-y-línea-de-comandos)
 
 ### 16. Bash basics
 
@@ -1557,7 +1555,7 @@ which bash          # finds out which program is executed as 'bash' (default: /b
 clear               # clears content on window (hide displayed lines)
 ```
 
-[[Volver al índice]](#INDEX)
+[Indice](#terminal-y-línea-de-comandos)
 
 ### 17. File commands
 
@@ -1623,7 +1621,7 @@ cd ~                          # changes to home.
 cd -                          # changes to previous working directory
 ```
 
-[[Volver al índice]](#INDEX)
+[Indice](#terminal-y-línea-de-comandos)
 
 ### 19. SSH system info & network commands
 
@@ -1668,7 +1666,7 @@ wget <file>              # downloads file
 time <command>             # report time consumed by command execution
 ```
 
-[[Volver al índice]](#INDEX)
+[Indice](#terminal-y-línea-de-comandos)
 
 ### 20. Variables
 
@@ -1727,7 +1725,7 @@ ${#varname}                  # returns the length of the value of the variable a
 $(UNIX command)              # command substitution: runs the command and returns standard output
 ```
 
-[[Volver al índice]](#INDEX)
+[Indice](#terminal-y-línea-de-comandos)
 
 ### 21. Functions
 
@@ -1745,7 +1743,7 @@ unset -f functname  # deletes a function definition
 declare -f          # displays all defined functions in your login session
 ```
 
-[[Volver al índice]](#INDEX)
+[Indice](#terminal-y-línea-de-comandos)
 
 ### 22. Flow controls
 
@@ -1837,7 +1835,7 @@ until condition; do
 done
 ```
 
-[[Volver al índice]](#INDEX)
+[Indice](#terminal-y-línea-de-comandos)
 
 ### 23. Command-line processing cycle
 
@@ -1852,7 +1850,7 @@ enable   # enables and disables shell built-ins
 eval     # takes arguments and run them through the command-line processing steps all over again
 ```
 
-[[Volver al índice]](#INDEX)
+[Indice](#terminal-y-línea-de-comandos)
 
 ### 24. Input/output redirectors
 
@@ -1881,7 +1879,7 @@ n<&-       # closes the input from file descriptor n
 |tee <file># output command to both terminal and a file (-a to append to file)
 ```
 
-[[Volver al índice]](#INDEX)
+[Indice](#terminal-y-línea-de-comandos)
 
 ### 25. Process handling
 
@@ -1923,7 +1921,7 @@ pv                  # display progress bar for data handling commands. often use
 yes                 # give yes response everytime an input is requested from script/process
 ```
 
-[[Volver al índice]](#INDEX)
+[Indice](#terminal-y-línea-de-comandos)
 
 ### 26. Tips & tricks
 
@@ -1946,7 +1944,7 @@ cd $websites
 
 ```
 
-[[Volver al índice]](#INDEX)
+[Indice](#terminal-y-línea-de-comandos)
 
 ### 27. Debugging shell programs
 
@@ -1984,7 +1982,7 @@ function returntrap {
 trap returntrap RETURN  # is executed each time a shell function or a script executed with the . or source commands finishes executing
 ```
 
-[[Volver al índice]](#INDEX)
+[Indice](#terminal-y-línea-de-comandos)
 
 ### 28. Domain Information Groper
 
@@ -2096,7 +2094,7 @@ _Debug_ mode
 nslookup -debug yahoo.com
 ```
 
-[[Volver al índice]](#INDEX)
+[Indice](#terminal-y-línea-de-comandos)
 
 ### 29. Copy standard out to clipboard
 
@@ -2124,7 +2122,7 @@ Copy output to clipboard for Crtl+V
 command | xclip -selection clipboard
 ```
 
-[[Volver al índice]](#INDEX)
+[Indice](#terminal-y-línea-de-comandos)
 
 ### 30. netstat Command in Linux
 
@@ -2227,7 +2225,7 @@ Mostrar cuantos programas estan a la escucha y en que puerto
 netstat -ap | grep http
 ```
 
-[[Volver al índice]](#INDEX)
+[Indice](#terminal-y-línea-de-comandos)
 
 ### 31. Tmux
 
@@ -2278,4 +2276,4 @@ Maneno de ventanas y paneles.
 8. `Ctrl+b` `;` Toggle between the current and previous pane
 9. `Ctrl+b` `x` Close the current pane
 
-[[Volver al índice]](#INDEX)
+[Indice](#terminal-y-línea-de-comandos)
