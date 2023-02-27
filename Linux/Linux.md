@@ -55,6 +55,7 @@ $$$$$$$$$$  $$$   $$$$   $$$$   $$$$ $$$ $$$$$ $$$$$  QQQQQ$$$$$$$QQQQQ
 - [Copy standard out to clipboard](#29-copy-standard-out-to-clipboard)
 - [netstat Command in Linux](#30-netstat-command-in-linux)
 - [Tmux](#31-tmux)
+- [Vim](#32-vim)
 
 ### 1. Ayuda
 
@@ -2275,5 +2276,42 @@ Maneno de ventanas y paneles.
 7. `Ctrl+b` `o` Go to the next pane
 8. `Ctrl+b` `;` Toggle between the current and previous pane
 9. `Ctrl+b` `x` Close the current pane
+
+[Indice](#terminal-y-línea-de-comandos)
+
+### Vim
+
+- `Y` stands for “yank” in Vim, which is conceptually similar to copying.
+- `D` stands for “delete” in Vim, which is conceptually similar to cutting.
+- `P` stands for “put” in Vim, which is conceptually similar to pasting.
+- `P` (uppercase): Paste before your cursor
+- `p` (lowercase): Paste after your cursor
+
+How to Copy in Vim
+
+| yy   | This command copies the entire line where the cursor is placed.                                                                                                              |
+|----- |----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2yy  | To copy multiple lines in Vim, the “[number]yy” command is used. To copy two lines, including the line where the cursor is placed and the next line, use the “2yy” command.  |
+| y%   | To copy the text between two similar characters like (), {} or [], use the y% command.                                                                                       |
+| yw   | To copy from a specific character to the end of the word, the “yw” command is used.                                                                                          |
+| yiw  | To copy the current word where the cursor is placed, press the yiw from the keyboard.                                                                                        |
+| y$   | This command is used to copy the text from the cursor character to the end of the line.                                                                                      |
+| y^   | It copies start till the cursor.                                                                                                                                             |
+| ytx  | The “ytx” stands for “yank (copy) till x (specified character)” To copy the text between the cursor to the specified character in the line.                                  |
+| yfx  | This command copies the text of the cursor position of a specific character.                                                                                                 |
+
+How to Cut in Vim
+
+|    |    |
+|--- |--- |
+|  dd  |  This command cuts the entire line where the cursor is present.  |
+|  2dd  |  This command cuts the two lines of text, including the cursor line and the next line.  |
+|  d%  |  d% command cuts the text of two similar characters {} or () and others.  |
+|  dw |  This command cuts the specific word from the character where the cursor is placed to the end of the word.  |
+|  diw |  To cut the current word of the cursor position, use the “diw” command.  |
+|  d$  |  To cut the whole line from the cursor to the left/end of the line.  |
+|  d^  |  To cut the whole text from the cursor to the right/start of that line.  |
+|  dtx |  This command cuts the text from the cursor to before the specified character.  |
+|  dfx |  To |
 
 [Indice](#terminal-y-línea-de-comandos)
