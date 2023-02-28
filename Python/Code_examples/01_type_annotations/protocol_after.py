@@ -2,7 +2,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from typing import Protocol
 
-DEFAULT_EMAIL = "support@arjancodes.com"
+DEFAULT_EMAIL = ""
 LOGIN = "admin"
 PASSWORD = "admin"
 
