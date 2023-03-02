@@ -1323,7 +1323,9 @@ apt-cache show [package-name]
 ```
 
 ```bash
-sudo dpkg-query -l
+sudo dpkg-query -L [PACKAGE_NAME]
+#
+sudo dpkg-query -l [PACKAGE_NAME]
 #
 sudo dpkg-query -l | grep -i [PACKAGE_NAME]
 ```
