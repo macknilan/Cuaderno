@@ -165,9 +165,75 @@ python3 -m pip list --outdate --format=columns
 
 ## 4 Crear un ambiente virtual con Python 3
 
-### Crear un ambiente virtual con `venv`
+### 4.1 Crear un ambiente virtual con `pyenv`
 
-- :link: [Using Different Versions of Python - pyenv](https://github.com/pyenv/pyenv)
+- :link: :octocat: [Using Different Versions of Python - pyenv](https://github.com/pyenv/pyenv)
+- 🔗 ↗️ [Set up multiple python versions on your computer](https://k0nze.dev/posts/install-pyenv-venv-vscode/)
+
+Instalar `pyenv` clonar el repo :octocat: [pyenv](https://github.com/pyenv/pyenv)
+
+```bash
+git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+```
+
+Después de instalar `pyenv` se tiene que configurar para añadir al `$PATH` del sistema en linux.
+
+```bash
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
+echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(pyenv init --path)"' >> ~/.bashrc
+```
+
+Después reiniciar shell para que los cambios tengan efecto.
+
+Para listar todas las versiones de `pyenv` que se pueden instalar
+
+```bash
+pyenv install -l
+
+Para instalar algunas de las versiones de python listadas.
+
+```bash
+pyenv install [PYTHON_VERSION]
+# ejem la ultima version de 3.9
+
+pyenv install 3.9.16
+```
+
+Mostrar las versiones instaladas en la maquina.
+
+```bash
+pyenv versions                                                  
+
+# output
+* system (set by /home/mack/.pyenv/version)
+  3.9.16
+```
+
+Para establecer una version de python diferente a la predeterminada de forma _global_
+
+```bash
+pyenv global [PYTHON_VERSION]
+```
+
+Para instalar una version diferente a la predeterminada en la terminal actual hasta que se cierre la terminal.
+
+```bash
+pyenv shell [PYTHON_VERSION]
+```
+
+Establecer de forma predeterminada a la version diferente a la predeterminada en la carpeta de forma permanente en esa carpeta.
+
+```bash
+pyenv local [PYTHON_VERSION]
+```
+
+Dentro de la carpeta se crea un el archivo `.python-version` en el cual se establece que la version de python para **todo** lo que desarrolle dentro de la carpeta.
+
+La lista de comandos para `pyenv` :octocat: [Pyenv commands](https://github.com/pyenv/pyenv/blob/master/COMMANDS.md)
+
+### 4.2 Crear un ambiente virtual con `venv`
+
 - :link: [venv — Creation of virtual environments](https://docs.python.org/3/library/venv.html)
 
 Se recomienda crear una carpeta en donde se encuentren todos los entornos virtuales de Python3 **(oculta)**
