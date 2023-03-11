@@ -303,7 +303,7 @@ Un diccionario es similar a una lista sabiendo que podemos acceder a través de 
 
 Un diccionario es una asociación entre llaves(keys) y valores(values) y la referencia en Python es muy precisa. Si abres un diccionario verás muchas palabras y cada palabra tiene su definición.
 
-Para iniciar un diccionario se usa `{}`` o con la función`dict`
+Para iniciar un diccionario se usa `{}` o con la función `dict`
 
 Estos también tienen varios métodos. Siempre puedes usar la función dir para saber todos los métodos que puedes usar con un objeto.
 
@@ -312,6 +312,275 @@ Si queremos ciclar a lo largo de un diccionario tenemos las opciones:
 - `keys`: nos imprime una lista de las llaves
 - `values` nos imprime una lista de los valores
 - `items`. nos manda una lista de tuplas de los valores
+
+#### JSON
+
+|      Method      |           Description          |
+|:----------------:|:------------------------------:|
+| JSONDecodeError  |                                |
+| JSONDecoder      |                                |
+| JSONEncoder      |                                |
+| `__all__`          |                                |
+| `__author__`       |                                |
+| `__builtins__`     |                                |
+| `__cached__`       |                                |
+| `__doc__`          |                                |
+| `__file__`         |                                |
+| `__loader__`       |                                |
+| `__name__`         |                                |
+| `__package__`      |                                |
+| `__path__`         |                                |
+| `__spec__`         |                                |
+| `__version__`      |                                |
+| _default_decoder |                                |
+| _default_encoder |                                |
+| codecs           |                                |
+| decoder          |                                |
+| detect_encoding  |                                |
+| dumps            | encoded string writing on file |
+| dumps            | encoding to JSON objects       |
+| encoder          |                                |
+| load             | Decode while JSON file read    |
+| loads            | Decode the JSON string         |
+| scanne           |                                |
+
+**Python to JSON (Encoding)**  
+La librería `json` de python realiza las siguientes traducciones de python a objetos de`json` de manera predeterminada.
+
+|       Python       |      JSON     |
+|:------------------:|:-------------:|
+| dict               | Object        |
+| list               | Array         |
+| unicode            | String        |
+| number – int, long | number – int  |
+| float              | number – real |
+| True               | True          |
+| False              | False         |
+| None               | Null          |
+
+**JSON dumps() en Python**  
+El método `json.dumps()` convierte un diccionario de python a `json` formato de cadena(string)
+
+Sintaxis `json.dumps()`
+
+```py
+json.dumps(
+    obj,
+    *,
+    skipkeys=False,
+    ensure_ascii=True,
+    check_circular=True,
+    allow_nan=True,
+    cls=None,
+    indent=None,
+    separators=None,
+    default=None,
+    sort_keys=False
+)
+```
+
+- `obj`: The Python object that you want to convert to a JSON string.
+- `skipkeys`: _optional_ A boolean indicating whether to skip keys that are not JSON serializable (default False).
+- `ensure_ascii`: _optional_ A boolean indicating whether to encode non-ASCII characters as UTF-8 (default True).
+- `check_circular`: _optional_ A boolean indicating whether to check for circular references (default True).
+- `allow_nan`: _optional_ A boolean indicating whether to allow NaN, Infinity, and -Infinity values (default True).
+- `cls`: _optional_ A class used to serialize objects that are not JSON serializable (default None).
+- `indent`: _optional_ The number of spaces to use for indentation (default None).
+- `separators`: _optional_ A tuple specifying the separators to use for the JSON string (default (',', ':')).
+- `default`: _optional_ A function used to convert non-serializable objects to a serializable object (default None).
+- `sort_keys`: _optional_ A boolean indicating whether to sort the keys of the dictionary (default False).
+
+```py
+x = {
+  "name": "Ken",
+  "age": 45,
+  "married": True,
+  "children": ("Alice","Bob"),
+  "pets": ['Dog'],
+  "cars": [
+    {"model": "Audi A1", "mpg": 15.1},
+    {"model": "Zeep Compass", "mpg": 18.1}
+  ]
+}
+```
+
+Ocupando `json.dumps()`
+
+```py
+x_json = json.dumps(x, sort_keys=True)
+```
+
+👇
+
+```py
+'{"age": 45, "cars": [{"model": "Audi A1", "mpg": 15.1}, {"model": "Zeep Compass", "mpg": 18.1}], "children": ["Alice", "Bob"], "married": true, "name": "Ken", "pets": ["Dog"]}'
+```
+
+**JSON to Python (Decoding)**
+
+La decodificación(decoding) de cadenas JSON se hacen con los métodos incorporados `json.loads()` y `json.load()`.  
+La siguiente tabla muestra la traducción de los objetos de _JSON_ a python que ayudan a realizar la decodificación.
+
+|      JSON     |       Python       |
+|:-------------:|:------------------:|
+| Object        | dict               |
+| Array         | list               |
+| String        | unicode            |
+| number – int  | number – int, long |
+| number – real | float              |
+| True          | True               |
+| False         | False              |
+| Null          | None               |
+
+Por ejemplo `json.loads()` y `json.load()`
+
+Sintaxis `json.loads()`
+
+```py
+json.loads(
+    json_string, *,
+    cls=None,
+    object_hook=None,
+    parse_float=None,
+    parse_int=None,
+    parse_constant=None,
+    object_pairs_hook=None,
+    **kw
+)
+```
+
+- `json_string`: The JSON string that you want to parse and convert into a Python object.
+- `cls`: _An optional_ argument that can be used to specify a custom class for JSON decoding. If specified, it must be a subclass of json.JSONDecoder.
+- `object_hook`: _An optional_ function that can be used to modify the Python object generated from the JSON data. The function takes a dictionary as its argument and returns a modified dictionary. The modified dictionary is then used to create the Python object. This can be useful if you want to convert JSON objects to custom Python objects.
+- `parse_float`: _An optional_ function that can be used to parse floating-point numbers. If specified, it must take a string as its argument and return a floating-point number.
+- `parse_int`: _An optional_ function that can be used to parse integer numbers. If specified, it must take a string as its argument and return an integer number.
+- `parse_constant`: _An optional_ function that can be used to parse constant values (true, false, and null) in the JSON data. If specified, it must take a string as its argument and return a Python object.
+- `object_pairs_hook`: _An optional_ function that can be used to modify the Python object generated from the JSON data. The function takes a list of (key, value) pairs as its argument and returns a modified dictionary. The modified dictionary is then used to create the Python object. This can be useful if you want to convert JSON objects to custom Python objects.
+- `**`kw: Any additional keyword arguments that are passed to json.loads() are forwarded to the json.JSONDecoder constructor.
+
+👀 Serialización de clases de Python hacia y desde JSON directamente(_Serializing Python Classes To and From JSON Directly_)
+
+```py
+import json
+
+class Restaurant:
+    """demonstrates adding to_json and from_json methods to a custom class"""
+    
+    def __init__(self, name: str, distance: float, favorite: bool):
+        self.name = name
+        self.distance = distance
+        self.favorite = favorite
+
+    def __repr__(self):
+        return f'Restaurant(name="{self.name}", distance={self.distance}, favorite={self.favorite})'
+
+    def to_json(self):
+        return json.dumps({
+            'name': self.name,
+            'distance': self.distance,
+            'favorite': self.favorite,
+        })
+
+    @classmethod
+    def from_json(cls, json_str: str):
+        dct = json.loads(json_str)
+        return cls(**dct)
+    
+# Basic test
+bean = Restaurant("Bean Vegan Cuisine", 9.1, True)
+print(f"Object:  {bean}")  # 👉 Object:  Restaurant(name="Bean Vegan Cuisine", distance=9.1, favorite=True)
+print(f"JSON version: {bean.to_json()}")   # 👉 JSON version: {"name": "Bean Vegan Cuisine", "distance": 9.1, "favorite": true}
+bean2 = Restaurant.from_json(bean.to_json())
+print(f"Reloaded Object:  {bean2}")  # 👉 Reloaded Object:  Restaurant(name="Bean Vegan Cuisine", distance=9.1, favorite=True)
+```
+
+Sintaxis `json.load()`
+
+```py
+json.load(
+    fp,
+    *,
+    cls=None,
+    object_hook=None,
+    parse_float=None,
+    parse_int=None,
+    parse_constant=None,
+    object_pairs_hook=None,
+    **kw
+)
+```
+
+- `fp`: The file object that contains the JSON data that you want to parse and convert into a Python object.
+- `cls`: _An optional_ argument that can be used to specify a custom class for JSON decoding. If specified, it must be a subclass of json.JSONDecoder.
+- `object_hook`: _An optional_ function that can be used to modify the Python object generated from the JSON data. The function takes a dictionary as its argument and returns a modified dictionary. The modified dictionary is then used to create the Python object. This can be useful if you want to convert JSON objects to custom Python objects.
+- `parse_float`: _An optional_ function that can be used to parse floating-point numbers. If specified, it must take a string as its argument and return a floating-point number.
+- `parse_int`: _An optional_ function that can be used to parse integer numbers. If specified, it must take a string as its argument and return an integer number.
+- `parse_constant`: _An optional_ function that can be used to parse constant values (true, false, and null)
+
+Example
+
+Archivo `json.data`
+
+```py
+{
+    "name": "John Doe",
+    "age": 35,
+    "email": "johndoe@example.com"
+}
+```
+Se lee el archivo con `json.load()` en un diccionario de python 
+
+```py
+import json
+
+with open('data.json') as f:
+    data = json.load(f)
+
+print(data) # 👉 {'name': 'John Doe', 'age': 35, 'email': 'johndoe@example.com'}
+```
+
+Asi es como se accesa a los datos del diccionario.
+
+```py
+print(data['name'])  # 👉 'John Doe'
+print(data['age'])   # 👉 35
+print(data['email']) # 👉 'johndoe@example.com'
+```
+
+```py
+import json
+
+# Example JSON data as a string
+json_string = '{"name": "John Smith", "age": 35, "is_student": false}'
+
+# Using json.loads() to load the JSON string into a Python dictionary
+json_dict = json.loads(json_string)
+# 👉 {"name": "John Smith", "age": 35, "is_student": false}
+
+# Accessing the data in the dictionary
+print(json_dict['name'])        # 👉 John Smith
+print(json_dict['age'])         # 👉 35
+print(json_dict['is_student'])  # 👉 False
+
+# Example JSON data in a file
+with open('example.json', 'r') as f:
+    # Using json.load() to load the JSON data from the file into a Python dictionary
+    json_dict_from_file = json.load(f)
+
+# Accessing the data in the dictionary
+print(json_dict_from_file['name'])        # 👉 John Smith
+print(json_dict_from_file['age'])         # 👉 35
+print(json_dict_from_file['is_student'])  # 👉 False
+```
+
+```py
+```
+
+```py
+```
+
+```py
+```
 
 26
 
