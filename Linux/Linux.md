@@ -2651,34 +2651,4 @@ Hacer una peticion **DELETE**
 curl -X DELETE https://www.ejemplo.com/usuarios/1
 ```
 
-
-```bash
-
-```
-
-
-```bash
-
-```
-
-
-```bash
-
-```
-
-
-```bash
-
-```
-
-
-```bash
-
-```
-
-
-
-
-
-
 [Indice](#terminal-y-línea-de-comandos)
