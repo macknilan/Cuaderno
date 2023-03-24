@@ -72,6 +72,8 @@ J@~^^^^^^^^^^^^Y@@@5          :&@@~^^^^^^^^^^::^&@
 - [netstat Command in Linux](#30-netstat-command-in-linux)
 - [Tmux](#31-tmux)
 - [Vim](#32-vim)
+- [CURL](#33-curl)
+
 
 ### 1. Ayuda
 
@@ -2297,7 +2299,7 @@ Maneno de ventanas y paneles.
 
 [Indice](#terminal-y-línea-de-comandos)
 
-### Vim
+### 32. Vim
 
 - `Y` stands for “yank” in Vim, which is conceptually similar to copying.
 - `D` stands for “delete” in Vim, which is conceptually similar to cutting.
@@ -2331,5 +2333,352 @@ How to Cut in Vim
 |  d^  |  To cut the whole text from the cursor to the right/start of that line.  |
 |  dtx |  This command cuts the text from the cursor to before the specified character.  |
 |  dfx |  To |
+
+[Indice](#terminal-y-línea-de-comandos)
+
+### 33. CURL
+
+Descargar un archivo
+
+```bash
+curl -O http://yourdomain.com/yourfile.tar.gz # Save as yourfile.tar.gz
+curl -o newfile.tar.gz http://yourdomain.com/yourfile.tar.gz # Save as newfile.tar.gz
+```
+
+Descargar un archivo y mostrar su progreso: Para descargar un archivo y mostrar su progreso, use la opción -#
+
+```bash
+curl -# -O https://www.ejemplo.com/archivo.zip
+```
+
+Reanudar una descarga interrumpida.
+
+```bash
+curl -C - -O http://yourdomain.com/yourfile.tar.gz
+```
+
+Descargar multiples archivos
+
+```bash
+curl -O http://yoursite.com/info.html -O http://mysite.com/about.html 
+```
+
+Descargar archivos desde un archivo con una lista de ULR's
+
+```bash
+xargs -n 1 curl -O < listurls.txt
+```
+
+Usar un proxy con o sin autenticación.
+
+```bash
+curl -x proxy.yourdomain.com:8080 -U user:password -O http://yourdomain.com/yourfile.tar.gz
+```
+
+Query HTTP Headers  
+Los encabezados HTTP permiten que el servidor web remoto envíe información adicional sobre sí mismo junto con la solicitud real. Esto proporciona al cliente detalles sobre cómo se está manejando la solicitud.
+
+```bash
+curl -I www.tecmint.com
+```
+
+Descargar archivos desde un FTP con o sin autenticación
+
+```bash
+curl -u username:password -O ftp://yourftpserver/yourfile.tar.gz 
+```
+
+Incluir autenticación: Para incluir autenticación en su solicitud, use la opción -u seguida de su nombre de usuario y contraseña:
+
+```bash
+curl -u john:1234 https://www.ejemplo.com/data
+```
+
+Subir archivos desde un FTP con o sin autenticación
+
+```bash
+curl -u username:password -T mylocalfile.tar.gz ftp://yourftpserver
+```
+
+Especificar "User Agent"  
+The **user agent** is part of the information that is sent along with an **HTTP request**. This indicates which browser the client used to make the request. Let’s see what our current curl version uses as default, and let’s change it later to **“I am a new web browser”**:
+
+```bash
+curl -I http://localhost --user-agent "I am a new web browser"
+```
+
+Guardar "Cookies en el explorador"  
+Para ver las cookies almacenadas en la computadora por el sitio **"https://www.cnn.com"** y guardar en el archivo `cnncookies.txt` la información.
+
+```bash
+curl --cookie-jar cnncookies.txt https://www.cnn.com/index.html -O
+#
+cat cnncookies.txt
+```
+
+Enviar las cookies el archivo `cnncookies.txt` a la pagina **"https://www.cnn.com"**
+
+```bash
+curl --cookie cnncookies.txt https://www.cnn.com
+```
+
+Modificar el nombre de resolución  
+If you’re a web developer and want to test a local version of **yourdomain.com** before pushing it live,
+you can make curl resolve **http://www.yourdomain.com** to your localhost like so:
+
+```bash
+curl --resolve www.yourdomain.com:80:localhost http://www.yourdomain.com/
+```
+
+Establecer un limite al momento de descargar un archivo
+
+```bash
+curl --limit-rate 100K http://yourdomain.com/yourfile.tar.gz -O
+```
+
+Seguir redireccionamientos: Para seguir redireccionamientos, use la opción -L
+
+```bash
+curl -L https://www.ejemplo.com
+```
+
+Mostrar detalles de la solicitud: Para mostrar detalles de la solicitud, use la opción -v
+
+```bash
+curl -v https://www.ejemplo.com
+```
+
+Establecer tiempo de espera: Para establecer un tiempo de espera, use la opción `--connect-timeout` seguida del tiempo de espera en segundos
+
+```bash
+curl --connect-timeout 10 https://www.ejemplo.com
+```
+
+Ignorar errores SSL: Para ignorar errores SSL, use la opción -k
+
+```bash
+curl -k https://www.ejemplo.com
+```
+
+Usar un proxy: Para usar un proxy, use la opción -x seguida de la dirección del proxy
+
+```bash
+curl -x http://mi-proxy.com:8080 https://www.ejemplo.com
+```
+
+Verificar la respuesta del servidor: Para verificar la respuesta del servidor, use la opción --head para obtener solo los encabezados de respuesta
+
+```bash
+curl --head https://www.ejemplo.com
+```
+
+Establecer un límite de redirecciones: Para establecer un límite de redirecciones, use la opción `--max-redirs` seguida del número máximo de redirecciones que desea permitir:
+
+```bash
+curl --max-redirs 5 https://www.ejemplo.com
+```
+
+Usar cookies: Para usar cookies en su solicitud, use la opción -b seguida del archivo de cookies
+
+```bash
+curl -b cookies.txt https://www.ejemplo.com
+```
+
+Enviar una solicitud con un encabezado de autenticación básica: Para enviar una solicitud con un encabezado de autenticación básica, use la opción -H "Authorization: Basic base64(username:password)"
+
+```bash
+curl -H "Authorization: Basic base64(username:password)" https://www.ejemplo.com
+```
+
+Establecer el tamaño máximo de carga: Para establecer el tamaño máximo de carga, use la opción `--max-filesize` seguida del tamaño máximo en bytes
+
+```bash
+curl --max-filesize 1000000 https://www.ejemplo.com/upload
+```
+
+Hacer peticiones **GET**
+
+```bash
+curl https://httpbin.org/get
+#
+curl -X GET "https://httpbin.org/get" -H "accept: application/json"
+```
+
+```json
+{
+  "args": {}, 
+  "headers": {
+    "Accept": "application/json", 
+    "Host": "httpbin.org", 
+    "User-Agent": "curl/7.81.0", 
+    "X-Amzn-Trace-Id": "Root=1-641bdcd7-0b6e79f0365f30375126452f"
+  }, 
+  "origin": "189.141.22.168", 
+  "url": "https://httpbin.org/get"
+}
+```
+
+Hacer una peticion **GET**  
+Y mandar **QUERY PARAMETERS** para realizar una busqueda.
+
+```bash
+curl "https://httpbin.org/get?name=mack&sistema_os=linux"
+```
+
+```json
+{
+  "args": {
+    "name": "mack", 
+    "sistema_os": "linux"
+  }, 
+  "headers": {
+    "Accept": "*/*", 
+    "Host": "httpbin.org", 
+    "User-Agent": "curl/7.81.0", 
+    "X-Amzn-Trace-Id": "Root=1-641bdf04-160a147a2948fb3726bf2b45"
+  }, 
+  "origin": "189.141.22.168", 
+  "url": "https://httpbin.org/get?name=mack&sistema_os=linux"
+}
+```
+
+Hacer una peticion **GET**  
+Y mandar **QUERY PARAMETERS** para realizar una busqueda y _haceptar como respuesta un objeto JSON_
+
+```bash
+curl -X GET "https://httpbin.org/get?name=mack&sistema_os=linux" -H "accept: application/json" -i
+```
+
+```bash
+HTTP/2 200 
+date: Thu, 23 Mar 2023 05:16:10 GMT
+content-type: application/json
+content-length: 346
+server: gunicorn/19.9.0
+access-control-allow-origin: *
+access-control-allow-credentials: true
+
+{
+  "args": {
+    "name": "mack", 
+    "sistema_os": "linux"
+  }, 
+  "headers": {
+    "Accept": "application/json", 
+    "Host": "httpbin.org", 
+    "User-Agent": "curl/7.81.0", 
+    "X-Amzn-Trace-Id": "Root=1-641be099-1facad453dcfb2db3de5529b"
+  }, 
+  "origin": "189.141.22.168", 
+  "url": "https://httpbin.org/get?name=mack&sistema_os=linux"
+}
+```
+
+Hacer una peticion **POST**  
+Este comando envía una solicitud POST a la dirección URL especificada, junto con los datos JSON proporcionados, y devuelve la respuesta en la consola de la terminal.
+
+```bash
+curl -X POST https://httpbin.org/post
+```
+
+```json
+{
+  "args": {}, 
+  "data": "", 
+  "files": {}, 
+  "form": {}, 
+  "headers": {
+    "Accept": "*/*", 
+    "Host": "httpbin.org", 
+    "User-Agent": "curl/7.81.0", 
+    "X-Amzn-Trace-Id": "Root=1-641be21e-4e8dc0c3735d7a7c588f1beb"
+  }, 
+  "json": null, 
+  "origin": "189.141.22.168", 
+  "url": "https://httpbin.org/post"
+}
+```
+
+```bash
+curl -X POST -H "Content-Type: application/json" -d '{"nombre": "Ejemplo", "edad": 25}' https://httpbin.org/post
+```
+
+```json
+{
+  "args": {}, 
+  "data": "{\"nombre\": \"Ejemplo\", \"edad\": 25}", 
+  "files": {}, 
+  "form": {}, 
+  "headers": {
+    "Accept": "*/*", 
+    "Content-Length": "33", 
+    "Content-Type": "application/json", 
+    "Host": "httpbin.org", 
+    "User-Agent": "curl/7.81.0", 
+    "X-Amzn-Trace-Id": "Root=1-641be271-3a0b172a324714f15cf4bdef"
+  }, 
+  "json": {
+    "edad": 25, 
+    "nombre": "Ejemplo"
+  }, 
+  "origin": "189.141.22.168", 
+  "url": "https://httpbin.org/post"
+}
+```
+
+Realizar una solicitud HTTP POST: Para realizar una solicitud HTTP POST, use la opción -d seguida de los datos que desea enviar
+
+```bash
+curl -X POST -d "usuario=john&contraseña=1234" https://www.ejemplo.com/login
+```
+
+Enviar un archivo en una solicitud HTTP POST: Para enviar un archivo en una solicitud HTTP POST, use la opción -F seguida del nombre del archivo
+
+```bash
+curl -F archivo=@/ruta/al/archivo https://www.ejemplo.com/upload
+```
+
+Hacer una peticion **PUT**  
+Este comando envía una solicitud PUT a la dirección URL especificada, junto con los datos JSON proporcionados, para actualizar el recurso en la dirección URL especificada. El número `1` representa el identificador único del recurso que se va a actualizar.
+
+```bash
+curl -X PUT -H "Content-Type: application/json" -d '{"nombre": "Ejemplo", "edad": 25}' https://www.ejemplo.com/usuarios/1
+```
+
+Hacer una peticion **DELETE**
+
+```bash
+curl -X DELETE https://www.ejemplo.com/usuarios/1
+```
+
+
+```bash
+
+```
+
+
+```bash
+
+```
+
+
+```bash
+
+```
+
+
+```bash
+
+```
+
+
+```bash
+
+```
+
+
+
+
+
 
 [Indice](#terminal-y-línea-de-comandos)
