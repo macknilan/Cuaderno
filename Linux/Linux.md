@@ -1,6 +1,6 @@
 # Terminal y Línea de Comandos
 
-```
+```bash
                     !G&@@@@@@&G~                  
                   ?@@@@@@@@@@@@@&^                
                  J@@@@@@@@@@@@@@@@^               
