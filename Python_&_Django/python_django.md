@@ -190,6 +190,7 @@ Para listar todas las versiones de `pyenv` que se pueden instalar
 
 ```bash
 pyenv install -l
+```
 
 Para instalar algunas de las versiones de python listadas.
 
