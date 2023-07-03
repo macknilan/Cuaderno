@@ -5,8 +5,6 @@
 
 ## - [Yarn Classic](#yarn-classic)
 
-🔗 🏘️ [yarnpkg](https://yarnpkg.com/ "yarn home page") ↗️
-
 ### 1.Acerca de NPM, paquetes y módulos
 
 ¿Qué es **NPM** (_node package manager_) ? Es un gestor de paquetes, el más popular que tiene JavaScript, donde encontrarás una gran cantidad de recursos para poder implementar en tus proyectos. También vas a poder crear tus propios paquetes y compartirlos con toda la comunidad.
@@ -276,6 +274,10 @@ Y en caso de que esto no lo solucione, podemos ir actualizandolos de uno en uno.
 
 1.
 
+🔗 🏘️ [yarnpkg](https://yarnpkg.com/ "yarn home page") ↗️
+
+Para instalar Yarn classic.
+
 ```bash
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
@@ -294,7 +296,26 @@ sudo apt install yarn
 yarn --version
 ```
 
+1. Instalación de la última versión de Yarn
+
+Con `node -v` verificar que se tiene la última version de node _+16.10_ 
+
+Iniciar Corepack `corepack enable` Si Corepack no existe en el sistema se tiene que instalar
+
 ```bash
+sudo npm install -g corepack
+```
+
+Instalar la última versión de yarn
+
+```bash
+corepack prepare yarn@stable --activate
+```
+
+Saber la version que se instalo.
+
+```bash
+yarn --version
 ```
 
 |           npm          |           yarn          |
