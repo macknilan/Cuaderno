@@ -8,9 +8,11 @@
 En este curso aprenderás las prácticas que la comunidad ha decidido que son buenas.
 
 **React es declarativo**, lo que quiere decir que se le indica qué debe hacer pero no cómo debe hacerse, ahorrando de esta manera muchos pasos.
+
 ```language
 code
 ```
+
 **JSX** es _HTML_ dentro de Javascript, esto se verá más adelante en detalle.
 
 **React** está _estructurado por componentes_ que son como pequeños bloques de lego que al ser unidos forman aplicaciones de **React**. Estos componentes pueden tener estilos, ser enlazados a eventos y sus estados pueden ser modificados.
@@ -58,6 +60,7 @@ npm start
   - **Eslint**: Lee el código y avisa de errores.
 
 ## 2. Fundamentos
+
 ### 5. Clonar el código de GitHub
 
 :octocat: [platzi-badges](https://github.com/sparragus/platzi-badges)
@@ -103,6 +106,7 @@ ReactDOM.render(element, container);
 ```
 
 ### 7. JSX
+
 JSX === Azúcar Sintactica === JavaScript
 
 **JSX** es una extensión de _JavaScript_ creada por Facebook para el uso con la biblioteca React. Sirve de preprocesador (como Sass o Stylus a CSS) y transforma el código generado con React a _JavaScript_.
@@ -110,6 +114,7 @@ JSX === Azúcar Sintactica === JavaScript
 **JSX** tiene su alternativa que es `React.createElement` pero es preferible **JSX** porque es mucho más legible y expresivo. Ambos tienen el mismo poder y la misma capacidad.
 
 `React.createElement` recibe 3 argumentos:
+
 1. El tipo de elemento que estamos creando
 2. Sus atributos o props
 3. Y el children que es el contenido.
@@ -121,9 +126,10 @@ En **JSX** se utilizan las llaves para introducir variables o expresiones de _Ja
 
 Las expresiones pueden ser llamadas a otras funciones, cálculos matemáticos, etc. _Si las expresiones son false, 0, null, undefined, entre otros, no se verán._
 
-
 ## 3. Creación y diseño de componentes
+
 ### 8. ¿Qué es un componente?
+
 NOTA: Pagina(s) 20 - 32 de slides del curso
 
 :octocat: [¿En qué se diferencian los componentes de función de las clases?](https://overreacted.io/es/how-are-function-components-different-from-classes/)
@@ -140,33 +146,32 @@ Para identificarlos debes hacerte las siguientes preguntas:
 1. ¿Qué elementos se repiten? Estos son los elementos en una lista o los que comparten aspecto visual y su funcionalidad.
 2. ¿Qué elementos cumplen una función muy específica? Estos sirven para encapsular la lógica y permiten juntar muchos comportamientos y aspectos visuales en un solo lugar.
 
-__Identificar componentes es una habilidad esencial para poder desarrollar aplicaciones de React.__
+**Identificar componentes es una habilidad esencial para poder desarrollar aplicaciones de React.**
 
 _‘Componente’ vs ‘Elemento’_  
-+ Un elemento es a un objeto como un componente es a una clase.
-+ Si el elemento fuera una casa, el componente sería los planos para hacer  esa casa.
+- Un elemento es a un objeto como un componente es a una clase.
+- Si el elemento fuera una casa, el componente sería los planos para hacer  esa casa.
 
 ![Componentes reactJS](imgs/react-components-blog-image.jpg)
-
 
 ### 9. Qué es y cómo funciona un componente en React.js
 
 ![Que es y como funciona un compomente en ReactJS](imgs/que_es_y_como_funciona_un_componente_en_reactjs.webp)
-
 
 1. Nacen
 2. Crecen
 3. Desaparecen
 
 El ciclo de vida de los componentes tienen 3 faces -> MONTAJE, ACTUALIZACIÓN, ELIMINACIÓN DE COMPONENTES
+
 1. **Montaje** Cuando los usuarios llegan a nuestra aplicación, cuando tienen su primera interacción con el, que es cuando aparecen los componentes.
 2. **Actualización** Cuando los componentes cambian y otros no; si cambian pasan por una actualización y se ejecuta `render()` generando el nuevo `DOM` y react manda la señal de conformación `componentDidUpdate()`. Es un buen monento para reaccionar a cambios. Como por ejemplo añadir una sugerencia a una bebida.
 3. **Eliminación de los componentes**, al entrar a otra página, varios componentes que se veian  ya no estaran en ella, react manda la señal `componentWillUnmount()`, seguido de la eliminación del codigo en el `DOM`
 
 ![Que es y como funciona un compomente en ReactJS tecnico](imgs/diagrama-ciclo-de-vida_react-tecnico.png)
 
-
 ### 10. Nuestro primer componente
+
 **NOTA**: Nombre de commit `Add. _Curso ReactJS_ 3.PrimerComponente` en mi repo
 
 Dentro de la carpeta `src` crear carpeta `components` y otra `images`
@@ -174,6 +179,7 @@ Dentro de la carpeta `src` crear carpeta `components` y otra `images`
 En carpeta `components` se crea el primer componente se crea el archivo `Badge.js`
 
 Se afecta el archivo `index.js` para importar el nuevo componente.
+
 ```js
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -183,27 +189,32 @@ ReactDOM.render(<Badge />, container);
 ```
 
 ### 11. Cómo aplicar estilos
+
 **NOTA**: Nombre de commit `Add. _Curso ReactJS_ 4.Estilos` en mi repo
 
 Dentro de la carpeta `components` se crea otra carpeta `styles` que son los estilso para los componentes.
 
 Se importan el en el componente `Badge`
+
 ```js
 import './styles/Badge.css';
 ```
+
 Se importan las clases pero con **className** para que react las identifique
 En el archivo `index.js` se importan los estylos globales y los archivos de estilos bootstrap, creando un archivo a mismo nivel de la carpeta `src` archivo `global.css` que son cambios personalisados para el proyecto.
+
 ```js
 import './global.css';
 ```
+
 Y en Badge.js se cambian etiquetas.
 
-+ Para los estilos crearemos una carpeta llamada **Styles** y allí vivirán todos los archivos de estilos que tienen que ver con los componentes.
-* Para usar los estilos es necesario importarlos con **import**
-* React funciona ligeramente diferente y para los atributos de clases no se utiliza class sino **className**
-* Es posible utilizar Bootstrap con React, sólo debe ser instalado con `npm install bootstrap` y debe ser importado en el index.js
-* Existen estilos que son usados de manera global o en varios componentes, _así que deben ser importados en el_ `index.js`
+- Para los estilos crearemos una carpeta llamada **Styles** y allí vivirán todos los archivos de estilos que tienen que ver con los componentes.
 
+* Para usar los estilos es necesario importarlos con **import**
+- React funciona ligeramente diferente y para los atributos de clases no se utiliza class sino **className**
+- Es posible utilizar Bootstrap con React, sólo debe ser instalado con `npm install bootstrap` y debe ser importado en el index.js
+- Existen estilos que son usados de manera global o en varios componentes, _así que deben ser importados en el_ `index.js`
 
 ### 12. Props
 
@@ -213,6 +224,7 @@ Estos props salen de una variable de la clase que se llama `this.props` y los va
 
 Para pasarle _props_ el componente `Badge` se modifican los archivos `index.js` y `Badge.js`. Se pasan como parametros del `index.js` al `Badge.js` como `this.props`
 `index.js`
+
 ```js
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -231,7 +243,9 @@ ReactDOM.render(
   container
 );
 ```
+
 `Badge.js`
+
 ```js
 import React from 'react';
 import './styles/Badge.css';
@@ -266,20 +280,21 @@ class Badge extends React.Component {
 export default Badge;
 ```
 
-
 ### 13. Nuestra primera página
+
 **NOTA**: Nombre de commit `Add. _Curso ReactJS_ 6.NuestraPrimeraPagina"` en mi repo
 
 Navbar es un componente que se importa de Bootstrap
 
-+ Las páginas en React son componentes y conseguir distinguirlas nos servirá para saber que es un componente que adentro lleva otros componentes.
-  * Al escribir los _props_ no importa el orden en el que lo hagas, únicamente importa el nombre.
+- Las páginas en React son componentes y conseguir distinguirlas nos servirá para saber que es un componente que adentro lleva otros componentes.
+  - Al escribir los _props_ no importa el orden en el que lo hagas, únicamente importa el nombre.
 
 Dentro de la carpeta `src` se crea la nueva pagina se crea en la carpeta `pages` el archivo/componente `BadgeNew.js` que sera la nueva página y tambien , la carpeta `styles` y dentro `BadgeNew.css`
 
 Dentro de la carpeta `components` se crea el archivo del componente `Navbar.js` y dentro de `styles` su archivo de estilos `Navbar.css`
 
 En el archivo `index.js` se modifica para importar la nueva pagina `BadgeNew`
+
 ```js
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -295,11 +310,12 @@ ReactDOM.render(<BadgeNew />, container);
 
 ### 14. Enlazando eventos
 
-+ React dispone de eventos. Cada vez que se recibe información en un input se obtiene un evento `onChange` y se maneja con un método de la clase this.handleChange
-+ Los _elementos button_ también tienen un evento que es `onClick`.
-+ Cuando hay un botón dentro de un formulario, este automáticamente será de tipo `submit`. Si no queremos que pase así hay dos maneras de evitarlo: especificando que su valor es de tipo button o manejándolo desde el formulario cuando ocurre el evento `onSubmit`.
+- React dispone de eventos. Cada vez que se recibe información en un input se obtiene un evento `onChange` y se maneja con un método de la clase this.handleChange
+- Los _elementos button_ también tienen un evento que es `onClick`.
+- Cuando hay un botón dentro de un formulario, este automáticamente será de tipo `submit`. Si no queremos que pase así hay dos maneras de evitarlo: especificando que su valor es de tipo button o manejándolo desde el formulario cuando ocurre el evento `onSubmit`.
 
 Se crea en la carpeta de `components` el nuevo componente de formulario `BadgeForm.js` y se tienen que tomar en cuenta como se manejan los eventos en el formulario con:
+
 ```js
 handleChange = e => {
   console.log({
@@ -317,7 +333,9 @@ handleChange = e => {
     console.log('Form was submitted');
   };
 ```
+
 Y se enlasa el formulario con `Badge.js` con
+
 ```js
 import BadgeForm from '../components/BadgeForm';
 // y 
@@ -325,6 +343,7 @@ import BadgeForm from '../components/BadgeForm';
   <BadgeForm />
 </div>
 ```
+
 para que en la página se pueda mostrar
 
 Un componente de React dispone de eventos sin la necesidad de generarlos mediante `addEventListener`
@@ -338,30 +357,33 @@ Los eventos más comunes que podemos utilizar serían `onClick`, `onChange`, `on
 ```jsx
 const Button = (props) => {
   handleClick = (event) => {
-		event.preventDefault()
+  event.preventDefault()
     alert('Handling click')
   }
   return (
     <div>
-			<h1>Manzanas</h1>
-			<button onClick={handleClick}>Click me</button>
-		</div>
+   <h1>Manzanas</h1>
+   <button onClick={handleClick}>Click me</button>
+  </div>
   );
 }
 ```
 
-
 ### 15. Manejo de estado
+
 **NOTA**: Nombre de commit `Add. _Curso ReactJS_ 8.ManejoDeEstado"` en mi repo
 Hasta esta clase todos los componentes han obtenido su información a través de props que vienen desde afuera (otros componentes) pero hay otra manera en la que los componentes pueden producir su propia información y guardarla para ser consumida o pasada a otros componentes a través de sus props. _La clave está en que la información del_ **state** a otros componentes pasará en una sola dirección y podrá ser consumida pero no modificada.
 
 Para inicializar el estado de las variables del formulario
+
 ```js
 state = {},
 ```
+
 Antes de la funcion `handleChange` que se encarga de manejar/obtener los valores de los inputs.
 
 Para guardar la información en el estado se usa una función de la clase component llamada **setState** a la cual se le debe pasar un objeto con la información que se quiere guardar.
+
 ```js
 handleChange = e => {
     this.setState({
@@ -369,11 +391,13 @@ handleChange = e => {
     });
   };
 ```
+
 Se guarda en un arreglo los estados del formulario/los valores de los inputs
 
-Aunque no se ve, la información está siendo guardada en dos sitios. Cada input guarda su propio valor y al tiempo la está guardando en **setState**, lo cual no es ideal. 
+Aunque no se ve, la información está siendo guardada en dos sitios. Cada input guarda su propio valor y al tiempo la está guardando en **setState**, lo cual no es ideal.
 
 _Para solucionarlo hay que modificar los inputs de un estado de no controlados a controlados._
+
 ```js
 value={this.state.firstName}
 // --
@@ -382,8 +406,8 @@ value={this.state.lastName}
 value={this.state.email}
 ```
 
-
 ### 16. Levantamiento del estado
+
 **NOTA**: Nombre de commit `Add. _Curso ReactJS_ 9.LevantarElEstado 01"` en mi repo
 
 **Levantar el estado** es una técnica de React que pone el estado en una localización donde se le pueda pasar como props a los componentes. Lo ideal es poner el estado en el lugar más cercano a todos los componentes que quieren compartir esa información.
@@ -392,23 +416,24 @@ Algo interesante que le da el nombre a React es su parte de **“reactivo”** y
 
 Ahora guardaremos las variables en el `BadgeNew.js` que contiene el formulario y los badges, por lo que:
 
-+ En `BadgeNew.js`  
+- En `BadgeNew.js`  
   1. _Inicializamos el state_ y creamos un `objeto form`, con todos sus atributos inicializados vacíos tambien
   2. Creamos el método `handleChange` para que cree una copia, la edite y la guarde en el state.form cada que suceda el evento `onchange`
 
-+ Dentro del render
+- Dentro del render
   3. Mandamos como _props_ cada uno de los states del form a `<Badge />`
   4. Mandamos como _props_ el "arreglo" del `state.form` a `BadgeForm.js` para que refleje el valor(?no estoy seguro)
   5. Declaramos el atributo `onchange` en _BadgeForm_ para que llame al metodo `handleChange`
 
-+ En `Badge.js`
+- En `Badge.js`
   6. Mostramos cada uno de los valores recibidos como `this.props.name` dentro del render
 
-+ En el `BadgeForm.js`
+- En el `BadgeForm.js`
   7. Mostramos cada posicion en el atributo value con `this.props.formValues.value`
   8. Declaramos que al hacer un cambio se vera reflejado en el change padre, mediante el `onchange` hijo
 
 1. `BadgeNew.js`
+
 ```js
   state = {
     form: {
@@ -420,7 +445,9 @@ Ahora guardaremos las variables en el `BadgeNew.js` que contiene el formulario y
     },
   };
 ```
+
 2. `BadgeNew.js`
+
 ```js
   handleChange = e => {
       this.setState({
@@ -431,7 +458,9 @@ Ahora guardaremos las variables en el `BadgeNew.js` que contiene el formulario y
     });
   };
 ```
+
 2.1. `BadgeNew.js`
+
 ```js
 <div className="col-6">
   <BadgeForm
@@ -440,7 +469,9 @@ Ahora guardaremos las variables en el `BadgeNew.js` que contiene el formulario y
   />
 </div>
 ```
+
 3 - 4 `<Badge />`
+
 ```js
 <Badge
   firstName={this.state.form.firstName}
@@ -451,11 +482,15 @@ Ahora guardaremos las variables en el `BadgeNew.js` que contiene el formulario y
   avatarUrl="https://www.gravatar.com/avatar/21594ed15d68ace3965642162f8d2e84?d=identicon"
 />
 ```
+
 6. `Badge.js`
+
 ```js
 Mostramos cada uno de los valores recibidos como `this.props.name` dentro del render
 ```
+
 7 - 8. `BadgeForm.js`
+
 ```js
 onChange={this.props.onChange}
 value={this.props.formValues.firstName}
@@ -470,10 +505,12 @@ value={this.props.formValues.twitter}
 ```
 
 ### 17. Listas de componentes
+
 **NOTA**: Nombre de commit `Add. _Curso ReactJS_ 10.ListaDeComponentes"` en mi repo
 ![Componente para listar](imgs/react_componente_para_listar.png)
 
-Se modifica el archivo `index.js` para que se importe a la pagina principal la nueva pagina `index.js` 
+Se modifica el archivo `index.js` para que se importe a la pagina principal la nueva pagina `index.js`
+
 ```js
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -484,15 +521,19 @@ import Badges from './pages/Badges';
 const container = document.getElementById('app');
 ReactDOM.render(<Badges />, container);
 ```
-Se crea el archivo `Badges.js` el cual es la nueva página que contendra el `set` de la `data` ya seteado con información. y el template para mostrar la información 
+
+Se crea el archivo `Badges.js` el cual es la nueva página que contendra el `set` de la `data` ya seteado con información. y el template para mostrar la información
 
 Que será enviada al nuevo componente que se encarga de "Listar" los badges `BadgesList.js` por medio del componente.
-Se modifica el archivo `index.js` para que se importe a la pagina principal la nueva pagina `Badges.js` 
+Se modifica el archivo `index.js` para que se importe a la pagina principal la nueva pagina `Badges.js`
+
 ```js
 <BadgesList badges={this.state.data} />
 ```
+
 En el nuevo componente `BadgesList.js` importa la clase **BadgesListItem** que se encuentra en el mismo componente y se encarga de deplegar la info del `data` siertos datos del objeto `set`
 `BadgesList.js`
+
 ```js
 class BadgesListItem extends React.Component {
   render() {
@@ -537,7 +578,9 @@ export default BadgesList;
 ```
 
 ## 4. React Router
+
 ### 18. Introducción a React Router
+
 NOTA: Pagina(s) 33 - 55 de slides del curso
 
 Las aplicaciones que se trabajan en React son llamadas **single page apps**. Esto es posible gracias a **React Router** que es una librería Open Source.
@@ -553,8 +596,8 @@ Las aplicaciones que se trabajan en React son llamadas **single page apps**. Est
 3. **Switch**: Dentro de _Switch_ solamente van elementos de _Route_. _Switch_ se asegura que solamente un _Route_ se renderize.
 4. **Link**: Toma el lugar del elemento <a>, evita que se recargue la página completamente y actualiza la URL.
 
-
 ### 19. División de la aplicación en rutas
+
 **NOTA**: Nombre de commit `Add. _Curso ReactJS_ 19.División de la aplicación en rutas` en mi repo
 
 :link: [npm eact-router-dom](https://www.npmjs.com/package/react-router-dom)
@@ -566,6 +609,7 @@ Para instalar _React Router_ lo hacemos desde la terminal con `npm install react
 El archivo index se modifica para que se agregué el nuevo componente que es `app`
 
 `index.js`
+
 ```js
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -575,11 +619,13 @@ import App from './components/App';
 const container = document.getElementById('app');
 ReactDOM.render(<App />, container);
 ```
+
 Se agrega un nuevo componente `App` en la cual actuara para la rutas de la _single page app_, y ahora esta se encargaŕa de importar `BagdeNew` y `Badges`
 
-Se crea la lógica para las rutas importando `BrowserRouter` 
+Se crea la lógica para las rutas importando `BrowserRouter`
 
 `App.js`
+
 ```js
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
@@ -597,9 +643,11 @@ function App() {
 }
 export default App;
 ```
+
 En el archivo `Badges.js` el cual tiene el boton que nos lleva al componente `BadgesNew` se cambia el elemto `<a>` por `<Link>` el cual se importa, y ahce que ne vavege internamente sin tener que refrescar toda la página
 
 `Badges.js`
+
 ```JS
 import { Link } from 'react-router-dom'; // SE IMPORTA Link
 ```
@@ -611,6 +659,7 @@ import { Link } from 'react-router-dom'; // SE IMPORTA Link
 ```
 
 ### 20. Mejorando la User Interface con un Layout
+
 **NOTA**: Nombre de commit `Add. _Curso ReactJS_ 12.MejoranLaUIConUnLayout` en mi repo
 
 **React podemos crear componentes con clase y sin clase.**
@@ -623,7 +672,8 @@ En resumen, Richard usa un componente _“Stateless”_ para el Layout porque co
 
 Se modifica el archivo `App.js` para que se agregue el Layout que se mostrara en todos los dmeas componentes.
 
-Además se agrega el componente que se mostrara cuando no se encuentre la página y se muestre el error personalisado **404** 
+Además se agrega el componente que se mostrara cuando no se encuentre la página y se muestre el error personalisado **404**
+
 ```js
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
@@ -647,7 +697,9 @@ function App() {
 }
 export default App;
 ```
+
 Se crea el componente **Layout** en el archivo `Layout.js`
+
 ```js
 import React from 'react';
 import Navbar from './Navbar';
@@ -666,7 +718,9 @@ COMPONENTE ESPECIAL QUE REACT ENTIENDE Y QUE HACE QUE REGRESEMOS MAS DE UN ELEME
 }
 export default Layout;
 ```
-`NotFound.js` componente para mostrar pagina de error 404 
+
+`NotFound.js` componente para mostrar pagina de error 404
+
 ```js
 import React from 'react';
 function NotFound() { /*ES UN COMPONETE SIN ESTADO*/
@@ -675,65 +729,68 @@ function NotFound() { /*ES UN COMPONETE SIN ESTADO*/
 export default NotFound;
 ```
 
-
 ## 5. Component Lifecycle
+
 ### 21. Introducción del ciclo de vida de un componente
+
 NOTA: Pagina(s) 55 - 67 de slides del curso
 
 Cuando React renderiza los componentes decimos que entran en escena, cuando su estado cambia o recibe unos props diferentes se actualizan y cuando cambiamos de página se dice que se desmontan.
 
-+ **Montaje:**
-  * Representa el momento donde se inserta el código del componente en el DOM.
-  * Se llaman tres métodos: `constructor`, `render`, `componentDidMount`.
-+ **Actualización:**
-  * Ocurre cuando los props o el estado del componente cambian.
-  * Se llaman dos métodos: `render`, `componentDidUpdate`.
-+ **Desmontaje:**
-  * Nos da la oportunidad de hacer limpieza de nuestro componente.
-  * Se llama un método: `componentWillUnmount`.
+- **Montaje:**
+  - Representa el momento donde se inserta el código del componente en el DOM.
+  - Se llaman tres métodos: `constructor`, `render`, `componentDidMount`.
+- **Actualización:**
+  - Ocurre cuando los props o el estado del componente cambian.
+  - Se llaman dos métodos: `render`, `componentDidUpdate`.
+- **Desmontaje:**
+  - Nos da la oportunidad de hacer limpieza de nuestro componente.
+  - Se llama un método: `componentWillUnmount`.
 
 **¿Qué son los métodos del ciclo vida?**  
 Todos los componentes en React pasan por una serie de fases que generalmente se denominan “Ciclo de Vida del componente” es un proceso que React hace en cada componente, en algunos casos no podemos verlos como un bloque de código y en otros podemos llamarlos en nuestro componente para asignar una actividad según sea el caso necesario.
 
 Los componentes en react pasan por un **Montaje**, **Actualización**, **Desmontaje** y **Manejo de errores.**
 
-+ **Montaje**:
-  + En esta fase nuestro componente se crea junto a la lógica y los componentes internos y luego es insertado en el DOM.
-+ Actualización:
-  + En esta fase nuestro componente está al pendiente de cambios que pueden venir a través de un cambio en “state” o “props” esto en consecuencia realizan una acción dentro de un componente.
-+ **Desmontaje**:
-  + En esta etapa nuestro componente “Muere” cuando nosotros no necesitamos un elemento de nuestra aplicación, podemos pasar por este ciclo de vida y de esta forma eliminar el componente de la representación que tiene en el DOM.
-+ **Manejo de Errores**:
-  * Cuando nuestro código se ejecuta y tiene un error, podemos entrar en una fase donde se puede entender mejor qué está sucediendo con la aplicación.
+- **Montaje**:
+  - En esta fase nuestro componente se crea junto a la lógica y los componentes internos y luego es insertado en el DOM.
+- Actualización:
+  - En esta fase nuestro componente está al pendiente de cambios que pueden venir a través de un cambio en “state” o “props” esto en consecuencia realizan una acción dentro de un componente.
+- **Desmontaje**:
+  - En esta etapa nuestro componente “Muere” cuando nosotros no necesitamos un elemento de nuestra aplicación, podemos pasar por este ciclo de vida y de esta forma eliminar el componente de la representación que tiene en el DOM.
+- **Manejo de Errores**:
+  - Cuando nuestro código se ejecuta y tiene un error, podemos entrar en una fase donde se puede entender mejor qué está sucediendo con la aplicación.
 
 Algo que debemos tener en cuenta es que un componente NO debe pasar por toda las fases, un componente puede ser montado y desmontado sin pasar por la fase de actualización o manejo de errores.
 
 Ahora que entendemos las fases que cumple el ciclo de vida en React vamos a entrar a detalle en cada uno de ellos para ver qué piezas de código se ejecutan y nos ayudarán a crear aplicaciones en React pasando por un ciclo de vida bien estructurado.
 
-+ **Montado**:
+- **Montado**:
   1. `Constructor()` Este es el primer método al que se hace un llamado, aquí es donde se inicializan los métodos controladores, eventos del estado.
   2. `getDerivedStateFromProps()` Este método se llama antes de presentarse en el DOM y nos permite actualizar el estado interno en respuesta a un cambio en las propiedades, es considerado un método de cuidado, ya que su implementación puede causar errores sutiles.
   3. `render()` Si queremos representar elementos en el DOM en este método es donde se escribe esta lógica, usualmente utilizamos JSX para trabajar y presentar nuestra aplicación.
   4. `ComponentDidMount()` Este método se llama inmediatamente que ha sido montado en el DOM, aquí es donde trabajamos con eventos que permitan interactuar con nuestro componente.
 
-+ **Actualización**:
+- **Actualización**:
   1. `getDerivedStateFromProps()` Este método es el primero en ejecutarse en la fase de actualización y funciona de la misma forma que en el montaje.
   2. `shouldComponentUpdate()` Dentro de este método se puede controlar la fase de actualización, podemos devolver un valor entre verdadero o falso si queremos actualizar o no el componente y es utilizado principalmente para optimización.
   3. `render()` Se llama el método render que representa los cambios en el DOM.
   4. `componentDidUpdate()` Este método es invocado inmediatamente después de que el componente se actualiza y recibe como argumentos las propiedades y el estado y es donde podemos manejar nuestro componente.
 
-+ **Desmontado**
+- **Desmontado**
   1. `componentWillUnmount()` Este método se llama justo antes de que el componente sea destruido o eliminado del DOM.
   2. `Manejo de Errores:`
-    1. `getDerivedStateFromError()` Una vez que se lanza un error este es el primer método que se llama, el cual recibe el error como argumento y cualquier valor devuelto en este método es utilizado para actualizar el estado del componente.
-    2. `componentDidCatch()` Este método es llamado después de lanzarse un error y pasa como argumento el error y la información representada sobre el error.
+  1. `getDerivedStateFromError()` Una vez que se lanza un error este es el primer método que se llama, el cual recibe el error como argumento y cualquier valor devuelto en este método es utilizado para actualizar el estado del componente.
+  2. `componentDidCatch()` Este método es llamado después de lanzarse un error y pasa como argumento el error y la información representada sobre el error.
 
 Ahora que entendemos cada una de las fases que tiene el ciclo de vida de react, podemos utilizarlas según sea necesario en nuestra aplicación y de esta forma crear las interacciones que necesitemos.
 
 ### 22. Práctica del ciclo de vida
+
 Analizar el console.log del archivo `Badges.js` para entender el ciclo de vida de los componentes
 
 `Badges.js`
+
 ```js
 class Badges extends React.Component {
   constructor(props) {
@@ -816,7 +873,9 @@ class Badges extends React.Component {
 ```
 
 ## 6. Llamadas a un API
+
 ### 23. Introducción llamadas a un API
+
 NOTA: Pagina(s) 68 - 77 de slides del curso
 
 Las llamadas a una _API_ siguen un patrón similar siempre que las hacemos, cada llamada consta de tres estados:
@@ -833,24 +892,26 @@ La llamada se hará usando `fetch` que es una función de JavaScript que al pasa
 
 Se añadio ejemplo para manejar llamado a API de Rick and Morty en la carpeta `rickAndMorty`
 
-
 ### 25. Solicitando datos (GET)
 
-Se tienen que descargar 2 cosas, la carpeta `server` junto con el archivo `api.js`. La carpeta server entera, a la altura de la carpeta **src**. 
+Se tienen que descargar 2 cosas, la carpeta `server` junto con el archivo `api.js`. La carpeta server entera, a la altura de la carpeta **src**.
 
 El archivo `api.js` debe estar dentro de **src**. Lo tienes todo en **Archivos** y **Enlaces** arriba a la derecha.
 
 Seguidamente es necesario abrir la terminal e instalar las siguientes dependencias:
 
-+ `faker` (Crea un servicio _falso_ de datos para nuestra petición a la api creada por Richard)
-+ `json-server` (Crea nuestra _falso_ puerto **3001** para la petición a la api)
-+ `npm-run-all` (cuidado, no es `run-all` que también existe)
+- `faker` (Crea un servicio _falso_ de datos para nuestra petición a la api creada por Richard)
+- `json-server` (Crea nuestra _falso_ puerto **3001** para la petición a la api)
+- `npm-run-all` (cuidado, no es `run-all` que también existe)
 
 Se pueden hacer al mismo tiempo todas:
+
 ```bash
 npm install faker json-server npm-run-all --save-dev
 ```
+
 Finalmente entramos en el archivo `package.json` y reescribimos los _scripts_ para que quede de la siguiente forma:
+
 ```json
 “scripts”: {
     “start”: “npm-run-all -p client server”,
@@ -862,34 +923,44 @@ Finalmente entramos en el archivo `package.json` y reescribimos los _scripts_ pa
     “eject”: “react-scripts eject”
 }
 ```
+
 Explicados:
+
 ```json
 “start”: “npm-run-all -p client server”,
 ```
+
 Ejecuta todos los scripts a una
+
 ```json
 “server”: “json-server --port 3001 --watch server/db.json”,
 ```
+
 Crea un servidor falso con un _puerto 3001_ y unos datos que busca la api en el archivo especificado.
+
 ```json
 “seed”: “node server/seed.js”,
 ```
+
 Crea los datos falsos
 
 Volvemos a la terminal y tecleamos:
+
 ```bash
 npm run start
 ```
+
 Listo ya deberia de funcionar
 
 ### 26. Mejorando la Experiencia de Usuario durante una petición
-**NOTA**: Nombre de commit `Add. _Curso ReactJS_ 15.MejorandoElUXDeUnaPeticion 01` en mi repo
 
+**NOTA**: Nombre de commit `Add. _Curso ReactJS_ 15.MejorandoElUXDeUnaPeticion 01` en mi repo
 
 Para mejorar la experiencia de usuario se tienen que modificar el archivo `Badges.js` para insertar el componente `<PageLoading />;` que hace que se muestre un icono miestras se espera la respuesta del API y se mejora el mensaje de error con el compomente `<PageError error={this.state.error} />;` el cual genera un mensaje mas peronalizado
  Se crean y modifican los archivos `Badges.js`, `PageLoading.js`, `BadgesList.js`, `Loader.js`, `api.js` `PageError.js`
 
 `Badges.js`
+
 ```js
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -964,6 +1035,7 @@ export default Badges;
 ```
 
 ### 27. Enviando datos (POST)
+
 `MD5` es una pequeña librería a la cual se le da un texto y ella regresa un `hash`.
 
 Podremos hacer pruebas para cifrar nuestros textos a md5 en el siguiente sitio MD5 Online
@@ -973,7 +1045,8 @@ Se instala el paquete :link: [MD5](https://www.npmjs.com/package/md5)
 
 Se centra la imagen del _hero_ y se cambia por `import header from '../images/platziconf-logo.svg';`
 
-En el archico `Badge.js` el componente se _Badge_ se agregan valores predeterminados cuando no se escriben la info en el el _form_ 
+En el archico `Badge.js` el componente se _Badge_ se agregan valores predeterminados cuando no se escriben la info en el el _form_
+
 ```js
 <Badge
     firstName={this.state.form.firstName || 'FIRST_NAME'}
@@ -984,8 +1057,10 @@ En el archico `Badge.js` el componente se _Badge_ se agregan valores predetermin
     avatarUrl="https://www.gravatar.com/avatar/21594ed15d68ace3965642162f8d2e84?d=identicon"
 />
 ```
+
 Se cambin la imagen del componente _Gravatar_ y se tieien que cambiar el hash que se general para cada una en la url `https://www.gravatar.com/avatar/21594ed15d68ace3965642162f8d2e84?d=identicon`
 `Gravatar.js`
+
 ```js
 import React from 'react';
 import md5 from 'md5';
@@ -1005,11 +1080,15 @@ function Gravatar(props) {
 
 export default Gravatar;
 ```
-Y en el archivo `Badge.js` se manda a llamar el componente y se le pasa el props por del correo 
+
+Y en el archivo `Badge.js` se manda a llamar el componente y se le pasa el props por del correo
+
 ```js
 <Gravatar className="Badge__avatar" email={this.props.email} />
 ```
+
 Se mandan los que ya tenemos y se añade al componente _BadgeForm_ en el archivo `BadgeNew.js` la funcion que maneja el _submit_ del _form_ se llama al props
+
 ```js
 <BadgeForm
     onChange={this.handleChange}
@@ -1017,10 +1096,12 @@ Se mandan los que ya tenemos y se añade al componente _BadgeForm_ en el archivo
     formValues={this.state.form}
 />
 ```
+
 En el archivo `BadgeForm.js` del elemeto _form_ se cambia el evento `onSubmit` para que llame al prop `<form onSubmit={this.props.onSubmit}>`
 
 Se maneja el evento tipo submit del formulario del componente `BadgeForm` con `onSubmit={this.handleSubmit}` para que llame la funcion async para hacer **POST** a lal _API_ y semaneja el error con el `tray...catch` y se manejan los errores para poder mostrar los al usuario en caso de existir
 `BadgeNew.js`
+
 ```js
 handleSubmit = async e => {
     e.preventDefault();
@@ -1034,18 +1115,21 @@ handleSubmit = async e => {
     }
 ```
 
-
 ### 28. Manejando los estados de la petición durante el POST
+
 De la misma manera en la que se manejan los estados cuando se solicitan datos, deben ser manejados cuando los datos son enviados.
 
 Existe un tiempo entre que se da clic y los datos son enviados. Ese tiempo de espera es necesario visualizarlo. Igual hay que mostrar mensajes de error cuando no funcionan las cosas.
 
 Se modifican los archivos `BadgeNew.js` y el archivo `BadgeForm.js` para conseguirlo
 `BadgeNew.js`
+
 ```js
 import PageLoading from '../components/PageLoading'; /* SE IMPORTA */
 ```
+
 El estado se modifica para decir que no esta cargando la pagina cuando aparece y se establece el error en _null_ desde el principio
+
 ```js
 state = {
     loading: false, /* SE AGREGA */
@@ -1059,7 +1143,9 @@ state = {
     },
   };
 ```
+
 Se modifica el el handleSubmut
+
 ```js
 handleSubmit = async e => {
     e.preventDefault();
@@ -1085,7 +1171,9 @@ render()
       return <PageLoading />;
     }
 ```
+
 Se modifica el componente BadgeForm para que manege el error y lo muestr en el formulario
+
 ```js
 <BadgeForm
     onChange={this.handleChange}
@@ -1094,8 +1182,10 @@ Se modifica el componente BadgeForm para que manege el error y lo muestr en el f
     error={this.state.error} /* PARA QUE SE MUESTRE UN ERROR DENTRO DEL FORMULARIO */
 />
 ```
+
 En el archivo `BadgeForm.js` se añade despues dle boton el _if_ para que muestre el error en caso de que no se pudo hacer _POST_
 `BadgeForm.js`
+
 ```js
 /* SI EXISTE EL ERROR OCURRE LO SIGUIENTE PARA MOSTRAR EL ERROR EN EL FORMULARIO */
 {this.props.error && (
@@ -1104,9 +1194,11 @@ En el archivo `BadgeForm.js` se añade despues dle boton el _if_ para que muestr
 ```
 
 ### 29. Actualizando datos (PUT)
+
 **NOTA**: Nombre de commit `Add. _Curso ReactJS_ 18.EditandoElBadge` en mi repo
 
 Se crea el archivo `BadgeEdit.js`
+
 ```js
 import React from 'react';
 
@@ -1218,14 +1310,18 @@ class BadgeEdit extends React.Component {
 
 export default BadgeEdit;
 ```
+
 Se modifica el archivo `App.js` importando el la nueva pagina
+
 ```js
 import BadgeEdit from '../pages/BadgeEdit';/* SE IMPORTA */
 // 
 // EN LA URL SE AÑADE LA VARIALE PARA QUE SE ALMACENE EL ID
 <Route exact path="/badges/:badgeId/edit" component={BadgeEdit} />/* :badgeId -> SE DECLARA UNA VARIABLE PARA QEU TENGA UN VALOR */
 ```
+
 Se modifica el archivo `BadgeList.js` para indicarle que _id_ le corresponde a cada badge
+
 ```js
 return (
       <div className="BadgesList">
@@ -1249,11 +1345,13 @@ return (
 ```
 
 ### 30. Actualizaciones automáticas
+
 **Polling** consiste en que cada cierto tiempo que es definido por nosotros se buscan los datos y se actualizan automáticamente. Esto se hará constantemente hasta que el usuario se vaya de la página
 
 Se ejecutala el `setInterval` cada 5 segundos y se cancela cuando no esta presente la pagina con `componentWillUnmount()` con ayuda de `clearInterval(this.intervalId);` que recive el id de `setInterval`
 
 `Badges.js`
+
 ```js
 componentDidMount() {
     this.fetchData();
@@ -1276,14 +1374,18 @@ componentDidMount() {
     }
   };
 ```
+
 Para que no sea tan intrusivo el llamado de `setInterval` en la condicion `state.loading === true` y cuando no este definido data `!this.state.data` en el objeto `state`
+
 ```js
 render() {
     if (this.state.loading === true && !this.state.data) {
       return <PageLoading />;
     }
 ```
+
 Se añade un indicador debajo de la lista con un nuevo componente para qeu cada ves que se carge se muestre un indicador que esta haciendo algo y es cuando el _estado loadin es true_
+
 ```js
 // SE IMPORTA 
 import MiniLoader from '../components/MiniLoader';
@@ -1292,16 +1394,21 @@ import MiniLoader from '../components/MiniLoader';
 ```
 
 ## 7. Mejorando la UI
+
 ### 31. Los detalles de un Badge
+
 **NOTA**: Nombre de commit `Add. _Curso ReactJS_ 20.DetallesDeUnBadge` en mi repo
 
 Para mostrar los detalles del Badge se modifica el archivo `App.js` para agragar la pagina y se carge en la aplicación
+
 ```js
 import BadgeDetails from '../pages/BadgeDetails';/* SE CREA UNA NUEVA PAGINA PARA LOS DETALLES DE BADGE */
 //
 <Route exact path="/badges/:badgeId" component={BadgeDetails} /> /* SE CREA UNA NUEVA PAGINA PARA LOS DETALLES DE BADGE */
 ```
+
 En el archivo `BadgesList.js` se modifica la line para que se redirija a la pagina de detalles de badege
+
 ```js
 <Link
   className="text-reset text-decoration-none"
@@ -1310,7 +1417,9 @@ En el archivo `BadgesList.js` se modifica la line para que se redirija a la pagi
   <BadgesListItem badge={badge} />
 </Link>
 ```
+
 Se crea `BadgeDetail.js` con su archivo css
+
 ```js
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -1410,9 +1519,8 @@ class BadgeDetails extends React.Component {
 export default BadgeDetails;
 ```
 
-
-
 ### 32. UI Components y Container Components
+
 **NOTA**: Nombre de commit `Add. _Curso ReactJS_ 21.UIContainerComponents` en mi repo
 
 En la programación es bueno separar las tareas en diferentes funciones y en React sucede lo mismo. Cuando un componente hace demasiado, probablemente es mejor dividirlo en dos.
@@ -1424,18 +1532,20 @@ Esta técnica de componentes presentacionales y componentes container es común,
 `BadgeDetails.js` se encarga de la presentación
 
 ### 33. Portales
+
 **NOTA**: Nombre de commit `Add. _Curso ReactJS_ 22.Portals` en mi repo
 
 Hay momentos en los que queremos renderizar un modal, un _tooltip_, etc. Esto puede volverse algo complicado ya sea por la presencia de un `z-index` o un `overflow hidden`.
 
 En estos casos lo ideal será renderizar en un nodo completamente aparte y para esto React tiene una herramienta llamada **Portales** que funcionan parecido a `ReactDOM.render`; se les dice qué se desea renderizar y dónde, con la diferencia de que ese dónde puede ser fuera de la aplicación.
 
-+ ¿Por qué usamos un Portal para asegurar que los modales queden en un nodo fuera de la aplicación principal?
-    + **R: Para evitar problemas de stilos, en particular, con el z-index**
+- ¿Por qué usamos un Portal para asegurar que los modales queden en un nodo fuera de la aplicación principal?
+  - **R: Para evitar problemas de stilos, en particular, con el z-index**
 
 Se modifica el archivo `BadgeDetails.js`. se importa ReactDOM y debajo del boton de **Delete** se inserta el codigo para agregar el "Portal" que sera el "Modal" para conformar la eliminación.
 
 `BadgeDetails.js`
+
 ```js
 import ReactDOM from 'react-dom'; /* SE IMPORTA EL ReactDom */
 // 
@@ -1448,12 +1558,15 @@ import ReactDOM from 'react-dom'; /* SE IMPORTA EL ReactDom */
     )}
 </div>
 ```
+
 Y el archivo `index.html`  se agrega una linea para insertar el portal
+
 ```js
 <div id="modal"></div><!-- SE AGREGA PARA PODER AGREGAR EL PORTAL "MODAL" -->
 ```
 
 ### 34. Modales
+
 **NOTA**: Nombre de commit `Add. _Curso ReactJS_ 23.Modals` en mi repo
 
 ![React crear modal con "Portal"](imgs/react_crear_modal_con_portal.png)
@@ -1468,6 +1581,7 @@ Se crea el componente modal en el archivo `Modal.js` muestra el contenido de mod
 Modal ES UN COMPONENTE **"FUNCIONAL"** NO TIENE MANEJO DE ESTADO. _EL MANEJO DE ESTADO LE TOCA AL CONTENEDOR QUIEN LE PASA LA FUNCION_ `onCloseModal={this.handleCloseModal}` EN EL COMPONENTE `BadgeDetailsContainer.js`
 
 `Modal.js`
+
 ```js
 import React from 'react';
 import ReactDOM from 'react-dom';/* SE IMPORTA ReactDOM PARA CREAR EL PORTAL*/
@@ -1499,6 +1613,7 @@ export default Modal;
 El archivo `BadgeDetailsContainer.js` es el encargado de mandar los _props_ para abrir, cerrar el modal y eliminar el Badge por medio de `onCloseModal`, `onOpenModal` y preguntar si esta abieto/cerrado `modalIsOpen`, `onDeleteBadge` los cuales se eencargan de manejar las funciones.
 
 `BadgeDetailsContainer.js`
+
 ```js
 import React from 'react';
 
@@ -1580,7 +1695,9 @@ class BadgeDetailsContainer extends React.Component {
 export default BadgeDetailsContainer;
 
 ```
+
 En el archivo `BadgeDetails.js` se importa el componente **DeleteBadgeModal** en el cual se muestra la el mensaje dentro del modal de SI o NO eliminar el registro y se encarga de recibir los eventos onclick
+
 ```js
 import DeleteBadgeModal from '../components/DeleteBadgeModal';
 
@@ -1590,6 +1707,7 @@ function BadgeDetails(props) {
   return (
     ...
 ```
+
 ```js
 // ...
   <div>
@@ -1610,6 +1728,7 @@ function BadgeDetails(props) {
 En el componente `DeleteBageModal.js` se importa el "modal" para hacer "compocision" se le pasa "children" a modal para aprovechar el comportamiento que modal tienepara EXTENDERLO
 
 `DeleteBageModal.js`
+
 ```js
 import React from 'react';
 /*
@@ -1643,6 +1762,7 @@ export default DeleteBadgeModal;
 ```
 
 ### 35. Hooks
+
 NOTA: Pagina(s) 78 - 81 de slides del curso
 
 **NOTA**: Nombre de commit `Add. _Curso ReactJS_ 24.Hooks` en mi repo
@@ -1658,10 +1778,11 @@ React tiene un feature llamado **Hooks** que permite que las funciones también 
 3. **useReducer**: Ejecutar un efecto basado en una acción.
 4. **Custom Hooks**: Usamos los hooks fundamentales para crear nuevos _hooks custom_. Estos hooks irán en su propia función y su nombre comenzará con la palabra `use`. _Otra de sus características es que no pueden ser ejecutados condicionalmente (if)_.
 
-+ `useState` regresa un _arreglo de dos argumentos_.
-    + El uso correcto de `React.useState` -> `const [ name, setName ] = React.useState("")`
+- `useState` regresa un _arreglo de dos argumentos_.
+  - El uso correcto de `React.useState` -> `const [ name, setName ] = React.useState("")`
 
 `BadgeDetails.js`
+
 ```js
 // ...
 function useIncreaseCount(max) {
@@ -1694,6 +1815,7 @@ function BadgeDetails(props) {
 ```
 
 ### 36. Search filter
+
 **NOTA**: Nombre de commit `Add. _Curso ReactJS_ 23.Modals` en mi repo
 
 :link: [Video explicando ejemplos de Hooks de Reactjs](https://www.youtube.com/watch?v=ISGCTngdp8c)
@@ -1703,13 +1825,14 @@ Para hacer el filtrado de la lista de Bages se realiza en el componente `BadgesL
 Para la utilización de lis `Hooks` no no tinenen que ser en una **clase**, tienen que ser en e nuna funcion _"Function ó Functional Stateless Component"_
 
 ejemplo:
+
 ```js
 function FuntionalCOmponent() {}
 const FuntionalComponent2 = () => {};
 ```
 
-
 `BadgesList.js`
+
 ```js
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -1818,5 +1941,3 @@ function BadgesList(props) {
 
 export default BadgesList;
 ```
-
-

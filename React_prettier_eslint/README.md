@@ -94,7 +94,7 @@ module.exports = {
 }
 ```
 
-Se en **VSCode** la librería **ESLint de Microsoft**
+Se instala en **VSCode** la librería **ESLint de Microsoft**
 
 Se añade en `.eslintrc.js`. Que viene del plug-in de _eslint_ de github para react.
 

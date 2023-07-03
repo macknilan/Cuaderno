@@ -3,7 +3,7 @@
 
 ## - [Introducción a NPM](#1-Acerca-de-NPM-paquetes-y-módulos)
 
-## - [YARN](#yarn)
+## - [Yarn Classic](#yarn-classic)
 
 🔗 🏘️ [yarnpkg](https://yarnpkg.com/ "yarn home page") ↗️
 
@@ -272,7 +272,7 @@ Y en caso de que esto no lo solucione, podemos ir actualizandolos de uno en uno.
 
 ### 15. Cierre del curso
 
-## Yarn
+## Yarn Classic
 
 1.
 
