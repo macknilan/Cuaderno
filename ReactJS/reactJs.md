@@ -2,6 +2,8 @@
 
 ## 1. Introducción a React.js
 
+:link: [ReactJS](https://react.dev/)
+
 ### 1. ¿Qué es React.js?
 
 **React** cumple su función como biblioteca ya que para utilizar su código se debe importar. También es un Framework aunque las convenciones de cómo debe ser organizado todo no son estrictas.
@@ -32,18 +34,94 @@ Con **React** también se tiene la ventaja de que será escrito una sola vez y p
 - **Editor de texto**: Puedes usar cualquiera, en este curso sugerimos Visual Studio Code. Tiene muchos plugins útiles para el desarrollo.
 - **Prettier**: Es un plugin que hace que el código se vea bien sin importar cómo esta escrito.
 
-### 4. Create-react-app
+🚨 06.2023 🚨 Create-react-app esta deprecado.
 
-:link: [Create React App - Getting Started](https://create-react-app.dev/docs/getting-started/)
+~~### 4. Create-react-app~~
 
-**Create-react-app** es una aplicación moderna que se usa desde una línea de comando. Antes de ella se configuraba todo el entorno manualmente lo cual tomaba mucho tiempo.
+~~:link: [Create React App - Getting Started](https://create-react-app.dev/docs/getting-started/)~~
 
-**Pasos para obtenerlo**:  
+~~**Create-react-app** es una aplicación moderna que se usa desde una línea de comando. Antes de ella se configuraba todo el entorno manualmente lo cual tomaba mucho tiempo.~~
+
+~~**Pasos para obtenerlo**:~~
+
+~~Se debe instalar desde la línea de comando usando, estando parado donde se desea crear la carpeta del proyecto.~~
+
+### 4. Vite
+
+:link: [Vte](https://vitejs.dev/)
+
+:link: [Vte - create-vite](https://github.com/vitejs/vite/tree/main/packages/create-vite#scaffolding-your-first-vite-project)
+
 Se debe instalar desde la línea de comando usando, estando parado donde se desea crear la carpeta del proyecto.
 
 ```bash
-npx create-react-app hello-react
+npm create vite@latest nombre-app-react --template react
 ```
+
+```bash
+? Select a framework: › - Use arrow-keys. Return to submit.
+    Vanilla
+    Vue
+❯   React # 🔦
+    Preact
+    Lit
+    Svelte
+    Others
+```
+
+👇
+
+```bash
+? Select a variant: › - Use arrow-keys. Return to submit.
+    TypeScript
+    TypeScript + SWC
+❯   JavaScript # 🔦
+    JavaScript + SWC
+```
+
+👇
+
+```bash
+Scaffolding project in /home/mack/Documents/nombre-app-react...
+
+Done. Now run:
+
+  cd nombre-app-react
+  npm install
+  npm run dev
+```
+
+```bash
+cd nombre-app-react && npm install && npm run dev
+```
+
+## 🚨 COMIENZO DE NUEVO PROYECTO Y ACTUALIZACIÓN DE DOCUMENTACIÓN 🚨
+
+## 🚨 SE TOMA EN CUENTA LA TEORÍA 🚨
+
+---
+
+Vite con la instalación de ejemplo anterior viene instalado por defecto 🔗 🏠 [Eslint](https://eslint.org/) ↗️  
+
+Para instalar **Prettier** al proyecto se puede seguir la guía en :octocat: 🔗 [Configuración Eslint y Prettier para ReactJS](https://github.com/macknilan/Cuaderno/blob/master/React_prettier_eslint/README.md) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
 
 En este punto se estará instalando React y otras herramientas, también se configurará el entorno usando **Webpack**.
 
@@ -149,6 +227,7 @@ Para identificarlos debes hacerte las siguientes preguntas:
 **Identificar componentes es una habilidad esencial para poder desarrollar aplicaciones de React.**
 
 _‘Componente’ vs ‘Elemento’_  
+
 - Un elemento es a un objeto como un componente es a una clase.
 - Si el elemento fuera una casa, el componente sería los planos para hacer  esa casa.
 
@@ -211,7 +290,8 @@ Y en Badge.js se cambian etiquetas.
 
 - Para los estilos crearemos una carpeta llamada **Styles** y allí vivirán todos los archivos de estilos que tienen que ver con los componentes.
 
-* Para usar los estilos es necesario importarlos con **import**
+- Para usar los estilos es necesario importarlos con **import**
+
 - React funciona ligeramente diferente y para los atributos de clases no se utiliza class sino **className**
 - Es posible utilizar Bootstrap con React, sólo debe ser instalado con `npm install bootstrap` y debe ser importado en el index.js
 - Existen estilos que son usados de manera global o en varios componentes, _así que deben ser importados en el_ `index.js`

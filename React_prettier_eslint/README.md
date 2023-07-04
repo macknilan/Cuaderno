@@ -1,5 +1,5 @@
 
-# Configuración Eslint y Prettier para react
+# Configuración Eslint y Prettier para ReactJS
 
 ```
 ::::::::::::::::::::::::::::::::::::::::::::::::::             :J555555555555555555555555J:           
@@ -112,16 +112,18 @@ Se instala prettier.
 npm i -D prettier
 ```
 
-En la carpeta del proyecto en raíz, se crea el archivo `.prettierrc`. Se puede tomar como ejemplo de su página en _doc's_ ejemplos de lo que se requiere de reglas para nuestro proyecto, en formato _json_
+En la carpeta del proyecto en raíz, se crea el archivo `.prettierrc`. Se puede tomar como ejemplo de su página en [_doc's_](https://prettier.io/docs/en/options.html)  ejemplos de lo que se requiere de reglas para nuestro proyecto, en formato _json_
 
 ```json
 {
-    "trailingComma": "es5",
+    "bracketSpacing": true,
+    "jsxSingleQuote": true,
+    "printWidth": 120,
+    "printWidth": 80,
     "semi": true,
     "singleQuote": true,
-    "printWidth": 120,
-    "jsxSingleQuote": true,
-    "bracketSpacing": true
+    "tabWidth": 2,
+    "trailingComma": "es5"
 }
 ```
 
@@ -137,7 +139,7 @@ Se configura en VSCode con que librería se va a hacer el formato.
 
 Verificar que VSCode este activada la opción **Format on save** en _User_ y _Workspace_
 
-Para que se queden configurado las reglas de prettier por en sima de las de slint se instala el paquete
+Para que se queden configurado las reglas de _Prettier_ por en sima de las de _Eslint_ se instala el paquete
 
 🔗 [npm link eslint-config-prettier](https://www.npmjs.com/package/eslint-config-prettier "npm link eslint-config-prettier")
 
@@ -152,7 +154,7 @@ extends: [
     'plugin:react/recommended',
     'plugin:react/jsx-runtime',
     'standard',
-    'eslint-config-prettier'  // <-- 👀
+    'prettier'  // <-- 👀
     ],
 ```
 
