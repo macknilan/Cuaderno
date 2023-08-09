@@ -25,14 +25,14 @@
                                                                :J555555555555555555555555J:           
 ```
 
-## 🚨 11-2022 🚨
+## 🚨 17-2023 🚨
 
 🔗 🏠 [Eslint](https://eslint.org/) ↗️  
 🔗 🏠 [Prettier](https://prettier.io/) ↗️  
 
 🎥 <https://www.youtube.com/watch?v=3BHXuZvI4FI> ↗️
 
-Instalar eslint como dependencia de desarrollo dentro de la carpeta del proyecto.
+Instalar eslint como dependencia de desarrollo dentro de la carpeta del proyecto con _Vite_
 
 ```bash
 npm i -D eslint
@@ -153,11 +153,41 @@ En el archivo `.eslintrc.js` se configura para que tome los cambios.
 extends: [
     'plugin:react/recommended',
     'plugin:react/jsx-runtime',
-    'standard',
     'prettier'  // <-- 👀
     ],
 ```
 
+Para que el archivo completo quede de la siguiente manera.
+
+```js
+module.exports = {
+  env: {
+    browser: true,
+    es2021: true,
+  },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+    'prettier',
+  ],
+  overrides: [],
+  parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+  },
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+  },
+  settings: {
+    react: {
+      version: 'detect', // React version. "detect" automatically picks the version you have installed.
+    },
+  },
+};
+```
 
 Establecer los siguientes comando en el archivo `package.json` para su correcto funcionamiento con prettier.
 

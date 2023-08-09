@@ -34,7 +34,7 @@ Con **React** también se tiene la ventaja de que será escrito una sola vez y p
 - **Editor de texto**: Puedes usar cualquiera, en este curso sugerimos Visual Studio Code. Tiene muchos plugins útiles para el desarrollo.
 - **Prettier**: Es un plugin que hace que el código se vea bien sin importar cómo esta escrito.
 
-🚨 06.2023 🚨 Create-react-app esta deprecado.
+🚨 06.2023 🚨 Create-react-app **ESTA DEPRECADO**.
 
 ~~### 4. Create-react-app~~
 
@@ -104,22 +104,6 @@ cd nombre-app-react && npm install && npm run dev
 Vite con la instalación de ejemplo anterior viene instalado por defecto 🔗 🏠 [Eslint](https://eslint.org/) ↗️  
 
 Para instalar **Prettier** al proyecto se puede seguir la guía en :octocat: 🔗 [Configuración Eslint y Prettier para ReactJS](https://github.com/macknilan/Cuaderno/blob/master/React_prettier_eslint/README.md) 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ---
 
