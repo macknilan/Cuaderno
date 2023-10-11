@@ -1016,6 +1016,15 @@ Set
 {'d', 'r'}
 ```
 
+30
+
+### Funciones anónimas: lambda
+
+Python Lambda Function
+
+![Python Lambda Function](imgs/python_lambda_function_00.png "Python Lambda Function")
+
+
 38
 
 ### Click

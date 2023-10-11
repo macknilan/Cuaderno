@@ -223,7 +223,13 @@ Para instalar una version diferente a la predeterminada en la terminal actual ha
 pyenv shell [PYTHON_VERSION]
 ```
 
-Establecer de forma predeterminada a la version diferente a la predeterminada en la carpeta de forma permanente en esa carpeta.
+Para configurar una versión de Python del proyecto que esté activa tan pronto como se entra a la carpeta `cd` del proyecto.
+
+Esto crea dentro del proyecto una carpeta `.python-version` que contiene `[PYTHON_VERSION]` en la cual se establece la version de python que se ocupara para el proyecto.
+
+Incluso se puede comprobar ingresando `pyenv version`, he indicará en función de qué configuración se seleccionó la versión de Python actualmente activa.
+
+```bash
 
 ```bash
 pyenv local [PYTHON_VERSION]

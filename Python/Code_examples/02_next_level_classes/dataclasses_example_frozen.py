@@ -14,8 +14,8 @@ class PersonNoDataClass:
         self.address = address
         self.email_addresses = []
 
-
-@dataclass
+# -frozen=True- LO QUE HACE ES "CONGELAR QUE NO SE MODIFIQUE LOS DATOS QUE SE CREAN DE LA CLASE"
+@dataclass(frozen=True)
 class Person:
     name: str
     address: str
@@ -26,17 +26,10 @@ class Person:
     _search_string: str = field(init=False, repr=False)  # -repr=False- ES PARA QUE NO SE IMPRIMA AL MOMENTO DE LLAMAR
     # LA CLASE -Person-
 
-    def __post_init__(self):
-        """
-        FUNCIÓN QUE SE EJECUTA DESPUÉS DE EJECUTAR LA CLASE -Person-
-        Y ASIGNAR A -_search_string- EL VALOR COMBINADO DE -name- -address-
-        :return:
-        """
-        self._search_string = f"{self.name} {self.address}"
-
 
 def main() -> None:
     person = Person(name="John", address="123 Main St")
+    person.name = "Mack"  # NO ES POSIBLE CON -frozen=True-
     print(person)
 
 

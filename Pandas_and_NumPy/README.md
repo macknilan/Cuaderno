@@ -3,6 +3,9 @@
 1. [Numpy](https://numpy.org/) 🔗 ↗️
 2. [github.com/numpy/numpy : The fundamental package for scientific computing with Python.](https://platzi.com/clases/2912-pandas-numpy/47974-por-que-numpy-y-pandas/) 🔗 ↗️ :octocat:
 3. [github.com/pandas-dev/pandas : Flexible and powerful data analysis / manipulation library for Python, providing labeled data structures similar to R data.frame objects, statistical functions, and much more](https://github.com/pandas-dev/pandas) 🔗 ↗️ :octocat:
+4. [Pandas - General functions](https://pandas.pydata.org/docs/reference/general_functions.html) 🔗 ↗️
+5. [Pandas - Release notes](https://pandas.pydata.org/docs/whatsnew/index.html) 🔗 ↗️
+6. [10 minutes to pandas](https://pandas.pydata.org/docs/user_guide/10min.html) 🔗 ↗️
 
 ![NUMPY CHEAT SHEET 1](./imgs/numpy_cheat_sheet_0.jpg) Numpy Cheat Sheet 1
 

@@ -35,9 +35,11 @@ class VideoProject:
 def main() -> None:
     clip1 = VideoClip(minutes=1, seconds=30, title="Clip 1")
     clip2 = VideoClip(minutes=2, seconds=30, title="Clip 2")
+    print(clip1)
+    print(clip2)
     project = VideoProject(clips=[clip1, clip2], title="My Project")
     print(project.total_length)
-    clip1.duration = 120
+    clip1.duration = 120  # @duration.setter
     print(project.total_length)
 
 

@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-
+# SE ASEGURA QUE CON -kw_only- AL MOMENTO DE MANDAR A LLAMAR LA CLASE SE MANDE CON LLAVE VALOR
 @dataclass(kw_only=True)
 class Person:
     name: str
