@@ -520,7 +520,7 @@ pip install "cookiecutter>=2.4.0"
 ```bash
 cookiecutter https://github.com/pydanny/cookiecutter-django
 # OR
-cookiecutter gh:pydanny/cookiecutter-django
+cookiecutter gh:cookiecutter/cookiecutter-django
 ```
 
 Configuración posible para cookiecutter
