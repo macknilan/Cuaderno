@@ -512,7 +512,7 @@ python3 -m venv [NOMBRE-DEL-ENTORNO-VIRTUAL]
 2. Dentro del ambiente local, y estar ubicados donde se desee que este la carpeta del proyecto
 
 ```bash
-pip install "cookiecutter>=2.1.1"
+pip install "cookiecutter>=2.4.0"
 ```
 
 3. Instalar _cookiecutter-django_
