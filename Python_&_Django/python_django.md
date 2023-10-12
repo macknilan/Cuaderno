@@ -229,7 +229,6 @@ Esto crea dentro del proyecto una carpeta `.python-version` que contiene `[PYTHO
 
 Incluso se puede comprobar ingresando `pyenv version`, he indicará en función de qué configuración se seleccionó la versión de Python actualmente activa.
 
-```bash
 
 ```bash
 pyenv local [PYTHON_VERSION]
