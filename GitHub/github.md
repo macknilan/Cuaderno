@@ -979,6 +979,23 @@ git clean -xdf
 - The `-d` flag removes untracked folders.
 - The `-f` flag removes untracked files.
 
-```git
+Eliminar información sensible del historial de git.
 
+Para esto se pude instalar **BFG Repo-Cleaner** [repo](https://github.com/rtyley/bfg-repo-cleaner) como se recomienda en [Removing sensitive data from a repository](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository "docs.github.com")
+
+Se tiene que tener instalado Java
+
+1. [Install the Java Runtime Environment](https://ubuntu.com/tutorials/install-jre#1-overview "ubuntu.com")
+2. [How To Install Java with Apt on Ubuntu 22.04](https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-on-ubuntu-22-04 "digitalocean.com")
+3. [How to Install Java on Ubuntu 22.04](https://linuxize.com/post/install-java-on-ubuntu-22-04/ "linuxize.com")
+
+Se tienen que descargar de [BFG Repo-Cleaner](https://rtyley.github.io/bfg-repo-cleaner/ "rtyley.github.io") el archivo **bfg-1.14.0.jar** y guardarlo en la carpeta **/home/usuario/.local/bin**.
+
+(preferente) También se puede guardar en una carpeta en `Documents` con el nombre `CleanupSecretsGit` y crear un alias en el archivo `.zshrc` de la siguiente manera.
+
+```bash
+# Alias for BFG Repo-Cleaner
+alias bfg='java -jar ~/Documents/CleanupSecretsGit/bfg-1.14.0.jar'
 ```
+
+Para poder después ejecutar el comando `$ bfg ...` en la terminal.
