@@ -34,10 +34,20 @@ class Person:
         """
         self._search_string = f"{self.name} {self.address}"
 
+    def __str__(self) -> str:
+        """
+        FUNCIÓN QUE SE EJECUTA AL LLAMAR LA CLASE -Person- CON -print-
+        :return:
+        """
+        return f"{self.name} ({self.id})"
+
 
 def main() -> None:
     person = Person(name="John", address="123 Main St")
     print(person)
+    print(repr(person))
+    print(f"{person}")
+    print(f"{person!r}")
 
 
 if __name__ == "__main__":

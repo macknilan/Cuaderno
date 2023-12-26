@@ -23,14 +23,19 @@ class Person:
     email_addresses: list[str] = field(default_factory=list)  # SE DEFINE UNA LISTA VACÍA CON -field-
     id: str = field(init=False, default_factory=generate_id)  # -init=False- ES PARA NO INICIALIZAR -id- AL MOMENTO DE
     # CREAR -Person-
-    _search_string: str = field(init=False, repr=False)  # -repr=False- ES PARA QUE NO SE IMPRIMA AL MOMENTO DE LLAMAR
+    # _search_string: str = field(init=False, repr=False)  # -repr=False- ES PARA QUE NO SE IMPRIMA AL MOMENTO DE LLAMAR
     # LA CLASE -Person-
+
+    @property
+    def search_string(self) -> str:
+        return f"{self.name} {self.address}"
 
 
 def main() -> None:
     person = Person(name="John", address="123 Main St")
-    person.name = "Mack"  # NO ES POSIBLE CON -frozen=True-
+    # person.name = "Mack"  # NO ES POSIBLE CON -frozen=True-
     print(person)
+    print(person.search_string)
 
 
 if __name__ == "__main__":

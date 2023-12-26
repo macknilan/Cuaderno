@@ -42,8 +42,8 @@ def get_set_delete(person: Person | PersonSlots):
 def main():
     person = Person("John", "123 Main St", "john@doe.com")
     person_slots = PersonSlots("John", "123 Main St", "john@doe.com")
-    no_slots = median(timeit.repeat(partial(get_set_delete, person), number=1000000))
-    slots = median(timeit.repeat(partial(get_set_delete, person_slots), number=1000000))
+    no_slots = median(timeit.repeat(partial(get_set_delete, person), number=1_000_000))
+    slots = median(timeit.repeat(partial(get_set_delete, person_slots), number=1_000_000))
     print(f"No slots: {no_slots}")
     print(f"Slots: {slots}")
     print(f"% performance improvement: {(no_slots - slots) / no_slots:.2%}")

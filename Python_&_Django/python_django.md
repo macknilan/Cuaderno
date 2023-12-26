@@ -238,6 +238,13 @@ Dentro de la carpeta se crea un el archivo `.python-version` en el cual se estab
 
 La lista de comandos para `pyenv` :octocat: [Pyenv commands](https://github.com/pyenv/pyenv/blob/master/COMMANDS.md)
 
+Para actualizar `pyenv` cuando se encuentre se instala clonando el repo :octocat:
+
+```bash
+cd $(pyenv root) # cd ~/.pyenv
+git pull
+
+```
 ### 4.2 Crear un ambiente virtual con `venv`
 
 - :link: [venv — Creation of virtual environments](https://docs.python.org/3/library/venv.html)
