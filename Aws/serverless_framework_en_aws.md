@@ -1149,6 +1149,59 @@ resources:
 ```
 
 
+Los pasos para poder integrar CD/CI con GitHub Actions.
+
+Ir a IAM (servicio de Amazon donde se administran los permisos y accesos)
+
+![iam_aws_cd_ci_serverless_framework](/Aws/imgs/iam_aws_cd_ci_serverless_framework_00.webp)
+
+
+Seleccionar el boton **Create access key**
+
+![iam_aws_cd_ci_serverless_framework](/Aws/imgs/iam_aws_cd_ci_serverless_framework_01.webp)
+
+Aquí podrás crear un par de keys, estas keys son ultra secretas, ya que con ellas puedes tener acceso programático a tus recursos de AWS, puedes crear, borrar o editar recursos accediendo a través de ellas a tu cuenta de AWS usando el CLI de AWS, Serverless Framework, Terraform o cualquier otra herramienta, son como las llaves de tu casa y por eso debes darle un tratamiento especial.
+
+Por esta misma razón AWS nos dará un grupo de opciones alternativas que podrían servir nuestra necesidad, para este caso vamos a seleccionar “Other” y continuaremos.
+
+![iam_aws_cd_ci_serverless_framework](/Aws/imgs/iam_aws_cd_ci_serverless_framework_02.webp)
+
+Después agregaremos una descripción opcional a nuestras Keys y crearemos nuestras keys haciendo click en **Create access key**
+
+![iam_aws_cd_ci_serverless_framework](/Aws/imgs/iam_aws_cd_ci_serverless_framework_03.webp)
+
+De esta forma ya se tienen las keys de acceso a AWS
+
+![iam_aws_cd_ci_serverless_framework](/Aws/imgs/iam_aws_cd_ci_serverless_framework_04.webp)
+
+**Nota:** Estas keys son super secretas, por ningún motivo subas esto a un repositorio público e intenta no subirlas a un repositorio privado, con estas credenciales se podría hacer cualquier cosa con tu cuenta de AWS lo cual en manos equivocadas podría incurrir en costos exagerados en tu tarjeta de crédito. A pesar de que los permisos de estas keys se limitan a los permisos de su dueño, te recomendamos tener especial cuidado con ellas y que las borres cuando termines el curso.
+
+Con las keys en mano ir al repositorio de GitHub donde quieres correr los workflows de GitHub Actions y entraras
+
+- `Settings`
+- `Actions` → `General`, allí habilitar el uso de Actions para este repositorio haciendo click en __“Allow all actions and reusable workflows”__.
+
+![iam_aws_cd_ci_serverless_framework](/Aws/imgs/iam_aws_cd_ci_serverless_framework_05.webp)
+
+Después iras a la sección
+
+- `Secrets and variables` → `Actions`, acá podrás agregar secretos para tu repositorio u organización, continuas entonces en New repository secret
+
+![iam_aws_cd_ci_serverless_framework](/Aws/imgs/iam_aws_cd_ci_serverless_framework_06.webp)
+
+Agregaremos primero nuestro secreto `AWS_ACCESS_KEY_ID`
+
+![iam_aws_cd_ci_serverless_framework](/Aws/imgs/iam_aws_cd_ci_serverless_framework_07.webp)
+
+Después agregaremos nuestro secreto `AWS_SECRET_ACCESS_KEY`
+
+![iam_aws_cd_ci_serverless_framework](/Aws/imgs/iam_aws_cd_ci_serverless_framework_08.webp)
+
+Ya se debería tener tus dos secretos listos para tu repositorio y puedes empezarlos a usar en tus workflows de _GitHub Actions_
+
+![iam_aws_cd_ci_serverless_framework](/Aws/imgs/iam_aws_cd_ci_serverless_framework_09.webp)
+
+
 ```bash
 ```
 
