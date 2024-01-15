@@ -564,7 +564,7 @@ custom:
 
 Para que quede de la siguiente manera
 
-```bash
+```yml
 service: crud-serverless-users
 frameworkVersion: '3'
 
@@ -619,7 +619,538 @@ Ejecutar el comando para poder ejecutar la lambda en local
 sls offline start
 ```
 
+Para hacer la consulta en DynamoDB en la lambda se tiene que instalar le plugin
 
+- [NPM serverless-dynamodb](https://www.npmjs.com/package/serverless-dynamodb) 🔗 ↗️
+
+Se ocupa como referencia [serverless-dynamodb-local](https://www.serverless.com/plugins/serverless-dynamodb-local) 🔗 ↗️ pero no se utiliza por que esta descontinuado.
+
+```bash
+npm install --save serverless-dynamodb-local
+```
+
+En el archivo `package.json` se añade en `devDependencies`
+
+```json
+"dependencies": {
+    "serverless-dynamodb": "^0.2.47"
+  }
+```
+
+En el archivo `serverless.yml` se añade en `plugins`
+
+```yml
+plugins:
+  - serverless-python-requirements
+  - serverless-dynamodb
+  - serverless-offline
+```
+
+Tomando en cuenta la documentación del plugin `serverless-dynamodb` se añade en `custom` en el archivo `serverless.yml` para que quede de la siguiente manera (hay más opciones en la documentación oficial)
+
+```yml
+custom:
+  pythonRequirements:
+    dockerizePip: true
+  serverless-dynamodb: # 👈 
+    # If you only want to use DynamoDB Local in some stages, declare them here
+    stages:
+      - dev
+    start:
+      port: 8000
+      inMemory: true
+      migrate: true
+    # Uncomment only if you already have a DynamoDB running locally
+    # noStart: true
+```
+
+Tambien en la documentación del plugin `serverless-dynamodb` se añade en `resources` para poder crear la tabla de DynamoDB
+
+```yml
+resources:
+  Resources:
+    usersTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: usersTable
+        AttributeDefinitions:
+          - AttributeName: pk
+            AttributeType: S
+        KeySchema:
+          - AttributeName: pk
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+```
+
+El archivo python `handler.py` puede quedar se la siguiente manera para poder hacer la consulta a DynamoDB
+
+```py
+import json
+from datetime import datetime
+from typing import Any
+
+import boto3
+from boto3.dynamodb.conditions import Key
+
+
+def dynamo_table_name(t: str) -> Any:
+    """
+    FUNCIÓN PARA SELECCIONAR LA TABLA EN DYNAMODB
+    """
+    _DYNAMODB = boto3.resource(
+        "dynamodb",  # 👈
+        region_name="localhost",  # 👈
+        endpoint_url="http://localhost:8000"  # 👈
+    )
+    _table_selected = _DYNAMODB.Table(t)
+
+    return _table_selected
+
+
+def get_users(event, context):
+    """
+    FUNCIÓN PARA OBTENER LOS USUARIOS DE LA TABLA USERS
+    """
+
+    table_users_get = dynamo_table_name("usersTable")
+
+    response = table_users_get.query(KeyConditionExpression=Key("pk").eq("1"))
+    result = response["Items"]
+
+    return {
+        "statusCode": 200,
+        "body": json.dumps(result)
+    }
+```
+
+Para poder ejecutar la lambda en local se tiene que ejecutar el comando
+
+```bash
+sls offline start
+```
+
+Para hacer el despliegue de la lambda en AWS se tiene modificar el archivo `handler.py` poder ser dinámico al momento de ejecutarlo en local y en AWS.
+
+```py
+import json
+import logging
+import os
+from typing import Any
+
+import boto3
+from boto3.dynamodb.conditions import Key
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+
+is_offline = os.environ.get(
+    "IS_OFFLINE"
+)  # VARIABLE DE ENTORNO PARA SABER SI SE ESTÁ EN LOCAL O EN LA NUBE
+
+
+def dynamo_table_name(t: str, is_offline: str) -> Any:
+    """
+    FUNCIÓN PARA SELECCIONAR LA TABLA EN DYNAMODB
+    """
+    if is_offline:
+        _DYNAMODB = boto3.resource(
+            "dynamodb",
+            region_name="localhost",
+            endpoint_url="http://localhost:8000",
+        )
+    if is_offline == "None":
+        _DYNAMODB = boto3.resource("dynamodb")
+
+    _table_selected = _DYNAMODB.Table(t)
+
+    return _table_selected
+
+
+def get_users(event: any, context: any) -> dict:
+    """
+    FUNCIÓN PARA OBTENER LOS USUARIOS DE LA TABLA USERS
+    """
+
+    logger.info(f"EVENT --> {event}")
+
+    table_users_get = dynamo_table_name("usersTable", str(is_offline))
+
+    user_id: str = str(event["pathParameters"]["id"])
+
+    # OBTENER EL ITEM
+    response = table_users_get.query(KeyConditionExpression=Key("pk").eq(user_id))
+    result = response["Items"]
+
+    return {"statusCode": 200, "body": json.dumps(result)}
+
+```
+
+Se tiene que modificar el archivo `serverless.yml` en la sección de `functions` para poder pasar el parámetro `id` en la ruta de la API Getaway
+
+```yml
+functions:
+  get-users:
+    handler: handler.get_users
+    events:
+      - httpApi:
+          path: /users/{id} 👈
+          method: get
+```
+
+Hacer el despliegue de la lambda en AWS
+
+```bash
+sls deploy --verbose
+```
+
+En el archivo `serverless.yml` se añade en la sección de `provider` el permiso para que se pueda ocupar DynamoDB, todas las acciones pero solo para la tabla `usersTable`
+
+```yml
+provider:
+  name: aws
+  runtime: python3.11
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action: 'dynamodb:*'
+          Resource: arn:aws:dynamodb: # 👈
+```
+
+Se crea el CRUD para la tabla `usersTable` en DynamoDB con la siguiente estructura de carpetas y archivos
+
+```bash
+create_users
+├── handler.py
+delete_users
+├── handler.py
+get_users
+├── handler.py
+update_users
+└── handler.py
+```
+
+`create_users`
+
+```py
+import json
+import logging
+import os
+import uuid
+from typing import Any
+
+import boto3
+from boto3.dynamodb.conditions import Key
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+
+is_offline = os.environ.get(
+    "IS_OFFLINE"
+)  # VARIABLE DE ENTORNO PARA SABER SI SE ESTÁ EN LOCAL O EN LA NUBE
+
+
+def dynamo_table_name(t: str, is_offline: str) -> Any:
+    """
+    FUNCIÓN PARA SELECCIONAR LA TABLA EN DYNAMODB
+    """
+    if is_offline:
+        _DYNAMODB = boto3.resource(
+            "dynamodb",
+            region_name="localhost",
+            endpoint_url="http://localhost:8000",
+        )
+    if is_offline == "None":
+        _DYNAMODB = boto3.resource("dynamodb")
+
+    _table_selected = _DYNAMODB.Table(t)
+
+    return _table_selected
+
+
+def create_users(event: any, context: any) -> dict:
+    """
+    FUNCIÓN PARA CREAR UN USUARIO EN LA TABLA USERS
+    """
+
+    logger.info(f"EVENT --> {event}")
+
+    table_users_post = dynamo_table_name("usersTable", str(is_offline))
+
+    pre_payload = json.loads(event["body"])
+    payload: dict[str, str] = {
+        "pk": str(uuid.uuid4()),
+        "nombre": pre_payload["nombre"],
+        "telefono": pre_payload["telefono"],
+    }
+
+    # INSERCIÓN DEL ITEM
+    table_users_post = dynamo_table_name("usersTable", str(is_offline))
+    response = table_users_post.put_item(Item=payload)
+
+    if response["ResponseMetadata"]["HTTPStatusCode"] == 200:
+        return {"statusCode": 200, "body": json.dumps(payload)}
+    else:
+        return {"statusCode": 200, "body": {}}
+
+```
+
+`update_users`
+
+```py
+import json
+import logging
+import os
+import uuid
+from typing import Any
+
+import boto3
+from boto3.dynamodb.conditions import Key
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+
+is_offline = os.environ.get(
+    "IS_OFFLINE"
+)  # VARIABLE DE ENTORNO PARA SABER SI SE ESTÁ EN LOCAL O EN LA NUBE
+
+
+def dynamo_table_name(t: str, is_offline: str) -> Any:
+    """
+    FUNCIÓN PARA SELECCIONAR LA TABLA EN DYNAMODB
+    """
+    if is_offline:
+        _DYNAMODB = boto3.resource(
+            "dynamodb",
+            region_name="localhost",
+            endpoint_url="http://localhost:8000",
+        )
+    if is_offline == "None":
+        _DYNAMODB = boto3.resource("dynamodb")
+
+    _table_selected = _DYNAMODB.Table(t)
+
+    return _table_selected
+
+
+def update_users(event: any, context: any) -> dict:
+    """
+    FUNCIÓN PARA ACTUALIZAR UN USUARIO EN LA TABLA USERS
+    """
+    logger.info(f"EVENT --> {event}")
+    table_users_put = dynamo_table_name("usersTable", str(is_offline))
+
+    # BÚSQUEDA QUE EXISTA ITEM A ACTUALIZAR
+    # item_found = table_users_put.query(
+    #     KeyConditionExpression=Key("pk").eq(event["body"]["pk"])
+    # )
+
+    # if len(item_found["Items"]) == 0:
+    #     return (422, "Item no existe.")
+
+    pre_payload = json.loads(event["body"])
+    logger.info(f"PRE_PAYLOAD --> {pre_payload}")
+
+    logger.info(f"PATHPARAMETERS_ID --> {event['pathParameters']['id']}")
+
+    # ACTUALIZACIÓN DEL ITEM
+    response = table_users_put.update_item(
+        Key={"pk": event["pathParameters"]["id"]},
+        UpdateExpression="SET #nombre = :val1, \
+            #telefono = :val2",
+        ExpressionAttributeNames={
+            "#nombre": "nombre",
+            "#telefono": "telefono",
+        },
+        ExpressionAttributeValues={
+            ":val1": pre_payload["nombre"],
+            ":val2": pre_payload["telefono"],
+        },
+        ReturnValues="ALL_NEW",
+    )
+
+    logger.info(f"RESPONSE --> {response}")
+
+    if response["ResponseMetadata"]["HTTPStatusCode"] == 200:
+        return {"statusCode": 200, "body": json.dumps(response["Attributes"])}
+    else:
+        return {"statusCode": 200, "body": {}}
+```
+
+`delete_users`
+
+```py
+import json
+import logging
+import os
+import uuid
+from typing import Any
+
+import boto3
+from boto3.dynamodb.conditions import Key
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+
+is_offline = os.environ.get(
+    "IS_OFFLINE"
+)  # VARIABLE DE ENTORNO PARA SABER SI SE ESTÁ EN LOCAL O EN LA NUBE
+
+
+def dynamo_table_name(t: str, is_offline: str) -> Any:
+    """
+    FUNCIÓN PARA SELECCIONAR LA TABLA EN DYNAMODB
+    """
+    if is_offline:
+        _DYNAMODB = boto3.resource(
+            "dynamodb",
+            region_name="localhost",
+            endpoint_url="http://localhost:8000",
+        )
+    if is_offline == "None":
+        _DYNAMODB = boto3.resource("dynamodb")
+
+    _table_selected = _DYNAMODB.Table(t)
+
+    return _table_selected
+
+
+def delete_users(event: any, context: any) -> dict:
+    """
+    FUNCIÓN PARA ELIMINAR UN USUARIO EN LA TABLA USERS
+    """
+    logger.info(f"EVENT --> {event}")
+    table_users_put = dynamo_table_name("usersTable", str(is_offline))
+
+    # BÚSQUEDA QUE EXISTA ITEM A ELIMINAR
+    # item_found = table_users_put.query(
+    #     KeyConditionExpression=Key("pk").eq(event["body"]["pk"])
+    # )
+
+    # if len(item_found["Items"]) == 0:
+    #     return (422, "Item no existe.")
+
+    logger.info(f"PATHPARAMETERS_ID --> {event['pathParameters']['id']}")
+
+    # ELIMINACIÓN DEL ITEM
+    response = table_users_put.delete_item(Key={"pk": event["pathParameters"]["id"]})
+
+    logger.info(f"RESPONSE --> {response}")
+
+    if response["ResponseMetadata"]["HTTPStatusCode"] == 200:
+        return {
+            "statusCode": response["ResponseMetadata"]["HTTPStatusCode"],
+            "body": json.dumps({"message": "Item deleted successfully"}),
+        }
+    else:
+        return {
+            "statusCode": response["ResponseMetadata"]["HTTPStatusCode"],
+            "body": json.dumps({"message": "Error deleting item"}),
+        }
+```
+
+El archivo `serverless.yml` quedaría de la siguiente manera
+
+```yml
+service: crud-serverless-users
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: python3.11
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action: 'dynamodb:*'
+          Resource: arn:aws:...
+
+plugins:
+  - serverless-python-requirements
+  - serverless-dynamodb
+  - serverless-offline
+
+
+package:
+  individually: true
+  patterns:
+    - "!*/**"
+    # EL PATRON COINCIDE CON TODOS LOS ARCHIVOS EN EN LOS DIRECTORIOS DEBEN DE SER IGNORADOS/EXCLUIRSE
+
+custom:
+  pythonRequirements:
+    dockerizePip: true
+  serverless-dynamodb:
+    # If you only want to use DynamoDB Local in some stages, declare them here
+    stages:
+      - dev
+    start:
+      port: 8000
+      inMemory: true
+      migrate: true
+    # Uncomment only if you already have a DynamoDB running locally
+    # noStart: true
+
+functions:
+  get-users:
+    handler: get_users/handler.get_users
+    package:
+      patterns:
+        - "get_users/handler.py" # EL PATRON ESTABLECE QUE SOLO SE DEBE DE INCLUIR EL ARCHIVO handler.py
+    events:
+      - httpApi:
+          path: /users/{id}
+          method: GET
+  create-users:
+    handler: create_users/handler.create_users
+    package:
+      patterns:
+        - "create_users/handler.py"
+    events:
+      - httpApi:
+          path: /users
+          method: POST
+  update-users:
+    handler: update_users/handler.update_users
+    package:
+      patterns:
+        - "update_users/handler.py"
+    events:
+      - httpApi:
+          path: /users/{id}
+          method: PUT
+  delete-users:
+    handler: delete_users/handler.delete_users
+    package:
+      patterns:
+        - "delete_users/handler.py"
+    events:
+      - httpApi:
+          path: /users/{id}
+          method: DELETE
+
+resources:
+  Resources:
+    usersTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: usersTable
+        AttributeDefinitions:
+          - AttributeName: pk
+            AttributeType: S
+        KeySchema:
+          - AttributeName: pk
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+```
+
+
+```bash
+```
 
 ```bash
 ```
