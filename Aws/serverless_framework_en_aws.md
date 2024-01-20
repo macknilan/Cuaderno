@@ -1153,26 +1153,26 @@ Los pasos para poder integrar CD/CI con GitHub Actions.
 
 Ir a IAM (servicio de Amazon donde se administran los permisos y accesos)
 
-![iam_aws_cd_ci_serverless_framework](/Aws/imgs/iam_aws_cd_ci_serverless_framework_00.webp)
+![iam_aws_cd_ci_serverless_framework](/Aws/imgs/iam_aws_cd_ci_serverless_framework_00.png)
 
 
 Seleccionar el boton **Create access key**
 
-![iam_aws_cd_ci_serverless_framework](/Aws/imgs/iam_aws_cd_ci_serverless_framework_01.webp)
+![iam_aws_cd_ci_serverless_framework](/Aws/imgs/iam_aws_cd_ci_serverless_framework_01.png)
 
 Aquí podrás crear un par de keys, estas keys son ultra secretas, ya que con ellas puedes tener acceso programático a tus recursos de AWS, puedes crear, borrar o editar recursos accediendo a través de ellas a tu cuenta de AWS usando el CLI de AWS, Serverless Framework, Terraform o cualquier otra herramienta, son como las llaves de tu casa y por eso debes darle un tratamiento especial.
 
 Por esta misma razón AWS nos dará un grupo de opciones alternativas que podrían servir nuestra necesidad, para este caso vamos a seleccionar “Other” y continuaremos.
 
-![iam_aws_cd_ci_serverless_framework](/Aws/imgs/iam_aws_cd_ci_serverless_framework_02.webp)
+![iam_aws_cd_ci_serverless_framework](/Aws/imgs/iam_aws_cd_ci_serverless_framework_02.png)
 
 Después agregaremos una descripción opcional a nuestras Keys y crearemos nuestras keys haciendo click en **Create access key**
 
-![iam_aws_cd_ci_serverless_framework](/Aws/imgs/iam_aws_cd_ci_serverless_framework_03.webp)
+![iam_aws_cd_ci_serverless_framework](/Aws/imgs/iam_aws_cd_ci_serverless_framework_03.png)
 
 De esta forma ya se tienen las keys de acceso a AWS
 
-![iam_aws_cd_ci_serverless_framework](/Aws/imgs/iam_aws_cd_ci_serverless_framework_04.webp)
+![iam_aws_cd_ci_serverless_framework](/Aws/imgs/iam_aws_cd_ci_serverless_framework_04.png)
 
 **Nota:** Estas keys son super secretas, por ningún motivo subas esto a un repositorio público e intenta no subirlas a un repositorio privado, con estas credenciales se podría hacer cualquier cosa con tu cuenta de AWS lo cual en manos equivocadas podría incurrir en costos exagerados en tu tarjeta de crédito. A pesar de que los permisos de estas keys se limitan a los permisos de su dueño, te recomendamos tener especial cuidado con ellas y que las borres cuando termines el curso.
 
@@ -1181,29 +1181,408 @@ Con las keys en mano ir al repositorio de GitHub donde quieres correr los workfl
 - `Settings`
 - `Actions` → `General`, allí habilitar el uso de Actions para este repositorio haciendo click en __“Allow all actions and reusable workflows”__.
 
-![iam_aws_cd_ci_serverless_framework](/Aws/imgs/iam_aws_cd_ci_serverless_framework_05.webp)
+![iam_aws_cd_ci_serverless_framework](/Aws/imgs/iam_aws_cd_ci_serverless_framework_05.png)
 
 Después iras a la sección
 
 - `Secrets and variables` → `Actions`, acá podrás agregar secretos para tu repositorio u organización, continuas entonces en New repository secret
 
-![iam_aws_cd_ci_serverless_framework](/Aws/imgs/iam_aws_cd_ci_serverless_framework_06.webp)
+![iam_aws_cd_ci_serverless_framework](/Aws/imgs/iam_aws_cd_ci_serverless_framework_06.png)
 
 Agregaremos primero nuestro secreto `AWS_ACCESS_KEY_ID`
 
-![iam_aws_cd_ci_serverless_framework](/Aws/imgs/iam_aws_cd_ci_serverless_framework_07.webp)
+![iam_aws_cd_ci_serverless_framework](/Aws/imgs/iam_aws_cd_ci_serverless_framework_07.png)
 
 Después agregaremos nuestro secreto `AWS_SECRET_ACCESS_KEY`
 
-![iam_aws_cd_ci_serverless_framework](/Aws/imgs/iam_aws_cd_ci_serverless_framework_08.webp)
+![iam_aws_cd_ci_serverless_framework](/Aws/imgs/iam_aws_cd_ci_serverless_framework_08.png)
 
 Ya se debería tener tus dos secretos listos para tu repositorio y puedes empezarlos a usar en tus workflows de _GitHub Actions_
 
-![iam_aws_cd_ci_serverless_framework](/Aws/imgs/iam_aws_cd_ci_serverless_framework_09.webp)
+![iam_aws_cd_ci_serverless_framework](/Aws/imgs/iam_aws_cd_ci_serverless_framework_09.png)
 
+![Arquitectura avanzada de Serverless Framework en AWS](/Aws/imgs/arq_avanzada_crud_con_imagenes.png)
 
-```bash
+## Repositorio de GitHub del proyecto como ejemplo
+
+🚨 :octocat: [my-framework-serverless-proyect](https://github.com/macknilan/my-framework-serverless-proyect) 🚨
+
+Referencias de AWS S3 Buckets para configuración del archivo `serverless.yml` para poder hacer el despliegue de la lambda en AWS
+
+- [Amazon Simple Storage Service (Amazon S3) resource type reference](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/AWS_S3.html) 🔗 ↗️
+
+Para poder hacer el despliegue de la lambda en AWS se tiene que modificar el archivo `serverless.yml` en la sección de `provider` el permiso para que se pueda ocupar el bucket de S3, todas las acciones pero solo para el bucket `s3-bucket-${self:service}-bucket`.
+
+Además se tiene que crear la configuración para la función lambda `singed-url` para que firme la imagen y después se pueda hacer la subida de archivos a S3.
+
+1. Mediante el método `GET` se manda el nombre del archivo que se quiere subir a S3 por medio de query string `filename` y se regresa la url firmada para poder subir el archivo a S3.
+2. Mediante el método `PUT` se sube el archivo a S3 con la url firmada que se obtuvo en el método `GET`.
+
+> [Presigned URLs](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/s3-presigned-urls.html)  🔗 ↗️
+>
+> A user who does not have AWS credentials or permission to access an S3 object can be granted temporary access by using a presigned URL.  
+>
+> A presigned URL is generated by an AWS user who has access to the object. The generated URL is then given to the unauthorized user. The presigned URL can be entered in a browser or used by a program or HTML webpage. The credentials used by the presigned URL are those of the AWS user who generated the URL.
+>
+> A presigned URL remains valid for a limited period of time which is specified when the URL is generated.
+
+[generate_presigned_post](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3/client/generate_presigned_post.html#generate-presigned-post) 🔗 ↗️
+
+**Crea la URL y los campos de formulario utilizados para un formulario pre-firmado S3 POST.**
+
+```yml
+provider:
+  name: aws
+  runtime: python3.11
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action: 'dynamodb:*'
+          Resource: arn:aws:dynamodb:us-east-1:148037648285:table/usersTable
+        - Effect: Allow
+          Action: 's3:*'
+          Resource: arn:aws:s3:::s3-bucket-${self:service}-bucket/*
+  environment:
+    BUCKET: s3-bucket-${self:service}-bucket
+...
+  singed-url:
+    handler: singed_url/handler.singed_url
+    package:
+      patterns:
+        - "singed_url/handler.py"
+    events:
+      - http:
+          path: /singedurl
+          method: GET
+          request:
+            parameters:
+              querystrings:
+                filename: true # EL PARÁMETRO filename ES OBLIGATORIO
+...
+    # <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3-bucket.html#aws-resource-s3-bucket--examples>
+    S3Bucket:
+      Type: 'AWS::S3::Bucket'
+      Properties:
+        PublicAccessBlockConfiguration:
+          BlockPublicAcls: false
+          BlockPublicPolicy: false
+        BucketName: s3-bucket-${self:service}-bucket
+        CorsConfiguration:
+          CorsRules:
+            - AllowedOrigins:
+                - '*'
+              AllowedHeaders:
+                - '*'
+              AllowedMethods:
+                - GET
+                - PUT
+                - POST
+                - DELETE
+                - HEAD
+              MaxAge: 3000
+    SampleBucketPolicy:
+      Type: AWS::S3::BucketPolicy
+      Properties:
+        Bucket: !Ref S3Bucket
+        PolicyDocument:
+          Version: '2012-10-17'
+          Statement:
+            - Action:
+                - 's3:GetObject'
+              Effect: Allow
+              Resource: 'arn:aws:s3:::s3-bucket-${self:service}-bucket/*'
+              Principal: '*'
 ```
 
+Para poder firmar la url se tiene que modificar el archivo `handler.py` de la siguiente manera
+
+```py
+def singed_url(event: any, context: any) -> Any:
+    """
+    GENERAR UNA URL PRE-FIRMADA PARA SUBIR UN OBJETO S3
+    """
+
+    logger.info(f"EVENT --> {event}")
+
+    file_name: str = str(event["queryStringParameters"]["filename"])
+    logger.info(f"FILE_NAME_QRY_STR --> {file_name}")
+
+    logger.info(f"BUCKET --> {os.environ.get('BUCKET')}")
+
+    # GENERAR URL PRE-FIRMADA
+    response_presigned_url: str = S3_CLIENT.generate_presigned_post(
+        Bucket=os.environ.get("BUCKET"),
+        Key=f"upload/{file_name}",
+        ExpiresIn=600,  # TIEMPO DE EXPIRACIÓN DE LA URL EN SEGUNDOS (150s = 2.5min)
+    )
+
+    logger.info(f"RESPONSE_PRESIGNED_URL --> {response_presigned_url}")
+
+    return {
+        "statusCode": 200,
+        "body": json.dumps({"singed_url": response_presigned_url}),
+    }
+```
+
+Para poder realizar el método GET con POSTMAN como ejemplo se tiene que hacer lo siguiente.
+
+![presigned GET](/Aws/imgs/presigned_post_00.png)
+
+Para poder hacer realizar el método POST con Postman de la forma `multipart/form-data` con lados que regresa el método GET previo.
+
+![presigned POST](/Aws/imgs/presigned_post_01.png)
+
+## Para poder hacer el que se generen thumbnails al momento de subir una imagen a S3
+
+Se tiene que crear una función lambda que se ejecute cuando se suba una imagen a S3 y guarde el thumbnail en otra carpeta de S3.
+
+![Thumbnail Generator](/Aws/imgs/s3_lambda_trigger_thumbnail_generator.png)
+
+Se modifica el archivo `serverless.yml` en la sección de `functions` para poder crear la función lambda que se ejecutará cuando se suba una imagen a S3
+
+- [S2 Serverless Framework Documentation](https://www.serverless.com/framework/docs/providers/aws/events/s3) 🔗 ↗️
+- [Amazon Simple Storage Service (Amazon S3) resource type reference](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/AWS_S3.html)
+- [AWS::S3::Bucket](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3-bucket.html) 🔗 ↗️
+
+```yml
+  thumbnail-generator:
+    handler: thumbnail/handler.thumbnail_generator
+    package:
+      patterns:
+        - "thumbnail/handler.py"
+    events:
+      - s3: # 👈 SE ESTABLECE EL EVENTO DE S3
+          bucket: s3-bucket-${self:service}-bucket # 👈 SE ESTABLECE EL BUCKET DE S3
+          event: s3:ObjectCreated:* # 👈 SE ESTABLECE EL EVENTO DE S3 CUANDO SE CREA UN OBJETO <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-lambdaconfiguration.html#cfn-s3-bucket-lambdaconfiguration-event>
+          existing: true # 👈 SE ESTABLECE QUE SE OCUPE EL BUCKET EXISTENTE <https://www.serverless.com/framework/docs/providers/aws/events/s3>
+          rules:
+            - prefix: upload/ # 👈 SE ESTABLECE EL PREFIJO DE LA CARPETA DONDE SE SUBEN LAS IMÁGENES
+```
+
+[Tutorial: Using an Amazon S3 trigger to create thumbnail images
+](https://docs.aws.amazon.com/lambda/latest/dg/with-s3-tutorial.html) 🔗 ↗️
+
+Para crear una lambda layer utilizando python.
+
+- [Working with Lambda layers](https://docs.aws.amazon.com/lambda/latest/dg/chapter-layers.html) 🔗 ↗️
+- [AWS CLI Lambda Cli](https://docs.aws.amazon.com/cli/latest/reference/lambda/publish-layer-version.html) 🔗 ↗️
+
+
+| Layer paths for each Lambda runtime       |                                                                                    |
+|-------------------------------------------|------------------------------------------------------------------------------------|
+| Runtime                                   | Path                                                                               |
+|                 Node.js                   |                 nodejs/node_modules                                                |
+|                                           |                 nodejs/node14/node_modules (NODE_PATH)                             |
+|                                           |                 nodejs/node16/node_modules (NODE_PATH)                             |
+|                                           |                 nodejs/node18/node_modules (NODE_PATH)                             |
+|                 Python                    |                 python 👈                                                          |
+|                                           |                 python/lib/python3.x/site-packages (site directories) 👈           |
+|                 Java                      |                 java/lib (CLASSPATH)                                               |
+|                 Ruby                      |                 ruby/gems/2.7.0 (GEM_PATH)                                         |
+|                                           |                 ruby/lib (RUBYLIB)                                                 |
+|                 All runtimes              |                 bin (PATH)                                                         |
+|                                           |                 lib (LD_LIBRARY_PATH)                                              |
+
+Preferentemente para instalar diferentes versiones de python se tiene que utilizar `pyenv` para poder instalar diferentes versiones de python.
+
+### Crear un ambiente virtual con Python 3
+
+#### Crear un ambiente virtual con `pyenv`
+
+- :link: :octocat: [Using Different Versions of Python - pyenv](https://github.com/pyenv/pyenv)
+- 🔗 ↗️ [Set up multiple python versions on your computer](https://k0nze.dev/posts/install-pyenv-venv-vscode/)
+
+Instalar `pyenv` clonar el repo :octocat: [pyenv](https://github.com/pyenv/pyenv)
+
 ```bash
+git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+```
+
+Después de instalar `pyenv` se tiene que configurar para añadir al `$PATH` del sistema en linux.
+
+```bash
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
+echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(pyenv init --path)"' >> ~/.bashrc
+```
+
+Después reiniciar shell para que los cambios tengan efecto.
+
+Para listar todas las versiones de `pyenv` que se pueden instalar
+
+```bash
+pyenv install -l
+```
+
+Para instalar algunas de las versiones de python listadas.
+
+```bash
+pyenv install [PYTHON_VERSION]
+# ejem la ultima version de 3.9
+
+pyenv install 3.9.16
+```
+
+Mostrar las versiones instaladas en la maquina.
+
+```bash
+pyenv versions                                                  
+
+# output
+* system (set by /home/mack/.pyenv/version)
+  3.9.16
+```
+
+Para establecer una version de python diferente a la predeterminada de forma _global_
+
+```bash
+pyenv global [PYTHON_VERSION]
+```
+
+Para instalar una version diferente a la predeterminada en la terminal actual hasta que se cierre la terminal.
+
+```bash
+pyenv shell [PYTHON_VERSION]
+```
+
+Para configurar una versión de Python del proyecto que esté activa tan pronto como se entra a la carpeta `cd` del proyecto.
+
+Esto crea dentro del proyecto una carpeta `.python-version` que contiene `[PYTHON_VERSION]` en la cual se establece la version de python que se ocupara para el proyecto.
+
+Incluso se puede comprobar ingresando `pyenv version`, he indicará en función de qué configuración se seleccionó la versión de Python actualmente activa.
+
+
+```bash
+pyenv local [PYTHON_VERSION]
+```
+
+Dentro de la carpeta se crea un el archivo `.python-version` en el cual se establece que la version de python para **todo** lo que desarrolle dentro de la carpeta.
+
+La lista de comandos para `pyenv` :octocat: [Pyenv commands](https://github.com/pyenv/pyenv/blob/master/COMMANDS.md)
+
+Para actualizar `pyenv` cuando se encuentre se instala clonando el repo :octocat:
+
+```bash
+cd $(pyenv root) # cd ~/.pyenv
+git pull
+
+```
+
+1. Crear un folder para la lambda layer poniendo como nombre la librería que se va a instalar en la lambda layer.
+
+```bash
+
+```bash
+mkdir requests-layer
+cd requests-layer
+```
+
+Instalar con `venv` la versión de python que se va a ocupar para la lambda layer.
+
+```bash
+pyenv local 3.11.7
+```
+Crear el ambiente virtual con `venv`
+
+```bash
+python3 -m venv ~/path/of/env/folder/requests_layer
+```
+
+Activar el ambiente virtual
+
+```bash
+source ~/path/of/env/folder/requests_layer/bin/activate
+```
+
+Instalar la librería que se va a ocupar en la lambda layer
+
+```bash
+pip install requests
+```
+
+En la carpeta del ambiente virtual donde se instalo la librería se crean los directorios.
+
+```bash
+/path/of/env/folder/requests_layer/
+├── bin
+├── include
+├── lib
+└── lib64 -> lib
+```
+
+Hacer una copia de la carpeta `requets_layer` y renombrarla a `python`.
+
+De acuerdo con la documentación de AWS y con tabla de arriba solo se tiene que tomar en cuenta la carpeta `lib` y `lib64` para crear la lambda layer.
+
+Para que quede de la siguiente manera el folder `python`
+
+```bash
+python
+├── lib
+│   └── python3.11
+│       └── site-packages
+│           ├── certifi
+│           ├── certifi-2023.11.17.dist-info
+│           ├── charset_normalizer
+│           ├── charset_normalizer-3.3.2.dist-info
+│           ├── _distutils_hack
+│           ├── idna
+│           ├── idna-3.6.dist-info
+│           ├── pip
+│           ├── pip-23.3.2.dist-info
+│           ├── pkg_resources
+│           ├── requests
+│           ├── requests-2.31.0.dist-info
+│           ├── setuptools
+│           ├── setuptools-65.5.0.dist-info
+│           ├── urllib3
+│           └── urllib3-2.1.0.dist-info
+└── lib64 -> lib
+
+```
+
+Crear un archivo zip de la carpeta python.
+
+```bash
+zip -r -9 requests_layer.zip python
+```
+El archivo `requests_layer.zip` se tiene que copiar en la carpeta raíz del proyecto donde se encuentra el archivo `serverless.yml`
+
+
+
+Una forma de hacerlo es ocupando la imagen de docker 🐳
+
+
+
+
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
 ```
