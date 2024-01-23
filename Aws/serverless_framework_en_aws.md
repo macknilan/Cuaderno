@@ -1501,7 +1501,7 @@ Instalar la librería que se va a ocupar en la lambda layer
 pip install requests
 ```
 
-En la carpeta del ambiente virtual donde se instalo la librería se crean los directorios.
+En la carpeta del ambiente virtual donde se instaló la librería se crean los directorios.
 
 ```bash
 /path/of/env/folder/requests_layer/
@@ -1550,11 +1550,68 @@ zip -r -9 requests_layer.zip python
 El archivo `requests_layer.zip` se tiene que copiar en la carpeta raíz del proyecto donde se encuentra el archivo `serverless.yml`
 
 
+Con respecto a la documentación en [Creating and deleting layers in Lambda](https://docs.aws.amazon.com/lambda/latest/dg/creating-deleting-layers.html) 🔗 ↗️ se ejecuta el siguiente comando para subir la lambda layer a AWS.
 
-Una forma de hacerlo es ocupando la imagen de docker 🐳
+```bash
+aws lambda publish-layer-version --layer-name pillow_layer_10_2_0 \
+    --description "Layer for Pillow" \
+    --license-info "MIT" \
+    --zip-file fileb://pillow_layer.zip \
+    --compatible-runtimes python3.11 \
+    --compatible-architectures "x86_64"
+```
+En el apartado de _Layers_ se tiene que mostrar la lambda layer creada. `pillow_layer_10_2_0`
+ 
+Se tiene que modificar el archivo `serverless.yml` después de la sección de `functions` para poder ocupar la lambda layer creada.
 
+```yml
+...
+plugins:
+  - serverless-dynamodb
+  - serverless-offline
 
+package:
+  individually: true
+  patterns:
+    - "!*/**"
+    - "!*.zip" # 👈 SE EXCLUYE EL ARCHIVO ZIP DE LA LAMBDA LAYER
+...
 
+# EN LA SECCIÓN DE functions EN LA LAMBDA DE thumbnail-generator
+  thumbnail-generator:
+    handler: thumbnail/handler.thumbnail_generator
+    layers: # 👈 SE AÑADE LA SECCIÓN DE LAYERS
+      - !Ref BaseLambdaLayer # 👈 SE AÑADE LA LAMBDA LAYER <https://www.serverless.com/framework/docs/providers/aws/guide/layers>
+    package:
+      patterns:
+        - "thumbnail/handler.py"
+    events:
+      - s3:
+          bucket: s3-bucket-${self:service}-bucket
+          event: s3:ObjectCreated:*
+          existing: true
+          rules:
+            - prefix: upload/
+...
+# DESPUÉS DE LA SECCIÓN DE functions SE AÑADE LA SECCIÓN DE LAYERS
+layers:
+  base:
+    name: "pillow_layer_10_2_0" # 👈 SE AÑADE EL NOMBRE DE LA LAMBDA LAYER
+    compatibleRuntimes:
+      - python3.11  # 👈 SE AÑADE LA VERSIÓN DE PYTHON QUE SE OCUPA
+    package:
+      artifact: pillow_layer.zip  # 👈 SE AÑADE EL NOMBRE DEL ARCHIVO ZIP DE LA LAMBDA LAYER
+
+...
+```
+
+🐳 [https://hub.docker.com/_/amazonlinux](https://hub.docker.com/_/amazonlinux) 🔗 ↗️ 
+
+Otra forma de hacerlo es ocupando la imagen de docker 🐳 de **amazonlinux** la cual se puede usar con las dos arquitecturas `amd64` y `arm64v8`.
+
+Se tiene que entrar en la imagen descargada y realizar el mismo procedimiento de instalación de la librería que se va a ocupar en la lambda layer.
+
+Para después copiar el archivo `.zip` del docker a la maquina host.
 
 
 ```
