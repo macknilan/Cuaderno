@@ -1613,18 +1613,158 @@ Se tiene que entrar en la imagen descargada y realizar el mismo procedimiento de
 
 Para después copiar el archivo `.zip` del docker a la maquina host.
 
+### Crear API Gateway con el servicio de AWS
+
+![API Gateway](/Aws/imgs/api_gateway_00.png)
+
+Para crear API Gateway con el servicio de AWS por medio de serverless framework.
+
+
+Se tiene que modificar el archivo `serverless.yml` en la sección de `functions` para poder indicarle a la lambda que se desea que de tipo **privada** 
+
+```yml
+functions:
+  get-users:
+    handler: get_users/handler.get_users
+    package:
+      patterns:
+        - "get_users/handler.py" # EL PATRON ESTABLECE QUE SOLO SE DEBE DE INCLUIR EL ARCHIVO handler.py
+    events:
+      - http:
+          private: true # 👈 ESTABLECE QUE LA RUTA ES PRIVADA
+          path: /users/{id}
+          method: GET
+          request:
+            parameters:
+              paths:
+                id: true # EL PARÁMETRO id ES OBLIGATORIO
 
 ```
+
+Después en la sección de `providers` se estable el API Gateway
+
+```yml
+service: crud-serverless-users
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: python3.11
+  apiGateway: # 👈 SE ESTABLECE EL API GATEWAY
+    apiKeys: # 👈 SE ESTABLECE LA API KEY
+      - crud-serverless-users-api-key # 👈 ESTABLECE LA API KEY PARA TODAS LAS RUTAS DE LA API
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action: 'dynamodb:*'
+          Resource: arn:aws:dynamodb:us-east-1:148037648285:table/usersTable
+        - Effect: Allow
+          Action: 's3:*'
+          Resource: arn:aws:s3:::s3-bucket-${self:service}-bucket/*
+  environment:
+    BUCKET: s3-bucket-${self:service}-bucket
+```
+Para que se muestre en la consola de AWS en API Gateway
+
+![API Gateway](/Aws/imgs/api_gateway_01.png)
+
+Y el `API key` es el que se estable al momento de hacer la llamada a la lambda que se marco como privada.
+
+![Llamada al método GET de API Gateway](/Aws/imgs/api_gateway_03.png)
+
+
+### Crear un Custom Authorizer para API Gateway
+
+Para crear un Custom Authorizer a diferencia que "API Key" por que esta última es un string que no cambia y siempre es constante para todas las llamadas a la API.
+
+Se puede crear un Custom Authorizer para que se pueda validar el token de acceso que se genera al momento de hacer login en la aplicación.
+
+En la consola de AWS -> AWS Systems Manager -> Parameter Store
+
+![Parameter Store](/Aws/imgs/aws_systems_manager_parameter_store_secrets_and_configuration_data_management_00.png)
+
+Se crea un parámetro con el nombre `SECRET_CRUD_SERVERLESS_FRAMEWOR` y se le asigna un valor.
+
+Puede ser cualquier nombre que haga referencia a la aplicación y se le asigna un valor.
+
+![Parameter Store](/Aws/imgs/aws_systems_manager_parameter_store_secrets_and_configuration_data_management_01.png)
+
+Y se modifica el archivo `serverless.yml` en la sección de `provider` para poder indicarle en `enviroments` que lo tome directamente desde el parámetro de AWS Systems Manager.
+
+Y quede disponible en todas las lambdas.
+
+```yml
+service: crud-serverless-users
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: python3.11
+  apiGateway:
+    apiKeys:
+      - crud-serverless-users-api-key # ESTABLECE LA API KEY PARA TODAS LAS RUTAS DE LA API
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action: 'dynamodb:*'
+          Resource: arn:aws:dynamodb:us-east-1:148037648285:table/usersTable
+        - Effect: Allow
+          Action: 's3:*'
+          Resource: arn:aws:s3:::s3-bucket-${self:service}-bucket/*
+  environment:
+    BUCKET: s3-bucket-${self:service}-bucket
+    SECRET_EEG: ${ssm:/SECRET_CRUD_SERVERLESS_FRAMEWOR} # 👈 OBTIENE EL VALOR DE UN PARÁMETRO DE SSM
 ```
 
-```
+Tambien se añade en el archivo `serverless.yml` en al sección de `functions` la lambda que se va a encargar de la logica de la validación del token de acceso.
+
+```yml
+functions:
+  custom-authorizer:
+    handler: authorizer/handler.authorize
+    package:
+      patterns:
+        - "authorizer/handler.py"
 ```
 
-```
+> Esta petición no esta siendo llamada por ningún método HTTP, si no que va a ser llamado por el mismo API Gateway para verificar que la petición que se esta haciendo a la API es válida.
+
+Para hacer esto se tiene que modificar la lambda que se quiera proteger con el archivo `serverless.yml` en la sección de `functions` y se le añade la sección de `authorizer` y se le indica que lambda se va a encargar de la validación del token de acceso.
+
+```yml
+  create-users:
+    handler: create_users/handler.create_users
+    package:
+      patterns:
+        - "create_users/handler.py"
+    events:
+      - http:
+          path: /users
+          authorizer:
+            name: custom-authorizer # 👈 ESTABLECE EL NOMBRE DEL AUTORIZADOR
+            resultTtlInSeconds: 15 # 👈 ESTABLECE EL TIEMPO DE VIDA DE LA AUTORIZACIÓN EN CACHE segundos
+            identitySource: method.request.header.Authorization # 👈 ESTABLECE LA FUENTE DE LA AUTORIZACIÓN
+            type: request # 👈 ESTABLECE EL TIPO DE AUTORIZACIÓN
+          method: POST
+          request:
+            schemas:
+              application/json: ${file(schemas/user-schema.json)}
+              # EL ESQUEMA DEBE DE ESTAR EN LA CARPETA schemas PARA VALIDAR EL BODY
+              # https://docs.aws.amazon.com/apigateway/latest/developerguide/models-mappings-models.html
 ```
 
-```
-```
+- [Reserved Concurrency](https://docs.aws.amazon.com/lambda/latest/dg/configuration-concurrency.html) 🔗 ↗️
+  - Es el máximo numero de instancias concurrentes que deseas asignar para tu función. No pueden utilizarse más instancias concurrentes de las configuradas. No tiene un coste de billing por su configuración
+
+- [Provisioned Concurrency](https://docs.aws.amazon.com/lambda/latest/dg/provisioned-concurrency.html) 🔗 ↗️
+  - Es el número de pre-inicializados ambientes de ejecución que deseas asignar para tu función. El ambiente pre-inicializado está preparado para responder inmediatamente. Sí tiene un coste de billing por su configuración.
+
+
+Para poder implementar a la arquitectura anterior un ejemplo de colas implementando asincronismo con una lambda y guardando data en DynamoDB.
+
+![API Gateway AQS Lambda DynamoDB](/Aws/imgs/api_gateway_aqs_lambda_aync_00.png)
 
 ```
 ```
