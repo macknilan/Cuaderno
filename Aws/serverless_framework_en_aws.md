@@ -2027,6 +2027,8 @@ Después de tener configurado nuestro Custom Domain, debemos hacer un mappeo de 
 
 ![AWS Route 53](/Aws/imgs/aws_route_53_13.png)
 
+Aqui debemos presionar la opcion Configure API mappings, y posteriormente podremos seleccionar nuestro API, el Stage, y de forma opcional
+
 Paso 4: Configurar nuestro nombre de Dominio
 
 Hasta este momento ya hemos creado nuestro certificado, hemos creado un nombre de dominio personalizado (Custom Domain Name), sin embargo este dominio sigue sin ser disponible desde internet. Esto por que ningún servidor de DNS del mundo sabe a donde debe dirigir cada peticion cuando entremos a sub-dominio.dominio.com. Recuerda que la configuracion que hicimos fue solo para validar el certificado, sin embargo no hemos configurado ningún registro DNS para enviar trafico a nuestro Custom Domain Name.
