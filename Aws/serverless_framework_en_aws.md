@@ -1766,20 +1766,331 @@ Para poder implementar a la arquitectura anterior un ejemplo de colas implementa
 
 ![API Gateway AQS Lambda DynamoDB](/Aws/imgs/api_gateway_aqs_lambda_aync_00.png)
 
-```
+
+Para poder realizar esto con plugins de serverless framework.
+
+1. [Serverless APIGateway Service Proxy](https://www.serverless.com/plugins/serverless-apigateway-service-proxy) 🔗 ↗️
+
+Se instala el plugin con el comando
+
+```bash
+serverless plugin install -n serverless-apigateway-service-proxy
 ```
 
-```
+
+En el archivo `serverless.yml` se modifica en la sección de `plugins` para poder indicarle que se va a ocupar el plugin.
+
+```yml
+plugins:
+  - serverless-dynamodb
+  - serverless-offline
+  - serverless-apigateway-service-proxy # 👈 SE INSTALA EL PLUGIN
 ```
 
-```
+En la sección de `custom` se añade la sección de `apigatewayServiceProxies` para poder indicarle que se va a ocupar el plugin.
+
+```yml
+custom:
+  pythonRequirements:
+    dockerizePip: true
+  serverless-dynamodb:
+    # If you only want to use DynamoDB Local in some stages, declare them here
+    stages:
+      - dev
+    start:
+      port: 8000
+      inMemory: true
+      migrate: true
+    # Uncomment only if you already have a DynamoDB running locally
+    # noStart: true
+  apiGatewayServiceProxies: # 👈 👇
+    - sqs:
+        path: /likeuser  # RUTA EN LA CUAL VAN A CAER LOS REQUEST
+        method: post
+        queueName: likequeues # OBTIENE EL NOMBRE DE LA COLA DE SQS
+        cors: true # ESTABLECE QUE LA RUTA ES PUBLICA Y PUEDE SER ACCEDIDA POR CUALQUIER DOMINIO
+        response:
+          template:
+            # `success` is used when the integration response is 200
+            success: |-
+              { "message: "accepted" }
+            # `clientError` is used when the integration response is 400
+            clientError: |-
+              { "message": "there is an error in your request" }
+            # `serverError` is used when the integration response is 500
+            serverError: |-
+              { "message": "there was an error handling your request" }
 ```
 
-```
+El segundo plugin para crear colas de SQS es el siguiente.
+
+2. [Serverless Lift](https://www.serverless.com/plugins/lift) 🔗 ↗️
+
+- :octocat: [https://github.com/getlift/lift](https://github.com/getlift/lift) 🔗 ↗️
+- :octocat: [https://github.com/getlift/lift/blob/master/docs/queue.md](https://github.com/getlift/lift/blob/master/docs/queue.md) 🔗 ↗️
+
+Tomando en cuenta documentación AWS CloudFormation para crear la cola de SQS [AWS::SQS::Queue](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sqs-queue.html)
+
+Se instala el plugin. 
+
+```bash
+serverless plugin install -n serverless-lift
 ```
 
+Para que en archivo `serverless.yml` se modifique en la sección de `plugins` para poder indicarle que se va a ocupar el plugin.
+
+```yml
+plugins:
+  - serverless-dynamodb
+  - serverless-offline
+  - serverless-apigateway-service-proxy
+  - serverless-lift # 👈 SE INSTALA EL PLUGIN
+``` 
+
+En el archivo `serverless.yml` se añade la sección `construc` como lo indica la documentación del plugin.
+
+```yml
+constructs: # 👈 SE AÑADE LA SECCIÓN DE CONSTRUCTS PARA PODER CREAR LA COLA DE SQS 👇 
+    sqs-queue:
+      type: queue
+      batchSize: 1 # QUE TANTOS DOCUMENTOS DE LA COLA VAN A SER DIGERIDOS POR EL LAMBDA 1:1
+      worker:
+        handler: like_user/handler.like_user
+        reservedConcurrency: 1 # ESTABLECE QUE SOLO UN LAMBDA VA A SER EJECUTADO A LA VEZ
+        package:
+          patterns:
+            - "like_user/handler.py"
+      extensions:
+        queue:
+          Properties:
+            QueueName: likequeues # ESTABLECE EL NOMBRE DE LA COLA DE SQS
+            # AWS::SQS::Queue <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sqs-queue.html>
 ```
+Y también se crea la lamda para poder consumir la cola de SQS, en la misma sección `construcs`
+
+En caso de que se presente el siguiente error al momento de hacer `sls deploy --vervose`
+
+```bash
+Error:
+CREATE_FAILED: SqsDashqueueWorkerLambdaFunction (AWS::Lambda::Function)
+Resource handler returned message: "Specified ReservedConcurrentExecutions for function decreases account's UnreservedConcurrentExecution below its minimum value of [10]. (Service: Lambda, Status Code: 400, Request ID: 288ff7f3-XXXX-XXXX-XXXX-XXXXXXXXXXXX)" (RequestToken: 41be889b-276d-XXXX-XXXX-XXXXXXXXXXXX, HandlerErrorCode: InvalidRequest)
+````
+
+De acuerdo con la documentación de AWS
+
+- [Lambda quotas](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html) 🔗 ↗️
+- [Configuring reserved concurrency](https://docs.aws.amazon.com/lambda/latest/dg/configuration-concurrency.html) 🔗 ↗️
+- [My Lambda concurrency applied quota is only 10? But why](https://benellis.cloud/my-lambda-concurrency-applied-quota-is-only-10-but-why) 🔗 ↗️
+
+Una forma de poder solucionar el problema es ir a la consola de AWS -> Service Quotas View and manage AWS quotas -> Buscar el servicio de AWS Lambda -> Editar el valor de `Concurrent executions` y aumentarlo a un valor mayor a 10(100).
+
+
+```bash
+Retrieving CloudFormation stack
+Serverless APIGateway Service Proxy OutPuts
+endpoints:
+  POST - https://XXXXXXXXXX.execute-api.us-east-1.amazonaws.com/dev/likeuser # 👈 RUTA DE LA COLA DE SQS
+
+Removing old service artifacts from S3
+
+✔ Service deployed to stack crud-serverless-users-dev (132s)
+
+api keys:
+  crud-serverless-users-api-key: XXXXXXXXXXV4LUrWMbbAxaKDTvu5B9
+endpoints:
+  GET - https://XXXXXXXXXX.execute-api.us-east-1.amazonaws.com/dev/users/{id}
+  POST - https://XXXXXXXXXX.execute-api.us-east-1.amazonaws.com/dev/users
+  PUT - https://XXXXXXXXXX.execute-api.us-east-1.amazonaws.com/dev/users/{id}
+  DELETE - https://XXXXXXXXXX.execute-api.us-east-1.amazonaws.com/dev/users/{id}
+  GET - https://XXXXXXXXXX.execute-api.us-east-1.amazonaws.com/dev/singedurl
+functions:
+  custom-authorizer: crud-serverless-users-dev-custom-authorizer (87 kB)
+  get-users: crud-serverless-users-dev-get-users (87 kB)
+  create-users: crud-serverless-users-dev-create-users (87 kB)
+  update-users: crud-serverless-users-dev-update-users (87 kB)
+  delete-users: crud-serverless-users-dev-delete-users (87 kB)
+  singed-url: crud-serverless-users-dev-singed-url (87 kB)
+  thumbnail-generator: crud-serverless-users-dev-thumbnail-generator (87 kB)
+  sqs-queueWorker: crud-serverless-users-dev-sqs-queueWorker (86 kB) # 👈 LAMBDA QUE CONSUME LA COLA DE SQS
+layers:
+  base: arn:aws:lambda:us-east-1:148037648285:layer:pillow_layer_10_2_0:4
 ```
 
+La lambda para manejar la logica de ir sumando los "likes" podría quedarse de la siguiente manera.
+
+```py
+def like_user(event: any, context: any) -> Any:
+    """
+    FUNCIÓN PARA DAR LIKE A UN USUARIO
+    MEDIANTE EL TRIGGER SQS EN LA LAMBDA
+    """
+    logger.info(f"EVENT --> {event}")
+    pre_payload = json.loads(event["Records"][0]["body"])
+    logger.info(f"PRE_PAYLOAD --> {pre_payload}")
+
+    # ACTUALIZACIÓN DEL ITEM
+    table_users_put = dynamo_table_name("usersTable")
+    response = table_users_put.update_item(
+        Key={"pk": pre_payload["id"]},
+        UpdateExpression="ADD likes :val1",
+        ExpressionAttributeValues={":val1": 1},
+        ReturnValues="ALL_NEW"
+    )
+    logger.info(f"RESPONSE --> {response}")
+
+    if response["ResponseMetadata"]["HTTPStatusCode"] == 200:
+        return {
+            "statusCode": 200,
+            "body": json.dumps(response["Attributes"], cls=DecimalEncoder),
+        }
+    else:
+        return {"statusCode": 200, "body": {}}
 ```
+
+![Método POST para Api Gateway SQS Lambda_Async](/Aws/imgs/api_gateway_aqs_lambda_aync_01.png)
+
+
+### AWS Route 53
+
+AWS Route 53 es el servicio de DNS de AWS, este nos ayuda a gestionar nuestros dominios, aqui podremos configurar diferentes tipos de registros A, CNAME, TXT, entre otros para que nuestros servicios sean visibles y accesibles.
+
+![AWS Route 53](/Aws/imgs/aws_route_53_00.png)
+
+En Serverless Framework en AWS creamos diferentes funciones lambda que son accesibles mediante un dominio que API Gateway nos entrega, este dominio lo puedes encontrar en los detalles de cada Stage del tu API. Sin embargo estos APIs tienen una URL que no sigue una convención de nombres y ademas entrega algo de información sensible ante posibles usuarios mal intencionados, como dar detalles del Cloud Provider que usas y la región en la que alojas tus servicios, adicionalmente usar la URL de API Gateway directamente en tus consultas desde internet puede indicar que posiblemente no tienes una protección a nivel de CDN y Cache, estas ultimas las puedes lograr usando servicios como Cloudfront para disponer tus APIs en los Edge Location de AWS o incluso usando servicios de terceros como Cloudflare para proteger tus endpoints.
+
+Vamos a configurar el Custom Domain Name para que resuelva los llamados HTTP a nuestro API mediante la URL sub-dominio.dominio.com.
+
+A continuación vas a encontrar una guia detallada de como crear un Custom Domain Name y enlazarlo a un API Gateway para que tus endpoints tengan mejores practicas a nivel de seguridad y cache. En esta guia vamos a usar AWS API Gateway que es el servicio que nos permite exponer nuestra logica de negocio y Cloudflare como capa de CDN y DNS.
+
+![AWS Route 53](/Aws/imgs/aws_route_53_00.png)
+
+Paso 1: Creación del certificado en AWS ACM
+
+Entramos a AWS Certificate Manager (ACM) y solicitamos un certificado, en mi caso es la opción de Request a Certificate.
+
+![AWS Route 53](/Aws/imgs/aws_route_53_01.png)
+
+Posteriormente, nos preguntara por el tipo de certificado (Publico o Privado), en nuestro caso dado que no tenemos ningun Certificate Authority (CA) privado, seleccionamos la primera opcion
+
+![AWS Route 53](/Aws/imgs/aws_route_53_02.png)
+
+A continuación, podras completar la información asociada al nombre de dominio, el metodo de validación y el algoritmo de encripción. En este caso nuestro FQDN sera el asociado al curso de Serverless Framework en AWS (slscourse.platzi.com). El metodo de validación sera mediante DNS, el cual exige tener control sobre nuestro nombre de dominio, esto para poder crear registros que permitan validar que es un dominio de nuestra propiedad. Finalmente, en cuanto al algoritmo de encripción, AWS usa por defecto para ACM el algoritmo RSA 2048, te dejamos la documentación donde puedes encontrar mas información sobre las características de cada algoritmo y de los certificados ACM.
+
+![AWS Route 53](/Aws/imgs/aws_route_53_03.png)
+
+![AWS Route 53](/Aws/imgs/aws_route_53_04.png)
+
+Nota: Al final de la pagina encontraras una sección de Tags, estos te van a permitir definir etiquetas que son de utilidad en diferentes aspectos, tales como inventario de recursos, costos asociados, entre otros. Como buena practica te recomendamos crear Tags que te permitan diferenciar los proyectos a los que se asociada cada recurso, recuerda que como buena practica entre mas segregados puedas tener tus recursos o puedas visualizarlos mejor, asi podras tener una vista global de tu infraestructura (Propietario o Owner, Proyecto o Vertical, Centro de costos, entre otros.)
+
+Despues de presionar el boton de Request, podemos ver que AWS nos informa el estado del certificado y la información necesaria para poder crear los registros CNAME en nuestro gestor de DNS.
+
+![AWS Route 53](/Aws/imgs/aws_route_53_05.png)
+
+Paso 1.5: Validación del nombre de dominio con DNS
+
+La validación podemos lograrla agregando un registro CNAME en nuestro gestor de DNS, al entrar al certificado que tiene Status Pendiente de validación (Pending Validation) vemos los siguientes detalles.
+
+![AWS Route 53](/Aws/imgs/aws_route_53_06.png)
+
+Debemos copiar el nombre y el valor del CNAME, y los registramos en el DNS (En nuestro caso sera Cloudflare).
+
+![AWS Route 53](/Aws/imgs/aws_route_53_07.png)
+
+Después de aproximadamente 5 o 10 minutos ya debe haberse replicado el registro CNAME en los multiples DNS y AWS ya mostrara nuestro certificado como Issued (Emitido).
+
+![AWS Route 53](/Aws/imgs/aws_route_53_08.png)
+
+Paso 2: Creación del Custom Domain Name en AWS
+
+Después de tener nuestro certificado validado/issued ya puedes usarlo en la creación de un Custom Domain Name, para esto entramos a API Gateway, click en el submenu de Custom domain names, presionamos el boton Create.
+
+![AWS Route 53](/Aws/imgs/aws_route_53_09.png)
+
+Al presionar la opcion Create, podremos completar la información asociada a nuestro nombre de dominio y certificado (Creado previamente).
+
+En esta vista notaras dos formas de configurar nuestro endpoint, uno de forma regional y otro optimizado en el borde (Edge Optimized). El primero sera un endpoint que AWS usara para apuntar a recursos especificos en una región, y el segundo sera accesible mediante una distribución de Cloudfront directamente desde los Edge Location de la infraestructura de AWS. Cada uno tiene diferentes ventajas y desventajas, pero deberíamos escoger el que mas convenga dependiendo del caso de uso. En nuestro ejemplo, seleccionaremos un endpoint de tipo Regional, el cual nos va a permitir a futuro agregar compatibilidad multi-region a nuestra aplicación, y generar políticas de enrutamiento basado en latencia.
+
+![AWS Route 53](/Aws/imgs/aws_route_53_10.png)
+
+![AWS Route 53](/Aws/imgs/aws_route_53_11.png)
+
+Después de presionar el botón Create domain name podremos ver el dominio personalizado creado y asociado a nuestro certificado. De esta vista es importante resaltar el valor de API Gateway domain name, el que inicia con “d-….”
+
+![AWS Route 53](/Aws/imgs/aws_route_53_12.png)
+
+Después de tener configurado nuestro Custom Domain, debemos hacer un mappeo de nuestro dominio a nuestro API Gateway, esto lo logramos mediante la sección de API Mappings.
+
+![AWS Route 53](/Aws/imgs/aws_route_53_13.png)
+
+Paso 4: Configurar nuestro nombre de Dominio
+
+Hasta este momento ya hemos creado nuestro certificado, hemos creado un nombre de dominio personalizado (Custom Domain Name), sin embargo este dominio sigue sin ser disponible desde internet. Esto por que ningún servidor de DNS del mundo sabe a donde debe dirigir cada peticion cuando entremos a sub-dominio.dominio.com. Recuerda que la configuracion que hicimos fue solo para validar el certificado, sin embargo no hemos configurado ningún registro DNS para enviar trafico a nuestro Custom Domain Name.
+
+Para esto debemos crear un registro CNAME en nuestro DNS apuntando slscourse a la ruta del API Gateway domain name, es el valor que inicia con “d-”
+
+```bash
+**Registro CNAME**
+**Name**: slscourse
+**Value**: [d-by0ua7r9w4.execute-api.us-east-1.amazonaws.com](http://d-by0ua7r9w4.execute-api.us-east-1.amazonaws.com/)
+**TTL**: Auto
+***Proxy status**: Esta propiedad solo aplica si usas Cloudflare*
 ```
+
+![AWS Route 53](/Aws/imgs/aws_route_53_14.png)
+
+Nota: La propiedad Proxy status: Proxied nos permite definir que Cloudflare aplicara todas las capas de seguridad y cache a cualquier usuario que intente acceder a nuestro target mediante sub-sominio.dominio.com
+
+Paso 5: Enlazar API Gateway
+
+Se ve mas a detalle mas a adelante, en la cual vamos a aprender como usar Custom Domain Names para nuestro proyecto.
+
+El paso de enlazar es relativamente corto y sencillo, despues de tener nuestro dominio configurado y el custom domain name creado, debemos hacer un mapeo para enlazar nuestro API Gateway a una ruta de nuestra preferencia. Esto lo logramos mediante la opción Configure API mappings, y luego Add new mapping (agregar un nuevo mapping) y save (Guardar)
+
+![AWS Route 53](/Aws/imgs/aws_route_53_15.png)
+
+![AWS Route 53](/Aws/imgs/aws_route_53_16.png)
+
+Con esta configuración todos los llamados que hagamos a sub-dominio.dominio.com/api/users/ seran atentidos mediante nuestro API Gateway y todas las lambdas desarrolladas hasta este momento serán accesibles mediante ese nombre de dominio.
+
+Más adelante se vera una explicación mas a detalle de como lograr esta configuración, tambien realizaremos pruebas con Postman, validando que los API Keys sigan siendo validos mediante el Custom Domain Name.
+
+En esta clase de lectura hemos configurado este dominio personalizado para que nuestros recursos sean accedidos mediante el path: /api/, en la próxima clase configuraremos este nombre de dominio mediante un plugin de Serverless Framework, también usaremos un mapeo totalmente diferente para que notes la flexibilidad de estos nombres de dominio y los mappings.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
