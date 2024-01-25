@@ -13,7 +13,7 @@ _\ \  __/ |   \ V /  __/ |  | |  __/\__ \__ \ / /  | | | (_| | | | | | |  __/\ V
 Serverless es una manera de crear y ejecutar aplicaciones y servicios sin tener que administrar infraestructura.
 
 En lugar de configurar y administrar servidores, los desarrolladores simplemente cargan su código en la nube y la plataforma
-se encarga de ejecutarlo automáticamente en función de la demanda.Además, las plataformas sin servidor suelen cobrar solo por
+se encarga de ejecutarlo automáticamente en función de la demanda. Además, las plataformas sin servidor suelen cobrar solo por
 el tiempo que se ejecuta el código, lo que significa que los desarrolladores solo pagan por lo que usan.
 
 ¿Ecosistema Serverless?
@@ -1974,13 +1974,13 @@ Posteriormente, nos preguntara por el tipo de certificado (Publico o Privado), e
 
 ![AWS Route 53](/Aws/imgs/aws_route_53_02.png)
 
-A continuación, podras completar la información asociada al nombre de dominio, el metodo de validación y el algoritmo de encripción. En este caso nuestro FQDN sera el asociado al curso de Serverless Framework en AWS (slscourse.platzi.com). El metodo de validación sera mediante DNS, el cual exige tener control sobre nuestro nombre de dominio, esto para poder crear registros que permitan validar que es un dominio de nuestra propiedad. Finalmente, en cuanto al algoritmo de encripción, AWS usa por defecto para ACM el algoritmo RSA 2048, te dejamos la documentación donde puedes encontrar mas información sobre las características de cada algoritmo y de los certificados ACM.
+A continuación, podras completar la información asociada al nombre de dominio, el metodo de validación y el algoritmo de encripción. En este caso nuestro FQDN sera el asociado al curso de Serverless Framework en AWS (slscourse.mack.host). El metodo de validación sera mediante DNS, el cual exige tener control sobre nuestro nombre de dominio, esto para poder crear registros que permitan validar que es un dominio de nuestra propiedad. Finalmente, en cuanto al algoritmo de encripción, AWS usa por defecto para ACM el algoritmo RSA 2048, [te dejamos la documentación](https://docs.aws.amazon.com/acm/latest/userguide/acm-certificate.html#algorithms) 🔗 ↗️ donde puedes encontrar mas información sobre las características de cada algoritmo y de los certificados ACM.
 
 ![AWS Route 53](/Aws/imgs/aws_route_53_03.png)
 
 ![AWS Route 53](/Aws/imgs/aws_route_53_04.png)
 
-Nota: Al final de la pagina encontraras una sección de Tags, estos te van a permitir definir etiquetas que son de utilidad en diferentes aspectos, tales como inventario de recursos, costos asociados, entre otros. Como buena practica te recomendamos crear Tags que te permitan diferenciar los proyectos a los que se asociada cada recurso, recuerda que como buena practica entre mas segregados puedas tener tus recursos o puedas visualizarlos mejor, asi podras tener una vista global de tu infraestructura (Propietario o Owner, Proyecto o Vertical, Centro de costos, entre otros.)
+_Nota: Al final de la página encontrarás una sección de Tags, estos te van a permitir definir etiquetas que son de utilidad en diferentes aspectos, tales como inventario de recursos, costos asociados, entre otros. Como buena practica te recomendamos crear Tags que te permitan diferenciar los proyectos a los que se asociada cada recurso, recuerda que como buena practica entre mas segregados puedas tener tus recursos o puedas visualizarlos mejor, asi podrás tener una vista global de tu infraestructura (Propietario o Owner, Proyecto o Vertical, Centro de costos, entre otros.)_
 
 Despues de presionar el boton de Request, podemos ver que AWS nos informa el estado del certificado y la información necesaria para poder crear los registros CNAME en nuestro gestor de DNS.
 
@@ -2031,7 +2031,7 @@ Aqui debemos presionar la opcion Configure API mappings, y posteriormente podrem
 
 Paso 4: Configurar nuestro nombre de Dominio
 
-Hasta este momento ya hemos creado nuestro certificado, hemos creado un nombre de dominio personalizado (Custom Domain Name), sin embargo este dominio sigue sin ser disponible desde internet. Esto por que ningún servidor de DNS del mundo sabe a donde debe dirigir cada peticion cuando entremos a sub-dominio.dominio.com. Recuerda que la configuracion que hicimos fue solo para validar el certificado, sin embargo no hemos configurado ningún registro DNS para enviar trafico a nuestro Custom Domain Name.
+Hasta este momento ya hemos creado nuestro certificado, hemos creado un nombre de dominio personalizado (Custom Domain Name), sin embargo este dominio sigue sin ser disponible desde internet. Esto por que ningún servidor de DNS del mundo sabe a donde debe dirigir cada peticion cuando entremos a slscourse.mack.host. Recuerda que la configuracion que hicimos fue solo para validar el certificado, sin embargo no hemos configurado ningún registro DNS para enviar trafico a nuestro Custom Domain Name.
 
 Para esto debemos crear un registro CNAME en nuestro DNS apuntando slscourse a la ruta del API Gateway domain name, es el valor que inicia con “d-”
 
@@ -2045,7 +2045,7 @@ Para esto debemos crear un registro CNAME en nuestro DNS apuntando slscourse a l
 
 ![AWS Route 53](/Aws/imgs/aws_route_53_14.png)
 
-Nota: La propiedad Proxy status: Proxied nos permite definir que Cloudflare aplicara todas las capas de seguridad y cache a cualquier usuario que intente acceder a nuestro target mediante sub-sominio.dominio.com
+Nota: La propiedad Proxy status: Proxied nos permite definir que Cloudflare aplicara todas las capas de seguridad y cache a cualquier usuario que intente acceder a nuestro target mediante slscourse.mack.host
 
 Paso 5: Enlazar API Gateway
 
@@ -2057,7 +2057,7 @@ El paso de enlazar es relativamente corto y sencillo, despues de tener nuestro d
 
 ![AWS Route 53](/Aws/imgs/aws_route_53_16.png)
 
-Con esta configuración todos los llamados que hagamos a sub-dominio.dominio.com/api/users/ seran atentidos mediante nuestro API Gateway y todas las lambdas desarrolladas hasta este momento serán accesibles mediante ese nombre de dominio.
+Con esta configuración todos los llamados que hagamos a slscourse.mack.host/api/users/ seran atentidos mediante nuestro API Gateway y todas las lambdas desarrolladas hasta este momento serán accesibles mediante ese nombre de dominio.
 
 Más adelante se vera una explicación mas a detalle de como lograr esta configuración, tambien realizaremos pruebas con Postman, validando que los API Keys sigan siendo validos mediante el Custom Domain Name.
 
