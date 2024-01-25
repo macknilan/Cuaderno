@@ -2016,6 +2016,11 @@ En esta vista notaras dos formas de configurar nuestro endpoint, uno de forma re
 
 Después de presionar el botón Create domain name podremos ver el dominio personalizado creado y asociado a nuestro certificado. De esta vista es importante resaltar el valor de API Gateway domain name, el que inicia con “d-….”
 
+```bash
+**API Gateway domain name:**
+[d-by0ua7r9w4.execute-api.us-east-1.amazonaws.com](http://d-by0ua7r9w4.execute-api.us-east-1.amazonaws.com/)
+```
+
 ![AWS Route 53](/Aws/imgs/aws_route_53_12.png)
 
 Después de tener configurado nuestro Custom Domain, debemos hacer un mappeo de nuestro dominio a nuestro API Gateway, esto lo logramos mediante la sección de API Mappings.
