@@ -2008,13 +2008,13 @@ Después de tener nuestro certificado validado/issued ya puedes usarlo en la cre
 
 Al presionar la opcion Create, podremos completar la información asociada a nuestro nombre de dominio y certificado (Creado previamente).
 
-En esta vista notaras dos formas de configurar nuestro endpoint, uno de forma regional y otro optimizado en el borde (Edge Optimized). El primero sera un endpoint que AWS usara para apuntar a recursos especificos en una región, y el segundo sera accesible mediante una distribución de Cloudfront directamente desde los Edge Location de la infraestructura de AWS. Cada uno tiene diferentes ventajas y desventajas, pero deberíamos escoger el que mas convenga dependiendo del caso de uso. En nuestro ejemplo, seleccionaremos un endpoint de tipo Regional, el cual nos va a permitir a futuro agregar compatibilidad multi-region a nuestra aplicación, y generar políticas de enrutamiento basado en latencia.
+En esta vista notaras dos formas de configurar nuestro endpoint, uno de forma regional y otro optimizado en el borde (Edge Optimized). El primero sera un endpoint que AWS usara para apuntar a recursos especificos en una región, y el segundo sera accesible mediante una distribución de Cloudfront directamente desde los Edge Location de la infraestructura de AWS. Cada uno tiene diferentes ventajas y desventajas, pero deberíamos escoger el que mas convenga dependiendo del caso de uso. En nuestro ejemplo, seleccionaremos un endpoint de tipo Regional, el cual nos va a permitir a futuro agregar compatibilidad multi-region a nuestra aplicación, y [generar políticas de enrutamiento basado en latencia.](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy-latency.html) 🔗 ↗️
 
 ![AWS Route 53](/Aws/imgs/aws_route_53_10.png)
 
 ![AWS Route 53](/Aws/imgs/aws_route_53_11.png)
 
-Después de presionar el botón Create domain name podremos ver el dominio personalizado creado y asociado a nuestro certificado. De esta vista es importante resaltar el valor de API Gateway domain name, el que inicia con “d-….”
+Después de presionar el botón Create domain name podremos ver el dominio personalizado creado y asociado a nuestro certificado. De esta vista es importante resaltar el valor de _API Gateway domain name_, el que inicia con “d-….”
 
 ```bash
 **API Gateway domain name:**
@@ -2045,7 +2045,7 @@ Para esto debemos crear un registro CNAME en nuestro DNS apuntando slscourse a l
 
 ![AWS Route 53](/Aws/imgs/aws_route_53_14.png)
 
-Nota: La propiedad Proxy status: Proxied nos permite definir que Cloudflare aplicara todas las capas de seguridad y cache a cualquier usuario que intente acceder a nuestro target mediante slscourse.mack.host
+_Nota: La propiedad Proxy status: Proxied nos permite definir que Cloudflare aplicara todas las capas de seguridad y cache a cualquier usuario que intente acceder a nuestro target mediante slscourse.mack.host_
 
 Paso 5: Enlazar API Gateway
 
@@ -2064,17 +2064,94 @@ Más adelante se vera una explicación mas a detalle de como lograr esta configu
 En esta clase de lectura hemos configurado este dominio personalizado para que nuestros recursos sean accedidos mediante el path: /api/, en la próxima clase configuraremos este nombre de dominio mediante un plugin de Serverless Framework, también usaremos un mapeo totalmente diferente para que notes la flexibilidad de estos nombres de dominio y los mappings.
 
 
+Posterior a la configuración del Custom Domain Name se puede instalar el plugin [Serverless Domain Manager](https://www.serverless.com/plugins/serverless-domain-manager) 🔗 ↗️
+
+```bash
+npm install serverless-domain-manager --save-dev
+``` 
+
+Lo que hace la libreria:  
+> Create custom domain names that your lambda can deploy to with serverless. Allows for base path mapping when deploying and deletion of domain names.
+
+Para poder establecer un nombre de dominio personalizado para el API Gateway independientemente del stage que se este ocupando, como se muestra en las imágenes.
+
+![Serverless Domain Manager Api Gateway](/Aws/imgs/serverless_domain_manager_api_gateway_00.png)
+
+👇
+
+![Serverless Domain Manager Api Gateway](/Aws/imgs/serverless_domain_manager_api_gateway_01.png)
 
 
+Después que se instala se tiene que modificar el archivo `serverless.yml` en la sección de `plugins` para poder indicarle que se va a ocupar el plugin.
 
+```yml
+plugins:
+  - serverless-dynamodb
+  - serverless-offline
+  - serverless-apigateway-service-proxy
+  - serverless-lift
+  - serverless-domain-manager # 👈 SE INSTALA EL PLUGIN
+```
 
+Tomando en cuenta la documentación de [Serverless Domain Manager](https://www.serverless.com/plugins/serverless-domain-manager) 🔗 ↗️ se tiene que añadir la sección de `custom` para poder indicarle que se va a ocupar el plugin.
 
+```yml
+custom:
+  ...
+  customDomain:
+    domainName: slscourse.platzi.com
+    stage: dev
+    basePath: mapping
+    endpointType: 'regional'
+    securityPolicy: tls_1_2
+    apiType: rest
+ ...
+```
 
+Después de hacer el deploy se muestra en consola el siguiente mensaje.
 
+En el cual se muestra el nuevo recurso creado en API Gateway creando el mapeo de la ruta `/mapping` al stage `dev` y el nombre de dominio personalizado `slscourse.mack.host`
 
+```bash
+Retrieving CloudFormation stack
+Serverless APIGateway Service Proxy OutPuts
+endpoints:
+  POST - https://8j6lbebogd.execute-api.us-east-1.amazonaws.com/dev/likeuser
 
+V1 - Updated API mapping from 'api'
+                    to 'mapping' for 'slscourse.mack.host' # 👈 SE MUESTRA EL NOMBRE DE DOMINIO PERSONALIZADO
+Removing old service artifacts from S3
 
+✔ Service deployed to stack crud-serverless-users-dev (93s)
 
+api keys:
+  crud-serverless-users-api-key: 6fyHzQzNzC79G2s0PgthV4LUrWMbbAxaKDTvu5B9
+endpoints:
+  GET - https://8j6lbebogd.execute-api.us-east-1.amazonaws.com/dev/users/{id}
+  POST - https://8j6lbebogd.execute-api.us-east-1.amazonaws.com/dev/users
+  PUT - https://8j6lbebogd.execute-api.us-east-1.amazonaws.com/dev/users/{id}
+  DELETE - https://8j6lbebogd.execute-api.us-east-1.amazonaws.com/dev/users/{id}
+  GET - https://8j6lbebogd.execute-api.us-east-1.amazonaws.com/dev/singedurl
+functions:
+  custom-authorizer: crud-serverless-users-dev-custom-authorizer (105 kB)
+  get-users: crud-serverless-users-dev-get-users (105 kB)
+  create-users: crud-serverless-users-dev-create-users (105 kB)
+  update-users: crud-serverless-users-dev-update-users (105 kB)
+  delete-users: crud-serverless-users-dev-delete-users (105 kB)
+  singed-url: crud-serverless-users-dev-singed-url (105 kB)
+  thumbnail-generator: crud-serverless-users-dev-thumbnail-generator (105 kB)
+  sqs-queueWorker: crud-serverless-users-dev-sqs-queueWorker (105 kB)
+layers:
+  base: arn:aws:lambda:us-east-1:148037648285:layer:pillow_layer_10_2_0:4
+
+```
+Y en la consola de AWS se muestra en API Gateway en Custom domain names
+
+![Serverless Domain Manager Api Gateway](/Aws/imgs/serverless_domain_manager_api_gateway_02.png)
+
+Para que al momento realizar peticiones a la API se muestre el nombre de dominio personalizado.
+
+![Serverless Domain Manager Api Gateway](/Aws/imgs/serverless_domain_manager_api_gateway_03.png)
 
 
 
