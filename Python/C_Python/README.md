@@ -8,8 +8,7 @@
 - :link: <a href="https://docs.python.org/3/library/functions.html" target="_blank">Built-in Functions</a>
 - :link: <a href="itertools — Functions creating iterators for efficient looping" target="_blank"><https://docs.python.org/3.10/library/itertools.html></a>
 
-
-### Tipos de datos.
+### Tipos de datos
 
 1. **Numeric Types**: int, float, complex
 2. **Sequence Types**: list, tuple, range
@@ -19,7 +18,6 @@
 6. **Mapping Type**: dict
 7. **Boolean Type**: bool
 8. **None Type**: None (This is a special type representing the absence of a value or a null value)
-
 
 ### Formatos & f-strings
 
@@ -234,6 +232,7 @@ Obtener los valores de un diccionario dentro de un `f-string`
 person = {'name': 'John', 'age': 30}
 print(f"Name: {person['name']}, Age: {person['age']}")
 ```
+
 Obtener los atributos de una clase dentro de un `f-string`
 
 ```py
@@ -252,6 +251,7 @@ Especificadores de formato en `f-string`
 from math import pi
 print(f"Pi to two decimal places: {pi:.2f}")
 ```
+
 Multiples lineas.
 
 ```py
@@ -263,6 +263,7 @@ Age: {age}
 """
 print(s)
 ```
+
 Campos anidados: puede anidar campos dentro de campos de reemplazo.
 
 ```py
@@ -276,6 +277,7 @@ print(f"result: {value:{width}.{precision}}")
 # result:      12.35
 # result:     12.35
 ```
+
 Formato de fechas.
 
 ```py
@@ -352,7 +354,6 @@ Las listas tienen varios métodos que podemos utilizar.
 19. `del list[index]`: nos permite eliminar elementos vía índices, funciona con slices
 20. `clear()`: Removes all items from the list.
 21. `copy()`: Returns a copy of the list
-
 
 Ejemplos de **append** y como unir dos listas
 
@@ -482,7 +483,6 @@ Si queremos ciclar a lo largo de un diccionario tenemos las opciones:
 - `values` nos imprime una lista de los valores
 - `items`. nos manda una lista de tuplas de los valores
 
-
 1. `clear()`: Elimina todos los elementos del diccionario.
 2. `copy()`: Devuelve una copia superficial del diccionario.
 3. `fromkeys(seq[, v])`: Devuelve un nuevo diccionario con claves de seq y valor igual a v (por defecto es None).
@@ -505,7 +505,7 @@ Los diccionarios en Python no tienen atributos específicos, pero sí tienen alg
 
 Aquí tienes un ejemplo de cómo usar algunos de estos métodos:
 
-```python
+```py
 # Crear un diccionario
 dict1 = {"name": "John", "age": 30, "city": "New York"}
 
@@ -533,7 +533,6 @@ print(dict1)  # Salida: {'name': 'John', 'age': 30, 'country': 'USA'}
 dict1.clear()
 print(dict1)  # Salida: {}
 ```
-
 
 #### JSON
 
@@ -749,7 +748,8 @@ Archivo `json.data`
     "email": "johndoe@example.com"
 }
 ```
-Se lee el archivo con `json.load()` en un diccionario de python 
+
+Se lee el archivo con `json.load()` en un diccionario de python
 
 ```py
 import json
@@ -828,19 +828,18 @@ El módulo collections nos brinda un conjunto de objetos primitivos que nos perm
 1. `namedtuple()` factory function for creating tuple subclasses with named fields
    - Los métodos adicionales para una namedtuple son los mismos que para una tupla regular, incluyendo pero no limitado a `count()` y `index()`.
 2. `deque` list-like container with fast appends and pops on either end
-   - Los métodos adicionales incluyen `append()`, `appendleft()`, `clear()`, `copy()`, `count()`, `extend()`, `extendleft()`, `pop()`, `popleft()`, `remove()`, `reverse()` y `rotate()`. 
+   - Los métodos adicionales incluyen `append()`, `appendleft()`, `clear()`, `copy()`, `count()`, `extend()`, `extendleft()`, `pop()`, `popleft()`, `remove()`, `reverse()` y `rotate()`.
 3. `ChainMap` dict-like class for creating a single view of multiple mappings
    - Los métodos adicionales incluyen `new_child()`, `parents()`, `maps()`, `keys()`, `values()`, `items()`, `pop()`, `popitem()`, `clear()`, `update()` y `get()`.  
 4. `Counter` dict subclass for counting hashable objects
-   - Los métodos adicionales incluyen `elements()`, `most_common()`, `subtract()`, `update()`, `items()`, `keys()`, `values()`, `get()`, `pop()`, `popitem()`, `clear()` y `copy()`. 
+   - Los métodos adicionales incluyen `elements()`, `most_common()`, `subtract()`, `update()`, `items()`, `keys()`, `values()`, `get()`, `pop()`, `popitem()`, `clear()` y `copy()`.
 5. `OrderedDict` dict subclass that remembers the order entries were added
    - Los métodos adicionales incluyen `popitem()`, `move_to_end()`, `update()`, `keys()`, `values()`, `items()`, `get()`, `pop()`, `clear()` y `copy()`.
 6. `defaultdict` dict subclass that calls a factory function to supply missing values
-   - Los métodos adicionales son los mismos que para un diccionario regular, incluyendo pero no limitado a `update()`, `keys()`, `values()`, `items()`, `get()`, `pop()`, `popitem()`, `clear()`, `copy()` 
+   - Los métodos adicionales son los mismos que para un diccionario regular, incluyendo pero no limitado a `update()`, `keys()`, `values()`, `items()`, `get()`, `pop()`, `popitem()`, `clear()`, `copy()`
 7. `UserDict` wrapper around dictionary objects for easier dict subclassing
 8. `UserList` wrapper around list objects for easier list subclassing
 9. `UserString` wrapper around string objects for easier string subclassing
-
 
 1. `namedtuple()`: Se utiliza cuando quieres crear una tupla con campos nombrados. Esto puede hacer que tu código sea más auto-documentado. Se pueden utilizar donde se utilizan las tuplas regulares, y añaden la capacidad de acceder a los campos por nombre en lugar de por posición de índice.
 2. `deque`: Se utiliza cuando necesitas una estructura de cola, es decir, quieres añadir y eliminar elementos de manera eficiente desde ambos extremos del contenedor. Es ideal para mantener una 'ventana deslizante' de los últimos N elementos.
@@ -851,7 +850,6 @@ El módulo collections nos brinda un conjunto de objetos primitivos que nos perm
 7. `UserDict`: Es un envoltorio alrededor de los objetos de diccionario para facilitar la subclasificación de diccionarios. Es útil cuando quieres crear tu propio diccionario con alguna funcionalidad modificada o adicional.
 8. `UserList`: Es un envoltorio alrededor de los objetos de lista para facilitar la subclasificación de listas. Es útil cuando quieres crear tu propia lista con alguna funcionalidad modificada o adicional.
 9. `UserString`: Es un envoltorio alrededor de los objetos de cadena para facilitar la subclasificación de cadenas. Es útil cuando quieres crear tu propia cadena con alguna funcionalidad modificada o adicional.
-
 
 ##### UserDict
 
@@ -1389,6 +1387,175 @@ Python Lambda Function
 
 ![Python Lambda Function](imgs/python_lambda_function_00.png "Python Lambda Function")
 
+Calcular el cuadrado de los números la lista
+
+```py
+numbers = [1, 2, 3, 4, 5]
+squares = list(map(lambda x: x**2, numbers))
+print(squares)  # Output: [1, 4, 9, 16, 25]
+```
+
+Filtrar la lista de números para obtener solo los números pares
+
+```py
+numbers = [1, 2, 3, 4, 5]
+even_numbers = list(filter(lambda x: x % 2 == 0, numbers))
+print(even_numbers)  # Output: [2, 4]
+```
+
+Concatenar la lista de string para que formen una sola cadena
+
+```py
+import functools
+
+strings = ['Hello', 'World']
+result = functools.reduce(lambda x, y: x + y, strings)
+print(result)  # Output: 'HelloWorld'
+```
+
+Ordenar una lista de tuplas por el segundo elemento de cada tupla
+
+```py
+tuples = [(1, 'b'), (2, 'a'), (3, 'c')]
+sorted_tuples = sorted(tuples, key=lambda x: x[1])
+print(sorted_tuples)  # Output: [(2, 'a'), (1, 'b'), (3, 'c')]
+```
+
+Multiplicar cada elemento de una lista por 5
+
+```py
+numbers = [1, 2, 3, 4, 5]
+result = list(map(lambda x: x * 5, numbers))
+print(result)  # Output: [5, 10, 15, 20, 25]
+```
+
+Filtrar una lista de strings para obtener solo aquellos que empiezan con la letra 'a'
+
+```py
+words = ['apple', 'banana', 'cherry', 'date']
+filtered_words = list(filter(lambda x: x[0] == 'a', words))
+print(filtered_words)  # Output: ['apple']
+```
+
+Crear una lista de booleanos que indiquen si el número correspondiente en otra lista es mayor que 3
+
+```py
+numbers = [1, 2, 3, 4, 5]
+result = list(map(lambda x: x > 3, numbers))
+print(result)  # Output: [False, False, False, True, True]
+```
+
+Encontrar el máximo de una lista de números.
+
+```py
+numbers = [1, 2, 3, 4, 5]
+max_number = reduce(lambda x, y: x if x > y else y, numbers)
+print(max_number)  # Output: 5
+```
+
+Calcula el factorial de un número
+
+```py
+from functools import reduce
+
+n = 5
+factorial = reduce(lambda x, y: x * y, range(1, n+1))
+print(factorial)  # Output: 120
+```
+
+Crear una lista con el largo de cada palabra en una lista de strings
+
+```py
+words = ['Hello', 'World', 'Python', 'Lambda']
+lengths = list(map(lambda x: len(x), words))
+print(lengths)  # Output: [5, 5, 6, 6]
+```
+
+Obtener todas las claves de un diccionario:
+
+```py
+diccionario = {'a': 1, 'b': 2, 'c': 3}
+claves = list(map(lambda x: x, diccionario.keys()))
+print(claves)  # Salida: ['a', 'b', 'c']
+```
+
+Obtener todos los valores de un diccionario:
+
+```py
+diccionario = {'a': 1, 'b': 2, 'c': 3}
+valores = list(map(lambda x: x, diccionario.values()))
+print(valores)  # Salida: [1, 2, 3]
+```
+
+Filtrar un diccionario por valores mayores a un número:
+
+```py
+diccionario = {'a': 1, 'b': 2, 'c': 3}
+filtrado = dict(filter(lambda x: x[1] > 1, diccionario.items()))
+print(filtrado)  # Salida: {'b': 2, 'c': 3}
+```
+
+Crear un nuevo diccionario con las claves y valores intercambiados:
+
+```py
+diccionario = {'a': 1, 'b': 2, 'c': 3}
+invertido = dict(map(lambda x: (x[1], x[0]), diccionario.items()))
+print(invertido)  # Salida: {1: 'a', 2: 'b', 3: 'c'}
+```
+
+Crear un nuevo diccionario con los valores al cuadrado:
+
+```py
+diccionario = {'a': 1, 'b': 2, 'c': 3}
+cuadrado = dict(map(lambda x: (x[0], x[1]**2), diccionario.items()))
+print(cuadrado)  # Salida: {'a': 1, 'b': 4, 'c': 9}
+```
+
+Obtener la suma de todos los valores de un diccionario:
+
+```py
+from functools import reduce
+
+diccionario = {'a': 1, 'b': 2, 'c': 3}
+suma = reduce(lambda x, y: x + y, diccionario.values())
+print(suma)  # Salida: 6
+```
+
+Crear un nuevo diccionario con las claves en mayúsculas:
+
+```py
+diccionario = {'a': 1, 'b': 2, 'c': 3}
+mayusculas = dict(map(lambda x: (x[0].upper(), x[1]), diccionario.items()))
+print(mayusculas)  # Salida: {'A': 1, 'B': 2, 'C': 3}
+```
+
+Filtrar un diccionario por claves que sean letras minúsculas:
+
+```py
+diccionario = {'a': 1, 'B': 2, 'c': 3, 'D': 4}
+filtrado = dict(filter(lambda x: x[0].islower(), diccionario.items()))
+print(filtrado)  # Salida: {'a': 1, 'c': 3}
+```
+
+Crear un nuevo diccionario con los valores incrementados en uno:
+
+```py
+diccionario = {'a': 1, 'b': 2, 'c': 3}
+incrementado = dict(map(lambda x: (x[0], x[1] + 1), diccionario.items()))
+print(incrementado)  # Salida: {'a': 2, 'b': 3, 'c': 4}
+```
+
+Obtener el valor máximo de un diccionario:
+
+```py
+from functools import reduce
+
+diccionario = {'a': 1, 'b': 2, 'c': 3}
+maximo = reduce(lambda x, y: x if x > y else y, diccionario.values())
+print(maximo)  # Salida: 3
+```
+
+Por favor, ten en cuenta que en algunos de estos ejemplos, he utilizado las funciones `map`, `filter` y `reduce` junto con las funciones lambda. Estas son funciones de orden superior que toman una función y iterable(s) como entradas, y aplican la función a los elementos del iterable(s) de una manera específica.
 
 38
 
@@ -1498,7 +1665,7 @@ BaseException
 
 ### Context managers
 
-Los **context managers** son objetos de Python que proveen información contextual adicional al bloque de código. Esta información consiste en correr una función (o cualquier callable) cuando se inicia el contexto con el keyword with; al igual que correr otra función cuando el código dentro del bloque with concluye. Por ejemplo:
+Los **context managers** son objetos de Python que proveen información contextual adicional al bloque de código. Esta información consiste en correr una función (o cualquier callable) cuando se inicia el contexto con el keyword `with`; al igual que correr otra función cuando el código dentro del bloque with concluye. Por ejemplo:
 
 ```py
 with open(‘some_file.txt’) as f:
@@ -1524,7 +1691,7 @@ with CustomOpen('file') as f:
     contents = f.read()
 ```
 
-Esta es simplemente una clase de Python con dos métodos adicionales: enter y exit. Estos métodos son utilizados por el keyword with para determinar las acciones de inicialización, entrada y salida del contexto.
+Esta es simplemente una clase de Python con dos métodos adicionales: `enter` y `exit`. Estos métodos son utilizados por el keyword `with` para determinar las acciones de inicialización, entrada y salida del contexto.
 
 El mismo código puede implementarse utilizando el módulo `contextlib` que forma parte de la librería estándar de Python.
 
@@ -1547,25 +1714,68 @@ El código anterior funciona exactamente igual que cuando lo escribimos con una 
 
 ### yield
 
+`yield` es una palabra clave que se utiliza en las funciones generadoras. **Una función generadora es** _un tipo especial de función que devuelve un iterador. En lugar de devolver todos los valores a la vez (como haría una lista, por ejemplo), una función generadora "produce" los valores uno a uno, en demanda._
+
+Cuando una función generadora se llama, devuelve un objeto generador, pero no comienza a ejecutar la función. Cuando se llama a la función `next()` en el objeto generador (o cuando se itera sobre él, como en un bucle for), la función se ejecuta hasta que encuentra una declaración `yield`. En ese punto, devuelve el valor especificado en la declaración `yield`, y la función se pausa. La próxima vez que se llama a `next()`, la función continúa desde donde se detuvo, ejecutándose hasta que encuentra la siguiente declaración `yield` (o hasta que se agotan las declaraciones `yield`, en cuyo caso la función termina).
+
+```py
+def generador():
+    yield 1
+    yield 2
+    yield 3
+
+g = generador()
+print(next(g))  # 1
+print(next(g))  # 2
+print(next(g))  # 3
+```
+
+Aplanar una lista anidada
+
+```py
+def flatten(nested_list):
+    for i in nested_list:
+        if isinstance(i, list):
+            for j in flatten(i):
+                yield j
+        else:
+            yield i
+
+nested_list = [1, [2, [3, 4], 5], 6, [7, 8]]
+# Print the flattened list
+for num in flatten(nested_list):
+    print(num)
+
+# 1
+# 2
+# 3
+# 4
+# 5
+# 6
+# 7
+# 8
+```
+
 - [What does the “yield” keyword do?](https://stackoverflow.com/questions/231767/what-does-the-yield-keyword-do#231855)
 
 ```py
->>> def f():
-...   yield 1
-...   yield 2
-...   yield 3
+def f():
+    yield 1
+    yield 2
+    yield 3
 ...
->>> g = f()
->>> for i in g:
-...   print i
-...
-1
-2
-3
->>> for i in g:
-...   print i
-...
->>> # Note that this time nothing was printed
+g = f()
+for i in g:
+    print i
+
+# 1
+# 2
+# 3
+
+for i in g:
+   print i
+
+# NOTA QUE NO SE IMPRIME NADA
 ```
 
 _Iterables_
