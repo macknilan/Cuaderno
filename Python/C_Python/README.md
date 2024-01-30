@@ -1,12 +1,25 @@
 <!-- curso_practico_de_python__creacion_de_un_crud_clases -->
 
-# CURSO DE PYTHON DE PLATZI
+# CURSO DE PYTHON DE PLATZI & 🗺
 
 ### PROGRAMA DE CURSO -PLATZI-VENTAS-
 
 - :link: <a href="http://book.pythontips.com/en/latest/index.html" target="_blank">Python Tips - Intermediate Python — Python Tips 0.1 documentation</a>
 - :link: <a href="https://docs.python.org/3/library/functions.html" target="_blank">Built-in Functions</a>
 - :link: <a href="itertools — Functions creating iterators for efficient looping" target="_blank"><https://docs.python.org/3.10/library/itertools.html></a>
+
+
+### Tipos de datos.
+
+1. **Numeric Types**: int, float, complex
+2. **Sequence Types**: list, tuple, range
+3. **Text Sequence** Type: str
+4. **Binary Sequence** Types: bytes, bytearray, memoryview
+5. **Set Types**: set, frozenset
+6. **Mapping Type**: dict
+7. **Boolean Type**: bool
+8. **None Type**: None (This is a special type representing the absence of a value or a null value)
+
 
 ### Formatos & f-strings
 
@@ -37,14 +50,14 @@ Basic formatting:
 
 `\`: A `slash` in front of a `return`/`enter` will escape that. Allowing for multi-line strings without the triple quotes. Such as:
 
-```python
+```py
 "this is my string example\
 when I close it here"
 ```
 
 `""" your multi-line text"""`: Wrap 3x single quotes (```) or 3x double quotes (`"`) around a lot of text to allow for multi-line strings. Such as:
 
-```python
+```py
 """this is my string example
 when I close it here"""
 ```
@@ -53,25 +66,25 @@ when I close it here"""
 
 _Empty_
 
-```python
+```py
 "{} {}".format("Hello", "World")
 ```
 
 _Positional_
 
-```python
+```py
 "{0} {1} {0}".format("Hello", "World")
 ```
 
 _Keyword_
 
-```python
+```py
 "{first} {second} {first}".format(first="Hello", second="World")
 ```
 
 _Positional & Keyword_
 
-```python
+```py
 "{0} {second} {0}".format("Hello", second="World")
 
 "{0} {1} {2['hello']}".format("Hello", "World", {'hello': 'sup'})
@@ -79,7 +92,7 @@ _Positional & Keyword_
 
 _Unpacking a Dictionary_
 
-```python
+```py
 data = {'name': 'Hodor', 'email': 'holdthe@door.com'}
 txt = 'Name: {name}\nEmail: {email}'.format(**data)
 print(txt)
@@ -89,30 +102,30 @@ _Numbers, Floats & Decimals_
 
 Number / Integer
 
-```python
+```py
 "{:d}".format(32)
 ```
 
 or
 
-```python
+```py
 "{}".format(32)
 ```
 
 Float / Decimal
 
-```python
+```py
 "{:f}".format(32)
 ```
 
-```python
+```py
 pi = 3.14159265359
 "{:f}".format(pi)
 ```
 
 Limit to `n` decimal places. Replace `4` below with the number of decimal places to round to.
 
-```python
+```py
 pi = 3.14159265359
 "{:.4f}".format(pi)
 ```
@@ -121,19 +134,19 @@ pi = 3.14159265359
 
 _Positional - Strings or Numbers_
 
-```python
+```py
 "%s %s %s %s" % ("Hello", 12, 131.312, {'hello': 'sup'})
 ```
 
 _Keyword / Dictionary_
 
-```python
+```py
 "%(first)s %(second)s" % {"first":"Hello", "second":"World"}
 ```
 
 _Keywords_ (Also known as named placeholders)
 
-```python
+```py
 data = {'name': 'Hodor', 'email': 'holdthe@door.com'}
 txt = 'Name: %(name)s\nEmail: %(email)s' % data
 print(txt)
@@ -143,30 +156,30 @@ _Numbers, Floats & Decimals_
 
 Number
 
-```python
+```py
 "%d" % (32)
 ```
 
 or
 
-```python
+```py
 "%s" % (32)
 ```
 
 Float
 
-```python
+```py
 "%f" % (32)
 ```
 
-```python
+```py
 pi = 3.14159265359
 "%f" % (pi)
 ```
 
 Limit to `n` decimal places. Replace `2` below with the number of decimal places to round to.
 
-```python
+```py
 pi = 3.14159265359
 "%.2f" % (pi)
 ```
@@ -175,7 +188,7 @@ pi = 3.14159265359
 
 _Strings or Number variables_
 
-```python
+```py
 first = "Hello"
 second = "World"
 third = 32.3122
@@ -185,7 +198,7 @@ f"{first} {second} {first.upper()} {third} {fourth}"
 
 _Dictionary_
 
-```python
+```py
 data = {'name': 'Hodor', 'email': 'holdthe@door.com'}
 txt = f'Name: {data["name"]}\nEmail: {data["email"]}'
 print(txt)
@@ -193,7 +206,7 @@ print(txt)
 
 _Inline Math_
 
-```python
+```py
 hours = 21
 seconds = 32
 f"{hours} {seconds * 10} {seconds}"
@@ -201,9 +214,74 @@ f"{hours} {seconds * 10} {seconds}"
 
 _Inline Formatting_
 
-```python
+```py
 pi = 3.14159265359
 f"{format(pi, '.2f')}"
+```
+
+Llamar a una función dentro de un `f-string`
+
+```py
+def greet(name):
+    return f"Hello, {name}"
+
+print(f"{greet('John')}, Welcome!")
+```
+
+Obtener los valores de un diccionario dentro de un `f-string`
+
+```py
+person = {'name': 'John', 'age': 30}
+print(f"Name: {person['name']}, Age: {person['age']}")
+```
+Obtener los atributos de una clase dentro de un `f-string`
+
+```py
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+p = Person('John', 30)
+print(f"Name: {p.name}, Age: {p.age}")
+```
+
+Especificadores de formato en `f-string`
+
+```py
+from math import pi
+print(f"Pi to two decimal places: {pi:.2f}")
+```
+Multiples lineas.
+
+```py
+name = "John"
+age = 30
+s = f"""
+Name: {name}
+Age: {age}
+"""
+print(s)
+```
+Campos anidados: puede anidar campos dentro de campos de reemplazo.
+
+```py
+import decimal
+
+width = 10
+precision = 4
+value = decimal.Decimal("12.34567")
+print(f"result: {value:{width}.{precision}}")
+
+# result:      12.35
+# result:     12.35
+```
+Formato de fechas.
+
+```py
+from datetime import datetime
+now = datetime.now()
+print(f"Current date and time: {now:%Y-%m-%d %H:%M:%S}")
 ```
 
 ### Clases
@@ -223,13 +301,13 @@ Las listas las vas a utilizar durante toda tu carrera dentro de la programación
 
 Las listas son una secuencia de valores. A diferencia de los strings, las listas pueden tener cualquier tipo de valor. También, a diferencia de los strings, son mutables, podemos agregar y eliminar elementos.
 
-En Python, las listas son referenciales. Una lista no guarda en memoria los objetos, sólo guarda la referencia hacia donde viven los objetos en memoria
+En Python, las listas son referenciales. Una lista no guarda en memoria los objetos, solo guarda la referencia hacia donde viven los objetos en memoria
 
 Se inician con `[]` o con la `built-in function list`.
 
 Para copiar una lista a otra variable
 
-```python
+```py
 import copy
 
 pais = ['Mexico', 'USA', 'Canada']
@@ -249,15 +327,32 @@ Ahora que ya entiendes cómo funcionan las listas, podemos ver qué tipo de oper
 - El operador +(suma) concatena dos o más listas.
 - El operador \*(multiplicación) repite los elementos de la misma lista tantas veces los queramos multiplicar
 
-Sólo podemos utilizar +(suma) y \*(multiplicación).
+Solo podemos utilizar +(suma) y \*(multiplicación).
 
 Las listas tienen varios métodos que podemos utilizar.
 
-- `append` nos permite añadir elementos a listas. Cambia el tamaño de la lista.
-- `pop` nos permite sacar el último elemento de la lista. También recibe un índice y esto nos permite elegir qué elemento queremos eliminar.
-- `sort` modifica la propia lista y ordenarla de mayor a menor. Existe otro método llamado `sorted`, que también ordena la lista, _pero genera una nueva instancia de la lista_.
-- `del` nos permite eliminar elementos vía indices, funciona con slices
-- `remove` nos permite es pasarle un valor para que Python compare internamente los valores y determina cuál de ellos hace match o son iguales para eliminarlos.
+1. `append(x)`: nos permite añadir elementos a listas. Cambia el tamaño de la lista.
+2. `buffer_info()`: Returns a tuple representing the address in which array is stored and number of elements in it.
+3. `byteswap()`: Byteswap all the items of the array.
+4. `count(x)`: Returns the number of occurrences of x in the array.
+5. `extend(iterable)`: Appends items from iterable to the end of the array.
+6. `frombytes(s)`: Appends items from the string, interpreting the string as an array of machine values.
+7. `fromfile(f, n)`: Reads n items (as machine values) from the file object f and appends them to the end of the array.
+8. `fromlist(list)`: Appends items from the list.
+9. `fromunicode(s)`: Extends this array with data from the given unicode string.
+10. `index(x)` / `index(x[, start[, end]])`: Returns the smallest i such that i is the index of the first occurrence of x in the array.
+11. `insert(i, x)`: Inserts a new item x into the array before position i.
+12. `pop([i])`: nos permite sacar el último elemento de la lista. También recibe un índice y esto nos permite elegir qué elemento queremos eliminar.
+13. `remove(x)`: nos permite es pasarle un valor para que Python compare internamente los valores y determina cuál de ellos hace match o son iguales para eliminarlos.
+14. `reverse()`: Reverse the order of the items in the array.
+15. `tofile(f)`: Write all items (as machine values) to the file object f.
+16. `tolist()`: Convert the array to an ordinary list with the same items.
+17. `tounicode()`: Convert the array to a unicode string. The array must be a unicode type array; otherwise a ValueError is raised.
+18. `sort()` / `sort(key=None, reverse=False)`: modifica la propia lista y ordenarla de mayor a menor. Existe otro método llamado `sorted`, que también ordena la lista, _pero genera una nueva instancia de la lista_.
+19. `del list[index]`: nos permite eliminar elementos vía índices, funciona con slices
+20. `clear()`: Removes all items from the list.
+21. `copy()`: Returns a copy of the list
+
 
 Ejemplos de **append** y como unir dos listas
 
@@ -293,13 +388,87 @@ list3
 Out: [1, 2, 3, 4, 5, 6]
 ```
 
+```py
+# append
+import array
+
+arr = array.array('i', [1, 2, 3])
+arr.append(4)
+print(arr)  # array('i', [1, 2, 3, 4])
+
+# buffer_info()
+print(arr.buffer_info())  # Returns a tuple (address, length)
+# (140118562803088, 3)
+
+# byteswap()
+arr.byteswap()
+print(arr)  # array('i', [16777216, 33554432, 50331648, 67108864])
+
+# count(x)
+print(arr.count(16777216))  # 1
+
+# extend(iterable)
+arr.extend([5, 6, 7])
+print(arr)  # array('i', [16777216, 33554432, 50331648, 67108864, 5, 6, 7])
+
+# frombytes(s)
+arr.frombytes(b'\x08\x00\x00\x00')
+print(arr)  # array('i', [16777216, 33554432, 50331648, 67108864, 5, 6, 7, 8])
+
+# fromfile(f, n) - Reads from a file
+# fromlist(list)
+arr.fromlist([9, 10])
+print(arr)  # array('i', [16777216, 33554432, 50331648, 67108864, 5, 6, 7, 8, 9, 10])
+
+# fromunicode(s) - Only applicable for unicode arrays
+# index(x)
+print(arr.index(16777216))  # 0
+
+# insert(i, x)
+arr.insert(0, 0)
+print(arr)  # array('i', [0, 16777216, 33554432, 50331648, 67108864, 5, 6, 7, 8, 9, 10])
+
+# pop([i])
+print(arr.pop())  # 10
+print(arr)  # array('i', [0, 16777216, 33554432, 50331648, 67108864, 5, 6, 7, 8, 9])
+
+# remove(x)
+arr.remove(0)
+print(arr)  # array('i', [16777216, 33554432, 50331648, 67108864, 5, 6, 7, 8, 9])
+
+# reverse()
+arr.reverse()
+print(arr)  # array('i', [9, 8, 7, 6, 5, 67108864, 50331648, 33554432, 16777216])
+
+# tofile(f) - Escribe a un archivo
+# tolist()
+print(arr.tolist())  # [9, 8, 7, 6, 5, 67108864, 50331648, 33554432, 16777216]
+
+# tounicode() - Solo se aplica a arreglos unicode
+# sort() - Not a method of array, but can use sorted function
+print(sorted(arr))  # [5, 6, 7, 8, 9, 16777216, 33554432, 50331648, 67108864]
+
+# del list[index]
+del arr[0]
+print(arr)  # array('i', [8, 7, 6, 5, 67108864, 50331648, 33554432, 16777216])
+
+# clear() - No es un método de arrays, pero se puede usar slicing para limpiar el array
+del arr[:]
+print(arr)  # array('i')
+
+# copy() - No es un método de arrays, pero se puede usar slicing para copiar el array
+arr = array.array('i', [1, 2, 3])
+arr_copy = arr[:]
+print(arr_copy)  # array('i', [1, 2, 3])
+```
+
 24
 
 #### Diccionarios
 
 Los diccionarios se conocen con diferentes nombres a lo largo de los lenguajes de programación como HashMaps, Mapas, Objetos, etc. En Python se conocen como Diccionarios.
 
-Un diccionario es similar a una lista sabiendo que podemos acceder a través de un indice, pero en el caso de las listas este índice debe ser un número entero. Con los diccionarios puede ser cualquier objeto, normalmente los verán con strings para ser más explicitos, pero funcionan con muchos tipos de llaves…
+Un diccionario es similar a una lista sabiendo que podemos acceder a través de un indice, pero en el caso de las listas este índice debe ser un número entero. Con los diccionarios puede ser cualquier objeto, normalmente los verán con strings para ser más explícitos, pero funcionan con muchos tipos de llaves…
 
 Un diccionario es una asociación entre llaves(keys) y valores(values) y la referencia en Python es muy precisa. Si abres un diccionario verás muchas palabras y cada palabra tiene su definición.
 
@@ -313,36 +482,89 @@ Si queremos ciclar a lo largo de un diccionario tenemos las opciones:
 - `values` nos imprime una lista de los valores
 - `items`. nos manda una lista de tuplas de los valores
 
+
+1. `clear()`: Elimina todos los elementos del diccionario.
+2. `copy()`: Devuelve una copia superficial del diccionario.
+3. `fromkeys(seq[, v])`: Devuelve un nuevo diccionario con claves de seq y valor igual a v (por defecto es None).
+4. `get(key[,d])`: Devuelve el valor de la clave. Si la clave no existe, devuelve d (por defecto es None).
+5. `items()`: Devuelve un nuevo objeto de los elementos del diccionario en formato (clave, valor).
+6. `keys()`: Devuelve un nuevo objeto de las claves del diccionario.
+7. `pop(key[,d])`: Elimina el elemento con la clave y devuelve su valor o d si la clave no se encuentra. Si d no se proporciona y la clave no se encuentra, se genera un KeyError.
+8. `popitem()`: Elimina y devuelve un elemento arbitrario (clave, valor). Genera KeyError si el diccionario está vacío.
+9. `setdefault(key[,d])`: Devuelve el valor correspondiente si la clave está en el diccionario. Si no, inserta la clave con un valor de d y devuelve d (por defecto es None).
+10. `update([other])`: Actualiza el diccionario con los pares clave/valor de other, sobrescribiendo las claves existentes.
+11. `values()`: Devuelve un nuevo objeto de los valores del diccionario.
+
+Los diccionarios en Python no tienen atributos específicos, pero sí tienen algunos atributos especiales disponibles para todos los objetos de Python:
+
+- `__doc__`: La cadena de documentación de la clase, o None si no está definida.
+- `__class__`: El tipo del objeto.
+- `__dict__`: El espacio de nombres que soporta atributos de función arbitrarios.
+- `__dir__()`: Devuelve una lista de atributos válidos para el objeto.
+- `__sizeof__()`: Devuelve el tamaño del objeto en memoria, en bytes.
+
+Aquí tienes un ejemplo de cómo usar algunos de estos métodos:
+
+```python
+# Crear un diccionario
+dict1 = {"name": "John", "age": 30, "city": "New York"}
+
+# Usar el método get
+print(dict1.get("name", "Valor_si_no_se_encuentra"))  # Salida: John
+
+# Usar el método keys
+print(dict1.keys())  # Salida: dict_keys(['name', 'age', 'city'])
+
+# Usar el método values
+print(dict1.values())  # Salida: dict_values(['John', 30, 'New York'])
+
+# Usar el método items
+print(dict1.items())  # Salida: dict_items([('name', 'John'), ('age', 30), ('city', 'New York')])
+
+# Usar el método update
+dict1.update({"country": "USA"})
+print(dict1)  # Salida: {'name': 'John', 'age': 30, 'city': 'New York', 'country': 'USA'}
+
+# Usar el método pop
+dict1.pop("city")
+print(dict1)  # Salida: {'name': 'John', 'age': 30, 'country': 'USA'}
+
+# Usar el método clear
+dict1.clear()
+print(dict1)  # Salida: {}
+```
+
+
 #### JSON
 
-|      Method      |           Description          |
+|      Method      |          Description           |
 |:----------------:|:------------------------------:|
 | JSONDecodeError  |                                |
-| JSONDecoder      |                                |
-| JSONEncoder      |                                |
-| `__all__`          |                                |
-| `__author__`       |                                |
-| `__builtins__`     |                                |
-| `__cached__`       |                                |
-| `__doc__`          |                                |
-| `__file__`         |                                |
-| `__loader__`       |                                |
-| `__name__`         |                                |
-| `__package__`      |                                |
-| `__path__`         |                                |
-| `__spec__`         |                                |
-| `__version__`      |                                |
+|   JSONDecoder    |                                |
+|   JSONEncoder    |                                |
+|    `__all__`     |                                |
+|   `__author__`   |                                |
+|  `__builtins__`  |                                |
+|   `__cached__`   |                                |
+|    `__doc__`     |                                |
+|    `__file__`    |                                |
+|   `__loader__`   |                                |
+|    `__name__`    |                                |
+|  `__package__`   |                                |
+|    `__path__`    |                                |
+|    `__spec__`    |                                |
+|  `__version__`   |                                |
 | _default_decoder |                                |
 | _default_encoder |                                |
-| codecs           |                                |
-| decoder          |                                |
+|      codecs      |                                |
+|     decoder      |                                |
 | detect_encoding  |                                |
-| dumps            | encoded string writing on file |
-| dumps            | encoding to JSON objects       |
-| encoder          |                                |
-| load             | Decode while JSON file read    |
-| loads            | Decode the JSON string         |
-| scanne           |                                |
+|      dumps       | encoded string writing on file |
+|      dumps       |    encoding to JSON objects    |
+|     encoder      |                                |
+|       load       |  Decode while JSON file read   |
+|      loads       |     Decode the JSON string     |
+|      scanne      |                                |
 
 **Python to JSON (Encoding)**  
 La librería `json` de python realiza las siguientes traducciones de python a objetos de`json` de manera predeterminada.
@@ -355,7 +577,6 @@ La librería `json` de python realiza las siguientes traducciones de python a ob
 | number – int, long | number – int  |
 | float              | number – real |
 | True               | True          |
-| False              | False         |
 | None               | Null          |
 
 **JSON dumps() en Python**  
@@ -423,7 +644,7 @@ La siguiente tabla muestra la traducción de los objetos de _JSON_ a python que 
 
 |      JSON     |       Python       |
 |:-------------:|:------------------:|
-| Object        | dict               |
+| Object        |        dict        |
 | Array         | list               |
 | String        | unicode            |
 | number – int  | number – int, long |
@@ -573,15 +794,6 @@ print(json_dict_from_file['age'])         # 👉 35
 print(json_dict_from_file['is_student'])  # 👉 False
 ```
 
-```py
-```
-
-```py
-```
-
-```py
-```
-
 26
 
 #### Tuplas y conjuntos
@@ -596,9 +808,9 @@ Uno de sus usos muy comunes es que cuando queremos regresar más de un valor en 
 return (students, teachers)
 ```
 
-Una de las características de las Estructuras de Datos es que cada una de ellas nos sirve para algo especifico. No existe en programación una navaja suiza que nos sirva para todos. los mejores programas son aquellos que utilizan la herramienta correcta para el trabajo correcto.
+Una de las características de las Estructuras de Datos es que cada una de ellas nos sirve para algo especifico. No existe en programación una navaja suiza que nos sirva para todos. Los mejores programas son aquellos que utilizan la herramienta correcta para el trabajo correcto.
 
-Conjutos(_sets_) nacen de la teoría de conjuntos. Son una de las Estructuras más importantes y se parecen a las listas, podemos añadir varios elementos al conjuntos, _pero no pueden existir elementos duplicados_. _A diferencia de los_tuples_podemos agregar y eliminar, son mutables_.
+Conjuntos(_sets_) nacen de la teoría de conjuntos. Son una de las Estructuras más importantes y se parecen a las listas, podemos añadir varios elementos a los conjuntos, _pero no pueden existir elementos duplicados_. _A diferencia de los_tuples_podemos agregar y eliminar, son mutables_.
 
 Los sets se pueden inicializar con la función `set`. Una recomendación es inicializarlos con esta función para no causar confusión con los diccionarios.
 
@@ -614,33 +826,115 @@ Los sets se pueden inicializar con la función `set`. Una recomendación es inic
 El módulo collections nos brinda un conjunto de objetos primitivos que nos permiten extender el comportamiento de las built-in collections que poseé Python y nos otorga estructuras de datos adicionales. Por ejemplo, si queremos extender el comportamiento de un diccionario, podemos extender la clase UserDict; para el caso de una lista, extendemos UserList; y para el caso de strings, utilizamos UserString.
 
 1. `namedtuple()` factory function for creating tuple subclasses with named fields
+   - Los métodos adicionales para una namedtuple son los mismos que para una tupla regular, incluyendo pero no limitado a `count()` y `index()`.
 2. `deque` list-like container with fast appends and pops on either end
+   - Los métodos adicionales incluyen `append()`, `appendleft()`, `clear()`, `copy()`, `count()`, `extend()`, `extendleft()`, `pop()`, `popleft()`, `remove()`, `reverse()` y `rotate()`. 
 3. `ChainMap` dict-like class for creating a single view of multiple mappings
+   - Los métodos adicionales incluyen `new_child()`, `parents()`, `maps()`, `keys()`, `values()`, `items()`, `pop()`, `popitem()`, `clear()`, `update()` y `get()`.  
 4. `Counter` dict subclass for counting hashable objects
+   - Los métodos adicionales incluyen `elements()`, `most_common()`, `subtract()`, `update()`, `items()`, `keys()`, `values()`, `get()`, `pop()`, `popitem()`, `clear()` y `copy()`. 
 5. `OrderedDict` dict subclass that remembers the order entries were added
+   - Los métodos adicionales incluyen `popitem()`, `move_to_end()`, `update()`, `keys()`, `values()`, `items()`, `get()`, `pop()`, `clear()` y `copy()`.
 6. `defaultdict` dict subclass that calls a factory function to supply missing values
+   - Los métodos adicionales son los mismos que para un diccionario regular, incluyendo pero no limitado a `update()`, `keys()`, `values()`, `items()`, `get()`, `pop()`, `popitem()`, `clear()`, `copy()` 
 7. `UserDict` wrapper around dictionary objects for easier dict subclassing
 8. `UserList` wrapper around list objects for easier list subclassing
 9. `UserString` wrapper around string objects for easier string subclassing
 
-##### Counter
 
-```python
-from collections import Counter
+1. `namedtuple()`: Se utiliza cuando quieres crear una tupla con campos nombrados. Esto puede hacer que tu código sea más auto-documentado. Se pueden utilizar donde se utilizan las tuplas regulares, y añaden la capacidad de acceder a los campos por nombre en lugar de por posición de índice.
+2. `deque`: Se utiliza cuando necesitas una estructura de cola, es decir, quieres añadir y eliminar elementos de manera eficiente desde ambos extremos del contenedor. Es ideal para mantener una 'ventana deslizante' de los últimos N elementos.
+3. `ChainMap`: Se utiliza para combinar varios diccionarios o mapeos. Devuelve una lista de diccionarios. Es ideal cuando quieres buscar a través de varios diccionarios como un solo mapeo.
+4. `Counter`: Es una subclase de diccionario para contar objetos hashables. Es una colección donde los elementos se almacenan como claves de diccionario y sus recuentos se almacenan como valores de diccionario.
+5. `OrderedDict`: Es una subclase de diccionario que recuerda el orden en que se añadieron las entradas. Si necesitas mantener el orden de inserción de las claves, esta es la herramienta ideal.
+6. `defaultdict`: Es una subclase de diccionario que llama a una función de fábrica para suministrar valores faltantes. Se utiliza cuando el valor de cada elemento debe empezar con un valor predeterminado.
+7. `UserDict`: Es un envoltorio alrededor de los objetos de diccionario para facilitar la subclasificación de diccionarios. Es útil cuando quieres crear tu propio diccionario con alguna funcionalidad modificada o adicional.
+8. `UserList`: Es un envoltorio alrededor de los objetos de lista para facilitar la subclasificación de listas. Es útil cuando quieres crear tu propia lista con alguna funcionalidad modificada o adicional.
+9. `UserString`: Es un envoltorio alrededor de los objetos de cadena para facilitar la subclasificación de cadenas. Es útil cuando quieres crear tu propia cadena con alguna funcionalidad modificada o adicional.
+
+
+##### UserDict
+
+```py
+from collections import UserDict
+
+# Define a custom dictionary by extending UserDict
+class MyDict(UserDict):
+    def __missing__(self, key):
+        return f"{key} not found"
+
+# Create an instance of MyDict
+my_dict = MyDict({'a': 1, 'b': 2})
+
+# Access keys
+print(my_dict['a'])  # Output: 1
+print(my_dict['c'])  # Output: c not found
 ```
 
-```python
+##### UserList
+
+```py
+from collections import UserList
+
+# Define a custom list by extending UserList
+class MyList(UserList):
+    def __len__(self):
+        return f"Custom length: {super().__len__()}"
+
+# Create an instance of MyList
+my_list = MyList([1, 2, 3])
+
+# Get length
+print(len(my_list))  # Output: Custom length: 3
+```
+
+##### UserString
+
+```py
+from collections import UserString
+
+# Define a custom string by extending UserString
+class MyString(UserString):
+    def upper(self):
+        return f"Custom upper: {super().upper()}"
+
+# Create an instance of MyString
+my_string = MyString("hello")
+
+# Call upper method
+print(my_string.upper())  # Output: Custom upper: HELLO
+```
+
+##### Counter
+
+```py
+from collections import Counter
+
+# Create a Counter
+c = Counter(['a', 'b', 'c', 'a', 'b', 'b'])
+
+# Access counts
+print(c['a'])  # 2
+print(c['b'])  # 3
+print(c['c'])  # 1
+```
+
+```py
+from collections import Counter
+
 list = [1,2,3,4,1,2,6,7,3,8,1]
 Counter(list)
 Counter({1: 3, 2: 2, 3: 2, 4: 1, 6: 1, 7: 1, 8: 1})
 ```
 
-```python
+```py
+from collections import Counter
+
 list = [1,2,3,4,1,2,6,7,3,8,1]
 cnt = Counter(list)
 print(cnt[1])
-# Output:
-3
+
+# 3
 ```
 
 Counter tiene tres funciones adicionales.
@@ -651,26 +945,32 @@ Counter tiene tres funciones adicionales.
 
 _elements()_
 
-```python
+```py
+from collections import Counter
+
 cnt = Counter({1:3,2:4})
 print(list(cnt.elements()))
-# Output:
-[1, 1, 1, 2, 2, 2, 2]
+
+# [1, 1, 1, 2, 2, 2, 2]
 ```
 
 _most_common()_
 
-```python
+```py
+from collections import Counter
+
 list = [1,2,3,4,1,2,6,7,3,8,1]
 cnt = Counter(list)
 print(cnt.most_common())
-# Output:
-[(1, 3), (2, 2), (3, 2), (4, 1), (6, 1), (7, 1), (8, 1)]
+
+# [(1, 3), (2, 2), (3, 2), (4, 1), (6, 1), (7, 1), (8, 1)]
 ```
 
 _subtract_
 
-```python
+```py
+from collections import Counter
+
 cnt = Counter({1:3,2:4})
 deduct = {1:1, 2:2}
 cnt.subtract(deduct)
@@ -683,11 +983,24 @@ Counter({1: 2, 2: 2})
 
 Crear diccionarios con el constructor `defaultdict()`
 
-```python
+```py
 from collections import defaultdict
+
+# Create a defaultdict with list as default factory
+dd = defaultdict(list)
+# dd = defaultdict(list)
+
+# Access a non-existent key
+print(dd['a'])  # Output: []
+
+# Add a value to 'a'
+dd['a'].append(1)
+print(dd['a'])  # Output: [1]
 ```
 
-```python
+```py
+from collections import defaultdict
+
 nums = defaultdict(int)
 nums['one'] = 1
 # -
@@ -700,7 +1013,9 @@ print(nums['two'])
 2
 ```
 
-```python
+```py
+from collections import defaultdict
+
 count = defaultdict(int)
 names_list = "Mike John Mike Anna Mike John John Mike Mike Britney Smith Anna Smith".split()
 for names in names_list:
@@ -714,11 +1029,27 @@ defaultdict(<class 'int'>, {'Mike': 5, 'Britney': 1, 'John': 3, 'Smith': 2, 'Ann
 
 Ordenar diccionario(s)
 
-```python
+```py
 from collections import OrderedDict
+
+# Create an OrderedDict
+od = OrderedDict()
+od['a'] = 1
+od['b'] = 2
+od['c'] = 3
+
+# Print items in order
+for key, value in od.items():
+    print(key, value)
+# Output: 
+# a 1
+# b 2
+# c 3
 ```
 
-```python
+```py
+from collections import OrderedDict
+
 od = OrderedDict()
 od['a'] = 1
 od['b'] = 2
@@ -728,7 +1059,7 @@ print(od)
 OrderedDict([('a', 1), ('b', 2), ('c', 3)])
 ```
 
-```python
+```py
 for key, value in od.items():
     print(key, value)
 # Output
@@ -739,11 +1070,25 @@ c 3
 
 ##### deque
 
-```python
+```py
 from collections import deque
+
+# Create a deque
+d = deque([1,2,3,4,5])
+# d = deque([1,2,3,4,5])
+
+# Append to the right
+d.append(6)  
+print(d)  # Output: deque([1, 2, 3, 4, 5, 6])
+
+# Append to the left
+d.appendleft(0)  
+print(d)  # Output: deque([0, 1, 2, 3, 4, 5, 6])
 ```
 
-```python
+```py
+from collections import deque
+
 list = ["a","b","c"]
 deq = deque(list)
 print(deq)
@@ -751,7 +1096,7 @@ print(deq)
 deque(['a', 'b', 'c'])
 ```
 
-```python
+```py
 deq.append("d")
 deq.appendleft("e")
 print(deq)deque
@@ -759,7 +1104,7 @@ print(deq)deque
 deque(['e', 'a', 'b', 'c', 'd'])
 ```
 
-```python
+```py
 deq.pop()
 deq.popleft()
 print(deq)
@@ -767,7 +1112,9 @@ print(deq)
 deque(['a', 'b', 'c'])
 ```
 
-```python
+```py
+from collections import deque
+
 list = ["a","b","c"]
 deq = deque(list)
 print(deq)
@@ -777,7 +1124,9 @@ deque(['a', 'b', 'c'])
 None
 ```
 
-```python
+```py
+from collections import deque
+
 list = ["a","b","c"]
 deq = deque(list)
 print(deq.count("a"))
@@ -787,11 +1136,9 @@ print(deq.count("a"))
 
 ##### ChainMap
 
-```python
+```py
 from collections import ChainMap
-```
 
-```python
 dict1 = { 'a' : 1, 'b' : 2 }
 dict2 = { 'c' : 3, 'b' : 4 }
 chain_map = ChainMap(dict1, dict2)
@@ -800,14 +1147,16 @@ print(chain_map.maps)
 [{'b': 2, 'a': 1}, {'c': 3, 'b': 4}]
 ```
 
-```python
+```py
 dict2['c'] = 5
 print(chain_map.maps)
 # Output
 [{'a': 1, 'b': 2}, {'c': 5, 'b': 4}]
 ```
 
-```python
+```py
+from collections import ChainMap
+
 dict1 = { 'a' : 1, 'b' : 2 }
 dict2 = { 'c' : 3, 'b' : 4 }
 chain_map = ChainMap(dict1, dict2)
@@ -818,7 +1167,9 @@ print (list(chain_map.values()))
 [2, 1, 3]
 ```
 
-```python
+```py
+from collections import ChainMap
+
 dict3 = {'e' : 5, 'f' : 6}
 new_chain_map = chain_map.new_child(dict3)
 print(new_chain_map)
@@ -830,7 +1181,21 @@ ChainMap({'f': 6, 'e': 5}, {'a': 1, 'b': 2}, {'b': 4, 'c': 3})
 
 Con `namedtuple()` es posible generar clases, los atributos del objeto son de lectura.
 
-```python
+```py
+from collections import namedtuple
+
+# Define a namedtuple type 'Person' with fields 'name' and 'age'
+Person = namedtuple('Person', ['name', 'age'])
+
+# Create an instance of Person
+bob = Person(name="Bob", age=30)
+
+# Access the fields
+print(bob.name)  # Output: Bob
+print(bob.age)   # Output: 30
+```
+
+```py
 from collections import namedtuple
 
 Student = namedtuple('Student', 'fname, lname, age')
@@ -839,7 +1204,7 @@ print(s1)
 print(s1.fname)
 ```
 
-```python
+```py
 # Output
 Jhon
 Student(fname='John', lname='Clarke', age='13')
@@ -888,7 +1253,7 @@ Setting(port=3000, name='No Name', alias='No Alias')
 
 Creando `namedtuple` usando una lista.
 
-```python
+```py
 s2 = Student._make(['Adam','joe','18'])
 print(s2)
 # Output
@@ -910,7 +1275,7 @@ Setting._fields
 Retornar una tupla de strings con cada uno de los atributos que posee dicho objeto.
 ```
 
-Si lo que deseamos es convertir nuestro objecto a un diccionario, y después se puede serializar como un objeto JSON.
+Si lo que deseamos es convertir nuestro objeto a un diccionario, y después se puede serializar como un objeto JSON.
 
 ```py
 from collections import namedtuple
@@ -951,7 +1316,7 @@ doctor_1._asdict()
 
 Creando una nueva instancia usando una instancia existente
 
-```python
+```py
 s2 = s1._asdict()
 print(s2)
 # Output
@@ -960,7 +1325,7 @@ OrderedDict([('fname', 'John'), ('lname', 'Clarke'), ('age', '13')])
 
 Cambiando valores con la funcion \_replace()
 
-```python
+```py
 s2 = s1._replace(age='14')
 print(s1)
 print(s2)
@@ -984,7 +1349,7 @@ Student(fname='John', lname='Clarke', age='14')
 List
 [_element_ `for` _element_ `in` element_list `if` _element_meets_conditions_]
 
-```python
+```py
 [element for element in element_list if element_meets_conditions]
 
 [element for element in range(20) if element % 3 == 0]
@@ -995,7 +1360,7 @@ List
 Dictionary
 {_key: element_ `for` _element_ `in` element*list `if` \_element_meets_conditions*}
 
-```python
+```py
 {key: element for element in element_list if element_meets_conditions}
 
 names = ['name_one', 'name_two', 'name_three']
@@ -1008,7 +1373,7 @@ numbers = [1, 2, 3]
 Set
 {_element_ `for` _element_ `in` element*list `if` \_element_meets_conditions*}
 
-```python
+```py
 {element for element in element_list if element_meets_conditions}
 
 {x for x in 'abracadabra' if x not in 'abc'}
@@ -1135,7 +1500,7 @@ BaseException
 
 Los **context managers** son objetos de Python que proveen información contextual adicional al bloque de código. Esta información consiste en correr una función (o cualquier callable) cuando se inicia el contexto con el keyword with; al igual que correr otra función cuando el código dentro del bloque with concluye. Por ejemplo:
 
-```python
+```py
 with open(‘some_file.txt’) as f:
     lines = f.readlines()
 ```
@@ -1144,7 +1509,7 @@ Si estás familiarizado con este patrón, sabes que llamar la función `open` de
 
 Existen dos formas de implementar un `context manager`: con una _clase_ o con un _generador_. Vamos a implementar la funcionalidad anterior para ilustrar el punto:
 
-```python
+```py
 class CustomOpen(object):
     def __init__(self, filename):
         self.file = open(filename)
@@ -1163,7 +1528,7 @@ Esta es simplemente una clase de Python con dos métodos adicionales: enter y ex
 
 El mismo código puede implementarse utilizando el módulo `contextlib` que forma parte de la librería estándar de Python.
 
-```python
+```py
 from contextlib import contextmanager
 
 @contextmanager
@@ -1184,7 +1549,7 @@ El código anterior funciona exactamente igual que cuando lo escribimos con una 
 
 - [What does the “yield” keyword do?](https://stackoverflow.com/questions/231767/what-does-the-yield-keyword-do#231855)
 
-```python
+```py
 >>> def f():
 ...   yield 1
 ...   yield 2
@@ -1207,7 +1572,7 @@ _Iterables_
 
 When you create a list, you can read its items one by one. Reading its items one by one is called iteration:
 
-```python
+```py
 >>> mylist = [1, 2, 3]
 >>> for i in mylist:
 ...    print(i)
@@ -1218,7 +1583,7 @@ When you create a list, you can read its items one by one. Reading its items one
 
 `mylist` is an iterable. When you use a list comprehension, you create a list, and so an iterable:
 
-```python
+```py
 >>> mylist = [x*x for x in range(3)]
 >>> for i in mylist:
 ...    print(i)
@@ -1234,7 +1599,7 @@ These iterables are handy because you can read them as much as you wish, but you
 _Generators_
 Generators are iterators, a kind of iterable _you can only iterate over once_. Generators do not store all the values in memory, _they generate the values on the fly_:
 
-```python
+```py
 >>> mygenerator = (x*x for x in range(3))
 >>> for i in mygenerator:
 ...    print(i)
@@ -1248,7 +1613,7 @@ It is just the same except you used `()` instead of `[]`. BUT, you _cannot_ perf
 _Yield_
 `yield` _is a keyword that is used like_ `return`, except the function will return a generator.
 
-```python
+```py
 >>> def createGenerator():
 ...    mylist = range(3)
 ...    for i in mylist:
@@ -1314,7 +1679,7 @@ Los PEP son la forma en la que se define como avanza el lenguaje. Existen tres P
 - _PEP257_ nos explica cómo generar buena documentación en nuestro código
 - _PEP20_
 
-```python
+```py
 In [1]: import this
 The Zen of Python, by Tim Peters
 
