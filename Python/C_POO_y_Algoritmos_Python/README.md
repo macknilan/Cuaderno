@@ -3,6 +3,8 @@
 
 # Curso de POO y Algoritmos con Python
 
+- [Clases en Python](#clases-en-python)
+
 ## Programación Orientada a Objetos
 
 Uno de los elementos más importantes de los lenguajes de programación es la utilización de clases para organizar programas en módulos y abstracciones de datos.
@@ -15,7 +17,7 @@ Puesto de otra manera, la programación orientada a objetos nos permite modelar 
 
 Las ideas detrás de la programación orientada a objetos tienen más de 50 años y han sido ampliamente aceptadas y practicadas en los últimos treinta. A mediados de la década de los setenta se comenzaron a escribir artículos académicos explicando los beneficios de esta aproximación a la programación. También durante esos años se comenzaron a escribir los primeros lenguajes de programación que incorporaban estas ideas (como Smalltalk y CLU). Pero no fue hasta la llegada de Java y C++ que la idea consiguió un número importante de seguidores.
 
-Hasta ahora, en el curso previo de esta serie hemos utilizado programación orientada a objetos de manera implícita. Cuando decimos _“Los objetos son las principales cosas que un programa de Python manipula. Cada objeto tiene un tipo que define qué cosas puede realizar un programa con dicho objeto”_, nos estamos refiriendo a las ideas principales de la programación orientada a objetos. Hemos utilizado los tipos lista y diccionario, entre muchos otros, así como los métodos asociados a dichos tipos.
+Cuando decimos _“Los objetos son las principales cosas que un programa de Python manipula. Cada objeto tiene un tipo que define qué cosas puede realizar un programa con dicho objeto”_, nos estamos refiriendo a las ideas principales de la programación orientada a objetos. Hemos utilizado los tipos lista y diccionario, entre muchos otros, así como los métodos asociados a dichos tipos.
 
 Así como los creadores de un lenguaje de programación solo pueden diseñar una fracción muy pequeña de todas las _funciones útiles_ (como abs, float, type, etc.), también pueden escribir una fracción muy pequeña de los _tipos útiles_ (int, str, dict, list, etc.). Ya sabemos los mecanismos que nos permiten crear funciones, ahora veremos los mecanismos que nos permiten crear nuevos tipos (o clases).
 
@@ -39,6 +41,28 @@ En el caso del hotel, podríamos crear dos clases `Hotel()` y `Cuarto()` que nos
 
 Es importante resaltar que las clases solo proveen estructura. Son un molde con el cual podemos construir objetos específicos.  
 _La clase señala las propiedades_ que los hoteles que modelemos tendrán, pero no es ningún hotel específico. _Para eso necesitamos las instancias._
+
+**Clases y Objetos**: En la abstracción, _una clase es una plantilla_ que define las propiedades y comportamientos de un objeto. _Un objeto, por otro lado, es una instancia de una clase._ La clase define una interfaz clara y simplificada para interactuar con los objetos, ocultando los detalles internos de cómo se implementa esa funcionalidad. Para definir una clase en Python, se utiliza la palabra clave class, seguida del nombre de la clase:
+
+```py
+class MiClase:
+    # Definición de propiedades y métodos de la clase
+```
+
+Para crear un objeto a partir de una clase, se utiliza la siguiente sintaxis:
+
+```py
+objeto = MiClase()
+```
+
+**Métodos**: _Los métodos son funciones definidas dentro de una clase y representan el comportamiento de los objetos_. Los métodos permiten interactuar con los objetos y realizar operaciones específicas. Pueden recibir parámetros y acceder a las propiedades del objeto a través del parámetro `self`. Los métodos ayudan a definir la interfaz de la clase, ofreciendo una forma simplificada de interactuar con los objetos sin necesidad de conocer los detalles internos. Por ejemplo:
+
+```py
+class MiClase:
+    def metodo(self, parametro):
+        # Código del método
+        pass
+```
 
 ## Instancias
 
