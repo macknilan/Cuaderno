@@ -4,6 +4,19 @@
 # Curso de POO y Algoritmos con Python
 
 - [Clases en Python](#clases-en-python)
+- [Instancias](#instancias)
+- [Atributos de la instancia](#atributos-de-la-instancia)
+- [Métodos de instancia](#métodos-de-instancia)
+- [Tipos de datos abstractos y clases, Instancias](#tipos-de-datos-abstractos-y-clases-instancias)
+- [Decomposición](#decomposición)
+- [Abstracción](#abstracción)
+- [Funciones: base de los decoradores](#funciones-base-de-los-decoradores)
+- [Funciones anidadas](#funciones-anidadas)
+- [Función `property()`](#función-property)
+- [Decorador `@property`](#decorador-property)
+- [Decoradores en python](#decoradores-en-python)
+- [Herencia](#herencia)
+- [Encapsulación, getters and setters](#encapsulación-getters-and-setters)
 
 ## Programación Orientada a Objetos
 
@@ -63,6 +76,46 @@ class MiClase:
         # Código del método
         pass
 ```
+
+**Herencia**: _La herencia es un mecanismo que permite crear nuevas clases basadas en clases existentes_. Una clase derivada o subclase hereda las propiedades y métodos de una clase base o superclase, lo que facilita la reutilización de código y permite definir nuevas funcionalidades adicionales. En Python, se utiliza la palabra clave class seguida del nombre de la subclase y entre paréntesis el nombre de la superclase:
+
+```py
+class ClaseBase:
+    # Definición de la clase base
+
+class SubClase(ClaseBase):
+    # Definición de la subclase
+```
+
+La subclase puede agregar nuevos métodos o atributos, o modificar los existentes de la clase base. Esto permite extender la funcionalidad y crear una abstracción más específica. Por ejemplo:
+
+```py
+class ClaseBase:
+    def metodo_base(self):
+        # Código del método base
+        pass
+
+class SubClase(ClaseBase):
+    def metodo_subclase(self):
+        # Código del método de la subclase
+        pass
+```
+
+**Sobreescritura de Métodos**: _La sobreescritura de métodos es una técnica utilizada en la abstracción que permite a una subclase redefinir un método heredado de la superclase._ Al sobre escribir un método, la subclase puede modificar o ampliar el comportamiento del método heredado. Esto permite adaptar la funcionalidad a las necesidades específicas de la subclase. Por ejemplo:
+
+```py
+class ClaseBase:
+    def metodo(self):
+        # Código del método base
+        pass
+
+class SubClase(ClaseBase):
+    def metodo(self):
+        # Código del método modificado
+        pass
+```
+
+Cuando se llama al método metodo() en un objeto de la subclase, se ejecuta la versión del método definida en la subclase en lugar de la versión heredada de la superclase.
 
 ## Instancias
 
@@ -344,6 +397,13 @@ class Lavadora:
 if __name__ == "__main__":
     lavadora = Lavadora()
     lavadora.lavar()
+
+# 👇
+# Llenando el tanque con agua caliente
+# Anadiendo jabon
+# Lavando la ropa
+# Centrifugando la ropa
+
 ```
 
 ## Funciones: base de los decoradores
@@ -367,11 +427,12 @@ def elevar_cubo(numero: int):
 Si damos como argumento el número 3, entonces tendremos como salida el número 27 al ejecutar la función:
 
 ```py
->>> elevar_cubo(3)
+elevar_cubo(3)
 27
 ```
 
-Funciones como objetos de primera-clase  
+### Funciones como objetos de primera-clase
+
 Otro concepto importante a tener en cuenta es que en Python las funciones son objetos de primera-clase, es decir, que pueden ser pasados y utilizados como argumentos al igual que cualquier otro objeto (strings, enteros, flotantes, listas, etc.).
 
 Veamos un ejemplo donde definimos 3 diferentes funciones que utilizaremos de manera conjunta:
@@ -390,16 +451,20 @@ def consume_funciones(funcion_entrante: Callable[str], str):
 Las primeras dos funciones son obvias en su resultado, donde nos mostrarán un mensaje con el valor de la variable nombre. La tercera función puede ser más compleja de predecir, **ya que toma otra función como entrada**. Veamos que pasa cuando colocamos una función como atributo:
 
 ```py
->>> consume_funciones(presentarse)
-'Me llamo David'
+consume_funciones(presentarse)
+# 👇
+# 'Me llamo David'
+```
 
->>> consume_funciones(estudiemos_juntos)
-'¡Hey David, aprendamos Python!'
+```py
+consume_funciones(estudiemos_juntos)
+# 👇
+# '¡Hey David, aprendamos Python!'
 ```
 
 Pongamos atención en cómo la función `consume_funciones()` se escribe con paréntesis para ser ejecutada, mientras que la función `presentarse` y `estudiemos_juntos` solo hace referencia a estas.
 
-Funciones anidadas  
+**Funciones anidadas**  
 Al igual que los condicionales y bucles también puedes colocar funciones dentro de otra función.
 
 Tómate un minuto para analizar el siguiente código e inferir cuál será el resultado de salida:
@@ -422,10 +487,12 @@ def funcion_mayor():
 Si llamamos a la función `funcion_mayor` tendremos la siguiente salida:
 
 ```py
->>> funcion_mayor()
-Esta es una función mayor y su mensaje de salida.
-Algunos frameworks de Python son: Django, Dash y Flask.
-Algunas librerías de Python son: Scikit-learn, NumPy y TensorFlow.
+funcion_mayor()
+
+# 👇
+# Esta es una función mayor y su mensaje de salida.
+# Algunos frameworks de Python son: Django, Dash y Flask.
+# Algunas librerías de Python son: Scikit-learn, NumPy y TensorFlow.
 ```
 
 Debemos considerar que las funciones anidadas dentro de `funcion_mayor` no se ejecutan hasta que se llama a esta primera, _siendo muestra del scope o alcance de las funciones_. Si las llamamos obtendremos un error
@@ -491,7 +558,7 @@ def zumbido():
 zumbido = funcion_decoradora(zumbido)
 ```
 
-out
+👇
 
 ```py
 >>> zumbido()
@@ -641,14 +708,14 @@ class Millas:
     def __init__(self):
         self._distancia = 0
 
-    # Función para obtener el valor de _distancia
-    # Usando el decorador property
+    # FUNCIÓN PARA OBTENER EL VALOR DE _DISTANCIA
+    # USANDO EL DECORADOR PROPERTY
     @property
     def obtener_distancia(self):
         print("Llamada al método getter")
         return self._distancia
 
-    # Función para definir el valor de _distancia
+    # FUNCIÓN PARA DEFINIR EL VALOR DE _DISTANCIA
     @obtener_distancia.setter
     def definir_distancia(self, valor):
         if valor < 0:
@@ -656,13 +723,13 @@ class Millas:
         print("Llamada al método setter")
         self._distancia = valor
 
-# Creamos un nuevo objeto 
+# CREAMOS UN NUEVO OBJETO 
 avion = Millas()
 
-# Indicamos la distancia
+# INDICAMOS LA DISTANCIA
 avion.distancia = 200
 
-# Obtenemos su atributo distancia
+# OBTENEMOS SU ATRIBUTO DISTANCIA
 >>> print(avion.definir_distancia)
 Llamada al método getter
 Llamada al método setter
@@ -671,7 +738,7 @@ Llamada al método setter
 
 ejemplo.
 
-```py
+```bash
 """
 Ejemplo para entender
 Getters y Setters en python

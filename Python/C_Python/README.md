@@ -841,15 +841,15 @@ El módulo collections nos brinda un conjunto de objetos primitivos que nos perm
 8. `UserList` wrapper around list objects for easier list subclassing
 9. `UserString` wrapper around string objects for easier string subclassing
 
-1. `namedtuple()`: Se utiliza cuando quieres crear una tupla con campos nombrados. Esto puede hacer que tu código sea más auto-documentado. Se pueden utilizar donde se utilizan las tuplas regulares, y añaden la capacidad de acceder a los campos por nombre en lugar de por posición de índice.
-2. `deque`: Se utiliza cuando necesitas una estructura de cola, es decir, quieres añadir y eliminar elementos de manera eficiente desde ambos extremos del contenedor. Es ideal para mantener una 'ventana deslizante' de los últimos N elementos.
-3. `ChainMap`: Se utiliza para combinar varios diccionarios o mapeos. Devuelve una lista de diccionarios. Es ideal cuando quieres buscar a través de varios diccionarios como un solo mapeo.
-4. `Counter`: Es una subclase de diccionario para contar objetos hashables. Es una colección donde los elementos se almacenan como claves de diccionario y sus recuentos se almacenan como valores de diccionario.
-5. `OrderedDict`: Es una subclase de diccionario que recuerda el orden en que se añadieron las entradas. Si necesitas mantener el orden de inserción de las claves, esta es la herramienta ideal.
-6. `defaultdict`: Es una subclase de diccionario que llama a una función de fábrica para suministrar valores faltantes. Se utiliza cuando el valor de cada elemento debe empezar con un valor predeterminado.
-7. `UserDict`: Es un envoltorio alrededor de los objetos de diccionario para facilitar la subclasificación de diccionarios. Es útil cuando quieres crear tu propio diccionario con alguna funcionalidad modificada o adicional.
-8. `UserList`: Es un envoltorio alrededor de los objetos de lista para facilitar la subclasificación de listas. Es útil cuando quieres crear tu propia lista con alguna funcionalidad modificada o adicional.
-9. `UserString`: Es un envoltorio alrededor de los objetos de cadena para facilitar la subclasificación de cadenas. Es útil cuando quieres crear tu propia cadena con alguna funcionalidad modificada o adicional.
+a. `namedtuple()`: Se utiliza cuando quieres crear una tupla con campos nombrados. Esto puede hacer que tu código sea más auto-documentado. Se pueden utilizar donde se utilizan las tuplas regulares, y añaden la capacidad de acceder a los campos por nombre en lugar de por posición de índice.  
+b. `deque`: Se utiliza cuando necesitas una estructura de cola, es decir, quieres añadir y eliminar elementos de manera eficiente desde ambos extremos del contenedor. Es ideal para mantener una 'ventana deslizante' de los últimos N elementos.  
+c. `ChainMap`: Se utiliza para combinar varios diccionarios o mapeos. Devuelve una lista de diccionarios. Es ideal cuando quieres buscar a través de varios diccionarios como un solo mapeo.  
+d. `Counter`: Es una subclase de diccionario para contar objetos hashables. Es una colección donde los elementos se almacenan como claves de diccionario y sus recuentos se almacenan como valores de diccionario.  
+e. `OrderedDict`: Es una subclase de diccionario que recuerda el orden en que se añadieron las entradas. Si necesitas mantener el orden de inserción de las claves, esta es la herramienta ideal.  
+f. `defaultdict`: Es una subclase de diccionario que llama a una función de fábrica para suministrar valores faltantes. Se utiliza cuando el valor de cada elemento debe empezar con un valor predeterminado.  
+g. `UserDict`: Es un envoltorio alrededor de los objetos de diccionario para facilitar la subclasificación de diccionarios. Es útil cuando quieres crear tu propio diccionario con alguna funcionalidad modificada o adicional.  
+h. `UserList`: Es un envoltorio alrededor de los objetos de lista para facilitar la subclasificación de listas. Es útil cuando quieres crear tu propia lista con alguna funcionalidad modificada o adicional.  
+i. `UserString`: Es un envoltorio alrededor de los objetos de cadena para facilitar la subclasificación de cadenas. Es útil cuando quieres crear tu propia cadena con alguna funcionalidad modificada o adicional.
 
 ##### UserDict
 
@@ -1824,16 +1824,19 @@ _Yield_
 `yield` _is a keyword that is used like_ `return`, except the function will return a generator.
 
 ```py
->>> def createGenerator():
-...    mylist = range(3)
-...    for i in mylist:
-...        yield i*i
-...
->>> mygenerator = createGenerator() # create a generator
->>> print(mygenerator) # mygenerator is an object!
+def createGenerator():
+    mylist = range(3)
+    for i in mylist:
+        yield i*i
+
+mygenerator = createGenerator() # create a generator
+print(mygenerator) # mygenerator is an object!
+
 <generator object createGenerator at 0xb7555c34>
->>> for i in mygenerator:
-...     print(i)
+
+for i in mygenerator:
+     print(i)
+
 0
 1
 4
@@ -1889,8 +1892,9 @@ Los PEP son la forma en la que se define como avanza el lenguaje. Existen tres P
 - _PEP257_ nos explica cómo generar buena documentación en nuestro código
 - _PEP20_
 
-```py
-In [1]: import this
+```bash
+import this
+
 The Zen of Python, by Tim Peters
 
 Beautiful is better than ugly.
@@ -1975,7 +1979,7 @@ print(kwlist)
 
 **Atributos privados**  
 **Atributos privados** con doble guion bajo `__`.
-En la clase `User` se declara el atributo `password` pero con doble guion bajo, para que se trate como privado.
+En la clase `User` se declara el atributo `password` pero con doble guion bajo, _para que se trate como privado._
 
 Python implementa el mecanismo **name mangling** para poder simular crear atributos privados.
 

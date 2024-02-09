@@ -40,10 +40,10 @@
 - :link: [EMOJI CHEAT SHEET](https://www.webpagefx.com/tools/emoji-cheat-sheet/)
 - :link: :octocat:[Notas C. Nuevo Git y GitHub](#notas_c_nuevo_git)
 
-### Instalación
+## Instalación
 
 ```
-sudo apt-get install git
+sudo apt install git
 ```
 
 ### Para comprobar la version
@@ -60,13 +60,13 @@ Para instalar git la versión mas reciente del link
 - :link: <https://www.kernel.org/pub/software/scm/git/>
 
 ```bash
-sudo apt-get update
-sudo apt-get install git
-sudo apt-get update
+sudo apt update
+sudo apt install git
+sudo apt update
 ```
 
 ```bash
-sudo apt-get install libcurl4-gnutls-dev libexpat1-dev gettext libz-dev libssl-dev
+sudo apt install libcurl4-gnutls-dev libexpat1-dev gettext libz-dev libssl-dev
 ```
 
 ```bash
@@ -83,7 +83,7 @@ sudo make prefix=/usr/local install
 Para instalar **Gitk** visualisador de commits para **git** en linux/windows
 
 ```bash
-sudo apt-get install git-gui
+sudo apt install git-gui
 ```
 
 ## Paso_GIT
@@ -136,8 +136,8 @@ ssh-add ~/.ssh/id_rsa
 If your SSH key file has a different name than the example code, modify the filename to match your current setup. When copying your key, don't add any newlines or whitespace.
 
 ```bash
-sudo apt-get install xclip
-# Downloads and installs xclip. If you don't have `apt-get`, you might need to use another installer (like `yum`)
+sudo apt install xclip
+# Downloads and installs xclip. If you don't have `apt`, you might need to use another installer (like `yum`)
 
 xclip -sel clip < ~/.ssh/id_rsa.pub
 # Copies the contents of the id_rsa.pub file to your clipboard
@@ -169,7 +169,7 @@ Before testing your SSH connection, you should have:
 ssh -T git@github.com
 ```
 
-# Attempts to ssh to GitHub
+## Attempts to ssh to GitHub
 
 Se mostraran mensajes de advertencia ejem:
 
@@ -217,10 +217,17 @@ Cuando se crea la llave ssh, en el repositorio de github se añade. Con nombre l
 ssh-keygen -t rsa -b 4096 -C "comentario_de_la_llave" -> Frase contrasena_de_la_llave
 ```
 
-Cuando se crea la llave ssh y esta instalal en github ahora en nuestra sesión de nuestro usuario en vps dentro de la carpeta donde se encuentra manage.py y dentro del ambiente virtual se ejecuta
+Cuando se crea la llave ssh y esta instala en github ahora en nuestra sesión de nuestro usuario en vps dentro de la carpeta donde se encuentra manage.py y dentro del ambiente virtual se ejecuta
 
 ```bash
 git init
+```
+
+También se puede usar
+
+```bash
+git init --initial-branch=main
+# git init -b main
 ```
 
 Se agrega la dirección del repositorio remoto
@@ -271,17 +278,46 @@ ssh -T git@github.com
 
 ### Después configuraremos nuestros datos (usaré los míos)
 
-```
+```bash
 git config --global user.name "TU NOMBRE"
 git config --global user.email "TU CORREO DE GITHUB"
 git config --global color.ui true
+# para mostrar sólo la configuración global
 git config --global --list
+# para mostrar la configuración del repositorio local (si existe)
+git config --local --list 
+# muestra la configuración del git del sistema (si existe)
+git config --system --list
+```
+
+Para configurar el editor por defecto
+
+```bash
+git config --global core.editor "code"
+git config --global core.editor "atom"
+git config --global core.editor "subl"
+git config --global core.editor "nano"
+```
+
+Para configurar la configuración a para un repositorio en particular no se pone la bandera `--global`
+
+```bash
+git config user.name "TU NOMBRE"
+git config user.email "TU CORREO DE GITHUB"
+```
+
+Con el parametro `--show-scopes` se puede ver la configuración de donde viene
+
+```bash
+git config --show-scope --list
 ```
 
 ### Subir cambios a GitHub
 
-```
+```bash
 git init
+# git init --initial-branch=main
+# git init -b main
 git remote add origin [HTTPS or SSH]
 git remote -v [Para ver en que rama nos encontramos]
 ```
@@ -338,9 +374,11 @@ git log (comprobar commits)
 
 ### Creamos ó entramos a la carpeta de nuestro proyecto
 
-```
+```bash
 git branch -v [Para ver en que rama nos encontramos]
 git init (si apenas vamos a iniciar)
+# git init --initial-branch=main
+# git init -b main
 git remote add origin [HTTS or SSH]
 git branch -a [Para mostrar los branches ocultos]
 git fetch origin
@@ -396,6 +434,8 @@ _…or create a new repository on the command line_
 ```bash
 echo "# xxxxxxxxx-xxxxxxx-xxxxxxx" >> README.md
 git init
+# git init --initial-branch=main
+# git init -b main
 git add README.md
 git commit -m "first commit"
 git remote add origin git@github.com:xxxxxxxxxx/xxxxxxxxx-xxxxxxx-xxxxxxx.git
@@ -418,6 +458,8 @@ You can initialize this repository with code from a Subversion, Mercurial, or TF
 
 ```bash
 git init
+# git init --initial-branch=main
+# git init -b main
 ```
 
 ### Mostrar el punto donde nos encontramos en la iteración, qué archivos podemos guardar o ver el estado
@@ -498,11 +540,11 @@ Cuando se usa **oh-my-zsh** se instala un plug-in de github el cual se encuentra
 git config --global alias.slog "log --graph --abbrev-commit --decorate --date=default --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
 ```
 
-- Crear una rama -> `git checkout -b <nombre_de_nueva_rama>` (Crea nueva rama y se cambia a ella)
+- Crear una rama -> `git branch -b <nombre_de_nueva_rama>` (Crea nueva rama y se cambia a ella)
 - Borrar una rama -> `git branch -d <nombre_de_rama>` (Antes de borrar tiene que estar fusionada)
-- Borrar una rama -> `git branch -D <nombre_de_rama>` (Forzar eliminación de rama)
-- Modificaciones/rectificar al ultimo commit -> `git commit -am "<comentarios>" --amend`
-- Descartar cambios en directorio de trabajo -> `git checkout -- <nombre_de_archivo>`
+- Borrar una rama -> `git branch -D <nombre_de_rama>` (Forzar eliminación de rama `Shortcut for --delete --force`)
+- Modificaciones/rectificar al ultimo commit y dejar el comentario del commit igual -> `git commit -am "<comentarios>" --amend --no-edit`
+- Si el archivo es eliminado en el directorio de trabajo pero se encuentra en _stage_ con `checkout` se puede restablecer en su última version guardada.  -> `git checkout -- <nombre_de_archivo>`
 - Es lo mismo `git add -A git commit -m "<MENSAJE_DE_COMMIT>" a git commit -am "<MENSAJE DE COMMIT>" S`
 - `git log -m "mensaje" --amend` -> Rectifica y sustituye el ultimo commit
 - `git log --oneline` -> muestra el commit resumido en una linea
@@ -813,7 +855,7 @@ Undo parts of last commit in a specific file
 git checkout -p HEAD^ -- /path/to/file
 ```
 
-Revert a commit and keep the history of the reverted change as a separate revert commit
+Revertir un commit y mantener el historial del cambio revertido como un commit nuevo en un commit separado
 
 ```bash
 git revert <commit SHA>
@@ -848,7 +890,7 @@ Recuerda que `git rm` no puede usarse así nomás. Debemos usar uno de los flags
 **git reset**
 ---
 
-Este comando nos ayuda a volver en el tiempo. Pero no como `git checkout` que nos deja ir, mirar, pasear y volver. Con git reset volvemos al pasado sin la posibilidad de volver al futuro. Borramos la historia y la debemos sobreescribir. No hay vuelta atrás.
+Este comando nos ayuda a volver en el tiempo. Pero no como `git checkout` que nos deja ir, mirar, pasear y volver. Con git reset volvemos al pasado sin la posibilidad de volver al futuro. Borramos la historia y la debemos sobre-escribir. No hay vuelta atrás.
 
 Este comando es muy peligroso y debemos usarlo solo en caso de emergencia. Recuerda que debemos usar alguna de estas dos opciones:
 
@@ -856,6 +898,37 @@ Hay dos formas de usar `git reset:` con el argumento `--hard`, borrando toda la 
 
 >`git reset --soft:` Borramos todo el historial y los registros de Git pero guardamos los cambios que tengamos en _Staging_, así podemos aplicar las últimas actualizaciones a un nuevo _commit_.
 `git reset --hard:` Borra todo. Todo todito, absolutamente todo. Toda la información de los commits y del área de _staging_ se borra del historial.
+
+**CASO DE EJEMPLO**:
+
+Se elimina un archivo de su directorio local y se elimina del área de _Staging_ con `git rm`. Luego hacemos _commit_ de esta eliminación. Pero, ¡oh no! Nos dimos cuenta de que necesitábamos ese archivo. 
+
+```bash
+git rm <archivo.html>
+```
+
+Si se intenta recuperar el archivo
+```bash
+git checkout -- <archivo.html>
+```
+
+No funciona, muestra el siguiente mensaje:
+
+```bash
+error: pathspec '<archivo.html>' did not match any file(s) known to git.
+```
+
+Se necesita ejecutar el comando
+
+```bash
+git reset HEAD <archivo.html>
+```
+
+para que resete el tracking del archivo hacia el mas reciente _commit_. Pra despues recuperar el archivo con
+
+```bash 
+git checkout -- <archivo.html>
+```
 
 **¡Pero todavía falta algo!**
 
@@ -999,3 +1072,37 @@ alias bfg='java -jar ~/Documents/CleanupSecretsGit/bfg-1.14.0.jar'
 ```
 
 Para poder después ejecutar el comando `$ bfg ...` en la terminal.
+
+### Modificar el ultimo commit
+
+Para modificar el último commit **con la condición de que no se haya hecho** `push` al repositorio remoto.
+
+```bash
+git commit --amend --no-edit
+```
+
+Lo que hace es que toma los cambios que se han hecho y el mensaje del commit anterior y los añade al último commit.
+
+### Ir a un punto en especifico del historial y hacer modificaciones
+
+Para ir a un punto en especifico del historial y hacer modificaciones a algo que ya se ha hecho y modificarlo.
+
+Se tiene que saber el `hash` del commit al que se quiere ir.
+
+```bash
+git log --oneline
+```
+
+Después se hace un `checkout` al `hash` del commit al que se quiere ir.
+
+```bash
+git checkout <hash> .
+```
+
+El punto al final del comando es para que se hagan las modificaciones en el todo directorio de trabajo.
+
+Después de hacer las modificaciones se hace un `commit` con los cambios.
+
+```bash
+git commit -m "Mensaje del commit con las correcciones realizadas"
+```
