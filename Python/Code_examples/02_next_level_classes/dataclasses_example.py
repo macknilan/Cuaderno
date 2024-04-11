@@ -16,6 +16,7 @@ class PersonNoDataClass:
 
 
 @dataclass
+# @dataclass(kw_only=True)  # -kw_only=True- ES PARA QUE LOS ARGUMENTOS SEAN SOLO POR NOMBRE
 class Person:
     name: str
     address: str

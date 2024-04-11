@@ -536,47 +536,47 @@ print(dict1)  # Salida: {}
 
 #### JSON
 
-|      Method      |          Description           |
-|:----------------:|:------------------------------:|
-| JSONDecodeError  |                                |
-|   JSONDecoder    |                                |
-|   JSONEncoder    |                                |
-|    `__all__`     |                                |
-|   `__author__`   |                                |
-|  `__builtins__`  |                                |
-|   `__cached__`   |                                |
-|    `__doc__`     |                                |
-|    `__file__`    |                                |
-|   `__loader__`   |                                |
-|    `__name__`    |                                |
-|  `__package__`   |                                |
-|    `__path__`    |                                |
-|    `__spec__`    |                                |
-|  `__version__`   |                                |
-| _default_decoder |                                |
-| _default_encoder |                                |
-|      codecs      |                                |
-|     decoder      |                                |
-| detect_encoding  |                                |
-|      dumps       | encoded string writing on file |
-|      dumps       |    encoding to JSON objects    |
-|     encoder      |                                |
-|       load       |  Decode while JSON file read   |
-|      loads       |     Decode the JSON string     |
-|      scanne      |                                |
+|      Method       |          Description           |
+| :---------------: | :----------------------------: |
+|  JSONDecodeError  |                                |
+|    JSONDecoder    |                                |
+|    JSONEncoder    |                                |
+|     `__all__`     |                                |
+|   `__author__`    |                                |
+|  `__builtins__`   |                                |
+|   `__cached__`    |                                |
+|     `__doc__`     |                                |
+|    `__file__`     |                                |
+|   `__loader__`    |                                |
+|    `__name__`     |                                |
+|   `__package__`   |                                |
+|    `__path__`     |                                |
+|    `__spec__`     |                                |
+|   `__version__`   |                                |
+| \_default_decoder |                                |
+| \_default_encoder |                                |
+|      codecs       |                                |
+|      decoder      |                                |
+|  detect_encoding  |                                |
+|       dumps       | encoded string writing on file |
+|       dumps       |    encoding to JSON objects    |
+|      encoder      |                                |
+|       load        |  Decode while JSON file read   |
+|       loads       |     Decode the JSON string     |
+|      scanne       |                                |
 
 **Python to JSON (Encoding)**  
 La librería `json` de python realiza las siguientes traducciones de python a objetos de`json` de manera predeterminada.
 
-|       Python       |      JSON     |
-|:------------------:|:-------------:|
-| dict               | Object        |
-| list               | Array         |
-| unicode            | String        |
+|       Python       |     JSON      |
+| :----------------: | :-----------: |
+|        dict        |    Object     |
+|        list        |     Array     |
+|      unicode       |    String     |
 | number – int, long | number – int  |
-| float              | number – real |
-| True               | True          |
-| None               | Null          |
+|       float        | number – real |
+|        True        |     True      |
+|        None        |     Null      |
 
 **JSON dumps() en Python**  
 El método `json.dumps()` convierte un diccionario de python a `json` formato de cadena(string)
@@ -641,16 +641,16 @@ x_json = json.dumps(x, sort_keys=True)
 La decodificación(decoding) de cadenas JSON se hacen con los métodos incorporados `json.loads()` y `json.load()`.  
 La siguiente tabla muestra la traducción de los objetos de _JSON_ a python que ayudan a realizar la decodificación.
 
-|      JSON     |       Python       |
-|:-------------:|:------------------:|
-| Object        |        dict        |
-| Array         | list               |
-| String        | unicode            |
+|     JSON      |       Python       |
+| :-----------: | :----------------: |
+|    Object     |        dict        |
+|     Array     |        list        |
+|    String     |      unicode       |
 | number – int  | number – int, long |
-| number – real | float              |
-| True          | True               |
-| False         | False              |
-| Null          | None               |
+| number – real |       float        |
+|     True      |        True        |
+|     False     |       False        |
+|     Null      |        None        |
 
 Por ejemplo `json.loads()` y `json.load()`
 
@@ -685,7 +685,7 @@ import json
 
 class Restaurant:
     """demonstrates adding to_json and from_json methods to a custom class"""
-    
+
     def __init__(self, name: str, distance: float, favorite: bool):
         self.name = name
         self.distance = distance
@@ -705,7 +705,7 @@ class Restaurant:
     def from_json(cls, json_str: str):
         dct = json.loads(json_str)
         return cls(**dct)
-    
+
 # Basic test
 bean = Restaurant("Bean Vegan Cuisine", 9.1, True)
 print(f"Object:  {bean}")  # 👉 Object:  Restaurant(name="Bean Vegan Cuisine", distance=9.1, favorite=True)
@@ -830,7 +830,7 @@ El módulo collections nos brinda un conjunto de objetos primitivos que nos perm
 2. `deque` list-like container with fast appends and pops on either end
    - Los métodos adicionales incluyen `append()`, `appendleft()`, `clear()`, `copy()`, `count()`, `extend()`, `extendleft()`, `pop()`, `popleft()`, `remove()`, `reverse()` y `rotate()`.
 3. `ChainMap` dict-like class for creating a single view of multiple mappings
-   - Los métodos adicionales incluyen `new_child()`, `parents()`, `maps()`, `keys()`, `values()`, `items()`, `pop()`, `popitem()`, `clear()`, `update()` y `get()`.  
+   - Los métodos adicionales incluyen `new_child()`, `parents()`, `maps()`, `keys()`, `values()`, `items()`, `pop()`, `popitem()`, `clear()`, `update()` y `get()`.
 4. `Counter` dict subclass for counting hashable objects
    - Los métodos adicionales incluyen `elements()`, `most_common()`, `subtract()`, `update()`, `items()`, `keys()`, `values()`, `get()`, `pop()`, `popitem()`, `clear()` y `copy()`.
 5. `OrderedDict` dict subclass that remembers the order entries were added
@@ -1039,7 +1039,7 @@ od['c'] = 3
 # Print items in order
 for key, value in od.items():
     print(key, value)
-# Output: 
+# Output:
 # a 1
 # b 2
 # c 3
@@ -1076,11 +1076,11 @@ d = deque([1,2,3,4,5])
 # d = deque([1,2,3,4,5])
 
 # Append to the right
-d.append(6)  
+d.append(6)
 print(d)  # Output: deque([1, 2, 3, 4, 5, 6])
 
 # Append to the left
-d.appendleft(0)  
+d.appendleft(0)
 print(d)  # Output: deque([0, 1, 2, 3, 4, 5, 6])
 ```
 
@@ -1306,7 +1306,7 @@ doctor_1 = doctor._replace(Especialidad="Pulmones")
 print(doctor_1)
 # Output
 Medico(Nombre='Nombre Doc', Especialidad='Pulmones', Telefono=4359876432)
-# -- 
+# --
 doctor_1._asdict()
 # Output
 {'Nombre': 'Nombre Doc', 'Especialidad': 'Pulmones', 'Telefono': 4359876432}
@@ -1970,7 +1970,7 @@ from keyword import kwlist
 print(kwlist)
 
 [
-'False', 'None', 'True', '__peg_parser__', 'and', 'as', 'assert', 'async', 'await', 'break', 
+'False', 'None', 'True', '__peg_parser__', 'and', 'as', 'assert', 'async', 'await', 'break',
 'class', 'continue', 'def', 'del', 'elif', 'else', 'except', 'finally', 'for', 'from', 'global',
  'if', 'import', 'in', 'is', 'lambda', 'nonlocal', 'not', 'or', 'pass', 'raise', 'return', 'try',
  'while', 'with', 'yield'
@@ -2106,16 +2106,21 @@ print(total)
 ```
 
 ```py
+
 ```
 
 ```py
+
 ```
 
 ```py
+
 ```
 
 ```py
+
 ```
 
 ```py
+
 ```

@@ -1,5 +1,4 @@
-
- :link: :octocat: <a href="!#" target="_blank">Documentación</a>
+:link: :octocat: <a href="!#" target="_blank">Documentación</a>
 
 # Curso de POO y Algoritmos con Python
 
@@ -144,7 +143,7 @@ Utilizamos el método especial `__init__` para definir el estado inicial de nues
 
 ```py
 class Hotel:
-    
+
     def __init__(self, numero_maximo_de_huespedes: int, lugares_de_estacionamiento: int):
         self.numero_maximo_de_huespedes = numero_maximo_de_huespedes
         self.lugares_de_estacionamiento = lugares_de_estacionamiento
@@ -195,7 +194,7 @@ Pag. 5 - 11
 class <nombre_de_la_clase>(super_de_la_clase):
     def __init__(self, <params>):
         <expresion>
-    
+
     def <nombre_del_metodo>(self, <params>):
         <expresion>
 ```
@@ -208,10 +207,10 @@ class Persona:
     def __init__(self, nombre: str, edad: int):
         self.nombre = nombre
         self.edad = edad
-    
+
     def saluda(self, otra_persona: str):
         return f"Hola, {otra_persona.nombre}, me llamo {self.nombre}"
-    
+
 #Uso
 david = Persona('David', 30)
 erika = Persona('Erika', 32)
@@ -301,7 +300,7 @@ class Car:
             print('*Car turns off*')
             self._state = 'off'
 
-    # GOES FORWARD IF ON AND IF HAS GAS IN TANK, 
+    # GOES FORWARD IF ON AND IF HAS GAS IN TANK,
     # ELSE, DOES NOTHING OR GOES OFF
     def forward(self, type='slow'):
         if self._state == 'on' and self._tank.current_fuel > 0:
@@ -497,7 +496,9 @@ funcion_mayor()
 
 Debemos considerar que las funciones anidadas dentro de `funcion_mayor` no se ejecutan hasta que se llama a esta primera, _siendo muestra del scope o alcance de las funciones_. Si las llamamos obtendremos un error
 
-📹 [Ejemplo decorador simple python youtube](https://www.youtube.com/watch?v=DQXm6bIZgvk)
+1. 📹 [Ejemplo decorador python youtube](https://www.youtube.com/watch?v=DQXm6bIZgvk) 🔗 ↗️
+2. 📹 [Ejemplo decorador python youtube](https://www.youtube.com/watch?v=QH5fw9kxDQA) 🔗 ↗️
+3. 📹 [Ejemplo decorador python youtube](https://www.youtube.com/watch?v=DlGPvq9r6Q4) 🔗 ↗️
 
 Ejemplo decorador simple python youtube
 
@@ -506,12 +507,12 @@ Decoradores en python
 
 ```py
 """
-Ejemplo de una función que actua como decorador
+Ejemplo de una función que actúa como decorador
 """
 
 
 def funcion_decoradora(funcion_pararametro):
-    """Función que actua como decorador"""
+    """Función que actúa como decorador"""
 
     def funcion_anterior():
         # ACCIONES ADICIONALES QUE DECORAN
@@ -540,9 +541,63 @@ resta()
 
 ```
 
+```py
+# a(b) -c
+
+def my_custom_decorator(function):
+    print("ENTRO A MY_CUSTOM_DECORATOR")
+
+    def wrapper(*args, **kwargs):
+        print("ENTRO A FUNCTION WRAPPER")
+        return (function(*args, **kwargs))
+
+    return wrapper
+
+@my_custom_decorator
+def saludar():
+    print("Hola desde una función")
+
+@my_custom_decorator
+def suma(a, b):
+    return a + b
+
+# ---
+saludar()
+
+suma(10, 20)
+
+```
+
+```py
+import time
+
+def calcular_tiempo(name):
+
+    def wrapper(function):
+
+        def wrapper_2(*args, **kwargs):
+            start = time.time()
+            result = function(*args, **kwargs)
+            print(f"El tiempo total de ejecución de {name} fue de: {time.time() - start}")
+            return result
+
+        return wrapper_2
+
+    return wrapper
+
+@calcular_tiempo("suma")
+def suma(a, b):
+    time.sleep(2)
+    return a + b
+
+# --
+print(suma(10, 20))
+
+```
+
 ## Setters, getters y decorador property
 
-Entendiendo el concepto de decorador  
+Entendiendo el concepto de decorador
 
 ```py
 def funcion_decoradora(funcion):
@@ -567,7 +622,7 @@ Buzzzzzz
 Este es el primer mensaje ;)
 ```
 
-Todo lo que sucede se conoce en programación como metaprogramación (metaprogramming), ya que una parte del programa trata de modificar a otra durante el tiempo de compilación. En tanto un decorador básicamente toma una función, le añade alguna funcionalidad y la retorna.
+Todo lo que sucede se conoce en programación como meta-programación (metaprogramming), ya que una parte del programa trata de modificar a otra durante el tiempo de compilación. En tanto un decorador básicamente toma una función, le añade alguna funcionalidad y la retorna.
 
 Mejorando la sintaxis  
 Definitivamente la forma en que decoramos la función es complejo, pero afortunadamente Python lo tiene en cuenta y podemos utilizar decoradores con el símbolo `@`. Volviendo al mismo ejemplo de funcion_decoradora(), podemos simplificarlo así:
@@ -649,7 +704,7 @@ Función `property()`
 
 Esta función está incluida en Python, en particular crea y retorna la propiedad de un objeto. La propiedad de un objeto posee los métodos `getter()`, `setter()` y `del()`.
 
-En tanto la función tiene cuatro atributos: `property(fget, fset, fdel, fdoc)` :
+En tanto la función tiene cuatro atributos: `property(fget=None, fset=None, fdel=None, doc=None)` :
 
 - `fget` : trae el valor de un atributo.
 - `fset` : define el valor de un atributo.
@@ -676,7 +731,7 @@ class Millas:
     # FUNCIÓN PARA ELIMINAR EL ATRIBUTO _DISTANCIA
     def eliminar_distancia(self):
         del self._distancia
-
+    #           property(fget,              fset,               fdel)
     distancia = property(obtener_distancia, definir_distancia, eliminar_distancia)
 
 
@@ -690,8 +745,8 @@ if __name__ == "__main__":
 
     # OBTENEMOS SU ATRIBUTO DISTANCIA
     print(avion.distancia)
-    # Llamada al método getter
     # Llamada al método setter
+    # Llamada al método getter
     # 200
 ```
 
@@ -705,35 +760,48 @@ ejemplo.
 
 ```py
 class Millas:
-    def __init__(self):
-        self._distancia = 0
+    def __init__(self, distancia = 0):
+        self.distancia = distancia
+
+    def to_kilometers(self):
+        """FUNCIÓN PARA CONVERTIR MILLAS A KILÓMETROS"""
+        print("Llamada al la funcion to_kilometers")
+        return (self.distancia * 1.609344)
+
 
     # FUNCIÓN PARA OBTENER EL VALOR DE _DISTANCIA
     # USANDO EL DECORADOR PROPERTY
     @property
-    def obtener_distancia(self):
+    def distancia(self):
         print("Llamada al método getter")
         return self._distancia
 
     # FUNCIÓN PARA DEFINIR EL VALOR DE _DISTANCIA
-    @obtener_distancia.setter
-    def definir_distancia(self, valor):
+    @distancia.setter
+    def distancia(self, valor):
+        print("Llamada al método setter")
         if valor < 0:
             raise ValueError("No es posible convertir distancias menores a 0.")
-        print("Llamada al método setter")
         self._distancia = valor
 
-# CREAMOS UN NUEVO OBJETO 
-avion = Millas()
 
-# INDICAMOS LA DISTANCIA
-avion.distancia = 200
+if __name__ == "__main__":
+    # CREAMOS UN NUEVO OBJETO
+    avion = Millas(10)
 
-# OBTENEMOS SU ATRIBUTO DISTANCIA
->>> print(avion.definir_distancia)
-Llamada al método getter
-Llamada al método setter
-200
+    # INDICAMOS LA DISTANCIA
+    print(avion.distancia)
+
+    print(avion.to_kilometers())
+
+# 👇
+# Llamada al método setter
+# Llamada al método getter
+# 10
+# Llamada al la funcion to_kilometers
+# Llamada al método getter
+# 16.09344
+
 ```
 
 ejemplo.
@@ -795,7 +863,7 @@ if __name__ == "__main__":
 
 ## Encapsulación, getters and setters
 
-[Role of Underscore(_) in Python](https://www.datacamp.com/community/tutorials/role-underscore-python)
+[Role of Underscore(\_) in Python](https://www.datacamp.com/community/tutorials/role-underscore-python)
 
 La encapsulación nos permite agrupar datos y controlar su comportamiento en nuestra clase. También nos permite controlar el acceso a nuestros datos y prevenir modificaciones no autorizadas.
 
@@ -967,11 +1035,11 @@ if __name__ == "__main__":
 print 👇
 
 ```py
-Nombre: Espada de Principiante 
+Nombre: Espada de Principiante
 Rareza: Normal
 
-Nombre: Espada Rayo 
-Rareza: Rara 
+Nombre: Espada Rayo
+Rareza: Rara
 Atributo: Rayo
 ```
 
@@ -1130,7 +1198,7 @@ def f(x):
 
 ## Notación asintótica
 
-🔗 [Notación Big-O](https://www.youtube.com/watch?v=MyAiCtuhiqQ) ↗️  
+🔗 [Notación Big-O](https://www.youtube.com/watch?v=MyAiCtuhiqQ) ↗️
 
 - _Un loop_ => crecimiento lineal.
 - _Un loop dentro de otro_ => crecimiento cuadratico
@@ -1504,7 +1572,7 @@ def ordenamiento_por_mezcla(lista):
             lista[k] = derecha[j]
             j += 1
             k += 1
-        
+
         print(f'izquierda {izquierda}, derecha {derecha}')
         print(lista)
         print('-' * 50)
@@ -1627,7 +1695,7 @@ class User:
 
          self.save()
 
-    def __save(self):  # método privado por `__` 
+    def __save(self):  # método privado por `__`
         pass
 ```
 
@@ -1868,8 +1936,6 @@ LLAMADA A LA FUNCIÓN staticmethod -> -19
 LLAMADA A LA FUNCIÓN staticmethod -> 17
 ```
 
-
-
 ## Data clases(@dataclasses)
 
 Desde la versión 3.7 de Python se puede hacer uso del feature **Data classes**, una forma muy sencilla con la cual podemos crear clases que posean, principalmente datos.
@@ -1984,7 +2050,7 @@ Person(name='Rodolfo', address='123 calle siempre viva', active=True, email_addr
 
 ### Restructuración/refactor de clases grandes con `@dataclasess`
 
-Si se tieien  clases con muchos atributos lo más recomendable es re-estructurar en varias clases.
+Si se tieien clases con muchos atributos lo más recomendable es re-estructurar en varias clases.
 
 ```py
 """
@@ -2050,7 +2116,9 @@ if __name__ == "__main__":
 ```
 
 ```py
+
 ```
 
 ```py
+
 ```

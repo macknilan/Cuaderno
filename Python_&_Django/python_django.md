@@ -765,6 +765,14 @@ python manage.py shell
 python manage.py startapp [NombreDeLaApp] (POR CONVENCIÓN LAS APPS/MODULOS SE CREA SU NOMBRE EN PLURAL)
 ```
 
+Tambien se puede especificar el directorio de la aplicación como segundo parámetro:
+
+```bash
+python manage.py startapp <app_name> <app_directory>
+# ejem
+# python manage.py startapp users apps/users
+```
+
 ## Administrador de django
 
 ### Cambiar/crear Nuevo Usuario en Django
