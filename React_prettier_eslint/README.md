@@ -204,7 +204,7 @@ Establecer los siguientes comando en el archivo `package.json` para su correcto 
 Después crear el archivo `.prettierignore` en raíz de del proyecto para que prettier ignore archivos que no es necesario que haga su formato.
 
 ```txt
-dit
+dist
 package-lock.json
 ```
 
