@@ -534,11 +534,20 @@ def suma():
 def resta():
     print(30 - 10)
 
+```
 
+```py
 suma()
+👇
+# Se va a realizar un calculo
+# 30
+# Se termina el calculo
 
 resta()
-
+👇
+# Se va a realizar un calculo
+# 20
+# Se termina el calculo
 ```
 
 ```py
@@ -563,9 +572,31 @@ def suma(a, b):
 
 # ---
 saludar()
+# ENTRO A FUNCTION WRAPPER
 
 suma(10, 20)
+# ENTRO A FUNCTION WRAPPER
+# Hola desde una función
 
+```
+
+```py
+def my_decorator(the_function):
+    def wrapper():
+        print("Something is happening before the function is called.")
+        the_function()
+        print("Something is happening after the function is called.")
+    return wrapper
+
+@my_decorator
+def say_whee():
+    print("Whee!")
+
+say_whee()
+# 👇
+# Something is happening before the function is called.
+# Whee!
+# Something is happening after the function is called.
 ```
 
 ```py
@@ -593,6 +624,46 @@ def suma(a, b):
 # --
 print(suma(10, 20))
 
+```
+
+### Decoradores de clase
+
+```py
+
+def user_decorator():
+    def wrapper(cls):  # EL PARÁMETRO HACE REFERENCIA A LA CLASE QUE DECORAMOS
+
+        class SuperUser(cls):
+            def get_full_name(self):
+                return f"{self.get_name()} {self.get_last_name()}"
+
+            def __str__(self):  # SOBREESCRIBIMOS EL MÉTODO __str__ QUE SIRVE PARA IMPRIMIR EL OBJETO
+                return f"Hola, mi nombre es: {self.get_full_name()}"
+        return SuperUser
+
+    return wrapper
+
+@user_decorator()
+class User:
+    def __init__(self, name, last_name):
+        self.name = name
+        self.last_name = last_name
+
+    def get_name(self):
+        return self.name
+
+    def get_last_name(self):
+        return self.last_name
+
+
+if __name__ == "__main__":
+    user = User("Rodolfo", "Apellidos")
+    print(user.get_full_name())
+
+# 👇
+# user = User("Juan", "Perez")
+# user.get_full_name()
+# 'Juan Perez'
 ```
 
 ## Setters, getters y decorador property
@@ -711,6 +782,74 @@ En tanto la función tiene cuatro atributos: `property(fget=None, fset=None, fde
 - `fdel` : elimina el valor de un atributo.
 - `fdoc` : crea un docstring por atributo.
 
+```py
+class Point:
+    def __init__(self, x, y):
+        self._x = x
+        self._y = y
+
+    def get_x(self):
+        return self._x
+
+    def set_x(self, value):
+        self._x = value
+
+    def get_y(self):
+        return self._y
+
+    def set_y(self, value):
+        self._y = value
+
+# 👇
+punto = Point(5, 10)
+punto.get_x()
+# 5
+punto.get_y()
+# 10
+
+punto.set_x(88)
+punto.get_x()
+# 88
+```
+
+### Creando properties con la inicialización de la función `property()`
+
+```py
+class Circle:
+    def __init__(self, radius):
+        self._radius = radius
+
+    def _get_radius(self):
+        print("Get radius")
+        return self._radius
+
+    def _set_radius(self, value):
+        print("Set radius")
+        self._radius = value
+
+    def _del_radius(self):
+        print("Delete radius")
+        del self._radius
+
+    radius = property(  # 👈
+        fget=_get_radius,
+        fset=_set_radius,
+        fdel=_del_radius,
+        doc="The radius property."
+    )
+
+circle = Circle(15)
+circle.radius
+# Get radius
+# 15
+
+circle.radius = 10
+# Set radius
+
+del circle.radius
+# Delete radius
+```
+
 Veamos un ejemplo del mismo caso implementando la función `property()` :
 
 ```py
@@ -754,6 +893,9 @@ Aunque en este ejemplo hay una sola llamada a `print`, tenemos tres líneas como
 
 Decorador `@property`
 
+**Las properties son la forma pythonica de evitar la creación de métodos para obtener y modificar atributos de una clase.  
+Esta función nos ayuda a convertir atributos de una clase en properties o managed attributes.**
+
 Este decorador es uno de varios con los que ya cuenta Python, el cual nos permite utilizar `getters` y `setters` para hacer más fácil la implementación de la programación orientada a objetos en Python cambiando los métodos o atributos de las clases de forma que no modifiquemos el código.
 
 ejemplo.
@@ -787,20 +929,26 @@ class Millas:
 
 if __name__ == "__main__":
     # CREAMOS UN NUEVO OBJETO
-    avion = Millas(10)
+    avion = Millas(200)
 
     # INDICAMOS LA DISTANCIA
+    avion.distancia
     print(avion.distancia)
 
     print(avion.to_kilometers())
 
+    avion = Millas(-100)
+
 # 👇
 # Llamada al método setter
 # Llamada al método getter
-# 10
+# 200
+
 # Llamada al la funcion to_kilometers
 # Llamada al método getter
 # 16.09344
+
+# ValueError: No es posible convertir distancias menores a 0.
 
 ```
 
@@ -1703,24 +1851,55 @@ class User:
 
 > Transforma un método en un método de clase.
 
+Métodos de instancia, métodos de clase y métodos estáticos.
+
+- Los **métodos de instancia** _son creados para modificar un objeto instanciado de una clase._
+- Los **métodos de clase** _trabajan directamente con la clase, desde que su parámetro es la clase en sí._
+- Los **métodos estáticos** _no saben nada acerca de la clase, solo trabajan con los parámetros recibidos._
+
 Los métodos de clase, **estos métodos que le pertenecen a la clase**. Para hacer uso de ellos lo haremos a utilizar la clase.
 
 Se hace uso del decorador `@classmethod` se define el parámetro que hace referencia a la clase que por convención es `cls`
 
 ```py
-class User:
+class MyClass:
+    def method(self):
+        """ INSTANCIA DE METODO """
+        return 'instance method called', self
 
+    @classmethod
+    def class_method(cls):
+        """ METODO DE CLASE """
+        return 'class method called', cls
+
+    @staticmethod
+    def static_method():
+        """ METODO ESTATICO """
+        return 'static method called'
+
+# 👇
+metodo = MyClass()
+metodo.method()
+# ('instance method called', <__main__.MyClass at 0x777cadd8ede0>)
+
+metodo.class_method()
+# ('class method called', __main__.MyClass)
+
+metodo.static_method()
+# metodo.class_method()
+```
+
+```py
+class User:
     @classmethod
     def set_password(cls, password):
         return password + " mas cifrado"
-```
 
-:point_down:
+# 👇
+usuario = User()
+usuario.set_password("123456")
 
-```py
-User.set_password("mack")
-# output
-'mack mas cifrado'
+# '123456 mas cifrado'
 ```
 
 Los métodos de clase nos permiten acceder a los atributos y métodos.

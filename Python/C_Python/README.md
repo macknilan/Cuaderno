@@ -1575,7 +1575,7 @@ Click también realiza las conversiones de tipo por nosotros. Esta basado muy fu
 
 ### Manejo de errores y jerarquía de errores en Python
 
-- [Built-in Exceptions - 3.9.5](https://docs.python.org/3/library/exceptions.html#exception-hierarchy)
+- [Built-in Exceptions - 3.12.3](https://docs.python.org/3/library/exceptions.html#exception-hierarchy)
 - [https://realpython.com/python-exceptions/](https://realpython.com/python-exceptions/)
 - [Errores y excepciones](http://docs.python.org.ar/tutorial/2/errors.html)
 
@@ -1592,73 +1592,639 @@ Si queremos _evitar_ que termine nuestro programa cuando ocurra un error, debemo
 3. `else`: Es código que se ejecuta cuando no ocurre ningún error.
 4. `finally`: Nos permite obtener un bloque de código que se va a ejecutar no importa lo que pase.
 
-##### 3.9.5
+#### 3.12.3
 
 ```
 BaseException
- +-- SystemExit
- +-- KeyboardInterrupt
- +-- GeneratorExit
- +-- Exception
-      +-- StopIteration
-      +-- StopAsyncIteration
-      +-- ArithmeticError
-      |    +-- FloatingPointError
-      |    +-- OverflowError
-      |    +-- ZeroDivisionError
-      +-- AssertionError
-      +-- AttributeError
-      +-- BufferError
-      +-- EOFError
-      +-- ImportError
-      |    +-- ModuleNotFoundError
-      +-- LookupError
-      |    +-- IndexError
-      |    +-- KeyError
-      +-- MemoryError
-      +-- NameError
-      |    +-- UnboundLocalError
-      +-- OSError
-      |    +-- BlockingIOError
-      |    +-- ChildProcessError
-      |    +-- ConnectionError
-      |    |    +-- BrokenPipeError
-      |    |    +-- ConnectionAbortedError
-      |    |    +-- ConnectionRefusedError
-      |    |    +-- ConnectionResetError
-      |    +-- FileExistsError
-      |    +-- FileNotFoundError
-      |    +-- InterruptedError
-      |    +-- IsADirectoryError
-      |    +-- NotADirectoryError
-      |    +-- PermissionError
-      |    +-- ProcessLookupError
-      |    +-- TimeoutError
-      +-- ReferenceError
-      +-- RuntimeError
-      |    +-- NotImplementedError
-      |    +-- RecursionError
-      +-- SyntaxError
-      |    +-- IndentationError
-      |         +-- TabError
-      +-- SystemError
-      +-- TypeError
-      +-- ValueError
-      |    +-- UnicodeError
-      |         +-- UnicodeDecodeError
-      |         +-- UnicodeEncodeError
-      |         +-- UnicodeTranslateError
-      +-- Warning
-           +-- DeprecationWarning
-           +-- PendingDeprecationWarning
-           +-- RuntimeWarning
-           +-- SyntaxWarning
-           +-- UserWarning
-           +-- FutureWarning
-           +-- ImportWarning
-           +-- UnicodeWarning
-           +-- BytesWarning
-           +-- ResourceWarning
+ ├── BaseExceptionGroup
+ ├── GeneratorExit
+ ├── KeyboardInterrupt
+ ├── SystemExit
+ └── Exception
+      ├── ArithmeticError
+      │    ├── FloatingPointError
+      │    ├── OverflowError
+      │    └── ZeroDivisionError
+      ├── AssertionError
+      ├── AttributeError
+      ├── BufferError
+      ├── EOFError
+      ├── ExceptionGroup [BaseExceptionGroup]
+      ├── ImportError
+      │    └── ModuleNotFoundError
+      ├── LookupError
+      │    ├── IndexError
+      │    └── KeyError
+      ├── MemoryError
+      ├── NameError
+      │    └── UnboundLocalError
+      ├── OSError
+      │    ├── BlockingIOError
+      │    ├── ChildProcessError
+      │    ├── ConnectionError
+      │    │    ├── BrokenPipeError
+      │    │    ├── ConnectionAbortedError
+      │    │    ├── ConnectionRefusedError
+      │    │    └── ConnectionResetError
+      │    ├── FileExistsError
+      │    ├── FileNotFoundError
+      │    ├── InterruptedError
+      │    ├── IsADirectoryError
+      │    ├── NotADirectoryError
+      │    ├── PermissionError
+      │    ├── ProcessLookupError
+      │    └── TimeoutError
+      ├── ReferenceError
+      ├── RuntimeError
+      │    ├── NotImplementedError
+      │    └── RecursionError
+      ├── StopAsyncIteration
+      ├── StopIteration
+      ├── SyntaxError
+      │    └── IndentationError
+      │         └── TabError
+      ├── SystemError
+      ├── TypeError
+      ├── ValueError
+      │    └── UnicodeError
+      │         ├── UnicodeDecodeError
+      │         ├── UnicodeEncodeError
+      │         └── UnicodeTranslateError
+      └── Warning
+           ├── BytesWarning
+           ├── DeprecationWarning
+           ├── EncodingWarning
+           ├── FutureWarning
+           ├── ImportWarning
+           ├── PendingDeprecationWarning
+           ├── ResourceWarning
+           ├── RuntimeWarning
+           ├── SyntaxWarning
+           ├── UnicodeWarning
+           └── UserWarning
+```
+
+```py
+def validate_username(username):
+
+    if username == "jose":
+        raise Exception("El username no puede ser jose")
+
+    if len(username) < 6:
+        raise Exception("El username debe tener al menos 6 caracteres")
+    else:
+        return True
+
+try:
+    result = validate_username("jose")
+    print(result)
+except Exception as error:
+    print(error)
+
+# 👇
+# El username no puede ser jose
+# No se puede completar la operació
+```
+
+#### Errores personalizados por clases
+
+```py
+class UsernameJoseException(Exception):
+    pass
+
+class UsernameLengthException(Exception):
+    pass
+
+
+def validate_username(username):
+
+    if username == "jose":
+        raise UsernameJoseException()
+
+    if len(username) < 6:
+        raise UsernameLengthException()
+    else:
+        return True
+
+try:
+    result = validate_username("jose")
+    print(result)
+
+except UsernameJoseException as error:
+    print("El nombre no puede ser jose")
+except UsernameLengthException as error:
+    print("El nombre debe tener al menos 6 caracteres")
+
+except Exception as error:
+    print(error)
+    print("No se puede completar la operación")
+
+# 👇
+# El nombre no puede ser jose
+```
+
+```py
+class UsernameJoseException(Exception):
+    """
+    RECOMENDABLE QUE LAS EXCEPCIONES HEREDEN DE LA CLASE EXCEPTION
+    Y QUE SE IMPORTEN DE OTRO ARCHIVO
+    """
+    def __init__(self):
+        self.message = ("El nombre no puede ser jose")
+        super().__init__(self.message)  # LLAMA AL CONSTRUCTOR DE LA CLASE PADRE
+
+class UsernameLengthException(Exception):
+    """
+    RECOMENDABLE QUE LAS EXCEPCIONES HEREDEN DE LA CLASE EXCEPTION
+    Y QUE SE IMPORTEN DE OTRO ARCHIVO
+    """
+    def __init__(self, username):
+        self.message = f"El nombre {username} tener al menos 6 caracteres"
+        super().__init__(self.message)  # LLAMA AL CONSTRUCTOR DE LA CLASE PADRE
+
+
+def validate_username(username):
+
+    if username == "joseeee":
+        raise UsernameJoseException()
+
+    if len(username) < 6:
+        raise UsernameLengthException(username)
+    else:
+        return True
+
+try:
+    result = validate_username("jose")
+    print(result)
+
+except UsernameJoseException as error:
+    print(error)
+except UsernameLengthException as error:
+    print(error)
+
+except Exception as error:
+    print(error)
+    print("No se puede completar la operación")
+
+# 👇
+# El nombre jose tener al menos 6 caracteres
+
+```
+
+#### Grupo de excepciones
+
+```py
+class CustomError1(Exception):
+    """
+    RECOMENDABLE QUE LAS EXCEPCIONES HEREDEN DE LA CLASE EXCEPTION
+    Y QUE SE IMPORTEN DE OTRO ARCHIVO
+    """
+    def __init__(self):
+        super().__init__("Error número 1")  # LLAMA AL CONSTRUCTOR DE LA CLASE PADRE
+
+class CustomError2(Exception):
+    """
+    RECOMENDABLE QUE LAS EXCEPCIONES HEREDEN DE LA CLASE EXCEPTION
+    Y QUE SE IMPORTEN DE OTRO ARCHIVO
+    """
+    def __init__(self):
+        super().__init__("Error número 2")
+
+class CustomError3(Exception):
+    """
+    RECOMENDABLE QUE LAS EXCEPCIONES HEREDEN DE LA CLASE EXCEPTION
+    Y QUE SE IMPORTEN DE OTRO ARCHIVO
+    """
+    def __init__(self):
+        super().__init__("Error número 3")
+
+
+raise ExceptionGroup(
+    "Grupo de excepciones personalizadas",
+    [CustomError1(), CustomError2(), CustomError3()]
+)
+```
+
+```bash
++ Exception Group Traceback (most recent call last):
+  |   File "/home/mack/venv_python/jupyter-notebook-play-ground/lib/python3.12/site-packages/IPython/core/interactiveshell.py", line 3577, in run_code
+  |     exec(code_obj, self.user_global_ns, self.user_ns)
+  |   File "/tmp/ipykernel_8557/4112726906.py", line 26, in <module>
+  |     raise ExceptionGroup(
+  | ExceptionGroup: Grupo de excepciones personalizadas (3 sub-exceptions)
+  +-+---------------- 1 ----------------
+    | CustomError1: Error número 1
+    +---------------- 2 ----------------
+    | CustomError2: Error número 2
+    +---------------- 3 ----------------
+    | CustomError3: Error número 3
+    +------------------------------------
+```
+
+```py
+class CustomError1(Exception):
+    """
+    RECOMENDABLE QUE LAS EXCEPCIONES HEREDEN DE LA CLASE EXCEPTION
+    Y QUE SE IMPORTEN DE OTRO ARCHIVO
+    """
+    def __init__(self):
+        super().__init__("Error número 1")  # LLAMA AL CONSTRUCTOR DE LA CLASE PADRE
+
+class CustomError2(Exception):
+    """
+    RECOMENDABLE QUE LAS EXCEPCIONES HEREDEN DE LA CLASE EXCEPTION
+    Y QUE SE IMPORTEN DE OTRO ARCHIVO
+    """
+    def __init__(self):
+        super().__init__("Error número 2")
+
+class CustomError3(Exception):
+    """
+    RECOMENDABLE QUE LAS EXCEPCIONES HEREDEN DE LA CLASE EXCEPTION
+    Y QUE SE IMPORTEN DE OTRO ARCHIVO
+    """
+    def __init__(self):
+        super().__init__("Error número 3")
+
+try:
+    raise ExceptionGroup(
+        "Grupo de excepciones personalizadas",
+        [CustomError1(), CustomError2(), CustomError3()]
+    )
+except ExceptionGroup as group:
+    print(group)
+```
+
+```bash
+Grupo de excepciones personalizadas (3 sub-exceptions)
+```
+
+Se pueden mandar un grupo de excepciones para funcionar con un grupo de errores en el sistema como por ejemplo
+errores al conectarse a una base de datos, errores al conectarse a un servidor, errores al conectarse a una API, etc.
+
+```py
+class CustomError1(Exception):
+    """
+    RECOMENDABLE QUE LAS EXCEPCIONES HEREDEN DE LA CLASE EXCEPTION
+    Y QUE SE IMPORTEN DE OTRO ARCHIVO
+    """
+    def __init__(self):
+        super().__init__("Error número 1")  # LLAMA AL CONSTRUCTOR DE LA CLASE PADRE
+
+class CustomError2(Exception):
+    """
+    RECOMENDABLE QUE LAS EXCEPCIONES HEREDEN DE LA CLASE EXCEPTION
+    Y QUE SE IMPORTEN DE OTRO ARCHIVO
+    """
+    def __init__(self):
+        super().__init__("Error número 2")
+
+class CustomError3(Exception):
+    """
+    RECOMENDABLE QUE LAS EXCEPCIONES HEREDEN DE LA CLASE EXCEPTION
+    Y QUE SE IMPORTEN DE OTRO ARCHIVO
+    """
+    def __init__(self):
+        super().__init__("Error número 3")
+
+try:
+    # py 3.11 and above
+    raise ExceptionGroup(
+        "Grupo de excepciones personalizadas",
+        [CustomError1(), CustomError2(), CustomError3()]
+    )
+except *CustomError1:
+    print("Error de tipo 1")
+except *CustomError2:
+    print("Error de tipo 2")
+except *CustomError3:
+    print("Error de tipo 3")
+```
+
+```bash
+Error de tipo 1
+Error de tipo 2
+Error de tipo 3
+```
+
+#### Notas en los errores
+
+```PY
+class UsernameException(Exception):
+    """
+    RECOMENDABLE QUE LAS EXCEPCIONES HEREDEN DE LA CLASE EXCEPTION
+    Y QUE SE IMPORTEN DE OTRO ARCHIVO
+    """
+    def __init__(self):
+        super().__init__("El username no es valido")  # LLAMA AL CONSTRUCTOR DE LA CLASE PADRE
+
+    def is_valid_to_raise(self):
+        return len(self.__notes__) > 0  # SI EL ERROR POSEE POR LO MENOS UNA NOTA (METODO)
+
+def username_validator(username):
+
+    username_error = UsernameException()
+
+    if len(username) <= 5:
+        username_error.add_note("La longitud del username debe ser mayor a 5")
+
+    if username.lower() == "jose":
+        username_error.add_note("El username no puede ser jose")
+
+    if "@" in username:
+        username_error.add_note("El username no puede contener el carácter @")
+
+    if username_error.is_valid_to_raise():  # SI EL ERROR POSEE POR LO MENOS UNA NOTA
+        raise username_error
+
+    return True
+
+username = "jose"
+username_validator(username)
+
+```
+
+👇
+
+```bash
+---------------------------------------------------------------------------
+UsernameException                         Traceback (most recent call last)
+Cell In[23], line 31
+     28     return True
+     30 username = "jose"
+---> 31 username_validator(username)
+
+Cell In[23], line 26
+     23     username_error.add_note("El username no puede contener el carácter @")
+     25 if username_error.is_valid_to_raise():  # SI EL ERROR POSEE POR LO MENOS UNA NOTA
+---> 26     raise username_error
+     28 return True
+
+UsernameException: El username no es valido
+La longitud del username debe ser mayor a 5
+El username no puede ser jose
+```
+
+```PY
+class UsernameException(Exception):
+    """
+    RECOMENDABLE QUE LAS EXCEPCIONES HEREDEN DE LA CLASE EXCEPTION
+    Y QUE SE IMPORTEN DE OTRO ARCHIVO
+    """
+    def __init__(self):
+        super().__init__("El username no es valido")  # LLAMA AL CONSTRUCTOR DE LA CLASE PADRE
+
+    def is_valid_to_raise(self):
+        return len(self.__notes__) > 0  # SI EL ERROR POSEE POR LO MENOS UNA NOTA (METODO)
+
+    def show_notes(self):
+        for note in self.__notes__:
+            print(f">>> {note}")
+
+def username_validator(username):
+
+    username_error = UsernameException()
+
+    if len(username) <= 5:
+        username_error.add_note("La longitud del username debe ser mayor a 5")
+
+    if username.lower() == "jose":
+        username_error.add_note("El username no puede ser jose")
+
+    if "@" in username:
+        username_error.add_note("El username no puede contener el carácter @")
+
+    if username_error.is_valid_to_raise():  # SI EL ERROR POSEE POR LO MENOS UNA NOTA
+        raise username_error
+
+    return True
+try:
+    username = "jose"
+    username_validator(username)
+except UsernameException as error:
+    print(error)
+    error.show_notes()
+```
+
+👇
+
+```PY
+class UsernameException(Exception):
+    """
+    RECOMENDABLE QUE LAS EXCEPCIONES HEREDEN DE LA CLASE EXCEPTION
+    Y QUE SE IMPORTEN DE OTRO ARCHIVO
+    """
+    def __init__(self):
+        super().__init__("El username no es valido")  # LLAMA AL CONSTRUCTOR DE LA CLASE PADRE
+
+    def is_valid_to_raise(self):
+        return len(self.__notes__) > 0  # SI EL ERROR POSEE POR LO MENOS UNA NOTA (METODO)
+
+    def show_notes(self):
+        for note in self.__notes__:
+            print(f">>> {note}")
+
+def username_validator(username):
+
+    username_error = UsernameException()
+
+    if len(username) <= 5:
+        username_error.add_note("La longitud del username debe ser mayor a 5")
+
+    if username.lower() == "jose":
+        username_error.add_note("El username no puede ser jose")
+
+    if "@" in username:
+        username_error.add_note("El username no puede contener el carácter @")
+
+    if username_error.is_valid_to_raise():  # SI EL ERROR POSEE POR LO MENOS UNA NOTA
+        raise username_error
+
+    return True
+try:
+    username = "jose"
+    username_validator(username)
+except UsernameException as error:
+    print(error)
+    error.show_notes()
+```
+
+```bash
+El username no es valido
+>>> La longitud del username debe ser mayor a 5
+>>> El username no puede ser jose
+```
+
+#### Log de errores
+
+Loggin es una técnica que nos permite guardar información de lo que está pasando en nuestro programa. Es una técnica muy utilizada en el desarrollo de software.
+
+```py
+import logging
+```
+
+1. INFO = 10
+2. DEBUG = 20
+3. WARNING = 30
+4. ERROR = 40
+5. CRITICAL = 50
+
+```PY
+import logging
+
+logging.info("Hola, este es un mensaje informativo")
+logging.debug("Hola, este es un mensaje para debug")
+logging.warning("Hola, este es un mensaje de advertencia")
+logging.error("Hola, este es un mensaje de error")
+logging.critical("Hola, este es un mensaje critico")
+```
+
+```bash
+WARNING:root:Hola, este es un mensaje de advertencia
+ERROR:root:Hola, este es un mensaje de error
+CRITICAL:root:Hola, este es un mensaje critico
+```
+
+```PY
+import logging
+
+logging.basicConfig(level=logging.INFO)
+
+logging.info("Hola, este es un mensaje informativo")
+logging.debug("Hola, este es un mensaje para debug")
+logging.warning("Hola, este es un mensaje de advertencia")
+logging.error("Hola, este es un mensaje de error")
+logging.critical("Hola, este es un mensaje critico")
+```
+
+👇
+
+```bash
+INFO:root:Hola, este es un mensaje informativo
+DEBUG:root:Hola, este es un mensaje para debug
+WARNING:root:Hola, este es un mensaje de advertencia
+ERROR:root:Hola, este es un mensaje de error
+CRITICAL:root:Hola, este es un mensaje critico
+```
+
+Guardar errores en un archivo
+
+```PY
+import logging
+
+logging.basicConfig(
+    filename='error.log',  # ARCHIVO DE LOGS SE ACTUALIZA CADA VEZ QUE SE EJECUTA EL PROGRAMA, GUARDA AL FINAL DE CADA EJECUCIÓN
+    encoding='utf-8',
+    level=logging.INFO
+)
+
+try:
+    10 / 0
+
+except Exception as error:
+    logging.error("Ha ocurrido un error")
+```
+
+Guardar con formato los errores en el archivo.
+
+```PY
+import logging
+import traceback
+
+logging.basicConfig(
+    filename='error.log',  # ARCHIVO DE LOGS SE ACTUALIZA CADA VEZ QUE SE EJECUTA EL PROGRAMA, GUARDA AL FINAL DE CADA EJECUCIÓN
+    encoding='utf-8',
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+
+try:
+    10 / 0
+
+except Exception as error:
+    exception_info = {
+        "message": str(error),
+        "detail": traceback.format_exc()  # DISPARAR EL TRACEBACK DE FORMA MANUAL
+    }
+    logging.error(exception_info)  # SE PASA EL OBJETO COMO ARGUMENTO
+```
+
+👇
+
+```bash
+2024-05-07 15:16:12,701 - root - ERROR - {'message': 'division by zero', 'detail': 'Traceback (most recent call last):\n  File "/home/mack/test.py", line 12, in <module>\n    10 / 0\nZeroDi    visionError: division by zero\n'}
+```
+
+Pasar a función el mecanismo para guardar el error a un archivo.
+
+```PY
+import logging
+import traceback
+
+def write_on_log_error(error):
+    exception_info = {
+        "message": str(error),
+        "detail": traceback.format_exc()  # DISPARAR EL TRACEBACK DE FORMA MANUAL
+    }
+    logging.error(exception_info)  # SE PASA EL OBJETO COMO ARGUMENTO
+
+
+logging.basicConfig(
+    filename='error.log',  # ARCHIVO DE LOGS SE ACTUALIZA CADA VEZ QUE SE EJECUTA EL PROGRAMA, GUARDA AL FINAL DE CADA EJECUCIÓN
+    encoding='utf-8',
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+
+try:
+    10 / 0
+
+except Exception as error:
+    write_on_log_error(error)
+```
+
+Manejar los errores en un archivo de log mediante un contexto(_context manager_).
+
+```PY
+import logging
+import traceback
+import contextlib
+
+
+logging.basicConfig(
+    filename='error.log',  # ARCHIVO DE LOGS SE ACTUALIZA CADA VEZ QUE SE EJECUTA EL PROGRAMA, GUARDA AL FINAL DE CADA EJECUCIÓN
+    encoding='utf-8',
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+
+@contextlib.contextmanager  # DECORADOR PARA CREAR UN MANEJADOR DE CONTEXTO, MEDIANTE EL BLOQUE WITH
+def write_on_log_error():
+    try:
+        yield  # ACTUA COMO PLACEHOLDER DE TODO LO QUE SENCUENTRE EN EL BLOQUE`with write_on_log_error():`
+
+    except Exception as error:
+        exception_info = {
+            "message": str(error),
+            "detail": traceback.format_exc()  # DISPARAR EL TRACEBACK DE FORMA MANUAL
+        }
+        logging.error(exception_info)  # SE PASA EL OBJETO COMO ARGUMENTO
+
+
+with write_on_log_error():
+    result = 10 / 0
+
+    print(result)
+
+
+```
+
+```PY
+
+```
+
+```PY
+
 ```
 
 ### 45
