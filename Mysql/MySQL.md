@@ -57,19 +57,17 @@ sudo apt-get install mariadb-server
 
 Para añadir password y configurar las opciones de MariaDB:
 
-```bash
-mysql_secure_installation
+```sql
+
 ```
 
 ### Instalar MySql en Ubuntu 20.04
-
-````bash
 
 Instalar el paquete `mysql-server`
 
 ```bash
 sudo apt install mysql-server
-````
+```
 
 Iniciar el servicio usando `systemctl start`
 
@@ -93,13 +91,13 @@ sudo mysql
 
 Ejecutar el comando `ALTER USER` para cambiar el método de autenticación de la cuenta de usuario `root`
 
-```bash
+```sql
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
 ```
 
 Después salir de la linea de comando de MySQL
 
-```bash
+```sql
 exit
 ```
 
@@ -178,7 +176,7 @@ Success.
 All done!
 ```
 
-Cuando el script de seguridad acabe, se tiene que cambiar el metodo de autenticación del usuario `root` al por default `auth_socket`
+Cuando el script de seguridad acabe, se tiene que cambiar el método de autenticación del usuario `root` al por default `auth_socket`
 
 ```bash
 mysql -u root -p
@@ -186,55 +184,58 @@ mysql -u root -p
 
 Luego vuelva a usar el método de autenticación predeterminado usando:
 
-```bash
-mysql> ALTER USER 'root'@'localhost' IDENTIFIED WITH auth_socket;
+```sql
+ALTER USER 'root'@'localhost' IDENTIFIED WITH auth_socket;
 ```
 
 Realizado lo anterior se puede conectar a MySQL como `root` usando el comando `sudo mysql`
 
-```bash
+```sql
 exit
 ```
 
 > In Ubuntu systems running MySQL 5.7 (and later versions), the root MySQL user is set to authenticate using the auth_socket plugin by default rather than with a password. This plugin requires that the name of the operating system user that invokes the MySQL client matches the name of the MySQL user specified in the command, so you must invoke mysql with sudo privileges to gain access to the root MySQL user
 
-#### Crear usuario administrativo y asignar privilegios
-
 ```bash
 sudo mysql
 ```
 
-```bash
+#### Crear usuario
+
+> ES RECOMENDABLE NO USAR `root` para tareas administrativas, es mejor crear un usuario con permisos de administrador.
+> El usuario administrativo se encarga la creación de los usuarios y de creación de las tablas.
+
+> Un usuario o grupo de usuarios se les asigna una base de datos y se les otorgan permisos para realizar operaciones en esa base de datos.
+
+```sql
 CREATE USER 'admin_mack'@'localhost' IDENTIFIED WITH authentication_plugin BY 'AQUIVALACONTRASEÑA';
 ```
-
-#### Crear usuario
 
 > In MySQL versions prior to 8.0, `sha256_password` might not be the default authentication plugin. You might need to explicitly specify it during user creation using the PASSWORD clause with the `sha256_password` plugin name.
 
 > From MySQL 8.0 onwards, 👉 `caching_sha2_password` (a more advanced version with caching) is the default, while `sha256_password` _is deprecated and recommended to be migrated towards_ `caching_sha256_password`
 
-Nota. Otra forma puede ser usando `authentication_plugin` 👁️
+**NOTA:** Otra forma puede ser usando `authentication_plugin` 👁️
 
 Usando el siguiente comando se utiliza `caching_sha2_password` de forma predeterminada.
 
-```bash
-mysql> CREATE USER 'mi_usuario'@'localhost' IDENTIFIED BY 'mi_contraseña';
+```sql
+CREATE USER 'mi_usuario'@'localhost' IDENTIFIED BY 'mi_contraseña';
 ```
 
-Para otorgarle privilegios al usuario creado [privilegios de MySQL](https://dev.mysql.com/doc/refman/8.0/en/privileges-provided.html#privileges-provided-summary)
+Para otorgarle privilegios _administrativos_ al usuario creado [privilegios de MySQL](https://dev.mysql.com/doc/refman/8.0/en/privileges-provided.html#privileges-provided-summary)
 
-```bash
-GRANT CREATE, ALTER, DROP, INSERT, UPDATE, INDEX, DELETE, SELECT, REFERENCES, RELOAD on *.* TO 'mi_usuario'@'localhost' WITH GRANT OPTION;
+```sql
+GRANT ALL PRIVILEGES ON *.* TO 'mi_usuario'@'localhost' WITH GRANT OPTION;
 ```
 
-Es buena practica usar el comando `FLUSH PRIVILEGES`. Para liberar cualquier memoria en el cahce como resultado de los cambios en los privilegios, usando `CREATE USER`y `GRANT`
+Es buena practica usar el comando `FLUSH PRIVILEGES`. Para liberar cualquier memoria en el cache como resultado de los cambios en los privilegios, usando `CREATE USER`y `GRANT`
 
-```bash
+```sql
 FLUSH PRIVILEGES;
 ```
 
-```bash
+```sql
 exit
 ```
 
@@ -246,15 +247,13 @@ mysql -u mi_usuario -p
 
 ### Instalar MySql Workbench en Debian buster 10
 
-:link: [MySQL Community Downloads](https://dev.mysql.com/downloads/)
-
-En [MySQL Community Downloads](https://dev.mysql.com/downloads/) descargar del :link: [MySQL Workbench](https://dev.mysql.com/downloads/workbench/)
+En [MySQL Community Downloads](https://dev.mysql.com/downloads/) descargar del 🔗 [MySQL Workbench](https://dev.mysql.com/downloads/workbench/)
 
 1. Seleccionar **Ubuntu Linux**
-2. Seleccionar la version **18.04**
-3. Se descarga el archivo `mysql-workbench-community_8.0.19-1ubuntu18.04_amd64.deb`
+2. Seleccionar la version **22.04**
+3. Se descarga el archivo para **Ubuntu 22.04 (Architecture Independent), DEB Package**
 4. Instalar en caso de no estar instalado `gdebi` `$ sudo apt install gdebi-core gdebi`
-5. Instalar MySql Workbench `sudo gdebi mysql-workbench-community_8.0.19-1ubuntu18.04_amd64.deb`
+5. Instalar MySql Workbench `sudo gdebi ARCHI_DESCARGADO_amd64.deb`
 6. Si se presenta que no esta instalada una dependencia `$ sudo apt-get install -f`
 
 ### Database Backups
@@ -270,13 +269,13 @@ password=<CONTRASEÑA>
 ### Back Up una DB
 
 ```bash
-mysqldump --add-drop-table --database nombredelabasededatos > /home/nombredeusuario/backups/db/$(bin/date '+\%Y-\%m-\%d').sql.bk
+mysql --add-drop-table --database nombredelabasededatos > /home/nombredeusuario/backups/db/$(bin/date '+\%Y-\%m-\%d').sql.bk
 ```
 
 ### Back Up todas las DB
 
 ```bash
-mysqldump --all-databases --all-routines > /path/to/fulldump.sql
+mysql --all-databases --all-routines > /path/to/fulldump.sql
 ```
 
 ### Restaurar a DB de un Back Up
@@ -303,13 +302,13 @@ mysql -u root -p -h localhost
 
 Mostrar lista de todos usuarios de MySql
 
-```bash
-mysql> SELECT user,host FROM mysql.user;
+```sql
+SELECT user, host FROM mysql.user;
 ```
 
 ### Mostrar variables MySql/mariadb
 
-```bash
+```sql
 SHOW VARIABLES LIKE "%version%";
 ```
 
@@ -328,14 +327,14 @@ SHOW VARIABLES LIKE "%version%";
 
 #### Muestra las BD
 
-```
-mysql> show DATABASES;
+```sql
+SHOW DATABASES;
 ```
 
 #### Crea una BD
 
-```bash
-mysql> CREATE DATABASE nombredelabasededatos;
+```sql
+CREATE DATABASE nombredelabasededatos;
 ```
 
 #### Borrar una BD
@@ -345,181 +344,196 @@ mysql> CREATE DATABASE nombredelabasededatos;
 
 #### Para usar una BD
 
-```bash
-mysql> USE nombredelabasededatos;
+```sql
+USE nombredelabasededatos;
 ```
 
 #### Crear usuario con
 
-:link: [Chapter 13 Creating User Accounts](https://dev.mysql.com/doc/mysql-secure-deployment-guide/5.7/en/secure-deployment-user-accounts.html)
+:link: [Chapter 13 Creating User Accounts](https://dev.mysql.com/doc/mysql-secure-deployment-guide/8.0/en/secure-deployment-user-accounts.html)
 
 Crear un usuario forma No.1
 
-```bash
-mysql> CREATE USER 'mi_usuario'@'localhost' IDENTIFIED BY 'Mi contrasena 2020';
+```sql
+CREATE USER 'mi_usuario'@'localhost' IDENTIFIED BY 'Mi contrasena 2020';
 ```
 
 Crear un usuario forma No.2
 
-```bash
-mysql> CREATE USER 'mi_usuario'@'localhost' IDENTIFIED WITH sha256_password BY 'Mi contrasena 2020'
+```sql
+CREATE USER 'mi_usuario'@'localhost' IDENTIFIED WITH sha256_password BY 'Mi contrasena 2020'
        REQUIRE X509 WITH MAX_USER_CONNECTIONS 3 PASSWORD EXPIRE DEFAULT;
 ```
 
 Mostrar los usuarios
 
-```bash
-mysql> SELECT user,authentication_string,host FROM mysql.user;
+```sql
+SELECT user, authentication_string, host FROM mysql.user;
 ```
 
-### Dar permisos a una DB a un usuario
+### Dar permisos a una DB a un usuario [privileges](https://dev.mysql.com/doc/refman/8.0/en/privileges-provided.html#privileges-provided-summary)
 
 1. `GRANT permission ON DATABASENAME.* TO 'user'@'localhost';`
-   - ALL – Allow complete access to a specific database. If a database is not specified, then allow complete access to the entirety of MySQL.
-   - CREATE – Allow a user to create databases and tables.
-   - DELETE – Allow a user to delete rows from a table.
-   - DROP – Allow a user to drop databases and tables.
-   - EXECUTE – Allow a user to execute stored routines.
-   - GRANT OPTION – Allow a user to grant or remove another user’s privileges.
-   - INSERT – Allow a user to insert rows from a table.
-   - SELECT – Allow a user to select data from a database.
-   - SHOW DATABASES- Allow a user to view a list of all databases.
-   - UPDATE – Allow a user to update rows in a table.
-2. _Dar permisos a todas las DB_ para un suario -> `GRANT CREATE ON *.* TO 'testuser'@'localhost';`
-3. Dar permiso de _borrar_ una DB a un usuario -> `GRANT DROP ON tutorial_database.* TO 'testuser'@'localhost';`
+   - `ALL`: Allow complete access to a specific database. If a database is not specified, then allow complete access to the entirety of MySQL.
+   - `CREATE`: Allow a user to create databases and tables.
+   - `DELETE`: Allow a user to delete rows from a table.
+   - `DROP`: Allow a user to drop databases and tables.
+   - `EXECUTE`: Allow a user to execute stored routines.
+   - `GRANT` OPTION: Allow a user to grant or remove another user’s privileges.
+   - `INSERT`: Allow a user to insert rows from a table.
+   - `SELECT`: Allow a user to select data from a database.
+   - `SHOW DATABASES`: Allow a user to view a list of all databases.
+   - `UPDATE`: Allow a user to update rows in a table.
+   - `ALTER`: Allow a user to alter a table.
+2. _Dar permisos a todas las DB_ para un suario -> `GRANT CREATE ON *.* TO 'test_user'@'localhost';`
+3. Dar permiso de _borrar_ una DB a un usuario -> `GRANT DROP ON tutorial_database.* TO 'test_user'@'localhost';`
 4. Cuando termine de hacer los cambios de permiso, _es una buena práctica volver a cargar todos los privilegios con el comando de descarga_ -> `FLUSH PRIVILEGES;`
-5. Mostrar permisos otorgados para un usuario -> `SHOW GRANTS FOR 'testuser'@'localhost';`
+5. Mostrar permisos otorgados para un usuario -> `SHOW GRANTS FOR 'test_user'@'localhost';`
 
 ### Quitar/revocar permisos de una DB a un usuario
 
 1. `REVOKE permission ON database.table FROM 'user'@'localhost';`
-   - ALL – Allow complete access to a specific database. If a database is not specified, then allow complete access to the entirety of MySQL.
-   - CREATE – Allow a user to create databases and tables.
-   - DELETE – Allow a user to delete rows from a table.
-   - DROP – Allow a user to drop databases and tables.
-   - EXECUTE – Allow a user to execute stored routines.
-   - GRANT OPTION – Allow a user to grant or remove another user’s privileges.
-   - INSERT – Allow a user to insert rows from a table.
-   - SELECT – Allow a user to select data from a database.
-   - SHOW DATABASES- Allow a user to view a list of all databases.
-   - UPDATE – Allow a user to update rows in a table.
-2. _Quitar permisos para todas las DB_ a un usuario -> `REVOKE CREATE ON *.* FROM 'testuser'@'localhost';`
-3. _Quitar el permiso de eliminar una DB_ -> `REVOKE DROP ON tutorial_database.* FROM 'testuser'@'localhost';`
+   - `ALL`: Allow complete access to a specific database. If a database is not specified, then allow complete access to the entirety of MySQL.
+   - `CREATE`: Allow a user to create databases and tables.
+   - `DELETE`: Allow a user to delete rows from a table.
+   - `DROP`: Allow a user to drop databases and tables.
+   - `EXECUTE`: Allow a user to execute stored routines.
+   - `GRANT` OPTION: Allow a user to grant or remove another user’s privileges.
+   - `INSERT`: Allow a user to insert rows from a table.
+   - `SELECT`: Allow a user to select data from a database.
+   - `SHOW DATABASES`: Allow a user to view a list of all databases.
+   - `UPDATE`: Allow a user to update rows in a table.
+   - `ALTER`: Allow a user to alter a table.
+2. _Quitar permisos para todas las DB_ a un usuario -> `REVOKE CREATE ON *.* FROM 'test_user'@'localhost';`
+3. _Quitar el permiso de eliminar una DB_ -> `REVOKE DROP ON tutorial_database.* FROM 'test_user'@'localhost';`
 4. Cuando termine de hacer los cambios de permiso, _es una buena práctica volver a cargar todos los privilegios con el comando de descarga_ -> `FLUSH PRIVILEGES;`
-5. Mostrar permisos otorgados para un usuario -> `SHOW GRANTS FOR 'testuser'@'localhost';`
+5. Mostrar permisos otorgados para un usuario -> `SHOW GRANTS FOR 'test_user'@'localhost';`
 
 #### Para borrar un usuario
 
-```bash
-mysql> DROP USER 'usuario'@'localhost';
+```sql
+DROP USER 'usuario'@'localhost';
 ```
 
 #### Para mostrar las tablas
 
-```bash
-mysql> SHOW TABLES;
+```sql
+SHOW TABLES;
 ```
 
 #### Para dar permisos desde la consola sobre todas las tablas de una base de datos
 
-```bash
-mysql> GRANT ALL PRIVILEGES ON nombredelabasededatos.* TO 'landani'@'localhost';
+```sql
+GRANT ALL PRIVILEGES ON nombredelabasededatos.* TO 'nombre_usuario'@'localhost';
 ```
 
 #### Después de dar o quitar permisos, siempre tendremos que ejecutar el siguiente comando para aplicarlos
 
-```bash
-mysql> FLUSH PRIVILEGES;
+```sql
+FLUSH PRIVILEGES;
 ```
 
-#### Para dar permisos desde la consola sobre una tabla concreta de la base de datos
+#### Para dar permisos desde la consola sobre una tabla concreta de la base de datos, el usuario se puede conectar desde cualquier host
 
-```bash
-mysql> GRANT SELECT,INSERT,UPDATE,DELETE ON database_name.concrete_table TO 'landani'@'%';
+```sql
+GRANT CREATE, DELETE, EXECUTE, INSERT, SELECT, UPDATE, ALTER, REFERENCES, TRIGGER ON database_name.concrete_table TO 'nombre_usuario'@'%';
 ```
 
-#### Para quitar permisos desde la consola de mysql, ejecutaremos el siguiente comando. Si queremos afectar a una base de datos, tabla concreta, etc. lo haremos igual que para dar permisos. En este ejemplo afectamos a todas las bases de datos _(_._)_ y quitaremos todos los permisos (`ALL PRIVILEGES`)
+Opción No.2
 
-```bash
-mysql> REVOKE ALL PRIVILEGES ON *.* FROM 'landani'@'localhost';
+```sql
+GRANT CREATE, DELETE, EXECUTE, INSERT, SELECT, UPDATE, ALTER, REFERENCES, TRIGGER ON the_database.* TO 'nombre_usuario'@'localhost';
+```
+
+Option No.3
+
+```sql
+GRANT ALL PRIVILEGES ON the_database.*.* TO 'mi_usuario'@'localhost'
+```
+
+Para quitar permisos desde la consola de mysql, ejecutaremos el siguiente comando.
+
+Si queremos afectar a una base de datos, tabla concreta, etc. lo haremos igual que para dar permisos.
+
+En este ejemplo afectamos a todas las bases de datos `.` y quitaremos todos los permisos (`ALL PRIVILEGES`)
+
+```sql
+REVOKE ALL PRIVILEGES ON *.* FROM 'nombre_usuario'@'localhost';
 ```
 
 #### Para saber que BD estoy usando
 
-```bash
-mysql> SELECT DATABASE(); ------- \s
+```sql
+SELECT DATABASE(); -- \s
 ```
 
 #### Para saber que usuario estoy parado
 
-```bash
-mysql> SELECT USER(); ------- \s
+```sql
+SELECT USER(); -- \s
 mysql> SELECT CURRENT_USER;
 ```
 
 #### Para saber los privilegios de un usuario
 
-```bash
-mysql> SHOW GRANTS FOR 'root'@'localhost';
+```sql
+SHOW GRANTS FOR 'root'@'localhost';
 ```
 
-#### Para ver los privilegios consedidos a una cuenta que se esta que se esta usuando conectada al server
+#### Para ver los privilegios concedidos a una cuenta que se esta usando conectada al server
 
-```bash
+```sql
 SHOW GRANTS;
 SHOW GRANTS FOR CURRENT_USER;
 SHOW GRANTS FOR CURRENT_USER();
 ```
 
-#### How to check MySQL Server is running?
+#### Saber cuales son los triggers de una tabla
 
-```bash
-# mysqladmin -u root -p ping
-
-    Enter password:
-    mysqld is alive
+```sql
+SHOW TRIGGERS;
 ```
 
 #### How to Check which MySQL version I am running?
 
-```bash
+```sql
 # mysqladmin -u root -p version
 ```
 
 #### How to Find out current Status of MySQL server?
 
-```bash
+```sql
 # mysqladmin -u root -ptmppassword status
 ```
 
 #### How to check status of all MySQL Server Variable’s and value’s?
 
-```bash
+```sql
 # mysqladmin -u root -p extended-status
 ```
 
 #### How to see all MySQL server Variables and Values?
 
-```bash
+```sql
 # mysqladmin  -u root -p variables
 ```
 
 #### How to check all the running Process of MySQL server?
 
-```bash
+```sql
 # mysqladmin -u root -p processlist
 ```
 
 #### How to reload/refresh MySQL Privileges?
 
-```bash
+```sql
 # mysqladmin -u root -p reload;
 # mysqladmin -u root -p refresh
 ```
 
 #### Como apagar el servidor de MySql dse forma segura
 
-```bash
+```sql
 # mysqladmin -u root -p shutdown
     Ó
 # /etc/init.d/mysqld stop
@@ -528,7 +542,7 @@ SHOW GRANTS FOR CURRENT_USER();
 
 #### Some useful MySQL Flush commands - Following are some useful flush commands with their description
 
-```bash
+```sql
 flush-hosts: Flush all host information from host cache.
 flush-tables: Flush all tables.
 flush-threads: Flush all threads cache.
@@ -546,31 +560,31 @@ flush-status: Clear status variables.
 
 #### How to kill Sleeping MySQL Client Process? - Use the following command to identify sleeping MySQL client process
 
-```bash
+```sql
 # mysqladmin -u root -p processlist
 ```
 
 #### Despues con el siguiente comando se mata el proceso, es el "Id"
 
-```bash
+```sql
 # mysqladmin -u root -p kill 5
 ```
 
 #### How to Connect remote mysql server - To connect remote MySQL server, use the -h (host) with IP Address of remote machine
 
-```bash
+```sql
 # mysqladmin  -h 172.16.25.126 -u root -p
 ```
 
 #### How to start/stop MySQL replication on a slave server? - To start/stop MySQL replication on salve server, use the following commands
 
-```bash
+```sql
 # mysqladmin  -u root -p start-slave
 # mysqladmin  -u root -p stop-slave
 ```
 
 #### How to store MySQL server Debug Information to logs? - It tells the server to write debug information about locks in use, used memory and query usage to the MySQL log file including information about event scheduler
 
-```bash
+```sql
 # mysqladmin  -u root -p debug
 ```
