@@ -180,6 +180,8 @@ Cuando el script de seguridad acabe, se tiene que cambiar el método de autentic
 
 ```bash
 mysql -u root -p
+--
+mysql -u root -p -h localhost
 ```
 
 Luego vuelva a usar el método de autenticación predeterminado usando:
@@ -200,7 +202,7 @@ exit
 sudo mysql
 ```
 
-#### Crear usuario
+#### Crear usuario administrativo
 
 > ES RECOMENDABLE NO USAR `root` para tareas administrativas, es mejor crear un usuario con permisos de administrador.
 > El usuario administrativo se encarga la creación de los usuarios y de creación de las tablas.
@@ -256,99 +258,19 @@ En [MySQL Community Downloads](https://dev.mysql.com/downloads/) descargar del �
 5. Instalar MySql Workbench `sudo gdebi ARCHI_DESCARGADO_amd64.deb`
 6. Si se presenta que no esta instalada una dependencia `$ sudo apt-get install -f`
 
-### Database Backups
+### Usuarios
 
-Store mysql root password in `/root/.cnf` Como **root** se puede acceder. chmod 600
-
-```bash
-[client]
-user=root
-password=<CONTRASEÑA>
-```
-
-### Back Up una DB
-
-```bash
-mysql --add-drop-table --database nombredelabasededatos > /home/nombredeusuario/backups/db/$(bin/date '+\%Y-\%m-\%d').sql.bk
-```
-
-### Back Up todas las DB
-
-```bash
-mysql --all-databases --all-routines > /path/to/fulldump.sql
-```
-
-### Restaurar a DB de un Back Up
-
-```bash
-mysql -u root -p [nombredelabasededatos] < archivoDeBackup.sql
-```
-
-### Para restaurar dotas las DB
-
-Primero necesitan existir o el archivo debe de contener **CREATE TABLE**
-
-```bash
-mysql -u root -p < archivoDeTodasLasDB.sql
-```
-
-### Login MySQL
-
-```bash
-mysql -u root -p -h localhost
-```
-
-### Howto's MySql
-
-Mostrar lista de todos usuarios de MySql
+#### Lista de todos usuarios
 
 ```sql
+SELECT User FROM mysql.user;
+--
 SELECT user, host FROM mysql.user;
+--
+SELECT user, authentication_string, host FROM mysql.user;
 ```
 
-### Mostrar variables MySql/mariadb
-
-```sql
-SHOW VARIABLES LIKE "%version%";
-```
-
-### Cambiar contraseña de _root_
-
-1. `mysql -u root -p`
-2. `use mysql;`
-3. `update user set password=PASSWORD('your_new_password') where User='root';`
-4. `flush privileges;`
-5. `quit`
-
-#### Mostrar privilegios concedidos de un usuario
-
-1. `mysql> show grants for 'root'@'%';`
-2. `SHOW GRANTS FOR 'root'@'localhost';`
-
-#### Muestra las BD
-
-```sql
-SHOW DATABASES;
-```
-
-#### Crea una BD
-
-```sql
-CREATE DATABASE nombredelabasededatos;
-```
-
-#### Borrar una BD
-
-1. `mysql> DROP DATABASE nombredelabasededatos;`
-2. `DROP DATABASE IF EXISTS tutorial_database;`
-
-#### Para usar una BD
-
-```sql
-USE nombredelabasededatos;
-```
-
-#### Crear usuario con
+#### Crear usuario
 
 :link: [Chapter 13 Creating User Accounts](https://dev.mysql.com/doc/mysql-secure-deployment-guide/8.0/en/secure-deployment-user-accounts.html)
 
@@ -365,13 +287,7 @@ CREATE USER 'mi_usuario'@'localhost' IDENTIFIED WITH sha256_password BY 'Mi cont
        REQUIRE X509 WITH MAX_USER_CONNECTIONS 3 PASSWORD EXPIRE DEFAULT;
 ```
 
-Mostrar los usuarios
-
-```sql
-SELECT user, authentication_string, host FROM mysql.user;
-```
-
-### Dar permisos a una DB a un usuario [privileges](https://dev.mysql.com/doc/refman/8.0/en/privileges-provided.html#privileges-provided-summary)
+#### Dar permisos a una DB a un usuario [privileges](https://dev.mysql.com/doc/refman/8.0/en/privileges-provided.html#privileges-provided-summary)
 
 1. `GRANT permission ON DATABASENAME.* TO 'user'@'localhost';`
    - `ALL`: Allow complete access to a specific database. If a database is not specified, then allow complete access to the entirety of MySQL.
@@ -385,12 +301,12 @@ SELECT user, authentication_string, host FROM mysql.user;
    - `SHOW DATABASES`: Allow a user to view a list of all databases.
    - `UPDATE`: Allow a user to update rows in a table.
    - `ALTER`: Allow a user to alter a table.
-2. _Dar permisos a todas las DB_ para un suario -> `GRANT CREATE ON *.* TO 'test_user'@'localhost';`
+2. _Dar permisos a todas las DB_ para un usuario -> `GRANT CREATE ON *.* TO 'test_user'@'localhost';`
 3. Dar permiso de _borrar_ una DB a un usuario -> `GRANT DROP ON tutorial_database.* TO 'test_user'@'localhost';`
 4. Cuando termine de hacer los cambios de permiso, _es una buena práctica volver a cargar todos los privilegios con el comando de descarga_ -> `FLUSH PRIVILEGES;`
 5. Mostrar permisos otorgados para un usuario -> `SHOW GRANTS FOR 'test_user'@'localhost';`
 
-### Quitar/revocar permisos de una DB a un usuario
+#### Quitar/revocar permisos de una DB a un usuario
 
 1. `REVOKE permission ON database.table FROM 'user'@'localhost';`
    - `ALL`: Allow complete access to a specific database. If a database is not specified, then allow complete access to the entirety of MySQL.
@@ -409,22 +325,10 @@ SELECT user, authentication_string, host FROM mysql.user;
 4. Cuando termine de hacer los cambios de permiso, _es una buena práctica volver a cargar todos los privilegios con el comando de descarga_ -> `FLUSH PRIVILEGES;`
 5. Mostrar permisos otorgados para un usuario -> `SHOW GRANTS FOR 'test_user'@'localhost';`
 
-#### Para borrar un usuario
-
-```sql
-DROP USER 'usuario'@'localhost';
-```
-
-#### Para mostrar las tablas
-
-```sql
-SHOW TABLES;
-```
-
 #### Para dar permisos desde la consola sobre todas las tablas de una base de datos
 
 ```sql
-GRANT ALL PRIVILEGES ON nombredelabasededatos.* TO 'nombre_usuario'@'localhost';
+GRANT ALL PRIVILEGES ON nombre_base_datos.* TO 'nombre_usuario'@'localhost';
 ```
 
 #### Después de dar o quitar permisos, siempre tendremos que ejecutar el siguiente comando para aplicarlos
@@ -437,18 +341,10 @@ FLUSH PRIVILEGES;
 
 ```sql
 GRANT CREATE, DELETE, EXECUTE, INSERT, SELECT, UPDATE, ALTER, REFERENCES, TRIGGER ON database_name.concrete_table TO 'nombre_usuario'@'%';
-```
 
-Opción No.2
+-- Opción No.2
 
-```sql
 GRANT CREATE, DELETE, EXECUTE, INSERT, SELECT, UPDATE, ALTER, REFERENCES, TRIGGER ON the_database.* TO 'nombre_usuario'@'localhost';
-```
-
-Option No.3
-
-```sql
-GRANT ALL PRIVILEGES ON the_database.*.* TO 'mi_usuario'@'localhost'
 ```
 
 Para quitar permisos desde la consola de mysql, ejecutaremos el siguiente comando.
@@ -459,12 +355,6 @@ En este ejemplo afectamos a todas las bases de datos `.` y quitaremos todos los 
 
 ```sql
 REVOKE ALL PRIVILEGES ON *.* FROM 'nombre_usuario'@'localhost';
-```
-
-#### Para saber que BD estoy usando
-
-```sql
-SELECT DATABASE(); -- \s
 ```
 
 #### Para saber que usuario estoy parado
@@ -487,6 +377,104 @@ SHOW GRANTS;
 SHOW GRANTS FOR CURRENT_USER;
 SHOW GRANTS FOR CURRENT_USER();
 ```
+
+#### Mostrar privilegios concedidos de un usuario
+
+1. `mysql> show grants for 'root'@'%';`
+2. `SHOW GRANTS FOR 'root'@'localhost';`
+
+#### Para borrar un usuario
+
+```sql
+DROP USER 'usuario'@'localhost';
+```
+
+### Base de datos
+
+#### Muestra las BD
+
+```sql
+SHOW DATABASES;
+```
+
+#### Crear una BD
+
+```sql
+CREATE DATABASE nombre_de_la_base_de_datos;
+```
+
+#### Para saber que BD estoy usando
+
+```sql
+SELECT DATABASE(); -- \s
+```
+
+#### Borrar una BD
+
+1. `mysql> DROP DATABASE nombredelabasededatos;`
+2. `DROP DATABASE IF EXISTS tutorial_database;`
+
+#### Para usar una BD
+
+```sql
+USE nombre_base_datos;
+```
+
+#### Para mostrar las tablas
+
+```sql
+SHOW TABLES;
+```
+
+#### Database Backups
+
+Store mysql root password in `/root/.cnf` Como **root** se puede acceder. `chmod 600`
+
+```bash
+[client]
+user=root
+password=<CONTRASEÑA>
+```
+
+#### Back Up una DB
+
+```bash
+mysql --add-drop-table --database nombredelabasededatos > /home/nombredeusuario/backups/db/$(bin/date '+\%Y-\%m-\%d').sql.bk
+```
+
+#### Back Up todas las DB
+
+```bash
+mysql --all-databases --all-routines > /path/to/fulldump.sql
+```
+
+#### Restaurar a DB de un Back Up
+
+```bash
+mysql -u root -p [nombredelabasededatos] < archivoDeBackup.sql
+```
+
+#### Para restaurar dotas las DB
+
+Primero necesitan existir o el archivo debe de contener **CREATE TABLE**
+
+```bash
+mysql -u root -p < archivoDeTodasLasDB.sql
+```
+
+#### Mostrar variables MySql/mariadb
+
+```sql
+SHOW VARIABLES LIKE "%version%";
+```
+
+### Cambiar contraseña de _root_
+
+1. `mysql -u root -p`
+2. `use mysql;`
+3. `update user set password=PASSWORD('your_new_password') where User='root';`
+4. `flush privileges;`
+5. `quit`
 
 #### Saber cuales son los triggers de una tabla
 
