@@ -1,34 +1,33 @@
-
 # Git & GitHub
 
 ```bash
-                                                                                
-                     &&&&&&                         &&&&&&                      
-                     &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&                      
-                    (&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&/                     
-                     &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&                      
-                    &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&                    
-                  &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&                   
-                  &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&                  
-                 /&&&&&&&&*..........................*&&&&&&&&                  
-                  &&&&&&.....    ..............     ....&&&&&&                  
-                  &&&&&..... ( ((............. ( ((, ....&&&&&                  
-                  .&&&&..... (((( ............ ((((  ....&&&&                   
-           (%/,.    &&&&.....    ......((......     ....&&&&/    ,*%#,          
-                     .&&&&............*..,............,&&&&                     
-                         &&&&&%...................#&&&&#                        
-                (&&&&            .@@@@@@@@@@@@/                                 
-                ,   &/&         &&&&&&&&&&&&&&&&.                               
-                     &&&,&/,*%(&&&&&&&&& &&&%&&&&                               
-                       ,&&&&&&&&&&& &&&& &&&/.&&&                               
-                               &&&& &&&& &&&/ &&&                               
-                               &&&& &&&& &&&/ &&&                               
-                         .,,,,,&&&&,&&&&,&&&(,&&&,,,,,,.                        
-                     ,,,,,,,,,%&&&,,&&&&,&&&(,&&&&,,,,,,,,,,                    
-                   ,,,,,,,,,,,****,,&&&,,&&&&,,****,,,,,,,,,,.                  
-                     ,,,,,,,,,,****,***,,****,***,,,,,,,,,,,                    
-                         ,,,,,,****,****,***,,***,,,,,,,                        
-                                         .                     
+
+                     &&&&&&                         &&&&&&
+                     &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+                    (&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&/
+                     &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+                    &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+                  &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+                  &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+                 /&&&&&&&&*..........................*&&&&&&&&
+                  &&&&&&.....    ..............     ....&&&&&&
+                  &&&&&..... ( ((............. ( ((, ....&&&&&
+                  .&&&&..... (((( ............ ((((  ....&&&&
+           (%/,.    &&&&.....    ......((......     ....&&&&/    ,*%#,
+                     .&&&&............*..,............,&&&&
+                         &&&&&%...................#&&&&#
+                (&&&&            .@@@@@@@@@@@@/
+                ,   &/&         &&&&&&&&&&&&&&&&.
+                     &&&,&/,*%(&&&&&&&&& &&&%&&&&
+                       ,&&&&&&&&&&& &&&& &&&/.&&&
+                               &&&& &&&& &&&/ &&&
+                               &&&& &&&& &&&/ &&&
+                         .,,,,,&&&&,&&&&,&&&(,&&&,,,,,,.
+                     ,,,,,,,,,%&&&,,&&&&,&&&(,&&&&,,,,,,,,,,
+                   ,,,,,,,,,,,****,,&&&,,&&&&,,****,,,,,,,,,,.
+                     ,,,,,,,,,,****,***,,****,***,,,,,,,,,,,
+                         ,,,,,,****,****,***,,***,,,,,,,
+                                         .
 ```
 
 - :link: [git](https://github.com/git/git)
@@ -95,7 +94,7 @@ Si quiere crear un par de llave RSA en vez de DSA solo debe usar -t rsa ( no deb
 ssh-keygen -t rsa -b 4096 -C "comentario_de_la_llave+your_email@example.com" -> frase_de_la_llave
 ```
 
-METODO No.2 **HACER LA LLAVE SSH "ed25519"**  
+METODO No.2 **HACER LA LLAVE SSH "ed25519"**
 
 - :link: [Upgrade Your SSH Key to Ed25519](https://medium.com/risan/upgrade-your-ssh-key-to-ed25519-c6e8d60d3c54)
 - :link: [EdDSA WikiPedia](https://en.wikipedia.org/wiki/EdDSA)
@@ -107,7 +106,7 @@ METODO No.2 **HACER LA LLAVE SSH "ed25519"**
 ssh-keygen -o -a 256 -t ed25519 -f ~/.ssh/id_ed25519 -C "comentario_de_la_llave+your_john@example.com" #-> frase_de_la_llave
 ```
 
-Preguntara para hacer la frase de la contraseña.  
+Preguntara para hacer la frase de la contraseña.
 
 - `-o` : Save the private-key using the new _OpenSSH_ format rather than the PEM format. Actually, this option is implied when you specify the key type as **ed25519**.
 - `-a`: It’s the numbers of _KDF_ (Key Derivation Function) rounds. Higher numbers result in slower passphrase verification, increasing the resistance to brute-force password cracking should the private-key be stolen.
@@ -133,7 +132,7 @@ ssh-add ~/.ssh/id_rsa
 ```
 
 3. Add the SSH key to your GitHub account.Copy the SSH key to your clipboard.
-If your SSH key file has a different name than the example code, modify the filename to match your current setup. When copying your key, don't add any newlines or whitespace.
+   If your SSH key file has a different name than the example code, modify the filename to match your current setup. When copying your key, don't add any newlines or whitespace.
 
 ```bash
 sudo apt install xclip
@@ -163,7 +162,7 @@ Before testing your SSH connection, you should have:
 - [Generated a new SSH key](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
 - [Added a new SSH key to your GitHub account](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account)
 
-1. Abrir la terminal  y
+1. Abrir la terminal y
 
 ```bash
 ssh -T git@github.com
@@ -285,7 +284,7 @@ git config --global color.ui true
 # para mostrar sólo la configuración global
 git config --global --list
 # para mostrar la configuración del repositorio local (si existe)
-git config --local --list 
+git config --local --list
 # muestra la configuración del git del sistema (si existe)
 git config --system --list
 ```
@@ -544,7 +543,7 @@ git config --global alias.slog "log --graph --abbrev-commit --decorate --date=de
 - Borrar una rama -> `git branch -d <nombre_de_rama>` (Antes de borrar tiene que estar fusionada)
 - Borrar una rama -> `git branch -D <nombre_de_rama>` (Forzar eliminación de rama `Shortcut for --delete --force`)
 - Modificaciones/rectificar al ultimo commit y dejar el comentario del commit igual -> `git commit -am "<comentarios>" --amend --no-edit`
-- Si el archivo es eliminado en el directorio de trabajo pero se encuentra en _stage_ con `checkout` se puede restablecer en su última version guardada.  -> `git checkout -- <nombre_de_archivo>`
+- Si el archivo es eliminado en el directorio de trabajo pero se encuentra en _stage_ con `checkout` se puede restablecer en su última version guardada. -> `git checkout -- <nombre_de_archivo>`
 - Es lo mismo `git add -A git commit -m "<MENSAJE_DE_COMMIT>" a git commit -am "<MENSAJE DE COMMIT>" S`
 - `git log -m "mensaje" --amend` -> Rectifica y sustituye el ultimo commit
 - `git log --oneline` -> muestra el commit resumido en una linea
@@ -877,18 +876,16 @@ Texto: @juandc
 
 `git reset` y `git rm` son comandos con utilidades muy diferentes, pero aún así se confunden muy fácilmente.
 
-**git rm**
----
+## **git rm**
 
 Este comando nos ayuda a eliminar archivos de Git sin eliminar su historial del sistema de versiones. Esto quiere decir que si necesitamos recuperar el archivo solo debemos “viajar en el tiempo” y recuperar el último _commit_ antes de borrar el archivo en cuestión.
 
 Recuerda que `git rm` no puede usarse así nomás. Debemos usar uno de los flags para indicarle a Git cómo eliminar los archivos que ya no necesitamos en la última versión del proyecto:
 
->`git rm --cached:` Elimina los archivos del área de Staging y del próximo _commit_ pero los mantiene en nuestro disco duro.
-`git rm --force:` Elimina los archivos de Git y del disco duro. Git siempre guarda todo, por lo que podemos acceder al registro de la existencia de los archivos, de modo que podremos recuperarlos si es necesario (pero debemos usar comandos más avanzados).
+> `git rm --cached:` Elimina los archivos del área de Staging y del próximo _commit_ pero los mantiene en nuestro disco duro.
+> `git rm --force:` Elimina los archivos de Git y del disco duro. Git siempre guarda todo, por lo que podemos acceder al registro de la existencia de los archivos, de modo que podremos recuperarlos si es necesario (pero debemos usar comandos más avanzados).
 
-**git reset**
----
+## **git reset**
 
 Este comando nos ayuda a volver en el tiempo. Pero no como `git checkout` que nos deja ir, mirar, pasear y volver. Con git reset volvemos al pasado sin la posibilidad de volver al futuro. Borramos la historia y la debemos sobre-escribir. No hay vuelta atrás.
 
@@ -896,18 +893,61 @@ Este comando es muy peligroso y debemos usarlo solo en caso de emergencia. Recue
 
 Hay dos formas de usar `git reset:` con el argumento `--hard`, borrando toda la información que tengamos en el área de _staging_ (y perdiendo todo para siempre). O, un poco más seguro, con el argumento `--soft`, que mantiene allí los archivos del área de _staging_ para que podamos aplicar nuestros últimos cambios pero desde un _commit_ anterior.
 
->`git reset --soft:` Borramos todo el historial y los registros de Git pero guardamos los cambios que tengamos en _Staging_, así podemos aplicar las últimas actualizaciones a un nuevo _commit_.
-`git reset --hard:` Borra todo. Todo todito, absolutamente todo. Toda la información de los commits y del área de _staging_ se borra del historial.
+> `git reset --soft:` Borramos todo el historial y los registros de Git pero guardamos los cambios que tengamos en _Staging_, así podemos aplicar las últimas actualizaciones a un nuevo _commit_.
+> `git reset --hard:` Borra todo. Todo todito, absolutamente todo. Toda la información de los commits y del área de _staging_ se borra del historial.
+
+**EJEMPLO Si los cambios no se han subido al repositorio remoto y se desea eliminar el ultimo commit**:
+
+- Si se desea conservar los cambios del ultimo commit en el directorio de trabajo(eliminar el commit pero conservar los cambios)
+
+```bash
+git reset --soft HEAD~1
+```
+
+- Si se desea descartar los cambio del ultimo commit
+
+```bash
+git reset --hard HEAD~1
+```
+
+Verificar que el commit se a eliminado correctamente
+
+```bash
+git log
+```
+
+**EJEMPLO Si los cambios ya se han subido al repositorio remoto y se desea eliminar el ultimo commit**:
+
+Se tiene que identificar el commit anterior al que se desea eliminar,
+
+Este método reescribe la historia del commit. Eliminara todos los cambios del commit que se desea eliminar del directorio de trabajo y del área de _staging_.
+
+```bash
+git log
+```
+
+```bash
+git reset --hard <commit_hash>
+```
+
+Con `--soft` garantizará que los cambios en las confirmaciones permanezcan como parte del directorio de trabajo y se prepararán para su confirmación.
+
+Forzar el push al repositorio remoto
+
+```bash
+git push origin <branch_name> --force
+```
 
 **CASO DE EJEMPLO**:
 
-Se elimina un archivo de su directorio local y se elimina del área de _Staging_ con `git rm`. Luego hacemos _commit_ de esta eliminación. Pero, ¡oh no! Nos dimos cuenta de que necesitábamos ese archivo. 
+Se elimina un archivo de su directorio local y se elimina del área de _Staging_ con `git rm`. Luego hacemos _commit_ de esta eliminación. Pero, ¡oh no! Nos dimos cuenta de que necesitábamos ese archivo.
 
 ```bash
 git rm <archivo.html>
 ```
 
 Si se intenta recuperar el archivo
+
 ```bash
 git checkout -- <archivo.html>
 ```
@@ -926,7 +966,7 @@ git reset HEAD <archivo.html>
 
 para que resete el tracking del archivo hacia el mas reciente _commit_. Pra despues recuperar el archivo con
 
-```bash 
+```bash
 git checkout -- <archivo.html>
 ```
 
@@ -964,7 +1004,7 @@ git reflog
 
 - `git reset --soft HashDelHEAD` te mantiene lo que tengas en _staging_ ahí.
 - `git reset --hard HashDelHEAD` resetea absolutamente todo incluyendo lo que tengas en _staging_.
-Comandos y recursos colaborativos en Git y Github
+  Comandos y recursos colaborativos en Git y Github
 
 ```bash
 git shortlog -sn # MUESTRA CUANTOS COMMIT HAN HECHO CADA MIEMBROS DEL EQUIPO.
@@ -975,7 +1015,7 @@ git shortlog -sn --all # MUESTRA CUANTOS COMMIT HAN HECHO CADA MIEMBROS DEL EQUI
 ```
 
 ```bash
-git shortlog -sn --all --no-merge # MUESTRA CUANTOS COMMIT HAN HECHO CADA MIEMBROS QUITANDO LOS ELIMINADOS SIN LOS 
+git shortlog -sn --all --no-merge # MUESTRA CUANTOS COMMIT HAN HECHO CADA MIEMBROS QUITANDO LOS ELIMINADOS SIN LOS
 MERGES
 ```
 
@@ -988,7 +1028,7 @@ git COMANDO --help # MUESTRA COMO FUNCIONA EL COMANDO.
 ```
 
 ```bash
-git blame ARCHIVO -Llinea_inicial,linea_final # MUESTRA QUIEN HIZO CADA COSA LINEA POR LINEA INDICÁNDOLE DESDE QUE 
+git blame ARCHIVO -Llinea_inicial,linea_final # MUESTRA QUIEN HIZO CADA COSA LINEA POR LINEA INDICÁNDOLE DESDE QUE
 LINEA VER EJEMPLO -L35,50
 ```
 
