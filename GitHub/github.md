@@ -904,7 +904,7 @@ Hay dos formas de usar `git reset:` con el argumento `--hard`, borrando toda la 
 git reset --soft HEAD~1
 ```
 
-- Si se desea descartar los cambio del ultimo commit
+Si se desea descartar los cambio del ultimo commit
 
 ```bash
 git reset --hard HEAD~1
@@ -920,7 +920,8 @@ git log
 
 Se tiene que identificar el commit anterior al que se desea eliminar,
 
-Este método reescribe la historia del commit. Eliminara todos los cambios del commit que se desea eliminar del directorio de trabajo y del área de _staging_.
+- Este método reescribe la historia del commit.
+- Eliminara todos los cambios del commit que se desea eliminar del directorio de trabajo y del área de _staging_.
 
 ```bash
 git log
@@ -938,7 +939,7 @@ Forzar el push al repositorio remoto
 git push origin <branch_name> --force
 ```
 
-**CASO DE EJEMPLO**:
+**CASO DE EJEMPLO**
 
 Se elimina un archivo de su directorio local y se elimina del área de _Staging_ con `git rm`. Luego hacemos _commit_ de esta eliminación. Pero, ¡oh no! Nos dimos cuenta de que necesitábamos ese archivo.
 
