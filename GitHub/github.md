@@ -896,7 +896,7 @@ Hay dos formas de usar `git reset:` con el argumento `--hard`, borrando toda la 
 > `git reset --soft:` Borramos todo el historial y los registros de Git pero guardamos los cambios que tengamos en _Staging_, así podemos aplicar las últimas actualizaciones a un nuevo _commit_.
 > `git reset --hard:` Borra todo. Todo todito, absolutamente todo. Toda la información de los commits y del área de _staging_ se borra del historial.
 
-**EJEMPLO Si los cambios no se han subido al repositorio remoto y se desea eliminar el ultimo commit**:
+**Si los cambios _NO_ se han subido al repositorio remoto y se desea eliminar el ultimo commit**:
 
 - Si se desea conservar los cambios del ultimo commit en el directorio de trabajo(eliminar el commit pero conservar los cambios)
 
@@ -916,7 +916,7 @@ Verificar que el commit se a eliminado correctamente
 git log
 ```
 
-**EJEMPLO Si los cambios ya se han subido al repositorio remoto y se desea eliminar el ultimo commit**:
+**Si los cambios _YA_ se han subido al repositorio remoto y se desea eliminar el ultimo commit**:
 
 Se tiene que identificar el commit anterior al que se desea eliminar,
 
