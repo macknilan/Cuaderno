@@ -478,6 +478,13 @@ docker compose ps
 docker compose down
 ```
 
+Cuando esta creado el archivo `local.yml` para revisar si quedo corectamente configurado se ejecuta el siguiente comando
+
+```bash
+docker compose -f local.yml config
+```
+Se mostrarán las variables de ambiente con sus valores correctamente asignados y las otras configuraciones
+
 ```bash
 docker compose -f local.yml up --build
 #
