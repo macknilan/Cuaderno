@@ -204,7 +204,7 @@ pyenv install 3.9.16
 Mostrar las versiones instaladas en la maquina.
 
 ```bash
-pyenv versions                                                  
+pyenv versions
 
 # output
 * system (set by /home/mack/.pyenv/version)
@@ -229,7 +229,6 @@ Esto crea dentro del proyecto una carpeta `.python-version` que contiene `[PYTHO
 
 Incluso se puede comprobar ingresando `pyenv version`, he indicará en función de qué configuración se seleccionó la versión de Python actualmente activa.
 
-
 ```bash
 pyenv local [PYTHON_VERSION]
 ```
@@ -245,6 +244,7 @@ cd $(pyenv root) # cd ~/.pyenv
 git pull
 
 ```
+
 ### 4.2 Crear un ambiente virtual con `venv`
 
 - :link: [venv — Creation of virtual environments](https://docs.python.org/3/library/venv.html)
@@ -605,10 +605,12 @@ $ python manage.py graph_models -a -g -o eventex.png # all
 Django es? es uno de los frameworks más populares para crear web apps.
 
 - Cuáles son las características de Django
+
   - Rápido
   - Open Source
 
 - Algunos proyectos que usan Django son:
+
   - Instagram
   - Pinterest
   - National Geographic
@@ -616,13 +618,8 @@ Django es? es uno de los frameworks más populares para crear web apps.
 
 - Posee tres características:
   - Es veloz: Aunque no el framework mas veloz.
-  - Es seguro: Posee protección contra: `([documentación](https://docs.djangoproject.com/es/4.0/topics/security/#clickjacking-protection))`
-        - **Cross site scripting (XSS) protection**
-        - **Cross site request forgery (CSRF) protection**
-        - **SQL injection protection**
-        - **Clickjacking protection**
+  - Es seguro: Posee protección contra: `([documentación](https://docs.djangoproject.com/es/4.0/topics/security/#clickjacking-protection))` - **Cross site scripting (XSS) protection** - **Cross site request forgery (CSRF) protection** - **SQL injection protection** - **Clickjacking protection**
   - Es escalable: Permite que tu app crezca de forma escalable
-
 
 1. Crear una carpeta con el nombre de la carpeta del proyecto con la primera letra en mayúsculas.
 2. `python3 -m venv [NOMBRE-DEL-ENTORNO-VIRTUAL]`
@@ -1275,7 +1272,7 @@ $ sudo make prefix=/usr/local install
 Si quiere crear un par de llave RSA en vez de DSA solo debe usar -t rsa ( no debe especificar el largo "-b" por defecto el largo para RSA es de 4096 y es suficiente)
 
 ```bash
-ssh-keygen -t rsa -b 4096 -C "comentario_de_la_llave+your_email@example.com" -> frase_de_la_llave
+ssh-keygen -o -a 512 -t ed25519 -f ~/.ssh/<NAME-FOR-THE-KEY> -C "comentario_de_la_llave+your_john@example.com"  #-> frase_de_la_llave
 ```
 
 ## Adding your SSH key to the ssh-agent
@@ -1370,11 +1367,12 @@ Para entrar vía terminal a maquina remota vía ssh
 ssh root@XXX.XXX.XXX.XXX -> Después pedirá cambia la contraseña por otra nueva "xxxxxxxxxxxxxxx"
 ```
 
-Para que se pueda conectar el VPS con nuestro repositorio en github se tiene que hacer una llave ssh en el usuario en el que se esta ejecutando nuestra aplicación.  
-Cuando se crea la llave ssh, en el repositorio de github se añade. Con nombre lacanteramack854JdsK
+Para que se pueda conectar el VPS con nuestro repositorio en github se tiene que hacer una llave ssh en el usuario en el que se esta ejecutando nuestra aplicación.
+
+Cuando se crea la llave `ssh`, en el repositorio de github se añade. Con nombre `<NAME-FOR-THE-KEY>`
 
 ```bash
-ssh-keygen -t rsa -b 4096 -C "comentario_de_la_llave" -> Frase contrasena_de_la_llave
+ssh-keygen -o -a 512 -t ed25519 -f ~/.ssh/<NAME-FOR-THE-KEY> -C "comentario_de_la_llave+your_john@example.com"  #-> frase_de_la_llave
 ```
 
 Cuando se crea la llave ssh y esta instalal en github ahora en nuestra sesión de nuestro usuario en vps dentro de la carpeta donde se encuentra manage.py y dentro del ambiente virtual se ejecuta
@@ -1526,36 +1524,36 @@ Para ejecutar los diferentes tipos de ambientes se hace de la siguiente manera
 
 ## Crear un "droplet" en digitalocean
 
-- Antes de crear el droplet se tiene que crear la llave ssh
+- Antes de crear el droplet se tiene que crear la llave `ssh`
 
 ```bash
-ssh-keygen -t rsa -b 4096 -C "comentario_de_la_llave+your_email@example.com"
+ssh-keygen -o -a 512 -t ed25519 -f ~/.ssh/<NAME-FOR-THE-KEY> -C "comentario_de_la_llave+your_john@example.com"  #-> frase_de_la_llave
 ```
 
-y se guarda en `~/.ssh/<LLAVE> <LLAVE.pub>`
+y se guarda en `~/.ssh/<NAME-FOR-THE-KEY> <NAME-FOR-THE-KEY.pub>`
 
 ```bash
-ssh-keygen -t rsa -b 4096 -C "COMENTARIO_DE_LA_LLAVE+YOUR_EMAIL@EXAMPLE.COM"
-Generating public/private rsa key pair.
-Enter file in which to save the key (/home/mack/.ssh/id_rsa): <FRASE_DE_LA_LLAVE>
-Enter passphrase (empty for no passphrase): [SE_ESCRIBE_LA_FRASE]
-Enter same passphrase again: [SE_ESCRIBE_LA_FRASE]
-Your identification has been saved in xxxxxxxx_xxxxxxx_xxxxx_xxxxx.
-Your public key has been saved in xxxxxxxx_xxxxxxx_xxxxx_xxxxx.pub.
+ssh-keygen -o -a 512 -t ed25519 -f ~/.ssh/<NAME-FOR-THE-KEY> -C "comentario_de_la_llave+your_john@example.com"
+Generating public/private ed25519 key pair.
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /home/XXXX/.ssh/<NAME-FOR-THE-KEY>
+Your public key has been saved in /home/XXXX/.ssh/<NAME-FOR-THE-KEY>.pub
 The key fingerprint is:
-SHA256:Lo1yGGq1tFSKqe+YLm4rdAW5M9Ahl4ZBP9sDy3tQq6c COMENTARIO_DE_LA_LLAVE+YOUR_EMAIL@EXAMPLE.COM
+SHA256:XXXXXXXXXXXXXXXX/XXXXXX/Goeg0CwrEobr0o5XXXX comentario_de_la_llave+your_john@example.com
 The key's randomart image is:
-+---[RSA 4096]----+
-|.++o+ |
-| o+* |
-| o+o.. |
-| .*B+. |
-| o=X+ S |
-| o *+=.+ |
-|o +o=o+ o |
-|o* +o . |
-|O=+E |
++--[ED25519 256]--+
+|      ...        |
+|     o o         |
+|    . B .        |
+|   . B * o       |
+|  . oEO S o o . .|
+|   o ..B + o o +.|
+| .. ..= . . . o +|
+|.=.. ..=   o   +.|
+|+o+ ... ... . ooo|
 +----[SHA256]-----+
+
 ```
 
 Ya que se tiene la llave creada se tiene en entrar al panel de control, y abrir la página [SHH Page](https://cloud.digitalocean.com/settings/security) y seleccionar el boton de **Create a New SSH Key**  
@@ -1573,35 +1571,45 @@ cat ~.ssh/xxxxxxxx_xxxxxxx_xxxxx_xxxxx.pub
 
 ![SSH Keys](img/key_added_01.png "SSH Keys")
 
-- Los pasos anteriores han explicado cómo configurar un servidor con claves SSH preinstaladas. Sin embargo, no puede usar el panel de control para agregar claves a los **droplets** ya creadas.
 - Para agregar llaves adicionales a **droplets** preexistentes, puede pegar las claves usando SSH:
 
 ```bash
-cat ~/.ssh/id_rsa.pub | ssh root@[LA_IP_DE_EL_DROPLET] "cat >> ~/.ssh/authorized_keys"
+cat ~/.ssh/<NAME-FOR-THE-KEY>.pub | ssh root@[LA_IP_DE_EL_DROPLET] "cat >> ~/.ssh/authorized_keys"
 ```
 
-Cuando realmente esté creando un nuevo servidor, seleccione las teclas que desea instalar en su servidor desde la pantalla **Create a droplet**. Puede seleccionar tantas llaves como desee:  
-![SSH Keys](img/add_key_02.png "SSH Keys")
-Ya que este creado el "droplet" desaparece mensaje "Your root password will be emailed to you". Y no se recibirá el correo con la contraseña de root
-
-- Ya que esta creado el "droplet" con la llave pre-instalada nos conectamos de la siguiente manera.
+Finalizado la creacion de la maquina **droplet**, copiar la IP publica de la maquina creada y conectarse a la maquina creada con el siguiente comando en conjunto con la llave creada localmente anteriormente.
 
 ```bash
-ssh root@[IP_DE_LA_MAQUINA_DROPLET]
+ssh -i ~/.ssh/<NAME-FOR-THE-KEY> root@[IP-PUBLICA-MAQUINA]
 ```
 
-Paso seguido se escriben las contraseñas de las llaves.  
-Cuando nos conectamos con otra maquina creada que comparte la llave, no hay nececidad de escribir la contraseña de **root**  
-Cuando se elimina (destruye) un "droplet" y antes de crear un **droplet** nuevo al cual nos conectamos, posiblemente se pueda ver este mensaje
+Para subir la llave publica a la VM en caso de ser necesario.
 
 ```bash
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@ WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED! @
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
-Someone could be eavesdropping on you right now (man-in-the-middle attack)!
-It is also possible that a host key has just been changed.
+ssh-copy-id -i ~/path/to/<NAME-FOR-THE-KEY>.pub root@[IP-PUBLICA-MAQUINA]
 ```
+
+👇
+
+```bash
+The authenticity of host '203.0.000.0 (203.0.000.0)' can't be established.
+ECDSA key fingerprint is XX:XX:XX:f9:EX:AM:PL:XX:e1:55:00:ad:d6:6d:22:XX.
+Are you sure you want to continue connecting (yes/no)? yes
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+username@203.0.000.0's password:
+```
+
+Cuando se escribe la contraseña se confirma la adicion de la llave.
+
+```bash
+Number of key(s) added: 1
+
+Now try logging in to the machine, with:   "ssh 'username@[IP-PUBLICA-MAQUINA]'"
+and check to make sure that only the key(s) you wanted were added.
+```
+
+Despues de que se haya añadido la llave se puede entrar a la maquina sin necesidad de escribir la contraseña.
 
 Si se presenta el caso el nuevo **droplet** posiblemente tiene la misma IP que la anterior eliminada (destruida) pero una llave SHH diferente, Se puede eliminar el mensaje de **advertencia** eliminando la anterior llave SHH del sistema con este COMANDO.
 
@@ -1663,7 +1671,7 @@ chmod [DIGITIGO-DUEÑO][DIGITO-GRUPO][DIGITO-RESTO] <ARCHIVO>
 ## Crear usuarios en el servidor de producción
 
 **NOTA**:
-Para poder hacer una contraseña en la linea de comandos se puede hacer de la siguiente manera con _sha512sum_:
+Para poder hacer una contraseña en la linea de comandos se puede hacer de la siguiente manera con `_sha512sum_`:
 
 ```bash
 echo "cualquer-texto" | sha512sum
@@ -1675,7 +1683,7 @@ salida..
 8898c46dfd4e3e3f35082bfa1dae27e9e2d9991785828478f05fba38a98dd8ab5dc503658620684ed6cfa7b7d43c6d322c9ff9568b9c0b3c164b35f5d5191380
 ```
 
-Para poder hacer una contraseña en la linea de comandos se puede hacer de la siguiente manera con _pwgen_:
+Para poder hacer una contraseña en la linea de comandos se puede hacer de la siguiente manera con `_pwgen_`:
 
 ```bash
 sudo apt install pwgen
@@ -1693,18 +1701,19 @@ salida..
 ghnk=+.9K&X4_>9^47`cbt;>}/*sk9;9k|TN/9wfKmkRMRtkw~m`Ps^!3-WCv^=N
 ```
 
+```bash
 =C/j<WV!tHtN*(%w-h;m:Fxs~<gV4Nt]Fdb@(3bj7C-]9V/WK<J%n$|fL!*>f^bp
 K=Hm*(=fwb"Kv'!\Fq/@%d%']RF?!]Vv.\_}9:qs^hrx@*JK:rzc-(\_Mj{qtfv`"N fk\&kfgvf-gN9b&rN&}F%"LK&'@4C#s3Ljq/{vC[V|3%(`n)g9s-(m\T%RprRmVf
-
-```
-Para poder hacer una contraseña en la linea de comandos se puede hacer de la siguiente manera con *openssl*:
 ```
 
+Para poder hacer una contraseña en la linea de comandos se puede hacer de la siguiente manera con `openssl`:
+
+````bash
 ### Base64
 
 ```bash
 openssl rand -base64 NUMBER
-```
+````
 
 ### HEX
 
@@ -1717,6 +1726,7 @@ salida..
 ```
 
 openssl rand -base64 125
+
 77(c3b9b=39--d03=2f6b8d408398c-9af8233f....
 
 openssl rand -hex 8

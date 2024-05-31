@@ -103,7 +103,7 @@ METODO No.2 **HACER LA LLAVE SSH "ed25519"**
 - :link: [Comparison of the SSH Key Algorithms](https://medium.com/@nbeguier/a-real-world-comparison-of-the-ssh-key-algorithms-b26b0b31bfd9)
 
 ```bash
-ssh-keygen -o -a 256 -t ed25519 -f ~/.ssh/id_ed25519 -C "comentario_de_la_llave+your_john@example.com" #-> frase_de_la_llave
+ssh-keygen -o -a 512 -t ed25519 -f ~/.ssh/id_ed25519 -C "comentario_de_la_llave+your_john@example.com" #-> frase_de_la_llave
 ```
 
 Preguntara para hacer la frase de la contraseña.
