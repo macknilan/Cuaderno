@@ -1647,7 +1647,8 @@ sudo systemctl restart ssh
 # kill -HUP 681
 ```
 
-Ahora el inicio de sesión **root** del servidor está protegido y puede entrar intentando con SSH directamente como **root**, este servidor desde un sistema que no tiene sus claves compartidas y será expulsado automáticamente sin que se le solicite una contraseña de root.  
+Ahora el inicio de sesión **root** del servidor está protegido y puede entrar intentando con SSH directamente como **root**, este servidor desde un sistema que no tiene sus claves compartidas y será expulsado automáticamente sin que se le solicite una contraseña de root.
+
 A las llaves creadas se les cambian los permisos para que solo sean de solo lectura para **root** de muestro sistema de archivos  
 :link: <https://es.wikipedia.org/wiki/Chmod>
 
