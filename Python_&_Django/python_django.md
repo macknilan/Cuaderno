@@ -1402,12 +1402,11 @@ K=Hm*(=fwb"Kv'!\Fq/@%d%']RF?!]Vv.\_}9:qs^hrx@*JK:rzc-(\_Mj{qtfv`"N fk\&kfgvf-gN9
 
 Para poder hacer una contraseña en la linea de comandos se puede hacer de la siguiente manera con `openssl`:
 
-````bash
-### Base64
-
 ```bash
+# Base64
+
 openssl rand -base64 60
-````
+```
 
 👇
 
