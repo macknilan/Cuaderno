@@ -841,148 +841,21 @@ SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 ### Instalar REDIS
 
 - :link: :house: [Quickstart](https://redis.io/topics/quickstart)
-- :link: [Redis Django 4.0](https://docs.djangoproject.com/en/4.1/topics/cache/#redis)
+- :link: [Redis Django](https://docs.djangoproject.com/en/dev/topics/cache/#redis)
 - :link: [Redis Security](https://redis.io/topics/security)
-- :link: [How To Install and Secure Redis on Debian 9 DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-redis-on-debian-9#step-1-%E2%80%94-installing-and-configuring-redis)
+- :link: [How To Install and Secure Redis on Ubuntu 22.04](https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-redis-on-ubuntu-22-04)
 
-### Configurar redis en debian para que funcione de manera correcta en localhost y en producción en debian y ubuntu
-
-```bash
-sudo apt update
-sudo apt install redis-server
-```
-
-#### 1.- Se edita el archivo "redis.conf"
-
-```bash
-sudo vim /etc/redis/redis.conf
-```
-
-En el archivo, encuentra la directiva `supervised`. Actualmente, esto está establecido en **no**. Como estamos ejecutando un O.S. (Debian[Buster]) que usa el sistema **init(systemd)**, podemos cambiar esto a **systemd**
-
-```bash
-# "/etc/redis/redis.conf"
-# If you run Redis from upstart or systemd, Redis can interact with your
-# supervision tree. Options:
-# supervised no - no supervision interaction
-# supervised upstart - signal upstart by putting Redis into SIGSTOP mode
-# supervised systemd - signal systemd by writing READY=1 to $NOTIFY_SOCKET
-# supervised auto - detect upstart or systemd method based on
-# UPSTART_JOB or NOTIFY_SOCKET environment variables
-# Note: these supervision methods only signal "process is ready."
-# They do not enable continuous liveness pings back to your supervisor.
-supervised systemd
-```
-
-Para que los cambios tengan efecto se reincia el servicio
-
-```bash
-sudo systemctl restart redis
-```
-
-#### 1.- Comprobando REDIS
-
-```bash
-sudo systemctl status redis
-
-# SALIDA...
-● redis-server.service - Advanced key-value store
-   Loaded: loaded (/lib/systemd/system/redis-server.service; enabled; vendor preset: enabled)
-   Active: active (running) since Sat 2019-02-16 13:35:18 CST; 1h 16min ago
-     Docs: http://redis.io/documentation,
-           man:redis-server(1)
-  Process: 652 ExecStartPost=/bin/run-parts --verbose /etc/redis/redis-server.post-up.d (code=exited, status=0/SUCCESS)
-  Process: 603 ExecStart=/usr/bin/redis-server /etc/redis/redis.conf (code=exited, status=0/SUCCESS)
-  Process: 522 ExecStartPre=/bin/run-parts --verbose /etc/redis/redis-server.pre-up.d (code=exited, status=0/SUCCESS)
- Main PID: 651 (redis-server)
-    Tasks: 3 (limit: 4915)
-   Memory: 756.0K
-      CPU: 7.460s
-   CGroup: /system.slice/redis-server.service
-           └─651 /usr/bin/redis-server 127.0.0.1:6379
-
-Feb 16 13:35:17 mack systemd[1]: Starting Advanced key-value store...
-Feb 16 13:35:17 mack run-parts[522]: run-parts: executing /etc/redis/redis-server.pre-up.d/00_example
-Feb 16 13:35:18 mack run-parts[652]: run-parts: executing /etc/redis/redis-server.post-up.d/00_example
-Feb 16 13:35:18 mack systemd[1]: Started Advanced key-value store.
-```
-
-#### 2.- Comprobando su funcionamiento
-
-```bash
-redis-cli
-$ 127.0.0.1:6379> ping
-$ 127.0.0.1:6379> PONG
-$ 127.0.0.1:6379> set test "It's working!"
-$ 127.0.0.1:6379> OK
-$ 127.0.0.1:6379> get test
-$ 127.0.0.1:6379> "It's working!"
-$ 127.0.0.1:6379> exit
-```
-
-#### 3.- Redis Security
-
-Abrir el el archivo `redis.conf` para solo permitir conexiones de `localhost`
-
-```bash
-sudo vim /etc/redis/redis.conf
-```
-
-Localizar la linea y quitar `#`si se encuentra
-
-```bash
-bind 127.0.0.1
-```
-
-Guardar. cerrar y re-iniciar el servicio Redis
-
-```bash
-sudo systemctl restart redis
-```
-
-Para comprobar que se realizaron los cambios se tiene que revisar con el siguiente comando `netstat`
-
-```bash
-sudo netstat -lnp | grep redis
-#salida...
-
-tcp        0      0 127.0.0.1:6379          0.0.0.0:*               LISTEN      10959/redis-server
-```
-
-### 3.1 (**SEGURIDAD**) Configurar contraseña para acceder a redis
-
-Buscar en el archivo `/etc/redis/redis.conf`
-
-```bash
-# requirepass foobared
-```
-
-Descomentarlo y cambiarlo por:
-
-```bash
-requirepass [CONTRASEÑA]
-```
-
-**NOTA-1**
 Para poder hacer una contraseña en la linea de comandos se puede hacer de la siguiente manera:
 
 ```bash
 # Generate 32 bytes, base64 encode
 openssl rand -base64 32
-
 ```
 
-salida...
+👇
 
 ```bash
 AkxB9lmNkDc80ZEuGR4B0lhQPdhwvTlTv95sANXYMYM=
-```
-
-Para que quede de la siguiente manera
-
-```bash
-/etc/redis/redis.conf
-requirepass zi7pLVue2GpIS8ffGU1z/99+uEdVWm/5rAZ7Vl4K3NzFYDtZhjNzSV91BWWVs2BXfMzWgmUm+eru9h5P
 ```
 
 Con Openssl generar una contraseña SHA512
@@ -998,184 +871,59 @@ openssl passwd -6 -salt mack
 Password: <SECRIBE_LA_CONTRASEÑA>
 ```
 
-salida...
+👇
 
 ```bash
 $6$mack$o8RgiFIGx85x48u4pxx1RBfFHxc/C4bpVo.d7m/45gCXDe6zFk3OTNa9SYWkpSzONDkjS/WhH1pVhZ9oLSluR/
 ```
 
-Guardar. cerrar y re-iniciar el servicio Redis
-
-```bash
-sudo systemctl restart redis
-```
-
-**NOTA-2**:
 Para poder hacer una contraseña en la linea de comandos se puede hacer de la siguiente manera:
 
 ```bash
 echo "cualquer-texto" | sha512sum
 ```
 
-```bash
-echo "cualquer-texto" | sha512sum
-```
-
-salida..
+👇
 
 ```bash
 8898c46dfd4e3e3f35082bfa1dae27e9e2d9991785828478f05fba38a98dd8ab5dc503658620684ed6cfa7b7d43c6d322c9ff9568b9c0b3c164b35f5d5191380
 ```
 
-#### 4. Se crea el archivo para que el sistema systemd pueda administrarlo. Se creca el archivo y se edita con la siguiente
-
-```bash
-# vim /etc/systemd/system/redis.service
-```
-
-```bash
-# /etc/systemd/system/redis.service
-[Unit]
-Description=Redis In-Memory Data Store
-After=network.target
-
-[Service]
-User=redis
-Group=redis
-ExecStart=/usr/local/bin/redis-server /etc/redis/redis.conf
-ExecStop=/usr/local/bin/redis-cli shutdown
-Restart=always
-
-[Install]
-WantedBy=multi-user.target
-```
-
-Despues se tiene que **guardar** y **cerrar.**
-
-- En la seccion **[Unit]** se añade la descripción y la deficinón del requerimiento que la red va a estar disponible antes de iniciar el servicio.
-- En la sección **[Servicio]**, necesitamos especificar el comportamiento del servicio. Por razones de seguridad, no deberíamos ejecutar nuestro servicio como **root**. Deberíamos usar un usuario y un grupo dedicado, que llamaremos **redis** para simplificar. Que se creeara mas adelante.
-- Para iniciar el servicio, solo debemos llamar al binario `redis-server`, apuntando a nuestra configuración. Para detenerlo, podemos usar el comando Redis `shutdown`, que se puede ejecutar con el binario `redis-cli`. Además, dado que queremos que Redis se recupere de los fallos cuando sea posible, configuraremos la directiva de reinicio en `always`:
-- Finalmente en la sección **[Install]** definimos el objetivo del sistema `systemd` que deberia conectarse al servicio si esta habilitado(configurado para iniciar al arranque de la maquina)
-
-#### 5. Crear los direcorios, archivos de redis y usuarios y grupos
-
-Crear el **usuario** redis y **grupo** redis
-
-```bash
-# adduser --system --group --no-create-home redis
-```
-
-Se crea la carpeta `/var/lib`
-
-```bash
-#  mkdir /var/lib/redis
-```
-
-Se cambian el grupo y el usuario a quien pertence la carpeta y se cambian los permisos para restringir el acceso
-
-```bash
-# chown redis:redis /var/lib/redis
-# chmod 770 /var/lib/redis
-```
-
-#### 6.- Iniciar, parar, reiniciar el servicio creado
-
-```bash
-# systemctl start redis
-```
-
-```bash
-# systemctl status redis
-```
-
-```bash
-# systemctl stop redis
-```
-
-salida...
-
-```bash
-➜ ~ systemctl status redis
-● redis.service - Redis In-Memory Data Store
-  Loaded: loaded (/etc/systemd/system/redis.service; disabled; vendor preset: enabled)
-  Active: active (running) since Tue 2018-01-16 17:20:27 CST; 54min ago
- Main PID: 14706 (redis-server)
-  Tasks: 4 (limit: 4915)
-  Memory: 1.0M
-  CPU: 5.092s
-  CGroup: /system.slice/redis.service
-  └─14706 /usr/local/bin/redis-server 127.0.0.1:6379
-```
-
-#### 7. Hacer las pruebas para comprobar si funciona redis
-
-#### 8. Para hacer que el servicio se inicie al inicio
-
-```bash
-# systemctl enable redis
-```
-
-salida...
-
-```bash
-Created symlink from /etc/systemd/system/multi-user.target.wants/redis.service to /etc/systemd/system/redis.service.
-```
-
-### Instalar Redis cache backend for Django
-
-Para que funcione django con redis se tienen que instalar el paquete django-redis
-
-- :link: <https://github.com/niwinz/django-redis>
-- :link: <http://niwinz.github.io/django-redis/latest/>
-  Para que se hagan las configuraciones.  
-  En el (dentro) ambiente del trabajo del proyecto:
-
-```bash
-pip install django-redis
-```
-
-En el `settings.py` de queda de la iguiente manera:
-
-```bash
-""" CACHE """
-CACHES = {
-  "default": {
-  "BACKEND": "django_redis.cache.RedisCache",
-  "LOCATION": os.environ['CACHELOCATION'],
-  "OPTIONS": {
-       "CLIENT_CLASS": "django_redis.client.DefaultClient",
-       "PASSWORD": os.environ['CACHEPSWD'],
-       }
-  }
-}
-""" CACHE """
-```
-
 ## Templates
-
-🔗 [The template layer](https://docs.djangoproject.com/en/4.1/topics/cache/#redis)
 
 Configuración para que busque en todas las carpetas del proyecto la carpeta **templates**
 
-```bash
+```py
+# from pathlib import Path
+# # Build paths inside the project like this: BASE_DIR / 'subdir'.
+# BASE_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
+# APPS_DIR = BASE_DIR / "apps"
+
+# TEMPLATES
+# ------------------------------------------------------------------------------
+# https://docs.djangoproject.com/en/dev/ref/settings/#templates
 TEMPLATES = [
-  {
-       'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        # SE LE DICE A DJANGO QUE BUSQUE LA CARPETA templates
-       'DIRS': [os.path.join(os.path.dirname(__file__), 'templates'), ],
-        # SE LE DICE A DJANGO QUE EN CADA APP BUSQUE LA CARPETA templates
-       'APP_DIRS': True,
-       'OPTIONS': {
-       'context_processors': [
-            'django.template.context_processors.debug',
-            'django.template.context_processors.request',
-            'django.contrib.auth.context_processors.auth',
-            'django.contrib.messages.context_processors.messages',
-             # CUSTOM CONTEXT_PROCESSOR
-            'muebleria.context_processors.lista_link_muebles_relacionados',
+    {
+        # https://docs.djangoproject.com/en/dev/ref/settings/#std:setting-TEMPLATES-BACKEND
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        # https://docs.djangoproject.com/en/dev/ref/settings/#dirs
+        "DIRS": [str(APPS_DIR / "templates")],
+        # https://docs.djangoproject.com/en/dev/ref/settings/#app-dirs
+        "APP_DIRS": True,
+        "OPTIONS": {
+            # https://docs.djangoproject.com/en/dev/ref/templates/api/#using-requestcontext
+            "context_processors": [
+                "django.template.context_processors.debug",
+                "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                "django.template.context_processors.i18n",
+                "django.template.context_processors.media",
+                "django.template.context_processors.static",
+                "django.template.context_processors.tz",
+                "django.contrib.messages.context_processors.messages",
             ],
-       },
-  },
+        },
+    },
 ]
 ```
 
@@ -1183,60 +931,144 @@ TEMPLATES = [
 
 En el archivo `settings.py` va la siguiente configuración.
 
-```bash
-""" [STATIC & MEDIA FILES] """
+```py
+# STATIC
+# ------------------------------------------------------------------------------
+# https://docs.djangoproject.com/en/4.2/howto/static-files/
+# https://docs.djangoproject.com/en/dev/ref/settings/#static-root
+STATIC_ROOT = str(BASE_DIR / "staticfiles")
+# https://docs.djangoproject.com/en/dev/ref/settings/#static-url
+STATIC_URL = "/static/"
+# https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
+STATICFILES_DIRS = [str(APPS_DIR / "static")]
+# https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#staticfiles-finders
+STATICFILES_FINDERS = [
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+]
 
-STATIC_URL = '/static/'
-
-MEDIA_URL = '/media/'
-
-STATICFILES_DIRS = (
-  os.path.join(BASE_DIR, 'static'),
-)
-
-"""
-SE ANADE LA RUTA PARA STATIC Y MEDIA FILES AFUERA DE CARPETA DE PROYECTO EN CARPETA COLLECT_STATIC
-"""
-STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "COLLECT_STATIC", "static_root")
-MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "COLLECT_STATIC", "media_root")
-
-""" [STATIC & MEDIA FILES] """
+# MEDIA
+# ------------------------------------------------------------------------------
+# https://docs.djangoproject.com/en/dev/ref/settings/#media-root
+MEDIA_ROOT = str(APPS_DIR / "media")
+# https://docs.djangoproject.com/en/dev/ref/settings/#media-url
+MEDIA_URL = "/media/"
 ```
 
 En el `archivo url.py` que se encuentra al mismo nivel del archivo `settings.py`
 
-```bash
-if settings.DEBUG:
-  """
-  PARA SERVIR LOS ARCHIVOS ESTATICOS EN DESARROLLO
-  """
-  urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-  urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+```py
+urlpatterns = (
+    [
+        path(settings.ADMIN_URL, admin.site.urls),
+    ]
+    + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+)
 ```
 
 ## Administración de las contraseñas en Django
 
-- Se ocupa de preferencia **Argon2** :link: [Using Argon2 with Django](https://docs.djangoproject.com/en/2.0/topics/auth/passwords/#using-argon2-with-django)
+- Se ocupa de preferencia **Argon2** :link: [Using Argon2 with Django](https://docs.djangoproject.com/en/dev/topics/auth/passwords/#using-argon2-with-django)
 - Par apoder ocupar **Argon2** se tienen que instalar en el ambiente de del proyecto. :link: [pypi.org/project/argon2-cffi/](https://pypi.python.org/pypi/argon2_cffi/)
 
 ```bash
 pip install argon2-cffi
 ```
 
-```bash
-""" settings.py """
+```py
 PASSWORD_HASHERS = [
-    'django.contrib.auth.hashers.Argon2PasswordHasher',
-    'django.contrib.auth.hashers.PBKDF2PasswordHasher',
-    'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
-    'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
-    'django.contrib.auth.hashers.ScryptPasswordHasher',
+    "django.contrib.auth.hashers.Argon2PasswordHasher",
+    "django.contrib.auth.hashers.PBKDF2PasswordHasher",
+    "django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher",
+    "django.contrib.auth.hashers.BCryptSHA256PasswordHasher",
+    "django.contrib.auth.hashers.ScryptPasswordHasher",
 ]
 ```
 
 ## Manejando archivos en AWS S3
 
 ![Manejando archivos en AWS S3](img/manejo_de_tus_archivos_en_s3.jpg "Manejando archivos en AWS S3")
+
+### Instalar boto3 & django-storages
+
+> Boto3 es un **SDK** "Software Development Kid" de "Amazon Web Services" **AWS** para **python**, que permite a los usuarios escribir software para hacer uso de los servicios de **AWS S3 y EC2**
+
+- :link: - <http://boto3.readthedocs.io/en/latest/>
+- :link: - <https://github.com/boto/boto3>
+
+Estando dentro del ambiente virtual del proyecto
+
+```bash
+pip install boto3
+```
+
+> django-storages, es una colección de backends de almacenamiento personalizados para Django y boto3.
+
+- :link:- <https://django-storages.readthedocs.io/en/latest/>
+- :link:- <https://github.com/jschneier/django-storages>
+
+Estando dentro del ambiente virtual.
+
+```bash
+pip install django-storages
+```
+
+Se añade `storages` en el archivo **settings.py**
+
+```bash
+INSTALLED_APPS = (
+  ...
+  'storages',
+  ...
+)
+```
+
+```py
+# STORAGES
+# ------------------------------------------------------------------------------
+# https://django-storages.readthedocs.io/en/latest/#installation
+INSTALLED_APPS += ["storages"]
+# https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html#settings
+AWS_ACCESS_KEY_ID = env("DJANGO_AWS_ACCESS_KEY_ID")
+# https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html#settings
+AWS_SECRET_ACCESS_KEY = env("DJANGO_AWS_SECRET_ACCESS_KEY")
+# https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html#settings
+AWS_STORAGE_BUCKET_NAME = env("DJANGO_AWS_STORAGE_BUCKET_NAME")
+# https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html#settings
+AWS_QUERYSTRING_AUTH = False
+# DO NOT change these unless you know what you're doing.
+_AWS_EXPIRY = 60 * 60 * 24 * 7
+# https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html#settings
+AWS_S3_OBJECT_PARAMETERS = {
+    "CacheControl": f"max-age={_AWS_EXPIRY}, s-maxage={_AWS_EXPIRY}, must-revalidate",
+}
+# https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html#settings
+AWS_S3_MAX_MEMORY_SIZE = (env.int("DJANGO_AWS_S3_MAX_MEMORY_SIZE"),)  # 100MB
+# https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html#settings
+AWS_S3_REGION_NAME = env("DJANGO_AWS_S3_REGION_NAME")
+# https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html#cloudfront
+AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
+aws_s3_domain = AWS_S3_CUSTOM_DOMAIN or f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
+
+# STATIC & MEDIA
+# ------------------------
+STORAGES = {
+    "default": {
+        "BACKEND": "storages.backends.s3.S3Storage",
+        "OPTIONS": {
+            "location": "blog_sand_box/media",
+            "file_overwrite": False,
+            "default_acl": "public-read",
+        },
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"
+    },
+}
+MEDIA_URL = f"https://{aws_s3_domain}/media/"
+COLLECTFAST_STRATEGY = "collectfast.strategies.boto3.Boto3Strategy"
+```
 
 ## Instalar git
 
@@ -1399,130 +1231,29 @@ Para descargar/jalar el repositorio a nuestro vps, tiene que ser de la rama mast
 git pull origin master -> Piede el password del ssh
 ```
 
-## Instalar gunicorn, nginx, postgresql
+## Mardar a producción Django(Ubuntu 24.04) dokerizado con nginx y postgresl por medio de Nginx Proxy Manager y Portainer en DigitalOcean
 
-### Para instalar gunicorn :link: [gunicorn.org](http://gunicorn.org/)
+🚨 Tomando en cuenta el proyecto [Blog Sand Box](https://github.com/macknilan/blog_sand_box) :octocat: 🔗 👈
 
-> The gateway translates the request received from the web server so the application can handle it. The gateway is often responsible for logging and reporting as well. We will use Gunicorn as our Gateway for this tutorial.
+- [Portainer](https://docs.portainer.io/start/install-ce/server/docker/linux) 🔗
+- [Nginx Proxy Manager](https://nginxproxymanager.com/guide/) 🔗
 
-Dentro del ambiente virtual del proyecto.
+### Creacion de dominio y subdominios
 
-```bash
-pip install gunicorn
-```
+Se tienen que crear el dominios con el proveedor de dominios que se tenga, por ejemplo [Namecheap](https://www.namecheap.com/)
 
-### Para instalar nginx :link: [nginx.com](https://www.nginx.com/)
+Con [cloudflare](https://www.cloudflare.com/) se tiene que cambiar los DNS de nuestro dominio a los DNS de cloudflare.
 
-> nginx (pronunciado en inglés “engine X”) es un servidor web/proxy inverso ligero de alto rendimiento y un proxy para protocolos de correo electrónico (IMAP/POP3). <https://nginx.org/en/>
+Por ejemplo una lista de DNS en cloudflare se tiene que añadir los DNS para el proyecto y uso de Nginx Proxy Manager, Portainer y el dominio principal.
 
-> The web server receives an HTTP request from the client (the browser) and is usually responsible for load balancing, proxying requests to other processes, serving static files, caching and more. The web server usually interprets the request and sends it to the gateway.
+| Type | Name           |
+| ---- | -------------- |
+| A    | www            |
+| A    | proxymanager   |
+| A    | portainer      |
+| A    | my-domain-name |
 
-```bash
-sudo apt-get install nginx
-```
-
-### Instalar PostgreSql :link: <https://www.postgresql.org/>
-
-En debian 9  
-Añadir en el archivo `/etc/apt/sources.list`
-
-```bash
-deb http://apt.postgresql.org/pub/repos/apt/ stretch-pgdg main
-```
-
-Importar la key
-
-```bash
-# wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
-```
-
-Para que quede de la siguiente mandera:
-
-```bash
-# PostgreSQL
-deb http://apt.postgresql.org/pub/repos/apt/ stretch-pgdg main
-# wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
-```
-
-```bash
-# apt-get install postgresql postgresql-client postgresql-contrib libpq-dev
-```
-
-### Instalar boto3 & django-storages
-
-> Boto3 es un **SDK** "Software Development Kid" de "Amazon Web Services" **AWS** para **python**, que permite a los usuarios escribir software para hacer uso de los servicios de **AWS S3 y EC2**
-
-- :link: - <http://boto3.readthedocs.io/en/latest/>
-- :link: - <https://github.com/boto/boto3>
-
-Estando dentro del ambiente virtual del proyecto
-
-```bash
-pip install boto3
-```
-
-> django-storages, es una colección de backends de almacenamiento personalizados para Django y boto3.
-
-- :link:- <https://django-storages.readthedocs.io/en/latest/>
-- :link:- <https://github.com/jschneier/django-storages>
-
-Estando dentro del ambiente virtual.
-
-```bash
-pip install django-storages
-```
-
-Se añade `storages` en el archivo **settings.py**
-
-```bash
-INSTALLED_APPS = (
-  ...
-  'storages',
-  ...
-)
-```
-
-## Usar diferentes archivos **settings**, para poder trabajar con diferentes ambientes
-
-ejemplo:
-
-```bash
-settings/
-     __init__.py
-     base.py
-     local_audreyr.py
-     local_pydanny.py
-     local.py
-     staging.py
-     test.py
-     production.py
-```
-
-ejemplo:
-
-```bash
-[PROYECTO]
-├── OLD_settings.py
-├── settings
-│   ├── base.py
-│   ├── dev.py
-│   ├── __init__.pyc
-│   └── prod.py
-├── urls.py
-└── wsgi.py
-```
-
-Para ejecutar los diferentes tipos de ambientes se hace de la siguiente manera
-
-```bash
-./manage.py runserver --settings=<NOMBRE_DEL_PROYECTO>.settings.<NOMBRE_DEL_ARCHIVO_QUE_ESTAMOS_CORRIENDO>
-```
-
-```bash
-./manage.py runserver --settings=NOMBRE_DEL_PROYECTO.settings.prod
-```
-
-## Crear un "droplet" en digitalocean
+### Crear un "droplet" en digitalocean
 
 - Antes de crear el droplet se tiene que crear la llave `ssh`
 
@@ -1556,40 +1287,19 @@ The key's randomart image is:
 
 ```
 
-Ya que se tiene la llave creada se tiene en entrar al panel de control, y abrir la página [SHH Page](https://cloud.digitalocean.com/settings/security) y seleccionar el boton de **Create a New SSH Key**  
-![SSH Keys](img/add_key_00.png "SSH Keys")
-
-- Para la sección etiquetada como **Nombre**, escriba el nombre de la máquina en la que creó el par de claves (por ejemplo, **Computadora personal**).
-- Para la sección etiquetada **clave SSH pública**, copie y pegue la clave pública que creó en el paso anterior.
-- Generalmente puede obtener esta clave copiando los resultados de:
-
-- Se copia la llave a `xxxxxxxx_xxxxxxx_xxxxx_xxxxx.pub` **digitalocean**.
+- Se copia la llave a `xxxxxxxx_xxxxxxx_xxxxx_xxxxx.pub` **digitalocean** cuando se crea el droplet como método de autenticación.
 
 ```bash
 cat ~.ssh/xxxxxxxx_xxxxxxx_xxxxx_xxxxx.pub
 ```
 
-![SSH Keys](img/key_added_01.png "SSH Keys")
-
-- Para agregar llaves adicionales a **droplets** preexistentes, puede pegar las claves usando SSH:
-
-```bash
-cat ~/.ssh/<NAME-FOR-THE-KEY>.pub | ssh root@[LA_IP_DE_EL_DROPLET] "cat >> ~/.ssh/authorized_keys"
-```
+- [How to Connect to your Droplet with OpenSSH](https://docs.digitalocean.com/products/droplets/how-to/connect-with-ssh/openssh/) 🔗
 
 Finalizado la creacion de la maquina **droplet**, copiar la IP publica de la maquina creada y conectarse a la maquina creada con el siguiente comando en conjunto con la llave creada localmente anteriormente.
 
 ```bash
 ssh -i ~/.ssh/<NAME-FOR-THE-KEY> root@[IP-PUBLICA-MAQUINA]
 ```
-
-Para subir la llave publica a la VM en caso de ser necesario.
-
-```bash
-ssh-copy-id -i ~/path/to/<NAME-FOR-THE-KEY>.pub root@[IP-PUBLICA-MAQUINA]
-```
-
-👇
 
 ```bash
 The authenticity of host '203.0.000.0 (203.0.000.0)' can't be established.
@@ -1600,28 +1310,11 @@ Are you sure you want to continue connecting (yes/no)? yes
 username@203.0.000.0's password:
 ```
 
-Cuando se escribe la contraseña se confirma la adicion de la llave.
-
-```bash
-Number of key(s) added: 1
-
-Now try logging in to the machine, with:   "ssh 'username@[IP-PUBLICA-MAQUINA]'"
-and check to make sure that only the key(s) you wanted were added.
-```
-
-Despues de que se haya añadido la llave se puede entrar a la maquina sin necesidad de escribir la contraseña.
-
-Si se presenta el caso el nuevo **droplet** posiblemente tiene la misma IP que la anterior eliminada (destruida) pero una llave SHH diferente, Se puede eliminar el mensaje de **advertencia** eliminando la anterior llave SHH del sistema con este COMANDO.
-
-```bash
-ssh-kengen -T [IP_DE_LA MAQUINA_DROPLET]
-```
-
-- DESHABILITAR EL ACCESO MEDIANTE CON CONTRASEÑA ROOT
+- Deshabilitar el acceso mediante con contraseña root
 
 1. Por seguridad es mejor solo entrar al servidor con las llaves y no ocupar ninguna contraseña escrita.
-2. Es necesario editar las configuraciones SSHd del servidor en la ruta -> /etc/ssh/sshd_config
-3. Editarlo con "vim" en la linea donde se encuentre "PermitRootLogin" para que se vea como sigue:
+2. Es necesario editar las configuraciones SSHd del servidor en la ruta -> `/etc/ssh/sshd_config`
+3. Editarlo con "vim" en la linea donde se encuentre `PermitRootLogin` para que se vea como sigue:
 
 ```bash
 ...
@@ -1633,7 +1326,7 @@ PasswordAuthentication no
 ...
 ```
 
-Después es necesario reiniciar el **droplet** o reiniciar el servicio **sshd** de la siguiente manera
+Después es necesario reiniciar la VM o reiniciar el servicio **sshd** de la siguiente manera
 
 ```bash
 # ps auxw | grep ssh
@@ -1669,7 +1362,7 @@ A las llaves creadas se les cambian los permisos para que solo sean de solo lect
 chmod [DIGITIGO-DUEÑO][DIGITO-GRUPO][DIGITO-RESTO] <ARCHIVO>
 ```
 
-## Crear usuarios en el servidor de producción
+### Crear usuarios en el servidor de producción
 
 **NOTA**:
 Para poder hacer una contraseña en la linea de comandos se puede hacer de la siguiente manera con `_sha512sum_`:
@@ -1713,8 +1406,14 @@ Para poder hacer una contraseña en la linea de comandos se puede hacer de la si
 ### Base64
 
 ```bash
-openssl rand -base64 NUMBER
+openssl rand -base64 60
 ````
+
+👇
+
+```bash
+7nQO7dSOMDYk+H6fbtWO8AR1hr0cv0SUbh1NnnKLrlgfiDOqQWkmaKP4rY2BRAuf
+```
 
 ### HEX
 
@@ -1722,65 +1421,139 @@ openssl rand -base64 NUMBER
 openssl rand -hex NUMBER
 ```
 
+👇
+
 ```bash
-salida..
+e57951687696e53005ee4ca76994e88b47fa3b0b8341b6f43e1d81227655c6df721f5f008695c8f6c59185fd160db51dee68
 ```
 
+```bash
 openssl rand -base64 125
-
-77(c3b9b=39--d03=2f6b8d408398c-9af8233f....
-
-openssl rand -hex 8
-feedfacedeadbeef
-
-````
-1. Se crea un usuario nuevo
-```bash
-# adduser [NOMBRE_DE_USUARIO]
-````
-
-salida..
-
-```bash
-# adduser [NOMBRE_DE_USUARIO]
-Adding user `NOMBRE_DE_USUARIO' ...
-Adding new group `NOMBRE_DE_USUARIO' (1000) ...
-Adding new user `NOMBRE_DE_USUARIO' (1000) with group `NOMBRE_DE_USUARIO' ...
-Creating home directory `/home/prueba1' ...
-Copying files from `/etc/skel' ...
-Enter new UNIX password:
-Retype new UNIX password:
-passwd: password updated successfully
-Changing the user information for prueba1
-Enter the new value, or press ENTER for the default
-Full Name []:
-Room Number []:
-Work Phone []:
-Home Phone []:
-Other []:
-Is the information correct? [Y/n] y
 ```
 
-Para eliminar el usuario
+👇
 
 ```bash
-# deluser [NOMBRE_DE_USUARIO]
+McUZ4TI+NqTIcFRMIQHij5n9Rw4DIOPuZcb43JxVFUKR35s/6AsMCzYWi185ShMB
+LIgnCZDGJ8lcDN3zposeExDBFBL/Y9DxpHESUP7SoxbRpHD7abd4rKUMjQPzHChM
+FRz+h5VI+uymbHEkXpWx0W2uMz+A+L2uMttIYEc=
 ```
-
-Posterior se tiene que eliminar de la carpeta `/home/` la carpeta con el nombre del usuario `[NOMBRE_DEL_USUARIO]`
-
-2. Se tiene que añadir el usuario al grupo **sudo**
 
 ```bash
-# usermod -aG sudo [NOMBRE_DE_USUARIO]
+openssl rand -hex 50
 ```
 
-> -G, --groups -> Al grupo al que se añadirá.  
-> -a, --append -> Añadir el usuario al grupo suplementario y solo se usa con "-G"
+👇
 
-[Guide to **adduser** - **useradd**](https://www.tecmint.com/add-users-in-linux/)
+```bash
+94af9853533a50422970448e4a7ce7c5d8a23bd2d0629f0f4f52f003af0501554ed6345fd75efb345d744afb97109e52dba1
+```
 
-3. Instalar un **FireWall** -> UFW (Uncomplicated Firewall)
+#### Se crea un usuario nuevo
+
+```bash
+sudo adduser [NEW-USER]  👈
+#
+sudo adduser --full_name "John Doe" --home /home/johndoe --shell /bin/bash new_username
+```
+
+Se agrega el nuevo usuario a grupo `sudo`
+
+```bash
+sudo usermod -aG sudo [NEW-USER]
+
+# -G, --groups -> Al grupo al que se añadirá.
+# -a, --append -> Añadir el usuario al grupo suplementario y solo se usa con "-G"
+```
+
+#### Copiar la key ssh del usuario `root` al usuario creado
+
+Para entrar por medio de `SHH` de la llave que esta creada en `root` al usuario creado, es necesario copiar las llaves publicas al nuevo usuario creado, dentro de la VM y dentro del usuario `root` se ejecuta el comando:
+
+```bash
+rsync --archive --chown=[NEW-USER]:[NEW-USER] ~/.ssh /home/[NEW-USER]
+
+# `--archive`, archive mode, equivalent to `-rlptgoD`.
+# This option tells `rsync` to syncs directories recursively, transfer special and block devices, preserve symbolic links, modification times, groups, ownership, and permissions.
+```
+
+🚨 Para comrpobar que se puede acceder con el usuario `[NEW-USER]` salir de VM y entrar con las llave de cuando se creo ls VM
+
+```bash
+ssh -i ~/.ssh/<NAME-FOR-THE-KEY> [NEW-USER]@[IP-PUBLICA-MAQUINA]
+```
+
+### Instalar Docker 🐋 y Docker compose en la VM
+
+Preferentemente instalar Docker con el usuario creado [NEW-USER] con los permisos de `sudo`
+
+```bash
+sudo apt install curl gnupg ca-certificates
+```
+
+```bash
+# Add Docker's official GPG key:
+sudo apt update
+sudo apt install ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+# Add the repository to Apt sources:
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt update
+```
+
+Instalar la ultima version
+
+```bash
+sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
+
+Crear el grupo de Docker
+
+```bash
+sudo groupadd docker
+```
+
+Agregar el usario al grupo
+
+```bash
+sudo usermod -aG docker ${USER}
+```
+
+Re-iniciar para que los cambios tomem efecto
+
+Verificar la instalacion
+
+```bash
+docker run hello-world
+```
+
+Revisar el status del servivio de Docker
+
+```bash
+sudo systemctl status docker.service
+```
+
+### Instalar un **FireWall** -> UFW (Uncomplicated Firewall)
+
+Revisar si UFW esta instalado y el status
+
+```bash
+sudo ufw status verbose
+```
+
+Primero habilitar el puerto `22` para poder entrar por `SSH` para después habilitar UFW
+
+```bash
+sudo ufw enable
+```
+
+🚨 Los puertos que se van a habilitar son los siguientes 80, 443, 81, 5432
 
 Link extra -> [UFW Essentials: Common Firewall Rules and Commands](https://www.digitalocean.com/community/tutorials/ufw-essentials-common-firewall-rules-and-commands)
 
@@ -1868,7 +1641,7 @@ sudo ufw enable
 sudo ufw status verbose
 ```
 
-### Permitir otras conexiones
+#### Permitir otras conexiones
 
 #### HTTP—port 80
 
@@ -1996,7 +1769,7 @@ sudo ufw deny http
 sudo ufw deny from 15.15.15.51
 ```
 
-### Borrar/eliminar reglas, hay dos formas
+#### Borrar/eliminar reglas, hay dos formas
 
 Se pueden eliminar por "**el numero de la regla**" o por "**la regla actual**"
 
@@ -2040,5 +1813,265 @@ Si ya tiene las reglas de UFW configuradas pero decide que desea comenzar de nue
 ```bash
 sudo ufw reset
 ```
+
+### Nginx Proxy Manager [page](https://nginxproxymanager.com/guide/) 🔗 ↗️
+
+Para usar nginx proxy manager se tiene que crear el archivo `*.yml` en la VM en la ruta `/opt/` y crear la carpeta `nginxproxymanager` con [NEW-USER] no `root`
+
+```bash
+cd /opt/
+#
+sudo mkdir nginxproxymanager
+#
+cd nginxproxymanager
+```
+
+Crear el archivo `docker-compose.yml`
+
+```bash
+sudo vim docker-compose.yml
+```
+
+Con la siguiente configuracion
+
+```bash
+version: "3.9"
+services:
+  app:
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: unless-stopped
+    ports:
+      - '80:80'
+      - '81:81'
+      - '443:443'
+    volumes:
+      - ./data:/data
+      - ./letsencrypt:/etc/letsencrypt
+
+networks:
+    default:
+        name: reverse_proxy_net
+        external: true
+```
+
+Para la configuración de nginx proxy manager se crea el archivo anterior y se tiene que crear la red `reverse_proxy_net` en la VM por medio de docker
+
+```bash
+docker network create reverse_proxy_net
+```
+
+Revisar que la red este creada
+
+```bash
+docker network ls
+# 👇
+NETWORK ID     NAME                DRIVER    SCOPE
+...
+XXXXXXXXXXXX   reverse_proxy_net   bridge    local
+```
+
+En la ruta del archivo `/opt/nginxproxymanager` ejecutar docker compose para crear el contenedor y revisar si la configuracion esta creada adecuadamente
+
+```bash
+docker compose up -d
+# 👇
+docker compose ps
+# 👇
+NAME                      IMAGE                             COMMAND   SERVICE   CREATED          STATUS          PORTS
+nginxproxymanager-app-1   jc21/nginx-proxy-manager:latest   "/init"   app       18 seconds ago   Up 17 seconds   0.0.0.0:80-81->80-81/tcp, :::80-81->80-81/tcp, 0.0.0.0:443->443/tcp, :::443->443/tcp
+
+```
+
+Para comprobar que el servicio se este ejecutando correctamente de nginx proxy manager con la IP de VM en el browser y el puerto `81`
+
+```bash
+[IP-PUBLICA-MAQUINA]:81
+```
+
+![Nginx Proxy Manager](img/nginx_proxy_manager_00.png "Nginx Proxy Manager")
+
+Se debe de mostrar UI con la opcion de ingresar usuario y contraseña que por defecto son 👇 para despues seguir el procedimiento que indica para cambiar por otras seguras.
+
+```bash
+Email:    admin@example.com
+Password: changeme
+```
+
+### Portainer [page](https://docs.portainer.io/start/install-ce/server/docker/linux) 🔗 ↗️
+
+- [Portainer Github](https://github.com/portainer/portainer)
+- [Portainer Docs](https://docs.portainer.io/start/install-ce/server/docker/linux)
+
+Para configurar **Portainer Community Edition (CE)** que es como Docker Desktop pero que funciona desde un contenedor y se instala en el VM para manegar los contenedores desde el VM de madera mas eficiente y no desde CLI
+
+Primero se tiene que crear un volumen en la VM para el uso de portainer
+
+```bash
+docker volume create portainer_data
+```
+
+Descargar he instalar portainer usando Docker/container usando la misma red creada con Docker la que tambien es usada por Nginx Proxy Manager
+
+```bash
+docker run -d -p 8000:8000 --network=reverse_proxy_net --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
+```
+
+- `docker run`: This is the core command that instructs Docker to create and run a new container.
+- `-d`: This flag tells Docker to run the container in detached mode. In simpler terms, the container will run in the background without attaching to the terminal.
+- `-p 8000:8000`: This flag maps the container's port `8000` to the host machine's port `8000`. This allows you to access the Portainer web interface by visiting <http://localhost:8000> in your web browser.
+- `--network=reverse_proxy_net`: This option specifies that the container should join a network named `reverse_proxy_net`. This network likely exists for communication between containers in your environment (assuming you have one set up).
+- `--name portainer`: This flag assigns the name "portainer" to the container, making it easier to identify and manage.
+- `--restart=always`: This option ensures that the Portainer container automatically restarts in case it crashes or the system reboots.
+- `-v /var/run/docker.sock:/var/run/docker.sock`: This flag mounts the Docker socket on the host machine (/var/run/docker.sock) to the same location within the container (/var/run/docker.sock). This allows Portainer to access and manage Docker on the host machine.
+- `-v portainer_data:/data`: This flag creates a volume named `portainer_data` and mounts it to the `/data` directory inside the container. This volume will persist data between container restarts, ensuring your Portainer configuration and settings are preserved.
+- `portainer/portainer-ce:latest`: This specifies the image to use for the container. In this case, it's the official Portainer Community Edition image with the "latest" tag.
+
+Confirmar que los dos contenedores Nginx Proxy Manager y Portainer
+
+```bash
+docker ps
+
+# 👇
+
+CONTAINER ID   IMAGE                             COMMAND        CREATED              STATUS              PORTS                                                                                  NAMES
+XXXXXXXXXXXX   portainer/portainer-ce:latest     "/portainer"   About a minute ago   Up About a minute   9000/tcp, 0.0.0.0:8000->8000/tcp, :::8000->8000/tcp, 9443/tcp                          portainer
+XXXXXXXXXXXX   jc21/nginx-proxy-manager:latest   "/init"        3 hours ago          Up 3 hours          0.0.0.0:80-81->80-81/tcp, :::80-81->80-81/tcp, 0.0.0.0:443->443/tcp, :::443->443/tcp   nginxproxymanager-app-1
+```
+
+Se puede revisar/verificar que los dos contenedores estan utilizando la misma red en la VM `reverse_proxy_net`
+
+```bash
+docker network inspect reverse_proxy_net
+```
+
+Exponer la UI de Portainer como reverse proxy en la VM con la IP de la VM y el puerto `81` ejecutando se `[IP-PUBLICA-MAQUINA]:81` (nginx-proxy-manager)
+
+Se tiene que agregar un `Host`. En la UI `Host -> Proxy Host -> Add Proxy Host`
+
+![Nginx Proxy Manager Portainer](img/npm_portainer_00.png "Nginx Proxy Manager Portainer")
+`
+
+- En la pestaña `Details` en el campo `Domain Names` se agrega el sub-dominio creado para usarse para portainer `[NOMBRE-SUB_DOMINIO].[NOMBRE-DOMINIO].host`
+
+  - En el campo `Forward Hostname / IP` se agrega el nombre del sub-dominio `portainer` <-- es el nombre del contenedor mostrado en `docker ps` anteriormente.
+  - En el campo `Forward Port` se setea el puerto `9000`
+  - Se activa la opción `Block Common Exploits`
+
+- En la pestaña `SSL`
+  - En el campo `SSL Certificate` se selecciona la opción `Request a new SSL Certificate`
+  - Se activa la opción `Force SSL`
+  - Se activa la opción `HTTP/2 Support`
+  - Se activa la opción `I Agree to the Let's Encrypt Terms of Service`
+
+Se guardan cambios **Save** para que se cree el certificado **SSL**
+
+![Nginx Proxy Manager Portainer](img/npm_portainer_01.png "Nginx Proxy Manager Portainer")
+
+En la ruta de la UI `Host -> Proxy Host -> Add Proxy Host` click en el proxi host que tiene el dominio `[NOMBRE-SUB_DOMINIO].[NOMBRE-DOMINIO].host` para que aparesca la ventana de inicio/configuración de portainer para crear el usuario administrador con con usuario y contraseña fuertes.
+
+Si no se muestra, se ejecuta el comando para reiniciar el comando portainer
+
+```bash
+docker restart portainer
+```
+
+![Nginx Proxy Manager Portainer](img/npm_portainer_02.png "Nginx Proxy Manager Portainer")
+
+Cuando se crea el nuevo usuario y la contraseña ejecutar en caso de ser necesario al comando anterior para entrar al dashboard de portainer
+
+![Nginx Proxy Manager Portainer](img/npm_portainer_03.png "Nginx Proxy Manager Portainer")
+
+Para mostrar una pantalla de Portainer en el dominio `[NOMBRE-SUB_DOMINIO].[NOMBRE-DOMINIO].host` 👇
+
+![Nginx Proxy Manager Portainer](img/npm_portainer_04.png "Nginx Proxy Manager Portainer")
+
+### Subir el proyecto de Django a la VM
+
+En el usuario creado anteriormente [NEW-USER] se tiene que crear una carpeta para el proyecto de Django `app`
+
+```bash
+/home/[NEW-USER]/app
+```
+
+Dentro de la carpeta `app` se tiene que clonar el repositorio de github de la rama `main` con el comando
+
+```bash
+git clone [REPOSITORIO HTTPS o SSH] . # -> el punto es para que se clone en la carpeta actual
+```
+
+**Todoos** los archivos del repositorio se tienen que mover a la carpeta `app` y se tiene que crear un archivo `.env` para _produccion_
+
+Una vez que se encuentre en la carpeta `app` el proyecto y con las variables de entorno para **producción** se tiene que ejecutar el siguiente comando para crear el contenedor de Docker
+
+```bash
+docker compose -f production.yml up --build -d --remove-orphans
+```
+
+Los siguientes son algunos comandos utiles para el manejo de los contenedores de Docker en el proyecto de Django
+
+```bash
+docker compose -f production.yml exec django python manage.py makemigrations
+#
+docker compose -f production.yml exec django python manage.py migrate
+#
+docker compose -f production.yml exec django python manage.py createsuperuser
+#
+docker compose -f production.yml exec django python manage.py collectstatic
+#
+```
+
+Cuando se ejecuta el comando `build` de docker anterior en Portainer se tienen que mostrar los contenedores relacionados con el proyecto de Django junto con el contenedor de Nginx Proxy Manager y Portainer
+
+![Nginx Proxy Manager Portainer](img/npm_portainer_05.png "Nginx Proxy Manager Portainer")
+
+### Configuración en Nginx Proxy Manager de los dominios para el proyecto de Django
+
+1. Agregar en "Nginx Proxy Manager" `[IP-PUBLICA-MAQUINA]:81` la un nuevo _host_, en la pestaña de `Hosts -> Proxy Hosts` del lado derecho agregar con el boton `Add Proxy Host`
+2. Em la pestaña `Details`
+   1. En el campo `Domain Names` se agrega el nombre del dominio `[NOMBRE-SUB_DOMINIO].[NOMBRE-DOMINIO].host` seguido tambien con el sub-dominio `www.[NOMBRE-SUB_DOMINIO].[NOMBRE-DOMINIO].host`
+   2. En el campo `Forward Hostname / IP` se ingresa el nombre del servicio con el que se esta ejecutando en el archivo `production.yml` en el que ese esta ejecutando django.
+   3. En el campo `Forward Port` se eingresa el puerto que esta declarado en el archivo `docker -> production -> django -> start`
+   4. Se activa la opción `Block Common Exploits`
+3. En la pestaña `Custtom Locations`
+   1. Se agregan lo que se establecio en el archivo `docker/local/nginx/default.conf` en cada uno de los campos `Define location`
+      - `home/root` se agrega `/` en el campo `Define location`, en `Forward Hostname / IP` se escribe el nombre que esta declarado en el archivo `docker/local/nginx/default.conf` en `location` dentro de la seccion de `server` y en el campo `Forward Port` se eingresa el puerto que esta declarado en el archivo `docker -> production -> django -> start`
+      - Se agrega `/admin` en el campo `Define location`, en `Forward Hostname / IP` se escribe el nombre que esta declarado en el archivo `docker/local/nginx/default.conf` en `location` dentro de la seccion de `server` y en el campo `Forward Port` se eingresa el puerto que esta declarado en el archivo `docker -> production -> django -> start`
+      - Se agrega `/staticfiles` en el campo `Define location`, en `Forward Hostname / IP` se escribe el nombre que esta declarado en el archivo `docker/local/nginx/default.conf` en `location` dentro de la seccion de `server` y en el campo `Forward Port` se eingresa el puerto que esta declarado en el archivo `docker -> production -> django -> start`
+      - Se agrega `/mediafiles` en el campo `Define location`, en `Forward Hostname / IP` se escribe el nombre que esta declarado en el archivo `docker/local/nginx/default.conf` en `location` dentro de la seccion de `server` y en el campo `Forward Port` se eingresa el puerto que esta declarado en el archivo `docker -> production -> django -> start`r
+4. En la pestaña `SSL`
+   - En el campo `SSL Certificate` se selecciona `Request a new SSL Certificate`
+   - Se activa `Force SSL`
+   - Se activa `HTTP/2 Support`
+   - Se activa `I Agree to the...`
+5. `Save` 👇
+
+![Nginx Proxy Manager Portainer](img/npm_portainer_06.png "Nginx Proxy Manager Portainer")
+
+Cuando se acabe de generar el certificado SSL se muestra algo paraceido a la siguiente imagen
+
+![Nginx Proxy Manager Portainer](img/npm_portainer_07.png "Nginx Proxy Manager Portainer")
+
+### Habilitar Nginx Prixy Manager UI sobre `https`
+
+1. En la ruta `Host -> Proxy Host` se selecciona `Add Proxy Host`
+   - En la pestaña `Details` en el campo `Domain Names` se agrega dominio previamente creado de tipo "A" que puede ser `proxymanager.<NOMBRE-DOMINIO>`
+     - En la misma pestaña en el campo `Forward Hostname / IP` se escribe la IP de la VM
+     - El en el campo `Forward Port` es el puerto `81`
+     - La opción `Block Common Exploits` se activa
+   - En la pestaña `SSL`
+     - La op. `SSL Certificate` se selecciona `Request a new SSL Certificate`
+     - La opción `Force SSL` se activa
+     - La opción `HTTP/2 Support` se activa
+     - En la opción `Email Address for Let's Encrypt` se escribe el correo electronico
+     - Se activa la opción `I Agree to the Let's Encrypt Terms of Service`
+   - Se guarda al configuración con el boton `Save`
+
+👇
+
+![Nginx Proxy Manager Portainer](img/npm_portainer_08.png "Nginx Proxy Manager Portainer")
+
+Dependiendo de la cantidad de contenedores/servicios que se ocupen en el proyecto de Django se tiene que agregar un nuevo _host_ en Nginx Proxy Manager para cada uno de los servicios que se ocupen en el proyecto de Django
+
+![Nginx Proxy Manager Portainer](img/npm_portainer_09.png "Nginx Proxy Manager Portainer")
 
 [[Volver al inicio]](#INDEX)
