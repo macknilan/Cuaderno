@@ -1,0 +1,4 @@
+try:
+    something
+except:
+    pass
