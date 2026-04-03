@@ -2333,1072 +2333,1217 @@ How to Cut in Vim
 
 ##### Switching Modes
 
-    Enter insert mode (before cursor)
-    ```shell
-    i
-    ```
+Enter insert mode (before cursor)
 
-    Enter insert mode (after cursor)
-    ```shell
-    a
-    ```
+```shell
+i
+```
 
-    Enter insert mode (beginning of line)
-    ```shell
-    I
-    ```
+Enter insert mode (after cursor)
 
-    Enter insert mode (end of line)
-    ```shell
-    A
-    ```
+```shell
+a
+```
 
-    Enter insert mode (new line below)
-    ```shell
-    o
-    ```
+Enter insert mode (beginning of line)
 
-    Enter insert mode (new line above)
-    ```shell
-    O
-    ```
+```shell
+I
+```
 
-    Return to normal mode
-    ```shell
-    ESC
-    ```
+Enter insert mode (end of line)
 
-    Enter command mode
-    ```shell
-    :
-    ```
+```shell
+A
+```
 
-    Enter visual mode (character selection)
-    ```shell
-    v
-    ```
+Enter insert mode (new line below)
 
-    Enter visual line mode (line selection)
-    ```shell
-    V
-    ```
+```shell
+o
+```
 
-    Enter visual block mode (column selection)
-    ```shell
-    Ctrl+v
-    ```
+Enter insert mode (new line above)
+
+```shell
+O
+```
+
+Return to normal mode
+
+```shell
+ESC
+```
+
+Enter command mode
+
+```shell
+:
+```
+
+Enter visual mode (character selection)
+
+```shell
+v
+```
+
+Enter visual line mode (line selection)
+
+```shell
+V
+```
+
+Enter visual block mode (column selection)
+
+```shell
+Ctrl+v
+```
 
 #### Navigation
 
 ##### Basic Movement
 
-    Move left
-    ```shell
-    h
-    ```
+Move left
 
-    Move down
-    ```shell
-    j
-    ```
+```shell
+h
+```
 
-    Move up
-    ```shell
-    k
-    ```
+Move down
 
-    Move right
-    ```shell
-    l
-    ```
+```shell
+j
+```
 
-    Move to beginning of line
-    ```shell
-    0
-    ```
+Move up
 
-    Move to first non-blank character
-    ```shell
-    ^
-    ```
+```shell
+k
+```
 
-    Move to end of line
-    ```shell
-    $
-    ```
+Move right
 
-    Move forward one word
-    ```shell
-    w
-    ```
+```shell
+l
+```
 
-    Move backward one word
-    ```shell
-    b
-    ```
+Move to beginning of line
 
-    Move to end of word
-    ```shell
-    e
-    ```
+```shell
+0
+```
 
-    Move to beginning of file
-    ```shell
-    gg
-    ```
+Move to first non-blank character
 
-    Move to end of file
-    ```shell
-    G
-    ```
+```shell
+^
+```
 
-    Move to line number (e.g., line 50)
-    ```shell
-    :50 or 5
-    ```0G
+Move to end of line
 
-    Move to matching bracket/parenthesis
-    ```shell
-    %
-    ```
+```shell
+$
+```
+
+Move forward one word
+
+```shell
+w
+```
+
+Move backward one word
+
+```shell
+b
+```
+
+Move to end of word
+
+```shell
+e
+```
+
+Move to beginning of file
+
+```shell
+gg
+```
+
+Move to end of file
+
+```shell
+G
+```
+
+Move to line number (e.g., line 50)
+
+````shell
+:50 or 5
+```0G
+
+Move to matching bracket/parenthesis
+```shell
+%
+````
 
 ##### Screen Navigation
 
-    Move to top of screen
-    ```shell
-    H
-    ```
+Move to top of screen
 
-    Move to middle of screen
-    ```shell
-    M
-    ```
+```shell
+H
+```
 
-    Move to bottom of screen
-    ```shell
-    L
-    ```
+Move to middle of screen
 
-    Scroll down half screen
-    ```shell
-    Ctrl+d
-    ```
+```shell
+M
+```
 
-    Scroll up half screen
-    ```shell
-    Ctrl+u
-    ```
+Move to bottom of screen
 
-    Scroll down full screen
-    ```shell
-    Ctrl+f
-    ```
+```shell
+L
+```
 
-    Scroll up full screen
-    ```shell
-    Ctrl+b
-    ```
+Scroll down half screen
 
-    Center screen on cursor
-    ```shell
-    zz
-    ```
+```shell
+Ctrl+d
+```
 
-    Move screen so cursor is at top
-    ```shell
-    zt
-    ```
+Scroll up half screen
 
-    Move screen so cursor is at bottom
-    ```shell
-    zb
-    ```
+```shell
+Ctrl+u
+```
+
+Scroll down full screen
+
+```shell
+Ctrl+f
+```
+
+Scroll up full screen
+
+```shell
+Ctrl+b
+```
+
+Center screen on cursor
+
+```shell
+zz
+```
+
+Move screen so cursor is at top
+
+```shell
+zt
+```
+
+Move screen so cursor is at bottom
+
+```shell
+zb
+```
 
 #### Editing
 
 ##### Delete
 
-    Delete character under cursor
-    ```shell
-    x
-    ```
+Delete character under cursor
 
-    Delete character before cursor
-    ```shell
-    X
-    ```
+```shell
+x
+```
 
-    Delete current line
-    ```shell
-    dd
-    ```
+Delete character before cursor
 
-    Delete from cursor to end of line
-    ```shell
-    D
-    ```
+```shell
+X
+```
 
-    Delete word
-    ```shell
-    dw
-    ```
+Delete current line
 
-    Delete to end of word
-    ```shell
-    de
-    ```
+```shell
+dd
+```
 
-    Delete to beginning of line
-    ```shell
-    d0
-    ```
+Delete from cursor to end of line
 
-    Delete inside word (cursor can be anywhere in word)
-    ```shell
-    diw
-    ```
+```shell
+D
+```
 
-    Delete inside parentheses
-    ```shell
-    di(  or
-    ``` di)
+Delete word
 
-    Delete inside quotes
-    ```shell
-    di"  or
-    ``` di'
+```shell
+dw
+```
 
-    Delete 5 lines
-    ```shell
-    5dd
-    ```
+Delete to end of word
+
+```shell
+de
+```
+
+Delete to beginning of line
+
+```shell
+d0
+```
+
+Delete inside word (cursor can be anywhere in word)
+
+```shell
+diw
+```
+
+Delete inside parentheses
+
+````shell
+di(  or
+``` di)
+
+Delete inside quotes
+```shell
+di"  or
+``` di'
+
+Delete 5 lines
+```shell
+5dd
+````
 
 ##### Copy (Yank)
 
-    Yank current line
-    ```shell
-    yy
-    ```
+Yank current line
 
-    Yank word
-    ```shell
-    yw
-    ```
+```shell
+yy
+```
 
-    Yank to end of line
-    ```shell
-    y$
-    ```
+Yank word
 
-    Yank 3 lines
-    ```shell
-    3yy
-    ```
+```shell
+yw
+```
 
-    Yank inside word
-    ```shell
-    yiw
-    ```
+Yank to end of line
 
-    Yank inside parentheses
-    ```shell
-    yi(
-        ```
+```shell
+y$
+```
 
-    Yank entire file
-    ```shell
-    :%y
-    ```
+Yank 3 lines
+
+```shell
+3yy
+```
+
+Yank inside word
+
+```shell
+yiw
+```
+
+Yank inside parentheses
+
+```shell
+yi(
+```
+
+Yank entire file
+
+```shell
+:%y
+```
 
 ##### Paste
 
-    Paste after cursor
-    ```shell
-    p
-    ```
+Paste after cursor
 
-    Paste before cursor
-    ```shell
-    P
-    ```
+```shell
+p
+```
+
+Paste before cursor
+
+```shell
+P
+```
 
 ##### Change
 
-    Change word
-    ```shell
-    cw
-    ```
+Change word
 
-    Change to end of line
-    ```shell
-    C
-    ```
+```shell
+cw
+```
 
-    Change entire line
-    ```shell
-    cc
-    ```
+Change to end of line
 
-    Change inside word
-    ```shell
-    ciw
-    ```
+```shell
+C
+```
 
-    Change inside parentheses
-    ```shell
-    ci(
-        ```
+Change entire line
 
-    Change inside quotes
-    ```shell
-    ci"
-    ```
+```shell
+cc
+```
+
+Change inside word
+
+```shell
+ciw
+```
+
+Change inside parentheses
+
+```shell
+ci(
+```
+
+Change inside quotes
+
+```shell
+ci"
+```
 
 ##### Undo/Redo
 
-    Undo
-    ```shell
-    u
-    ```
+Undo
 
-    Redo
-    ```shell
-    Ctrl+r
-    ```
+```shell
+u
+```
 
-    Undo all changes on line
-    ```shell
-    U
-    ```
+Redo
+
+```shell
+Ctrl+r
+```
+
+Undo all changes on line
+
+```shell
+U
+```
 
 ##### Replace
 
-    Replace single character
-    ```shell
-    r{char}
-    ```
+Replace single character
 
-    Enter replace mode
-    ```shell
-    R
-    ```
+```shell
+r{char}
+```
+
+Enter replace mode
+
+```shell
+R
+```
 
 #### Search and Replace
 
 ##### Search
 
-    Search forward
-    ```shell
-    /{patter
-    ```n}
+Search forward
 
-    Search backward
-    ```shell
-    ?{patter
-    ```n}
+````shell
+/{patter
+```n}
 
-    Next match
-    ```shell
-    n
-    ```
+Search backward
+```shell
+?{patter
+```n}
 
-    Previous match
-    ```shell
-    N
-    ```
+Next match
+```shell
+n
+````
 
-    Search for word under cursor (forward)
-    ```shell
-    *
-    ```
+Previous match
 
-    Search for word under cursor (backward)
-    ```shell
-    #
-    ```
+```shell
+N
+```
 
-    Clear search highlighting
-    ```shell
-    :noh
-    ```
+Search for word under cursor (forward)
+
+```shell
+*
+```
+
+Search for word under cursor (backward)
+
+```shell
+#
+```
+
+Clear search highlighting
+
+```shell
+:noh
+```
 
 ##### Replace
 
-    Replace first occurrence on current line
-    ```shell
-    :s/old/n
-    ```ew/
+Replace first occurrence on current line
 
-    Replace all occurrences on current line
-    ```shell
-    :s/old/n
-    ```ew/g
+````shell
+:s/old/n
+```ew/
 
-    Replace all occurrences in file
-    ```shell
-    :%s/old/
-    ```new/g
+Replace all occurrences on current line
+```shell
+:s/old/n
+```ew/g
 
-    Replace all occurrences with confirmation
-    ```shell
-    :%s/old/
-    ```new/gc
+Replace all occurrences in file
+```shell
+:%s/old/
+```new/g
 
-    Replace in visual selection
-    ```shell
-    :'<,'>s/
-    ```old/new/g
+Replace all occurrences with confirmation
+```shell
+:%s/old/
+```new/gc
 
-    Replace whole words only
-    ```shell
-    :%s/\<ol
-    ```d\>/new/g
+Replace in visual selection
+```shell
+:'<,'>s/
+```old/new/g
+
+Replace whole words only
+```shell
+:%s/\<ol
+```d\>/new/g
 
 #### File Operations
 
 ##### Saving and Quitting
 
-    Save file
-    ```shell
-    :w
-    ```
+Save file
+```shell
+:w
+````
 
-    Save and quit
-    ```shell
-    :wq  or
-    ``` :x  or  ZZ
+Save and quit
 
-    Quit without saving
-    ```shell
-    :q!  or
-    ``` ZQ
+````shell
+:wq  or
+``` :x  or  ZZ
 
-    Save as new filename
-    ```shell
-    :w newfi
-    ```le.txt
+Quit without saving
+```shell
+:q!  or
+``` ZQ
 
-    Save lines 10-20 to new file
-    ```shell
-    :10,20w
-    ```newfile.txt
+Save as new filename
+```shell
+:w newfi
+```le.txt
 
-    Force write (override read-only)
-    ```shell
-    :w!
-    ```
+Save lines 10-20 to new file
+```shell
+:10,20w
+```newfile.txt
+
+Force write (override read-only)
+```shell
+:w!
+````
 
 ##### File Management
 
-    Edit new file
-    ```shell
-    :e filen
-    ```ame
+Edit new file
 
-    Reload current file from disk
-    ```shell
-    :e!
-    ```
+````shell
+:e filen
+```ame
 
-    Insert contents of another file
-    ```shell
-    :r filen
-    ```ame
+Reload current file from disk
+```shell
+:e!
+````
 
-    Insert output of command
-    ```shell
-    :r !ls
-    ```
+Insert contents of another file
 
-    Browse files
-    ```shell
-    :browse
-    ```e
+````shell
+:r filen
+```ame
 
-    Show current filename
-    ```shell
-    :f  or
-    ```Ctrl+g
+Insert output of command
+```shell
+:r !ls
+````
+
+Browse files
+
+````shell
+:browse
+```e
+
+Show current filename
+```shell
+:f  or
+```Ctrl+g
 
 #### Multiple Files
 
 ##### Buffers
 
-    List buffers
-    ```shell
-    :ls  or
-    ``` :buffers
+List buffers
+```shell
+:ls  or
+``` :buffers
 
-    Next buffer
-    ```shell
-    :bn
-    ```
+Next buffer
+```shell
+:bn
+````
 
-    Previous buffer
-    ```shell
-    :bp
-    ```
+Previous buffer
 
-    Switch to buffer number
-    ```shell
-    :b2
-    ```
+```shell
+:bp
+```
 
-    Delete buffer
-    ```shell
-    :bd
-    ```
+Switch to buffer number
 
-    Switch to last buffer
-    ```shell
-    :b#
-    ```
+```shell
+:b2
+```
+
+Delete buffer
+
+```shell
+:bd
+```
+
+Switch to last buffer
+
+```shell
+:b#
+```
 
 ##### Windows (Splits)
 
-    Split horizontal
-    ```shell
-    :sp  or
-    ``` Ctrl+w s
+Split horizontal
 
-    Split vertical
-    ```shell
-    :vsp  or
-    ```  Ctrl+w v
+````shell
+:sp  or
+``` Ctrl+w s
 
-    Close window
-    ```shell
-    :q  or
-    ```Ctrl+w q
+Split vertical
+```shell
+:vsp  or
+```  Ctrl+w v
 
-    Close all but current
-    ```shell
-    :only  o
-    ```r  Ctrl+w o
+Close window
+```shell
+:q  or
+```Ctrl+w q
 
-    Move between windows
-    ```shell
-    Ctrl+w h
-    ```/j/k/l
+Close all but current
+```shell
+:only  o
+```r  Ctrl+w o
 
-    Move to next window
-    ```shell
-    Ctrl+w w
-    ```
+Move between windows
+```shell
+Ctrl+w h
+```/j/k/l
 
-    Resize window larger
-    ```shell
-    Ctrl+w +
-    ```
+Move to next window
+```shell
+Ctrl+w w
+````
 
-    Resize window smaller
-    ```shell
-    Ctrl+w -
-    ```
+Resize window larger
 
-    Equal size windows
-    ```shell
-    Ctrl+w =
-    ```
+```shell
+Ctrl+w +
+```
 
-    Maximize current window
-    ```shell
-    Ctrl+w _
-    ```
+Resize window smaller
+
+```shell
+Ctrl+w -
+```
+
+Equal size windows
+
+```shell
+Ctrl+w =
+```
+
+Maximize current window
+
+```shell
+Ctrl+w _
+```
 
 ##### Tabs
 
-    Open new tab
-    ```shell
-    :tabnew
-    ```
+Open new tab
 
-    Next tab
-    ```shell
-    :tabn  o
-    ```r  gt
+```shell
+:tabnew
+```
 
-    Previous tab
-    ```shell
-    :tabp  o
-    ```r  gT
+Next tab
 
-    Close tab
-    ```shell
-    :tabc
-    ```
+````shell
+:tabn  o
+```r  gt
 
-    List tabs
-    ```shell
-    :tabs
-    ```
+Previous tab
+```shell
+:tabp  o
+```r  gT
 
-    Go to tab number
-    ```shell
-    :tabn 3
-    ``` or  3gt
+Close tab
+```shell
+:tabc
+````
+
+List tabs
+
+```shell
+:tabs
+```
+
+Go to tab number
+
+````shell
+:tabn 3
+``` or  3gt
 
 #### Visual Mode
 
 ##### Selection
 
-    Select characters
-    ```shell
-    v
-    ```
+Select characters
+```shell
+v
+````
 
-    Select lines
-    ```shell
-    V
-    ```
+Select lines
 
-    Select block
-    ```shell
-    Ctrl+v
-    ```
+```shell
+V
+```
 
-    Select all
-    ```shell
-    ggVG
-    ```
+Select block
 
-    Reselect last selection
-    ```shell
-    gv
-    ```
+```shell
+Ctrl+v
+```
+
+Select all
+
+```shell
+ggVG
+```
+
+Reselect last selection
+
+```shell
+gv
+```
 
 ##### Operations on Selection
 
-    Delete selection
-    ```shell
-    d
-    ```
+Delete selection
 
-    Yank selection
-    ```shell
-    y
-    ```
+```shell
+d
+```
 
-    Change selection
-    ```shell
-    c
-    ```
+Yank selection
 
-    Indent selection
-    ```shell
-    >
-    ```
+```shell
+y
+```
 
-    Unindent selection
-    ```shell
-    <
-    ```
+Change selection
 
-    Convert to uppercase
-    ```shell
-    U
-    ```
+```shell
+c
+```
 
-    Convert to lowercase
-    ```shell
-    u
-    ```
+Indent selection
 
-    Comment/uncomment (with commentary plugin)
-    ```shell
-    gc
-    ```
+```shell
+>
+```
+
+Unindent selection
+
+```shell
+<
+```
+
+Convert to uppercase
+
+```shell
+U
+```
+
+Convert to lowercase
+
+```shell
+u
+```
+
+Comment/uncomment (with commentary plugin)
+
+```shell
+gc
+```
 
 #### Macros
 
 ##### Recording and Playing
 
-    Start recording macro in register 'a'
-    ```shell
-    qa
-    ```
+Start recording macro in register 'a'
 
-    Stop recording
-    ```shell
-    q
-    ```
+```shell
+qa
+```
 
-    Play macro from register 'a'
-    ```shell
-    @a
-    ```
+Stop recording
 
-    Repeat last macro
-    ```shell
-    @@
-    ```
+```shell
+q
+```
 
-    Play macro 10 times
-    ```shell
-    10@a
-    ```
+Play macro from register 'a'
+
+```shell
+@a
+```
+
+Repeat last macro
+
+```shell
+@@
+```
+
+Play macro 10 times
+
+```shell
+10@a
+```
 
 #### Marks
 
 ##### Setting and Jumping
 
-    Set mark 'a' at current position
-    ```shell
-    ma
-    ```
+Set mark 'a' at current position
 
-    Jump to mark 'a'
-    ```shell
-    'a
-    ```
+```shell
+ma
+```
 
-    Jump to exact position of mark 'a'
-    ```shell
-    `a
-    ```
+Jump to mark 'a'
 
-    Jump to last position before jump
-    ```shell
-    ''  or
-    `````
+```shell
+'a
+```
 
-    List all marks
-    ```shell
-    :marks
-    ```
+Jump to exact position of mark 'a'
 
-    Jump to last edit position
-    ```shell
-    `.
-    ```
+```shell
+`a
+```
+
+Jump to last position before jump
+
+```shell
+''  or
+```
+
+List all marks
+
+```shell
+:marks
+```
+
+Jump to last edit position
+
+```shell
+`.
+```
 
 #### Indentation
 
 ##### Indent Commands
 
-    Indent line
-    ```shell
-    >>
-    ```
+Indent line
 
-    Unindent line
-    ```shell
-    <<
-    ```
+```shell
+>>
+```
 
-    Indent in insert mode
-    ```shell
-    Ctrl+t
-    ```
+Unindent line
 
-    Unindent in insert mode
-    ```shell
-    Ctrl+d
-    ```
+```shell
+<<
+```
 
-    Indent selection (visual mode)
-    ```shell
-    >
-    ```
+Indent in insert mode
 
-    Auto-indent current line
-    ```shell
-    ==
-    ```
+```shell
+Ctrl+t
+```
 
-    Auto-indent entire file
-    ```shell
-    gg=G
-    ```
+Unindent in insert mode
 
-    Indent 5 lines
-    ```shell
-    5>>
-    ```
+```shell
+Ctrl+d
+```
+
+Indent selection (visual mode)
+
+```shell
+>
+```
+
+Auto-indent current line
+
+```shell
+==
+```
+
+Auto-indent entire file
+
+```shell
+gg=G
+```
+
+Indent 5 lines
+
+```shell
+5>>
+```
 
 #### Advanced
 
 ##### Registers
 
-    Show all registers
-    ```shell
-    :reg
-    ```
+Show all registers
 
-    Yank to register 'a'
-    ```shell
-    "ayy
-    ```
+```shell
+:reg
+```
 
-    Paste from register 'a'
-    ```shell
-    "ap
-    ```
+Yank to register 'a'
 
-    System clipboard (copy)
-    ```shell
-    "+y
-    ```
+```shell
+"ayy
+```
 
-    System clipboard (paste)
-    ```shell
-    "+p
-    ```
+Paste from register 'a'
 
-    Last search pattern
-    ```shell
-    "/
-    ```
+```shell
+"ap
+```
 
-    File name
-    ```shell
-    "%
-    ```
+System clipboard (copy)
+
+```shell
+"+y
+```
+
+System clipboard (paste)
+
+```shell
+"+p
+```
+
+Last search pattern
+
+```shell
+"/
+```
+
+File name
+
+```shell
+"%
+```
 
 ##### Command Line
 
-    Execute shell command
-    ```shell
-    :!ls
-    ```
+Execute shell command
 
-    Insert command output
-    ```shell
-    :r !date
-    ```
+```shell
+:!ls
+```
 
-    Filter lines through command
-    ```shell
-    :%!sort
-    ```
+Insert command output
 
-    Run command on range
-    ```shell
-    :10,20!s
-    ```ort
+```shell
+:r !date
+```
+
+Filter lines through command
+
+```shell
+:%!sort
+```
+
+Run command on range
+
+````shell
+:10,20!s
+```ort
 
 ##### Completion (Insert Mode)
 
-    Word completion
-    ```shell
-    Ctrl+n
-    ```or  Ctrl+p
+Word completion
+```shell
+Ctrl+n
+```or  Ctrl+p
 
-    Line completion
-    ```shell
-    Ctrl+x C
-    ```trl+l
+Line completion
+```shell
+Ctrl+x C
+```trl+l
 
-    File path completion
-    ```shell
-    Ctrl+x C
-    ```trl+f
+File path completion
+```shell
+Ctrl+x C
+```trl+f
 
-    Dictionary completion
-    ```shell
-    Ctrl+x C
-    ```trl+k
+Dictionary completion
+```shell
+Ctrl+x C
+```trl+k
 
-    Complete from tags
-    ```shell
-    Ctrl+x C
-    ```trl+]
+Complete from tags
+```shell
+Ctrl+x C
+```trl+]
 
 #### Configuration
 
 ##### Common Settings
 
-    Show line numbers
-    ```shell
-    :set num
-    ```ber  or  :set nu
+Show line numbers
+```shell
+:set num
+```ber  or  :set nu
 
-    Show relative line numbers
-    ```shell
-    :set rel
-    ```ativenumber  or  :set rnu
+Show relative line numbers
+```shell
+:set rel
+```ativenumber  or  :set rnu
 
-    Enable syntax highlighting
-    ```shell
-    :syntax
-    ```on
+Enable syntax highlighting
+```shell
+:syntax
+```on
 
-    Set tab width
-    ```shell
-    :set tab
-    ```stop=4
+Set tab width
+```shell
+:set tab
+```stop=4
 
-    Set indent width
-    ```shell
-    :set shi
-    ```ftwidth=4
+Set indent width
+```shell
+:set shi
+```ftwidth=4
 
-    Use spaces instead of tabs
-    ```shell
-    :set exp
-    ```andtab
+Use spaces instead of tabs
+```shell
+:set exp
+```andtab
 
-    Enable mouse support
-    ```shell
-    :set mou
-    ```se=a
+Enable mouse support
+```shell
+:set mou
+```se=a
 
-    Show matching brackets
-    ```shell
-    :set sho
-    ```wmatch
+Show matching brackets
+```shell
+:set sho
+```wmatch
 
-    Highlight search results
-    ```shell
-    :set hls
-    ```earch
+Highlight search results
+```shell
+:set hls
+```earch
 
-    Incremental search
-    ```shell
-    :set inc
-    ```search
+Incremental search
+```shell
+:set inc
+```search
 
-    Case insensitive search
-    ```shell
-    :set ign
-    ```orecase
+Case insensitive search
+```shell
+:set ign
+```orecase
 
-    Smart case (case sensitive if pattern contains uppercase)
-    ```shell
-    :set sma
-    ```rtcase
+Smart case (case sensitive if pattern contains uppercase)
+```shell
+:set sma
+```rtcase
 
-    Enable line wrapping
-    ```shell
-    :set wra
-    ```p
+Enable line wrapping
+```shell
+:set wra
+```p
 
-    Disable line wrapping
-    ```shell
-    :set now
-    ```rap
+Disable line wrapping
+```shell
+:set now
+```rap
 
-    Show current mode
-    ```shell
-    :set sho
-    ```wmode
+Show current mode
+```shell
+:set sho
+```wmode
 
-    Enable auto-indenting
-    ```shell
-    :set aut
-    ```oindent
+Enable auto-indenting
+```shell
+:set aut
+```oindent
 
-    Enable smart indenting
-    ```shell
-    :set sma
-    ```rtindent
+Enable smart indenting
+```shell
+:set sma
+```rtindent
 
-    Save settings to vimrc
-    ```shell
-    :mkvimrc
-    ``` ~/.vimrc
+Save settings to vimrc
+```shell
+:mkvimrc
+``` ~/.vimrc
 
 #### Quick Tips
 
 ##### Repeat Actions
 
-    Repeat last command
-    ```shell
-    .
-    ```
+Repeat last command
+```shell
+.
+````
 
-    Repeat 10 times
-    ```shell
-    10.
-    ```
+Repeat 10 times
 
-    Repeat last search
-    ```shell
-    n
-    ```
+```shell
+10.
+```
 
-    Repeat last substitute
-    ```shell
-    &
-    ```
+Repeat last search
+
+```shell
+n
+```
+
+Repeat last substitute
+
+```shell
+&
+```
 
 ##### Text Objects
 
-    Inner word (diw = delete inner word)
-    ```shell
-    iw
-    ```
+Inner word (diw = delete inner word)
 
-    Around word (daw = delete around word)
-    ```shell
-    aw
-    ```
+```shell
+iw
+```
 
-    Inner sentence
-    ```shell
-    is
-    ```
+Around word (daw = delete around word)
 
-    Around sentence
-    ```shell
-    as
-    ```
+```shell
+aw
+```
 
-    Inner paragraph
-    ```shell
-    ip
-    ```
+Inner sentence
 
-    Around paragraph
-    ```shell
-    ap
-    ```
+```shell
+is
+```
 
-    Inner tag block (HTML/XML)
-    ```shell
-    it
-    ```
+Around sentence
 
-    Around tag block
-    ```shell
-    at
-    ```
+```shell
+as
+```
+
+Inner paragraph
+
+```shell
+ip
+```
+
+Around paragraph
+
+```shell
+ap
+```
+
+Inner tag block (HTML/XML)
+
+```shell
+it
+```
+
+Around tag block
+
+```shell
+at
+```
 
 ##### Useful Combinations
 
-    Delete line and enter insert mode
-    ```shell
-    S  or  c
-    ```c
+Delete line and enter insert mode
 
-    Join current line with next
-    ```shell
-    J
-    ```
+````shell
+S  or  c
+```c
 
-    Change case of character
-    ```shell
-    ~
-    ```
+Join current line with next
+```shell
+J
+````
 
-    Increment number under cursor
-    ```shell
-    Ctrl+a
-    ```
+Change case of character
 
-    Decrement number under cursor
-    ```shell
-    Ctrl+x
-    ```
+```shell
+~
+```
 
-    Format/wrap text to textwidth
-    ```shell
-    gq
-    ```
+Increment number under cursor
 
-    Open URL under cursor (netrw)
-    ```shell
-    gx
+```shell
+Ctrl+a
+```
+
+Decrement number under cursor
+
+```shell
+Ctrl+x
+```
+
+Format/wrap text to textwidth
+
+```shell
+gq
+```
+
+Open URL under cursor (netrw)
+
+````shell
+gx
     ```
 
 ##### Global
@@ -3542,17 +3687,17 @@ How to Cut in Vim
 
 **Tip** Special registers:
 
- 0 - last yank  
- " - unnamed register, last delete or yank  
- % - current file name  
- # - alternate file name  
- \* - clipboard contents (X11 primary)  
- + - clipboard contents (X11 clipboard)  
- / - last search pattern  
- : - last command-line  
- . - last inserted text  
- \- - last small (less than a line) delete  
- \= - expression register  
+ 0 - last yank
+ " - unnamed register, last delete or yank
+ % - current file name
+ # - alternate file name
+ \* - clipboard contents (X11 primary)
+ + - clipboard contents (X11 clipboard)
+ / - last search pattern
+ : - last command-line
+ . - last inserted text
+ \- - last small (less than a line) delete
+ \= - expression register
  \_ - black hole register
 
 ##### Marks and positions
@@ -3601,11 +3746,11 @@ How to Cut in Vim
 - daw - delete (cut) word under the cursor and the space after or before it
 - :3,5d - delete lines starting from 3 to 5
 
-**Tip** You can also use the following characters to specify the range:  
+**Tip** You can also use the following characters to specify the range:
 e.g.
 
-:.,$d - From the current line to the end of the file  
-:.,1d - From the current line to the beginning of the file  
+:.,$d - From the current line to the end of the file
+:.,1d - From the current line to the beginning of the file
 :10,1d - From the 10th line to the beginning of the file
 
 - :g/{pattern}/d - delete all lines containing pattern
@@ -3729,7 +3874,7 @@ Descargar un archivo
 ```bash
 curl -O http://yourdomain.com/yourfile.tar.gz # Save as yourfile.tar.gz
 curl -o newfile.tar.gz http://yourdomain.com/yourfile.tar.gz # Save as newfile.tar.gz
-```
+````
 
 Descargar un archivo y mostrar su progreso: Para descargar un archivo y mostrar su progreso, use la opción -#
 

@@ -1,4 +1,3 @@
-
 # Curso de Gestión de Dependencias y Paquetes con NPM
 
 ## - [Introducción a NPM](#1-Acerca-de-NPM-paquetes-y-módulos)
@@ -20,15 +19,9 @@ Es la forma más popular de manejar nuestras dependencias en JS
 Debian and Ubuntu based Linux distributions  
 :octocat: 🔗 [NodeSource Node.js Binary Distributions](https://github.com/nodesource/distributions/blob/master/README.md) ↗️
 
-```bash
-# Using Ubuntu
-curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
-sudo apt-get install -y nodejs
-
-# Using Debian, as root
-curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
-apt-get install -y nodejs
-```
+- [nodejs.org](https://nodejs.org/en/download) 🔗
+- [How to Install Node.js on Ubuntu (Step-by-Step Guide](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-22-04#option-2-installing-node-js-with-apt-using-a-nodesource-ppa) 🔗
+- [NodeSource N|Solid & Node.js Binary Distributions](https://github.com/nodesource/distributions/blob/master/DEV_README.md) 🔗
 
 ## 3. Configuración
 
@@ -55,27 +48,27 @@ npm set init.author.name "Camilo"
 
 `npm init` Nos sirve para crear el archivo package.json el cual contiene toda la información acerca de nuestro proyecto, entre los datos que contiene son:
 
-+ `package name`, que es el nombre de tu proyecto.
-+ `version`, la versión en la que esta tu proyecto.
-+ `description`, sobre que trata nuestro proyecto.
-+ `entry point`, el punto de entrada de nuestro proyecto.
-+ `test` command u otros comandos de utilidad para nuestro proyecto.
-+ `gti repository`, el repositorio donde esta almacenado tu proyecto, podria ser github, gitlab, entre otros.
-+ `keywords`, son palabras que describen a nuestro proyecto
-+ `author`, quien esta desarrollando el proyecto aquí va nombre `<email>`
+- `package name`, que es el nombre de tu proyecto.
+- `version`, la versión en la que esta tu proyecto.
+- `description`, sobre que trata nuestro proyecto.
+- `entry point`, el punto de entrada de nuestro proyecto.
+- `test` command u otros comandos de utilidad para nuestro proyecto.
+- `gti repository`, el repositorio donde esta almacenado tu proyecto, podria ser github, gitlab, entre otros.
+- `keywords`, son palabras que describen a nuestro proyecto
+- `author`, quien esta desarrollando el proyecto aquí va nombre `<email>`
 
 ### 5. Instalación de dependencias
 
-+ `–save` : Este documento que vas a instalar dentro del proyecto es necesario para vivir en producción. Hay que tener cuidado con los paquetes que instalamos, cuando es a producción y cuando no lo es.
-+ `–save-dev`: Este documento que vamos a instalar solo es necesario en nuestro entorno local o en el de desarrollo. Es importante no mandar dependencias a producción ni omitir algunas que deban de estar en producción.
+- `–save` : Este documento que vas a instalar dentro del proyecto es necesario para vivir en producción. Hay que tener cuidado con los paquetes que instalamos, cuando es a producción y cuando no lo es.
+- `–save-dev`: Este documento que vamos a instalar solo es necesario en nuestro entorno local o en el de desarrollo. Es importante no mandar dependencias a producción ni omitir algunas que deban de estar en producción.
 
 ```bash
 npm i -D -E date-fns
 ```
 
-+ -i: Instalar
-+ -D: Guardar dependencia de desarrollo
-+ -E: guardar versión exacta
+- -i: Instalar
+- -D: Guardar dependencia de desarrollo
+- -E: guardar versión exacta
 
 De forma global `-g`
 
@@ -151,33 +144,33 @@ npm view <package_name> version
 
 Para ver un output más detallado
 
- ```bash
+```bash
 npm outdate --dd
- ```
+```
 
 Actualizar los paquetes que no están en la ultima versión
 
- ```bash
+```bash
 npm update
- ```
+```
 
 Actualizar un paquete especifico
 
- ```bash
+```bash
 npm install json-server@latest
- ```
+```
 
 Eliminar un paquete de `node_modules` y del archivo `package.json`
 
- ```bash
+```bash
 npm uninstall json-server
- ```
+```
 
 Desinstalar un paquete de todo `node_modules` pero no del archivo `package.json`
 
- ```bash
+```bash
 npm uninstall webpack --no-save
- ```
+```
 
 ### 8. Package lock y el uso los símbolos ^ y ~
 
@@ -298,7 +291,7 @@ yarn --version
 
 1. Instalación de la última versión de Yarn
 
-Con `node -v` verificar que se tiene la última version de node _+16.10_ 
+Con `node -v` verificar que se tiene la última version de node _+16.10_
 
 Iniciar Corepack `corepack enable` Si Corepack no existe en el sistema se tiene que instalar
 
@@ -318,29 +311,29 @@ Saber la version que se instalo.
 yarn --version
 ```
 
-|           npm          |           yarn          |
-|:----------------------:|:-----------------------:|
-| npm init               | yarn init               |
-| npm run                | yarn run                |
-| npm test               | yarn test               |
-| npm login (and logout) | yarn login (and logout) |
-| npm link               | yarn link               |
-| npm publish            | yarn publish            |
-| npm cache clean        | yarn cache clean        |
-| npm ugrade             | yarn upgrade-interactive        |
+|          npm           |           yarn           |
+| :--------------------: | :----------------------: |
+|        npm init        |        yarn init         |
+|        npm run         |         yarn run         |
+|        npm test        |        yarn test         |
+| npm login (and logout) | yarn login (and logout)  |
+|        npm link        |        yarn link         |
+|      npm publish       |       yarn publish       |
+|    npm cache clean     |     yarn cache clean     |
+|       npm ugrade       | yarn upgrade-interactive |
 
-| Command                  | npm                                | yarn                         |
-|--------------------------|------------------------------------|------------------------------|
-| Install dependencies     | npm install                        | yarn                         |
-| Install package          | npm install [package]              | yarn add [package]           |
-| Install dev package      | npm install --save-dev [package]   | yarn add --dev [package]     |
-| Uninstall package        | npm uninstall [package]            | yarn remove [package]        |
-| Uninstall dev package    | npm uninstall --save-dev [package] | yarn remove [package]        |
-| Update                   | npm update                         | yarn upgrade                 |
-| Update package           | npm update [package]               | yarn upgrade [package]       |
-| Global install package   | npm install --global [package]     | yarn global add [package]    |
-| Global uninstall package | npm uninstall --global [package]   | yarn global remove [package] |
-| List Global packages     | npm list -g --depth 0              | yarn global list             |
-| List local packages      | npm list --depth=0                 | yarn list --depth=0          |
-| List outdated local packa| npm outdated                       | yarn outdated                |
-| List outdated global pack| npm outdated --global              | :x:                       |
+| Command                   | npm                                | yarn                         |
+| ------------------------- | ---------------------------------- | ---------------------------- |
+| Install dependencies      | npm install                        | yarn                         |
+| Install package           | npm install [package]              | yarn add [package]           |
+| Install dev package       | npm install --save-dev [package]   | yarn add --dev [package]     |
+| Uninstall package         | npm uninstall [package]            | yarn remove [package]        |
+| Uninstall dev package     | npm uninstall --save-dev [package] | yarn remove [package]        |
+| Update                    | npm update                         | yarn upgrade                 |
+| Update package            | npm update [package]               | yarn upgrade [package]       |
+| Global install package    | npm install --global [package]     | yarn global add [package]    |
+| Global uninstall package  | npm uninstall --global [package]   | yarn global remove [package] |
+| List Global packages      | npm list -g --depth 0              | yarn global list             |
+| List local packages       | npm list --depth=0                 | yarn list --depth=0          |
+| List outdated local packa | npm outdated                       | yarn outdated                |
+| List outdated global pack | npm outdated --global              | :x:                          |
