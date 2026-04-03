@@ -1,6 +1,6 @@
 <!-- curso_practico_de_python__creacion_de_un_crud_clases -->
 
-# CURSO DE PYTHON DE PLATZI & 🗺
+# CURSO DE PYTHON DE PLATZI & 🌎
 
 ### PROGRAMA DE CURSO -PLATZI-VENTAS-
 
@@ -2215,16 +2215,6 @@ with write_on_log_error():
     result = 10 / 0
 
     print(result)
-
-
-```
-
-```PY
-
-```
-
-```PY
-
 ```
 
 ### 45
@@ -2452,7 +2442,7 @@ No es recomendable empezar con Python 2 porque tiene fecha de vencimiento para e
 
 _PEP_ = Python Enhancement Proposals
 
-Los PEP son la forma en la que se define como avanza el lenguaje. Existen tres PEPs que debes saber.
+Los `PEP` son la forma en la que se define como avanza el lenguaje. Existen tres PEPs que debes saber.
 
 - _PEP8_ es la guía de estilo de cómo escribir programas de Python.Es importante escribir de manera similiar para que nuestro software sea legible para el resto de la comunidad
 - _PEP257_ nos explica cómo generar buena documentación en nuestro código
@@ -2593,7 +2583,7 @@ AttributeError: 'User' object has no attribute '__username'
 In [4]: user.__private_method
 ```
 
-👆 Se indica que el atributo/metodo no se encuentra definido.
+👆 Se indica que el atributo/método no se encuentra definido.
 
 Pero si se utiliza un atributo y metodos privados en un método publico **dentro de la clase** no presenta errores. Y es un tipo de encapsulamiento.
 
@@ -2632,8 +2622,8 @@ user.__dict__
 {'_User__username': 'mack'}
 ```
 
-Internamente es almancenado con la estructura `_<Clase>__<Atributo>`  
-Y se puede acceder a los atributos y metodos de esta forma.
+Internamente es almacenado con la estructura `_<Clase>__<Atributo>`  
+Y se puede acceder a los atributos y métodos de esta forma.
 
 ```py
 user._User__username
@@ -2671,8 +2661,363 @@ total = sum(range(0, 1_000_000))
 print(total)
 ```
 
-```py
+### Callables
 
+Python es un método especial que permite que una instancia de una clase sea "llamada" como si fuera una función. Cuando defines el método `call` en una clase, los objetos de esa clase se vuelven "**llamables**" (callable).
+
+```py
+class MyClass:
+    def __init__(self, x: int):
+        self.x = x
+
+    def __call__(self):
+        return self.x
+
+
+def main():
+    obj = MyClass(12)
+    print(f"obj.x -> {obj.x}")
+    print(f"El método __call__ llama al objeto obj() -> {obj()}")
+
+    # IMPRIME EL TIPO DE DATO DE LOS OBJETOS, DOS ES UN ENTERO Y ES UN OBJETO
+    print((2).__class__)
+
+    # IMPRIME LA CLASE DE MAIN QUE ES UNA FUNCIÓN
+    print(main.__class__)
+
+
+if __name__ == "__main__":
+    main()
+
+# 👇
+# obj.x -> 12
+# El método __call__ llama al objeto obj() -> 12
+# El método __call__ llama al objeto obj.__call__() 2 -> 12
+# <class 'int'>
+# <class 'function'>
+```
+
+### Higher Order Functions(funciones de orden superior)
+
+- En Python, las funciones de orden superior (higher-order functions) son aquellas que cumplen con una o ambas de las siguientes condiciones:
+  1. Reciben una o más funciones como argumentos: Esto significa que las funciones de orden superior pueden tomar otras funciones como entradas.
+  2. Devuelven una función como resultado: Esto significa que las funciones de orden superior pueden generar y devolver otras funciones.
+
+```py
+# EJEPLO DE FUNCIONES DE ORDEN SUPERIOR
+
+from dataclasses import dataclass
+from typing import Callable
+
+
+@dataclass
+class Customer:
+    """
+    CLASE QUE REPRESENTA UN CLIENTE CON UN NOMBRE Y UNA EDAD
+    """
+    name: str
+    age: int
+
+
+def send_email_promotion(customers: list[Customer], is_eligible: Callable[[Customer], bool]) -> None:
+    """
+    FUNCIÓN DE ORDEN SUPERIOR QUE RECIBE UNA LISTA DE CLIENTES Y UNA FUNCIÓN QUE DETERMINA SI EL CLIENTE ES ELEGIBLE
+    """
+    for customer in customers:
+        print(f"Checking ... {customer.name}")
+        if is_eligible(customer):
+            print(f"{customer.name} is eligible for promotion")
+        else:
+            print(f"{customer.name} is not eligible for promotion")
+
+
+def is_eligible_for_promotion(customer: Customer) -> bool:
+    """
+    FUNCIÓN QUE DETERMINA SI UN CLIENTE ES ELEGIBLE PARA UNA PROMOCIÓN
+    """
+    return customer.age > 50
+
+
+def main() -> None:
+    customers = [
+        Customer("Alice", 25),
+        Customer("Bob", 30),
+        Customer("Charlie", 35),
+        Customer("David", 40),
+        Customer("Eve", 45),
+        Customer("Frank", 50),
+        Customer("Grace", 55),
+        Customer("Holly", 60),
+        Customer("Iris", 65),
+    ]
+    send_email_promotion(customers, is_eligible_for_promotion)
+    # send_email_promotion(customers, lambda customer: customer.age > 50)  # 👈
+
+
+if __name__ == "__main__":
+    main()
+
+
+# 👇
+# Checking Alice
+# Alice is not eligible for promotion
+# Checking Bob
+# Bob is not eligible for promotion
+# Checking Charlie
+# Charlie is not eligible for promotion
+# Checking David
+# David is not eligible for promotion
+# Checking Eve
+# Eve is not eligible for promotion
+# Checking Frank
+# Frank is not eligible for promotion
+# Checking Grace
+# Grace is eligible for promotion
+# Checking Holly
+# Holly is eligible for promotion
+# Checking Iris
+# Iris is eligible for promotion
+```
+
+```py
+# EJEPLO DE FUNCIONES DE ORDEN SUPERIOR
+
+def cuadrado(x):
+    """
+    FUNCIÓN QUE DEVUELVE EL CUADRADO DE UN NÚMERO
+    """
+    return x * x
+
+
+numeros = [1, 2, 3, 4, 5]
+resultados = map(cuadrado, numeros)  # DEVUELVE UN OBJETO MAP
+
+print(list(resultados))  # [1, 4, 9, 16, 25]
+```
+
+En el siguiente ejemplo se ejecuta primero la función `multiplicar_por` con el valor de `2` y el valor que retorna es la función `multiplicar_por` con el valor de `2`, después se ejecuta la función `doblar` con el valor de `5` que toma el valor de `x` y se asigna a la función `multiplicar` que toma el valor de `n` y lo multiplica por `x`. 
+
+```py
+# EJEMPLO DE FUNCIONES DE ORDEN SUPERIOR
+
+def multiplicar_por(n):
+    """
+    Crea una función de cierre que multiplica su entrada por un factor especificado.
+
+    Argumentos:
+        n (int): El factor por el cual multiplicar.
+
+    Devuelve:
+        function: Una función que toma un entero x y devuelve x multiplicado por n.
+    """
+    def multiplicar(x):
+        """
+        Multiplica un número dado por el factor de la función externa.
+
+        Argumentos:
+            x (int): El número a multiplicar.
+
+        Devuelve:
+            int: El resultado de multiplicar x por el factor de la función externa.
+        """
+        return x * n
+    return multiplicar
+
+
+# Uso del ejemplo
+doblar = multiplicar_por(2)  # Crea una función que duplica la entrada
+print(doblar(5))  # Salida: 10
+```
+
+### Closures en funciones con `partial` de `functools`
+
+
+```py
+from dataclasses import dataclass
+from functools import partial
+from typing import Callable
+
+
+@dataclass
+class Customer:
+    name: str
+    age: int
+
+
+def send_email_promotion(customers: list[Customer], is_eligible: Callable[[Customer], bool]) -> None:
+    for customer in customers:
+        print(f"Checking {customer.name}")
+        if is_eligible(customer):
+            print(f"{customer.name} is eligible for promotion")
+        else:
+            print(f"{customer.name} is not eligible for promotion")
+
+
+def is_eligible_for_promotion(customer: Customer, cutoff_age: int) -> bool:
+    return customer.age > cutoff_age
+
+
+def is_eligible_closure(cutoff_age: int) -> Callable[[Customer], bool]:
+    def is_eligible(customer: Customer) -> bool:
+        return customer.age > cutoff_age
+
+    return is_eligible
+
+
+def main() -> None:
+    customers = [
+        Customer("Alice", 25),
+        Customer("Bob", 30),
+        Customer("Charlie", 35),
+        Customer("David", 40),
+        Customer("Eve", 45),
+        Customer("Frank", 50),
+        Customer("Grace", 55),
+        Customer("Holly", 60),
+        Customer("Iris", 65),
+    ]
+    
+    send_email_promotion(customers, is_eligible_closure(50))
+    
+    is_eligible_partial = partial(is_eligible_for_promotion, cutoff_age=50)
+    
+    send_email_promotion(customers, is_eligible_partial)
+    # send_email_promotion(customers, lambda customer: customer.age > 50)
+
+
+if __name__ == "__main__":
+    main()
+
+👇
+# Checking Alice
+# Alice is not eligible for promotion
+# Checking Bob
+# Bob is not eligible for promotion
+# Checking Charlie
+# Charlie is not eligible for promotion
+# Checking David
+# David is not eligible for promotion
+# Checking Eve
+# Eve is not eligible for promotion
+# Checking Frank
+# Frank is not eligible for promotion
+# Checking Grace
+# Grace is eligible for promotion
+# Checking Holly
+# Holly is eligible for promotion
+# Checking Iris
+# Iris is eligible for promotion
+# Checking Alice
+# Alice is not eligible for promotion
+# Checking Bob
+# Bob is not eligible for promotion
+# Checking Charlie
+# Charlie is not eligible for promotion
+# Checking David
+# David is not eligible for promotion
+# Checking Eve
+# Eve is not eligible for promotion
+# Checking Frank
+# Frank is not eligible for promotion
+# Checking Grace
+# Grace is eligible for promotion
+# Checking Holly
+# Holly is eligible for promotion
+# Checking Iris
+# Iris is eligible for promotion
+```
+
+### Agrupar funciones
+
+```py
+from dataclasses import dataclass
+from typing import Callable, Iterable
+
+
+@dataclass
+class Customer:
+    name: str
+    age: int
+
+
+class PaymentProcessor:
+    def process_payment(self, amount: int, customer: Customer) -> None:
+        print(f"Processing payment of {amount} for {customer.name}.")
+
+    def refund_payment(self, amount: int, customer: Customer) -> None:
+        print(f"Refunding payment of {amount} for {customer.name}.")
+
+
+def process_payment_paypal(amount: int, customer: Customer) -> None:
+    print(f"Processing payment of {amount} for {customer.name} using PayPal.")
+
+
+def process_payment_stripe(amount: int, customer: Customer) -> None:
+    print(f"Processing payment of {amount} for {customer.name} using Stripe.")
+
+
+# Payment post-processing functions
+
+
+def send_email_to_support(amount: int, customer: Customer) -> None:
+    print(f"Sending email to team about payment of {amount} by {customer.name}.")
+
+
+def store_analytics(amount: int, customer: Customer) -> None:
+    print(f"Storing analytics about payment of {amount} by {customer.name}.")
+
+
+def update_stock_levels(amount: int, customer: Customer) -> None:
+    print(f"Updating stock levels for payment of {amount} by {customer.name}.")
+
+
+def subscribe_to_newsletter(_: int, customer: Customer) -> None:
+    print(f"Subscribing {customer.name} to newsletter.")
+
+
+PostProcessingFunction = Callable[[int, Customer], None]
+
+PAYMENT_POST_PROCESSORS_LIST = [
+    send_email_to_support,
+    store_analytics,
+    update_stock_levels,
+    subscribe_to_newsletter,
+]
+PAYMENT_POST_PROCESSORS_SET = {
+    send_email_to_support,
+    store_analytics,
+    update_stock_levels,
+    subscribe_to_newsletter,
+}
+PAYMENT_POST_PROCESSORS_TUPLE = (
+    send_email_to_support,
+    store_analytics,
+    update_stock_levels,
+    subscribe_to_newsletter,
+)
+
+
+def handle_payment_post_processors(amount: int, customer: Customer, post_processors: Iterable[PostProcessingFunction]) -> None:
+    for post_processor in post_processors:
+        post_processor(amount, customer)
+
+
+def main() -> None:
+    alice = Customer("Alice", 25)
+    processor = PaymentProcessor()
+    processor.process_payment(100, alice)
+    handle_payment_post_processors(100, alice, PAYMENT_POST_PROCESSORS_TUPLE)
+
+
+if __name__ == "__main__":
+    main()
+
+# 👇
+# Processing payment of 100 for Alice.
+# Sending email to team about payment of 100 by Alice.
+# Storing analytics about payment of 100 by Alice.
+# Updating stock levels for payment of 100 by Alice.
+# Subscribing Alice to newsletter.
 ```
 
 ```py
@@ -2690,3 +3035,20 @@ print(total)
 ```py
 
 ```
+
+```py
+
+```
+
+```py
+
+```
+
+```py
+
+```
+
+```py
+
+```
+

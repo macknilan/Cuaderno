@@ -9,9 +9,7 @@ class Customer:
     age: int
 
 
-def send_email_promotion(
-    customers: list[Customer], is_eligible: Callable[[Customer], bool]
-) -> None:
+def send_email_promotion(customers: list[Customer], is_eligible: Callable[[Customer], bool]) -> None:
     for customer in customers:
         print(f"Checking {customer.name}")
         if is_eligible(customer):
@@ -43,8 +41,11 @@ def main() -> None:
         Customer("Holly", 60),
         Customer("Iris", 65),
     ]
+
     send_email_promotion(customers, is_eligible_closure(50))
+
     is_eligible_partial = partial(is_eligible_for_promotion, cutoff_age=50)
+
     send_email_promotion(customers, is_eligible_partial)
     # send_email_promotion(customers, lambda customer: customer.age > 50)
 

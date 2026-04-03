@@ -44,6 +44,7 @@ def subscribe_to_newsletter(_: int, customer: Customer) -> None:
 
 
 PostProcessingFunction = Callable[[int, Customer], None]
+
 PAYMENT_POST_PROCESSORS_LIST = [
     send_email_to_support,
     store_analytics,
@@ -64,9 +65,7 @@ PAYMENT_POST_PROCESSORS_TUPLE = (
 )
 
 
-def handle_payment_post_processors(
-    amount: int, customer: Customer, post_processors: Iterable[PostProcessingFunction]
-) -> None:
+def handle_payment_post_processors(amount: int, customer: Customer, post_processors: Iterable[PostProcessingFunction]) -> None:
     for post_processor in post_processors:
         post_processor(amount, customer)
 

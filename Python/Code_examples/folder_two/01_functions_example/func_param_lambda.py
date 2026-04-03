@@ -1,18 +1,24 @@
+# EJEMPLO DE FUNCIONES DE ORDEN SUPERIOR
+
 from dataclasses import dataclass
 from typing import Callable
 
 
 @dataclass
 class Customer:
+    """
+    CLASE QUE REPRESENTA UN CLIENTE CON UN NOMBRE Y UNA EDAD
+    """
     name: str
     age: int
 
 
-def send_email_promotion(
-    customers: list[Customer], is_eligible: Callable[[Customer], bool]
-) -> None:
+def send_email_promotion(customers: list[Customer], is_eligible: Callable[[Customer], bool]) -> None:
+    """
+    FUNCIÓN DE ORDEN SUPERIOR QUE RECIBE UNA LISTA DE CLIENTES Y UNA FUNCIÓN QUE DETERMINA SI EL CLIENTE ES ELEGIBLE
+    """
     for customer in customers:
-        print(f"Checking {customer.name}")
+        print(f"Checking ... {customer.name}")
         if is_eligible(customer):
             print(f"{customer.name} is eligible for promotion")
         else:
@@ -20,6 +26,9 @@ def send_email_promotion(
 
 
 def is_eligible_for_promotion(customer: Customer) -> bool:
+    """
+    FUNCIÓN QUE DETERMINA SI UN CLIENTE ES ELEGIBLE PARA UNA PROMOCIÓN
+    """
     return customer.age > 50
 
 
@@ -36,7 +45,7 @@ def main() -> None:
         Customer("Iris", 65),
     ]
     send_email_promotion(customers, is_eligible_for_promotion)
-    # send_email_promotion(customers, lambda customer: customer.age > 50)
+    # send_email_promotion(customers, lambda customer: customer.age > 50)  # 👈
 
 
 if __name__ == "__main__":

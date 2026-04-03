@@ -1,34 +1,34 @@
 # Terminal y Línea de Comandos
 
 ```bash
-                    !G&@@@@@@&G~                  
-                  ?@@@@@@@@@@@@@&^                
-                 J@@@@@@@@@@@@@@@@^               
-                 @@@@@@@@@@&@@@@@@&               
-                :@B:.J@@@7 . ~@@@@@.              
-                :@.JB B@G P@P J@@@@^              
-                .@Y5@55?5YB@G.#@@@@^              
-                 @&J~~~~~~~!YJ&@@@@~              
-                ~@#GY?777?JYYP@@@@@B              
-                &@@@&#P5PG#&#P@@@@@@P             
-              :&@@@?.?5PPJ^.  ^@@@@@@&~           
-             5@@@@B            7@@@@@@@B.         
-           ~@@@@@&              J@@@@@@@@J        
-          P@@@@@@.               5@@@@@@@@#.      
-         #@@@@@@:                 P@@@@@@@@&.     
-        &@@@@@@^                   B@@@@@@@@&     
-       G@@@@@@Y                     &@@@@@@@@J    
-      :@@@@@@@                     .B@@@@@@@@#    
-      ~@@@@@@P                    5@@@@@@@@@@P    
-     :#&PP&@@@#?.               .&@&@@@@@@@@@5    
-  ^?P#Y^::^5@@@@@B^             B@@~J&@@&BJ!!B@.  
-7&GJ!^:^^^^:?@@@@@@5            @@B:^^^^^::^^^&G  
+                    !G&@@@@@@&G~
+                  ?@@@@@@@@@@@@@&^
+                 J@@@@@@@@@@@@@@@@^
+                 @@@@@@@@@@&@@@@@@&
+                :@B:.J@@@7 . ~@@@@@.
+                :@.JB B@G P@P J@@@@^
+                .@Y5@55?5YB@G.#@@@@^
+                 @&J~~~~~~~!YJ&@@@@~
+                ~@#GY?777?JYYP@@@@@B
+                &@@@&#P5PG#&#P@@@@@@P
+              :&@@@?.?5PPJ^.  ^@@@@@@&~
+             5@@@@B            7@@@@@@@B.
+           ~@@@@@&              J@@@@@@@@J
+          P@@@@@@.               5@@@@@@@@#.
+         #@@@@@@:                 P@@@@@@@@&.
+        &@@@@@@^                   B@@@@@@@@&
+       G@@@@@@Y                     &@@@@@@@@J
+      :@@@@@@@                     .B@@@@@@@@#
+      ~@@@@@@P                    5@@@@@@@@@@P
+     :#&PP&@@@#?.               .&@&@@@@@@@@@5
+  ^?P#Y^::^5@@@@@B^             B@@~J&@@&BJ!!B@.
+7&GJ!^:^^^^:?@@@@@@5            @@B:^^^^^::^^^&G
 #&::^^^^^^^^:~#@@@@@.          ~@@Y:^^^^^^^^^^~&B.
 J@~^^^^^^^^^^^^Y@@@5          :&@@~^^^^^^^^^^::^&@
 @#:^^^^^^^^^^^^:~#@@&BY??JYG#@@@@5:^^^^^^^:^75B#G~
-&&YJ?7!~^^::^^^^::&@@@@@@@@@@@@@@^^^^^^^:!PBP7:   
- :!?JY5PGGPY7!~!7P&5?!^::.::^!!J@5^^^^~JB#7       
-         .~JPGGGP?.             :B#B###G!         
+&&YJ?7!~^^::^^^^::&@@@@@@@@@@@@@@^^^^^^^:!PBP7:
+ :!?JY5PGGPY7!~!7P&5?!^::.::^!!J@5^^^^~JB#7
+         .~JPGGGP?.             :B#B###G!
 ```
 
 - :link: [Documentos Linux](https://github.com/macknilan/Cuaderno/tree/master/Linux/docs_linux)
@@ -73,7 +73,6 @@ J@~^^^^^^^^^^^^Y@@@5          :&@@~^^^^^^^^^^::^&@
 - [Tmux](#31-tmux)
 - [Vim](#32-vim)
 - [CURL](#33-curl)
-
 
 ### 1. Ayuda
 
@@ -836,7 +835,7 @@ ln -ls ~/public_html ~/www
 - `z` – filter archive through gzip.
 - `r` – append or update files or directories to the existing archive files.
 - `W` – Verify an archive file.
-- ``wildcards`` – Specify patterns in UNIX tar command.
+- `wildcards` – Specify patterns in UNIX tar command.
 
 ### Descompresión
 
@@ -869,7 +868,7 @@ Extraer un archivo de un archivo `.tar.gz`
 
 ```bash
 tar -zxvf archivo.tar.gz archivo.xml
-# 
+#
 tar --extract --file=archivo.tar.gz archivo.xml
 ```
 
@@ -877,16 +876,16 @@ Extraer un archivo de un archivo `.tar.bz2`
 
 ```bash
 tar -jxvf archivo.tar.bz2 archivo.xml
-# 
+#
 tar --extract --file=archivo.tar.bz2 archivo.xml
 ```
 
 Extraer multiples archivos de `tar`, `tat.gz` y `tat.bz2`
 
 ```bash
-tar -xvf archivo-14-09-12.tar "file1" "file2" 
+tar -xvf archivo-14-09-12.tar "file1" "file2"
 #
-tar -zxvf archivo-14-09-12.tar.gz "file1" "file2" 
+tar -zxvf archivo-14-09-12.tar.gz "file1" "file2"
 #
 tar -jxvf archivo-org.tar.bz2 "file1" "file2"
 ```
@@ -1417,7 +1416,6 @@ apt search "PACKAGE_NAME$"
 ### 13. APT Cheat Sheet
 
 - apt-get
-
   - install and --reinstall
   - remove
   - purge or --purge
@@ -1426,12 +1424,10 @@ apt search "PACKAGE_NAME$"
   - clean and autoclean
 
 - apt-cache
-
   - pkgnames
   - search show
 
 - dpkg
-
   - --list or -l
   - --install
   - --remove
@@ -1440,7 +1436,6 @@ apt search "PACKAGE_NAME$"
   - --contents
 
 - Removing a Debian package:
-
   - sudo apt-get --purge remove [package-name]
   - sudo apt-get --purge remove [package-name] && sudo apt-get autoremove
 
@@ -1624,7 +1619,7 @@ sed -i 's/<pattern>/<replacement>/g' <filename> # replace pattern in file with r
 echo "this" | sed 's/is/at/g' # replace pattern from input stream with replacement value
 ```
 
-[[ Volver al índice ]](#INDEX)
+[[Volver al índice]](#INDEX)
 
 ### 18. Directory commands
 
@@ -2180,7 +2175,7 @@ netstat -ant
 `-u` Mostrar los puertos UDP  
 `-l` Los archivos que esten en escucha  
 `-p` Mustre los puertos  
-`-n` Muestre los puertos de forma numerica  
+`-n` Muestre los puertos de forma numerica
 
 ```shell
 netstat -tulpn
@@ -2309,30 +2304,1421 @@ Maneno de ventanas y paneles.
 
 How to Copy in Vim
 
-| yy   | This command copies the entire line where the cursor is placed.                                                                                                              |
-|----- |----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 2yy  | To copy multiple lines in Vim, the “[number]yy” command is used. To copy two lines, including the line where the cursor is placed and the next line, use the “2yy” command.  |
-| y%   | To copy the text between two similar characters like (), {} or [], use the y% command.                                                                                       |
-| yw   | To copy from a specific character to the end of the word, the “yw” command is used.                                                                                          |
-| yiw  | To copy the current word where the cursor is placed, press the yiw from the keyboard.                                                                                        |
-| y$   | This command is used to copy the text from the cursor character to the end of the line.                                                                                      |
-| y^   | It copies start till the cursor.                                                                                                                                             |
-| ytx  | The “ytx” stands for “yank (copy) till x (specified character)” To copy the text between the cursor to the specified character in the line.                                  |
-| yfx  | This command copies the text of the cursor position of a specific character.                                                                                                 |
+| yy  | This command copies the entire line where the cursor is placed.                                                                                                             |
+| --- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2yy | To copy multiple lines in Vim, the “[number]yy” command is used. To copy two lines, including the line where the cursor is placed and the next line, use the “2yy” command. |
+| y%  | To copy the text between two similar characters like (), {} or [], use the y% command.                                                                                      |
+| yw  | To copy from a specific character to the end of the word, the “yw” command is used.                                                                                         |
+| yiw | To copy the current word where the cursor is placed, press the yiw from the keyboard.                                                                                       |
+| y$  | This command is used to copy the text from the cursor character to the end of the line.                                                                                     |
+| y^  | It copies start till the cursor.                                                                                                                                            |
+| ytx | The “ytx” stands for “yank (copy) till x (specified character)” To copy the text between the cursor to the specified character in the line.                                 |
+| yfx | This command copies the text of the cursor position of a specific character.                                                                                                |
 
 How to Cut in Vim
 
-|    |    |
-|--- |--- |
-|  dd  |  This command cuts the entire line where the cursor is present.  |
-|  2dd  |  This command cuts the two lines of text, including the cursor line and the next line.  |
-|  d%  |  d% command cuts the text of two similar characters {} or () and others.  |
-|  dw |  This command cuts the specific word from the character where the cursor is placed to the end of the word.  |
-|  diw |  To cut the current word of the cursor position, use the “diw” command.  |
-|  d$  |  To cut the whole line from the cursor to the left/end of the line.  |
-|  d^  |  To cut the whole text from the cursor to the right/start of that line.  |
-|  dtx |  This command cuts the text from the cursor to before the specified character.  |
-|  dfx |  To |
+|     |                                                                                                           |
+| --- | --------------------------------------------------------------------------------------------------------- |
+| dd  | This command cuts the entire line where the cursor is present.                                            |
+| 2dd | This command cuts the two lines of text, including the cursor line and the next line.                     |
+| d%  | d% command cuts the text of two similar characters {} or () and others.                                   |
+| dw  | This command cuts the specific word from the character where the cursor is placed to the end of the word. |
+| diw | To cut the current word of the cursor position, use the “diw” command.                                    |
+| d$  | To cut the whole line from the cursor to the left/end of the line.                                        |
+| d^  | To cut the whole text from the cursor to the right/start of that line.                                    |
+| dtx | This command cuts the text from the cursor to before the specified character.                             |
+| dfx | To                                                                                                        |
+
+#### Modes
+
+##### Switching Modes
+
+    Enter insert mode (before cursor)
+    ```shell
+    i
+    ```
+
+    Enter insert mode (after cursor)
+    ```shell
+    a
+    ```
+
+    Enter insert mode (beginning of line)
+    ```shell
+    I
+    ```
+
+    Enter insert mode (end of line)
+    ```shell
+    A
+    ```
+
+    Enter insert mode (new line below)
+    ```shell
+    o
+    ```
+
+    Enter insert mode (new line above)
+    ```shell
+    O
+    ```
+
+    Return to normal mode
+    ```shell
+    ESC
+    ```
+
+    Enter command mode
+    ```shell
+    :
+    ```
+
+    Enter visual mode (character selection)
+    ```shell
+    v
+    ```
+
+    Enter visual line mode (line selection)
+    ```shell
+    V
+    ```
+
+    Enter visual block mode (column selection)
+    ```shell
+    Ctrl+v
+    ```
+
+#### Navigation
+
+##### Basic Movement
+
+    Move left
+    ```shell
+    h
+    ```
+
+    Move down
+    ```shell
+    j
+    ```
+
+    Move up
+    ```shell
+    k
+    ```
+
+    Move right
+    ```shell
+    l
+    ```
+
+    Move to beginning of line
+    ```shell
+    0
+    ```
+
+    Move to first non-blank character
+    ```shell
+    ^
+    ```
+
+    Move to end of line
+    ```shell
+    $
+    ```
+
+    Move forward one word
+    ```shell
+    w
+    ```
+
+    Move backward one word
+    ```shell
+    b
+    ```
+
+    Move to end of word
+    ```shell
+    e
+    ```
+
+    Move to beginning of file
+    ```shell
+    gg
+    ```
+
+    Move to end of file
+    ```shell
+    G
+    ```
+
+    Move to line number (e.g., line 50)
+    ```shell
+    :50 or 5
+    ```0G
+
+    Move to matching bracket/parenthesis
+    ```shell
+    %
+    ```
+
+##### Screen Navigation
+
+    Move to top of screen
+    ```shell
+    H
+    ```
+
+    Move to middle of screen
+    ```shell
+    M
+    ```
+
+    Move to bottom of screen
+    ```shell
+    L
+    ```
+
+    Scroll down half screen
+    ```shell
+    Ctrl+d
+    ```
+
+    Scroll up half screen
+    ```shell
+    Ctrl+u
+    ```
+
+    Scroll down full screen
+    ```shell
+    Ctrl+f
+    ```
+
+    Scroll up full screen
+    ```shell
+    Ctrl+b
+    ```
+
+    Center screen on cursor
+    ```shell
+    zz
+    ```
+
+    Move screen so cursor is at top
+    ```shell
+    zt
+    ```
+
+    Move screen so cursor is at bottom
+    ```shell
+    zb
+    ```
+
+#### Editing
+
+##### Delete
+
+    Delete character under cursor
+    ```shell
+    x
+    ```
+
+    Delete character before cursor
+    ```shell
+    X
+    ```
+
+    Delete current line
+    ```shell
+    dd
+    ```
+
+    Delete from cursor to end of line
+    ```shell
+    D
+    ```
+
+    Delete word
+    ```shell
+    dw
+    ```
+
+    Delete to end of word
+    ```shell
+    de
+    ```
+
+    Delete to beginning of line
+    ```shell
+    d0
+    ```
+
+    Delete inside word (cursor can be anywhere in word)
+    ```shell
+    diw
+    ```
+
+    Delete inside parentheses
+    ```shell
+    di(  or
+    ``` di)
+
+    Delete inside quotes
+    ```shell
+    di"  or
+    ``` di'
+
+    Delete 5 lines
+    ```shell
+    5dd
+    ```
+
+##### Copy (Yank)
+
+    Yank current line
+    ```shell
+    yy
+    ```
+
+    Yank word
+    ```shell
+    yw
+    ```
+
+    Yank to end of line
+    ```shell
+    y$
+    ```
+
+    Yank 3 lines
+    ```shell
+    3yy
+    ```
+
+    Yank inside word
+    ```shell
+    yiw
+    ```
+
+    Yank inside parentheses
+    ```shell
+    yi(
+        ```
+
+    Yank entire file
+    ```shell
+    :%y
+    ```
+
+##### Paste
+
+    Paste after cursor
+    ```shell
+    p
+    ```
+
+    Paste before cursor
+    ```shell
+    P
+    ```
+
+##### Change
+
+    Change word
+    ```shell
+    cw
+    ```
+
+    Change to end of line
+    ```shell
+    C
+    ```
+
+    Change entire line
+    ```shell
+    cc
+    ```
+
+    Change inside word
+    ```shell
+    ciw
+    ```
+
+    Change inside parentheses
+    ```shell
+    ci(
+        ```
+
+    Change inside quotes
+    ```shell
+    ci"
+    ```
+
+##### Undo/Redo
+
+    Undo
+    ```shell
+    u
+    ```
+
+    Redo
+    ```shell
+    Ctrl+r
+    ```
+
+    Undo all changes on line
+    ```shell
+    U
+    ```
+
+##### Replace
+
+    Replace single character
+    ```shell
+    r{char}
+    ```
+
+    Enter replace mode
+    ```shell
+    R
+    ```
+
+#### Search and Replace
+
+##### Search
+
+    Search forward
+    ```shell
+    /{patter
+    ```n}
+
+    Search backward
+    ```shell
+    ?{patter
+    ```n}
+
+    Next match
+    ```shell
+    n
+    ```
+
+    Previous match
+    ```shell
+    N
+    ```
+
+    Search for word under cursor (forward)
+    ```shell
+    *
+    ```
+
+    Search for word under cursor (backward)
+    ```shell
+    #
+    ```
+
+    Clear search highlighting
+    ```shell
+    :noh
+    ```
+
+##### Replace
+
+    Replace first occurrence on current line
+    ```shell
+    :s/old/n
+    ```ew/
+
+    Replace all occurrences on current line
+    ```shell
+    :s/old/n
+    ```ew/g
+
+    Replace all occurrences in file
+    ```shell
+    :%s/old/
+    ```new/g
+
+    Replace all occurrences with confirmation
+    ```shell
+    :%s/old/
+    ```new/gc
+
+    Replace in visual selection
+    ```shell
+    :'<,'>s/
+    ```old/new/g
+
+    Replace whole words only
+    ```shell
+    :%s/\<ol
+    ```d\>/new/g
+
+#### File Operations
+
+##### Saving and Quitting
+
+    Save file
+    ```shell
+    :w
+    ```
+
+    Save and quit
+    ```shell
+    :wq  or
+    ``` :x  or  ZZ
+
+    Quit without saving
+    ```shell
+    :q!  or
+    ``` ZQ
+
+    Save as new filename
+    ```shell
+    :w newfi
+    ```le.txt
+
+    Save lines 10-20 to new file
+    ```shell
+    :10,20w
+    ```newfile.txt
+
+    Force write (override read-only)
+    ```shell
+    :w!
+    ```
+
+##### File Management
+
+    Edit new file
+    ```shell
+    :e filen
+    ```ame
+
+    Reload current file from disk
+    ```shell
+    :e!
+    ```
+
+    Insert contents of another file
+    ```shell
+    :r filen
+    ```ame
+
+    Insert output of command
+    ```shell
+    :r !ls
+    ```
+
+    Browse files
+    ```shell
+    :browse
+    ```e
+
+    Show current filename
+    ```shell
+    :f  or
+    ```Ctrl+g
+
+#### Multiple Files
+
+##### Buffers
+
+    List buffers
+    ```shell
+    :ls  or
+    ``` :buffers
+
+    Next buffer
+    ```shell
+    :bn
+    ```
+
+    Previous buffer
+    ```shell
+    :bp
+    ```
+
+    Switch to buffer number
+    ```shell
+    :b2
+    ```
+
+    Delete buffer
+    ```shell
+    :bd
+    ```
+
+    Switch to last buffer
+    ```shell
+    :b#
+    ```
+
+##### Windows (Splits)
+
+    Split horizontal
+    ```shell
+    :sp  or
+    ``` Ctrl+w s
+
+    Split vertical
+    ```shell
+    :vsp  or
+    ```  Ctrl+w v
+
+    Close window
+    ```shell
+    :q  or
+    ```Ctrl+w q
+
+    Close all but current
+    ```shell
+    :only  o
+    ```r  Ctrl+w o
+
+    Move between windows
+    ```shell
+    Ctrl+w h
+    ```/j/k/l
+
+    Move to next window
+    ```shell
+    Ctrl+w w
+    ```
+
+    Resize window larger
+    ```shell
+    Ctrl+w +
+    ```
+
+    Resize window smaller
+    ```shell
+    Ctrl+w -
+    ```
+
+    Equal size windows
+    ```shell
+    Ctrl+w =
+    ```
+
+    Maximize current window
+    ```shell
+    Ctrl+w _
+    ```
+
+##### Tabs
+
+    Open new tab
+    ```shell
+    :tabnew
+    ```
+
+    Next tab
+    ```shell
+    :tabn  o
+    ```r  gt
+
+    Previous tab
+    ```shell
+    :tabp  o
+    ```r  gT
+
+    Close tab
+    ```shell
+    :tabc
+    ```
+
+    List tabs
+    ```shell
+    :tabs
+    ```
+
+    Go to tab number
+    ```shell
+    :tabn 3
+    ``` or  3gt
+
+#### Visual Mode
+
+##### Selection
+
+    Select characters
+    ```shell
+    v
+    ```
+
+    Select lines
+    ```shell
+    V
+    ```
+
+    Select block
+    ```shell
+    Ctrl+v
+    ```
+
+    Select all
+    ```shell
+    ggVG
+    ```
+
+    Reselect last selection
+    ```shell
+    gv
+    ```
+
+##### Operations on Selection
+
+    Delete selection
+    ```shell
+    d
+    ```
+
+    Yank selection
+    ```shell
+    y
+    ```
+
+    Change selection
+    ```shell
+    c
+    ```
+
+    Indent selection
+    ```shell
+    >
+    ```
+
+    Unindent selection
+    ```shell
+    <
+    ```
+
+    Convert to uppercase
+    ```shell
+    U
+    ```
+
+    Convert to lowercase
+    ```shell
+    u
+    ```
+
+    Comment/uncomment (with commentary plugin)
+    ```shell
+    gc
+    ```
+
+#### Macros
+
+##### Recording and Playing
+
+    Start recording macro in register 'a'
+    ```shell
+    qa
+    ```
+
+    Stop recording
+    ```shell
+    q
+    ```
+
+    Play macro from register 'a'
+    ```shell
+    @a
+    ```
+
+    Repeat last macro
+    ```shell
+    @@
+    ```
+
+    Play macro 10 times
+    ```shell
+    10@a
+    ```
+
+#### Marks
+
+##### Setting and Jumping
+
+    Set mark 'a' at current position
+    ```shell
+    ma
+    ```
+
+    Jump to mark 'a'
+    ```shell
+    'a
+    ```
+
+    Jump to exact position of mark 'a'
+    ```shell
+    `a
+    ```
+
+    Jump to last position before jump
+    ```shell
+    ''  or
+    `````
+
+    List all marks
+    ```shell
+    :marks
+    ```
+
+    Jump to last edit position
+    ```shell
+    `.
+    ```
+
+#### Indentation
+
+##### Indent Commands
+
+    Indent line
+    ```shell
+    >>
+    ```
+
+    Unindent line
+    ```shell
+    <<
+    ```
+
+    Indent in insert mode
+    ```shell
+    Ctrl+t
+    ```
+
+    Unindent in insert mode
+    ```shell
+    Ctrl+d
+    ```
+
+    Indent selection (visual mode)
+    ```shell
+    >
+    ```
+
+    Auto-indent current line
+    ```shell
+    ==
+    ```
+
+    Auto-indent entire file
+    ```shell
+    gg=G
+    ```
+
+    Indent 5 lines
+    ```shell
+    5>>
+    ```
+
+#### Advanced
+
+##### Registers
+
+    Show all registers
+    ```shell
+    :reg
+    ```
+
+    Yank to register 'a'
+    ```shell
+    "ayy
+    ```
+
+    Paste from register 'a'
+    ```shell
+    "ap
+    ```
+
+    System clipboard (copy)
+    ```shell
+    "+y
+    ```
+
+    System clipboard (paste)
+    ```shell
+    "+p
+    ```
+
+    Last search pattern
+    ```shell
+    "/
+    ```
+
+    File name
+    ```shell
+    "%
+    ```
+
+##### Command Line
+
+    Execute shell command
+    ```shell
+    :!ls
+    ```
+
+    Insert command output
+    ```shell
+    :r !date
+    ```
+
+    Filter lines through command
+    ```shell
+    :%!sort
+    ```
+
+    Run command on range
+    ```shell
+    :10,20!s
+    ```ort
+
+##### Completion (Insert Mode)
+
+    Word completion
+    ```shell
+    Ctrl+n
+    ```or  Ctrl+p
+
+    Line completion
+    ```shell
+    Ctrl+x C
+    ```trl+l
+
+    File path completion
+    ```shell
+    Ctrl+x C
+    ```trl+f
+
+    Dictionary completion
+    ```shell
+    Ctrl+x C
+    ```trl+k
+
+    Complete from tags
+    ```shell
+    Ctrl+x C
+    ```trl+]
+
+#### Configuration
+
+##### Common Settings
+
+    Show line numbers
+    ```shell
+    :set num
+    ```ber  or  :set nu
+
+    Show relative line numbers
+    ```shell
+    :set rel
+    ```ativenumber  or  :set rnu
+
+    Enable syntax highlighting
+    ```shell
+    :syntax
+    ```on
+
+    Set tab width
+    ```shell
+    :set tab
+    ```stop=4
+
+    Set indent width
+    ```shell
+    :set shi
+    ```ftwidth=4
+
+    Use spaces instead of tabs
+    ```shell
+    :set exp
+    ```andtab
+
+    Enable mouse support
+    ```shell
+    :set mou
+    ```se=a
+
+    Show matching brackets
+    ```shell
+    :set sho
+    ```wmatch
+
+    Highlight search results
+    ```shell
+    :set hls
+    ```earch
+
+    Incremental search
+    ```shell
+    :set inc
+    ```search
+
+    Case insensitive search
+    ```shell
+    :set ign
+    ```orecase
+
+    Smart case (case sensitive if pattern contains uppercase)
+    ```shell
+    :set sma
+    ```rtcase
+
+    Enable line wrapping
+    ```shell
+    :set wra
+    ```p
+
+    Disable line wrapping
+    ```shell
+    :set now
+    ```rap
+
+    Show current mode
+    ```shell
+    :set sho
+    ```wmode
+
+    Enable auto-indenting
+    ```shell
+    :set aut
+    ```oindent
+
+    Enable smart indenting
+    ```shell
+    :set sma
+    ```rtindent
+
+    Save settings to vimrc
+    ```shell
+    :mkvimrc
+    ``` ~/.vimrc
+
+#### Quick Tips
+
+##### Repeat Actions
+
+    Repeat last command
+    ```shell
+    .
+    ```
+
+    Repeat 10 times
+    ```shell
+    10.
+    ```
+
+    Repeat last search
+    ```shell
+    n
+    ```
+
+    Repeat last substitute
+    ```shell
+    &
+    ```
+
+##### Text Objects
+
+    Inner word (diw = delete inner word)
+    ```shell
+    iw
+    ```
+
+    Around word (daw = delete around word)
+    ```shell
+    aw
+    ```
+
+    Inner sentence
+    ```shell
+    is
+    ```
+
+    Around sentence
+    ```shell
+    as
+    ```
+
+    Inner paragraph
+    ```shell
+    ip
+    ```
+
+    Around paragraph
+    ```shell
+    ap
+    ```
+
+    Inner tag block (HTML/XML)
+    ```shell
+    it
+    ```
+
+    Around tag block
+    ```shell
+    at
+    ```
+
+##### Useful Combinations
+
+    Delete line and enter insert mode
+    ```shell
+    S  or  c
+    ```c
+
+    Join current line with next
+    ```shell
+    J
+    ```
+
+    Change case of character
+    ```shell
+    ~
+    ```
+
+    Increment number under cursor
+    ```shell
+    Ctrl+a
+    ```
+
+    Decrement number under cursor
+    ```shell
+    Ctrl+x
+    ```
+
+    Format/wrap text to textwidth
+    ```shell
+    gq
+    ```
+
+    Open URL under cursor (netrw)
+    ```shell
+    gx
+    ```
+
+##### Global
+
+- :h\[elp\] keyword - open help for keyword
+- :sav\[eas\] file - save file as
+- :clo\[se\] - close current pane
+- :ter\[minal\] - open a terminal window
+- K - open man page for word under the cursor
+
+**Tip** Run vimtutor in a terminal to learn the first Vim commands.
+
+##### Cursor movement
+
+- h - move cursor left
+- j - move cursor down
+- k - move cursor up
+- l - move cursor right
+- gj - move cursor down (multi-line text)
+- gk - move cursor up (multi-line text)
+- H - move to top of screen
+- M - move to middle of screen
+- L - move to bottom of screen
+- w - jump forwards to the start of a word
+- W - jump forwards to the start of a word (words can contain punctuation)
+- e - jump forwards to the end of a word
+- E - jump forwards to the end of a word (words can contain punctuation)
+- b - jump backwards to the start of a word
+- B - jump backwards to the start of a word (words can contain punctuation)
+- ge - jump backwards to the end of a word
+- gE - jump backwards to the end of a word (words can contain punctuation)
+- % - move cursor to matching character (default supported pairs: '()', '{}', '\[\]' - use `:h matchpairs` in vim for more info)
+- 0 - jump to the start of the line
+- ^ - jump to the first non-blank character of the line
+- $ - jump to the end of the line
+- g\_ - jump to the last non-blank character of the line
+- gg - go to the first line of the document
+- G - go to the last line of the document
+- 5gg or 5G - go to line 5
+- gd - move to local declaration
+- gD - move to global declaration
+- fx - jump to next occurrence of character x
+- tx - jump to before next occurrence of character x
+- Fx - jump to the previous occurrence of character x
+- Tx - jump to after previous occurrence of character x
+- ; - repeat previous f, t, F or T movement
+- , - repeat previous f, t, F or T movement, backwards
+- } - jump to next paragraph (or function/block, when editing code)
+- { - jump to previous paragraph (or function/block, when editing code)
+- zz - center cursor on screen
+- zt - position cursor on top of the screen
+- zb - position cursor on bottom of the screen
+- Ctrl + e - move screen down one line (without moving cursor)
+- Ctrl + y - move screen up one line (without moving cursor)
+- Ctrl + b - move screen up one page (cursor to last line)
+- Ctrl + f - move screen down one page (cursor to first line)
+- Ctrl + d - move cursor and screen down 1/2 page
+- Ctrl + u - move cursor and screen up 1/2 page
+
+**Tip** Prefix a cursor movement command with a number to repeat it. For example, 4j moves down 4 lines.
+
+##### Insert mode - inserting/appending text
+
+- i - insert before the cursor
+- I - insert at the beginning of the line
+- a - insert (append) after the cursor
+- A - insert (append) at the end of the line
+- o - append (open) a new line below the current line
+- O - append (open) a new line above the current line
+- ea - insert (append) at the end of the word
+- Ctrl + h - delete the character before the cursor during insert mode
+- Ctrl + w - delete word before the cursor during insert mode
+- Ctrl + j - add a line break at the cursor position during insert mode
+- Ctrl + t - indent (move right) line one shiftwidth during insert mode
+- Ctrl + d - de-indent (move left) line one shiftwidth during insert mode
+- Ctrl + n - insert (auto-complete) next match before the cursor during insert mode
+- Ctrl + p - insert (auto-complete) previous match before the cursor during insert mode
+- Ctrl + rx - insert the contents of register x
+- Ctrl + ox - Temporarily enter normal mode to issue one normal-mode command x.
+- Esc or Ctrl + c - exit insert mode
+
+##### Editing
+
+- r - replace a single character.
+- R - replace more than one character, until ESC is pressed.
+- J - join line below to the current one with one space in between
+- gJ - join line below to the current one without space in between
+- gwip - reflow paragraph
+- g~ - switch case up to motion
+- gu - change to lowercase up to motion
+- gU - change to uppercase up to motion
+- cc - change (replace) entire line
+- c$ or C - change (replace) to the end of the line
+- ciw - change (replace) entire word
+- cw or ce - change (replace) to the end of the word
+- s - delete character and substitute text (same as cl)
+- S - delete line and substitute text (same as cc)
+- xp - transpose two letters (delete and paste)
+- u - undo
+- U - restore (undo) last changed line
+- Ctrl + r - redo
+- . - repeat last command
+
+##### Marking text (visual mode)
+
+- v - start visual mode, mark lines, then do a command (like y-yank)
+- V - start linewise visual mode
+- o - move to other end of marked area
+- Ctrl + v - start visual block mode
+- O - move to other corner of block
+- aw - mark a word
+- ab - a block with ()
+- aB - a block with {}
+- at - a block with <> tags
+- ib - inner block with ()
+- iB - inner block with {}
+- it - inner block with <> tags
+- Esc or Ctrl + c - exit visual mode
+
+**Tip** Instead of b or B one can also use ( or { respectively.
+
+##### Visual commands
+
+- \> - shift text right
+- < - shift text left
+- y - yank (copy) marked text
+- d - delete marked text
+- ~ - switch case
+- u - change marked text to lowercase
+- U - change marked text to uppercase
+
+##### Registers
+
+- :reg\[isters\] - show registers content
+- "xy - yank into register x
+- "xp - paste contents of register x
+- "+y - yank into the system clipboard register
+- "+p - paste from the system clipboard register
+
+**Tip** Registers are being stored in ~/.viminfo, and will be loaded again on next restart of vim.
+
+**Tip** Special registers:
+
+ 0 - last yank  
+ " - unnamed register, last delete or yank  
+ % - current file name  
+ # - alternate file name  
+ \* - clipboard contents (X11 primary)  
+ + - clipboard contents (X11 clipboard)  
+ / - last search pattern  
+ : - last command-line  
+ . - last inserted text  
+ \- - last small (less than a line) delete  
+ \= - expression register  
+ \_ - black hole register
+
+##### Marks and positions
+
+- :marks - list of marks
+- ma - set current position for mark A
+- \`a - jump to position of mark A
+- y\`a - yank text to position of mark A
+- \`0 - go to the position where Vim was previously exited
+- \`" - go to the position when last editing this file
+- \`. - go to the position of the last change in this file
+- \`\` - go to the position before the last jump
+- :ju\[mps\] - list of jumps
+- Ctrl + i - go to newer position in jump list
+- Ctrl + o - go to older position in jump list
+- :changes - list of changes
+- g, - go to newer position in change list
+- g; - go to older position in change list
+- Ctrl + \] - jump to the tag under cursor
+
+**Tip** To jump to a mark you can either use a backtick (\`) or an apostrophe ('). Using an apostrophe jumps to the beginning (first non-blank) of the line holding the mark.
+
+##### Macros
+
+- qa - record macro a
+- q - stop recording macro
+- @a - run macro a
+- @@ - rerun last run macro
+
+##### Cut and paste
+
+- yy - yank (copy) a line
+- 2yy - yank (copy) 2 lines
+- yw - yank (copy) the characters of the word from the cursor position to the start of the next word
+- yiw - yank (copy) word under the cursor
+- yaw - yank (copy) word under the cursor and the space after or before it
+- y$ or Y - yank (copy) to end of line
+- p - put (paste) the clipboard after cursor
+- P - put (paste) before cursor
+- gp - put (paste) the clipboard after cursor and leave cursor after the new text
+- gP - put (paste) before cursor and leave cursor after the new text
+- dd - delete (cut) a line
+- 2dd - delete (cut) 2 lines
+- dw - delete (cut) the characters of the word from the cursor position to the start of the next word
+- diw - delete (cut) word under the cursor
+- daw - delete (cut) word under the cursor and the space after or before it
+- :3,5d - delete lines starting from 3 to 5
+
+**Tip** You can also use the following characters to specify the range:  
+e.g.
+
+:.,$d - From the current line to the end of the file  
+:.,1d - From the current line to the beginning of the file  
+:10,1d - From the 10th line to the beginning of the file
+
+- :g/{pattern}/d - delete all lines containing pattern
+- :g!/{pattern}/d - delete all lines not containing pattern
+- d$ or D - delete (cut) to the end of the line
+- x - delete (cut) character
+
+##### Indent text
+
+- \>> - indent (move right) line one shiftwidth
+- << - de-indent (move left) line one shiftwidth
+- \>% - indent a block with () or {} (cursor on brace)
+- <% - de-indent a block with () or {} (cursor on brace)
+- \>ib - indent inner block with ()
+- \>at - indent a block with <> tags
+- 3== - re-indent 3 lines
+- \=% - re-indent a block with () or {} (cursor on brace)
+- \=iB - re-indent inner block with {}
+- gg=G - re-indent entire buffer
+- \]p - paste and adjust indent to current line
+
+##### Exiting
+
+- :w - write (save) the file, but don't exit
+- :w !sudo tee % - write out the current file using sudo
+- :wq or :x or ZZ - write (save) and quit
+- :q - quit (fails if there are unsaved changes)
+- :q! or ZQ - quit and throw away unsaved changes
+- :wqa - write (save) and quit on all tabs
+
+##### Search and replace
+
+- /pattern - search for pattern
+- ?pattern - search backward for pattern
+- \\vpattern - 'very magic' pattern: non-alphanumeric characters are interpreted as special regex symbols (no escaping needed)
+- n - repeat search in same direction
+- N - repeat search in opposite direction
+- :%s/old/new/g - replace all old with new throughout file
+- :%s/old/new/gc - replace all old with new throughout file with confirmations
+- :noh\[lsearch\] - remove highlighting of search matches
+
+##### Search in multiple files
+
+- :vim\[grep\] /pattern/ {\`{file}\`} - search for pattern in multiple files
+
+e.g. :vim\[grep\] /foo/ \*\*/\*
+
+- :cn\[ext\] - jump to the next match
+- :cp\[revious\] - jump to the previous match
+- :cope\[n\] - open a window containing the list of matches
+- :ccl\[ose\] - close the quickfix window
+
+##### Tabs
+
+- :tabnew or :tabnew {page.words.file} - open a file in a new tab
+- Ctrl + wT - move the current split window into its own tab
+- gt or :tabn\[ext\] - move to the next tab
+- gT or :tabp\[revious\] - move to the previous tab
+- #gt - move to tab number #
+- :tabm\[ove\] # - move current tab to the #th position (indexed from 0)
+- :tabc\[lose\] - close the current tab and all its windows
+- :tabo\[nly\] - close all tabs except for the current one
+- :tabdo command - run the `command` on all tabs (e.g. `:tabdo q` - closes all opened tabs)
+
+##### Working with multiple files
+
+- :e\[dit\] file - edit a file in a new buffer
+- :bn\[ext\] - go to the next buffer
+- :bp\[revious\] - go to the previous buffer
+- :bd\[elete\] - delete a buffer (close a file)
+- :b\[uffer\]# - go to a buffer by index #
+- :b\[uffer\] file - go to a buffer by file
+- :ls or :buffers - list all open buffers
+- :sp\[lit\] file - open a file in a new buffer and split window
+- :vs\[plit\] file - open a file in a new buffer and vertically split window
+- :vert\[ical\] ba\[ll\] - edit all buffers as vertical windows
+- :tab ba\[ll\] - edit all buffers as tabs
+- Ctrl + ws - split window
+- Ctrl + wv - split window vertically
+- Ctrl + ww - switch windows
+- Ctrl + wq - quit a window
+- Ctrl + wx - exchange current window with next one
+- Ctrl + w= - make all windows equal height & width
+- Ctrl + wh - move cursor to the left window (vertical split)
+- Ctrl + wl - move cursor to the right window (vertical split)
+- Ctrl + wj - move cursor to the window below (horizontal split)
+- Ctrl + wk - move cursor to the window above (horizontal split)
+- Ctrl + wH - make current window full height at far left (leftmost vertical window)
+- Ctrl + wL - make current window full height at far right (rightmost vertical window)
+- Ctrl + wJ - make current window full width at the very bottom (bottommost horizontal window)
+- Ctrl + wK - make current window full width at the very top (topmost horizontal window)
+
+##### Diff
+
+- zf - manually define a fold up to motion
+- zd - delete fold under the cursor
+- za - toggle fold under the cursor
+- zo - open fold under the cursor
+- zc - close fold under the cursor
+- zr - reduce (open) all folds by one level
+- zm - fold more (close) all folds by one level
+- zi - toggle folding functionality
+- \]c - jump to start of next change
+- \[c - jump to start of previous change
+- do or :diffg\[et\] - obtain (get) difference (from other buffer)
+- dp or :diffpu\[t\] - put difference (to other buffer)
+- :diffthis - make current window part of diff
+- :dif\[fupdate\] - update differences
+- :diffo\[ff\] - switch off diff mode for current window
+
+**Tip** The commands for folding (e.g. za) operate on one level. To operate on all levels, use uppercase letters (e.g. zA).
+
+**Tip** To view the differences of files, one can directly start Vim in diff mode by running vimdiff in a terminal. One can even set this as git difftool.
 
 [Indice](#terminal-y-línea-de-comandos)
 
@@ -2360,7 +3746,7 @@ curl -C - -O http://yourdomain.com/yourfile.tar.gz
 Descargar multiples archivos
 
 ```bash
-curl -O http://yoursite.com/info.html -O http://mysite.com/about.html 
+curl -O http://yoursite.com/info.html -O http://mysite.com/about.html
 ```
 
 Descargar archivos desde un archivo con una lista de ULR's
@@ -2385,7 +3771,7 @@ curl -I www.tecmint.com
 Descargar archivos desde un FTP con o sin autenticación
 
 ```bash
-curl -u username:password -O ftp://yourftpserver/yourfile.tar.gz 
+curl -u username:password -O ftp://yourftpserver/yourfile.tar.gz
 ```
 
 Incluir autenticación: Para incluir autenticación en su solicitud, use la opción -u seguida de su nombre de usuario y contraseña:
@@ -2408,7 +3794,7 @@ curl -I http://localhost --user-agent "I am a new web browser"
 ```
 
 Guardar "Cookies en el explorador"  
-Para ver las cookies almacenadas en la computadora por el sitio **"https://www.cnn.com"** y guardar en el archivo `cnncookies.txt` la información.
+Para ver las cookies almacenadas en la computadora por el sitio **"<https://www.cnn.com>"** y guardar en el archivo `cnncookies.txt` la información.
 
 ```bash
 curl --cookie-jar cnncookies.txt https://www.cnn.com/index.html -O
@@ -2416,7 +3802,7 @@ curl --cookie-jar cnncookies.txt https://www.cnn.com/index.html -O
 cat cnncookies.txt
 ```
 
-Enviar las cookies el archivo `cnncookies.txt` a la pagina **"https://www.cnn.com"**
+Enviar las cookies el archivo `cnncookies.txt` a la pagina **"<https://www.cnn.com>"**
 
 ```bash
 curl --cookie cnncookies.txt https://www.cnn.com
@@ -2424,7 +3810,7 @@ curl --cookie cnncookies.txt https://www.cnn.com
 
 Modificar el nombre de resolución  
 If you’re a web developer and want to test a local version of **yourdomain.com** before pushing it live,
-you can make curl resolve **http://www.yourdomain.com** to your localhost like so:
+you can make curl resolve **<http://www.yourdomain.com>** to your localhost like so:
 
 ```bash
 curl --resolve www.yourdomain.com:80:localhost http://www.yourdomain.com/
@@ -2506,14 +3892,14 @@ curl -X GET "https://httpbin.org/get" -H "accept: application/json"
 
 ```json
 {
-  "args": {}, 
+  "args": {},
   "headers": {
-    "Accept": "application/json", 
-    "Host": "httpbin.org", 
-    "User-Agent": "curl/7.81.0", 
+    "Accept": "application/json",
+    "Host": "httpbin.org",
+    "User-Agent": "curl/7.81.0",
     "X-Amzn-Trace-Id": "Root=1-641bdcd7-0b6e79f0365f30375126452f"
-  }, 
-  "origin": "189.141.22.168", 
+  },
+  "origin": "189.141.22.168",
   "url": "https://httpbin.org/get"
 }
 ```
@@ -2528,16 +3914,16 @@ curl "https://httpbin.org/get?name=mack&sistema_os=linux"
 ```json
 {
   "args": {
-    "name": "mack", 
+    "name": "mack",
     "sistema_os": "linux"
-  }, 
+  },
   "headers": {
-    "Accept": "*/*", 
-    "Host": "httpbin.org", 
-    "User-Agent": "curl/7.81.0", 
+    "Accept": "*/*",
+    "Host": "httpbin.org",
+    "User-Agent": "curl/7.81.0",
     "X-Amzn-Trace-Id": "Root=1-641bdf04-160a147a2948fb3726bf2b45"
-  }, 
-  "origin": "189.141.22.168", 
+  },
+  "origin": "189.141.22.168",
   "url": "https://httpbin.org/get?name=mack&sistema_os=linux"
 }
 ```
@@ -2550,7 +3936,7 @@ curl -X GET "https://httpbin.org/get?name=mack&sistema_os=linux" -H "accept: app
 ```
 
 ```bash
-HTTP/2 200 
+HTTP/2 200
 date: Thu, 23 Mar 2023 05:16:10 GMT
 content-type: application/json
 content-length: 346
@@ -2560,16 +3946,16 @@ access-control-allow-credentials: true
 
 {
   "args": {
-    "name": "mack", 
+    "name": "mack",
     "sistema_os": "linux"
-  }, 
+  },
   "headers": {
-    "Accept": "application/json", 
-    "Host": "httpbin.org", 
-    "User-Agent": "curl/7.81.0", 
+    "Accept": "application/json",
+    "Host": "httpbin.org",
+    "User-Agent": "curl/7.81.0",
     "X-Amzn-Trace-Id": "Root=1-641be099-1facad453dcfb2db3de5529b"
-  }, 
-  "origin": "189.141.22.168", 
+  },
+  "origin": "189.141.22.168",
   "url": "https://httpbin.org/get?name=mack&sistema_os=linux"
 }
 ```
@@ -2583,18 +3969,18 @@ curl -X POST https://httpbin.org/post
 
 ```json
 {
-  "args": {}, 
-  "data": "", 
-  "files": {}, 
-  "form": {}, 
+  "args": {},
+  "data": "",
+  "files": {},
+  "form": {},
   "headers": {
-    "Accept": "*/*", 
-    "Host": "httpbin.org", 
-    "User-Agent": "curl/7.81.0", 
+    "Accept": "*/*",
+    "Host": "httpbin.org",
+    "User-Agent": "curl/7.81.0",
     "X-Amzn-Trace-Id": "Root=1-641be21e-4e8dc0c3735d7a7c588f1beb"
-  }, 
-  "json": null, 
-  "origin": "189.141.22.168", 
+  },
+  "json": null,
+  "origin": "189.141.22.168",
   "url": "https://httpbin.org/post"
 }
 ```
@@ -2605,23 +3991,23 @@ curl -X POST -H "Content-Type: application/json" -d '{"nombre": "Ejemplo", "edad
 
 ```json
 {
-  "args": {}, 
-  "data": "{\"nombre\": \"Ejemplo\", \"edad\": 25}", 
-  "files": {}, 
-  "form": {}, 
+  "args": {},
+  "data": "{\"nombre\": \"Ejemplo\", \"edad\": 25}",
+  "files": {},
+  "form": {},
   "headers": {
-    "Accept": "*/*", 
-    "Content-Length": "33", 
-    "Content-Type": "application/json", 
-    "Host": "httpbin.org", 
-    "User-Agent": "curl/7.81.0", 
+    "Accept": "*/*",
+    "Content-Length": "33",
+    "Content-Type": "application/json",
+    "Host": "httpbin.org",
+    "User-Agent": "curl/7.81.0",
     "X-Amzn-Trace-Id": "Root=1-641be271-3a0b172a324714f15cf4bdef"
-  }, 
+  },
   "json": {
-    "edad": 25, 
+    "edad": 25,
     "nombre": "Ejemplo"
-  }, 
-  "origin": "189.141.22.168", 
+  },
+  "origin": "189.141.22.168",
   "url": "https://httpbin.org/post"
 }
 ```

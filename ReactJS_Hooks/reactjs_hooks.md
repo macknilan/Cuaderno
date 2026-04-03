@@ -1,8 +1,9 @@
-
 # React Hooks
 
 ¿Qué son los React Hooks y cómo cambian el desarrollo con React?
+
 Es una característica que salió en la versión 16.8 en febrero de 2019.
+
 Los Hooks vienen a cambiar la forma de desarrollo en React.
 ⠀
 Vienen a resolver problemas ligados a React, como la complejidad de los componentes, no se podía compartir la lógica de estado entre componentes, Component Hell, etc.
@@ -11,32 +12,58 @@ Los Hooks presentan una alternativa al desarrollo con clases, ya que estos viene
 
 Un Hook es una función especial que nos permitirá conectarnos a características de React, para trabajar con métodos especiales, los cuales nos permitirán manejar el estado de mejor forma sin depender de clases.
 
-**Hooks** son una nueva característica en React 16.8. Estos te permiten usar el estado y otras características de React sin escribir una clase.
+**Hooks** son una nueva característica en React desde 16.8. Estos te permiten usar el estado y otras características de React sin escribir una clase.
 
-**useState**
-`useState` nos ayuda a manejar el estado en componentes creados como funciones
+- 🚨 Algunas reglas para el uso de Hooks:
+  1. Se tienen que usar en el nivel más alto de tu componente.
+  2. Llamar hooks solo en **componentes** de React.
+  3. No llamar hooks de manera condicional.
 
-**useEffect**
-`useEffect` nos permite manejar efectos que van a ser transmitidos dentro del componente.
+Hooks centrales:
 
-**useContext**
-`useContext` Resuelve el problema de pasar información entre componentes, poderlos interconectar sin necesidad del prop y estarán ligadas de padre a hijo; es la fusión de React Hooks y React Context
+- `useState`: Nos ayuda a manejar el estado en componentes creados como funciones
+- `useEffect`:
+  - Se manda a llamar cuando ciertos parámetros cambian y/o funciones, cuando ciertos valores cambian.
+  - Nos permite manejar efectos que van a ser transmitidos dentro del componente.
+  - Su callback no puede ser async, pero si se puede llamar una función async dentro de este.
+  - Puede ser utilizado para hacer llamadas a una API, para hacer un fetch, para hacer un cambio en el DOM, es el último donde se busca cuando un componente se **desmonta**.
+- `useContext`: Resuelve el problema de pasar información entre componentes, poderlos interconectar sin necesidad del prop y estarán ligadas de padre a hijo; es la fusión de React Hooks y React Context
+- `useReducer`: Implementa una forma más amigable y con más características para trabajar con el estado; es como `useState`, pero más escalable.Se tiene un estado inicial, un reducer y un dispatch para mandar la información.
 
-**useReducer**
-`useReducer` Implementa una forma más amigable y con más características para trabajar con el estado; es como `useState`, pero más escalable.
-Se tiene un estado inicial, un reducer y un dispatch para mandar la información.
+Hooks de rendimiento:
 
-**useMemo**
-`useMemo` Nos ayuda a evitar cálculos innecesarios utilizando la memoización.
+- `useMemo` Nos ayuda a evitar cálculos innecesarios utilizando la memoización.
+- `useRef`:
+  - Referenciar un valor que no es necesario para renderizar.
+  - Es el manejo profesional de inputs y formularios, todo esto para manejar como las referencias a los formularios e inputs.
+  - ejemplo: `const data = useRef([])` la variable data es mutable.
+  - `data.current = valoresDeUnJson` para actualizar el valor.
+  - `data.current` para acceder al valor actual.
+  - Nos permite **mantener una referencia mutable** a un elemento del DOM.
+  - Nos permite actualizar un valor pero no actualizar un componente.
+- `useCallback` Nos ayuda a evitar cálculos innecesarios en funciones
 
-**useRef**
-`useRef` Es el manejo profesional de inputs y formularios, todo esto para manejar como las referencias a los formularios e inputs.
+Nuevos Hooks en React 18.3:
 
-**useCallback**
-`useCallback` Nos ayuda a evitar cálculos innecesarios en funciones
+- `useTransition` Nos permite manejar las transiciones de los elementos de la interfaz de usuario.
+- `useDeferredValue` Nos permite manejar el diferimiento de los valores de los elementos de la interfaz de usuario.
+- `useOpaqueIdentifier` Nos permite manejar la identificación de los elementos de la interfaz de usuario.
 
-**Custom hooks**
-En React Hooks podemos realizar hooks personalizados con los cuales podemos separar lógica y separarlos de cualquier componente; es la abstracción en la lógica de tus componentes.
+React DOM Hooks (para aplicaciones web):
+
+- `useLayoutEffect`: es similar a `useEffect`, pero se ejecuta de forma sincronía después de todas las mutaciones del DOM.
+- `useImperativeHandle`: personaliza la instancia de un componente hijo que se expone a un componente padre.
+
+- `useActionState`:
+- `useDebugValue`:
+- `useOptimistic`:
+- `useSyncExternalStore`:
+
+- `Custom hooks`:
+  - Se crean con la palabra `use` al inicio, después con nombre descriptivo.
+  - _Es una función que "puede" contener uno o más hooks_ cuando es utilizado por componentes.
+  - Se crean cuando se necesita reutilizar lógica en diferentes componentes.
+  - En React Hooks podemos realizar hooks personalizados con los cuales podemos separar lógica y separarlos de cualquier componente; es la abstracción en la lógica de tus componentes.
 
 2. Introducción a React Hooks
 
@@ -57,57 +84,61 @@ En este caso hacemos uso de la desestructuración del array una característica 
 
 `state ⇒ 0` `setState` ⇒ **Función que actualiza el estado**
 
-+ Nuestro estado puede ser de los siguente tipos:
-  + String
-  + Boolean
-  + Number
-  + Float
-  + Null
-  + Undefined
-  + Object
-  + Array
+- Nuestro estado puede ser de los siguente tipos:
+  - String
+  - Boolean
+  - Number
+  - Float
+  - Null
+  - Undefined
+  - Object
+  - Array
 
 ```js
 // traemos useState al documento
-import React, {useState} from 'react'
+import React, { useState } from "react";
 
 const Header = () => {
-    /*
-     * Integrar useState a esta logica
-     * useState va a manejar este estado 
-     * y haremos una función que cambia de Darmode a lightmode
-     */
-
-    /*
-     * Constante que va a estructurar 2 elementos
-     * el primero(darkMode) es el estado
-     * el segundo(setDarkMode) es la función que cambiará al estado(darkMode)
-     * de useState y lo pasamos como una función con estado inicial false
-     */
-    const [darkMode, setDarkMode] = useState(false);
-
-    /*
-     * Función para hacer los cambios de estado
-     */
-    const handleClick = () => {
-        setDarkMode(!darkMode);
-    };
+  /*
+   * Integrar useState a esta logica
+   * useState va a manejar este estado
+   * y haremos una función que cambia de Darmode a lightmode
+   */
 
   /*
-     * Creamos el header con el logo 
-     * y un boton para activar el DarkMode
-     * dentro del boton ingresamos la logica para mostrar darkmode o lightMode
-     */
-    return (
-        <div className="Header">
-            <h1>React hooks</h1>
-            <button type="button" onClick={handleClick}>{darkMode ? 'Dark Mode' : 'Light Mode'}</button>
-            <button type="button" onClick={() => setDarkMode(!darkMode)}>{darkMode ? 'Dark Mode 2' : 'Light Mode 2'}</button>
-        </div>
-    )
-}
+   * Constante que va a estructurar 2 elementos
+   * el primero(darkMode) es el estado
+   * el segundo(setDarkMode) es la función que cambiará al estado(darkMode)
+   * de useState y lo pasamos como una función con estado inicial false
+   */
+  const [darkMode, setDarkMode] = useState(false);
 
-export default Header
+  /*
+   * Función para hacer los cambios de estado
+   */
+  const handleClick = () => {
+    setDarkMode(!darkMode);
+  };
+
+  /*
+   * Creamos el header con el logo
+   * y un boton para activar el DarkMode
+   * dentro del boton ingresamos la logica para mostrar darkmode o lightMode
+   */
+  return (
+    <div className="Header">
+      <h1>React hooks</h1>
+      <button type="button" onClick={handleClick}>
+        {darkMode ? "Dark Mode" : "Light Mode"}
+      </button>
+      <button type="button" onClick={() => setDarkMode(!darkMode)}>
+        {darkMode ? "Dark Mode 2" : "Light Mode 2"}
+      </button>
+    </div>
+  );
+};
+
+export default Header;
 ```
 
 ## `useEffect`: olvida el ciclo de vida, ahora piensa en efectos
@@ -117,25 +148,25 @@ export default Header
 En este ejemplo se llama a una API, traemos la información y la ejecutaremos en el componente
 
 ```js
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 const Characters = () => {
   const [characters, setCharacters] = useState([]);
 
   useEffect(() => {
-    fetch('https://rickandmortyapi.com/api/character/')
-      .then(response => response.json())
-      .then(data => setCharacters(data.results));
+    fetch("https://rickandmortyapi.com/api/character/")
+      .then((response) => response.json())
+      .then((data) => setCharacters(data.results));
   }, []);
 
   return (
     <div className="Characters">
-      {characters.map(character => (
+      {characters.map((character) => (
         <h2>{character.name}</h2>
       ))}
     </div>
   );
-}
+};
 
 export default Characters;
 ```
@@ -170,96 +201,4 @@ const Characters = () => {
 export default Characters;
 ```
 
-## `useContext`: la fusión de React Hooks y React Context
-
-## `useReducer`: como useState, pero más escalable
-
-## ¿Qué es memoization? Técnicas de optimización en programación funcional
-
-## `useMemo`: evita cálculos innecesarios en componentes
-
-## `useRef`: manejo profesional de inputs y formularios
-
-## `useCallback`: evita cálculos innecesarios en funciones
-
-## Optimización de componentes en React con React.memo
-
-## Custom hooks: abstracción en la lógica de tus componentes
-
-## Third Party Custom Hooks de Redux y React Router
-
-3. Configura un entorno de desarrollo profesional
-
-## Proyecto: análisis y retos de Platzi Conf Store
-
-## Instalación de Webpack y Babel: presets, plugins y loaders
-
-## Configuración de Webpack 5 y webpack-dev-server
-
-## Configuración de Webpack 5 con loaders y estilos
-
-## Loaders de Webpack para Preprocesadores CSS
-
-## Flujo de desarrollo seguro y consistente con ESLint y Prettier
-
-## Git Hooks con Husky
-
-4. Estructura y creación de componentes para Platzi Conf Store
-
-## Arquitectura de vistas y componentes con React Router DOM
-
-## Maquetación y estilos del home
-
-## Maquetación y estilos de la lista de productos
-
-## Maquetación y estilos del formulario de checkout
-
-## Maquetación y estilos de la información del usuario
-
-## Maquetación y estilos del flujo de pago
-
-## Integración de íconos y conexión con React Router
-
-5. Integración de React Hooks en Platzi Conf Merch
-
-## Creando nuestro primer custom hook
-
-## Implementando useContext en Platzi Conf Merch
-
-## useContext en la página de checkout
-
-## useRef en la página de checkout
-
-## Integrando third party custom hooks en Platzi Conf Merch
-
-6. Configura mapas y pagos con PayPal y Google Maps
-
-## Paso a paso para conectar tu aplicación con la API de PayPal
-
-## Integración de pagos con la API de PayPal
-
-## Completando la integración de pagos con la API de PayPal
-
-## Paso a paso para conectar tu aplicación con la API de Google Maps
-
-## Integración de Google Maps en el mapa de checkout
-
-## Creando un Custom Hook para Google Maps
-
-7. Estrategias de deployment profesional
-
-## Continuous integration y continuous delivery con GitHub Actions
-
-## Compra del dominio y despliega con Cloudflare
-
-8. Optimización de aplicaciones web con React
-
-## Integración de React Helmet para mejorar el SEO con meta etiquetas
-
-## Análisis de performance con Google Lighthouse
-
-## Convierte tu aplicación de React en PWA
-
-9. Bonus: trabaja con Strapi CMS para crear tu propia API
-
-## Crea una API con Strapi CMS y consúmela con React.js
+TODO: Crea una API con Strapi CMS y consúmela con React.js
