@@ -4,9 +4,817 @@
 
 ### PROGRAMA DE CURSO -PLATZI-VENTAS-
 
-- :link: <a href="http://book.pythontips.com/en/latest/index.html" target="_blank">Python Tips - Intermediate Python — Python Tips 0.1 documentation</a>
-- :link: <a href="https://docs.python.org/3/library/functions.html" target="_blank">Built-in Functions</a>
-- :link: <a href="itertools — Functions creating iterators for efficient looping" target="_blank"><https://docs.python.org/3.10/library/itertools.html></a>
+- :link: [Python Tips - Intermediate Python — Python Tips 0.1 documentation](http://book.pythontips.com/en/latest/index.html)
+- :link: [Built-in Functions](https://docs.python.org/3/library/functions.html)
+- :link: [itertools — Functions creating iterators for efficient looping](https://docs.python.org/3.10/library/itertools.html)
+
+## 1. Learn the Basics
+
+### Python Fundamentals
+
+- [ ] Basic Syntax
+- [ ] Variables and Data Types
+  - `int`, `float`, `str`, `bool`, `NoneType`
+- [ ] Type Casting
+- [ ] Conditionals (`if`, `elif`, `else`)
+- [ ] Loops (`for`, `while`, `break`, `continue`)
+- [ ] Functions
+  - Arguments, return values, `*args`, `**kwargs`
+- [ ] Built-in Functions
+- [ ] Exception Handling (`try`, `except`, `finally`, `raise`)
+
+### Data Structures
+
+- [ ] Lists
+- [ ] Tuples
+- [ ] Sets
+- [ ] Dictionaries
+- [ ] List / Dict / Set Comprehensions
+
+### Modules & Packages
+
+- [ ] Standard Library (e.g. `os`, `sys`, `math`, `datetime`, `pathlib`)
+- [ ] Importing modules
+- [ ] Creating your own modules
+- [ ] `pip` — Python Package Manager
+- [ ] Virtual Environments ~~(`venv`, `virtualenv`, `pipenv`, `poetry`)~~ `uv`
+
+---
+
+## 2. Object-Oriented Programming (OOP)
+
+- [ ] Classes and Objects
+- [ ] `__init__` and instance variables
+- [ ] Instance vs Class Methods vs Static Methods
+- [ ] Inheritance
+- [ ] Encapsulation
+- [ ] Polymorphism
+- [ ] Magic / Dunder Methods (`__str__`, `__repr__`, `__len__`, etc.)
+- [ ] Dataclasses
+
+---
+
+## 3. Advanced Python
+
+- [ ] Iterators and Generators (`yield`)
+- [ ] Decorators
+- [ ] Context Managers (`with` statement)
+- [ ] Lambda Functions
+- [ ] Closures
+- [ ] `*args` and `**kwargs` (deep dive)
+- [ ] Typing and Type Hints (`typing` module)
+- [ ] Regular Expressions (`re` module)
+- [ ] Functional Programming (`map`, `filter`, `reduce`)
+
+---
+
+## 4. File Handling & I/O
+
+- [ ] Reading and Writing Files
+- [ ] Working with CSV files
+- [ ] Working with JSON
+- [ ] Working with XML
+- [ ] File System operations (`pathlib`, `os`, `shutil`)
+
+---
+
+## 5. Version Control
+
+- [ ] Git Basics
+  - `init`, `clone`, `add`, `commit`, `push`, `pull`
+  - Branching and Merging
+  - Pull Requests
+- [ ] GitHub / GitLab
+
+---
+
+## 6. Data Structures & Algorithms
+
+- [ ] Big O Notation
+- [ ] Arrays / Linked Lists
+- [ ] Stacks and Queues
+- [ ] Hash Tables / Hash Maps
+- [ ] Trees (Binary Trees, BST)
+- [ ] Graphs
+- [ ] Sorting Algorithms (Bubble, Merge, Quick)
+- [ ] Searching Algorithms (Binary Search)
+- [ ] Recursion
+
+---
+
+## 7. Testing
+
+- [ ] Unit Testing with `unittest`
+- [ ] Testing with `pytest`
+- [ ] Mocking
+- [ ] Test Coverage
+- [ ] TDD (Test-Driven Development) basics
+
+---
+
+## 8. Python Databases
+
+### Relational Databases
+
+- [ ] SQL Basics (SELECT, INSERT, UPDATE, DELETE)
+- [ ] `sqlite3` (built-in)
+- [ ] PostgreSQL with `psycopg2`
+- [ ] ORMs: SQLAlchemy, Django ORM
+
+### Non-Relational Databases
+
+- [ ] MongoDB with `pymongo`
+- [ ] Redis with `redis-py`
+
+---
+
+## 9. Web Development
+
+### Frameworks
+
+- [ ] **Django** — Full-featured web framework
+  - [ ] MVT Pattern
+  - [ ] Models, Views, Templates
+  - [ ] Django REST Framework (DRF)
+  - [ ] Authentication
+  - [ ] Admin Panel
+- [ ] **Flask** — Lightweight microframework
+  - [ ] Routing
+  - [ ] Blueprints
+  - [ ] Flask-SQLAlchemy
+- [ ] **FastAPI** — Modern async API framework
+  - [ ] Pydantic models
+  - [ ] Async/Await
+  - [ ] Auto-generated docs (Swagger / OpenAPI)
+
+### APIs
+
+- [ ] REST API design
+- [ ] Consuming APIs with `requests` and `httpx`
+- [ ] Authentication: JWT, OAuth2, API Keys
+- [ ] GraphQL (optional)
+
+---
+
+## 10. Data Science & Machine Learning (Optional Path)
+
+### Core Libraries
+
+- [ ] **NumPy** — Numerical computing
+- [ ] **Pandas** — Data manipulation and analysis
+- [ ] **Matplotlib / Seaborn** — Data visualization
+- [ ] **Scikit-learn** — Machine learning
+
+### Deep Learning
+
+- [ ] **TensorFlow / Keras**
+- [ ] **PyTorch**
+
+### Notebooks
+
+- [ ] Jupyter Notebooks / Google Colab
+
+---
+
+## 11. Automation & Scripting (Optional Path)
+
+- [ ] Web Scraping: `BeautifulSoup`, `Scrapy`, `Playwright`
+- [ ] Browser Automation: `Selenium`
+- [ ] Task Automation: `schedule`, `APScheduler`
+- [ ] Working with external APIs and webhooks
+- [ ] CLI tools: `argparse`, `click`, `typer`
+
+---
+
+## 12. DevOps & Deployment
+
+### Containers
+
+- [ ] Docker basics
+  - [ ] Dockerfile
+  - [ ] Docker Compose
+- [ ] Kubernetes (optional)
+
+### CI/CD
+
+- [ ] GitHub Actions
+- [ ] GitLab CI
+
+### Cloud
+
+- [ ] AWS / GCP / Azure basics
+- [ ] Deploying Django/Flask/FastAPI apps
+  - [ ] Heroku, Railway, Render
+  - [ ] AWS EC2 / Elastic Beanstalk
+  - [ ] Google Cloud Run
+
+### Infrastructure as Code (optional)
+
+- [ ] Terraform
+- [ ] Ansible
+
+---
+
+## 13. Good Practices
+
+- [ ] Clean Code & PEP 8 style guide
+- [ ] Code linting: `flake8`, `ruff`
+- [ ] Formatting: `black`, `isort`
+- [ ] Logging (`logging` module)
+- [ ] Documentation: docstrings, Sphinx
+- [ ] Security best practices
+  - [ ] Dependency auditing (`safety`, `bandit`)
+  - [ ] Environment variable management (`.env`, `python-decouple`)
+- [ ] Design Patterns (Singleton, Factory, Observer, etc.)
+- [ ] SOLID Principles
+
+---
+
+## 14. Build a Portfolio
+
+- [ ] Contribute to open-source Python projects
+- [ ] Build at least 3 full projects (web app, data project, automation)
+- [ ] Publish packages to PyPI
+- [ ] Document your projects with READMEs
+- [ ] Write about what you learn (blog, dev.to, etc.)
+
+---
+
+---
+
+Virtual Environments [uv](#modules--packages)
+
+- [Instalación](#instalación)
+- [Gestión de Proyectos](#gestión-de-proyectos)
+- [Gestión de Dependencias](#gestión-de-dependencias)
+- [Entornos Virtuales](#entornos-virtuales)
+- [Gestión de Versiones de Python](#gestión-de-versiones-de-python)
+- [Herramientas Globales (uv tool)](#herramientas-globales-uv-tool)
+- [Comandos de pip compatibles](#comandos-de-pip-compatibles)
+- [Ejecutar Scripts](#ejecutar-scripts)
+- [Árbol de Dependencias](#árbol-de-dependencias)
+- [Archivo de Configuración](#archivo-de-configuración)
+- [Referencia rápida de comandos](#referencia-rápida-de-comandos)
+
+#### Instalación
+
+##### Linux / macOS
+
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+##### Windows (PowerShell)
+
+```powershell
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
+
+##### Con pip (alternativa)
+
+```bash
+pip install uv
+```
+
+##### Verificar instalación
+
+```bash
+uv --version
+```
+
+##### Actualizar uv
+
+```bash
+uv self update
+```
+
+##### Desinstalar uv
+
+```bash
+uv self uninstall
+```
+
+---
+
+##### Gestión de Proyectos
+
+`uv` maneja proyectos Python completos usando `pyproject.toml`.
+
+##### Crear un proyecto nuevo
+
+```bash
+uv init mi-proyecto
+cd mi-proyecto
+```
+
+Esto genera la siguiente estructura:
+
+```
+mi-proyecto/
+├── pyproject.toml   ← configuración del proyecto
+├── README.md
+├── .python-version  ← versión de Python a usar
+└── src/
+    └── main.py
+```
+
+##### Crear proyecto en el directorio actual
+
+```bash
+uv init .
+```
+
+##### Crear proyecto tipo librería
+
+```bash
+uv init --lib mi-libreria
+```
+
+##### Crear proyecto tipo aplicación
+
+```bash
+uv init --app mi-app
+```
+
+##### Sincronizar el proyecto (instalar dependencias)
+
+```bash
+uv sync
+```
+
+##### Sincronizar incluyendo dependencias de desarrollo
+
+```bash
+uv sync --dev
+```
+
+---
+
+#### Gestión de Dependencias
+
+##### Agregar una dependencia
+
+```bash
+uv add requests
+uv add pandas numpy matplotlib
+```
+
+##### Agregar con versión específica
+
+```bash
+uv add "django>=4.2"
+uv add "fastapi==0.110.0"
+```
+
+##### Agregar dependencia de desarrollo
+
+```bash
+uv add --dev pytest black ruff
+```
+
+##### Agregar dependencia opcional
+
+```bash
+uv add --optional nombre-grupo paquete
+```
+
+##### Eliminar una dependencia
+
+```bash
+uv remove requests
+```
+
+##### Actualizar una dependencia
+
+```bash
+uv add paquete --upgrade
+```
+
+##### Actualizar todas las dependencias
+
+```bash
+uv lock --upgrade
+```
+
+##### Ver dependencias del proyecto
+
+```bash
+uv tree
+```
+
+---
+
+#### Entornos Virtuales
+
+##### Crear un entorno virtual
+
+```bash
+uv venv
+```
+
+Crea `.venv/` en el directorio actual.
+
+##### Crear con nombre personalizado
+
+```bash
+uv venv mi-entorno
+```
+
+##### Crear con versión de Python específica
+
+```bash
+uv venv --python 3.11
+uv venv --python 3.12
+```
+
+##### Activar el entorno virtual
+
+**Linux / macOS:**
+
+```bash
+source .venv/bin/activate
+```
+
+**Windows (CMD):**
+
+```cmd
+.venv\Scripts\activate
+```
+
+**Windows (PowerShell):**
+
+```powershell
+.venv\Scripts\Activate.ps1
+```
+
+##### Desactivar el entorno virtual
+
+```bash
+deactivate
+```
+
+##### Ejecutar sin activar el entorno (recomendado con uv)
+
+```bash
+uv run python script.py
+uv run pytest
+uv run flask run
+```
+
+---
+
+#### Gestión de Versiones de Python
+
+`uv` puede instalar y gestionar versiones de Python sin necesidad de `pyenv`.
+
+##### Ver versiones de Python disponibles
+
+```bash
+uv python list
+```
+
+##### Instalar una versión de Python
+
+```bash
+uv python install 3.11
+uv python install 3.12
+uv python install 3.13
+```
+
+##### Instalar múltiples versiones
+
+```bash
+uv python install 3.11 3.12 3.13
+```
+
+##### Ver versiones instaladas
+
+```bash
+uv python list --only-installed
+```
+
+##### Establecer versión de Python para el proyecto
+
+```bash
+uv python pin 3.11
+```
+
+Esto crea o actualiza el archivo `.python-version`.
+
+##### Encontrar ruta de Python
+
+```bash
+uv python find
+uv python find 3.11
+```
+
+---
+
+#### Herramientas Globales (uv tool)
+
+Permite instalar herramientas de línea de comandos de forma global, aisladas del sistema.
+
+##### Instalar una herramienta global
+
+```bash
+uv tool install black
+uv tool install ruff
+uv tool install httpie
+uv tool install yt-dlp
+uv tool install cookiecutter
+```
+
+##### Ejecutar herramienta sin instalar (temporal)
+
+```bash
+uvx black mi_archivo.py
+uvx ruff check .
+uvx pytest
+```
+
+> `uvx` es un atajo de `uv tool run`
+
+##### Actualizar una herramienta
+
+```bash
+uv tool upgrade black
+```
+
+##### Actualizar todas las herramientas
+
+```bash
+uv tool upgrade --all
+```
+
+##### Ver herramientas instaladas
+
+```bash
+uv tool list
+```
+
+##### Desinstalar una herramienta
+
+```bash
+uv tool uninstall black
+```
+
+---
+
+#### Comandos de pip compatibles
+
+`uv` incluye una interfaz compatible con `pip` para facilitar la migración.
+
+##### Instalar paquetes
+
+```bash
+uv pip install requests
+uv pip install -r requirements.txt
+uv pip install "django>=4.2,<5.0"
+```
+
+##### Desinstalar paquetes
+
+```bash
+uv pip uninstall requests
+uv pip uninstall -y requests   # sin confirmación
+```
+
+##### Listar paquetes instalados
+
+```bash
+uv pip list
+uv pip list --outdated         # paquetes con actualizaciones disponibles
+```
+
+##### Ver info de un paquete
+
+```bash
+uv pip show requests
+```
+
+##### Verificar dependencias rotas
+
+```bash
+uv pip check
+```
+
+##### Exportar dependencias
+
+```bash
+uv pip freeze > requirements.txt
+```
+
+##### Instalar en modo editable (desarrollo)
+
+```bash
+uv pip install -e .
+```
+
+##### Forzar reinstalación
+
+```bash
+uv pip install --force-reinstall requests
+```
+
+---
+
+#### Ejecutar Scripts
+
+##### Ejecutar un script Python
+
+```bash
+uv run script.py
+uv run python script.py
+```
+
+##### Ejecutar con dependencias inline (PEP 723)
+
+Puedes declarar dependencias directamente en el script:
+
+```python
+# script.py
+# /// script
+# requires-python = ">=3.11"
+# dependencies = [
+#   "requests",
+#   "rich",
+# ]
+# ///
+
+import requests
+from rich import print
+print(requests.get("https://api.github.com").json())
+```
+
+```bash
+uv run script.py   # instala dependencias automáticamente
+```
+
+##### Ejecutar módulos
+
+```bash
+uv run -m pytest
+uv run -m http.server 8080
+```
+
+##### Ejecutar comandos del entorno
+
+```bash
+uv run flask run
+uv run uvicorn main:app --reload
+uv run manage.py runserver
+```
+
+---
+
+#### Árbol de Dependencias
+
+##### Ver árbol completo del proyecto
+
+```bash
+uv tree
+```
+
+##### Ver árbol de un paquete específico
+
+```bash
+uv tree --package requests
+```
+
+##### Ver dependencias inversas (qué usa este paquete)
+
+```bash
+uv tree --invert --package urllib3
+```
+
+##### Ver árbol con profundidad limitada
+
+```bash
+uv tree --depth 2
+```
+
+Ejemplo de salida:
+
+```
+mi-proyecto v0.1.0
+├── requests v2.31.0
+│   ├── certifi v2024.2.2
+│   ├── charset-normalizer v3.3.2
+│   ├── idna v3.6
+│   └── urllib3 v2.2.1
+└── fastapi v0.110.0
+    ├── pydantic v2.6.4
+    └── starlette v0.36.3
+```
+
+---
+
+#### Archivo de Configuración
+
+`uv` usa `pyproject.toml` como archivo principal de configuración.
+
+##### Ejemplo de `pyproject.toml`
+
+```toml
+[project]
+name = "mi-proyecto"
+version = "0.1.0"
+description = "Mi proyecto Python"
+requires-python = ">=3.11"
+dependencies = [
+    "requests>=2.31.0",
+    "fastapi>=0.110.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "black>=24.0",
+    "ruff>=0.3.0",
+]
+
+[tool.uv]
+dev-dependencies = [
+    "pytest>=7.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+```
+
+##### Configuración global de uv
+
+En Linux/macOS: `~/.config/uv/uv.toml`
+
+```toml
+# Índice de paquetes alternativo
+index-url = "https://pypi.org/simple"
+
+# No crear entornos virtuales automáticamente
+no-venv = false
+
+# Cache
+cache-dir = "~/.cache/uv"
+```
+
+---
+
+#### Referencia rápida de comandos
+
+##### Proyectos
+
+| Comando          | Descripción                        |
+| ---------------- | ---------------------------------- |
+| `uv init nombre` | Crear proyecto nuevo               |
+| `uv sync`        | Instalar dependencias del proyecto |
+| `uv lock`        | Generar/actualizar lock file       |
+| `uv build`       | Construir paquete distribuible     |
+| `uv publish`     | Publicar en PyPI                   |
+
+##### Dependencias
+
+| Comando                | Descripción                       |
+| ---------------------- | --------------------------------- |
+| `uv add paquete`       | Agregar dependencia               |
+| `uv add --dev paquete` | Agregar dependencia de desarrollo |
+| `uv remove paquete`    | Eliminar dependencia              |
+| `uv tree`              | Ver árbol de dependencias         |
+
+##### Entornos
+
+| Comando                 | Descripción                  |
+| ----------------------- | ---------------------------- |
+| `uv venv`               | Crear entorno virtual        |
+| `uv venv --python 3.11` | Crear con versión específica |
+| `uv run comando`        | Ejecutar en el entorno       |
+
+##### Python
+
+| Comando                  | Descripción                |
+| ------------------------ | -------------------------- |
+| `uv python list`         | Ver versiones disponibles  |
+| `uv python install 3.12` | Instalar versión de Python |
+| `uv python pin 3.11`     | Fijar versión del proyecto |
+
+##### Herramientas globales
+
+| Comando                   | Descripción                       |
+| ------------------------- | --------------------------------- |
+| `uv tool install paquete` | Instalar herramienta global       |
+| `uv tool upgrade --all`   | Actualizar todas las herramientas |
+| `uv tool list`            | Ver herramientas instaladas       |
+| `uvx paquete`             | Ejecutar sin instalar             |
+
+##### pip compatible
+
+| Comando                    | Descripción           |
+| -------------------------- | --------------------- |
+| `uv pip install paquete`   | Instalar paquete      |
+| `uv pip uninstall paquete` | Desinstalar paquete   |
+| `uv pip list`              | Listar paquetes       |
+| `uv pip freeze`            | Exportar dependencias |
+| `uv pip check`             | Verificar conflictos  |
 
 ### Tipos de datos
 
@@ -2795,7 +3603,7 @@ resultados = map(cuadrado, numeros)  # DEVUELVE UN OBJETO MAP
 print(list(resultados))  # [1, 4, 9, 16, 25]
 ```
 
-En el siguiente ejemplo se ejecuta primero la función `multiplicar_por` con el valor de `2` y el valor que retorna es la función `multiplicar_por` con el valor de `2`, después se ejecuta la función `doblar` con el valor de `5` que toma el valor de `x` y se asigna a la función `multiplicar` que toma el valor de `n` y lo multiplica por `x`. 
+En el siguiente ejemplo se ejecuta primero la función `multiplicar_por` con el valor de `2` y el valor que retorna es la función `multiplicar_por` con el valor de `2`, después se ejecuta la función `doblar` con el valor de `5` que toma el valor de `x` y se asigna a la función `multiplicar` que toma el valor de `n` y lo multiplica por `x`.
 
 ```py
 # EJEMPLO DE FUNCIONES DE ORDEN SUPERIOR
@@ -2830,7 +3638,6 @@ print(doblar(5))  # Salida: 10
 ```
 
 ### Closures en funciones con `partial` de `functools`
-
 
 ```py
 from dataclasses import dataclass
@@ -2876,11 +3683,11 @@ def main() -> None:
         Customer("Holly", 60),
         Customer("Iris", 65),
     ]
-    
+
     send_email_promotion(customers, is_eligible_closure(50))
-    
+
     is_eligible_partial = partial(is_eligible_for_promotion, cutoff_age=50)
-    
+
     send_email_promotion(customers, is_eligible_partial)
     # send_email_promotion(customers, lambda customer: customer.age > 50)
 
@@ -3051,4 +3858,3 @@ if __name__ == "__main__":
 ```py
 
 ```
-

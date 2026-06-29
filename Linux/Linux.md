@@ -826,180 +826,195 @@ ln -ls ~/public_html ~/www
 
 ### 4. Compresión y descompresión de archivos
 
-- `c` – create an archive file.
-- `x` – extract an archive file.
-- `v` – show the progress of the archive file.
-- `f` – filename of the archive file.
-- `t` – viewing the content of the archive file.
-- `j` – filter archive through bzip2.
-- `z` – filter archive through gzip.
-- `r` – append or update files or directories to the existing archive files.
-- `W` – Verify an archive file.
-- `wildcards` – Specify patterns in UNIX tar command.
+#### Referencia rápida de flags (tar)
 
-### Descompresión
+| Flag | Significado                             |
+| ---- | --------------------------------------- |
+| `-c` | Crear                                   |
+| `-x` | Extraer                                 |
+| `-t` | Listar                                  |
+| `-f` | Especificar nombre de archivo           |
+| `-z` | gzip                                    |
+| `-J` | xz                                      |
+| `-I` | Programa de compresión externo          |
+| `-p` | Preservar permisos, propietario y grupo |
+| `-v` | Salida detallada (verbose)              |
+| `-C` | Cambiar a directorio antes de extraer   |
 
-```bash
-# Archivos tar.gz
-tar -xvf archivo.tar.gz
+#### Tabla comparativa de formatos
 
-# Archivos gz
-gzip -d archivo.gz
+| Característica                   | `.tar.gz` | `.tar.xz` |   `.tar.zst`    |    `.7z`     |
+| -------------------------------- | :-------: | :-------: | :-------------: | :----------: |
+| Ratio de compresión              |   Medio   |   Alto    |      Alto       |   Muy alto   |
+| Velocidad de compresión          |   Media   |   Lenta   |   Muy rápida    |    Lenta     |
+| Velocidad de descompresión       |  Rápida   |   Media   |   Muy rápida    |    Media     |
+| Agregar archivos                 |    ❌     |    ❌     |       ❌        |      ✅      |
+| Preservar propietario/grupo Unix |    ✅     |    ✅     |       ✅        | ⚠️ (via tar) |
+| Compatibilidad                   | Universal |   Alta    | Media (moderna) |    Media     |
 
-# Archivos zip
-unzip archivo.zip
+#### Recomendaciones por caso de uso
 
-# Archivos tar.bx2
-tar -xvf archivo.tar.bz2
+- **Compartir / distribuir software:** `.tar.xz` o `.tar.zst -19` — mejor compresión, se crea una vez.
+- **Uso cotidiano / velocidad:** `.tar.zst` — equilibrio óptimo entre tamaño y velocidad.
+- **Máxima compatibilidad:** `.tar.gz` — disponible en cualquier sistema Linux/Unix.
+- **Archivos a los que se agregan archivos con el tiempo:** `.7z` — único formato con soporte nativo de append.
+- **Datos ya comprimidos (jpg, mp4, zip):** Cualquier formato en nivel mínimo — la compresión adicional es mínima.
 
-# Archivos .7z
-7z e archivo_comprimido.7z
-```
+#### `.tar.gz` (gzip)
 
-Extraer un archivo de un archivo `.sh.tar`
-
-```bash
-tar -xvf cleanfiles.sh.tar cleanfiles.sh
-#
-tar --extract --file=cleanfiles.sh.tar cleanfiles.sh
-```
-
-Extraer un archivo de un archivo `.tar.gz`
+##### Comprimir
 
 ```bash
-tar -zxvf archivo.tar.gz archivo.xml
-#
-tar --extract --file=archivo.tar.gz archivo.xml
+tar -czf archive.tar.gz file_or_dir/
+
+# Máxima compresión:
+tar -czvf archive.tar.gz --use-compress-program="gzip -9" file_or_dir/
+
+# Preservar propietario/grupo (requiere root o sudo):
+tar -czpf archive.tar.gz file_or_dir/
 ```
 
-Extraer un archivo de un archivo `.tar.bz2`
+##### Descomprimir
 
 ```bash
-tar -jxvf archivo.tar.bz2 archivo.xml
-#
-tar --extract --file=archivo.tar.bz2 archivo.xml
+tar -xzf archive.tar.gz
+
+# A un directorio específico:
+tar -xzf archive.tar.gz -C /target/dir/
 ```
 
-Extraer multiples archivos de `tar`, `tat.gz` y `tat.bz2`
+##### Listar contenido
 
 ```bash
-tar -xvf archivo-14-09-12.tar "file1" "file2"
-#
-tar -zxvf archivo-14-09-12.tar.gz "file1" "file2"
-#
-tar -jxvf archivo-org.tar.bz2 "file1" "file2"
+tar -tzf archive.tar.gz
 ```
 
-Extraer de multiples archivos de `tar`, `tat.gz` y `tat.bz2` archivos con la extension `.py`
+##### Agregar archivos
+
+> ❌ **No soportado** — los streams de gzip no son modificables.
+
+---
+
+#### `.tar.xz` (xz / LZMA2)
+
+##### Comprimir
 
 ```bash
-tar -xvf Phpfiles-org.tar --wildcards '*.php'
+tar -cJf archive.tar.xz file_or_dir/
 
-tar -zxvf Phpfiles-org.tar.gz --wildcards '*.php'
+# Máxima compresión (-9e = nivel 9 + extremo):
+tar -cJf archive.tar.xz --use-compress-program="xz -9e" file_or_dir/
 
-tar -jxvf Phpfiles-org.tar.bz2 --wildcards '*.php'
+# Preservar propietario/grupo:
+tar -cJpf archive.tar.xz file_or_dir/
 ```
 
-### Compresión
+##### Descomprimir
 
 ```bash
-# Empaqueto y comprimo la carpeta braulio y la llamo archivo.tar.gz
-tar -zcf archivo.tar.gz braulio
-#
-# Empaqueto y comprimo de forma verbosa y conserva los permisos de los archivos colocados en el archivo para restaurarlos más tarde la carpeta braulio y la llamo archivo.tar.gz
-tar -zcvpf archivo.tar.gz braulio
+tar -xJf archive.tar.xz
 
-# Comprimo la carpeta braulio y la llamo archivo.gz
-gzip -q archivo.gz
-
-# Comprimo la carpeta braulio y la llamo archivo.zip
-zip archivo.zip archivo
-
-# Comprimir un archivo .bx2
-tar -cvfj archivo_comprimido.tar.bz2 /home/archivo
-#
-tar -cvfj archivo_comprimido.tar.tbz /home/archivo
-#
-tar -cvfj archivo_comprimido.tar.tb2 /home/archivo
-
-# Comprimir un archivo 7zip. Los formatos soportados son 7z, XZ, GZIP, TAR, ZIP and BZIP2
-7z a archivo_comprimido.7z archivo_1.4.2_i386.deb
-
-# Comprimir un archivo y seleccionar el formato se usa `-t` 7zip. Los formatos soportados son xz, gzip, tar, zip and bzip2
-7z a -tzip archivo_comprimido.zip archivo_1.4.2_i386.deb
+# A un directorio específico:
+tar -xJf archive.tar.xz -C /target/dir/
 ```
 
-Listar contenido de un archivo `tar`
+##### Listar contenido
 
 ```bash
-tar -tvf archivo.tar
+tar -tJf archive.tar.xz
 ```
 
-Listar contenido de un archivo `tar.gz`
+##### Agregar archivos
+
+> ❌ **No soportado** — los streams de xz no son modificables.
+
+---
+
+#### `.tar.zst` (Zstandard)
+
+##### Comprimir
 
 ```bash
-tar -tvf archivo.tar.gz
+# Forma estándar:
+tar --use-compress-program=zstd -cf archive.tar.zst file_or_dir/
+
+# Forma corta (GNU tar 1.31+):
+tar -I zstd -cf archive.tar.zst file_or_dir/
+
+# Máxima compresión (nivel 19, o ultra nivel 22):
+tar -I "zstd -19" -cf archive.tar.zst file_or_dir/
+tar -I "zstd --ultra -22" -cf archive.tar.zst file_or_dir/
+
+# Preservar propietario/grupo:
+tar -I zstd -cpf archive.tar.zst file_or_dir/
 ```
 
-Listar contenido de un archivo `tar.bz2`
+##### Descomprimir
 
 ```bash
-tar -tvf archivo.tar.bz2
+tar -I zstd -xf archive.tar.zst
+
+# A un directorio específico:
+tar -I zstd -xf archive.tar.zst -C /target/dir/
 ```
 
-Listar el contenido de un archivo `.7z`
+##### Listar contenido
 
 ```bash
-7z l archivo_comprimido.7z
+tar -I zstd -tf archive.tar.zst
 ```
 
-Probar la integridad de un archivo `.z7`
+##### Agregar archivos
+
+> ❌ **No soportado** — los streams de zstd no son modificables.
+
+---
+
+#### `.7z` (7-Zip)
+
+Instalar con:
 
 ```bash
-7z t archivo_comprimido.7z
+sudo apt install p7zip-full      # Debian / Ubuntu
+sudo dnf install p7zip           # Fedora
 ```
 
-### Añadir archivos
-
-Añadir un archivo a `.tar`
+##### Comprimir
 
 ```bash
-tar -rvf archivo-14-09-12.tar xyz.txt
-#
-tar -rvf archivo-14-09-12.tar php
+7z a archive.7z file_or_dir/
+
+# Máxima compresión (nivel 9, LZMA2, diccionario grande):
+7z a -t7z -m0=lzma2 -mx=9 -mfb=64 -md=32m -ms=on archive.7z file_or_dir/
 ```
 
-Añadir un archivo o directorio a `.tar.gz`, `tar.bz2`
+> ⚠️ **Nota:** 7z **no** preserva metadatos de propietario/grupo de Unix. Para backups en Linux, se recomienda envolver los archivos en un tar primero:
 
 ```bash
-tar -rvf archivo-14-09-12.tar.gz xyz.txt
-#
-tar -rvf archivo-14-09-12.tar.bz2 xyz.txt
+tar -cpf - file_or_dir/ | 7z a -si archive.tar.7z
 ```
 
-Hacer el respaldo de un directorio y preservar propietario/grupo. La opción `-si` habilita la lectura desde `stdin`
+##### Descomprimir
 
 ```bash
-tar -cf - carpeta_respaldo | 7za a -si carpeta_respaldo.tar.7z
+7z x archive.7z                  # Extrae con rutas completas
+7z x archive.7z -o /target/dir/  # Extrae a un directorio específico
 ```
 
-Hacer la restauración de un archivo de respaldo `.7z`, la opción `-so` envía la salida a `stdout`
+##### Listar contenido
 
 ```bash
-7za x -so carpeta_respaldo.tar.7z | tar xf -
+7z l archive.7z
 ```
 
-Para establecer un nivel de compresión, se una la opción `-mx`
+##### Agregar archivos
 
 ```bash
-tar -cf - carpeta_respaldo | 7za a -si -mx=9 carpeta_respaldo.tar.7z
+7z a archive.7z newfile.txt      # Agregar/actualizar un archivo
+7z a archive.7z newdir/          # Agregar/actualizar una carpeta
 ```
 
-Para establecer una contraseña se una la opción `-p`
-
-```bash
-7za a -p{la_contraseña_se_escribe_aqui} carpeta_respaldo.tar.7z
-```
+> ✅ **7z es el único formato de esta guía que soporta agregar archivos de forma nativa.**
 
 [Indice](#terminal-y-línea-de-comandos)
 
