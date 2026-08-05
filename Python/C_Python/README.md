@@ -524,6 +524,59 @@ uv tool install yt-dlp
 uv tool install cookiecutter
 ```
 
+La forma recomendada de agregar Ruff a un proyecto es como una dependencia de desarrollo:
+
+🔗 [Managing dependencies](https://docs.astral.sh/uv/concepts/projects/dependencies/) ↗️
+
+```bash
+uv add --dev ruff
+```
+
+Confirmar la instalación:
+
+```bash
+uv ruff --version
+```
+
+Linting con `ruff check`
+
+```bash
+# Revisa todos los archivos en el directorio actual
+uv run ruff check .
+
+# Revisa un archivo específico
+uv run ruff check src/main.py
+
+# Revisa un directorio específico
+uv run ruff check src/
+
+# Arreglar automáticamente los problemas encontrados en el directorio actual
+uv run ruff check --fix .
+
+# Arreglar automáticamente los problemas encontrados en el directorio actual, solo los problemas de tipo I001
+uv run ruff check --fix --select I001 .
+
+# Arreglar automáticamente los problemas encontrados en un archivo específico
+# solo los problemas de tipo E501 en el archivo especificado
+uv run ruff check --fix --select E501 folder/main.py
+
+# Arreglar automáticamente los problemas encontrados en el directorio actual, solo los problemas de tipo I
+uv run ruff check --select I --fix .
+```
+
+Formatting con `ruff check`
+
+```bash
+# Formatee todos los archivos Python
+uv run ruff format .
+
+# Revisar si los archivos están formateados correctamente sin modificarlos
+uv run ruff format --check .
+
+# Mostrar un diff de lo que cambiaría
+uv run ruff format --diff .
+```
+
 ##### Ejecutar herramienta sin instalar (temporal)
 
 ```bash
